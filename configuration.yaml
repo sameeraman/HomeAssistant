@@ -1,0 +1,366 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude_value
+  longitude: !secret longitude_value
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 7
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Australia/Perth
+  # Customization file
+  customize: !include customize.yaml
+
+  #whitelist_external_dirs:
+   #- /home/homeassistant/
+
+# Show links to resources in log and frontend
+introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  base_url: !secret http_base_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  api_password: !secret http_password
+  # Secrets are defined in the file secrets.yaml
+  # api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+  ignore:
+    - philips_hue
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+shell_command:
+  myair_setcmd: !secret myair_set_cmd
+  myair_getstatus: '/home/homeassistant/get-myair.sh'
+
+# Weather prediction
+sensor:
+  - platform: file
+    name: myair_state
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.info["state"] }}'
+  - platform: file
+    name: myair_fanspeed
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.info["fan"] }}'
+  - platform: file
+    name: myair_mode
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.info["mode"] }}'
+  - platform: file
+    name: myair_settemp
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.info["setTemp"] }}'
+  - platform: file
+    name: myair_zone1_state
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z01["state"] }}'
+  - platform: file
+    name: myair_zone1_cover
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z01["value"] }}'
+  - platform: file
+    name: myair_zone2_state
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z02["state"] }}'
+  - platform: file
+    name: myair_zone2_cover
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z02["value"] }}'
+  - platform: file
+    name: myair_zone3_state
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z03["state"] }}'
+  - platform: file
+    name: myair_zone3_cover
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z03["value"] }}'
+  - platform: file
+    name: myair_zone4_state
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z04["state"] }}'
+  - platform: file
+    name: myair_zone4_cover
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z04["value"] }}'
+  - platform: file
+    name: myair_zone5_state
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z05["state"] }}'
+  - platform: file
+    name: myair_zone5_cover
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z05["value"] }}'
+  - platform: file
+    name: myair_zone6_state
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z06["state"] }}'
+  - platform: file
+    name: myair_zone6_cover
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.zones.z06["value"] }}'
+  - platform: file
+    name: myair_start_timer
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.info["countDownToOn"] }}'
+  - platform: file
+    name: myair_stop_timer
+    file_path: /home/homeassistant/myair.log
+    value_template: '{{ value_json.aircons.ac1.info["countDownToOff"] }}'
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# Vera
+vera:
+  vera_controller_url: !secret vera_url
+
+
+#google assistant
+google_assistant:
+  project_id: !secret google_project_id 
+  api_key: google_api_key
+  exposed_domains:
+    - switch
+    - light
+    - group
+    - media_player
+    - scene
+
+#emulated hue
+emulated_hue:
+
+#house alarm
+switch:
+  platform: command_line
+  switches:
+    housealarm:
+      friendly_name: "House Alarm"
+      command_on: "/usr/bin/curl -X GET 'http://10.1.1.150:3480/data_request?id=action&output_format=json&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=SetHouseMode&Mode=2'"
+      command_off: "/usr/bin/curl -X GET 'http://10.1.1.150:3480/data_request?id=action&output_format=json&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=SetHouseMode&Mode=1'"
+    myair_power:
+      friendly_name: "A/C Power"
+      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
+      command_state: '/bin/true'
+      value_template: "{{ is_state('sensor.myair_state', 'on') }}"
+    myair_zone1:
+      friendly_name: "Living Area"
+      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z01%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z01%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_state: '/bin/true'
+      value_template: "{{ is_state('sensor.myair_zone1_state', 'open') }}"
+    myair_zone2:
+      friendly_name: "Theater"
+      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z02%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z02%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_state: '/bin/true'
+      value_template: "{{ is_state('sensor.myair_zone2_state', 'open') }}"
+    myair_zone3:
+      friendly_name: "Master Bedroom"
+      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z03%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z03%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_state: '/bin/true'
+      value_template: "{{ is_state('sensor.myair_zone3_state', 'open') }}"
+    myair_zone4:
+      friendly_name: "Bedroom 2"
+      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z04%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z04%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_state: '/bin/true'
+      value_template: "{{ is_state('sensor.myair_zone4_state', 'open') }}"
+    myair_zone5:
+      friendly_name: "Bedroom 3"
+      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z05%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z05%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_state: '/bin/true'
+      value_template: "{{ is_state('sensor.myair_zone5_state', 'open') }}"
+    myair_zone6:
+      friendly_name: "Bedroom 4"
+      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z06%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z06%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_state: '/bin/true'
+      value_template: "{{ is_state('sensor.myair_zone6_state', 'open') }}"
+    air_conditioner:
+      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
+      command_state: '/bin/true'
+      value_template: "{{ is_state('sensor.myair_state', 'on') }}"
+
+# MyAir Inputs
+
+input_select:
+  myair_modeselect:
+    name: Aircon Mode
+    options:
+     - cool
+     - heat
+     - vent
+     - dry
+    icon: mdi:air-conditioner
+
+  myair_fanselect:
+    name: Aircon Fan
+    options:
+     - low
+     - medium
+     - high
+    icon: mdi:speedometer
+
+input_number:
+  myair_inputsettemp:
+    name: Aircon Temp
+    min: 16
+    max: 32
+    unit_of_measurement: ºC
+    icon: mdi:thermometer
+  myair_zone1:
+    name: Living Airflow
+    min: 5
+    max: 100
+    unit_of_measurement: "%"
+    step: 5
+    icon: mdi:sofa
+  myair_zone2:
+    name: Theater Airflow
+    min: 5
+    max: 100
+    unit_of_measurement: "%"
+    step: 5
+    icon: mdi:theater
+  myair_zone3:
+    name: Master Bed Airflow
+    min: 5
+    max: 100
+    unit_of_measurement: "%"
+    step: 5
+    icon: mdi:hotel
+  myair_zone4:
+    name: Bed 2 Airflow
+    min: 5
+    max: 100
+    unit_of_measurement: "%"
+    step: 5
+    icon: mdi:hotel
+  myair_zone5:
+    name: Bed 3 Airflow
+    min: 5
+    max: 100
+    unit_of_measurement: "%"
+    step: 5
+    icon: mdi:hotel
+  myair_zone6:
+    name: Bed 4 Airflow
+    min: 5
+    max: 100
+    unit_of_measurement: "%"
+    step: 5
+    icon: mdi:hotel
+  myair_starttimer:
+    name: Time to Start
+    min: 0
+    max: 200
+    step: 5
+    icon: mdi:clock-start
+    unit_of_measurement: "mins"
+  myair_stoptimer:
+    name: Time to Stop 
+    min: 0
+    max: 200
+    step: 5
+    unit_of_measurement: "mins"
+    icon: mdi:clock-end
+
+media_player:
+  - platform: yamaha
+    host: 10.1.1.154
+
+# Xiaomi
+
+xiaomi_aqara:
+  gateways:
+    - mac: !secret xiaomi_mac
+      key: !secret xiaomi_key
+
+# Lovelace
+lovelace:
+mode: yaml
+
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_key
+    latitude: !secret darksky_lat
+    longitude: !secret darksky_long
+    mode: daily
+
+light:
+  - platform: flux_led
+    devices:
+      10.1.1.115:
+        name: RGBStrip1
+        mode: "rgbw"
+
+# pushbullet & sendgrid
+notify:
+  - name: pushbullet
+    platform: pushbullet
+    api_key: !secret pushbullet_key
+  - name: sendgrid
+    platform: sendgrid
+    api_key: !secret sendgrid_key
+    sender: !secret sendgrid_sender
+    recipient: !secret sendgrid_receiver
+
+# SONOS
+sonos:
+  media_player:
+    hosts: 10.1.1.50
+
+remote:
+  - platform: harmony
+    name: living
+    host: 10.1.1.210
