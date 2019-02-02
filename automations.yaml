@@ -311,3 +311,24 @@
       entity_id:  light.garage_light_273
 
 
+# Turn on the Bath strip when there is motion
+- id: bathstripon
+  alias: Turn on Bath strip when there is motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.m_bed_room_m_33
+      to: 'on'
+  action:
+    - service: homeassistant.turn_on
+      entity_id:  light.bath_stripe_272
+
+# Turn off the Bath strip when there's no Motion
+- id: bathstripoff
+  alias: Turn off Bath Strip when there is no more motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.m_bed_room_m_33
+      to: 'off'
+  action:
+    - service: homeassistant.turn_off
+      entity_id:  light.bath_stripe_272
