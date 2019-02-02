@@ -131,6 +131,26 @@ views:
         type: vertical-stack
       - cards:
           - entities:
+              - entity: binary_sensor.laundry_199
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: binary_sensor.door_window_sensor_158d0002ca3100
+                icon: 'mdi:door-closed'
+                name: Door
+              - entity: sensor.6_in_1_multisensor_temperature_1_200
+                icon: 'mdi:oil-temperature'
+                name: Temperature
+              - entity: sensor.6_in_1_multisensor_light_1_201
+                icon: 'mdi:theme-light-dark'
+                name: Light
+              - entity: sensor.6_in_1_multisensor_humidity_1_202
+                icon: 'mdi:water-percent'
+                name: Humidity
+            title: Laundry
+            type: glance
+        type: vertical-stack
+      - cards:
+          - entities:
               - entity: binary_sensor.officeroomsensor_m_109
                 icon: 'mdi:run-fast'
                 name: Motion
@@ -160,15 +180,15 @@ views:
               - entity: binary_sensor.garage_sensor_m_46
                 icon: 'mdi:run-fast'
                 name: Motion
+              - entity: binary_sensor.garage_door_32
+                icon: 'mdi:garage-open'
+                name: Door
               - entity: sensor.garage_sensor_t_47
                 icon: 'mdi:oil-temperature'
                 name: Temperature
               - entity: sensor.garage_sensor_l_48
                 icon: 'mdi:theme-light-dark'
                 name: Light
-              - entity: sensor.garage_sensor_uv_50
-                icon: 'mdi:white-balance-sunny'
-                name: UV
               - entity: sensor.garage_sensor_h_49
                 icon: 'mdi:water-percent'
                 name: Humidity

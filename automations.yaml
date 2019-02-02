@@ -207,6 +207,9 @@
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002c716d7
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+      to: 'on'
   condition:
     condition: state
     entity_id: switch.housealarm
@@ -336,3 +339,21 @@
   action:
     - service: homeassistant.turn_off
       entity_id:  light.bath_stripe_272
+
+# Alert if the Laundry door was left open for more than 5 minutes
+- id: laundrydoor5mins
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+      to: 'on'
+      for:
+        minutes: 5
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: 'Laundry Door was left open for more than 5 minutes -  {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Laundry door was left open for more than 5 minutes'
+    - service: notify.sendgrid
+      data_template:
+        title: 'Laundry Door was left open for more than 5 minutes - {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Laundry door was left open for more than 5 minutes'
