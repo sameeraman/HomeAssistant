@@ -1,0 +1,99 @@
+kitchen:
+  name: Kitchen
+  view: yes
+  icon: mdi:silverware
+  entities:
+    - light.kitchen_light_135
+    - media_player.living_room_speaker
+    - group.kitchen_sensors
+living:
+  name: Living Area
+  icon: mdi:sofa
+  view: yes
+  entities:
+    - light.living_light_129
+    - light.kitchen_light_135
+    - media_player.living_room
+    - group.myair
+    - group.kitchen_sensors
+    - group.myair_zones
+mbedroom:
+  name: Master Bed Room
+  icon: mdi:hotel
+  view: yes
+  entities:
+    - media_player.bedroom
+    - light.master_dimmer_123
+    - switch.bedheater_38
+    - light.bath_light_132
+    - binary_sensor.m_bed_room__m_33
+    - group.master_sensors
+office:
+  name: Office Room
+  icon: mdi:briefcase
+  view: yes
+  entities:
+    - light.office_dimmer_120
+    - group.office_sensors
+kitchen_sensors:
+  name: Kitchen Sensors
+  view: no
+  entities:
+    - binary_sensor.kitchen_sensorm_13
+    - sensor.kitchen_sensort_14
+    - sensor.kitchen_sensorl_15
+    - sensor.kitchen_sensorh_16
+    - sensor.kitchen_sensoruv_17
+myair:
+  name: MyAir Air Conditioner
+  view: no
+  icon: mdi:air-conditioner
+  entities:
+    - input_select.myair_fanselect
+    - input_select.myair_modeselect
+    - input_number.myair_inputsettemp
+    - input_number.myair_zone1
+    - input_number.myair_zone2
+    - input_number.myair_zone3
+    - input_number.myair_zone4
+    - input_number.myair_zone5
+    - input_number.myair_zone6
+    - input_number.myair_starttimer
+    - input_number.myair_stoptimer
+    - switch.myair_power
+myair_zones:
+  name: MyAir Zones
+  entities:
+    - switch.myair_zone1
+    - switch.myair_zone2
+    - switch.myair_zone3
+    - switch.myair_zone4
+    - switch.myair_zone5
+    - switch.myair_zone6
+office_sensors:
+  name: Office Sensors
+  view: no
+  entities:
+    - binary_sensor.officeroomsensor_m_109
+    - sensor.officeroomsensor_t_110
+    - sensor.officeroomsensor_l_111
+    - sensor.officeroomsensor_h_112
+    - sensor.officeroomsensor_uv_113
+master_sensors:
+  name: Master Bedroom Sensors
+  view: no
+  entities:
+    - binary_sensor.m_bed_room__m_33
+    - sensor.m_bed_room__t_34
+    - sensor.m_bed_room__l_35
+    - sensor.m_bed_room__h_36
+    - sensor.m_bed_room__uv_37
+
+all_motion:
+  name: "All Motion Sensors"
+  view: false
+  control: hidden
+  entities:
+  - binary_sensor.motion_sensor_158d0002742898
+  - binary_sensor.motion_sensor_158d0002c716b6
+  - binary_sensor.door_window_sensor_158d0002739295

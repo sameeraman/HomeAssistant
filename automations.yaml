@@ -1,0 +1,313 @@
+- id: setmyairmodeselector
+  alias: Set MyAir Mode Selector
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: sensor.myair_mode
+  action:
+    service: input_select.select_option
+    entity_id: input_select.myair_modeselect
+    data_template:
+      option: '{{ states.sensor.myair_mode.state }}'
+- id: setmyairacmode
+  alias: Set MyAir AC mode
+  initial_state: True
+  trigger:
+    entity_id: input_select.myair_modeselect
+    platform: state
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22mode%22:%22{{ states.input_select.myair_modeselect.state }}%22%7D%7D%7D'
+    - service: shell_command.myair_getstatus
+- id: setmyairfanselector
+  alias: Set MyAir Fan Selector
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: sensor.myair_fanspeed
+  action:
+    service: input_select.select_option
+    entity_id: input_select.myair_fanselect
+    data_template:
+      option: '{{ states.sensor.myair_fanspeed.state }}'
+- id: setmyairacfan
+  alias: Set MyAir AC fan
+  initial_state: True
+  trigger:
+    entity_id: input_select.myair_fanselect
+    platform: state
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22fan%22:%22{{ states.input_select.myair_fanselect.state }}%22%7D%7D%7D'
+    - service: shell_command.myair_getstatus
+- id: setmyairtempselector
+  alias: Set MyAir Temp Selector
+  initial_state: True
+  trigger:
+    platform: state
+    entity_id: sensor.myair_settemp
+  action:
+    service: input_number.set_value
+    entity_id: input_number.myair_inputsettemp
+    data_template:
+      value: '{{ states.sensor.myair_settemp.state }}'
+- id: setmyairacTemp
+  alias: Set MyAir AC Temp
+  initial_state: True
+  trigger:
+    entity_id: input_number.myair_inputsettemp
+    platform: state
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22setTemp%22:%22{{ states.input_number.myair_inputsettemp.state }}%22%7D%7D%7D'
+    - service: shell_command.myair_getstatus
+- id: setmyairzoneairflow
+  alias: Set MyAir Zone Airflow
+  trigger:
+    entity_id: input_number.myair_zone1,input_number.myair_zone2,input_number.myair_zone3,input_number.myair_zone4,input_number.myair_zone5,input_number.myair_zone6
+    platform: state
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22zones%22:%7B%22{{ trigger.entity_id|replace("input_number.myair_zone","z0") }}%22:%7B%22value%22:%22{{ trigger.to_state.state | int }}%22%7D%7D%7D%7D'
+    - service: shell_command.myair_getstatus
+- id: setmyairzoneflowselector
+  alias: Set MyAir Zone Airflow Selector
+  trigger:
+    - platform: state
+      entity_id: sensor.myair_zone1_cover,sensor.myair_zone2_cover,sensor.myair_zone3_cover,sensor.myair_zone4_cover,sensor.myair_zone5_cover,sensor.myair_zone6_cover
+    - platform: time
+      seconds: '/30'
+  action:
+    service: input_number.set_value
+    data_template:
+      entity_id: '{{ trigger.entity_id | replace("sensor.","input_number.") | replace("_cover","") }}'
+      value: >
+        {% if trigger.entity_id == "sensor.myair_zone1_cover" %}
+          {{ states.sensor.myair_zone1_cover.state|float }}
+        {% elif trigger.entity_id == "sensor.myair_zone2_cover" %}
+          {{ states.sensor.myair_zone2_cover.state|float }}
+        {% elif trigger.entity_id == "sensor.myair_zone3_cover" %}
+          {{ states.sensor.myair_zone3_cover.state|float }}
+        {% elif trigger.entity_id == "sensor.myair_zone4_cover" %}
+          {{ states.sensor.myair_zone4_cover.state|float }}
+        {% elif trigger.entity_id == "sensor.myair_zone5_cover" %}
+          {{ states.sensor.myair_zone5_cover.state|float }}
+        {% elif trigger.entity_id == "sensor.myair_zone6_cover" %}
+          {{ states.sensor.myair_zone6_cover.state|float }}
+        {% elif trigger.entity_id == "sensor.myair_zone7_cover" %}
+          {{ states.sensor.myair_zone7_cover.state|float }}
+        {% elif trigger.entity_id == "sensor.myair_zone8_cover" %}
+          {{ states.sensor.myair_zone8_cover.state|float }}
+        {% elif trigger.entity_id == "sensor.myair_zone9_cover" %}
+          {{ states.sensor.myair_zone9_cover.state|float }}
+        {% endif %}
+- id: getmyairdataautomation
+  alias: Get MyAir Data
+  initial_state: True
+  trigger:
+    platform: time
+    seconds: '/10'
+  action:
+    service: shell_command.myair_getstatus
+- id: setmyairstarttimer
+  alias: Set MyAir Start Timer
+  initial_state: True
+  trigger:
+    entity_id: input_number.myair_starttimer
+    platform: state
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOn%22:%22{{ states.input_number.myair_starttimer.state }}%22%7D%7D%7D'
+    - service: shell_command.myair_getstatus
+- id: setmyairstoptimer
+  alias: Set MyAir Stop Timer
+  initial_state: True
+  trigger:
+    entity_id: input_number.myair_stoptimer
+    platform: state
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%22{{ states.input_number.myair_stoptimer.state }}%22%7D%7D%7D'
+    - service: shell_command.myair_getstatus
+- id: setmyairzonetimeselector
+  alias: Set MyAir Zone Timer Selector
+  trigger:
+    - platform: state
+      entity_id: sensor.myair_start_timer,sensor.myair_stop_timer
+    - platform: time
+      seconds: '/30'
+  action:
+    service: input_number.set_value
+    data_template:
+      entity_id: '{{ trigger.entity_id | replace("sensor.","input_number.") | replace("_timer","timer") }}'
+      value: >
+        {% if trigger.entity_id == "sensor.myair_start_timer" %}
+          {{ states.sensor.myair_start_timer.state|float }}
+        {% elif trigger.entity_id == "sensor.myair_stop_timer" %}
+          {{ states.sensor.myair_stop_timer.state|float }}
+        {% endif %}
+- id: setmyairstoptimerbyswitch
+  alias: Set MyAir Stop Timer to 90 when Switch is turned on
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: switch.air_conditioner
+      to: 'on'
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2290%22%7D%7D%7D'
+- id: resetmyairstoptimerbyswitch
+  alias: Reset MyAir Stop Timer to 0 when Switch is turned off
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: switch.air_conditioner
+      to: 'off'
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%220%22%7D%7D%7D'
+- id: plexplay
+  alias: plex seven news play
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: switch.myair_zone6
+      to: 'on'
+  action:
+    - service: media_player.play_media
+      entity_id: media_player.living_room
+      data:
+        media_content_id: { \"library_name\" : \"TV Shows\", \"show_name\" : \"Seven News\", \"season_number\" : 2018, \"episode_number\" : \"10-22\", \"shuffle\": \"0\" }
+        media_content_type: EPISODE
+
+- id: xiaomi_alerts
+  alias: alert on xiaomi sensors when armed
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002742898
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002c716b6
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002739295
+      to: 'on'
+  condition:
+    condition: state
+    entity_id: switch.housealarm
+    state: 'on'
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: 'Motion Detected {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  '{{ states[trigger.entity_id.split(".")[0]][ trigger.entity_id.split(".")[1]].name }}  has triggered'
+    - service: notify.sendgrid
+      data_template:
+        title: 'Motion Detected {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  '{{ states[trigger.entity_id.split(".")[0]][ trigger.entity_id.split(".")[1]].name }}  has triggered'
+
+# Turn on the Bath Light when there is motion
+- id: bathlighton
+  alias: Turn on Bath Light when there is motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
+      to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.illumination_158d0001e0ac8e
+    below: 30
+  action:
+    - service: homeassistant.turn_on
+      entity_id:  light.bath_light_132
+
+# Turn off the Bath Light when there's no Motion
+- id: bathlightoff
+  alias: Turn off Bath Light when there is no more motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
+      to: 'off'
+  action:
+    - service: homeassistant.turn_off
+      entity_id:  light.bath_light_132
+
+# Turn on the Pantry Light when the door open
+- id: pantrylighton
+  alias: Turn on the Pantry Light when the door Opens
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.pantry_door_18
+      to: 'on'
+  action:
+    - service: homeassistant.turn_on
+      entity_id:  light.pantry_light_271
+
+# Turn off the pantry light when the door close
+- id: pantrylightoff
+  alias: Turn off the Pantry Light when the door Opens
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.pantry_door_18
+      to: 'off'
+  action:
+    - service: homeassistant.turn_off
+      entity_id:  light.pantry_light_271
+
+# Turn off the Pantry Light when the door open and left for more than 2 minutes
+- id: pantrylightofftimer
+  alias: Turn off the Pantry Light when the door Opens for more than 2 mins
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.pantry_door_18
+      to: 'on'
+      for:
+        minutes: 2
+  action:
+    - service: homeassistant.turn_off
+      entity_id:  light.pantry_light_271
+
+# Turn on the garage light then there is motion
+- id: garagelighton
+  alias: Turn on Garage Light when there is motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002c716d7
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.garage_sensor_m_46
+      to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.garage_sensor_l_48
+    below: 30
+  action:
+    - service: homeassistant.turn_on
+      entity_id:  light.garage_light_273
+
+# Turn off the garage light then there is no motion
+- id: garagelightoff
+  alias: Turn off Garage Light when there is no motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002c716d7
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.garage_sensor_m_46
+      to: 'off'
+  action:
+    - service: homeassistant.turn_off
+      entity_id:  light.garage_light_273
+
+

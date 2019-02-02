@@ -1,0 +1,11 @@
+
+views:
+ - title: Kitchen
+   icon: mdi:silverware
+   cards:
+    - type: glance
+      title: Lights
+      show_state: false
+      entities:
+        - light.living_light_129
+        - light.kitchen_light_135
