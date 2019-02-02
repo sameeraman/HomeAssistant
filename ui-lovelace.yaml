@@ -1,11 +1,193 @@
-
 views:
- - title: Kitchen
-   icon: mdi:silverware
-   cards:
-    - type: glance
-      title: Lights
-      show_state: false
-      entities:
-        - light.living_light_129
-        - light.kitchen_light_135
+  - cards:
+      - entity: weather.dark_sky
+        type: weather-forecast
+      - cards:
+          - entities:
+              - entity: binary_sensor.m_bed_room_m_33
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: sensor.m_bed_room_t_34
+                icon: 'mdi:oil-temperature'
+                name: Temperature
+              - entity: sensor.m_bed_room_l_35
+                icon: 'mdi:theme-light-dark'
+                name: Light
+              - entity: sensor.m_bed_room_uv_37
+                icon: 'mdi:white-balance-sunny'
+                name: UV
+              - entity: sensor.m_bed_room_h_36
+                icon: 'mdi:water-percent'
+                name: Humidity
+            title: Master Bedroom
+            type: glance
+          - entities:
+              - entity: light.mad_wr_dimmer_65
+                icon: 'mdi:lightbulb-on-outline'
+                name: Madhushi WR
+                tap_action:
+                  action: toggle
+              - entity: light.bath_stripe_272
+                icon: 'mdi:led-strip'
+                name: Bath Strip
+                tap_action:
+                  action: toggle
+              - entity: light.sam_wr_dimmer_62
+                icon: 'mdi:lightbulb-on-outline'
+                name: Sameera WR
+                tap_action:
+                  action: toggle
+            show_state: false
+            type: glance
+          - cards:
+              - entity: light.master_dimmer_123
+                type: light
+              - entity: light.bath_light_132
+                type: light
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: binary_sensor.test_device_251
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: sensor.6_in_1_multisensor_temperature_2_252
+                icon: 'mdi:oil-temperature'
+                name: Temperature
+              - entity: sensor.6_in_1_multisensor_light_2_253
+                icon: 'mdi:theme-light-dark'
+                name: Light
+              - entity: sensor.6_in_1_multisensor_uv_2_255
+                icon: 'mdi:white-balance-sunny'
+                name: UV
+              - entity: sensor.6_in_1_multisensor_humidity_2_254
+                icon: 'mdi:water-percent'
+                name: Humidity
+            title: Kitchen
+            type: glance
+          - cards:
+              - entity: light.kitchen_light_135
+                type: light
+              - entity: light.living_light_129
+                type: light
+            type: horizontal-stack
+          - entities:
+              - entity: light.living_floor_lamp_270
+                icon: 'mdi:lamp'
+                name: Living Floor Lamp
+                tap_action:
+                  action: toggle
+              - entity: light.dining_table_lamp_274
+                icon: 'mdi:lamp'
+                name: Dining Table Lamp
+                tap_action:
+                  action: toggle
+            show_state: false
+            type: glance
+          - entities:
+              - entity: scene.livingnightmood
+                icon: 'mdi:weather-night'
+                name: Night Dim
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingnightmood
+              - entity: scene.cookingmood
+                icon: 'mdi:rice'
+                name: Cooking
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.cookingmood
+              - entity: scene.tvwatchingmode
+                icon: 'mdi:television-classic'
+                name: TV Watching
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.tvwatchingmode
+              - entity: scene.livingactivenightmood
+                icon: 'mdi:sofa'
+                name: Active
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingactivenightmood
+              - entity: scene.livingoff
+                icon: 'mdi:power-plug-off'
+                name: All Off
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingoff
+            show_state: false
+            title: Kitchen & Living Moods
+            type: glance
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: binary_sensor.officeroomsensor_m_109
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: sensor.officeroomsensor_t_110
+                icon: 'mdi:oil-temperature'
+                name: Temperature
+              - entity: sensor.officeroomsensor_l_111
+                icon: 'mdi:theme-light-dark'
+                name: Light
+              - entity: sensor.officeroomsensor_uv_113
+                icon: 'mdi:white-balance-sunny'
+                name: UV
+              - entity: sensor.officeroomsensor_h_112
+                icon: 'mdi:water-percent'
+                name: Humidity
+            title: Office Room
+            type: glance
+          - cards:
+              - entity: light.office_dimmer_120
+                type: light
+              - entity: light.alfresco_light_260
+                type: light
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - entities:
+              - entity: binary_sensor.garage_sensor_m_46
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: sensor.garage_sensor_t_47
+                icon: 'mdi:oil-temperature'
+                name: Temperature
+              - entity: sensor.garage_sensor_l_48
+                icon: 'mdi:theme-light-dark'
+                name: Light
+              - entity: sensor.garage_sensor_uv_50
+                icon: 'mdi:white-balance-sunny'
+                name: UV
+              - entity: sensor.garage_sensor_h_49
+                icon: 'mdi:water-percent'
+                name: Humidity
+            title: Garage
+            type: glance
+          - cards:
+              - entity: light.garage_light_273
+                icon: 'mdi:lightbulb-on'
+                name: Garage Light
+                tap_action:
+                  action: toggle
+                type: entity-button
+              - entity: light.front_outdoor_lights_59
+                icon: 'mdi:lightbulb-on'
+                name: Front Outdoor Lights
+                tap_action:
+                  action: toggle
+                type: entity-button
+            type: horizontal-stack
+        type: vertical-stack
+    icon: 'mdi:silverware'
+    title: Kitchen
