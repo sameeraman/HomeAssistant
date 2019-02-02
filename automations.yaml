@@ -188,6 +188,7 @@
         media_content_id: { \"library_name\" : \"TV Shows\", \"show_name\" : \"Seven News\", \"season_number\" : 2018, \"episode_number\" : \"10-22\", \"shuffle\": \"0\" }
         media_content_type: EPISODE
 
+# Send Alerts from Xiaomi when the house is Armed
 - id: xiaomi_alerts
   alias: alert on xiaomi sensors when armed
   trigger: 
@@ -202,6 +203,9 @@
       to: 'on'
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002739295
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002c716d7
       to: 'on'
   condition:
     condition: state
