@@ -239,13 +239,17 @@
     - service: homeassistant.turn_on
       entity_id:  light.bath_light_132
 
-# Turn off the Bath Light when there's no Motion
+# Turn off the Bath Light when there's no Motion in shower and Bathroom
 - id: bathlightoff
   alias: Turn off Bath Light when there is no more motion
   trigger: 
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
       to: 'off'
+  condition:
+    condition: state
+    entity_id: binary_sensor.motion_sensor_158d0002c6382d
+    state: 'off'
   action:
     - service: homeassistant.turn_off
       entity_id:  light.bath_light_132
