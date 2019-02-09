@@ -355,9 +355,57 @@
   action:
     - service: notify.pushbullet
       data_template:
-        title: 'Laundry Door was left open for more than 5 minutes -  {{now().strftime("%Y%m%d-%H%M%S")}}'
+        title: 'Laundry Door was left open for more than 5 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Laundry door was left open for more than 5 minutes'
     - service: notify.sendgrid
       data_template:
-        title: 'Laundry Door was left open for more than 5 minutes - {{now().strftime("%Y%m%d-%H%M%S")}}'
+        title: 'Laundry Door was left open for more than 5 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Laundry door was left open for more than 5 minutes'
+
+# Alert if the Laundry door was left open for more than 60 minutes
+- id: laundrydoor60mins
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+      to: 'on'
+      for:
+        minutes: 60
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: 'Laundry Door was left open for more than 60 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Laundry door was left open for more than 60 minutes'
+    - service: notify.sendgrid
+      data_template:
+        title: 'Laundry Door was left open for more than 60 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Laundry door was left open for more than 60 minutes'
+
+# Alert every day at 10:00pm if any of the doors were open. 
+- id: dailydooropenalert
+  trigger: 
+    - platform: time
+      at: '22:00:00'
+  condition:
+    condition: or
+    conditions:
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d0002739295
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d0002739295
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.garage_door_32
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.pantry_door_18
+        state: 'on' 
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+    - service: notify.sendgrid
+      data_template:
+        title: '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
