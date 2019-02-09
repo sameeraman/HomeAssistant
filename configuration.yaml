@@ -358,7 +358,10 @@ notify:
 # SONOS
 sonos:
   media_player:
-    hosts: 10.1.1.50
+    hosts: 
+      - 10.1.1.159
+      - 10.1.1.160
+      - 10.1.1.161
 
 remote:
   - platform: harmony
