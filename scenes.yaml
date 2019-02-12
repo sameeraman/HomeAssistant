@@ -60,3 +60,16 @@
     remote.living :
       state : on
       activity: 'Watch TV'
+
+- name: valentinesmode
+  friendly_name: Valentines Mode
+  entities:
+    light.living_floor_lamp_270: on
+    light.dining_table_lamp_274 : on
+    light.kitchen_light_135 : off
+    light.living_light_129: on
+    light.office_dimmer_120: off
+    light.rgbstrip1:
+      state: on
+      brightness: 30
+      rgb_color: ['70','27','2']

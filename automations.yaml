@@ -380,7 +380,7 @@
         title: 'Laundry Door was left open for more than 60 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Laundry door was left open for more than 60 minutes'
 
-# Alert every day at 10:00pm if any of the doors were open. 
+# Alert every day at 10:00pm if any of the doors were left open. 
 - id: dailydooropenalert
   trigger: 
     - platform: time
