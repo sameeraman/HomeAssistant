@@ -10,6 +10,10 @@
     remote.living :
       state : off
       activity: 'Watch TV'
+    light.rgbstrip1:
+      state: on
+      brightness: 30
+      rgb_color: ['70','27','2']
 
 - name: livingactivenightmood
   friendly_name: Living Active Night Mood
@@ -20,6 +24,7 @@
     light.living_light_129: on
     media_player.bedroom:
       state: paused
+    light.rgbstrip1 : off
 
 - name: cookingmood
   friendly_name: Cooking Mood
@@ -33,6 +38,10 @@
     remote.living :
       state : on
       activity: 'Watch TV'
+    light.rgbstrip1:
+      state: on
+      brightness: 30
+      rgb_color: ['70','27','2']
 
 - name: livingoff
   friendly_name: Turn Off All Living
@@ -46,6 +55,7 @@
     remote.living :
       state : off
       activity: 'Watch TV'
+    light.rgbstrip1 : off
 
 - name: tvwatchingmode
   friendly_name: TV Watching Mood
@@ -60,18 +70,13 @@
     remote.living :
       state : on
       activity: 'Watch TV'
+    light.rgbstrip1 : off
 
 - name: valentinesmode
   friendly_name: Valentines Mode
   entities:
-    light.living_floor_lamp_270:
-      state: on
-      brightness: 100
-      rgb_color: ['255','0','0']
-    light.dining_table_lamp_274:
-      state: on
-      brightness: 100
-      rgb_color: ['255','0','0']
+    light.living_floor_lamp_270 : on
+    light.dining_table_lamp_274 : on
     light.kitchen_light_135 : off
     light.living_light_129: off
     light.office_dimmer_120: off
