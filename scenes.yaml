@@ -64,12 +64,18 @@
 - name: valentinesmode
   friendly_name: Valentines Mode
   entities:
-    light.living_floor_lamp_270: on
-    light.dining_table_lamp_274 : on
+    light.living_floor_lamp_270:
+      state: on
+      brightness: 100
+      rgb_color: ['255','0','0']
+    light.dining_table_lamp_274:
+      state: on
+      brightness: 100
+      rgb_color: ['255','0','0']
     light.kitchen_light_135 : off
-    light.living_light_129: on
+    light.living_light_129: off
     light.office_dimmer_120: off
     light.rgbstrip1:
       state: on
       brightness: 30
-      rgb_color: ['70','27','2']
+      rgb_color: ['255','0','0']
