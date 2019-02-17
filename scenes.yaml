@@ -80,7 +80,7 @@
     light.kitchen_light_135 : off
     light.living_light_129: off
     light.office_dimmer_120: off
-    light.rgbstrip1:
+    light.rgbstrip1 :
       state: on
       brightness: 30
       rgb_color: ['255','0','0']
