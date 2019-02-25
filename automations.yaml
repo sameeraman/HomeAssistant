@@ -462,14 +462,12 @@
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002c0e236
       to: 'on'
+      for: 
+        seconds: 2
   condition:
     condition: state
     entity_id: sun.sun
     state: 'below_horizon'
   action:
-    - service : homeassistant.turn_on
-      entity_id: light.front_outdoor_lights_59
-    - delay:
-      minutes: 2
-    - service: homeassistant.turn_off
-      entity_id: light.front_outdoor_lights_59
+    - service : script.turn_on
+      entity_id: script.garagelight
