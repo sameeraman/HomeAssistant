@@ -185,7 +185,7 @@ views:
               - entity: binary_sensor.garage_sensor_m_46
                 icon: 'mdi:run-fast'
                 name: Motion
-              - entity: binary_sensor.garage_door_32
+              - entity: binary_sensor.door_window_sensor_158d0002c0e236
                 icon: 'mdi:garage-open'
                 name: Door
               - entity: sensor.garage_sensor_t_47

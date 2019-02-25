@@ -347,41 +347,41 @@
     - service: homeassistant.turn_off
       entity_id:  light.bath_stripe_272
 
-# Alert if the Laundry door was left open for more than 5 minutes
-- id: laundrydoor5mins
+# Alert if the Laundry door was left open for more than 10 minutes
+- id: laundrydoor10mins
   trigger: 
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002ca3100
       to: 'on'
       for:
-        minutes: 5
+        minutes: 10
   action:
     - service: notify.pushbullet
       data_template:
-        title: 'Laundry Door was left open for more than 5 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Laundry door was left open for more than 5 minutes'
+        title: 'Laundry Door was left open for more than 10 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Laundry door was left open for more than 10 minutes'
     - service: notify.sendgrid
       data_template:
-        title: 'Laundry Door was left open for more than 5 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Laundry door was left open for more than 5 minutes'
+        title: 'Laundry Door was left open for more than 10 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Laundry door was left open for more than 10 minutes'
 
 # Alert if the Laundry door was left open for more than 60 minutes
-- id: laundrydoor60mins
+- id: laundrydoor120mins
   trigger: 
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002ca3100
       to: 'on'
       for:
-        minutes: 60
+        minutes: 120
   action:
     - service: notify.pushbullet
       data_template:
-        title: 'Laundry Door was left open for more than 60 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Laundry door was left open for more than 60 minutes'
+        title: 'Laundry Door was left open for more than 120 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Laundry door was left open for more than 120 minutes'
     - service: notify.sendgrid
       data_template:
-        title: 'Laundry Door was left open for more than 60 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Laundry door was left open for more than 60 minutes'
+        title: 'Laundry Door was left open for more than 120 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Laundry door was left open for more than 120 minutes'
 
 # Alert every day at 10:00pm if any of the doors were left open. 
 - id: dailydooropenalert
@@ -395,7 +395,10 @@
         entity_id: binary_sensor.door_window_sensor_158d0002739295
         state: 'on'
       - condition: state
-        entity_id: binary_sensor.door_window_sensor_158d0002739295
+        entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d0002c0e236
         state: 'on'
       - condition: state
         entity_id: binary_sensor.garage_door_32
@@ -412,3 +415,41 @@
       data_template:
         title: '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+
+
+
+# Alert if the Garage door was left open for more than 10 minutes
+- id: garagedoor10mins
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002c0e236
+      to: 'on'
+      for:
+        minutes: 10
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: 'Garage Door was left open for more than 10 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Garage door was left open for more than 10 minutes'
+    - service: notify.sendgrid
+      data_template:
+        title: 'Garage Door was left open for more than 10 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Garage door was left open for more than 10 minutes'
+
+# Alert if the Laundry door was left open for more than 60 minutes
+- id: garagedoor120mins
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002c0e236
+      to: 'on'
+      for:
+        minutes: 120
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: 'Garage Door was left open for more than 120 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Garage door was left open for more than 120 minutes'
+    - service: notify.sendgrid
+      data_template:
+        title: 'Garage Door was left open for more than 120 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Garage door was left open for more than 120 minutes'
