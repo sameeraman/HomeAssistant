@@ -453,3 +453,23 @@
       data_template:
         title: 'Garage Door was left open for more than 120 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Garage door was left open for more than 120 minutes'
+
+
+# Turn on the Front Outdoor light then there the garage door open
+- id: frontoutdoorgaragelight
+  alias: Turn on Front Outdoor Light when garage door open
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002c0e236
+      to: 'on'
+  condition:
+    condition: state
+    entity_id: sun.sun
+    state: 'below_horizon'
+  action:
+    - service : homeassistant.turn_on
+      entity_id: light.front_outdoor_lights_59
+    - delay:
+      minutes: 2
+    - service: homeassistant.turn_off
+      entity_id: light.front_outdoor_lights_59
