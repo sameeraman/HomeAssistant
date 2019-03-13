@@ -65,6 +65,10 @@ map:
 # Track the sun
 sun:
 
+
+shell_command:
+  myair_setcmd: !secret myair_set_cmd
+
 # Weather prediction
 sensor:
   - platform: file
