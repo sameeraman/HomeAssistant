@@ -79,8 +79,6 @@
   trigger:
     - platform: state
       entity_id: sensor.myair_zone1_cover,sensor.myair_zone2_cover,sensor.myair_zone3_cover,sensor.myair_zone4_cover,sensor.myair_zone5_cover,sensor.myair_zone6_cover
-    - platform: time
-      seconds: '/30'
   action:
     service: input_number.set_value
     data_template:
@@ -105,14 +103,6 @@
         {% elif trigger.entity_id == "sensor.myair_zone9_cover" %}
           {{ states.sensor.myair_zone9_cover.state|float }}
         {% endif %}
-- id: getmyairdataautomation
-  alias: Get MyAir Data
-  initial_state: True
-  trigger:
-    platform: time
-    seconds: '/10'
-  action:
-    service: shell_command.myair_getstatus
 - id: setmyairstarttimer
   alias: Set MyAir Start Timer
   initial_state: True

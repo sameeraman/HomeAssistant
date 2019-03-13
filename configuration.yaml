@@ -13,7 +13,8 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
-  #whitelist_external_dirs:
+  whitelist_external_dirs:
+    - /share
    #- /home/homeassistant/
 
 # Show links to resources in log and frontend
@@ -64,83 +65,79 @@ map:
 # Track the sun
 sun:
 
-shell_command:
-  myair_setcmd: !secret myair_set_cmd
-  myair_getstatus: '/home/homeassistant/get-myair.sh'
-
 # Weather prediction
 sensor:
   - platform: file
     name: myair_state
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.info["state"] }}'
   - platform: file
     name: myair_fanspeed
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.info["fan"] }}'
   - platform: file
     name: myair_mode
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.info["mode"] }}'
   - platform: file
     name: myair_settemp
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.info["setTemp"] }}'
   - platform: file
     name: myair_zone1_state
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z01["state"] }}'
   - platform: file
     name: myair_zone1_cover
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z01["value"] }}'
   - platform: file
     name: myair_zone2_state
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z02["state"] }}'
   - platform: file
     name: myair_zone2_cover
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z02["value"] }}'
   - platform: file
     name: myair_zone3_state
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z03["state"] }}'
   - platform: file
     name: myair_zone3_cover
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z03["value"] }}'
   - platform: file
     name: myair_zone4_state
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z04["state"] }}'
   - platform: file
     name: myair_zone4_cover
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z04["value"] }}'
   - platform: file
     name: myair_zone5_state
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z05["state"] }}'
   - platform: file
     name: myair_zone5_cover
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z05["value"] }}'
   - platform: file
     name: myair_zone6_state
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z06["state"] }}'
   - platform: file
     name: myair_zone6_cover
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.zones.z06["value"] }}'
   - platform: file
     name: myair_start_timer
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.info["countDownToOn"] }}'
   - platform: file
     name: myair_stop_timer
-    file_path: /home/homeassistant/myair.log
+    file_path: /share/myairresults.txt
     value_template: '{{ value_json.aircons.ac1.info["countDownToOff"] }}'
 
 # Text to speech
@@ -184,49 +181,49 @@ switch:
       command_off: "/usr/bin/curl -X GET 'http://10.1.1.150:3480/data_request?id=action&output_format=json&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=SetHouseMode&Mode=1'"
     myair_power:
       friendly_name: "A/C Power"
-      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
-      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
+      command_on: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
       command_state: '/bin/true'
       value_template: "{{ is_state('sensor.myair_state', 'on') }}"
     myair_zone1:
       friendly_name: "Living Area"
-      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z01%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
-      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z01%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_on: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z01%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z01%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
       command_state: '/bin/true'
       value_template: "{{ is_state('sensor.myair_zone1_state', 'open') }}"
     myair_zone2:
       friendly_name: "Theater"
-      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z02%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
-      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z02%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_on: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z02%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z02%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
       command_state: '/bin/true'
       value_template: "{{ is_state('sensor.myair_zone2_state', 'open') }}"
     myair_zone3:
       friendly_name: "Master Bedroom"
-      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z03%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
-      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z03%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_on: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z03%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z03%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
       command_state: '/bin/true'
       value_template: "{{ is_state('sensor.myair_zone3_state', 'open') }}"
     myair_zone4:
       friendly_name: "Bedroom 2"
-      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z04%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
-      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z04%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_on: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z04%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z04%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
       command_state: '/bin/true'
       value_template: "{{ is_state('sensor.myair_zone4_state', 'open') }}"
     myair_zone5:
       friendly_name: "Bedroom 3"
-      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z05%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
-      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z05%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_on: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z05%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z05%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
       command_state: '/bin/true'
       value_template: "{{ is_state('sensor.myair_zone5_state', 'open') }}"
     myair_zone6:
       friendly_name: "Bedroom 4"
-      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z06%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
-      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z06%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
+      command_on: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z06%22:%7B%22state%22:%22open%22%7D%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z06%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
       command_state: '/bin/true'
       value_template: "{{ is_state('sensor.myair_zone6_state', 'open') }}"
     air_conditioner:
-      command_on: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
-      command_off: 'curl -X GET http://10.1.1.207:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
+      command_on: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
+      command_off: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
       command_state: '/bin/true'
       value_template: "{{ is_state('sensor.myair_state', 'on') }}"
 
