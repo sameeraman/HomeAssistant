@@ -19,7 +19,6 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22mode%22:%22{{ states.input_select.myair_modeselect.state }}%22%7D%7D%7D'
-    - service: shell_command.myair_getstatus
 - id: setmyairfanselector
   alias: Set MyAir Fan Selector
   initial_state: True
@@ -41,7 +40,6 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22fan%22:%22{{ states.input_select.myair_fanselect.state }}%22%7D%7D%7D'
-    - service: shell_command.myair_getstatus
 - id: setmyairtempselector
   alias: Set MyAir Temp Selector
   initial_state: True
@@ -63,7 +61,6 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22setTemp%22:%22{{ states.input_number.myair_inputsettemp.state }}%22%7D%7D%7D'
-    - service: shell_command.myair_getstatus
 - id: setmyairzoneairflow
   alias: Set MyAir Zone Airflow
   trigger:
@@ -73,7 +70,6 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22zones%22:%7B%22{{ trigger.entity_id|replace("input_number.myair_zone","z0") }}%22:%7B%22value%22:%22{{ trigger.to_state.state | int }}%22%7D%7D%7D%7D'
-    - service: shell_command.myair_getstatus
 - id: setmyairzoneflowselector
   alias: Set MyAir Zone Airflow Selector
   trigger:
@@ -113,7 +109,6 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOn%22:%22{{ states.input_number.myair_starttimer.state }}%22%7D%7D%7D'
-    - service: shell_command.myair_getstatus
 - id: setmyairstoptimer
   alias: Set MyAir Stop Timer
   initial_state: True
@@ -124,14 +119,11 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%22{{ states.input_number.myair_stoptimer.state }}%22%7D%7D%7D'
-    - service: shell_command.myair_getstatus
 - id: setmyairzonetimeselector
   alias: Set MyAir Zone Timer Selector
   trigger:
     - platform: state
       entity_id: sensor.myair_start_timer,sensor.myair_stop_timer
-    - platform: time
-      seconds: '/30'
   action:
     service: input_number.set_value
     data_template:
