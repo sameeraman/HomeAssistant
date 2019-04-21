@@ -1,3 +1,6 @@
+resources:
+  - url: /local/mini-media-player-bundle.js?v=1.0.4
+    type: module
 views:
   - cards:
       - entity: weather.dark_sky
@@ -133,6 +136,16 @@ views:
             show_state: false
             title: Kitchen & Living Moods
             type: glance
+          - type: custom:mini-media-player
+            entity: media_player.living
+          - type: custom:mini-media-player
+            entity: media_player.alfresco
+          - type: custom:mini-media-player
+            entity: media_player.yamaha_receiver
+            icon: 'mdi:speaker-wireless'
+            hide:
+              power: true
+              controls : true
         type: vertical-stack
       - cards:
           - entities:
@@ -201,13 +214,19 @@ views:
             type: glance
           - cards:
               - entity: light.garage_light_273
-                icon: 'mdi:lightbulb-on'
+                icon: 'mdi:lightbulb'
                 name: Garage Light
                 tap_action:
                   action: toggle
                 type: entity-button
+              - entity: switch.housealarm
+                icon: 'mdi:shield-home'
+                name: House Alarm
+                tap_action:
+                  action: toggle
+                type: entity-button
               - entity: light.front_outdoor_lights_59
-                icon: 'mdi:lightbulb-on'
+                icon: 'mdi:lightbulb'
                 name: Front Outdoor Lights
                 tap_action:
                   action: toggle
