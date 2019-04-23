@@ -71,11 +71,9 @@ shell_command:
 
 
 sensor:
-  - platform: rest
+  - platform: jsonrest
     resource: http://10.1.1.180:2025/getSystemData
     name: myair
-      - aircons
-        value_template : 'OK'
     
   - platform: template
     sensors:
