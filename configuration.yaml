@@ -126,12 +126,6 @@ sensor:
       myair_zone6_cover:
         friendly_name: Zone 6 A/C Zone Airflow
         value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z06["value"] }}'
-      myair_zone7_state:
-        friendly_name: Zone 7 A/C Zone State
-        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z07["state"] }}'
-      myair_zone7_cover:
-        friendly_name: Zone 7 A/C Zone Airflow
-        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z07["value"] }}'
       myair_start_timer:
         friendly_name: My Air Start Timer
         value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["countDownToOn"] }}'

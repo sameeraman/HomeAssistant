@@ -159,7 +159,6 @@
       to: 'on'
       for:
         seconds: 3
-        
   action:
     - service: shell_command.myair_setcmd
       data_template:
@@ -190,7 +189,7 @@
     - service: media_player.play_media
       entity_id: media_player.living_room
       data:
-        media_content_id: { \"library_name\" : \"TV Shows\", \"show_name\" : \"Seven News\", \"season_number\" : 2018, \"episode_number\" : \"10-22\", \"shuffle\": \"0\" }
+        media_content_id: { \"library_name\" : \"TV Shows\", \"show_name\" : \"Seven News\", \"season_number\" : 2019, \"episode_number\" : \"04-23\", \"shuffle\": \"0\" }
         media_content_type: EPISODE
 
 # Send Alerts from Xiaomi when the house is Armed
