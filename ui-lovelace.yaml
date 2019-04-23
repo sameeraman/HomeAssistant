@@ -220,14 +220,14 @@ views:
                   action: toggle
                 type: entity-button
               - entity: switch.housealarm
-                icon: 'mdi:shield-home'
+                icon: 'mdi:home-lock'
                 name: House Alarm
                 tap_action:
                   action: toggle
                 type: entity-button
               - entity: light.front_outdoor_lights_59
                 icon: 'mdi:lightbulb'
-                name: Front Outdoor Lights
+                name: Front Outdoor
                 tap_action:
                   action: toggle
                 type: entity-button

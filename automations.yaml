@@ -192,9 +192,6 @@
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002ca3100
       to: 'on'
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0002b5eecd
-      to: 'on'
   condition:
     condition: state
     entity_id: switch.housealarm
