@@ -74,6 +74,7 @@ sensor:
   - platform: jsonrest
     resource: http://10.1.1.180:2025/getSystemData
     name: myair
+
     
   - platform: template
     sensors:
@@ -131,6 +132,12 @@ sensor:
       myair_zone7_cover:
         friendly_name: Zone 7 A/C Zone Airflow
         value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z07["value"] }}'
+      myair_start_timer:
+        friendly_name: My Air Start Timer
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["countDownToOn"] }}'
+      myair_stop_timer:
+        friendly_name: My Air Stop Timer
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["countDownToOff"] }}'
 
 # Text to speech
 tts:
@@ -237,6 +244,7 @@ input_select:
      - low
      - medium
      - high
+     - auto
     icon: mdi:speedometer
 
 input_number:

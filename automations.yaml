@@ -1,3 +1,4 @@
+#  Set the Air conditioner mode when selected
 - id: setmyairmodeselector
   alias: Set MyAir Mode Selector
   initial_state: True
@@ -9,6 +10,7 @@
     entity_id: input_select.myair_modeselect
     data_template:
       option: '{{ states.sensor.myair_mode.state }}'
+
 - id: setmyairacmode
   alias: Set MyAir AC mode
   initial_state: True
@@ -19,6 +21,8 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22mode%22:%22{{ states.input_select.myair_modeselect.state }}%22%7D%7D%7D'
+
+#  Set the Air conditioner fan selection when selected
 - id: setmyairfanselector
   alias: Set MyAir Fan Selector
   initial_state: True
@@ -40,6 +44,8 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22fan%22:%22{{ states.input_select.myair_fanselect.state }}%22%7D%7D%7D'
+
+#  Set the Air conditioner temperature when selected
 - id: setmyairtempselector
   alias: Set MyAir Temp Selector
   initial_state: True
@@ -61,6 +67,8 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22setTemp%22:%22{{ states.input_number.myair_inputsettemp.state }}%22%7D%7D%7D'
+
+#  Set the Air conditioner air flow when selected
 - id: setmyairzoneairflow
   alias: Set MyAir Zone Airflow
   trigger:
@@ -99,6 +107,8 @@
         {% elif trigger.entity_id == "sensor.myair_zone9_cover" %}
           {{ states.sensor.myair_zone9_cover.state|float }}
         {% endif %}
+
+#  Set the Air conditioner start timer  when selected
 - id: setmyairstarttimer
   alias: Set MyAir Start Timer
   initial_state: True
@@ -109,6 +119,8 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOn%22:%22{{ states.input_number.myair_starttimer.state }}%22%7D%7D%7D'
+
+#  Set the Air conditioner end timer when selected        
 - id: setmyairstoptimer
   alias: Set MyAir Stop Timer
   initial_state: True
@@ -119,6 +131,8 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%22{{ states.input_number.myair_stoptimer.state }}%22%7D%7D%7D'
+
+#Set the Air conditioner time when selected  
 - id: setmyairzonetimeselector
   alias: Set MyAir Zone Timer Selector
   trigger:
@@ -134,6 +148,8 @@
         {% elif trigger.entity_id == "sensor.myair_stop_timer" %}
           {{ states.sensor.myair_stop_timer.state|float }}
         {% endif %}
+
+# Set MyAir Stop Timer to 90 when Switch is turned on
 - id: setmyairstoptimerbyswitch
   alias: Set MyAir Stop Timer to 90 when Switch is turned on
   initial_state: True
@@ -141,10 +157,15 @@
     - platform: state
       entity_id: switch.air_conditioner
       to: 'on'
+      for:
+        seconds: 3
+        
   action:
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2290%22%7D%7D%7D'
+
+# Reset MyAir Stop Timer to 0 when Switch is turned off    
 - id: resetmyairstoptimerbyswitch
   alias: Reset MyAir Stop Timer to 0 when Switch is turned off
   initial_state: True
@@ -156,6 +177,8 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%220%22%7D%7D%7D'
+
+# plex seven news play
 - id: plexplay
   alias: plex seven news play
   initial_state: True
