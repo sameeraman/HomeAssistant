@@ -69,80 +69,68 @@ sun:
 shell_command:
   myair_setcmd: !secret myair_set_cmd
 
-# Weather prediction
+
 sensor:
-  - platform: file
-    name: myair_state
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.info["state"] }}'
-  - platform: file
-    name: myair_fanspeed
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.info["fan"] }}'
-  - platform: file
-    name: myair_mode
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.info["mode"] }}'
-  - platform: file
-    name: myair_settemp
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.info["setTemp"] }}'
-  - platform: file
-    name: myair_zone1_state
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z01["state"] }}'
-  - platform: file
-    name: myair_zone1_cover
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z01["value"] }}'
-  - platform: file
-    name: myair_zone2_state
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z02["state"] }}'
-  - platform: file
-    name: myair_zone2_cover
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z02["value"] }}'
-  - platform: file
-    name: myair_zone3_state
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z03["state"] }}'
-  - platform: file
-    name: myair_zone3_cover
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z03["value"] }}'
-  - platform: file
-    name: myair_zone4_state
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z04["state"] }}'
-  - platform: file
-    name: myair_zone4_cover
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z04["value"] }}'
-  - platform: file
-    name: myair_zone5_state
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z05["state"] }}'
-  - platform: file
-    name: myair_zone5_cover
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z05["value"] }}'
-  - platform: file
-    name: myair_zone6_state
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z06["state"] }}'
-  - platform: file
-    name: myair_zone6_cover
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.zones.z06["value"] }}'
-  - platform: file
-    name: myair_start_timer
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.info["countDownToOn"] }}'
-  - platform: file
-    name: myair_stop_timer
-    file_path: /share/myairresults.txt
-    value_template: '{{ value_json.aircons.ac1.info["countDownToOff"] }}'
+  - platform: jsonrest
+    resource: http://10.1.1.180:2025/getSystemData
+    name: myair
+    
+  - platform: template
+    sensors:
+      myair_state:
+        friendly_name: AC State
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["state"] }}'
+      myair_fanspeed:
+        friendly_name: AC Fan Speed
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["fan"] }}'
+      myair_mode:
+        friendly_name: AC Mode
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["mode"] }}'
+      myair_settemp:
+        friendly_name: AC Set Temperature
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["setTemp"] }}'
+      myair_zone1_state:
+        friendly_name: Zone 1 A/C Zone State
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z01["state"] }}'
+      myair_zone1_cover:
+        friendly_name: Zone 1 A/C Zone Airflow
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z01["value"] }}'
+      myair_zone2_state:
+        friendly_name: Zone 2 A/C Zone State
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z02["state"] }}'
+      myair_zone2_cover:
+        friendly_name: Zone 2 A/C Zone Airflow
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z02["value"] }}'
+      myair_zone3_state:
+        friendly_name: Zone 3 A/C Zone State
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z03["state"] }}'
+      myair_zone3_cover:
+        friendly_name: Zone 3 A/C Zone Airflow
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z03["value"] }}'
+      myair_zone4_state:
+        friendly_name: Zone 4 A/C Zone State
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z04["state"] }}'
+      myair_zone4_cover:
+        friendly_name: Zone 4 A/C Zone Airflow
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z04["value"] }}'
+      myair_zone5_state:
+        friendly_name: Zone 5 A/C Zone State
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z05["state"] }}'
+      myair_zone5_cover:
+        friendly_name: Zone 5 A/C Zone Airflow
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z05["value"] }}'
+      myair_zone6_state:
+        friendly_name: Zone 6 A/C Zone State
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z06["state"] }}'
+      myair_zone6_cover:
+        friendly_name: Zone 6 A/C Zone Airflow
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z06["value"] }}'
+      myair_zone7_state:
+        friendly_name: Zone 7 A/C Zone State
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z07["state"] }}'
+      myair_zone7_cover:
+        friendly_name: Zone 7 A/C Zone Airflow
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.zones.z07["value"] }}'
 
 # Text to speech
 tts:
