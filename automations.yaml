@@ -189,7 +189,7 @@
     - service: media_player.play_media
       entity_id: media_player.living_room
       data:
-        media_content_id: { \"library_name\" : \"TV Shows\", \"show_name\" : \"Seven News\", \"season_number\" : 2019, \"episode_number\" : \"04-23\", \"shuffle\": \"0\" }
+        media_content_id: '{ \"library_name\" : \"TV Shows\", \"show_name\" : \"Seven News\", \"season_number\" : 2019, \"episode_number\" : \"04-23\", \"shuffle\": \"0\" }'
         media_content_type: EPISODE
 
 # Send Alerts from Xiaomi when the house is Armed
@@ -267,7 +267,7 @@
       to: 'on'
   action:
     - service: homeassistant.turn_on
-      entity_id:  light.pantry_light_271
+      entity_id:  light.pantry_light_293
 
 # Turn off the pantry light when the door close
 - id: pantrylightoff
@@ -278,7 +278,7 @@
       to: 'off'
   action:
     - service: homeassistant.turn_off
-      entity_id:  light.pantry_light_271
+      entity_id:  light.pantry_light_293
 
 # Turn off the Pantry Light when the door open and left for more than 2 minutes
 - id: pantrylightofftimer
@@ -291,7 +291,7 @@
         minutes: 2
   action:
     - service: homeassistant.turn_off
-      entity_id:  light.pantry_light_271
+      entity_id:  light.pantry_light_293
 
 # Turn on the garage light then there is motion
 - id: garagelighton
@@ -309,7 +309,7 @@
     below: 30
   action:
     - service: homeassistant.turn_on
-      entity_id:  light.garage_light_273
+      entity_id:  light.garage_light_295
 
 # Turn off the garage light then there is no motion
 - id: garagelightoff
@@ -323,7 +323,7 @@
       to: 'off'
   action:
     - service: homeassistant.turn_off
-      entity_id:  light.garage_light_273
+      entity_id:  light.garage_light_295
 
 
 # Turn on the Bath strip when there is motion
@@ -335,7 +335,7 @@
       to: 'on'
   action:
     - service: homeassistant.turn_on
-      entity_id:  light.bath_stripe_272
+      entity_id:  light.bath_stripe_294
 
 # Turn off the Bath strip when there's no Motion
 - id: bathstripoff
@@ -346,7 +346,7 @@
       to: 'off'
   action:
     - service: homeassistant.turn_off
-      entity_id:  light.bath_stripe_272
+      entity_id:  light.bath_stripe_294
 
 # Alert if the Laundry door was left open for more than 10 minutes
 - id: laundrydoor10mins

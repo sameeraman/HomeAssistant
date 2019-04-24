@@ -308,6 +308,7 @@ input_number:
 media_player:
   - platform: yamaha
     host: 10.1.1.154
+  - platform: plex
 
 # Xiaomi
 

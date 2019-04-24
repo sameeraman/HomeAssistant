@@ -1,8 +1,8 @@
 - name: livingnightmood
   friendly_name: Living Night Mood
   entities:
-    light.living_floor_lamp_270: on
-    light.dining_table_lamp_274 : on
+    light.living_floor_lamp_292: on
+    light.dining_table_lamp_296 : on
     light.kitchen_light_135 : off
     light.living_light_129: off
     media_player.living:
@@ -18,8 +18,8 @@
 - name: livingactivenightmood
   friendly_name: Living Active Night Mood
   entities:
-    light.living_floor_lamp_270: off
-    light.dining_table_lamp_274 : off
+    light.living_floor_lamp_292: off
+    light.dining_table_lamp_296 : off
     light.kitchen_light_135 : on
     light.living_light_129: on
     media_player.living:
@@ -29,8 +29,8 @@
 - name: cookingmood
   friendly_name: Cooking Mood
   entities:
-    light.living_floor_lamp_270: on
-    light.dining_table_lamp_274 : on
+    light.living_floor_lamp_292: on
+    light.dining_table_lamp_296 : on
     light.kitchen_light_135 : on
     light.living_light_129: off
     media_player.living:
@@ -46,8 +46,8 @@
 - name: livingoff
   friendly_name: Turn Off All Living
   entities:
-    light.living_floor_lamp_270: off
-    light.dining_table_lamp_274 : off
+    light.living_floor_lamp_292: off
+    light.dining_table_lamp_296 : off
     light.kitchen_light_135 : off
     light.living_light_129: off
     media_player.living:
@@ -60,8 +60,8 @@
 - name: tvwatchingmode
   friendly_name: TV Watching Mood
   entities:
-    light.living_floor_lamp_270: off
-    light.dining_table_lamp_274 : off
+    light.living_floor_lamp_292: off
+    light.dining_table_lamp_296 : off
     light.kitchen_light_135 : off
     light.living_light_129: on
     light.office_dimmer_120: off
@@ -75,8 +75,8 @@
 - name: valentinesmode
   friendly_name: Valentines Mode
   entities:
-    light.living_floor_lamp_270 : on
-    light.dining_table_lamp_274 : on
+    light.living_floor_lamp_292 : on
+    light.dining_table_lamp_296 : on
     light.kitchen_light_135 : off
     light.living_light_129: off
     light.office_dimmer_120: off
