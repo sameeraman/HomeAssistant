@@ -30,7 +30,7 @@ views:
                 name: Madhushi WR
                 tap_action:
                   action: toggle
-              - entity: light.bath_stripe_294
+              - entity: light.bath_stripe
                 icon: 'mdi:led-strip'
                 name: Bath Strip
                 tap_action:
@@ -75,7 +75,7 @@ views:
                 type: light
             type: horizontal-stack
           - entities:
-              - entity: light.living_floor_lamp_292
+              - entity: light.living_floor_lamp
                 icon: 'mdi:lamp'
                 name: Living Floor Lamp
                 tap_action:
@@ -213,7 +213,7 @@ views:
             title: Garage
             type: glance
           - cards:
-              - entity: light.garage_light_295
+              - entity: light.garage_light
                 icon: 'mdi:lightbulb'
                 name: Garage Light
                 tap_action:
