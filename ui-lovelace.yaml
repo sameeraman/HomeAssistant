@@ -48,6 +48,10 @@ views:
               - entity: light.bath_light_132
                 type: light
             type: horizontal-stack
+          - type: custom:mini-media-player
+            entity: media_player.living
+          - type: custom:mini-media-player
+            entity: media_player.alfresco
         type: vertical-stack
       - cards:
           - entities:
@@ -136,10 +140,49 @@ views:
             show_state: false
             title: Kitchen & Living Moods
             type: glance
-          - type: custom:mini-media-player
-            entity: media_player.living
-          - type: custom:mini-media-player
-            entity: media_player.alfresco
+          - entities:
+              - entity: scene.livingred
+                icon: 'mdi:palette'
+                name: Red
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingred
+              - entity: scene.livinggreen
+                icon: 'mdi:palette'
+                name: Green
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livinggreen
+              - entity: scene.livingblue
+                icon: 'mdi:palette'
+                name: Blue
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingblue
+              - entity: scene.livingwarm
+                icon: 'mdi:palette'
+                name: Warm
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingwarm
+              - entity: scene.livingcoloroff
+                icon: 'mdi:lightbulb-off-outline'
+                name: Color Off
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingcoloroff
+            show_state: false
+            type: glance
           - type: custom:mini-media-player
             entity: media_player.yamaha_receiver
             icon: 'mdi:speaker-wireless'

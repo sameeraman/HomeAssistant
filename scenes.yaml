@@ -72,8 +72,8 @@
       activity: 'Watch TV'
     light.rgbstrip1 : off
 
-- name: valentinesmode
-  friendly_name: Valentines Mode
+- name: livingred
+  friendly_name: Living Red Mode
   entities:
     light.living_floor_lamp :
       state: on
@@ -90,3 +90,69 @@
       state: on
       brightness: 30
       rgb_color: ['255','0','0']
+
+- name: livinggreen
+  friendly_name: Living Green Mode
+  entities:
+    light.living_floor_lamp :
+      state: on
+      brightness: 100
+      rgb_color: ['0','255','0']
+    light.dining_floor_lamp :
+      state: on
+      brightness: 100
+      rgb_color: ['0','255','0']
+    light.kitchen_light_135 : off
+    light.living_light_129: off
+    light.office_dimmer_120: off
+    light.rgbstrip1 :
+      state: on
+      brightness: 30
+      rgb_color: ['0','255','0']
+
+- name: livingblue
+  friendly_name: Living Blue Mode
+  entities:
+    light.living_floor_lamp :
+      state: on
+      brightness: 100
+      rgb_color: ['0','0','255']
+    light.dining_floor_lamp :
+      state: on
+      brightness: 100
+      rgb_color: ['0','0','255']
+    light.kitchen_light_135 : off
+    light.living_light_129: off
+    light.office_dimmer_120: off
+    light.rgbstrip1 :
+      state: on
+      brightness: 30
+      rgb_color: ['0','0','255']
+
+- name: livingwarm
+  friendly_name: Living Blue Mode
+  entities:
+    light.living_floor_lamp :
+      state: on
+      brightness: 100
+      rgb_color: ['255','207','120']
+    light.dining_floor_lamp :
+      state: on
+      brightness: 100
+      rgb_color: ['255','207','120']
+    light.kitchen_light_135 : off
+    light.living_light_129: off
+    light.office_dimmer_120: off
+    light.rgbstrip1 :
+      state: on
+      brightness: 30
+      rgb_color: ['0','0','255']
+
+- name: livingcoloroff
+  friendly_name: Turn Off Living Colors
+  entities:
+    light.living_floor_lamp: off
+    light.dining_floor_lamp : off
+    light.kitchen_light_135 : off
+    light.living_light_129: off
+    light.rgbstrip1 : off
