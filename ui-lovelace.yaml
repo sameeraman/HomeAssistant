@@ -85,7 +85,7 @@ views:
                 name: Living Strip
                 tap_action:
                   action: toggle
-              - entity: light.dining_table_lamp_296
+              - entity: light.dining_floor_lamp
                 icon: 'mdi:lamp'
                 name: Dining Table Lamp
                 tap_action:

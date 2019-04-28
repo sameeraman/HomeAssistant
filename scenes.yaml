@@ -2,7 +2,7 @@
   friendly_name: Living Night Mood
   entities:
     light.living_floor_lamp: on
-    light.dining_table_lamp_296 : on
+    light.dining_floor_lamp : on
     light.kitchen_light_135 : off
     light.living_light_129: off
     media_player.living:
@@ -19,7 +19,7 @@
   friendly_name: Living Active Night Mood
   entities:
     light.living_floor_lamp: off
-    light.dining_table_lamp_296 : off
+    light.dining_floor_lamp : off
     light.kitchen_light_135 : on
     light.living_light_129: on
     media_player.living:
@@ -30,7 +30,7 @@
   friendly_name: Cooking Mood
   entities:
     light.living_floor_lamp: on
-    light.dining_table_lamp_296 : on
+    light.dining_floor_lamp : on
     light.kitchen_light_135 : on
     light.living_light_129: off
     media_player.living:
@@ -47,7 +47,7 @@
   friendly_name: Turn Off All Living
   entities:
     light.living_floor_lamp: off
-    light.dining_table_lamp_296 : off
+    light.dining_floor_lamp : off
     light.kitchen_light_135 : off
     light.living_light_129: off
     media_player.living:
@@ -61,7 +61,7 @@
   friendly_name: TV Watching Mood
   entities:
     light.living_floor_lamp: off
-    light.dining_table_lamp_296 : off
+    light.dining_floor_lamp : off
     light.kitchen_light_135 : off
     light.living_light_129: on
     light.office_dimmer_120: off
@@ -75,8 +75,14 @@
 - name: valentinesmode
   friendly_name: Valentines Mode
   entities:
-    light.living_floor_lamp : on
-    light.dining_table_lamp_296 : on
+    light.living_floor_lamp :
+      state: on
+      brightness: 100
+      rgb_color: ['255','0','0']
+    light.dining_floor_lamp :
+      state: on
+      brightness: 100
+      rgb_color: ['255','0','0']
     light.kitchen_light_135 : off
     light.living_light_129: off
     light.office_dimmer_120: off
