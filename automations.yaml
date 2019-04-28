@@ -158,7 +158,7 @@
       entity_id: switch.air_conditioner
       to: 'on'
       for:
-        seconds: 3
+        seconds: 60
   action:
     - service: shell_command.myair_setcmd
       data_template:
@@ -172,6 +172,8 @@
     - platform: state
       entity_id: switch.air_conditioner
       to: 'off'
+      for:
+        seconds: 60
   action:
     - service: shell_command.myair_setcmd
       data_template:
