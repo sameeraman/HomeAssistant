@@ -93,6 +93,8 @@
 
 - name: livinggreen
   friendly_name: Living Green Mode
+  templates:
+    icon_color : rgb(0, 255, 0)
   entities:
     light.living_floor_lamp :
       state: on
@@ -146,7 +148,7 @@
     light.rgbstrip1 :
       state: on
       brightness: 30
-      rgb_color: ['0','0','255']
+      rgb_color: ['70','27','2']
 
 - name: livingcoloroff
   friendly_name: Turn Off Living Colors
