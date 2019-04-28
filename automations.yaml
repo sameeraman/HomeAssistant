@@ -155,7 +155,8 @@
   initial_state: True
   trigger:
     - platform: state
-      entity_id: switch.air_conditioner
+      entity_id: sensor.myair_state
+      from: 'off'
       to: 'on'
       for:
         seconds: 60
@@ -170,7 +171,8 @@
   initial_state: True
   trigger:
     - platform: state
-      entity_id: switch.air_conditioner
+      entity_id: sensor.myair_state
+      from: 'on'
       to: 'off'
       for:
         seconds: 60

@@ -151,9 +151,6 @@ views:
                     entity_id: scene.livingred
               - entity: scene.livinggreen
                 icon: 'mdi:palette'
-                color_type: icon
-                color: rgb(0, 255, 0)
-                color_off: rgb(0, 255, 0)
                 name: Green
                 tap_action:
                   action: call-service
@@ -163,8 +160,6 @@ views:
               - entity: scene.livingblue
                 icon: 'mdi:palette'
                 name: Blue
-                templates:
-                  rgb_color : ['0','0','255']
                 tap_action:
                   action: call-service
                   service: scene.turn_on
@@ -173,15 +168,13 @@ views:
               - entity: scene.livingwarm
                 icon: 'mdi:palette'
                 name: Warm
-                templates:
-                  rgb_color : ['255','255','0']
                 tap_action:
                   action: call-service
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.livingwarm
               - entity: scene.livingcoloroff
-                icon: 'mdi:lightbulb-off-outline'
+                icon: 'mdi:close-circle-outline'
                 name: Color Off
                 tap_action:
                   action: call-service
