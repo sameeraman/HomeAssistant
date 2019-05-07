@@ -175,13 +175,76 @@
       from: 'on'
       to: 'off'
       for:
-        seconds: 60
+        seconds: 30
   action:
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%220%22%7D%7D%7D'
 
-# plex seven news play
+# Alert when Air conditioner is left On for more than 4 hours. 
+- id: myairruntimealert4hrs
+  alias: Alert when Air conditioner is left On for more than 4 hours
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: sensor.myair_state
+      from: 'off'
+      to: 'on'
+      for:
+        hours: 4
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: 'Air Conditioner is running for more than 4 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner is running for more than 4 hours'
+    - service: notify.sendgrid
+      data_template:
+        title: 'Air Conditioner is running for more than 4 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner is running for more than 4 hours'
+
+# Alert when Air conditioner is left On for more than 5 hours. 
+- id: myairruntimealert5hrs
+  alias: Alert when Air conditioner is left On for more than 5 hours
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: sensor.myair_state
+      from: 'off'
+      to: 'on'
+      for:
+        hours: 5
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: 'Air Conditioner is running for more than 5 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner is running for more than 5 hours'
+    - service: notify.sendgrid
+      data_template:
+        title: 'Air Conditioner is running for more than 5 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner is running for more than 5 hours'
+
+# Alert when Air conditioner is left On for more than 6 hours. 
+- id: myairruntimealert6hrs
+  alias: Alert when Air conditioner is left On for more than 6 hours
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: sensor.myair_state
+      from: 'off'
+      to: 'on'
+      for:
+        hours: 6
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: 'Air Conditioner is running for more than 6 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner is running for more than 6 hours'
+    - service: notify.sendgrid
+      data_template:
+        title: 'Air Conditioner is running for more than 6 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner is running for more than 6 hours'
+
+# TEST - plex seven news play - not working and still trialing
 - id: plexplay
   alias: plex seven news play
   initial_state: True
