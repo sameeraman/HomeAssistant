@@ -81,9 +81,6 @@
     light.dining_floor_lamp :
       state: on
       rgb_color: ['255','0','0']
-    light.kitchen_light_135 : off
-    light.living_light_129: off
-    light.office_dimmer_120: off
     light.hue_lightstrip_plus_1 :
       state: on
       brightness: 30
@@ -98,9 +95,6 @@
     light.dining_floor_lamp :
       state: on
       rgb_color: ['0','255','0']
-    light.kitchen_light_135 : off
-    light.living_light_129: off
-    light.office_dimmer_120: off
     light.hue_lightstrip_plus_1 :
       state: on
       brightness: 30
@@ -115,9 +109,6 @@
     light.dining_floor_lamp :
       state: on
       rgb_color: ['0','0','255']
-    light.kitchen_light_135 : off
-    light.living_light_129: off
-    light.office_dimmer_120: off
     light.hue_lightstrip_plus_1 :
       state: on
       brightness: 30
@@ -132,9 +123,6 @@
     light.dining_floor_lamp :
       state: on
       rgb_color: ['255','207','120']
-    light.kitchen_light_135 : off
-    light.living_light_129: off
-    light.office_dimmer_120: off
     light.hue_lightstrip_plus_1 :
       state: on
       brightness: 30

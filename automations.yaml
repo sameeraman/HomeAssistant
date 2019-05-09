@@ -365,10 +365,7 @@
   alias: Turn on Garage Light when there is motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0002c716d7
-      to: 'on'
-    - platform: state
-      entity_id: binary_sensor.garage_sensor_m_46
+      entity_id: group.garage_motion
       to: 'on'
   condition:
     condition: numeric_state
@@ -383,10 +380,7 @@
   alias: Turn off Garage Light when there is no motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0002c716d7
-      to: 'off'
-    - platform: state
-      entity_id: binary_sensor.garage_sensor_m_46
+      entity_id: group.garage_motion
       to: 'off'
   action:
     - service: homeassistant.turn_off

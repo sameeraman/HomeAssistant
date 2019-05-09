@@ -329,12 +329,6 @@ weather:
     longitude: !secret darksky_long
     mode: daily
 
-light:
-  - platform: flux_led
-    devices:
-      10.1.1.115:
-        name: RGBStrip1
-        mode: "rgbw"
 
 # pushbullet & sendgrid
 notify:

@@ -94,6 +94,14 @@ all_motion:
   view: false
   control: hidden
   entities:
-  - binary_sensor.motion_sensor_158d0002742898
-  - binary_sensor.motion_sensor_158d0002c716b6
-  - binary_sensor.door_window_sensor_158d0002739295
+    - binary_sensor.motion_sensor_158d0002742898
+    - binary_sensor.motion_sensor_158d0002c716b6
+    - binary_sensor.door_window_sensor_158d0002739295
+
+garage_motion:
+  name: "All Garage Motion Sensors"
+  view: false
+  control: hidden
+  entities:
+    - binary_sensor.motion_sensor_158d0002c716d7
+    - binary_sensor.garage_sensor_m_46
