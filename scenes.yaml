@@ -10,10 +10,10 @@
     remote.living :
       state : off
       activity: 'Watch TV'
-    light.rgbstrip1:
+    light.hue_lightstrip_plus_1:
       state: on
       brightness: 30
-      rgb_color: ['70','27','2']
+      rgb_color: ['255','207','120']
 
 - name: livingactivenightmood
   friendly_name: Living Active Night Mood
@@ -24,7 +24,7 @@
     light.living_light_129: on
     media_player.living:
       state: paused
-    light.rgbstrip1 : off
+    light.hue_lightstrip_plus_1 : off
 
 - name: cookingmood
   friendly_name: Cooking Mood
@@ -38,10 +38,10 @@
     remote.living :
       state : on
       activity: 'Watch TV'
-    light.rgbstrip1:
+    light.hue_lightstrip_plus_1:
       state: on
       brightness: 30
-      rgb_color: ['70','27','2']
+      rgb_color: ['255','207','120']
 
 - name: livingoff
   friendly_name: Turn Off All Living
@@ -55,7 +55,7 @@
     remote.living :
       state : off
       activity: 'Watch TV'
-    light.rgbstrip1 : off
+    light.hue_lightstrip_plus_1 : off
 
 - name: tvwatchingmode
   friendly_name: TV Watching Mood
@@ -70,7 +70,7 @@
     remote.living :
       state : on
       activity: 'Watch TV'
-    light.rgbstrip1 : off
+    light.hue_lightstrip_plus_1 : off
 
 - name: livingred
   friendly_name: Living Red Mode
@@ -84,7 +84,7 @@
     light.kitchen_light_135 : off
     light.living_light_129: off
     light.office_dimmer_120: off
-    light.rgbstrip1 :
+    light.hue_lightstrip_plus_1 :
       state: on
       brightness: 30
       rgb_color: ['255','0','0']
@@ -101,10 +101,10 @@
     light.kitchen_light_135 : off
     light.living_light_129: off
     light.office_dimmer_120: off
-    light.rgbstrip1 :
+    light.hue_lightstrip_plus_1 :
       state: on
       brightness: 30
-      rgb_color: ['255','255','0']
+      rgb_color: ['0','255','0']
 
 - name: livingblue
   friendly_name: Living Blue Mode
@@ -118,10 +118,10 @@
     light.kitchen_light_135 : off
     light.living_light_129: off
     light.office_dimmer_120: off
-    light.rgbstrip1 :
+    light.hue_lightstrip_plus_1 :
       state: on
       brightness: 30
-      rgb_color: ['61','0','255']
+      rgb_color: ['0','0','255']
 
 - name: livingwarm
   friendly_name: Living Blue Mode
@@ -135,10 +135,10 @@
     light.kitchen_light_135 : off
     light.living_light_129: off
     light.office_dimmer_120: off
-    light.rgbstrip1 :
+    light.hue_lightstrip_plus_1 :
       state: on
       brightness: 30
-      rgb_color: ['70','27','2']
+      rgb_color: ['255','207','120']
 
 - name: livingcoloroff
   friendly_name: Turn Off Living Colors
@@ -147,4 +147,4 @@
     light.dining_floor_lamp : off
     light.kitchen_light_135 : off
     light.living_light_129: off
-    light.rgbstrip1 : off
+    light.hue_lightstrip_plus_1 : off

@@ -84,7 +84,7 @@ views:
                 name: Living Floor Lamp
                 tap_action:
                   action: toggle
-              - entity: light.rgbstrip1
+              - entity: light.hue_lightstrip_plus_1
                 icon: 'mdi:led-strip'
                 name: Living Strip
                 tap_action:
