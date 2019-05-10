@@ -353,3 +353,27 @@ remote:
   - platform: harmony
     name: living
     host: 10.1.1.210
+
+# UniFi
+
+device_tracker:
+  - platform: unifi
+    host: 10.1.1.218
+    username: !secret unifi_username
+    password: !secret unifi_password
+    verify_ssl: false
+    ssid_filter:
+      - 'theparadise'
+
+# Ring
+ring:
+  username: !secret ring_username 
+  password: !secret ring_password
+
+# Cameras
+camera: 
+  - platform: generic
+    name: testcamera
+    stream_source: !secret testcameraurl
+    still_image_url: !secret testcamerajpeg
+    verify_ssl: false
