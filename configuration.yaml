@@ -160,6 +160,7 @@ google_assistant:
     - group
     - media_player
     - scene
+    - camera
 
 #emulated hue
 emulated_hue:
