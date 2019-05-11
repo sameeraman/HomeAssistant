@@ -361,9 +361,12 @@ device_tracker:
     host: 10.1.1.218
     username: !secret unifi_username
     password: !secret unifi_password
+    interval_seconds: 10
     verify_ssl: false
     ssid_filter:
       - 'theparadise'
+    new_device_defaults:
+      track_new_devices: false
 
 # Ring
 ring:

@@ -2,7 +2,7 @@ resources:
   - url: /local/mini-media-player-bundle.js?v=1.0.4
     type: module
 views:
-  - title: Main
+  - title: Home
     cards:
       - entity: weather.dark_sky
         type: weather-forecast
@@ -277,10 +277,33 @@ views:
                 type: entity-button
             type: horizontal-stack
         type: vertical-stack
-    icon: 'mdi:silverware'
   - title: Living
     cards:
       - cards:
+          - type: glance
+            entities:
+              - device_tracker.sameera_oneplus
+              - device_tracker.madhushi_iphone
+          - entities:
+              - entity: switch.myair_power
+                icon: 'mdi:power-standby'
+                name: AC Power
+                tap_action:
+                  action: toggle
+              - entity: sensor.myair_mode
+                icon: 'mdi:air-conditioner'
+                name: Mode
+              - entity: sensor.myair_fanspeed
+                icon: 'mdi:speedometer'
+                name: Speed
+              - entity: sensor.myair_settemp
+                icon: 'mdi:thermometer'
+                name: Temperature
+              - entity: sensor.myair_stop_timer
+                icon: 'mdi:clock-end'
+                name: Timer
+            title: Air Conditioner
+            type: glance
           - entities:
               - entity: switch.myair_zone1
                 icon: 'mdi:arrow-decision-auto'
@@ -307,26 +330,6 @@ views:
                 name: Bed 3
                 tap_action:
                   action: toggle
-            title: Air Conditioner Zones
-            type: glance
-          - entities:
-              - entity: switch.myair_power
-                icon: 'mdi:power-standby'
-                name: AC Power
-                tap_action:
-                  action: toggle
-              - entity: sensor.myair_mode
-                icon: 'mdi:air-conditioner'
-                name: Mode
-              - entity: sensor.myair_fanspeed
-                icon: 'mdi:speedometer'
-                name: Speed
-              - entity: sensor.myair_settemp
-                icon: 'mdi:thermometer'
-                name: Temperature
-              - entity: sensor.myair_stop_timer
-                icon: 'mdi:clock-end'
-                name: Timer
             type: glance
           - cards:
               - entity: light.master_dimmer_123
