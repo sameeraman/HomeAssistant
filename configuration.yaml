@@ -383,7 +383,4 @@ camera:
 
 
 # input booleans
-input_boolean:
-  alfresco_button:
-    name: Alfresco Button Media Play
-    icon: mdi:music-circle-outline
+input_boolean: !include input_boolean.yaml

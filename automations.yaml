@@ -621,3 +621,29 @@
   action:
     service: media_player.media_next_track
     entity_id: media_player.alfresco
+
+# Turn off the Office Light when there is no motion for more than 5 minutes
+- id: officelightoff5min
+  alias: Turn off Office Light when there is no motion for more than 5 minutes
+  trigger: 
+    - platform: state
+      entity_id: group.office_motion
+      to: 'off'
+      for: 
+        minutes: 5
+  action:
+    - service: homeassistant.turn_off
+      entity_id:  light.office_dimmer_120
+
+# Turn off the Master Light when there is no motion for more than 5 minutes
+- id: masterlightoff5min
+  alias: Turn off Master Light when there is no motion for more than 5 minutes
+  trigger: 
+    - platform: state
+      entity_id: group.master_motion
+      to: 'off'
+      for: 
+        minutes: 5
+  action:
+    - service: homeassistant.turn_off
+      entity_id:  light.master_dimmer_123

@@ -1,0 +1,13 @@
+# Input boolean 
+
+alfresco_button:
+  name: Alfresco Button Media Play
+  icon: mdi:music-circle-outline
+
+light_off_auto:
+  name: Turn lights off when no motion
+  icon: mdi:lightbulb-off-outline
+
+zone_off_auto:
+  name: Turn lights off AC Zones when no motion
+  icon: mdi:air-filter

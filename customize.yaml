@@ -71,3 +71,7 @@ switch.myair_zone6:
   icon: mdi:arrow-decision-auto
 switch.myair_power:
   icon: mdi:power-standby
+binary_sensor.motion_sensor_158d0002b7ec00:
+  friendly_name: Office-M2
+binary_sensor.motion_sensor_158d0002b7f1e8:
+  friendly_name: Master-M2
