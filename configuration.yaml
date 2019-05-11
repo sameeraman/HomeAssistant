@@ -380,3 +380,10 @@ camera:
     stream_source: !secret testcameraurl
     still_image_url: !secret testcamerajpeg
     verify_ssl: false
+
+
+# input booleans
+input_boolean:
+  alfresco_button:
+    name: Alfresco Button Media Play
+    icon: mdi:music-circle-outline

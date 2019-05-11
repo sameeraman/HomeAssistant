@@ -105,3 +105,24 @@ garage_motion:
   entities:
     - binary_sensor.motion_sensor_158d0002c716d7
     - binary_sensor.garage_sensor_m_46
+living_kitchen_motion:
+  name: "All Living and Kitchen Motion Sensors"
+  view: false
+  control: hidden
+  entities:
+    - binary_sensor.motion_sensor_158d0002742898
+    - binary_sensor.test_device_251
+    - binary_sensor.motion_sensor_158d0002c716b6
+kitchen_motion:
+  name: "All Kitchen Motion Sensors"
+  view: false
+  control: hidden
+  entities:
+    - binary_sensor.motion_sensor_158d0002742898
+    - binary_sensor.test_device_251
+office_motion:
+  name: "All Office Motion Sensors"
+  view: false
+  control: hidden
+  entities:
+    - binary_sensor.officeroomsensor_m_109

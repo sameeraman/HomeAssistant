@@ -587,3 +587,37 @@
   action:
     - service : switch.turn_off
       entity_id: switch.housealarm
+
+# Toggle Alfresco Music Play with push button
+- id: togglealfrescomusicplaypushbutton
+  alias: Toggle Alfresco Music Play with push button
+  trigger: 
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d0002860904
+        click_type: single
+  condition:
+    condition: state
+    entity_id: input_boolean.alfresco_button
+    state: 'on'
+  action:
+    - service : media_player.toggle
+      entity_id: media_player.alfresco
+
+# Next track Alfresco Music Play with double push button
+- id: nextrackalfrescomusicplaydoublepushbutton
+  alias: Next track Alfresco Music Play with double push button
+  trigger: 
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d0002860904
+        click_type: double
+  condition:
+    condition: state
+    entity_id: input_boolean.alfresco_button
+    state: 'on'
+  action:
+    - service : media_player.media_next_track
+      entity_id: media_player.alfresco

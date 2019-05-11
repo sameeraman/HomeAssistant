@@ -337,6 +337,13 @@ views:
               - entity: light.bath_light_132
                 type: light
             type: horizontal-stack
+          - entities:
+              - entity: input_boolean.alfresco_button
+                icon: 'mdi:music-circle-outline'
+                name: Alfresco Music Automation
+                tap_action:
+                  action: toggle
+            type: glance
         type: vertical-stack
 
   - title: Cameras
