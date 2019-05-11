@@ -534,7 +534,7 @@
     - service : script.turn_on
       entity_id: script.garagelight
 
-# Turn on house alarm based on device tracker - When every one is out of the house.
+# Turn on house alarm based on device tracker - Arm when every one is out of the house.
 - id: turnonhousealarmbasedondevicetracker
   alias: Turn on house alarm based on device tracker
   trigger: 
@@ -560,9 +560,9 @@
     - service : switch.turn_on
       entity_id: switch.housealarm
 
-# Turn off house alarm based on device tracker - when everyone is back from home
-- id: turnonhousealarmbasedondevicetracker
-  alias: Turn on house alarm based on device tracker
+# Turn off house alarm based on device tracker - Unarm when anyone is back at home
+- id: turnoffhousealarmbasedondevicetracker
+  alias: Turn off house alarm based on device tracker
   trigger: 
     - platform: state
       entity_id: device_tracker.sameera_oneplus
@@ -572,16 +572,18 @@
       to: 'home'
   condition:
     condition: and
-    conditions: 
-      - condition: state
-        entity_id: device_tracker.sameera_oneplus
-        state: 'home'
-      - condition: state
-        entity_id: device_tracker.madhushi_iphone
-        state: 'home'
+    conditions:
       - condition: state
         entity_id: switch.housealarm
         state: 'on'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: device_tracker.sameera_oneplus
+          state: 'home'
+        - condition: state
+          entity_id: device_tracker.madhushi_iphone
+          state: 'home'
   action:
     - service : switch.turn_off
       entity_id: switch.housealarm
