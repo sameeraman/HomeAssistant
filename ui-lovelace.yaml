@@ -340,9 +340,20 @@ views:
           - entities:
               - entity: input_boolean.alfresco_button
                 icon: 'mdi:music-circle-outline'
-                name: Alfresco Music Automation
+                name: Alfresco Music
                 tap_action:
                   action: toggle
+              - entity: input_boolean.light_off_auto
+                icon: 'mdi:lightbulb-outline'
+                name: Lights Off 
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.zone_off_auto
+                icon: 'mdi:air-filter'
+                name: AC Zones 
+                tap_action:
+                  action: toggle
+            title: Automation
             type: glance
         type: vertical-stack
 

@@ -626,11 +626,15 @@
 - id: officelightoff5min
   alias: Turn off Office Light when there is no motion for more than 5 minutes
   trigger: 
-    - platform: state
-      entity_id: group.office_motion
-      to: 'off'
-      for: 
-        minutes: 5
+    platform: state
+    entity_id: group.office_motion
+    to: 'off'
+    for: 
+      minutes: 5
+  condition:
+    condition: state
+    entity_id: input_boolean.light_off_auto
+    state: 'on'
   action:
     - service: homeassistant.turn_off
       entity_id:  light.office_dimmer_120
@@ -639,11 +643,95 @@
 - id: masterlightoff5min
   alias: Turn off Master Light when there is no motion for more than 5 minutes
   trigger: 
-    - platform: state
-      entity_id: group.master_motion
-      to: 'off'
-      for: 
-        minutes: 5
+    platform: state
+    entity_id: group.master_motion
+    to: 'off'
+    for: 
+      minutes: 5
+  condition:
+    condition: state
+    entity_id: input_boolean.light_off_auto
+    state: 'on'
   action:
     - service: homeassistant.turn_off
       entity_id:  light.master_dimmer_123
+
+# Turn off the Kitchen Light when there is no motion for more than 10 minutes
+- id: kitchenlightoff10min
+  alias: Turn off Kitchen Light when there is no motion for more than 10 minutes
+  trigger: 
+    platform: state
+    entity_id: group.kitchen_motion
+    to: 'off'
+    for: 
+      minutes: 10
+  condition:
+    condition: state
+    entity_id: input_boolean.light_off_auto
+    state: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id:  light.light.kitchen_light_135
+
+
+# Turn off the Office AC Vent when there is no motion for more than 5 minutes in the office
+- id: officeacoff10min
+  alias: Turn off Office vent when there is no motion for more than 5 minutes
+  trigger: 
+    - platform: state
+      entity_id: group.office_motion
+      to: 'off'
+      for: 
+        minutes: 5
+    - platform: state
+      entity_id: sensor.myair_state
+      from: 'off'
+      to: 'on'
+      for:
+        seconds: 90
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.zone_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: sensor.myair_state
+        state: 'on'
+      - condition: state
+        entity_id: group.office_motion
+        state: 'off'
+  action:
+    - service: switch.turn_off
+      entity_id:  switch.myair_zone2
+
+# Turn On the Office AC Vent when there is motion for more than 3 minutes in the office
+- id: officeacon3min
+  alias: Turn on Office vent when there is motion for more than 3 minutes
+  trigger: 
+    - platform: state
+      entity_id: group.office_motion
+      to: 'on'
+      for: 
+        minutes: 3
+    - platform: state
+      entity_id: sensor.myair_state
+      from: 'off'
+      to: 'on'
+      for:
+        seconds: 90
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.zone_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: sensor.myair_state
+        state: 'on'
+      - condition: state
+        entity_id: group.office_motion
+        state: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id:  switch.myair_zone2
