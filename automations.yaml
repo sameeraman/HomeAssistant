@@ -602,7 +602,7 @@
     entity_id: input_boolean.alfresco_button
     state: 'on'
   action:
-    service: media_player.toggle
+    service: media_player.media_play_pause
     entity_id: media_player.alfresco
 
 # Next track Alfresco Music Play with double push button
