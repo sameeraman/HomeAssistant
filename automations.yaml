@@ -263,23 +263,37 @@
 - id: xiaomi_alerts
   alias: alert on xiaomi sensors when armed
   trigger: 
+    # Kitchen-M2  
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002742898
       to: 'on'
+    # Bath-M
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
       to: 'on'
+    # Living-M
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002c716b6
       to: 'on'
+    # Main Door
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002739295
       to: 'on'
+    # Garage-M2
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002c716d7
       to: 'on'
+    # Loundry Door
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+      to: 'on'
+    # Office-M2
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002b7ec00
+      to: 'on'
+    # Master-M2
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
       to: 'on'
   condition:
     condition: state
@@ -622,15 +636,30 @@
     service: media_player.media_next_track
     entity_id: media_player.alfresco
 
-# Turn off the Office Light when there is no motion for more than 5 minutes
-- id: officelightoff5min
-  alias: Turn off Office Light when there is no motion for more than 5 minutes
+# Turn on the Office light then there is motion
+- id: officelightonmotion
+  alias: Turn on Office Light when there is motion
+  trigger: 
+    - platform: state
+      entity_id: group.office_motion
+      to: 'on'
+  condition:
+    condition: numeric_state
+    entity_id: sensor.illumination_158d0002b7ec00
+    below: 30
+  action:
+    - service: homeassistant.turn_on
+      entity_id:  light.garage_light
+
+# Turn off the Office Light when there is no motion for more than 2 minutes
+- id: officelightoff2min
+  alias: Turn off Office Light when there is no motion for more than 2 minutes
   trigger: 
     platform: state
     entity_id: group.office_motion
     to: 'off'
     for: 
-      minutes: 5
+      minutes: 2
   condition:
     condition: state
     entity_id: input_boolean.light_off_auto
@@ -701,6 +730,9 @@
       - condition: state
         entity_id: group.office_motion
         state: 'off'
+      - condition: state
+        entity_id: switch.myair_zone2
+        state: 'on'
   action:
     - service: switch.turn_off
       entity_id:  switch.myair_zone2
@@ -732,6 +764,9 @@
       - condition: state
         entity_id: group.office_motion
         state: 'on'
+      - condition: state
+        entity_id: switch.myair_zone2
+        state: 'off'
   action:
     - service: switch.turn_on
       entity_id:  switch.myair_zone2
