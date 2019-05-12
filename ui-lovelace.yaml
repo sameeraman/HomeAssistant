@@ -82,17 +82,22 @@ views:
           - entities:
               - entity: light.living_floor_lamp
                 icon: 'mdi:lamp'
-                name: Living Floor Lamp
+                name: Living Floor
                 tap_action:
                   action: toggle
               - entity: light.hue_lightstrip_plus_1
                 icon: 'mdi:led-strip'
-                name: Living Strip
+                name: Living
+                tap_action:
+                  action: toggle
+              - entity: light.hue_lightstrip_plus_1_2
+                icon: 'mdi:led-strip'
+                name: Kitchen
                 tap_action:
                   action: toggle
               - entity: light.dining_floor_lamp
                 icon: 'mdi:lamp'
-                name: Dining Table Lamp
+                name: Dining Table
                 tap_action:
                   action: toggle
             show_state: false
@@ -330,6 +335,24 @@ views:
                 name: Bed 3
                 tap_action:
                   action: toggle
+            type: glance
+          - entities:
+              - entity: group.kitchen_motion
+                icon: 'mdi:rice'
+                name: Kitchen
+              - entity: group.living_motion
+                icon: 'mdi:sofa'
+                name: Living
+              - entity: group.master_motion
+                icon: 'mdi:hotel'
+                name: Master
+              - entity: group.office_motion
+                icon: 'mdi:briefcase-outline'
+                name: Office
+              - entity: group.garage_motion
+                icon: 'mdi:garage-open'
+                name: Garage
+            title: Group Motion
             type: glance
           - cards:
               - entity: light.master_dimmer_123

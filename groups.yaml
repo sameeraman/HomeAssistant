@@ -114,6 +114,13 @@ living_kitchen_motion:
     - binary_sensor.motion_sensor_158d0002742898
     - binary_sensor.test_device_251
     - binary_sensor.motion_sensor_158d0002c716b6
+    
+living_motion:
+  name: "All Living Motion Sensors"
+  view: false
+  control: hidden
+  entities:
+    - binary_sensor.motion_sensor_158d0002c716b6
 
 kitchen_motion:
   name: "All Kitchen Motion Sensors"
