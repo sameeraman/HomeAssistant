@@ -644,12 +644,17 @@
       entity_id: group.office_motion
       to: 'on'
   condition:
-    condition: numeric_state
-    entity_id: sensor.illumination_158d0002b7ec00
-    below: 30
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: light.office_dimmer_120
+        state: 'off'
+      - condition: numeric_state
+        entity_id: sensor.illumination_158d0002b7ec00
+        below: 30
   action:
     - service: homeassistant.turn_on
-      entity_id:  light.garage_light
+      entity_id:  light.office_dimmer_120
 
 # Turn off the Office Light when there is no motion for more than 2 minutes
 - id: officelightoff2min
@@ -661,9 +666,14 @@
     for: 
       minutes: 2
   condition:
-    condition: state
-    entity_id: input_boolean.light_off_auto
-    state: 'on'
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: light.office_dimmer_120
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.light_off_auto
+        state: 'on'
   action:
     - service: homeassistant.turn_off
       entity_id:  light.office_dimmer_120
@@ -678,9 +688,14 @@
     for: 
       minutes: 5
   condition:
-    condition: state
-    entity_id: input_boolean.light_off_auto
-    state: 'on'
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.master_dimmer_123
+        state: 'on'
   action:
     - service: homeassistant.turn_off
       entity_id:  light.master_dimmer_123
@@ -695,12 +710,17 @@
     for: 
       minutes: 10
   condition:
-    condition: state
-    entity_id: input_boolean.light_off_auto
-    state: 'on'
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.kitchen_light_135
+        state: 'on'
   action:
     - service: homeassistant.turn_off
-      entity_id:  light.light.kitchen_light_135
+      entity_id:  light.kitchen_light_135
 
 
 # Turn off the Office AC Vent when there is no motion for more than 5 minutes in the office
