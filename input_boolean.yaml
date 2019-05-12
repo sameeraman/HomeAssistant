@@ -11,3 +11,7 @@ light_off_auto:
 zone_off_auto:
   name: Turn lights off AC Zones when no motion
   icon: mdi:air-filter
+
+housealarm_auto:
+  name: Turn On House Alarm Based on Device Tracker
+  icon: mdi:shield-home-outline

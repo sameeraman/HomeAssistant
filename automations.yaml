@@ -570,6 +570,9 @@
       - condition: state
         entity_id: switch.housealarm
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.housealarm_auto
+        state: 'on'
   action:
     - service : switch.turn_on
       entity_id: switch.housealarm
@@ -587,6 +590,9 @@
   condition:
     condition: and
     conditions:
+      - condition: state
+        entity_id: input_boolean.housealarm_auto
+        state: 'on'
       - condition: state
         entity_id: switch.housealarm
         state: 'on'
@@ -651,20 +657,18 @@
         state: 'off'
       - condition: numeric_state
         entity_id: sensor.illumination_158d0002b7ec00
-        below: 30
+        below: 20
   action:
     - service: homeassistant.turn_on
       entity_id:  light.office_dimmer_120
 
-# Turn off the Office Light when there is no motion for more than 2 minutes
-- id: officelightoff2min
-  alias: Turn off Office Light when there is no motion for more than 2 minutes
+# Turn off the Office Light when there is no motion 
+- id: officelightoff
+  alias: Turn off Office Light when there is no motion 
   trigger: 
     platform: state
     entity_id: group.office_motion
     to: 'off'
-    for: 
-      minutes: 2
   condition:
     condition: and
     conditions: 

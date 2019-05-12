@@ -20,7 +20,7 @@
       rgb_color: ['255','207','120']
     light.hue_lightstrip_plus_1_2:
       state: on
-      brightness: 30
+      brightness: 133
       rgb_color: ['255','207','120']      
 
 - name: livingactivenightmood
@@ -57,7 +57,7 @@
       rgb_color: ['255','207','120']
     light.hue_lightstrip_plus_1_2:
       state: on
-      brightness: 30
+      brightness: 133
       rgb_color: ['255','207','120']      
 
 - name: livingoff
@@ -106,7 +106,7 @@
       rgb_color: ['255','0','0']
     light.hue_lightstrip_plus_1_2:
       state: on
-      brightness: 50
+      brightness: 133
       rgb_color: ['255','0','0']
 
 - name: livinggreen
@@ -124,7 +124,7 @@
       rgb_color: ['186','255','64']
     light.hue_lightstrip_plus_1_2 :
       state: on
-      brightness: 50
+      brightness: 133
       rgb_color: ['186','255','64']
 
 - name: livingblue
@@ -142,7 +142,7 @@
       rgb_color: ['69','11','255']
     light.hue_lightstrip_plus_1_2:
       state: on
-      brightness: 50
+      brightness: 133
       rgb_color: ['69','11','255']
 
 - name: livingwarm
@@ -150,11 +150,11 @@
   entities:
     light.living_floor_lamp :
       state: on
-      brightness: 90
+      brightness: 254
       color_temp: 377
     light.dining_floor_lamp :
       state: on
-      brightness: 90
+      brightness: 254
       color_temp: 377
     light.hue_lightstrip_plus_1 :
       state: on
@@ -162,7 +162,7 @@
       color_temp: 377
     light.hue_lightstrip_plus_1_2 :
       state: on
-      brightness: 50
+      brightness: 133
       color_temp: 377
 
 - name: livingcoloroff

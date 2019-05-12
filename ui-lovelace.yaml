@@ -354,13 +354,12 @@ views:
                 name: Garage
             title: Group Motion
             type: glance
-          - cards:
-              - entity: light.master_dimmer_123
-                type: light
-              - entity: light.bath_light_132
-                type: light
-            type: horizontal-stack
           - entities:
+              - entity: input_boolean.housealarm_auto
+                icon: 'mdi:shield-home-outline'
+                name: House Alarm 
+                tap_action:
+                  action: toggle
               - entity: input_boolean.alfresco_button
                 icon: 'mdi:music-circle-outline'
                 name: Alfresco Music
