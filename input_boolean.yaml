@@ -6,7 +6,7 @@ alfresco_button:
 
 light_off_auto:
   name: Turn lights off when no motion
-  icon: mdi:lightbulb-off-outline
+  icon: mdi:lightbulb-outline
 
 zone_off_auto:
   name: Turn lights off AC Zones when no motion
