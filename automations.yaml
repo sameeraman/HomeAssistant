@@ -331,10 +331,21 @@
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
       to: 'off'
+    - platform: state
+      entity_id: binary_sensor.m_bed_room_m_33
+      to: 'off'
   condition:
-    condition: state
-    entity_id: binary_sensor.motion_sensor_158d0002c6382d
-    state: 'off'
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: binary_sensor.motion_sensor_158d0002c6382d
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.m_bed_room_m_33
+        state: 'off'
   action:
     - service: homeassistant.turn_off
       entity_id:  light.bath_light_132
