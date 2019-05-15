@@ -715,6 +715,27 @@
     - service: homeassistant.turn_off
       entity_id:  light.master_dimmer_123
 
+# Turn on the Kitchen light then there is motion
+- id: kitchenlightonmotion
+  alias: Turn on Kitchen Light when there is motion
+  trigger: 
+    - platform: state
+      entity_id: group.kitchen_motion
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: light.kitchen_light_135
+        state: 'off'
+      - condition: numeric_state
+        entity_id: sensor.6_in_1_multisensor_light_2_253
+        below: 25
+  action:
+    - service: homeassistant.turn_on
+      entity_id:  light.kitchen_light_135
+
+
 # Turn off the Kitchen Light when there is no motion for more than 10 minutes
 - id: kitchenlightoff10min
   alias: Turn off Kitchen Light when there is no motion for more than 10 minutes
