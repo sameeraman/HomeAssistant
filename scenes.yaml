@@ -170,7 +170,5 @@
   entities:
     light.living_floor_lamp: off
     light.dining_floor_lamp : off
-    light.kitchen_light_135 : off
-    light.living_light_129: off
     light.hue_lightstrip_plus_1 : off
     light.hue_lightstrip_plus_1_2 : off
