@@ -132,9 +132,9 @@ sensor:
       myair_stop_timer:
         friendly_name: My Air Stop Timer
         value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["countDownToOff"] }}'
-# Battery Sensors        
+    # Battery Sensors        
       main_door_battery:
-        friendly_name: Bateria Porta
+        friendly_name: Main Door Sensor Battery
         value_template: >
           {% if is_state('binary_sensor.door_window_sensor_158d0002739295', 'unknown') %}
             110
@@ -145,6 +145,424 @@ sensor:
           {% set battery_level_xod1 = states.binary_sensor.door_window_sensor_158d0002739295.attributes.battery_level|default(0)|int %}
           {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
           {% if battery_round_xod1 >= 100 or is_state('binary_sensor.door_window_sensor_158d0002739295', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      garage_door_battery:
+        friendly_name: Garage Door Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.door_window_sensor_158d0002c0e236', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.door_window_sensor_158d0002c0e236.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.door_window_sensor_158d0002c0e236.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.door_window_sensor_158d0002c0e236', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      laundry_door_battery:
+        friendly_name: Laundry Door Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.door_window_sensor_158d0002ca3100', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.door_window_sensor_158d0002ca3100.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.door_window_sensor_158d0002ca3100.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.door_window_sensor_158d0002ca3100', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      garage_motion_1_battery:
+        friendly_name: Garage Motion Sensor 1 Battery
+        value_template: >
+          {% if is_state('binary_sensor.garage_sensor_m_46', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.garage_sensor_m_46.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.garage_sensor_m_46.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.garage_sensor_m_46', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      laundry_motion_battery:
+        friendly_name: Laundry Motion Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.laundry_199', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.laundry_199.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.laundry_199.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.laundry_199', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      master_motion_battery:
+        friendly_name: Master Bedroom Motion Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.m_bed_room_m_33', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.m_bed_room_m_33.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.m_bed_room_m_33.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.m_bed_room_m_33', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      mad_wr_battery:
+        friendly_name: Madhushi Wardrobe Motion Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.mad_wr_sensor_m_79', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.mad_wr_sensor_m_79.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.mad_wr_sensor_m_79.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.mad_wr_sensor_m_79', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      bath_motion_battery:
+        friendly_name: Bath Motion Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.motion_sensor_158d0001e0ac8e', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.motion_sensor_158d0001e0ac8e.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.motion_sensor_158d0001e0ac8e.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.motion_sensor_158d0001e0ac8e', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      kitchen_motion_2_battery:
+        friendly_name: Kitchen Motion Sensor 2 Battery
+        value_template: >
+          {% if is_state('binary_sensor.motion_sensor_158d0002742898', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.motion_sensor_158d0002742898.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.motion_sensor_158d0002742898.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.motion_sensor_158d0002742898', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      alfresco_motion_battery:
+        friendly_name: Alfresco Motion Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.motion_sensor_158d0002b5eecd', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.motion_sensor_158d0002b5eecd.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.motion_sensor_158d0002b5eecd.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.motion_sensor_158d0002b5eecd', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      office_motion_2_battery:
+        friendly_name: Office Motion Sensor 2 Battery
+        value_template: >
+          {% if is_state('binary_sensor.motion_sensor_158d0002b7ec00', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.motion_sensor_158d0002b7ec00.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.motion_sensor_158d0002b7ec00.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.motion_sensor_158d0002b7ec00', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      master_motion_2_battery:
+        friendly_name: Master Motion Sensor 2 Battery
+        value_template: >
+          {% if is_state('binary_sensor.motion_sensor_158d0002b7f1e8', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.motion_sensor_158d0002b7f1e8.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.motion_sensor_158d0002b7f1e8.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.motion_sensor_158d0002b7f1e8', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      shower_motion_battery:
+        friendly_name: Shower Motion Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.motion_sensor_158d0002c6382d', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.motion_sensor_158d0002c6382d.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.motion_sensor_158d0002c6382d.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.motion_sensor_158d0002c6382d', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      living_motion_battery:
+        friendly_name: Living Motion Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.motion_sensor_158d0002c716b6', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.motion_sensor_158d0002c716b6.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.motion_sensor_158d0002c716b6.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.motion_sensor_158d0002c716b6', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      garage_motion_2_battery:
+        friendly_name: Garage Motion Sensor 2 Battery
+        value_template: >
+          {% if is_state('binary_sensor.motion_sensor_158d0002c716d7', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.motion_sensor_158d0002c716d7.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.motion_sensor_158d0002c716d7.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.motion_sensor_158d0002c716d7', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      office_motion_battery:
+        friendly_name: Office Motion Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.officeroomsensor_m_109', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.officeroomsensor_m_109.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.officeroomsensor_m_109.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.officeroomsensor_m_109', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      pantry_door_battery:
+        friendly_name: Pantry Door Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.pantry_door_18', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.pantry_door_18.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.pantry_door_18.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.pantry_door_18', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      room4_motion_battery:
+        friendly_name: Room4 Motion Door Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.room4_194', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.room4_194.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.room4_194.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.room4_194', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      sam_wr_motion_battery:
+        friendly_name: SAM WR Motion Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.sam_wr_sensor_m_232', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.sam_wr_sensor_m_232.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.sam_wr_sensor_m_232.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.sam_wr_sensor_m_232', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      smoke_sensor_battery:
+        friendly_name: Smoke Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.smoke_sensor_158d00028ee45d', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.smoke_sensor_158d00028ee45d.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.smoke_sensor_158d00028ee45d.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.smoke_sensor_158d00028ee45d', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      alfresco_button_battery:
+        friendly_name: Alfresco Music Button Battery
+        value_template: >
+          {% if is_state('binary_sensor.switch_158d0002860904', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.switch_158d0002860904.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.switch_158d0002860904.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.switch_158d0002860904', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      kitchen_motion_battery:
+        friendly_name: Kitchen Motion Sensor Battery
+        value_template: >
+          {% if is_state('binary_sensor.test_device_251', 'unknown') %}
+            110
+          {% else %}
+            {{ states.binary_sensor.test_device_251.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.binary_sensor.test_device_251.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.test_device_251', 'unknown') %}
+            mdi:battery
+          {% elif battery_round_xod1 > 0 %}
+            mdi:battery-{{ battery_round_xod1 }}
+          {% else %}
+            mdi:battery-charging-wireless-outline
+          {% endif %}
+        unit_of_measurement: '%'
+      temperature_sensor_1_battery:
+        friendly_name: Switch Box Temperature Sensor Battery
+        value_template: >
+          {% if is_state('sensor.temperature_158d0002731398', 'unknown') %}
+            110
+          {% else %}
+            {{ states.sensor.temperature_158d0002731398.attributes["battery_level"] | float}}
+          {% endif %}
+        icon_template: >
+          {% set battery_level_xod1 = states.sensor.temperature_158d0002731398.attributes.battery_level|default(0)|int %}
+          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
+          {% if battery_round_xod1 >= 100 or is_state('sensor.temperature_158d0002731398', 'unknown') %}
             mdi:battery
           {% elif battery_round_xod1 > 0 %}
             mdi:battery-{{ battery_round_xod1 }}
