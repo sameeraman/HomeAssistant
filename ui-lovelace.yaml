@@ -375,6 +375,11 @@ views:
                 name: AC Zones 
                 tap_action:
                   action: toggle
+              - entity: input_boolean.aircon_on_auto
+                icon: 'mdi:air-conditioner'
+                name: AC On
+                tap_action:
+                  action: toggle
             title: Automation
             type: glance
           - type: entities

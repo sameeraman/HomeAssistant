@@ -181,6 +181,34 @@
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%220%22%7D%7D%7D'
 
+# Turn on the Air Conditioner on Weekdays at 06:15AM if the kitchen temperature is below 18C
+- id: turnonairconbelow18c
+  alias: Turn on the Air Conditioner on Weekdays at 06:15AM if the kitchen temperature is below 18C
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '06:15:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+          - sat
+      - condition: state
+        entity_id: input_boolean.aircon_on_auto
+        state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.6_in_1_multisensor_temperature_2_252
+        below: 18
+  action:
+    - service : switch.turn_on
+      entity_id: switch.air_conditioner
+
 # Alert when Air conditioner is left On for more than 4 hours. 
 - id: myairruntimealert4hrs
   alias: Alert when Air conditioner is left On for more than 4 hours

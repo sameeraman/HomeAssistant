@@ -15,3 +15,7 @@ zone_off_auto:
 housealarm_auto:
   name: Turn On House Alarm Based on Device Tracker
   icon: mdi:shield-home-outline
+
+aircon_on_auto:
+  name: Turn On Air Conditioner Based on Temperature
+  icon: mdi:air-conditioner
