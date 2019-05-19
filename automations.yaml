@@ -198,7 +198,6 @@
           - wed
           - thu
           - fri
-          - sat
       - condition: state
         entity_id: input_boolean.aircon_on_auto
         state: 'on'
@@ -322,6 +321,10 @@
     # Master-M2
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
+      to: 'on'
+    # Alfresco-M
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002b5eecd
       to: 'on'
   condition:
     condition: state

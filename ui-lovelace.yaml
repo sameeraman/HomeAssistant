@@ -430,7 +430,6 @@ views:
             - entity: light.bath_stripe
               tap_action:
                 action: toggle
-              name: Study Lights 
             - entity: light.dining_floor_lamp
               tap_action:
                 action: toggle
