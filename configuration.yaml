@@ -259,7 +259,7 @@ xiaomi_aqara:
 
 # Lovelace
 lovelace:
-mode: yaml
+  mode: yaml
 
 
 weather:
@@ -314,13 +314,7 @@ ring:
   password: !secret ring_password
 
 # Cameras
-camera: 
-  - platform: generic
-    name: testcamera
-    stream_source: !secret testcameraurl
-    still_image_url: !secret testcamerajpeg
-    verify_ssl: false
-
+camera: !include camera.yaml
 
 # input booleans
 input_boolean: !include input_boolean.yaml

@@ -404,7 +404,7 @@
           {% endif %}
         unit_of_measurement: '%'
       sam_wr_motion_battery:
-        friendly_name: SAM WR Motion Sensor Battery
+        friendly_name: Sameera Wardrobe Motion Sensor Battery
         value_template: >
           {% if is_state('binary_sensor.sam_wr_sensor_m_232', 'unknown') %}
             110

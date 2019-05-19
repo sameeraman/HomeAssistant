@@ -282,9 +282,11 @@ views:
                 type: entity-button
             type: horizontal-stack
         type: vertical-stack
+  
   - title: Living
     cards:
-      - cards:
+      - type: vertical-stack
+        cards:
           - type: glance
             entities:
               - device_tracker.sameera_oneplus
@@ -338,7 +340,7 @@ views:
             type: glance
           - entities:
               - entity: group.kitchen_motion
-                icon: 'mdi:rice'
+                icon: 'mdi:silverware-fork-knife'
                 name: Kitchen
               - entity: group.living_motion
                 icon: 'mdi:sofa'
@@ -382,37 +384,128 @@ views:
                   action: toggle
             title: Automation
             type: glance
-          - type: entities
-            title: Battery Status
-            show_header_toggle: false    
-            entities:
-              - entity: sensor.main_door_battery
-              - entity: sensor.garage_door_battery
-              - entity: sensor.laundry_door_battery
-              - entity: sensor.garage_motion_1_battery
-              - entity: sensor.laundry_motion_battery
-              - entity: sensor.master_motion_battery
-              - entity: sensor.mad_wr_battery
-              - entity: sensor.bath_motion_battery
-              - entity: sensor.kitchen_motion_2_battery
-              - entity: sensor.alfresco_motion_battery
-              - entity: sensor.office_motion_2_battery
-              - entity: sensor.master_motion_2_battery
-              - entity: sensor.shower_motion_battery
-              - entity: sensor.living_motion_battery
-              - entity: sensor.garage_motion_2_battery
-              - entity: sensor.office_motion_battery
-              - entity: sensor.pantry_door_battery
-              - entity: sensor.room4_motion_battery
-              - entity: sensor.sam_wr_motion_battery
-              - entity: sensor.smoke_sensor_battery
-              - entity: sensor.alfresco_button_battery
-              - entity: sensor.kitchen_motion_battery
-              - entity: sensor.temperature_sensor_1_battery
-        type: vertical-stack
+      - type: vertical-stack
+        cards:
+        - type: entities
+          title: Xiaomi Battery Status
+          show_header_toggle: false    
+          entities:
+            - entity: sensor.main_door_battery
+            - entity: sensor.garage_door_battery
+            - entity: sensor.laundry_door_battery
+            - entity: sensor.bath_motion_battery
+            - entity: sensor.kitchen_motion_2_battery
+            - entity: sensor.alfresco_motion_battery
+            - entity: sensor.office_motion_2_battery
+            - entity: sensor.master_motion_2_battery
+            - entity: sensor.shower_motion_battery
+            - entity: sensor.living_motion_battery
+            - entity: sensor.garage_motion_2_battery
+            - entity: sensor.smoke_sensor_battery
+            - entity: sensor.alfresco_button_battery
+            - entity: sensor.temperature_sensor_1_battery
+      - type: vertical-stack
+        cards:
+        - type: entities
+          title: Z-Wave Battery Status
+          show_header_toggle: false    
+          entities:
+            - entity: sensor.laundry_motion_battery
+            - entity: sensor.master_motion_battery
+            - entity: sensor.mad_wr_battery
+            - entity: sensor.office_motion_battery
+            - entity: sensor.pantry_door_battery
+            - entity: sensor.room4_motion_battery
+            - entity: sensor.sam_wr_motion_battery
+            - entity: sensor.kitchen_motion_battery
+            - entity: sensor.garage_motion_1_battery
+        - type: entity-filter
+          entities:
+            - entity: light.alfresco_light_260
+              tap_action:
+                action: toggle 
+            - entity: light.bath_light_132
+              tap_action:
+                action: toggle
+            - entity: light.bath_stripe
+              tap_action:
+                action: toggle
+              name: Study Lights 
+            - entity: light.dining_floor_lamp
+              tap_action:
+                action: toggle
+            - entity: light.front_outdoor_lights_59
+              tap_action:
+                action: toggle
+            - entity: light.garage_light
+              tap_action:
+                action: toggle
+            - entity: light.hue_lightstrip_plus_1
+              tap_action: 
+                action: toggle
+            - entity: light.hue_lightstrip_plus_1_2
+              tap_action: 
+                action: toggle
+            - entity: light.kitchen_light_135
+              tap_action:
+                action: toggle
+            - entity:  light.living_floor_lamp
+              tap_action:
+                action: toggle
+            - entity: light.living_light_129
+              tap_action: 
+                action: toggle
+            - entity: light.mad_wr_dimmer_65
+              tap_action:
+                action: toggle
+            - entity: light.master_dimmer_123
+              tap_action: 
+                action: toggle
+            - entity: light.office_dimmer_120
+              tap_action:
+                action: toggle
+            - entity: light.pantry_light
+              tap_action:
+                action: toggle
+            - entity: light.sam_wr_dimmer_62
+              tap_action: 
+                action: toggle
+          state_filter:
+            - "on"
+          card:
+            type: glance
+            column_width: 20%
+            show_state: false
+            title: Lights On
+      - type: vertical-stack
+        cards:
+        - type: entities
+          title: House Moods
+          entities:
+            - entity: input_boolean.night_mood
+              icon: 'mdi:weather-night'
+              name: Night
+              tap_action:
+                action: toggle
 
   - title: Cameras
     cards:
       - type: picture-entity 
-        title: Test 
-        entity:  camera.testcamera
+        title: Front Entrance 
+        entity:  camera.frontentracecamera
+      - type: picture-entity 
+        title: Living 
+        entity:  camera.livingcamera
+      - type: picture-entity 
+        title: Hallway 
+        entity:  camera.hallwaycamera
+      - type: picture-entity 
+        title: Alfresco 
+        entity:  camera.alfrescocamera
+      - type: picture-entity 
+        title: Outside Right 
+        entity:  camera.outsiderightcamera
+      - type: picture-entity 
+        title: Outside Back 
+        entity:  camera.outsidebackcamera
+

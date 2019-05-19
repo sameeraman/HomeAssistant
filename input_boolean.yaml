@@ -19,3 +19,7 @@ housealarm_auto:
 aircon_on_auto:
   name: Turn On Air Conditioner Based on Temperature
   icon: mdi:air-conditioner
+
+night_mood:
+  name: Night mood
+  icon: mdi:weather-night
