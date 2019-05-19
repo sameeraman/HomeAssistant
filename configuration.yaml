@@ -17,6 +17,10 @@ homeassistant:
     - /share
    #- /home/homeassistant/
 
+  # Enable MFA
+  auth_mfa_modules:
+    - type: totp
+
 # Show links to resources in log and frontend
 introduction:
 
@@ -318,6 +322,8 @@ camera: !include camera.yaml
 
 # input booleans
 input_boolean: !include input_boolean.yaml
+
+
 
 # image processing
 image_processing:
