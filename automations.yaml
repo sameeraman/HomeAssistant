@@ -201,6 +201,9 @@
       - condition: state
         entity_id: input_boolean.aircon_on_auto
         state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
       - condition: numeric_state
         entity_id: sensor.6_in_1_multisensor_temperature_2_252
         below: 18
