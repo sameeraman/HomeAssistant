@@ -860,3 +860,76 @@
   action:
     - service: switch.turn_on
       entity_id:  switch.myair_zone2
+
+
+# Turn on the living dim light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset + 1 hour and midnight. 
+- id: turnonlivingdimlights
+  alias: Turn on the living dim light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset + 1 hour and midnight. 
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: group.living_kitchen_motion
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: sun
+        after: sunset
+        after_offset: "01:00:00"
+      - condition: time
+        before: '23:59:59'
+      - condition: state
+        entity_id: input_boolean.light_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: light.dining_floor_lamp
+    - service: homeassistant.turn_on
+      entity_id: light.living_floor_lamp
+    - service: homeassistant.turn_on
+      entity_id: light.hue_lightstrip_plus_1
+    - service: homeassistant.turn_on
+      entity_id: light.hue_lightstrip_plus_1_2
+
+# Turn on the living dim light when there is no motion for 20 mins
+- id: turnofflivingdimlights
+  alias: Turn on the living dim light when there is no motion for 20 mins
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: group.living_kitchen_motion
+      to: 'off'
+      for: 
+        minutes: 20
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_off_auto
+        state: 'on'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: light.dining_floor_lamp
+            state: 'on'
+          - condition: state
+            entity_id: light.living_floor_lamp
+            state: 'on'
+          - condition: state
+            entity_id: light.hue_lightstrip_plus_1
+            state: 'on'
+          - condition: state
+            entity_id: light.hue_lightstrip_plus_1_2
+            state: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: light.dining_floor_lamp
+    - service: homeassistant.turn_off
+      entity_id: light.living_floor_lamp
+    - service: homeassistant.turn_off
+      entity_id: light.hue_lightstrip_plus_1
+    - service: homeassistant.turn_off
+      entity_id: light.hue_lightstrip_plus_1_2
