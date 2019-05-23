@@ -894,16 +894,13 @@
     - service: homeassistant.turn_on
       entity_id: light.hue_lightstrip_plus_1_2
 
-# Turn on the living dim light when there is no motion for 20 mins
+# Turn off the living dim lights at mid night
 - id: turnofflivingdimlights
-  alias: Turn on the living dim light when there is no motion for 20 mins
+  alias: Turn on the living dim light at midnight
   initial_state: True
   trigger:
-    - platform: state
-      entity_id: group.living_kitchen_motion
-      to: 'off'
-      for: 
-        minutes: 20
+    - platform: time
+      at: 23:59:59
   condition:
     condition: and
     conditions: 
