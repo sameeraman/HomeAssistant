@@ -26,7 +26,7 @@ mbedroom:
     - light.master_dimmer_123
     - switch.bedheater_38
     - light.bath_light_132
-    - binary_sensor.m_bed_room__m_33
+    - binary_sensor.m_bed_room_m_33
     - group.master_sensors
 office:
   name: Office Room
@@ -83,11 +83,11 @@ master_sensors:
   name: Master Bedroom Sensors
   view: no
   entities:
-    - binary_sensor.m_bed_room__m_33
-    - sensor.m_bed_room__t_34
-    - sensor.m_bed_room__l_35
-    - sensor.m_bed_room__h_36
-    - sensor.m_bed_room__uv_37
+    - binary_sensor.m_bed_room_m_33
+    - sensor.m_bed_room_t_34
+    - sensor.m_bed_room_l_35
+    - sensor.m_bed_room_h_36
+    - sensor.m_bed_room_uv_37
 
 all_motion:
   name: "All Motion Sensors"
