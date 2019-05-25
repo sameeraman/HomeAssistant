@@ -29,14 +29,17 @@ This provides the yaml configuration used at SnM Nest Home Assistant. If you are
 - UniFi Access Point - NanoHD
 - UniFi Secure Gateway
 - UniFi G3 Flex Camera
-
+- Yamaha RX-V473
+- Ring Doorbell
+- Sonos Connect Amp
+- Sonos Play:3
 
 # CI/CD - DevOps
 
 DevOps was implemented with Azure DevOps. Only continuous delivery is configured. Below diagram provides a high level overview of the configuration. For more details around the configuration please visit the [blog post](https://sameeraman.wordpress.com/2018/12/10/local-self-hosted-agents-in-azure-devops/). 
 
 
- -> ![resourceslist](images/CICD.png "Home Assistant CI/CD") <-
+ ![resourceslist](images/CICD.png "Home Assistant CI/CD")
 
 # Dashboards
 
