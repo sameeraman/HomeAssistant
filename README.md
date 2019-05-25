@@ -1,6 +1,6 @@
 # Home Assistant At SnM Nest
 
-This provides the yaml configuration used at SnM Nest Home Assistant. 
+This provides the yaml configuration used at SnM Nest Home Assistant. If you are interested in trying out Home Assistant please visit the web site [here](https://www.home-assistant.io/)
 
 ![resourceslist](images/HomeAutomation.png "Home automation Diagram")
 
@@ -36,8 +36,12 @@ This provides the yaml configuration used at SnM Nest Home Assistant.
 DevOps was implemented with Azure DevOps. Only continuous delivery is configured. Below diagram provides a high level overview of the configuration. For more details around the configuration please visit the [blog post](https://sameeraman.wordpress.com/2018/12/10/local-self-hosted-agents-in-azure-devops/). 
 
 
-![resourceslist](images/CICD.png "Home automation Diagram")
+![resourceslist](images/CICD.png "Home Assistant CI/CD")
 
 # Dashboards
 
+Following are some of the Lovelace Dashboards I have created to control the smart home. 
+
 ![resourceslist](images/dashboard-crop.png "Home automation Diagram")
+
+![resourceslist](images/dashboard-living.png "Home automation Diagram")
