@@ -930,3 +930,18 @@
       entity_id: light.hue_lightstrip_plus_1
     - service: homeassistant.turn_off
       entity_id: light.hue_lightstrip_plus_1_2
+
+# Turn off the Living Sonos (if playing) when the TV is switched on
+- id: turnofflivingsonoswhentvon
+  alias: Turn off the Living Sonos (if playing) when the TV is switched on
+  trigger: 
+    - platform: state
+      entity_id: media_player.yamaha_receiver
+      to: 'on'
+  condition:
+    condition: state
+    entity_id: media_player.living
+    state: 'playing'
+  action:
+    service: media_player.media_play_pause
+    entity_id: media_player.living
