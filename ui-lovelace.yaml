@@ -514,7 +514,7 @@ views:
   - title: Floor Plan
     cards:
       - type: picture-elements
-        image: /local/houseplan.svg
+        image: /local/houseplanv1.svg
         elements:
 
 # Office Room
