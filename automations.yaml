@@ -879,7 +879,6 @@
     conditions: 
       - condition: sun
         after: sunset
-        after_offset: "00:30:00"
       - condition: time
         before: '23:59:59'
       - condition: state
