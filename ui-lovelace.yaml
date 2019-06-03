@@ -569,15 +569,15 @@ views:
             entity: light.alfresco_light_260
             style:
               top: 11%
-              left: 14.5%
+              left: 15.5%
               "--paper-item-icon-color": '#696969'
           # Alfresco Motion
           - type: state-icon
             icon: 'mdi:run-fast'
             entity: binary_sensor.motion_sensor_158d0002b5eecd
             style:
-              top: 7%
-              left: 7%
+              top: 4%
+              left: 15.5%
               "--paper-item-icon-color": '#696969'
 
 # Kitchen
@@ -821,3 +821,30 @@ views:
               top: 35%
               left: 64%
               "--paper-item-icon-color": '#696969'
+
+
+# Bedroom 4
+
+          # Room4 Motion
+          - type: state-icon
+            icon: 'mdi:run-fast'
+            entity: binary_sensor.room4_194
+            style:
+              top: 87%
+              left: 9%
+              "--paper-item-icon-color": '#696969'
+
+          # Room4 Temperature
+          - type: state-icon
+            entity: sensor.6_in_1_multisensor_temperature_195
+            icon: 'mdi:thermometer'
+            style: 
+                top: 92%
+                left: 6%
+                "--paper-item-icon-color": '#696969'
+          - type: state-label
+            entity: sensor.6_in_1_multisensor_temperature_195
+            icon: 'mdi:thermometer'
+            style: 
+                top: 92%
+                left: 12.5%
