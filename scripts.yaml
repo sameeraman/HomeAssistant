@@ -5,4 +5,17 @@ garagelight:
     - delay:
         minutes: 2
     - service: light.turn_off
-      entity_id: light.front_outdoor_lights_59
+
+xiaomi_gateway_alarm:
+  sequence:
+    - service: xiaomi_aqara.play_ringtone
+      data:
+        ringtone_id: 2
+        ringtone_vol: 2
+        gw_mac: !secret xiaomi_mac
+    - delay: 00:00:05
+    - service: xiaomi_aqara.play_ringtone
+      data:
+        ringtone_id: 2
+        ringtone_vol: 2
+        gw_mac: !secret xiaomi_mac

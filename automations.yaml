@@ -961,3 +961,16 @@
   action:
     service: light.toggle
     entity_id: light.living_mood_lights
+
+# Alarm when there is motion outside master bedroom and when the night mood is on
+- id: alarmwhennightmood
+  alias: Alarm when there is motion outside master bedroom and when the night mood is on
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000323d424
+      click_type: long_click_press
+  action:
+    service: homeassistant.turn_on
+    entity_id: script.xiaomi_gateway_alarm
