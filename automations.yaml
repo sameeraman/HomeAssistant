@@ -329,6 +329,10 @@
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002b5eecd
       to: 'on'
+    # Garage Entry door
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d00033a7262
+      to: 'on'
   condition:
     condition: state
     entity_id: switch.housealarm
@@ -945,3 +949,16 @@
   action:
     service: media_player.media_play_pause
     entity_id: media_player.living
+
+# Toggle Living Mood lights when Xiaomi push button is pressed
+- id: togglelivingmoodlightspushbutton
+  alias: Toggle Living Mood lights when Xiaomi push button is pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000323d424
+      click_type: single
+  action:
+    service: light.toggle
+    entity_id: light.living_mood_lights
