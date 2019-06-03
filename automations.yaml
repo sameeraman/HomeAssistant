@@ -966,11 +966,58 @@
 - id: alarmwhennightmood
   alias: Alarm when there is motion outside master bedroom and when the night mood is on
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000323d424
-      click_type: long_click_press
+      # Kitchen-M2  
+      - platform: state
+        entity_id: binary_sensor.motion_sensor_158d0002742898
+        to: 'on'
+      # Living-M
+      - platform: state
+        entity_id: binary_sensor.motion_sensor_158d0002c716b6
+        to: 'on'
+      # Main Door
+      - platform: state
+        entity_id: binary_sensor.door_window_sensor_158d0002739295
+        to: 'on'
+      # Garage-M2
+      - platform: state
+        entity_id: binary_sensor.motion_sensor_158d0002c716d7
+        to: 'on'
+      # Loundry Door
+      - platform: state
+        entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+        to: 'on'
+      # Office-M2
+      - platform: state
+        entity_id: binary_sensor.motion_sensor_158d0002b7ec00
+        to: 'on'
+      # Alfresco-M
+      - platform: state
+        entity_id: binary_sensor.motion_sensor_158d0002b5eecd
+        to: 'on'
+      # Garage Entry door
+      - platform: state
+        entity_id: binary_sensor.door_window_sensor_158d00033a7262
+        to: 'on'
+      # Laundry Motion
+      - platform: state
+        entity_id: binary_sensor.laundry_199
+        to: 'on'
+      # Room 4 Motion
+      - platform: state
+        entity_id: binary_sensor.room4_194
+        to: 'on'
+  condition:
+    condition: state
+    entity_id: input_boolean.night_mood
+    state: 'on'
   action:
-    service: homeassistant.turn_on
-    entity_id: script.xiaomi_gateway_alarm
+    - service: homeassistant.turn_on
+      entity_id: script.xiaomi_gateway_alarm
+    - service: notify.pushbullet
+      data_template:
+        title: '{{ [condition.entity_id.split(".")[1]].name  }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+    - service: notify.sendgrid
+      data_template:
+        title: '{{ [condition.entity_id.split(".")[1]].name  }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
