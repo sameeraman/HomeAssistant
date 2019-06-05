@@ -1,3 +1,4 @@
+# Script to Turn on the Front outdoor lights when Garage door open and Turn off after 2 minutes.
 garagelight:
   sequence:
     - service: light.turn_on
@@ -5,7 +6,9 @@ garagelight:
     - delay:
         minutes: 2
     - service: light.turn_off
+      entity_id: light.front_outdoor_lights_59
 
+# Script to execute the Xiaomi Gatway alarm
 xiaomi_gateway_alarm:
   sequence:
     - service: xiaomi_aqara.play_ringtone
