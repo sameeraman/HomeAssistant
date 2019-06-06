@@ -149,9 +149,9 @@
           {{ states.sensor.myair_stop_timer.state|float }}
         {% endif %}
 
-# Set MyAir Stop Timer to 90 when Switch is turned on
+# Set MyAir Stop Timer to 90 when air con Switch is turned on
 - id: setmyairstoptimerbyswitch
-  alias: Set MyAir Stop Timer to 90 when Switch is turned on
+  alias: Set MyAir Stop Timer to 90 when air con Switch is turned on
   initial_state: True
   trigger:
     - platform: state
@@ -164,6 +164,27 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2290%22%7D%7D%7D'
+
+# Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set (second try)
+- id: setmyairstoptimerbyswitchstry2
+  alias: Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: sensor.myair_state
+      from: 'off'
+      to: 'on'
+      for:
+        seconds: 120
+  condition:
+    condition: numeric_state
+    entity_id: sensor.myair_stop_timer
+    equal: 0
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2290%22%7D%7D%7D'
+
 
 # Reset MyAir Stop Timer to 0 when Switch is turned off    
 - id: resetmyairstoptimerbyswitch
@@ -273,6 +294,34 @@
       data_template:
         title: 'Air Conditioner is running for more than 6 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
         message:  'Air Conditioner is running for more than 6 hours'
+
+# Alert and Turn off air conditioner if it is left On when the house alarm is on (After leaving home)
+- id: alertwhenairconisonafterleavinghome
+  alias: Alert and Turn off air conditioner if it is left On when the house alarm is on (After leaving home)
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: switch.housealarm
+      to: 'on'
+      for:
+        minutes: 2
+  condition:
+    condition: state
+    entity_id: sensor.myair_state
+    state: 'on'
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
+    - service: notify.pushbullet
+      data_template:
+        title: 'Air Conditioner was running when the house alarm was turned on {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner was running when the house alarm was turned on. It was turned off automatically.'
+    - service: notify.sendgrid
+      data_template:
+        title: 'Air Conditioner was running when the house alarm was turned on {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner was running when the house alarm was turned on. It was turned off automatically.'
+
 
 # TEST - plex seven news play - not working and still trialing
 - id: plexplay
