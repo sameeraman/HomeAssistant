@@ -1088,3 +1088,37 @@
       data_template:
         title: '{{ [condition.entity_id.split(".")[1]].name  }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  '{{ [condition.entity_id.split(".")[1]].name  }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+
+# Turn on Bed Heater at 10pm if the master bedroom temperature is below 22C
+- id: turnonbedheaterelow22c
+  alias: Turn on Bed Heater at 10pm if the master bedroom temperature is below 22C
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '22:00:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: numeric_state
+        entity_id: sensor.m_bed_room_t_34
+        below: 22
+  action:
+    - service : switch.turn_on
+      entity_id: switch.bedheater_38
+
+# Turn off Bed Heater automatically after two hours
+- id: turnoffbedheater2hours
+  alias: Turn off Bed Heater automatically after two hours
+  initial_state: True
+  trigger: 
+    - platform: state
+      entity_id: switch.bedheater_38
+      to: 'on'
+      for:
+        hours: 2
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.bedheater_38

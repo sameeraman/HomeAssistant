@@ -98,11 +98,14 @@ Following are some of the automation that I'm using at my smart home.
 ## Office Automations
 - Turn on the Office light then there is motion
 - Turn off the Office Light when there is no motion 
+- Turn off the Office AC Vent when there is no motion for more than 5 minutes in the office
+- Turn On the Office AC Vent when there is motion for more than 3 minutes in the office
+
 
 ## Master Bedroom Automations
 - Turn off the Master Light when there is no motion for more than 5 minutes
-- Turn off the Office AC Vent when there is no motion for more than 5 minutes in the office
-- Turn On the Office AC Vent when there is motion for more than 3 minutes in the office
+- Turn on Bed Heater at 10pm if the master bedroom temperature is below 22C
+- Turn off Bed Heater automatically after two hours
 
 ## Other Automations
 - Send Alerts from Xiaomi Motion and Door sensors when the house is Armed

@@ -485,7 +485,7 @@ views:
           entities:
             - entity: switch.housealarm
               icon: 'mdi:home-lock'
-              name: Night
+              name: Away
               tap_action:
                 action: toggle
             - entity: switch.nightmood
