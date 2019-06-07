@@ -26,4 +26,4 @@ night_mood:
 
 house_alarm:
   name: House Alarm
-  icon: mdi:shield-home-outline
+  icon: mdi:home-lock
