@@ -149,9 +149,9 @@
           {{ states.sensor.myair_stop_timer.state|float }}
         {% endif %}
 
-# Set MyAir Stop Timer to 90 when air con Switch is turned on
+# Set Air conditioner stop timer to 90 mins when it is turned on
 - id: setmyairstoptimerbyswitch
-  alias: Set MyAir Stop Timer to 90 when air con Switch is turned on
+  alias: Set Air conditioner stop timer to 90 mins when it is turned on
   initial_state: True
   trigger:
     - platform: state
@@ -186,9 +186,9 @@
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2290%22%7D%7D%7D'
 
 
-# Reset MyAir Stop Timer to 0 when Switch is turned off    
+# Reset Air Conditioner Stop Timer to 0 when the air conditioner is turned off    
 - id: resetmyairstoptimerbyswitch
-  alias: Reset MyAir Stop Timer to 0 when Switch is turned off
+  alias: Reset Air Conditioner Stop Timer to 0 when the air conditioner is turned off  
   initial_state: True
   trigger:
     - platform: state
@@ -202,9 +202,9 @@
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%220%22%7D%7D%7D'
 
-# Turn on the Air Conditioner on Weekdays at 06:15AM if the kitchen temperature is below 18C
+# Turn on the Air Conditioner on Weekdays at 06:15AM if the kitchen temperature is below 19C
 - id: turnonairconbelow18c
-  alias: Turn on the Air Conditioner on Weekdays at 06:15AM if the kitchen temperature is below 18C
+  alias: Turn on the Air Conditioner on Weekdays at 06:15AM if the kitchen temperature is below 19C
   initial_state: True
   trigger:
     - platform: time
@@ -232,9 +232,9 @@
     - service : switch.turn_on
       entity_id: switch.air_conditioner
 
-# Alert when Air conditioner is left On for more than 4 hours. 
+# Alert when Air conditioner is left on for more than 4 hours. 
 - id: myairruntimealert4hrs
-  alias: Alert when Air conditioner is left On for more than 4 hours
+  alias: Alert when Air conditioner is left on for more than 4 hours
   initial_state: True
   trigger:
     - platform: state
@@ -338,9 +338,9 @@
         media_content_id: '{ \"library_name\" : \"TV Shows\", \"show_name\" : \"Seven News\", \"season_number\" : 2019, \"episode_number\" : \"04-23\", \"shuffle\": \"0\" }'
         media_content_type: EPISODE
 
-# Send Alerts from Xiaomi when the house is Armed
+# Send Alerts from Xiaomi Motion and Door sensors when the house is Armed
 - id: xiaomi_alerts
-  alias: alert on xiaomi sensors when armed
+  alias: Send Alerts from Xiaomi Motion and Door sensors when the house is Armed
   trigger: 
     # Kitchen-M2  
     - platform: state
@@ -437,7 +437,7 @@
     - service: homeassistant.turn_off
       entity_id:  light.bath_light_132
 
-# Turn on the Pantry Light when the door open
+# Turn on the Pantry Light when the door opens
 - id: pantrylighton
   alias: Turn on the Pantry Light when the door Opens
   trigger: 
@@ -499,9 +499,9 @@
       entity_id:  light.garage_light
 
 
-# Turn on the Bath strip when there is motion
+# Turn on the Bath strip when there is motion in Master bedroom
 - id: bathstripon
-  alias: Turn on Bath strip when there is motion
+  alias: Turn on Bath strip when there is motion in Master bedroom
   trigger: 
     - platform: state
       entity_id: binary_sensor.m_bed_room_m_33
@@ -510,7 +510,7 @@
     - service: homeassistant.turn_on
       entity_id:  light.bath_stripe
 
-# Turn off the Bath strip when there's no Motion
+# Turn off the Bath strip when there's no Motion in master bedroom
 - id: bathstripoff
   alias: Turn off Bath Strip when there is no more motion
   trigger: 
@@ -523,6 +523,7 @@
 
 # Alert if the Laundry door was left open for more than 10 minutes
 - id: laundrydoor10mins
+  alias: Alert if the Laundry door was left open for more than 10 minutes
   trigger: 
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002ca3100
@@ -541,6 +542,7 @@
 
 # Alert if the Laundry door was left open for more than 60 minutes
 - id: laundrydoor120mins
+  alias: Alert if the Laundry door was left open for more than 60 minutes
   trigger: 
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002ca3100
@@ -557,8 +559,9 @@
         title: 'Laundry Door was left open for more than 120 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Laundry door was left open for more than 120 minutes'
 
-# Alert every day at 10:00pm if any of the doors were left open. 
+# Alert if the Laundry door was left open for more than 60 minutes
 - id: dailydooropenalert
+  alias: Alert if the Laundry door was left open for more than 60 minutes
   trigger: 
     - platform: time
       at: '22:00:00'
@@ -594,6 +597,7 @@
 
 # Alert if the Garage door was left open for more than 10 minutes
 - id: garagedoor10mins
+  alias: Alert if the Garage door was left open for more than 10 minutes
   trigger: 
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002c0e236
@@ -610,14 +614,15 @@
         title: 'Garage Door was left open for more than 10 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Garage door was left open for more than 10 minutes'
 
-# Alert if the Laundry door was left open for more than 60 minutes
-- id: garagedoor120mins
+# Alert if the Garage door was left open for more than 60 minutes
+- id: garagedoor60mins
+  alias: Alert if the Garage door was left open for more than 60 minutes
   trigger: 
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002c0e236
       to: 'on'
       for:
-        minutes: 120
+        minutes: 60
   action:
     - service: notify.pushbullet
       data_template:
@@ -629,9 +634,9 @@
         message:  'Garage door was left open for more than 120 minutes'
 
 
-# Turn on the Front Outdoor light then there the garage door open
+# Turn on the Front Outdoor light for 2 mins then there the garage door open
 - id: frontoutdoorgaragelight
-  alias: Turn on Front Outdoor Light when garage door open
+  alias: Turn on the Front Outdoor light for 2 mins then there the garage door open
   trigger: 
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002c0e236
@@ -706,9 +711,9 @@
     - service : switch.turn_off
       entity_id: switch.housealarm
 
-# Toggle Alfresco Music Play with push button
+# Toggle Alfresco Music Play with Alfresco Xiaomi push button
 - id: togglealfrescomusicplaypushbutton
-  alias: Toggle Alfresco Music Play with push button
+  alias: Toggle Alfresco Music Play with Alfresco Xiaomi push button
   trigger: 
     platform: event
     event_type: xiaomi_aqara.click
@@ -723,9 +728,9 @@
     service: media_player.media_play_pause
     entity_id: media_player.alfresco
 
-# Next track Alfresco Music Play with double push button
+# Jump to Next track in Alfresco Music Play when Alfresco Xiaomi push button double press is detected
 - id: nextrackalfrescomusicplaydoublepushbutton
-  alias: Next track Alfresco Music Play with double push button
+  alias: Jump to Next track in Alfresco Music Play when Alfresco Xiaomi push button double press is detected
   trigger: 
     platform: event
     event_type: xiaomi_aqara.click
@@ -915,9 +920,9 @@
       entity_id:  switch.myair_zone2
 
 
-# Turn on the living dim light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset + 1 hour and midnight. 
+# Turn on the living dim light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset and midnight. 
 - id: turnonlivingdimlights
-  alias: Turn on the living dim light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset + 1 hour and midnight. 
+  alias: Turn on the living dim light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset and midnight. 
   initial_state: True
   trigger:
     - platform: state
@@ -946,9 +951,9 @@
     - service: homeassistant.turn_on
       entity_id: light.hue_lightstrip_plus_1_2
 
-# Turn off the living dim lights at mid night
+# Turn off the living mood dim lights at mid night
 - id: turnofflivingdimlights
-  alias: Turn on the living dim light at midnight
+  alias: Turn on the living mood dim light at midnight
   initial_state: True
   trigger:
     - platform: time
