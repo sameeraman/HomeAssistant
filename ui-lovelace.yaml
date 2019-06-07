@@ -38,6 +38,11 @@ views:
                 name: Bath Strip
                 tap_action:
                   action: toggle
+              - entity: switch.bedheater_38
+                icon: 'mdi:radiator'
+                name: Bed Heater
+                tap_action:
+                  action: toggle
               - entity: light.sam_wr_dimmer_62
                 icon: 'mdi:lightbulb-on-outline'
                 name: Sameera WR
