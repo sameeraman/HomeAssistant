@@ -23,3 +23,7 @@ aircon_on_auto:
 night_mood:
   name: Night mood
   icon: mdi:weather-night
+
+house_alarm:
+  name: House Alarm
+  icon: mdi:shield-home-outline
