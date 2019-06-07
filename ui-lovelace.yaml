@@ -480,10 +480,15 @@ views:
             title: Lights On
       - type: vertical-stack
         cards:
-        - type: entities
+        - type: glance
           title: House Moods
           entities:
-            - entity: input_boolean.night_mood
+            - entity: switch.housealarm
+              icon: 'mdi:home-lock'
+              name: Night
+              tap_action:
+                action: toggle
+            - entity: switch.nightmood
               icon: 'mdi:weather-night'
               name: Night
               tap_action:
