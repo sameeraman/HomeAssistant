@@ -66,14 +66,14 @@ Following are some of the automation that I'm using at my smart home.
 
 ## Bathroom Automations
 - Turn on the Bath Light when there is motion
-- Turn off the Bath Light when there's no Motion in shower and Bathroom
-- Turn on the Bath strip when there is motion in Master bedroom
-- Turn off the Bath strip when there's no Motion in master bedroom
+- Turn off the Bath Light when there's no motion in shower and Bathroom
+- Turn on the Bath strip when there is motion in master bedroom
+- Turn off the Bath strip when there's no motion in master bedroom
 - Alert every day at 10:00pm if any of the doors were left open
 
 ## Kitchen and Living Automations
 - Turn on the Pantry Light when the door opens
-- Turn off the pantry light when the door close
+- Turn off the Pantry light when the door close
 - Turn off the Pantry Light when the door open and left for more than 2 minutes
 - Turn on the Kitchen light then there is motion
 - Turn off the Kitchen Light when there is no motion for more than 10 minutes
@@ -85,12 +85,12 @@ Following are some of the automation that I'm using at my smart home.
 - Alarm when there is motion outside master bedroom and when the night mood is on
 
 ## Garage Automation
-- Turn on the garage light then there is motion
-- Turn off the garage light then there is no motion
+- Turn on the Garage light then there is motion
+- Turn off the Garage light then there is no motion
 - Alert if the Garage door was left open for more than 10 minutes
 - Alert if the Garage door was left open for more than 60 minutes
 - Turn on the Front Outdoor light for 2 mins then there the garage door open
-- Turn off the garage light if it was one for more than 60 minutes
+- Turn off the Garage light if it was one for more than 60 minutes
 
 ## Alfresco Automation
 - Toggle Alfresco Sonos Music Play with Alfresco Xiaomi push button
@@ -114,3 +114,5 @@ Following are some of the automation that I'm using at my smart home.
 - Alert if the Laundry door was left open for more than 60 minutes
 - Turn on house alarm based on device tracker - Arm when every one is out of the house
 - Turn off house alarm based on device tracker - Unarm when anyone is back at home
+- Turn on the night mood at midnight when there is no motion in the house
+- Turn off the Night mood when master bedroom door open in the morning

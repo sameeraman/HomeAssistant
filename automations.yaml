@@ -970,7 +970,7 @@
   initial_state: True
   trigger:
     - platform: time
-      at: 23:59:59
+      at: 23:58:59
   condition:
     condition: and
     conditions: 
@@ -1135,3 +1135,65 @@
   action:
     - service: homeassistant.turn_off
       entity_id: switch.bedheater_38
+
+
+# Turn on the night mood at midnight when there is no motion in the house
+- id: turnonnightmoodatmidnight
+  alias: Turn on the night mood at midnight when there is no motion in the house
+  initial_state: True
+  trigger:
+    - platform: time
+      at: 23:59:59
+    - platform: time
+      at: 01:00:00
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: group.garage_motion
+        state: 'off'
+      - condition: state
+        entity_id: group.living_kitchen_motion
+        state: 'off'
+      - condition: state
+        entity_id: light.kitchen_light_135
+        state: 'off'
+      - condition: state
+        entity_id: light.dining_floor_lamp
+        state: 'off'
+      - condition: state
+        entity_id: group.office_motion
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d0003677216
+        state: 'off'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: switch.nightmood
+        state: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: switch.nightmood
+
+
+# Turn off the Night mood when master bedroom door open in the morning
+- id: turnoffnightmoodmorning
+  alias: Turn off the Night mood when master bedroom door open in the morning
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0003677216
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: switch.nightmood
+        state: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.nightmood
