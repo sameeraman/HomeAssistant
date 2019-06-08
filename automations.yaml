@@ -763,6 +763,27 @@
     service: media_player.media_next_track
     entity_id: media_player.alfresco
 
+# Toggle Alfresco Automation with Alfresco Xiaomi push button long press
+- id: togglealfrescoautomationpushbutton
+  alias: Toggle Alfresco Automation with Alfresco Xiaomi push button long press
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d0002860904
+      click_type: long_click_press
+  condition:
+    condition: state
+    entity_id: input_boolean.alfresco_button
+    state: 'on'
+  action:
+   - service: input_boolean.toggle
+      data:
+        entity_id: input_boolean.alfresco_motion_music
+   - service: input_boolean.toggle
+      data:
+        entity_id: input_boolean.alfresco_motion_light
+
 # Turn on Alfresco Music Play with Alfresco Motion
 - id: turnonalfrescomusicplaywithmotion
   alias: Turn on Alfresco Music Play with Alfresco Motion
@@ -790,15 +811,15 @@
     service: media_player.media_play
     entity_id: media_player.alfresco
 
-# Turn off Alfresco Music Play with Alfresco No Motion for 5 mins
+# Turn off Alfresco Music Play with Alfresco No Motion for 3 mins
 - id: turnoffalfrescomusicplaywithnomotion
-  alias: Turn off Alfresco Music Play with Alfresco No Motion for 5 mins
+  alias: Turn off Alfresco Music Play with Alfresco No Motion for 3 mins
   trigger: 
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002b5eecd
       to: 'off'
       for: 
-        minutes: 5
+        minutes: 3
   condition:
     condition: and
     conditions: 
@@ -843,7 +864,7 @@
     - service: light.turn_on
       data:
         entity_id: light.alfresco_light_260
-        brightness: 20
+        brightness_pct: 20
 
 # Turn off the Alfresco Light when there is no motion 
 - id: alfrescolightoffnomotion

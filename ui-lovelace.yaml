@@ -371,7 +371,7 @@ views:
                   action: toggle
               - entity: input_boolean.alfresco_button
                 icon: 'mdi:music-circle-outline'
-                name: Alfresco Music
+                name: Alfresco Button Music
                 tap_action:
                   action: toggle
               - entity: input_boolean.alfresco_motion_music
@@ -386,17 +386,17 @@ views:
                   action: toggle
               - entity: input_boolean.light_off_auto
                 icon: 'mdi:lightbulb-outline'
-                name: Lights Off 
+                name: Lights Auto Off 
                 tap_action:
                   action: toggle
               - entity: input_boolean.zone_off_auto
                 icon: 'mdi:air-filter'
-                name: AC Zones 
+                name: AC Zones Auto On/Off
                 tap_action:
                   action: toggle
               - entity: input_boolean.aircon_on_auto
                 icon: 'mdi:air-conditioner'
-                name: AC On
+                name: Auto AC On
                 tap_action:
                   action: toggle
             title: Automation
@@ -499,7 +499,7 @@ views:
           title: House Moods
           entities:
             - entity: switch.housealarm
-              icon: 'mdi:home-lock'
+              icon: 'mdi:shield-home-outline'
               name: Away
               tap_action:
                 action: toggle
