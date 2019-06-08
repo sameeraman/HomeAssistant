@@ -4,6 +4,10 @@ alfresco_button:
   name: Alfresco Button Media Play
   icon: mdi:music-circle-outline
 
+alfresco_motion_music:
+  name: Alfresco Motion Based Music
+  icon: mdi:music-circle-outline
+
 light_off_auto:
   name: Turn lights off when no motion
   icon: mdi:lightbulb-outline

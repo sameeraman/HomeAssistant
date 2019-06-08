@@ -461,7 +461,7 @@
 
 # Turn off the Pantry Light when the door open and left for more than 2 minutes
 - id: pantrylightofftimer
-  alias: Turn off the Pantry Light when the door Opens for more than 2 mins
+  alias: Turn off the Pantry Light when the door open and left for more than 2 minutes
   trigger: 
     - platform: state
       entity_id: binary_sensor.pantry_door_18
@@ -757,6 +757,56 @@
   action:
     service: media_player.media_next_track
     entity_id: media_player.alfresco
+
+# Turn on Alfresco Music Play with Alfresco Motion
+- id: turnonalfrescomusicplaywithmotion
+  alias: Turn on Alfresco Music Play with Alfresco Motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002b5eecd
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.alfresco_motion_music
+        state: 'on'
+      - condition: time
+        before: '23:59:59'
+      - condition: time
+        after: '08:00:00'
+      - condition: state
+        entity_id: switch.nightmood
+        state: 'off'
+  action:
+    service: media_player.media_play
+    entity_id: media_player.alfresco
+
+# Turn off Alfresco Music Play with Alfresco No Motion
+- id: turnoffalfrescomusicplaywithnomotion
+  alias: Turn on Alfresco Music Play with Alfresco No Motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002b5eecd
+      to: 'off'
+      for: 
+        minutes: 5
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.alfresco_motion_music
+        state: 'on'
+      - condition: state
+        entity_id: media_player.alfresco
+        state: 'playing'
+  action:
+    service: media_player.media_pause
+    entity_id: media_player.alfresco
+
 
 # Turn on the Office light then there is motion
 - id: officelightonmotion
