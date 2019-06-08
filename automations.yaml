@@ -785,9 +785,9 @@
     service: media_player.media_play
     entity_id: media_player.alfresco
 
-# Turn off Alfresco Music Play with Alfresco No Motion
+# Turn off Alfresco Music Play with Alfresco No Motion after 5 mins
 - id: turnoffalfrescomusicplaywithnomotion
-  alias: Turn on Alfresco Music Play with Alfresco No Motion
+  alias: Turn off Alfresco Music Play with Alfresco No Motion after 5 mins
   trigger: 
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002b5eecd

@@ -95,13 +95,14 @@ Following are some of the automation that I'm using at my smart home.
 ## Alfresco Automation
 - Toggle Alfresco Sonos Music Play with Alfresco Xiaomi push button
 - Jump to Next track in Alfresco Music Play when Alfresco Xiaomi push button double press is detected
+- Turn on Alfresco Music Play with Alfresco Motion
+- Turn off Alfresco Music Play with Alfresco No Motion after 5 mins
 
 ## Office Automations
 - Turn on the Office light then there is motion
 - Turn off the Office Light when there is no motion 
 - Turn off the Office AC Vent when there is no motion for more than 5 minutes in the office
 - Turn On the Office AC Vent when there is motion for more than 3 minutes in the office
-
 
 ## Master Bedroom Automations
 - Turn off the Master Light when there is no motion for more than 5 minutes
