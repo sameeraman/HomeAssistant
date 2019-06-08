@@ -572,29 +572,34 @@
         title: 'Laundry Door was left open for more than 120 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Laundry door was left open for more than 120 minutes'
 
-# Alert if the Laundry door was left open for more than 60 minutes
+# Alert if any door was left open everyday at 10pm
 - id: dailydooropenalert
-  alias: Alert if the Laundry door was left open for more than 60 minutes
+  alias: Alert if any door was left open everyday at 10pm
   trigger: 
     - platform: time
       at: '22:00:00'
   condition:
     condition: or
     conditions:
+        # Main Door
       - condition: state
         entity_id: binary_sensor.door_window_sensor_158d0002739295
         state: 'on'
+        # Laundry Door
       - condition: state
         entity_id: binary_sensor.door_window_sensor_158d0002ca3100
         state: 'on'
+        # Garage Door
       - condition: state
         entity_id: binary_sensor.door_window_sensor_158d0002c0e236
         state: 'on'
-      - condition: state
-        entity_id: binary_sensor.garage_door_32
-        state: 'on'
+        # Pantry Door
       - condition: state
         entity_id: binary_sensor.pantry_door_18
+        state: 'on' 
+        # Garage Entry Door
+      - condition: state
+        entity_id: binary_sensor.door_window_sensor_158d00033a7262
         state: 'on' 
   action:
     - service: notify.pushbullet
@@ -806,6 +811,104 @@
   action:
     service: media_player.media_pause
     entity_id: media_player.alfresco
+
+# Turn on Alfresco light with 20% when there is motion in Alfresco
+- id: turnonalfrescolightwithmotion
+  alias: Turn on Alfresco light with 20% when there is motion in Alfresco
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002b5eecd
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.alfresco_motion_light
+        state: 'on'
+      - condition: time
+        before: '23:59:59'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: switch.nightmood
+        state: 'off'
+      - condition: numeric_state
+        entity_id: sensor.illumination_158d0002b5eecd
+        below: 20
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.alfresco_light_260
+        brightness: 20
+
+# Turn off the Alfresco Light when there is no motion 
+- id: alfrescolightoffnomotion
+  alias: Turn off the Alfresco Light when there is no motion 
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002b5eecd
+      to: 'off'
+      for:
+        minutes: 3
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: light.alfresco_light_260
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.light_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.alfresco_motion_light
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.alfresco_light_260
+
+# Alert if the Alfresco Sonos was playing for more than 2 hours
+- id: alfrescosonos2hr
+  alias: Alert if the Alfresco Sonos was playing for more than 2 hours
+  trigger: 
+    - platform: state
+      entity_id: media_player.alfresco
+      state: 'playing'
+      for:
+        hours: 2
+  action:
+    - service: media_player.media_pause
+      entity_id: media_player.alfresco
+    - service: notify.pushbullet
+      data_template:
+        title: 'Alfresco Music was playing for more than 2 hours -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Alfresco Music was playing for more than 2 hours'
+    - service: notify.sendgrid
+      data_template:
+        title: 'Alfresco Music was playing for more than 2 hours - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Alfresco Music was playing for more than 2 hours'
+
+# Alert and Turn off if the Alfresco Sonos was playing for more than 4 hours
+- id: alfrescosonos4hrs
+  alias: Alert and Turn off if the Alfresco Sonos was playing for more than 4 hours
+  trigger: 
+    - platform: state
+      entity_id: media_player.alfresco
+      state: 'playing'
+      for:
+        hours: 4
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: 'Alfresco Music was playing for more than 4 hours - Turned off -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Alfresco Music was playing for more than 4 hours. It was turned off'
+    - service: notify.sendgrid
+      data_template:
+        title: 'Alfresco Music was playing for more than 4 hours - Turned off - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Alfresco Music was playing for more than 4 hours. It was turned off'
 
 
 # Turn on the Office light then there is motion
