@@ -374,6 +374,16 @@ views:
                 name: Alfresco Music
                 tap_action:
                   action: toggle
+              - entity: input_boolean.alfresco_motion_music
+                icon: 'mdi:music-circle-outline'
+                name: Alfresco Motion Music
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.alfresco_motion_light
+                icon: 'mdi:lightbulb-outline'
+                name: Alfresco Motion Light
+                tap_action:
+                  action: toggle
               - entity: input_boolean.light_off_auto
                 icon: 'mdi:lightbulb-outline'
                 name: Lights Off 
@@ -390,7 +400,7 @@ views:
                 tap_action:
                   action: toggle
             title: Automation
-            type: glance
+            type: entities
       - type: vertical-stack
         cards:
         - type: entities
