@@ -33,6 +33,7 @@ This provides the yaml configuration used at SnM Nest Home Assistant. If you are
 - Ring Doorbell
 - Sonos Connect Amp
 - Sonos Play:3
+- RainMachine Pro-8 for Sprinkler Control
 
 # CI/CD - DevOps
 
@@ -96,7 +97,7 @@ Following are some of the automation that I'm using at my smart home.
 - Toggle Alfresco Sonos Music Play with Alfresco Xiaomi push button
 - Jump to Next track in Alfresco Music Play when Alfresco Xiaomi push button double press is detected
 - Turn on Alfresco Music Play with Alfresco Motion
-- Turn off Alfresco Music Play with Alfresco No Motion after 5 mins
+- Turn off Alfresco Music Play with Alfresco No Motion for 5 mins
 
 ## Office Automations
 - Turn on the Office light then there is motion
