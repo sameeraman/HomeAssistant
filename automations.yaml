@@ -777,10 +777,10 @@
     entity_id: input_boolean.alfresco_button
     state: 'on'
   action:
-   - service: input_boolean.toggle
+    - service: input_boolean.toggle
       data:
         entity_id: input_boolean.alfresco_motion_music
-   - service: input_boolean.toggle
+    - service: input_boolean.toggle
       data:
         entity_id: input_boolean.alfresco_motion_light
 
