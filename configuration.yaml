@@ -268,4 +268,8 @@ ring:
   password: !secret ring_password
 
 
-
+# Rain Machine (Sprinkler System)
+rainmachine:
+  controllers:
+    - ip_address: 10.1.1.179
+      password: !secret rainmachine_password

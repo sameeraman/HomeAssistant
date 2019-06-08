@@ -437,9 +437,9 @@
     - service: homeassistant.turn_off
       entity_id:  light.bath_light_132
 
-# Turn on the Pantry Light when the door opens
+# Turn on the Pantry Light when the door open
 - id: pantrylighton
-  alias: Turn on the Pantry Light when the door Opens
+  alias: Turn on the Pantry Light when the door Open
   trigger: 
     - platform: state
       entity_id: binary_sensor.pantry_door_18
@@ -450,7 +450,7 @@
 
 # Turn off the pantry light when the door close
 - id: pantrylightoff
-  alias: Turn off the Pantry Light when the door Opens
+  alias: Turn off the Pantry Light when the door close
   trigger: 
     - platform: state
       entity_id: binary_sensor.pantry_door_18
@@ -1074,9 +1074,15 @@
       - platform: state
         entity_id: binary_sensor.motion_sensor_158d0002b5eecd
         to: 'on'
+        for:
+          seconds: 125
       # Garage Entry door
       - platform: state
         entity_id: binary_sensor.door_window_sensor_158d00033a7262
+        to: 'on'
+      # Garage door
+      - platform: state
+        entity_id: binary_sensor.door_window_sensor_158d0002c0e236
         to: 'on'
       # Laundry Motion
       - platform: state
@@ -1136,7 +1142,6 @@
     - service: homeassistant.turn_off
       entity_id: switch.bedheater_38
 
-
 # Turn on the night mood at midnight when there is no motion in the house
 - id: turnonnightmoodatmidnight
   alias: Turn on the night mood at midnight when there is no motion in the house
@@ -1176,7 +1181,6 @@
   action:
     - service: homeassistant.turn_on
       entity_id: switch.nightmood
-
 
 # Turn off the Night mood when master bedroom door open in the morning
 - id: turnoffnightmoodmorning
