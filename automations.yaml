@@ -498,6 +498,19 @@
     - service: homeassistant.turn_off
       entity_id:  light.garage_light
 
+# Turn off the garage light if it was one for more than 60 minutes
+- id: garagelightoff60min
+  alias: Turn off the garage light if it was one for more than 60 minutes
+  trigger: 
+    - platform: state
+      entity_id: light.garage_light
+      to: 'on'
+      for: 
+        minutes: 60
+  action:
+    - service: homeassistant.turn_off
+      entity_id:  light.garage_light
+
 
 # Turn on the Bath strip when there is motion in Master bedroom
 - id: bathstripon

@@ -90,6 +90,7 @@ Following are some of the automation that I'm using at my smart home.
 - Alert if the Garage door was left open for more than 10 minutes
 - Alert if the Garage door was left open for more than 60 minutes
 - Turn on the Front Outdoor light for 2 mins then there the garage door open
+- Turn off the garage light if it was one for more than 60 minutes
 
 ## Alfresco Automation
 - Toggle Alfresco Sonos Music Play with Alfresco Xiaomi push button
