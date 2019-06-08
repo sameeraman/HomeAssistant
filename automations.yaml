@@ -1352,6 +1352,9 @@
       - condition: state
         entity_id: switch.nightmood
         state: 'off'
+      - condition: state
+        entity_id: switch.nightmood_auto
+        state: 'on'
   action:
     - service: homeassistant.turn_on
       entity_id: switch.nightmood
@@ -1371,6 +1374,9 @@
         state: 'off'
       - condition: state
         entity_id: switch.nightmood
+        state: 'on'
+      - condition: state
+        entity_id: switch.nightmood_auto
         state: 'on'
   action:
     - service: homeassistant.turn_off

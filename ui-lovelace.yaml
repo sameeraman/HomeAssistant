@@ -399,6 +399,11 @@ views:
                 name: Auto AC On
                 tap_action:
                   action: toggle
+              - entity: input_boolean.nightmood_auto
+                icon: 'mdi:weather-night'
+                name: Auto Night Mood On/Off
+                tap_action:
+                  action: toggle
             title: Automation
             type: entities
       - type: vertical-stack
