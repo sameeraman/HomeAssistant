@@ -99,7 +99,6 @@ Following are some of the automation that I'm using at my smart home.
 - Turn on Alfresco Music Play with Alfresco Motion
 - Turn off Alfresco Music Play with Alfresco No Motion for 5 mins
 - Toggle Alfresco Automation with Alfresco Xiaomi push button long press
-- Turn off Alfresco Music Play with Alfresco No Motion for 3 mins
 - Turn on Alfresco light with 20% when there is motion in Alfresco
 - Turn off the Alfresco Light when there is no motion
 - Alert if the Alfresco Sonos was playing for more than 2 hours
