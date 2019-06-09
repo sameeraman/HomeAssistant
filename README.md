@@ -76,7 +76,7 @@ Following are some of the automation that I'm using at my smart home.
 - Turn on the Pantry Light when the door opens
 - Turn off the Pantry light when the door close
 - Turn off the Pantry Light when the door open and left for more than 2 minutes
-- Turn on the Kitchen light then there is motion
+- Turn on the Kitchen light then there is motion based on light and sunset
 - Turn off the Kitchen Light when there is no motion for more than 10 minutes
 - Turn on the living mood dim lights (light strips and lamps) when there is motion in kitchen/living and when time is between sunset and midnight
 - Turn off the living mood dim lights at mid night

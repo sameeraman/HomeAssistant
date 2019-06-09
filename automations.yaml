@@ -994,9 +994,9 @@
     - service: homeassistant.turn_off
       entity_id:  light.master_dimmer_123
 
-# Turn on the Kitchen light then there is motion
+# Turn on the Kitchen light then there is motion based on light and sunset
 - id: kitchenlightonmotion
-  alias: Turn on Kitchen Light when there is motion
+  alias: Turn on the Kitchen light then there is motion based on light and sunset
   trigger: 
     - platform: state
       entity_id: group.kitchen_motion
@@ -1010,6 +1010,12 @@
       - condition: numeric_state
         entity_id: sensor.6_in_1_multisensor_light_2_253
         below: 25
+      - condition: sun
+        after: sunset
+        after_offset: "-01:00:00"
+      - condition: sun
+        before: sunrise
+        before_offset: "01:00:00"
   action:
     - service: homeassistant.turn_on
       entity_id:  light.kitchen_light_135
