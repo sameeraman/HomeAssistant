@@ -167,7 +167,7 @@
 
 # Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set (second try)
 - id: setmyairstoptimerbyswitchstry2
-  alias: Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set
+  alias: Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set - second try
   initial_state: True
   trigger:
     - platform: state
@@ -185,6 +185,25 @@
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2290%22%7D%7D%7D'
 
+# Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set (third try)
+- id: setmyairstoptimerbyswitchstry3
+  alias: Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set - third try
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: sensor.myair_state
+      from: 'off'
+      to: 'on'
+      for:
+        seconds: 180
+  condition:
+    condition: numeric_state
+    entity_id: sensor.myair_stop_timer
+    equal: 0
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2287%22%7D%7D%7D'
 
 # Reset Air Conditioner Stop Timer to 0 when the air conditioner is turned off    
 - id: resetmyairstoptimerbyswitch
