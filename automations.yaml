@@ -171,26 +171,7 @@
   initial_state: True
   trigger:
     - platform: state
-      entity_id: sensor.myair_state
-      to: 'on'
-      for:
-        seconds: 120
-  condition:
-    condition: state
-    entity_id: sensor.myair_stop_timer
-    state: '0'
-  action:
-    - service: shell_command.myair_setcmd
-      data_template:
-        json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2288%22%7D%7D%7D'
-
-# Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set (third try)
-- id: setmyairstoptimerbyswitchstry3
-  alias: Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set - third try
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: sensor.myair_state
+      entity_id: switch.myair_power
       to: 'on'
       for:
         seconds: 180
@@ -202,6 +183,25 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2287%22%7D%7D%7D'
+
+# Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set (third try)
+- id: setmyairstoptimerbyswitchstry3
+  alias: Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set - third try
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: switch.myair_power
+      to: 'on'
+      for:
+        seconds: 240
+  condition:
+    condition: state
+    entity_id: sensor.myair_stop_timer
+    state: '0'
+  action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2286%22%7D%7D%7D'
 
 # Reset Air Conditioner Stop Timer to 0 when the air conditioner is turned off    
 - id: resetmyairstoptimerbyswitch
