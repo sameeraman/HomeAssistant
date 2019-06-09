@@ -2,34 +2,34 @@
     switches:
       # Template Switch for the House Alarm
       housealarm:
-          value_template: '{{ states("input_boolean.house_alarm") }}'
-          friendly_name: 'House Alarm'
-          turn_on:
-            - service: input_boolean.turn_on
-              entity_id: input_boolean.house_alarm
-            - service: shell_command.house_alarm_on
-          turn_off:
-            - service: input_boolean.turn_off
-              entity_id: input_boolean.house_alarm
-            - service: shell_command.house_alarm_off
+        value_template: '{{ states("input_boolean.house_alarm") }}'
+        friendly_name: 'House Alarm'
+        turn_on:
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.house_alarm
+          - service: shell_command.house_alarm_on
+        turn_off:
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.house_alarm
+          - service: shell_command.house_alarm_off
       nightmood:
-          value_template: '{{ states("input_boolean.night_mood") }}'
-          friendly_name: 'Night Mood'
-          turn_on:
-            - service: input_boolean.turn_on
-              entity_id: input_boolean.night_mood
-          turn_off:
-            - service: input_boolean.turn_off
-              entity_id: input_boolean.night_mood
+        value_template: '{{ states("input_boolean.night_mood") }}'
+        friendly_name: 'Night Mood'
+        turn_on:
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.night_mood
+        turn_off:
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.night_mood
       living_music:
-          value_template: '{{ is_state('media_player.living', 'playing') }}'
-          friendly_name: 'Living Music'
-          turn_on:
-            - service: media_player.media_play
-              entity_id: media_player.living
-          turn_off:
-            - service: media_player.media_pause
-              entity_id: media_player.living
+        value_template: "{{ is_state('media_player.living', 'playing') }}"
+        friendly_name: 'Living Music'
+        turn_on:
+          - service: media_player.media_play
+            entity_id: media_player.living
+        turn_off:
+          - service: media_player.media_pause
+            entity_id: media_player.living
   - platform: command_line
     switches:
       # MyAir Air Conditioner Virtual Switches
