@@ -21,6 +21,15 @@
           turn_off:
             - service: input_boolean.turn_off
               entity_id: input_boolean.night_mood
+      living_music:
+          value_template: '{{ is_state('media_player.living', 'playing') }}'
+          friendly_name: 'Living Music'
+          turn_on:
+            - service: media_player.media_play
+              entity_id: media_player.living
+          turn_off:
+            - service: media_player.media_pause
+              entity_id: media_player.living
   - platform: command_line
     switches:
       # MyAir Air Conditioner Virtual Switches
