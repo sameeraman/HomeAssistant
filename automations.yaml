@@ -178,7 +178,7 @@
   condition:
     condition: numeric_state
     entity_id: sensor.myair_stop_timer
-    equal: 0
+    below: 1
   action:
     - service: shell_command.myair_setcmd
       data_template:
@@ -197,7 +197,7 @@
   condition:
     condition: numeric_state
     entity_id: sensor.myair_stop_timer
-    equal: 0
+    below: 1
   action:
     - service: shell_command.myair_setcmd
       data_template:
@@ -914,7 +914,7 @@
   trigger: 
     - platform: state
       entity_id: media_player.alfresco
-      state: 'playing'
+      to: 'playing'
       for:
         hours: 2
   action:
@@ -935,10 +935,12 @@
   trigger: 
     - platform: state
       entity_id: media_player.alfresco
-      state: 'playing'
+      to: 'playing'
       for:
         hours: 4
   action:
+    - service: media_player.media_pause
+      entity_id: media_player.alfresco
     - service: notify.pushbullet
       data_template:
         title: 'Alfresco Music was playing for more than 4 hours - Turned off -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
@@ -1167,7 +1169,7 @@
   initial_state: True
   trigger:
     - platform: time
-      at: 23:58:59
+      at: '23:58:59'
   condition:
     condition: and
     conditions: 
@@ -1352,9 +1354,9 @@
   initial_state: True
   trigger:
     - platform: time
-      at: 23:59:59
+      at: '23:59:59'
     - platform: time
-      at: 01:00:00
+      at: '01:00:00'
   condition:
     condition: and
     conditions: 
