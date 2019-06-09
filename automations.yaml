@@ -176,9 +176,9 @@
       for:
         seconds: 120
   condition:
-    condition: numeric_state
+    condition: state
     entity_id: sensor.myair_stop_timer
-    below: 1
+    state: '0'
   action:
     - service: shell_command.myair_setcmd
       data_template:
@@ -195,9 +195,9 @@
       for:
         seconds: 180
   condition:
-    condition: numeric_state
+    condition: state
     entity_id: sensor.myair_stop_timer
-    below: 1
+    state: '0'
   action:
     - service: shell_command.myair_setcmd
       data_template:
