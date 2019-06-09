@@ -172,7 +172,6 @@
   trigger:
     - platform: state
       entity_id: sensor.myair_state
-      from: 'off'
       to: 'on'
       for:
         seconds: 120
@@ -183,7 +182,7 @@
   action:
     - service: shell_command.myair_setcmd
       data_template:
-        json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2290%22%7D%7D%7D'
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2288%22%7D%7D%7D'
 
 # Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set (third try)
 - id: setmyairstoptimerbyswitchstry3
@@ -192,7 +191,6 @@
   trigger:
     - platform: state
       entity_id: sensor.myair_state
-      from: 'off'
       to: 'on'
       for:
         seconds: 180
