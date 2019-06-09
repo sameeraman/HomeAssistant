@@ -1275,12 +1275,12 @@
       entity_id: script.xiaomi_gateway_alarm
     - service: notify.pushbullet
       data_template:
-        title: '{{ [condition.entity_id.split(".")[1]].name  }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        title: '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: notify.sendgrid
       data_template:
-        title: '{{ [condition.entity_id.split(".")[1]].name  }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        title: '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
 
 # Turn on Bed Heater at 10pm if the master bedroom temperature is below 22C
 - id: turnonbedheaterelow22c
@@ -1294,6 +1294,9 @@
     conditions: 
       - condition: state
         entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: switch.bedheater_38
         state: 'off'
       - condition: numeric_state
         entity_id: sensor.m_bed_room_t_34
@@ -1312,8 +1315,12 @@
       to: 'on'
       for:
         hours: 2
+  condition:
+    condition: state
+    entity_id: switch.bedheater_38
+    state: 'on'
   action:
-    - service: homeassistant.turn_off
+    - service: switch.turn_off
       entity_id: switch.bedheater_38
 
 # Turn on the night mood at midnight when there is no motion in the house
