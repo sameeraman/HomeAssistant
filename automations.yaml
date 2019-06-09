@@ -115,7 +115,8 @@
   trigger:
     entity_id: input_number.myair_starttimer
     platform: state
-  condition: template
+  condition:    
+    condition: template
     value_template: "{{ states('sensor.myair_start_timer') != states('input_number.myair_starttimer') }}"
   action:
     - service: shell_command.myair_setcmd
@@ -129,7 +130,8 @@
   trigger:
     entity_id: input_number.myair_stoptimer
     platform: state
-  condition: template
+  condition:    
+    condition: template
     value_template: "{{ states('sensor.myair_stop_timer') != states('input_number.myair_stoptimer') }}"
   action:
     - service: shell_command.myair_setcmd
