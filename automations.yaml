@@ -427,9 +427,14 @@
       entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
       to: 'on'
   condition:
-    condition: numeric_state
-    entity_id: sensor.illumination_158d0001e0ac8e
-    below: 30
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: numeric_state
+        entity_id: sensor.illumination_158d0001e0ac8e
+        below: 30
   action:
     - service: homeassistant.turn_on
       entity_id:  light.bath_light_132
@@ -447,6 +452,9 @@
   condition:
     condition: and
     conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
       - condition: state
         entity_id: binary_sensor.motion_sensor_158d0002c6382d
         state: 'off'
@@ -867,6 +875,9 @@
     condition: and
     conditions: 
       - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
         entity_id: switch.housealarm
         state: 'off'
       - condition: state
@@ -905,7 +916,7 @@
         entity_id: light.alfresco_light_260
         state: 'on'
       - condition: state
-        entity_id: input_boolean.light_off_auto
+        entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
         entity_id: input_boolean.alfresco_motion_light
@@ -968,6 +979,9 @@
     condition: and
     conditions: 
       - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
         entity_id: light.office_dimmer_120
         state: 'off'
       - condition: numeric_state
@@ -991,7 +1005,7 @@
         entity_id: light.office_dimmer_120
         state: 'on'
       - condition: state
-        entity_id: input_boolean.light_off_auto
+        entity_id: input_boolean.light_on_off_auto
         state: 'on'
   action:
     - service: homeassistant.turn_off
@@ -1010,7 +1024,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: input_boolean.light_off_auto
+        entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
         entity_id: light.master_dimmer_123
@@ -1029,6 +1043,9 @@
   condition:
     condition: and
     conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
       - condition: state
         entity_id: light.kitchen_light_135
         state: 'off'
@@ -1053,7 +1070,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: input_boolean.light_off_auto
+        entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
         entity_id: light.kitchen_light_135
@@ -1073,7 +1090,7 @@
       for: 
         minutes: 5
     - platform: state
-      entity_id: sensor.myair_state
+      entity_id: switch.myair_power
       from: 'off'
       to: 'on'
       for:
@@ -1107,7 +1124,7 @@
       for: 
         minutes: 3
     - platform: state
-      entity_id: sensor.myair_state
+      entity_id: switch.myair_power
       from: 'off'
       to: 'on'
       for:
@@ -1148,7 +1165,7 @@
       - condition: time
         before: '23:59:59'
       - condition: state
-        entity_id: input_boolean.light_off_auto
+        entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
         entity_id: switch.housealarm
@@ -1174,7 +1191,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: input_boolean.light_off_auto
+        entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: or
         conditions:

@@ -12,8 +12,8 @@ alfresco_motion_light:
   name: Alfresco Motion Based Light On/Off
   icon: mdi:lightbulb-outline
 
-light_off_auto:
-  name: Turn lights off when no motion
+light_on_off_auto:
+  name: Turn lights On/Off with motion
   icon: mdi:lightbulb-outline
 
 zone_off_auto:

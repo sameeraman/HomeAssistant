@@ -384,7 +384,7 @@ views:
                 name: Alfresco Motion Light
                 tap_action:
                   action: toggle
-              - entity: input_boolean.light_off_auto
+              - entity: input_boolean.light_on_off_auto
                 icon: 'mdi:lightbulb-outline'
                 name: Lights Auto Off 
                 tap_action:
