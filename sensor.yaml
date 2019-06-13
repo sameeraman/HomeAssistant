@@ -2,18 +2,15 @@
     resource: http://10.1.1.180:2025/getSystemData
     name: myair
 
-    
-  - platform: statistics
-    name: myair_state_avg  
-    entity_id: sensor.myair_state
-    max_age:
-      minutes: 240
 
-  - platform: statistics
-    name: myair_state_avg1  
+  - platform: history_stats
+    name: myair_state_avg
     entity_id: switch.myair_power
-    max_age:
-      minutes: 240
+    state: 'on'
+    type: time
+    end: '{{ now() }}'
+    duration:
+      hours: 4
 
   - platform: template
     sensors:
