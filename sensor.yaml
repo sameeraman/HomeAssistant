@@ -9,6 +9,12 @@
     max_age:
       minutes: 240
 
+  - platform: statistics
+    name: myair_state_avg1  
+    entity_id: switch.myair_power
+    max_age:
+      minutes: 240
+
   - platform: template
     sensors:
     # MyAir Sensors (Air Conditioner)
