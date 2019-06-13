@@ -3,6 +3,12 @@
     name: myair
 
     
+  - platform: statistics
+    name: myair_state_avg  
+    entity_id: sensor.myair_state
+    max_age:
+      minutes: 240
+
   - platform: template
     sensors:
     # MyAir Sensors (Air Conditioner)

@@ -366,7 +366,7 @@ views:
           - entities:
               - entity: input_boolean.housealarm_auto
                 icon: 'mdi:shield-home-outline'
-                name: House Alarm 
+                name: House Alarm Auto Arm/Unarm
                 tap_action:
                   action: toggle
               - entity: input_boolean.alfresco_button
@@ -376,22 +376,22 @@ views:
                   action: toggle
               - entity: input_boolean.alfresco_motion_music
                 icon: 'mdi:music-circle-outline'
-                name: Alfresco Motion Music
+                name: Alfresco Music Based on Motion
                 tap_action:
                   action: toggle
               - entity: input_boolean.alfresco_motion_light
                 icon: 'mdi:lightbulb-outline'
-                name: Alfresco Motion Light
+                name: Alfresco Light On/Off Based on Motion
                 tap_action:
                   action: toggle
               - entity: input_boolean.light_on_off_auto
                 icon: 'mdi:lightbulb-outline'
-                name: Lights Auto Off 
+                name: Lights Auto On/Off Based on Motion
                 tap_action:
                   action: toggle
               - entity: input_boolean.zone_off_auto
                 icon: 'mdi:air-filter'
-                name: AC Zones Auto On/Off
+                name: AC Zones Auto On/Off Based on Motion
                 tap_action:
                   action: toggle
               - entity: input_boolean.aircon_on_auto
@@ -401,7 +401,7 @@ views:
                   action: toggle
               - entity: input_boolean.nightmood_auto
                 icon: 'mdi:weather-night'
-                name: Auto Night Mood On/Off
+                name: Night Mood Auto On/Off
                 tap_action:
                   action: toggle
             title: Automation
