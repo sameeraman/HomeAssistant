@@ -1406,3 +1406,51 @@
   action:
     - service: homeassistant.turn_off
       entity_id: switch.nightmood
+
+
+# Alert on Z-Wave Batteries below 30% at 9:00pm
+- id: zwavebatterybelow30
+  alias: Alert on Z-Wave Batteries below 30% at 9:00pm
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '21:00:00'
+  condition:
+    condition: or
+    conditions: 
+      - condition: numeric_state
+        entity_id: sensor.laundry_motion_battery
+        below: 30
+      - condition: numeric_state
+        entity_id: sensor.master_motion_battery
+        below: 30
+      - condition: numeric_state
+        entity_id: sensor.mad_wr_battery
+        below: 30
+      - condition: numeric_state
+        entity_id: sensor.office_motion_battery
+        below: 30
+      - condition: numeric_state
+        entity_id: sensor.pantry_door_battery
+        below: 30
+      - condition: numeric_state
+        entity_id: sensor.room4_motion_battery
+        below: 30
+      - condition: numeric_state
+        entity_id: sensor.sam_wr_motion_battery
+        below: 30
+      - condition: numeric_state
+        entity_id: sensor.kitchen_motion_battery
+        below: 30
+      - condition: numeric_state
+        entity_id: sensor.garage_motion_1_battery
+        below: 30
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: '{{ [condition.entity_id.split(".")[1]].name  }} Battery status is below 30% -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Battery status is below 30% -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+    - service: notify.sendgrid
+      data_template:
+        title: '{{ [condition.entity_id.split(".")[1]].name  }} Battery status is below 30%  -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Battery status is below 30%  -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
