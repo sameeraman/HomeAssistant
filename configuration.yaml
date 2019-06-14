@@ -115,6 +115,16 @@ google_assistant:
 
 #emulated hue
 emulated_hue:
+  type: alexa
+  host_ip: 10.1.1.157
+  listen_port: 80
+  expose_by_default: true
+  entities:
+    light.alfresco_light_260
+    light.bath_light_132
+    light.bath_stripe
+    light.living_mood_lights
+    light.office_dimmer_120
 
 
 # MyAir Inputs
