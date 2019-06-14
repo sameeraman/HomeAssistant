@@ -874,7 +874,7 @@
     - service: light.turn_on
       data:
         entity_id: light.alfresco_light_260
-        brightness_pct: 20
+        brightness_pct: 30
 
 # Turn off the Alfresco Light when there is no motion 
 - id: alfrescolightoffnomotion

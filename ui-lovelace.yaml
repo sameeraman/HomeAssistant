@@ -13,15 +13,15 @@ views:
               - entity: binary_sensor.m_bed_room_m_33
                 icon: 'mdi:run-fast'
                 name: Motion
+              - entity: binary_sensor.door_window_sensor_158d0003677216
+                icon: 'mdi:door-closed'
+                name: Door
               - entity: sensor.m_bed_room_t_34
                 icon: 'mdi:oil-temperature'
                 name: Temperature
               - entity: sensor.m_bed_room_l_35
                 icon: 'mdi:theme-light-dark'
                 name: Light
-              - entity: sensor.m_bed_room_uv_37
-                icon: 'mdi:white-balance-sunny'
-                name: UV
               - entity: sensor.m_bed_room_h_36
                 icon: 'mdi:water-percent'
                 name: Humidity

@@ -115,8 +115,6 @@ google_assistant:
 
 #emulated hue
 emulated_hue:
-  host_ip: 10.1.1.157
-  listen_port: 80
 
 
 # MyAir Inputs
