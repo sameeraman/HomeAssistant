@@ -4,7 +4,16 @@
 
 
   - platform: history_stats
-    name: myair_state_avg
+    name: myair_state_avg2hr
+    entity_id: switch.myair_power
+    state: 'on'
+    type: time
+    end: '{{ now() }}'
+    duration:
+      hours: 2
+      
+  - platform: history_stats
+    name: myair_state_avg4hr
     entity_id: switch.myair_power
     state: 'on'
     type: time
