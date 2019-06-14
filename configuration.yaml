@@ -137,6 +137,8 @@ emulated_hue:
       hidden: false
     light.master_dimmer_123:
       hidden: false
+    light.garage_light:
+      hidden: false
     switch.air_conditioner:
       hidden: false
     switch.bedheater_38:

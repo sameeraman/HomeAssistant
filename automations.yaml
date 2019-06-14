@@ -1448,9 +1448,9 @@
   action:
     - service: notify.pushbullet
       data_template:
-        title: '{{ [condition.entity_id.split(".")[1]].name  }} Battery status is below 30% -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Battery status is below 30% -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        title: 'An Z-Wave Battery status is below 30% -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'An Z-Wave Battery status is below 30% -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: notify.sendgrid
       data_template:
-        title: '{{ [condition.entity_id.split(".")[1]].name  }} Battery status is below 30%  -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Battery status is below 30%  -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        title: ' An Z-Wave Battery status is below 30%  -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  ' An Z-Wave Battery status is below 30%  -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
