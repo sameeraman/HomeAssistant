@@ -115,16 +115,40 @@ google_assistant:
 
 #emulated hue
 emulated_hue:
-  type: alexa
-  host_ip: 10.1.1.157
-  listen_port: 80
-  expose_by_default: true
+  expose_by_default: false
   entities:
-    light.alfresco_light_260
-    light.bath_light_132
-    light.bath_stripe
-    light.living_mood_lights
-    light.office_dimmer_120
+    light.alfresco_light_260:
+      hidden: false
+    light.bath_light_132:
+      hidden: false
+    light.bath_stripe:
+      hidden: false
+    light.living_mood_lights:
+      hidden: false
+    light.office_dimmer_120:
+      hidden: false
+    light.front_outdoor_lights_59:
+      hidden: false
+    light.kitchen_light_135:
+      hidden: false
+    light.living_light_129:
+      hidden: false
+    light.living_mood_lights:
+      hidden: false
+    light.master_dimmer_123:
+      hidden: false
+    switch.air_conditioner:
+      hidden: false
+    switch.bedheater_38:
+      hidden: false
+    switch.housealarm:
+      hidden: false
+    switch.living_music:
+      hidden: false
+    switch.alfresco_music:
+      hidden: false
+    switch.nightmood:
+      hidden: false
 
 
 # MyAir Inputs

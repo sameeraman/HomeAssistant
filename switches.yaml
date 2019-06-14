@@ -30,6 +30,15 @@
         turn_off:
           - service: media_player.media_pause
             entity_id: media_player.living
+      alfresco_music:
+        value_template: "{{ is_state('media_player.alfresco', 'playing') }}"
+        friendly_name: 'Alfresco Music'
+        turn_on:
+          - service: media_player.media_play
+            entity_id: media_player.alfresco
+        turn_off:
+          - service: media_player.media_pause
+            entity_id: media_player.alfresco
   - platform: command_line
     switches:
       # MyAir Air Conditioner Virtual Switches
