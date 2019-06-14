@@ -255,68 +255,44 @@
     - service : switch.turn_on
       entity_id: switch.air_conditioner
 
-# Alert when Air conditioner is left on for more than 4 hours. 
+# Alert when Air conditioner is left on for more than 1.75 hours. 
 - id: myairruntimealert4hrs
-  alias: Alert when Air conditioner is left on for more than 4 hours
+  alias: Alert when Air conditioner is left on for more than 1.75 hours
   initial_state: True
   trigger:
-    - platform: state
-      entity_id: sensor.myair_state
-      from: 'off'
-      to: 'on'
-      for:
-        hours: 4
+    - platform: numeric_state
+      entity_id: sensor.myair_state_avg2hr
+      above: 1.75
   action:
     - service: notify.pushbullet
       data_template:
-        title: 'Air Conditioner is running for more than 4 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
-        message:  'Air Conditioner is running for more than 4 hours'
+        title: 'Air Conditioner is running for more than 1.75 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner is running for more than 1.75 hours'
     - service: notify.sendgrid
       data_template:
-        title: 'Air Conditioner is running for more than 4 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
-        message:  'Air Conditioner is running for more than 4 hours'
+        title: 'Air Conditioner is running for more than 1.75 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner is running for more than 1.75 hours'
 
-# Alert when Air conditioner is left On for more than 5 hours. 
+# Alert when Air conditioner is left On for more than 3.75 hours
 - id: myairruntimealert5hrs
-  alias: Alert when Air conditioner is left On for more than 5 hours
+  alias: Alert when Air conditioner is left On for more than 3.75 hours
   initial_state: True
   trigger:
-    - platform: state
-      entity_id: sensor.myair_state
-      from: 'off'
-      to: 'on'
-      for:
-        hours: 5
+    - platform: numeric_state
+      entity_id: sensor.myair_state_avg4hr
+      above: 3.75
   action:
+    - service: shell_command.myair_setcmd
+      data_template:
+        json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
     - service: notify.pushbullet
       data_template:
-        title: 'Air Conditioner is running for more than 5 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
-        message:  'Air Conditioner is running for more than 5 hours'
+        title: 'Air Conditioner is running for more than 3.75 hours. It was automatically turned off.  {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner is running for more than 3.75 hours. It was automatically turned off.'
     - service: notify.sendgrid
       data_template:
-        title: 'Air Conditioner is running for more than 5 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
-        message:  'Air Conditioner is running for more than 5 hours'
-
-# Alert when Air conditioner is left On for more than 6 hours. 
-- id: myairruntimealert6hrs
-  alias: Alert when Air conditioner is left On for more than 6 hours
-  initial_state: True
-  trigger:
-    - platform: state
-      entity_id: sensor.myair_state
-      from: 'off'
-      to: 'on'
-      for:
-        hours: 6
-  action:
-    - service: notify.pushbullet
-      data_template:
-        title: 'Air Conditioner is running for more than 6 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
-        message:  'Air Conditioner is running for more than 6 hours'
-    - service: notify.sendgrid
-      data_template:
-        title: 'Air Conditioner is running for more than 6 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
-        message:  'Air Conditioner is running for more than 6 hours'
+        title: 'Air Conditioner is running for more than 3.75 hours. It was automatically turned off. {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'Air Conditioner is running for more than 3.75 hours. It was automatically turned off.'
 
 # Alert and Turn off air conditioner if it is left On when the house alarm is on (After leaving home)
 - id: alertwhenairconisonafterleavinghome
