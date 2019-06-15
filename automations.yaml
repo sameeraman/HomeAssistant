@@ -1584,3 +1584,31 @@
   action:
     - service : script.turn_on
       entity_id: script.sonos_afternoon_greet
+
+
+# Turn off Sonos if it is left On when the house alarm is on (After leaving home)
+- id: turnoffsonoswhenhouseisarmed
+  alias: Turn off Sonos if it is left On when the house alarm is on (After leaving home)
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: switch.housealarm
+      to: 'on'
+      for:
+        minutes: 1
+  condition:
+    condition: or
+    conditions: 
+      - condition: state
+        entity_id: media_player.living
+        state: 'playing'
+      - condition: state
+        entity_id: media_player.alfresco
+        state: 'playing'
+  action:
+    - service: media_player.media_pause
+      entity_id: media_player.alfresco
+    - service: media_player.media_pause
+      entity_id: media_player.living
+
+
