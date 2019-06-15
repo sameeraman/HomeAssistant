@@ -1502,7 +1502,7 @@
       entity_id: switch.housealarm
       to: 'on'
       for: 
-        hour: 1
+        hours: 1
   condition:
     condition: and
     conditions: 
