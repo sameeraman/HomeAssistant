@@ -1551,6 +1551,9 @@
       - condition: state
         entity_id: input_boolean.morning_greet
         state: 'on'
+      - condition: state
+        entity_id: input_boolean.greetings_on
+        state: 'on'
   action:
     - service : script.turn_on
       entity_id: script.sonos_morning_greet
@@ -1574,6 +1577,9 @@
         state: 'off'
       - condition: state
         entity_id: input_boolean.arrival_greet
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.greetings_on
         state: 'on'
   action:
     - service : script.turn_on
