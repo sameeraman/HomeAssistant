@@ -21,6 +21,18 @@
     duration:
       hours: 4
 
+  # DarkSky Weather 
+  - platform: darksky
+    api_key: !secret darksky_key
+    latitude: !secret darksky_lat
+    longitude: !secret darksky_long
+    scan_interval: '00:10:00'
+    monitored_conditions:
+        - summary
+        - temperature
+        - hourly_summary
+        - temperature_high
+
   - platform: template
     sensors:
     # MyAir Sensors (Air Conditioner)
@@ -78,6 +90,24 @@
       myair_stop_timer:
         friendly_name: My Air Stop Timer
         value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["countDownToOff"] }}'
+    # Time sensors
+      part_of_day:
+        friendly_name: 'Part of Day'
+        value_template: >
+          {% set hour = now().hour %}
+          {% if 7 <= hour < 12 %}    Morning
+          {% elif 12 <= hour < 18 %} Afternoon
+          {% elif 18 <= hour < 22 %} Evening
+          {% else %}                 Midnight
+          {% endif %}
+        icon_template: >
+          {% if is_state('sensor.part_of_day', 'Morning') %}     mdi:weather-sunset-up
+          {% elif is_state('sensor.part_of_day', 'Afternoon') %} mdi:weather-sunny
+          {% elif is_state('sensor.part_of_day', 'Evening') %}   mdi:weather-sunset-down
+          {% else %}                                             mdi:weather-night
+          {% endif %}
+
+
     # Battery Sensors        
       main_door_battery:
         friendly_name: Main Door Sensor Battery

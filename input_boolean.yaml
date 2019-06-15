@@ -39,3 +39,13 @@ night_mood:
 house_alarm:
   name: House Alarm
   icon: mdi:home-lock
+
+morning_greet:
+  name: Good Morning Greet
+
+arrival_greet:
+  name: Afterwork Arrival Greet
+
+greetings_on:
+  name: Enable Sonos Greetings
+

@@ -1454,3 +1454,127 @@
       data_template:
         title: ' An Z-Wave Battery status is below 30%  -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  ' An Z-Wave Battery status is below 30%  -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+
+
+# Turn on the input boolean for Good Morning Greet
+- id: turnongoodmorninggreet
+  alias: Turn on the input boolean for Good Morning Greet
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '04:00:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: switch.nightmood
+        state: 'on'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.morning_greet
+
+# Turn off the input boolean for Good Morning Greet (if not greeted) at 11:00am
+- id: turnoffgoodmorninggreet
+  alias: Turn off the input boolean for Good Morning Greet (if not greeted) at 11:00am
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '11:00:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.morning_greet
+        state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.morning_greet
+
+# Turn on the input boolean for Afterwork Arrival Greet
+- id: turnonarrivalgreet
+  alias: Turn on the input boolean for Afterwork Arrival Greet
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: switch.housealarm
+      to: 'on'
+      for: 
+        hour: 1
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'on'
+        # add not vacation mood logic
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.arrival_greet
+
+# Turn off the input boolean for Afterwork Arrival Greet (if not greeted) at 10:00pm
+- id: turnoffgoodmorninggreet
+  alias: Turn off the input boolean for Afterwork Arrival Greet (if not greeted) at 10:00pm
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '22:00:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.arrival_greet
+        state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.arrival_greet
+
+# Activate the Good morning  Greet
+- id: activatemorninggreet
+  alias: Activate the Good morning  Greet
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: group.living_kitchen_motion
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: switch.nightmood
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.morning_greet
+        state: 'on'
+  action:
+    - service : script.turn_on
+      entity_id: script.sonos_morning_greet
+
+# Activate the Afterwork Arrival Greet
+- id: activatearrivalgreet
+  alias: Activate the Afterwork Arrival Greet
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: group.living_kitchen_motion
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: switch.nightmood
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.arrival_greet
+        state: 'on'
+  action:
+    - service : script.turn_on
+      entity_id: script.sonos_afternoon_greet

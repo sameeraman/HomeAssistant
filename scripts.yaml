@@ -22,3 +22,73 @@ xiaomi_gateway_alarm:
         ringtone_id: 2
         ringtone_vol: 15
         gw_mac: !secret xiaomi_mac
+
+# Script that executes on arrival at home after work
+sonos_afternoon_greet:
+  alias: "Sonos afternoon great - Living"
+  sequence:
+    - service: media_player.sonos_snapshot
+      data_template:
+        entity_id: media_player.living
+    - service: media_player.media_pause
+      data_template:
+        entity_id: media_player.living
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.living
+        volume_level: "0.60"
+    - service: tts.google_translate_say
+      data_template:
+        entity_id: media_player.living
+        message: >
+          Good Evening!, Welcome back home. {% set seconda = ["Hope you had a great day.","Hope you had a fantastic day.","I beleive you had a fantastic day."] %} {% set aindex = (range(0, (seconda | length - 1) )|random) %} 
+          {{seconda[aindex]}}
+          The temperature inside is {{ states('sensor.6_in_1_multisensor_temperature_2_252') | float }} degrees and the humidity is {{  states('sensor.6_in_1_multisensor_humidity_2_254') | int }} percent.
+           {% set secondb = ["Here is some music for you now.","How about some music now.","Let me play some music for you."] %} {% set bindex = (range(0, (secondb | length - 1) )|random) %} 
+          {{secondb[bindex]}}
+          {% set secondr = ["Have a great evening.","Have a good one.","Goodbye.","Talk to you later."] %} {% set sindex = (range(0, (secondr | length - 1) )|random) %} 
+          {{secondr[sindex]}}
+    - delay:
+        seconds:  18
+    - service: media_player.sonos_restore
+      data_template:
+        entity_id: media_player.living
+    - service: media_player.media_play
+      data_template:
+        entity_id: media_player.living
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.arrival_greet
+
+# Script that executes good morning greet
+sonos_morning_greet:
+  alias: "Sonos morning greet - Living"
+  sequence:
+    - service: media_player.sonos_snapshot
+      data_template:
+        entity_id: media_player.living
+    - service: media_player.media_pause
+      data_template:
+        entity_id: media_player.living
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.living
+        volume_level: "0.60"
+    - service: tts.google_translate_say
+      data_template:
+        entity_id: media_player.living
+        message: >
+          Good morning!. It's currently {{ states('sensor.dark_sky_summary') }} and {{ states('sensor.dark_sky_temperature') |round}} degrees in Treeby. Today it will be {{  states('sensor.dark_sky_hourly_summary') |replace(".", "")}} ... 
+          I will now turn on the TV...  
+          {% set secondr = ["Have a great day.","Enjoy the day","Have a good one.","Talk to you later."] %} {% set sindex = (range(0, (secondr | length - 1) )|random) %} 
+          {{secondr[sindex]}}
+    - delay:
+        seconds:  18
+    - service: media_player.sonos_restore
+      data_template:
+        entity_id: media_player.living
+    - service: remote.turn_on
+      entity_id: remote.Living
+      data:
+        activity: "Watch TV"
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.morning_greet
