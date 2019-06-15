@@ -396,12 +396,17 @@ views:
                   action: toggle
               - entity: input_boolean.aircon_on_auto
                 icon: 'mdi:air-conditioner'
-                name: Auto AC On
+                name: Auto AC Power On
                 tap_action:
                   action: toggle
               - entity: input_boolean.nightmood_auto
                 icon: 'mdi:weather-night'
-                name: Night Mood Auto On/Off
+                name: Night Mood Auto
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.greetings_on
+                icon: 'mdi:voice'
+                name: Sonos Voice Greetings
                 tap_action:
                   action: toggle
             title: Automation

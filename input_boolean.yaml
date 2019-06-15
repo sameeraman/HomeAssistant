@@ -48,4 +48,5 @@ arrival_greet:
 
 greetings_on:
   name: Enable Sonos Greetings
+  icon: mdi:voice
 
