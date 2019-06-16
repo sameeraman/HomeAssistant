@@ -19,17 +19,17 @@ views:
                 name: Away
                 tap_action:
                   action: toggle
-              - entity: input_boolean.guest_mood
+              - entity: switch.guest_mood
                 icon: 'mdi:account-supervisor'
                 name: Guest
                 tap_action:
                   action: toggle
-              - entity: input_boolean.party_mood
+              - entity: switch.party_mood
                 icon: 'mdi:glass-cocktail'
                 name: Party
                 tap_action:
                   action: toggle
-              - entity: input_boolean.vacation_mood
+              - entity: switch.vacation_mood
                 icon: 'mdi:airplane'
                 name: Vacation
                 tap_action:
