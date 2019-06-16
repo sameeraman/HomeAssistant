@@ -1531,9 +1531,9 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.arrival_greet
 
-# Activate the Good morning  Greet
+# Activate the Good morning Sonos Greet on First motion for the day
 - id: activatemorninggreet
-  alias: Activate the Good morning  Greet
+  alias: Activate the Good morning Sonos Greet on First motion for the day
   initial_state: True
   trigger:
     - platform: state
@@ -1558,9 +1558,9 @@
     - service : script.turn_on
       entity_id: script.sonos_morning_greet
 
-# Activate the Afterwork Arrival Greet
+# Activate the Afterwork Sonos Greet on Arrival
 - id: activatearrivalgreet
-  alias: Activate the Afterwork Arrival Greet
+  alias: Activate the Afterwork Sonos Greet on Arrival
   initial_state: True
   trigger:
     - platform: state
@@ -1612,3 +1612,66 @@
       entity_id: media_player.living
 
 
+# Update Automation when Guest Mood is turned on
+- id: updateautomationguestmoodon
+  alias: Update Automation when Guest Mood is turned on
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: input_boolean.guest_mood
+      to: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.nightmood_auto
+
+# Update Automation when Guest Mood is turned off
+- id: updateautomationguestmoodoff
+  alias: Update Automation when Guest Mood is turned off
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: input_boolean.guest_mood
+      to: 'off'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.nightmood_auto
+
+# Update Automation when Party Mood is turned on
+- id: updateautomationpartymoodon
+  alias: Update Automation when Party Mood is turned on
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: input_boolean.party_mood
+      to: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.nightmood_auto
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.greetings_on
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.light_on_off_auto
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.alfresco_motion_music
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.alfresco_motion_light
+
+# Update Automation when Party Mood is turned off
+- id: updateautomationpartymoodon
+  alias: Update Automation when Party Mood is turned off
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: input_boolean.party_mood
+      to: 'off'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.nightmood_auto
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.greetings_on
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.light_on_off_auto
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.alfresco_motion_music
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.alfresco_motion_light

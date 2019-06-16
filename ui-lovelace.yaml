@@ -30,7 +30,7 @@ views:
                 tap_action:
                   action: toggle
               - entity: input_boolean.vacation_mood
-                icon: 'mdi:airplace-takeoff'
+                icon: 'mdi:airplane'
                 name: Vacation
                 tap_action:
                   action: toggle

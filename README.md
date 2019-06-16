@@ -84,6 +84,8 @@ Following are some of the automation that I'm using at my smart home.
 - Toggle Living Mood lights when Xiaomi Living push button is single pressed
 - Toggle Living Sonos when Xiaomi Living push button is double pressed
 - Alarm when there is motion outside master bedroom and when the night mood is on
+- Activate the Good morning Sonos Greet on First motion for the day
+- Activate the Afterwork Sonos Greet on Arrival
 
 ## Garage Automation
 - Turn on the Garage light then there is motion
@@ -123,3 +125,9 @@ Following are some of the automation that I'm using at my smart home.
 - Turn off house alarm based on device tracker - Unarm when anyone is back at home
 - Turn on the night mood at midnight when there is no motion in the house
 - Turn off the Night mood when master bedroom door open in the morning
+- Turn off Sonos if it is left On when the house alarm is on (After leaving home)
+- Update Automation when Guest Mood is turned on
+- Update Automation when Guest Mood is turned off
+- Update Automation when Party Mood is turned on
+- Update Automation when Party Mood is turned off
+- Alert on Z-Wave Batteries below 30% at 9:00pm
