@@ -1655,6 +1655,10 @@
       entity_id: input_boolean.alfresco_motion_music
     - service: input_boolean.turn_off
       entity_id: input_boolean.alfresco_motion_light
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.zone_off_auto
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.housealarm_auto
 
 # Update Automation when Party Mood is turned off
 - id: updateautomationpartymoodon
@@ -1675,3 +1679,7 @@
       entity_id: input_boolean.alfresco_motion_music
     - service: input_boolean.turn_on
       entity_id: input_boolean.alfresco_motion_light
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.zone_off_auto
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.housealarm_auto

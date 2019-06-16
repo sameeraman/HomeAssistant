@@ -167,19 +167,19 @@ views:
           - type: glance
             title: Office Room
             entities:
-              - entity: binary_sensor.officeroomsensor_m_109
+              - entity: binary_sensor.officeroom_sam_m_345
                 icon: 'mdi:run-fast'
                 name: Motion
-              - entity: sensor.officeroomsensor_t_110
+              - entity: sensor.officeroom_sam_t_346
                 icon: 'mdi:oil-temperature'
                 name: Temperature
-              - entity: sensor.officeroomsensor_l_111
+              - entity: sensor.officeroom_sam_l_347
                 icon: 'mdi:theme-light-dark'
                 name: Light
-              - entity: sensor.officeroomsensor_uv_113
+              - entity: sensor.officeroom_sam_uv_349
                 icon: 'mdi:white-balance-sunny'
                 name: UV
-              - entity: sensor.officeroomsensor_h_112
+              - entity: sensor.officeroom_sam_h_348
                 icon: 'mdi:water-percent'
                 name: Humidity
           - type: horizontal-stack
@@ -578,14 +578,14 @@ views:
 
 # Office Room
           - type: state-icon
-            entity: sensor.officeroomsensor_t_110
+            entity: sensor.officeroom_sam_t_346
             icon: 'mdi:thermometer'
             style: 
                 top: 5%
                 left: 67%
                 "--paper-item-icon-color": '#696969'
           - type: state-label
-            entity: sensor.officeroomsensor_t_110
+            entity: sensor.officeroom_sam_t_346
             icon: 'mdi:thermometer'
             style: 
                 top: 5%
@@ -603,7 +603,7 @@ views:
           # Office Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.officeroomsensor_m_109
+            entity: binary_sensor.officeroom_sam_m_345
             style:
               top: 12%
               left: 70.5%
@@ -748,7 +748,7 @@ views:
           # Living Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.officeroomsensor_m_109
+            entity: binary_sensor.officeroom_sam_m_345
             style:
               top: 34%
               left: 13%

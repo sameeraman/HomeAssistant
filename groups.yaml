@@ -74,11 +74,11 @@ office_sensors:
   name: Office Sensors
   view: no
   entities:
-    - binary_sensor.officeroomsensor_m_109
-    - sensor.officeroomsensor_t_110
-    - sensor.officeroomsensor_l_111
-    - sensor.officeroomsensor_h_112
-    - sensor.officeroomsensor_uv_113
+    - binary_sensor.officeroom_sam_m_345
+    - sensor.officeroom_sam_t_346
+    - sensor.officeroom_sam_l_347
+    - sensor.officeroom_sam_h_348
+    - sensor.officeroom_sam_uv_349
 master_sensors:
   name: Master Bedroom Sensors
   view: no
@@ -135,7 +135,8 @@ office_motion:
   view: false
   control: hidden
   entities:
-    - binary_sensor.officeroomsensor_m_109
+    - binary_sensor.officeroom_mad_m_297
+    - binary_sensor.officeroom_sam_m_345
     - binary_sensor.motion_sensor_158d0002b7ec00
 
 master_motion:
