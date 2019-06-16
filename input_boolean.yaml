@@ -50,3 +50,14 @@ greetings_on:
   name: Enable Sonos Greetings
   icon: mdi:voice
 
+guest_mood:
+  name: Enable Guest Mood
+  icon: mdi:account-supervisor
+
+vacation_mood:
+  name: Enable Vacation Mood
+  icon: mdi:airplace-takeoff
+
+party_mood:
+  name: Enable Party Mood
+  icon: mdi:glass-cocktail

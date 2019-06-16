@@ -6,10 +6,42 @@ resources:
 views:
   - title: Home
     cards:
-      - entity: weather.dark_sky
-        type: weather-forecast
-      - cards:
-          - entities:
+      - type: weather-forecast  
+        entity: weather.dark_sky
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: House Moods
+            show_state: false
+            entities:
+              - entity: switch.housealarm
+                icon: 'mdi:shield-home-outline'
+                name: Away
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.guest_mood
+                icon: 'mdi:account-supervisor'
+                name: Guest
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.party_mood
+                icon: 'mdi:glass-cocktail'
+                name: Party
+                tap_action:
+                  action: toggle
+              - entity: input_boolean.vacation_mood
+                icon: 'mdi:airplace-takeoff'
+                name: Vacation
+                tap_action:
+                  action: toggle
+              - entity: switch.nightmood
+                icon: 'mdi:weather-night'
+                name: Night
+                tap_action:
+                  action: toggle
+          - type: glance
+            title: Master Bedroom
+            entities:
               - entity: binary_sensor.m_bed_room_m_33
                 icon: 'mdi:run-fast'
                 name: Motion
@@ -25,9 +57,9 @@ views:
               - entity: sensor.m_bed_room_h_36
                 icon: 'mdi:water-percent'
                 name: Humidity
-            title: Master Bedroom
-            type: glance
-          - entities:
+          - type: glance
+
+            entities:
               - entity: light.mad_wr_dimmer_65
                 icon: 'mdi:lightbulb-on-outline'
                 name: Madhushi WR
@@ -48,21 +80,17 @@ views:
                 name: Sameera WR
                 tap_action:
                   action: toggle
-            show_state: false
-            type: glance
-          - cards:
+          - type: horizontal-stack
+            cards:
               - entity: light.master_dimmer_123
                 type: light
               - entity: light.bath_light_132
                 type: light
-            type: horizontal-stack
-          - type: custom:mini-media-player
-            entity: media_player.living
-          - type: custom:mini-media-player
-            entity: media_player.alfresco
-        type: vertical-stack
-      - cards:
-          - entities:
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Kitchen
+            entities:
               - entity: binary_sensor.test_device_251
                 icon: 'mdi:run-fast'
                 name: Motion
@@ -78,15 +106,15 @@ views:
               - entity: sensor.6_in_1_multisensor_humidity_2_254
                 icon: 'mdi:water-percent'
                 name: Humidity
-            title: Kitchen
-            type: glance
-          - cards:
+          - type: horizontal-stack
+            cards:
               - entity: light.kitchen_light_135
                 type: light
               - entity: light.living_light_129
                 type: light
-            type: horizontal-stack
-          - entities:
+          - type: glance
+            show_state: false
+            entities:
               - entity: light.living_floor_lamp
                 icon: 'mdi:lamp'
                 name: Living Floor
@@ -107,104 +135,18 @@ views:
                 name: Dining Table
                 tap_action:
                   action: toggle
-            show_state: false
-            type: glance
-          - entities:
-              - entity: scene.livingnightmood
-                icon: 'mdi:weather-night'
-                name: Night Dim
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.livingnightmood
-              - entity: scene.cookingmood
-                icon: 'mdi:rice'
-                name: Cooking
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.cookingmood
-              - entity: scene.tvwatchingmode
-                icon: 'mdi:television-classic'
-                name: TV Watching
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.tvwatchingmode
-              - entity: scene.livingactivenightmood
-                icon: 'mdi:sofa'
-                name: Active
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.livingactivenightmood
-              - entity: scene.livingoff
-                icon: 'mdi:power-plug-off'
-                name: All Off
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.livingoff
-            show_state: false
-            title: Kitchen & Living Moods
-            type: glance
-          - entities:
-              - entity: scene.livingred
-                icon: 'mdi:palette'
-                name: Red
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.livingred
-              - entity: scene.livinggreen
-                icon: 'mdi:palette'
-                name: Green
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.livinggreen
-              - entity: scene.livingblue
-                icon: 'mdi:palette'
-                name: Blue
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.livingblue
-              - entity: scene.livingwarm
-                icon: 'mdi:palette'
-                name: Warm
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.livingwarm
-              - entity: scene.livingcoloroff
-                icon: 'mdi:close-circle-outline'
-                name: Color Off
-                tap_action:
-                  action: call-service
-                  service: scene.turn_on
-                  service_data:
-                    entity_id: scene.livingcoloroff
-            show_state: false
-            type: glance
+
           - type: custom:mini-media-player
             entity: media_player.yamaha_receiver
             icon: 'mdi:speaker-wireless'
             hide:
               power: true
               controls : true
-        type: vertical-stack
-      - cards:
-          - entities:
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Laundry
+            entities:
               - entity: binary_sensor.laundry_199
                 icon: 'mdi:run-fast'
                 name: Motion
@@ -220,11 +162,11 @@ views:
               - entity: sensor.6_in_1_multisensor_humidity_1_202
                 icon: 'mdi:water-percent'
                 name: Humidity
-            title: Laundry
-            type: glance
-        type: vertical-stack
-      - cards:
-          - entities:
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Office Room
+            entities:
               - entity: binary_sensor.officeroomsensor_m_109
                 icon: 'mdi:run-fast'
                 name: Motion
@@ -240,17 +182,17 @@ views:
               - entity: sensor.officeroomsensor_h_112
                 icon: 'mdi:water-percent'
                 name: Humidity
-            title: Office Room
-            type: glance
-          - cards:
-              - entity: light.office_dimmer_120
-                type: light
-              - entity: light.alfresco_light_260
-                type: light
-            type: horizontal-stack
-        type: vertical-stack
-      - cards:
-          - entities:
+          - type: horizontal-stack
+            cards:
+              - type: light
+                entity: light.office_dimmer_120
+              - type: light
+                entity: light.alfresco_light_260
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Garage
+            entities:
               - entity: binary_sensor.garage_sensor_m_46
                 icon: 'mdi:run-fast'
                 name: Motion
@@ -266,9 +208,8 @@ views:
               - entity: sensor.garage_sensor_h_49
                 icon: 'mdi:water-percent'
                 name: Humidity
-            title: Garage
-            type: glance
-          - cards:
+          - type: horizontal-stack
+            cards:
               - entity: light.garage_light
                 icon: 'mdi:lightbulb'
                 name: Garage Light
@@ -287,9 +228,8 @@ views:
                 tap_action:
                   action: toggle
                 type: entity-button
-            type: horizontal-stack
-        type: vertical-stack
-  
+
+# Living Tab  
   - title: Living
     cards:
       - type: vertical-stack
@@ -345,7 +285,102 @@ views:
                 tap_action:
                   action: toggle
             type: glance
-          - entities:
+          - type: custom:mini-media-player
+            entity: media_player.living
+          - type: custom:mini-media-player
+            entity: media_player.alfresco
+      - type: vertical-stack
+        cards:
+          - type: glance
+            show_state: false
+            title: Kitchen & Living Moods
+            entities:
+              - entity: scene.livingnightmood
+                icon: 'mdi:weather-night'
+                name: Night Dim
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingnightmood
+              - entity: scene.cookingmood
+                icon: 'mdi:rice'
+                name: Cooking
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.cookingmood
+              - entity: scene.tvwatchingmode
+                icon: 'mdi:television-classic'
+                name: TV Watching
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.tvwatchingmode
+              - entity: scene.livingactivenightmood
+                icon: 'mdi:sofa'
+                name: Active
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingactivenightmood
+              - entity: scene.livingoff
+                icon: 'mdi:power-plug-off'
+                name: All Off
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingoff
+          - type: glance
+            show_state: false
+            entities:
+              - entity: scene.livingred
+                icon: 'mdi:palette'
+                name: Red
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingred
+              - entity: scene.livinggreen
+                icon: 'mdi:palette'
+                name: Green
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livinggreen
+              - entity: scene.livingblue
+                icon: 'mdi:palette'
+                name: Blue
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingblue
+              - entity: scene.livingwarm
+                icon: 'mdi:palette'
+                name: Warm
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingwarm
+              - entity: scene.livingcoloroff
+                icon: 'mdi:close-circle-outline'
+                name: Color Off
+                tap_action:
+                  action: call-service
+                  service: scene.turn_on
+                  service_data:
+                    entity_id: scene.livingcoloroff
+          - type: glance
+            title: Group Motion
+            entities:
               - entity: group.kitchen_motion
                 icon: 'mdi:silverware-fork-knife'
                 name: Kitchen
@@ -361,91 +396,58 @@ views:
               - entity: group.garage_motion
                 icon: 'mdi:garage-open'
                 name: Garage
-            title: Group Motion
-            type: glance
-          - entities:
-              - entity: input_boolean.housealarm_auto
-                icon: 'mdi:shield-home-outline'
-                name: House Alarm Auto Arm/Unarm
-                tap_action:
-                  action: toggle
-              - entity: input_boolean.alfresco_button
-                icon: 'mdi:music-circle-outline'
-                name: Alfresco Button Music
-                tap_action:
-                  action: toggle
-              - entity: input_boolean.alfresco_motion_music
-                icon: 'mdi:music-circle-outline'
-                name: Alfresco Music Based on Motion
-                tap_action:
-                  action: toggle
-              - entity: input_boolean.alfresco_motion_light
-                icon: 'mdi:lightbulb-outline'
-                name: Alfresco Light On/Off Based on Motion
-                tap_action:
-                  action: toggle
-              - entity: input_boolean.light_on_off_auto
-                icon: 'mdi:lightbulb-outline'
-                name: Lights Auto On/Off Based on Motion
-                tap_action:
-                  action: toggle
-              - entity: input_boolean.zone_off_auto
-                icon: 'mdi:air-filter'
-                name: AC Zones Auto On/Off Based on Motion
-                tap_action:
-                  action: toggle
-              - entity: input_boolean.aircon_on_auto
-                icon: 'mdi:air-conditioner'
-                name: Auto AC Power On
-                tap_action:
-                  action: toggle
-              - entity: input_boolean.nightmood_auto
-                icon: 'mdi:weather-night'
-                name: Night Mood Auto
-                tap_action:
-                  action: toggle
-              - entity: input_boolean.greetings_on
-                icon: 'mdi:voice'
-                name: Sonos Voice Greetings
-                tap_action:
-                  action: toggle
-            title: Automation
-            type: entities
       - type: vertical-stack
         cards:
         - type: entities
-          title: Xiaomi Battery Status
-          show_header_toggle: false    
+          title: Automation
           entities:
-            - entity: sensor.main_door_battery
-            - entity: sensor.garage_door_battery
-            - entity: sensor.laundry_door_battery
-            - entity: sensor.bath_motion_battery
-            - entity: sensor.kitchen_motion_2_battery
-            - entity: sensor.alfresco_motion_battery
-            - entity: sensor.office_motion_2_battery
-            - entity: sensor.master_motion_2_battery
-            - entity: sensor.shower_motion_battery
-            - entity: sensor.living_motion_battery
-            - entity: sensor.garage_motion_2_battery
-            - entity: sensor.smoke_sensor_battery
-            - entity: sensor.alfresco_button_battery
-            - entity: sensor.temperature_sensor_1_battery
+            - entity: input_boolean.housealarm_auto
+              icon: 'mdi:shield-home-outline'
+              name: House Alarm Auto Arm/Unarm
+              tap_action:
+                action: toggle
+            - entity: input_boolean.alfresco_button
+              icon: 'mdi:music-circle-outline'
+              name: Alfresco Button Music
+              tap_action:
+                action: toggle
+            - entity: input_boolean.alfresco_motion_music
+              icon: 'mdi:music-circle-outline'
+              name: Alfresco Music Based on Motion
+              tap_action:
+                action: toggle
+            - entity: input_boolean.alfresco_motion_light
+              icon: 'mdi:lightbulb-outline'
+              name: Alfresco Light On/Off Based on Motion
+              tap_action:
+                action: toggle
+            - entity: input_boolean.light_on_off_auto
+              icon: 'mdi:lightbulb-outline'
+              name: Lights Auto On/Off Based on Motion
+              tap_action:
+                action: toggle
+            - entity: input_boolean.zone_off_auto
+              icon: 'mdi:air-filter'
+              name: AC Zones Auto On/Off Based on Motion
+              tap_action:
+                action: toggle
+            - entity: input_boolean.aircon_on_auto
+              icon: 'mdi:air-conditioner'
+              name: Auto AC Power On
+              tap_action:
+                action: toggle
+            - entity: input_boolean.nightmood_auto
+              icon: 'mdi:weather-night'
+              name: Night Mood Auto
+              tap_action:
+                action: toggle
+            - entity: input_boolean.greetings_on
+              icon: 'mdi:voice'
+              name: Sonos Voice Greetings
+              tap_action:
+                action: toggle
       - type: vertical-stack
         cards:
-        - type: entities
-          title: Z-Wave Battery Status
-          show_header_toggle: false    
-          entities:
-            - entity: sensor.laundry_motion_battery
-            - entity: sensor.master_motion_battery
-            - entity: sensor.mad_wr_battery
-            - entity: sensor.office_motion_battery
-            - entity: sensor.pantry_door_battery
-            - entity: sensor.room4_motion_battery
-            - entity: sensor.sam_wr_motion_battery
-            - entity: sensor.kitchen_motion_battery
-            - entity: sensor.garage_motion_1_battery
         - type: entity-filter
           entities:
             - entity: light.alfresco_light_260
@@ -503,22 +505,10 @@ views:
             column_width: 20%
             show_state: false
             title: Lights On
-      - type: vertical-stack
-        cards:
-        - type: glance
-          title: House Moods
-          entities:
-            - entity: switch.housealarm
-              icon: 'mdi:shield-home-outline'
-              name: Away
-              tap_action:
-                action: toggle
-            - entity: switch.nightmood
-              icon: 'mdi:weather-night'
-              name: Night
-              tap_action:
-                action: toggle
 
+
+
+# Cameras Tab
   - title: Cameras
     cards:
       - type: picture-entity 
@@ -539,6 +529,45 @@ views:
       - type: picture-entity 
         title: Outside Back 
         entity:  camera.outsidebackcamera
+
+# Battery Tab
+  - title: Battery
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: entities
+          title: Xiaomi Battery Status
+          show_header_toggle: false    
+          entities:
+            - entity: sensor.main_door_battery
+            - entity: sensor.garage_door_battery
+            - entity: sensor.laundry_door_battery
+            - entity: sensor.bath_motion_battery
+            - entity: sensor.kitchen_motion_2_battery
+            - entity: sensor.alfresco_motion_battery
+            - entity: sensor.office_motion_2_battery
+            - entity: sensor.master_motion_2_battery
+            - entity: sensor.shower_motion_battery
+            - entity: sensor.living_motion_battery
+            - entity: sensor.garage_motion_2_battery
+            - entity: sensor.smoke_sensor_battery
+            - entity: sensor.alfresco_button_battery
+            - entity: sensor.temperature_sensor_1_battery
+      - type: vertical-stack
+        cards:
+        - type: entities
+          title: Z-Wave Battery Status
+          show_header_toggle: false    
+          entities:
+            - entity: sensor.laundry_motion_battery
+            - entity: sensor.master_motion_battery
+            - entity: sensor.mad_wr_battery
+            - entity: sensor.office_motion_battery
+            - entity: sensor.pantry_door_battery
+            - entity: sensor.room4_motion_battery
+            - entity: sensor.sam_wr_motion_battery
+            - entity: sensor.kitchen_motion_battery
+            - entity: sensor.garage_motion_1_battery
 
 # Floor Plan 
   - title: Floor Plan
