@@ -11,35 +11,6 @@ views:
       - type: vertical-stack
         cards:
           - type: glance
-            title: House Moods
-            show_state: false
-            entities:
-              - entity: switch.housealarm
-                icon: 'mdi:shield-home-outline'
-                name: Away
-                tap_action:
-                  action: toggle
-              - entity: switch.guest_mood
-                icon: 'mdi:account-supervisor'
-                name: Guest
-                tap_action:
-                  action: toggle
-              - entity: switch.party_mood
-                icon: 'mdi:glass-cocktail'
-                name: Party
-                tap_action:
-                  action: toggle
-              - entity: switch.vacation_mood
-                icon: 'mdi:airplane'
-                name: Vacation
-                tap_action:
-                  action: toggle
-              - entity: switch.nightmood
-                icon: 'mdi:weather-night'
-                name: Night
-                tap_action:
-                  action: toggle
-          - type: glance
             title: Master Bedroom
             entities:
               - entity: binary_sensor.m_bed_room_m_33
@@ -58,7 +29,6 @@ views:
                 icon: 'mdi:water-percent'
                 name: Humidity
           - type: glance
-
             entities:
               - entity: light.mad_wr_dimmer_65
                 icon: 'mdi:lightbulb-on-outline'
@@ -88,6 +58,35 @@ views:
                 type: light
       - type: vertical-stack
         cards:
+          - type: glance
+            title: House Moods
+            show_state: false
+            entities:
+              - entity: switch.housealarm
+                icon: 'mdi:shield-home-outline'
+                name: Away
+                tap_action:
+                  action: toggle
+              - entity: switch.guest_mood
+                icon: 'mdi:account-supervisor'
+                name: Guest
+                tap_action:
+                  action: toggle
+              - entity: switch.party_mood
+                icon: 'mdi:glass-cocktail'
+                name: Party
+                tap_action:
+                  action: toggle
+              - entity: switch.vacation_mood
+                icon: 'mdi:airplane'
+                name: Vacation
+                tap_action:
+                  action: toggle
+              - entity: switch.nightmood
+                icon: 'mdi:weather-night'
+                name: Night
+                tap_action:
+                  action: toggle
           - type: glance
             title: Kitchen
             entities:
