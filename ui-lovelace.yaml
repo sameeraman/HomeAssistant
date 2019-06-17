@@ -3,6 +3,8 @@ resources:
     type: module
   - url: /local/config-template-card.js
     type: module
+  - url: /local/mini-graph-card-bundle.js?v=0.4.3
+    type: module
 views:
   - title: Home
     cards:
@@ -290,6 +292,18 @@ views:
             entity: media_player.alfresco
       - type: vertical-stack
         cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.6_in_1_multisensor_temperature_2_252
+            name: Living Temperature
+            hours_to_show: 30
+            points_per_hour: 0.25
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.efergy_622020
+            name: Living Temperature
+            hours_to_show: 24
+            points_per_hour: 0.25
           - type: glance
             show_state: false
             title: Kitchen & Living Moods
