@@ -311,3 +311,18 @@ rainmachine:
   controllers:
     - ip_address: 10.1.1.179
       password: !secret rainmachine_password
+
+# Adding Efergy
+sensor:
+  - platform: efergy
+    app_token: !secret efergy_appkey
+    utc_offset: 0
+    monitored_variables:
+      - type: instant_readings
+      - type: budget
+      - type: cost
+        period: day
+        currency: $
+      - type: amount
+        period: day
+      - type: current_values
