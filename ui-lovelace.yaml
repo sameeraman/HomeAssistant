@@ -296,14 +296,30 @@ views:
             entities:
               - sensor.6_in_1_multisensor_temperature_2_252
             name: Living Temperature
-            hours_to_show: 30
-            points_per_hour: 0.25
+            icon: mdi:thermometer
+            hours_to_show: 24
+            points_per_hour: 1
+            line_color: '#46749C'
+            show:
+              graph: bar
+              labels: true
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.efergy_757728
+            name: Solar Generation
+            icon: mdi:solar-power
+            hours_to_show: 24
+            points_per_hour: 12
+            line_color: '#46749C'
+            line_width: 2
           - type: custom:mini-graph-card
             entities:
               - sensor.efergy_622020
-            name: Living Temperature
+            name: Energy Consumption
+            icon: mdi:power-plug
             hours_to_show: 24
-            points_per_hour: 0.25
+            points_per_hour: 12
+            line_width: 2
           - type: glance
             show_state: false
             title: Kitchen & Living Moods
@@ -761,7 +777,7 @@ views:
           # Living Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.officeroom_sam_m_345
+            entity: binary_sensor.motion_sensor_158d0002c716b6
             style:
               top: 34%
               left: 13%
