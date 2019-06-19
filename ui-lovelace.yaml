@@ -416,10 +416,10 @@ views:
               - entity: group.living_motion
                 icon: 'mdi:sofa'
                 name: Living
-              - entity: group.master_motion
+              - entity: binary_sensor.master_motion
                 icon: 'mdi:hotel'
                 name: Master
-              - entity: group.office_motion
+              - entity: binary_sensor.office_motion
                 icon: 'mdi:briefcase-outline'
                 name: Office
               - entity: group.garage_motion
@@ -632,7 +632,7 @@ views:
           # Office Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.officeroom_sam_m_345
+            entity: binary_sensor.office_motion
             style:
               top: 12%
               left: 70.5%
@@ -868,7 +868,7 @@ views:
           # Master Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.m_bed_room_m_33
+            entity: binary_sensor.master_motion
             style:
               top: 43%
               left: 73%
