@@ -410,10 +410,10 @@ views:
           - type: glance
             title: Group Motion
             entities:
-              - entity: group.kitchen_motion
+              - entity: binary_sensor.kitchen_motion
                 icon: 'mdi:silverware-fork-knife'
                 name: Kitchen
-              - entity: group.living_motion
+              - entity: binary_sensor.living_motion
                 icon: 'mdi:sofa'
                 name: Living
               - entity: binary_sensor.master_motion
@@ -422,7 +422,7 @@ views:
               - entity: binary_sensor.office_motion
                 icon: 'mdi:briefcase-outline'
                 name: Office
-              - entity: group.garage_motion
+              - entity: binary_sensor.garage_motion
                 icon: 'mdi:garage-open'
                 name: Garage
       - type: vertical-stack
@@ -702,7 +702,7 @@ views:
           # Kitchen Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.test_device_251
+            entity: binary_sensor.kitchen_motion
             style:
               top: 28%
               left: 50%
@@ -777,7 +777,7 @@ views:
           # Living Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.motion_sensor_158d0002c716b6
+            entity: binary_sensor.living_motion
             style:
               top: 34%
               left: 13%
@@ -812,7 +812,7 @@ views:
           # Garage Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.garage_sensor_m_46
+            entity: binary_sensor.garage_motion
             style:
               top: 66%
               left: 77%
