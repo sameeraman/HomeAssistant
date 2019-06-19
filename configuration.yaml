@@ -81,6 +81,9 @@ shell_command:
 # Sensors
 sensor: !include sensor.yaml
 
+# Binary Sensors
+sensor: !include binary_sensor.yaml
+
 # Text to speech
 tts:
   - platform: google_translate

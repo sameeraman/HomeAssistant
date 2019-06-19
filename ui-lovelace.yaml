@@ -316,7 +316,7 @@ views:
             entities:
               - sensor.efergy_622020
             name: Energy Consumption
-            icon: mdi:power-plug
+            icon: mdi:flash
             hours_to_show: 24
             points_per_hour: 12
             line_width: 2
