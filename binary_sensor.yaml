@@ -1,5 +1,5 @@
   - platform: template
-      sensors:
-        motion_group:
-          device_class: office_motion
-          value_template: "{{ is_state('group.office_motion', 'on') }}"
+    sensors:
+      motion_group:
+        device_class: office_motion
+        value_template: "{{ is_state('group.office_motion', 'on') }}"
