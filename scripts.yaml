@@ -43,8 +43,8 @@ sonos_afternoon_greet:
         message: >
           Good Evening!, Welcome back home. ... {% set seconda = ["Hope you had a great day.","Hope you had a fantastic day.","I beleive you had a fantastic day."] %} {% set aindex = (range(0, (seconda | length - 1) )|random) %} 
           {{seconda[aindex]}}
-          The temperature inside is {{ states('sensor.6_in_1_multisensor_temperature_2_252') | float | round }} degrees and the humidity is {{  states('sensor.6_in_1_multisensor_humidity_2_254') | int }} percent.
-           {% set secondb = ["Here is some music for you now...","How about some music now...","Let me play some music for you..."] %} {% set bindex = (range(0, (secondb | length - 1) )|random) %} 
+          The temperature inside is {{ states('sensor.6_in_1_multisensor_temperature_2_252') | float | round }} degrees and the humidity is {{  states('sensor.6_in_1_multisensor_humidity_2_254') | int }} percent ...
+           {% set secondb = ["Here is some music for you now ...","How about some music now ...","Let me play some music for you ..."] %} {% set bindex = (range(0, (secondb | length - 1) )|random) %} 
           {{secondb[bindex]}} 
           {% set secondr = ["Have a great evening.","Have a good one.","Goodbye.","Talk to you later."] %} {% set sindex = (range(0, (secondr | length - 1) )|random) %} 
           {{secondr[sindex]}}
