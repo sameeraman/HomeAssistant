@@ -647,6 +647,20 @@ views:
               left: 78%
               "--paper-item-icon-color": '#696969'
 
+          # Office Air Con Vent New 
+          - type: state-icon
+            icon: 'mdi:air-filter'
+            entity: binary_sensor.office_vent
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data: 
+                entity_id: switch.myair_zone2
+            style:
+              top: 12%
+              left: 85%
+              "--paper-item-icon-color": '#696969'
+
 
 # Alfresco
           # Alfresco Light
@@ -742,7 +756,8 @@ views:
               top: 35%
               left: 35%
               "--paper-item-icon-color": '#696969'
-              "--paper-item-icon-active-color": red
+
+
           # Living Floor Lamp
           - type: state-icon
             icon: 'mdi:lamp'

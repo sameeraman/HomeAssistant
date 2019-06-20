@@ -17,4 +17,7 @@
         value_template: "{{ is_state('group.living_kitchen_motion', 'on') }}"
       garage_motion:
         device_class: motion
-        value_template: "{{ is_state('group.garage_motion', 'on') }}"       
+        value_template: "{{ is_state('group.garage_motion', 'on') }}" 
+      office_vent:
+        device_class: window
+        value_template: "{{ is_state('switch.myair_power', 'on') and is_state(' switch.myair_zone2', 'on') }}" 
