@@ -638,16 +638,7 @@ views:
               left: 70.5%
               "--paper-item-icon-color": '#696969'
  
-          # Office Air Con Vent
-          - type: state-icon
-            icon: 'mdi:air-filter'
-            entity: switch.myair_zone2
-            style:
-              top: 12%
-              left: 78%
-              "--paper-item-icon-color": '#696969'
-
-          # Office Air Con Vent New 
+          # Office Air Con Vent  
           - type: state-icon
             icon: 'mdi:air-filter'
             entity: binary_sensor.office_vent
@@ -658,7 +649,7 @@ views:
                 entity_id: switch.myair_zone2
             style:
               top: 12%
-              left: 85%
+              left: 78%
               "--paper-item-icon-color": '#696969'
 
 
@@ -751,12 +742,16 @@ views:
           # Living Air Con Vent
           - type: state-icon
             icon: 'mdi:air-filter'
-            entity: switch.myair_zone1
+            entity: binary_sensor.living_vent
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data: 
+                entity_id: switch.myair_zone1
             style:
               top: 35%
               left: 35%
               "--paper-item-icon-color": '#696969'
-
 
           # Living Floor Lamp
           - type: state-icon
@@ -869,7 +864,7 @@ views:
             entity: light.master_dimmer_123
             style:
               top: 53%
-              left: 73%
+              left: 70%
               "--paper-item-icon-color": '#696969'
           # Bath Light
           - type: state-icon
@@ -924,6 +919,20 @@ views:
             style:
               top: 35%
               left: 64%
+              "--paper-item-icon-color": '#696969'
+
+          # Living Air Con Vent
+          - type: state-icon
+            icon: 'mdi:air-filter'
+            entity: binary_sensor.master_vent
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data: 
+                entity_id: switch.myair_zone3
+            style:
+              top: 53%
+              left: 77%
               "--paper-item-icon-color": '#696969'
 
 
