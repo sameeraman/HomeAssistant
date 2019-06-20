@@ -944,7 +944,7 @@ views:
             entity: binary_sensor.room4_194
             style:
               top: 87%
-              left: 9%
+              left: 7%
               "--paper-item-icon-color": '#696969'
 
           # Room4 Temperature
@@ -961,3 +961,50 @@ views:
             style: 
                 top: 92%
                 left: 12.5%
+
+          # Bed 4 Air Con Vent
+          - type: state-icon
+            icon: 'mdi:air-filter'
+            entity: binary_sensor.bed4_vent
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data: 
+                entity_id: switch.myair_zone6
+            style:
+              top: 87%
+              left: 14%
+              "--paper-item-icon-color": '#696969'
+
+# Bedroom 3
+
+          # Bed 3 Air Con Vent
+          - type: state-icon
+            icon: 'mdi:air-filter'
+            entity: binary_sensor.bed3_vent
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data: 
+                entity_id: switch.myair_zone5
+            style:
+              top: 90%
+              left: 34%
+              "--paper-item-icon-color": '#696969'
+
+
+# Bedroom 2
+
+          # Bed 2 Air Con Vent
+          - type: state-icon
+            icon: 'mdi:air-filter'
+            entity: binary_sensor.bed2_vent
+            tap_action:
+              action: call-service
+              service: switch.toggle
+              service_data: 
+                entity_id: switch.myair_zone4
+            style:
+              top: 70%
+              left: 38%
+              "--paper-item-icon-color": '#696969'
