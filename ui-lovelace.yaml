@@ -742,6 +742,7 @@ views:
               top: 35%
               left: 35%
               "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-active-color": red
           # Living Floor Lamp
           - type: state-icon
             icon: 'mdi:lamp'
