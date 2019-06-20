@@ -27,7 +27,7 @@ xiaomi_gateway_alarm:
 sonos_afternoon_greet:
   alias: "Sonos afternoon great - Living"
   sequence:
-    - service: media_player.sonos_snapshot
+    - service: sonos.snapshot
       data_template:
         entity_id: media_player.living
     - service: media_player.media_pause
@@ -50,7 +50,7 @@ sonos_afternoon_greet:
           {{secondr[sindex]}}
     - delay:
         seconds:  18
-    - service: media_player.sonos_restore
+    - service: sonos.restore
       data_template:
         entity_id: media_player.living
     - service: media_player.media_play
@@ -63,7 +63,7 @@ sonos_afternoon_greet:
 sonos_morning_greet:
   alias: "Sonos morning greet - Living"
   sequence:
-    - service: media_player.sonos_snapshot
+    - service: sonos.snapshot
       data_template:
         entity_id: media_player.living
     - service: media_player.media_pause
@@ -78,12 +78,12 @@ sonos_morning_greet:
         entity_id: media_player.living
         message: >
           Good morning!. It's currently {{ states('sensor.dark_sky_summary') }} and {{ states('sensor.dark_sky_temperature') |round}} degrees in Treeby. Today it will be {{  states('sensor.dark_sky_hourly_summary') |replace(".", "")}} ... 
-          I will now turn on the TV...  
+          I will now turn on the TV. ...  
           {% set secondr = ["Have a great day.","Enjoy the day","Have a good one.","Talk to you later."] %} {% set sindex = (range(0, (secondr | length - 1) )|random) %} 
           {{secondr[sindex]}}
     - delay:
         seconds:  18
-    - service: media_player.sonos_restore
+    - service: sonos.restore
       data_template:
         entity_id: media_player.living
     - service: remote.turn_on
