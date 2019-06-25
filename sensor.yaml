@@ -2,6 +2,14 @@
     resource: http://10.1.1.180:2025/getSystemData
     name: myair
 
+# fitbit
+  - platform: fitbit
+    clock_format: 12H
+    monitored_resources:
+      - "activities/heart"
+      - "activities/steps"
+      - "sleep/minutesAsleep"
+      - "sleep/timeInBed"
 
   - platform: history_stats
     name: myair_state_avg2hr
