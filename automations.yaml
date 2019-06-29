@@ -961,8 +961,8 @@
         entity_id: light.office_dimmer_120
         state: 'off'
       - condition: numeric_state
-        entity_id: sensor.illumination_158d0002b7ec00
-        below: 20
+        entity_id: sensor.illumination_158d0002b5eecd
+        below: 100
   action:
     - service: homeassistant.turn_on
       entity_id:  light.office_dimmer_120
@@ -1009,7 +1009,7 @@
     - service: homeassistant.turn_off
       entity_id:  light.master_dimmer_123
 
-# Turn on the Kitchen light then there is motion based on light and sunset
+# Turn on the Kitchen light when there is motion based on light and sunset
 - id: kitchenlightonmotion
   alias: Turn on the Kitchen light then there is motion based on light and sunset
   trigger: 
@@ -1023,6 +1023,9 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
+        entity_id: input_boolean.kitchen_light_onoff_auto
+        state: 'on'
+      - condition: state
         entity_id: light.kitchen_light_135
         state: 'off'
       - condition: numeric_state
@@ -1031,17 +1034,18 @@
   action:
     - service: homeassistant.turn_on
       entity_id:  light.kitchen_light_135
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.kitchen_light_onoff_auto
 
-
-# Turn off the Kitchen Light when there is no motion for more than 10 minutes
-- id: kitchenlightoff10min
-  alias: Turn off Kitchen Light when there is no motion for more than 10 minutes
+# Turn off the Kitchen Light when there is no motion for more than 7 minutes
+- id: kitchenlightoff7min
+  alias: Turn off Kitchen Light when there is no motion for more than 7 minutes
   trigger: 
     platform: state
     entity_id: group.kitchen_motion
     to: 'off'
     for: 
-      minutes: 10
+      minutes: 7
   condition:
     condition: and
     conditions: 
@@ -1054,7 +1058,8 @@
   action:
     - service: homeassistant.turn_off
       entity_id:  light.kitchen_light_135
-
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.kitchen_light_onoff_auto
 
 # Turn off the Office AC Vent when there is no motion for more than 5 minutes in the office
 - id: officeacoff10min

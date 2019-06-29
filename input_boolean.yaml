@@ -16,6 +16,10 @@ light_on_off_auto:
   name: Turn lights On/Off with motion
   icon: mdi:lightbulb-outline
 
+kitchen_light_onoff_auto:
+  name: Turn On Kitchen Light with motion only if it was turned off automatically
+  icon: mdi:lightbulb-outline
+
 zone_off_auto:
   name: Turn lights off AC Zones when no motion
   icon: mdi:air-filter
