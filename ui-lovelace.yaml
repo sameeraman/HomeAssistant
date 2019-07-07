@@ -42,6 +42,11 @@ views:
                 name: Bath Strip
                 tap_action:
                   action: toggle
+              - entity: light.master_pendant
+                icon: 'mdi:ceiling-light'
+                name: Pendant
+                tap_action:
+                  action: toggle
               - entity: switch.bedheater_38
                 icon: 'mdi:radiator'
                 name: Bed Heater

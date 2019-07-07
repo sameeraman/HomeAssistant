@@ -142,6 +142,8 @@ emulated_hue:
       hidden: false
     light.garage_light:
       hidden: false
+    light.master_pendant:
+      hidden: false
     switch.air_conditioner:
       hidden: false
     switch.bedheater_38:
