@@ -1707,7 +1707,7 @@
         entity_id: light.master_pendant
         state: 'off'
       - condition: state
-        entity_id: light.light.master_dimmer_123
+        entity_id: light.master_dimmer_123
         state: 'off'
       - condition: numeric_state
         entity_id: sensor.illumination_158d0002b7f1e8
