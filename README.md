@@ -116,6 +116,10 @@ Following are some of the automation that I'm using at my smart home.
 - Turn off the Master Light when there is no motion for more than 5 minutes
 - Turn on Bed Heater at 10pm if the master bedroom temperature is below 22C
 - Turn off Bed Heater automatically after two hours
+- Turn on Master Pendant Light when there is motion
+- Turn off Master Pendant Light when there is no motion
+- Turn off Master Pendant Light when Master light is turned on
+- Turn off Master Pendant Light if it was turned on for more than 1 hour
 
 ## Other Automations
 - Send Alerts from Xiaomi Motion and Door sensors when the house is Armed

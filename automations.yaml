@@ -1688,3 +1688,97 @@
       entity_id: input_boolean.zone_off_auto
     - service: input_boolean.turn_on
       entity_id: input_boolean.housealarm_auto
+
+
+# Turn on Master Pendant Light when there is motion
+- id: masterpendentlightonmotion
+  alias: Turn on Master Pendant Light when there is motion
+  trigger: 
+    - platform: state
+      entity_id: group.master_motion
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.master_pendant
+        state: 'off'
+      - condition: state
+        entity_id: light.light.master_dimmer_123
+        state: 'off'
+      - condition: numeric_state
+        entity_id: sensor.illumination_158d0002b7f1e8
+        below: 20
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.master_pendant
+        brightness_pct: 30
+
+# Turn off Master Pendant Light when there is no motion
+- id: masterpendentlightoffmotion
+  alias: Turn off Master Pendant Light when there is no motion
+  trigger: 
+    - platform: state
+      entity_id: light.master_dimmer_123
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.master_pendant
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.master_pendant
+
+# Turn off Master Pendant Light when Master light is turned on
+- id: masterpendentlightonwhenmasterlighton
+  alias: Turn off Master Pendant Light when Master light is turned on
+  trigger: 
+    - platform: state
+      entity_id: group.master_motion
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.master_pendant
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.master_pendant
+
+# Turn off Master Pendant Light if it was turned on for more than 1 hour
+- id: masterpendentlightonwhenmasterlighton
+  alias: Turn off Master Pendant Light if it was turned on for more than 1 hour
+  trigger: 
+    - platform: state
+      entity_id: light.master_pendant
+      to: 'on'
+      for:
+        hours: 1
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.master_pendant
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.master_pendant
