@@ -1791,7 +1791,7 @@
 
 # Turn On Master Pendant Light when Master light is turned off 
 - id: masterpendentlightonwhenmasterlighton
-  alias: Turn off Master Pendant Light when Master light is turned on
+  alias: Turn On Master Pendant Light when Master light is turned off 
   trigger: 
     - platform: state
       entity_id: light.master_dimmer_123
@@ -1809,7 +1809,7 @@
         entity_id: light.master_pendant
         state: 'off'
   action:
-    - service: light.turn_off
+    - service: light.turn_on
       entity_id: light.master_pendant
     - service: input_boolean.turn_off
       entity_id: input_boolean.master_pendant_onoff_auto
