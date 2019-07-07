@@ -1758,10 +1758,10 @@
         entity_id: light.master_pendant
         state: 'on'
   action:
-    - service: light.turn_off
-      entity_id: light.master_pendant
     - service: input_boolean.turn_on
       entity_id: input_boolean.master_pendant_onoff_auto
+    - service: light.turn_off
+      entity_id: light.master_pendant
 
 # Turn off Master Pendant Light if it was turned on for more than 1 hour
 - id: masterpendentlightonwhenmasterlighton
