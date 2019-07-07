@@ -1726,8 +1726,8 @@
   alias: Turn off Master Pendant Light when there is no motion
   trigger: 
     - platform: state
-      entity_id: light.master_dimmer_123
-      to: 'on'
+      entity_id: group.master_motion
+      to: 'off'
   condition:
     condition: and
     conditions: 
@@ -1746,8 +1746,8 @@
   alias: Turn off Master Pendant Light when Master light is turned on
   trigger: 
     - platform: state
-      entity_id: group.master_motion
-      to: 'off'
+      entity_id: light.master_dimmer_123
+      to: 'on'
   condition:
     condition: and
     conditions: 
