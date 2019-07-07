@@ -1826,3 +1826,29 @@
   action:
     - service: input_boolean.turn_off
       entity_id: input_boolean.master_pendant_onoff_auto
+
+# Toggle Master Pendant lights when Xiaomi Master push button is single pressed
+- id: togglemasterpendentlightspushbutton
+  alias: Toggle Master Pendant lights when Xiaomi push button is single pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d00035f34ec
+      click_type: single
+  action:
+    service: light.toggle
+    entity_id: light.master_pendant
+
+# Toggle Master Light when Xiaomi Master push button is double pressed
+- id: togglemasterlightpushbuttondouble
+  alias: Toggle Master Light when Xiaomi Master push button is double pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d00035f34ec
+      click_type: double
+  action:
+    service: light.toggle
+    entity_id: light.master_dimmer_123
