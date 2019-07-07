@@ -1760,6 +1760,8 @@
   action:
     - service: light.turn_off
       entity_id: light.master_pendant
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.master_pendant_onoff_auto
 
 # Turn off Master Pendant Light if it was turned on for more than 1 hour
 - id: masterpendentlightonwhenmasterlighton
@@ -1782,3 +1784,41 @@
   action:
     - service: light.turn_off
       entity_id: light.master_pendant
+
+# Turn On Master Pendant Light when Master light is turned off 
+- id: masterpendentlightonwhenmasterlighton
+  alias: Turn off Master Pendant Light when Master light is turned on
+  trigger: 
+    - platform: state
+      entity_id: light.master_dimmer_123
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_pendant_onoff_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.master_pendant
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.master_pendant
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.master_pendant_onoff_auto
+
+# Turn off Master Pendant On/Off with Master Light input boolean after 2 hours
+- id: masterpendentlightonoffinputboolean
+  alias: Turn off Master Pendant On/Off with Master Light input boolean after 2 hours
+  trigger: 
+    - platform: state
+      entity_id: input_boolean.master_pendant_onoff_auto
+      to: 'on'
+      for:
+        hours: 2
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.master_pendant_onoff_auto

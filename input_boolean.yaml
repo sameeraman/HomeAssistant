@@ -65,3 +65,7 @@ vacation_mood:
 party_mood:
   name: Enable Party Mood
   icon: mdi:glass-cocktail
+
+master_pendant_onoff_auto:
+  name: Turn On/Off Master Pendant with master light
+  icon: mdi:lightbulb-outline

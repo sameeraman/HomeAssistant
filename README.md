@@ -120,6 +120,7 @@ Following are some of the automation that I'm using at my smart home.
 - Turn off Master Pendant Light when there is no motion
 - Turn off Master Pendant Light when Master light is turned on
 - Turn off Master Pendant Light if it was turned on for more than 1 hour
+- Turn On Master Pendant Light when Master light is turned off 
 
 ## Other Automations
 - Send Alerts from Xiaomi Motion and Door sensors when the house is Armed
