@@ -1803,7 +1803,7 @@
         state: 'on'
       - condition: state
         entity_id: light.master_pendant
-        state: 'on'
+        state: 'off'
   action:
     - service: light.turn_off
       entity_id: light.master_pendant
