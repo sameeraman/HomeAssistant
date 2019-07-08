@@ -1709,7 +1709,7 @@
       - condition: time
         before: '23:00:00'
       - condition: time
-        after: '06:00:00'
+        after: '08:00:00'
       - condition: state
         entity_id: light.master_dimmer_123
         state: 'off'
