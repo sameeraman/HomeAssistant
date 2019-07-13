@@ -1724,9 +1724,6 @@
         entity_id: sensor.illumination_158d0002b7f1e8
         below: 20
       - condition: state
-        entity_id: switch.housealarm
-        state: 'off'
-      - condition: state
         entity_id: binary_sensor.bed_sensor
         state: 'off'
   action:
