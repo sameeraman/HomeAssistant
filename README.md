@@ -66,7 +66,7 @@ Following are some of the automation that I'm using at my smart home.
 - Alert and Turn off air conditioner if it is left On when the house alarm is on (After leaving home)
 
 ## Bathroom Automations
-- Turn on the Bath Light when there is motion
+- Turn on the Bath Light when there is motion and set brightness based on bed presence
 - Turn off the Bath Light when there's no motion in shower and Bathroom
 - Turn on the Bath strip when there is motion in master bedroom
 - Turn off the Bath strip when there's no motion in master bedroom
@@ -120,7 +120,9 @@ Following are some of the automation that I'm using at my smart home.
 - Turn off Master Pendant Light when there is no motion
 - Turn off Master Pendant Light when Master light is turned on
 - Turn off Master Pendant Light if it was turned on for more than 1 hour
-- Turn On Master Pendant Light when Master light is turned off 
+- Turn on Master Pendant Light when Master light is turned off
+- Turn on the Master AC Vent when there is motion for more than 3 minutes in the Master bedroom
+- Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
 
 ## Other Automations
 - Send Alerts from Xiaomi Motion and Door sensors when the house is Armed

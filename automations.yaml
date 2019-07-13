@@ -414,6 +414,13 @@
   action:
     - service: homeassistant.turn_on
       entity_id:  light.bath_light_132
+      data_template:
+        brightness_pct: >
+          {% if is_state('binary_sensor.bed_sensor', 'on')  %}
+          30
+          {% else %}
+          100
+          {% endif %}
 
 # Turn off the Bath Light when there's no Motion in shower and Bathroom
 - id: bathlightoff
@@ -1707,7 +1714,7 @@
         entity_id: light.master_pendant
         state: 'off'
       - condition: time
-        before: '23:00:00'
+        before: '23:59:59'
       - condition: time
         after: '08:00:00'
       - condition: state
@@ -1718,6 +1725,9 @@
         below: 20
       - condition: state
         entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.bed_sensor
         state: 'off'
   action:
     - service: light.turn_on
@@ -1852,3 +1862,80 @@
   action:
     service: light.toggle
     entity_id: light.master_dimmer_123
+
+
+# Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
+- id: masteracoff5min
+  alias: # Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
+  trigger: 
+    - platform: state
+      entity_id: group.master_bath_motion
+      to: 'off'
+      for: 
+        minutes: 5
+    - platform: state
+      entity_id: switch.myair_power
+      from: 'off'
+      to: 'on'
+      for:
+        seconds: 90
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.zone_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: sensor.myair_state
+        state: 'on'
+      - condition: state
+        entity_id: group.master_bath_motion
+        state: 'off'
+      - condition: state
+        entity_id: switch.myair_zone3
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.bed_sensor
+        state: 'off'
+  action:
+    - service: switch.turn_off
+      entity_id:  switch.myair_zone3
+
+# Turn On the Master AC Vent when there is motion for more than 3 minutes in the Master bedroom
+- id: masteracon3min
+  alias: Turn On the Master AC Vent when there is motion for more than 3 minutes in the Master bedroom
+  trigger: 
+    - platform: state
+      entity_id: group.master_bath_motion
+      to: 'on'
+      for: 
+        minutes: 3
+    - platform: state
+      entity_id: switch.myair_power
+      from: 'off'
+      to: 'on'
+      for:
+        seconds: 90
+  condition:
+    condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.zone_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: sensor.myair_state
+        state: 'on'
+      - condition: state
+        entity_id: switch.myair_zone3
+        state: 'off'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.bed_sensor
+          state: 'on'
+        - condition: state
+          entity_id: group.master_bath_motion
+          state: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id:  switch.myair_zone3

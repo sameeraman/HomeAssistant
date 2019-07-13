@@ -146,3 +146,13 @@ master_motion:
   entities:
     - binary_sensor.m_bed_room_m_33
     - binary_sensor.motion_sensor_158d0002b7f1e8
+
+master_bath_motion:
+  name: "All Master Bedroom and Bath Motion Sensors"
+  view: false
+  control: hidden
+  entities:
+    - binary_sensor.m_bed_room_m_33
+    - binary_sensor.motion_sensor_158d0002b7f1e8
+    - binary_sensor.motion_sensor_158d0002c6382d
+    - binary_sensor.motion_sensor_158d0001e0ac8e
