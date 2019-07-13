@@ -1939,3 +1939,48 @@
   action:
     - service: switch.turn_on
       entity_id:  switch.myair_zone3
+
+
+# Set the Master light brightness to 30% when someone enters the bed
+- id: masterlightbrightness30
+  alias: Set the Master light brightness to 30% when someone enters the bed
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.bed_sensor
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.master_dimmer_123
+        state: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.master_dimmer_123
+        brightness_pct: 30
+
+# Set the Master light brightness to 100% when someone get up from the bed
+- id: masterlightbrightness10
+  alias: Set the Master light brightness to 100% when someone get up from the bed
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.bed_sensor
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.master_dimmer_123
+        state: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.master_dimmer_123
+        brightness_pct: 100
