@@ -122,7 +122,9 @@ Following are some of the automation that I'm using at my smart home.
 - Turn off Master Pendant Light if it was turned on for more than 1 hour
 - Turn on Master Pendant Light when Master light is turned off
 - Turn on the Master AC Vent when there is motion for more than 3 minutes in the Master bedroom
-- Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
+- Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed
+- Turn off the Sameera's Wardrobe light when the light was left on for more than 10 minutes 
+- Turn off the Madhushi's Wardrobe light when the light was left on for more than 10 minutes
 
 ## Other Automations
 - Send Alerts from Xiaomi Motion and Door sensors when the house is Armed
