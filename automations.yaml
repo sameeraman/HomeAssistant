@@ -1981,3 +1981,29 @@
       data:
         entity_id: light.master_dimmer_123
         brightness_pct: 100
+
+# Turn off the Sameera's Wardrobe light when the light was left on for more than 10 minutes
+- id: samwrturnoff10
+  alias: Turn off the Sameera's Wardrobe light when the light was left on for more than 10 minutes
+  trigger: 
+    - platform: state
+      entity_id: light.sam_wr_dimmer_62
+      to: 'on'
+      for:
+        minutes: 10
+  action:
+    - service: light.turn_off
+      entity_id:  light.sam_wr_dimmer_62
+
+# Turn off the Madhushi's Wardrobe light when the light was left on for more than 10 minutes
+- id: madwrturnoff10
+  alias: Turn off the Madhushi's Wardrobe light when the light was left on for more than 10 minutes
+  trigger: 
+    - platform: state
+      entity_id: light.mad_wr_dimmer_65
+      to: 'on'
+      for:
+        minutes: 10
+  action:
+    - service: light.turn_off
+      entity_id:  light.mad_wr_dimmer_65
