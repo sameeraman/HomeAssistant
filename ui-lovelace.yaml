@@ -191,7 +191,7 @@ views:
           - type: horizontal-stack
             cards:
               - type: light
-                entity: light.office_dimmer_120
+                entity:  light.fibaro_system_fgd212_dimmer_2_level_4
               - type: light
                 entity: light.fibaro_system_fgd212_dimmer_2_level_2
       - type: vertical-stack
@@ -523,7 +523,7 @@ views:
             - entity: light.master_dimmer_123
               tap_action: 
                 action: toggle
-            - entity: light.office_dimmer_120
+            - entity:  light.fibaro_system_fgd212_dimmer_2_level_4
               tap_action:
                 action: toggle
             - entity: light.pantry_light
@@ -628,7 +628,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.office_dimmer_120
+            entity:  light.fibaro_system_fgd212_dimmer_2_level_4
             style:
               top: 12%
               left: 63.5%
