@@ -128,7 +128,7 @@ emulated_hue:
       hidden: false
     light.living_mood_lights:
       hidden: false
-     light.fibaro_system_fgd212_dimmer_2_level_4:
+    light.fibaro_system_fgd212_dimmer_2_level_4:
       hidden: false
     light.front_outdoor_lights_59:
       hidden: false

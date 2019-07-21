@@ -965,14 +965,14 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id:  light.fibaro_system_fgd212_dimmer_2_level_4
+        entity_id: light.fibaro_system_fgd212_dimmer_2_level_4
         state: 'off'
       - condition: numeric_state
         entity_id: sensor.illumination_158d0002b5eecd
         below: 100
   action:
     - service: homeassistant.turn_on
-      entity_id:   light.fibaro_system_fgd212_dimmer_2_level_4
+      entity_id: light.fibaro_system_fgd212_dimmer_2_level_4
 
 # Turn off the Office Light when there is no motion 
 - id: officelightoff
@@ -985,14 +985,14 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id:  light.fibaro_system_fgd212_dimmer_2_level_4
+        entity_id: light.fibaro_system_fgd212_dimmer_2_level_4
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
   action:
     - service: homeassistant.turn_off
-      entity_id:   light.fibaro_system_fgd212_dimmer_2_level_4
+      entity_id: light.fibaro_system_fgd212_dimmer_2_level_4
 
 # Turn off the Master Light when there is no motion for more than 5 minutes
 - id: masterlightoff5min
