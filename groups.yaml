@@ -33,7 +33,7 @@ office:
   icon: mdi:briefcase
   view: yes
   entities:
-    - light.fibaro_system_fgd212_dimmer_2_level_4
+    - light.office_fibaro_dimmer
     - group.office_sensors
 kitchen_sensors:
   name: Kitchen Sensors

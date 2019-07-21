@@ -120,7 +120,7 @@ google_assistant:
 emulated_hue:
   expose_by_default: false
   entities:
-    light.fibaro_system_fgd212_dimmer_2_level_2:
+    light.alfresco_fibaro_dimmer:
       hidden: false
     light.bath_light_132:
       hidden: false
@@ -128,7 +128,7 @@ emulated_hue:
       hidden: false
     light.living_mood_lights:
       hidden: false
-    light.fibaro_system_fgd212_dimmer_2_level_4:
+    light.office_fibaro_dimmer:
       hidden: false
     light.front_outdoor_lights_59:
       hidden: false

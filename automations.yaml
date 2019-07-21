@@ -880,7 +880,7 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.fibaro_system_fgd212_dimmer_2_level_2
+        entity_id: light.alfresco_fibaro_dimmer
         brightness_pct: 30
 
 # Turn off the Alfresco Light when there is no motion 
@@ -896,7 +896,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.fibaro_system_fgd212_dimmer_2_level_2
+        entity_id: light.alfresco_fibaro_dimmer
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
@@ -906,7 +906,7 @@
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.fibaro_system_fgd212_dimmer_2_level_2
+      entity_id: light.alfresco_fibaro_dimmer
 
 # Alert if the Alfresco Sonos was playing for more than 2 hours
 - id: alfrescosonos2hr
@@ -965,14 +965,14 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.fibaro_system_fgd212_dimmer_2_level_4
+        entity_id: light.office_fibaro_dimmer
         state: 'off'
       - condition: numeric_state
         entity_id: sensor.illumination_158d0002b5eecd
         below: 100
   action:
     - service: homeassistant.turn_on
-      entity_id: light.fibaro_system_fgd212_dimmer_2_level_4
+      entity_id: light.office_fibaro_dimmer
 
 # Turn off the Office Light when there is no motion 
 - id: officelightoff
@@ -985,14 +985,14 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.fibaro_system_fgd212_dimmer_2_level_4
+        entity_id: light.office_fibaro_dimmer
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
   action:
     - service: homeassistant.turn_off
-      entity_id: light.fibaro_system_fgd212_dimmer_2_level_4
+      entity_id: light.office_fibaro_dimmer
 
 # Turn off the Master Light when there is no motion for more than 5 minutes
 - id: masterlightoff5min
@@ -1863,19 +1863,13 @@
 
 # Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
 - id: masteracoff5min
-  alias: # Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
+  alias: Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
   trigger: 
     - platform: state
       entity_id: group.master_bath_motion
       to: 'off'
       for: 
         minutes: 5
-    - platform: state
-      entity_id: switch.myair_power
-      from: 'off'
-      to: 'on'
-      for:
-        seconds: 90
   condition:
     condition: and
     conditions:
@@ -1896,7 +1890,7 @@
         state: 'off'
   action:
     - service: switch.turn_off
-      entity_id:  switch.myair_zone3
+      entity_id: switch.myair_zone3
 
 # Turn On the Master AC Vent when there is motion for more than 3 minutes in the Master bedroom
 - id: masteracon3min

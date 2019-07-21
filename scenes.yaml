@@ -82,7 +82,7 @@
     light.dining_table_lamp : off
     light.kitchen_light_135 : off
     light.living_light_129: on
-    light.fibaro_system_fgd212_dimmer_2_level_4: off
+    light.office_fibaro_dimmer: off
     media_player.living:
       state: paused
     remote.living :

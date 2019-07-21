@@ -191,9 +191,9 @@ views:
           - type: horizontal-stack
             cards:
               - type: light
-                entity: light.fibaro_system_fgd212_dimmer_2_level_4
+                entity: light.office_fibaro_dimmer
               - type: light
-                entity: light.fibaro_system_fgd212_dimmer_2_level_2
+                entity: light.alfresco_fibaro_dimmer
       - type: vertical-stack
         cards:
           - type: glance
@@ -484,7 +484,7 @@ views:
         cards:
         - type: entity-filter
           entities:
-            - entity: light.fibaro_system_fgd212_dimmer_2_level_2
+            - entity: light.alfresco_fibaro_dimmer
               tap_action:
                 action: toggle 
             - entity: light.bath_light_132
@@ -523,7 +523,7 @@ views:
             - entity: light.master_dimmer_123
               tap_action: 
                 action: toggle
-            - entity: light.fibaro_system_fgd212_dimmer_2_level_4
+            - entity: light.office_fibaro_dimmer
               tap_action:
                 action: toggle
             - entity: light.pantry_light
@@ -628,7 +628,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.fibaro_system_fgd212_dimmer_2_level_4
+            entity: light.office_fibaro_dimmer
             style:
               top: 12%
               left: 63.5%
@@ -664,7 +664,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.fibaro_system_fgd212_dimmer_2_level_2
+            entity: light.alfresco_fibaro_dimmer
             style:
               top: 11%
               left: 15.5%
