@@ -193,7 +193,7 @@ views:
               - type: light
                 entity: light.office_dimmer_120
               - type: light
-                entity: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
+                entity: light.fibaro_system_fgd212_dimmer_2_level_2
       - type: vertical-stack
         cards:
           - type: glance
@@ -484,7 +484,7 @@ views:
         cards:
         - type: entity-filter
           entities:
-            - entity: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
+            - entity: light.fibaro_system_fgd212_dimmer_2_level_2
               tap_action:
                 action: toggle 
             - entity: light.bath_light_132
@@ -664,7 +664,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
+            entity: light.fibaro_system_fgd212_dimmer_2_level_2
             style:
               top: 11%
               left: 15.5%

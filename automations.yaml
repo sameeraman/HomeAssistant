@@ -880,7 +880,7 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
+        entity_id: light.fibaro_system_fgd212_dimmer_2_level_2
         brightness_pct: 30
 
 # Turn off the Alfresco Light when there is no motion 
@@ -896,7 +896,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
+        entity_id: light.fibaro_system_fgd212_dimmer_2_level_2
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
@@ -906,7 +906,7 @@
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
+      entity_id: light.fibaro_system_fgd212_dimmer_2_level_2
 
 # Alert if the Alfresco Sonos was playing for more than 2 hours
 - id: alfrescosonos2hr
