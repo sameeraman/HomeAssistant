@@ -37,7 +37,7 @@ views:
                 name: Mad WR
                 tap_action:
                   action: toggle
-              - entity: light.bath_stripe
+              - entity: light.bath_strip
                 icon: 'mdi:led-strip'
                 name: Bath Strip
                 tap_action:
@@ -97,19 +97,19 @@ views:
           - type: glance
             title: Kitchen
             entities:
-              - entity: binary_sensor.test_device_251
+              - entity: binary_sensor.kitchen_m_251
                 icon: 'mdi:run-fast'
                 name: Motion
-              - entity: sensor.6_in_1_multisensor_temperature_2_252
+              - entity: sensor.kitchen_t_252
                 icon: 'mdi:oil-temperature'
                 name: Temperature
-              - entity: sensor.6_in_1_multisensor_light_2_253
+              - entity: sensor.kitchen_l_253
                 icon: 'mdi:theme-light-dark'
                 name: Light
-              - entity: sensor.6_in_1_multisensor_uv_2_255
+              - entity: sensor.kitchen_uv_255
                 icon: 'mdi:white-balance-sunny'
                 name: UV
-              - entity: sensor.6_in_1_multisensor_humidity_2_254
+              - entity: sensor.kitchen_h_254
                 icon: 'mdi:water-percent'
                 name: Humidity
           - type: horizontal-stack
@@ -126,17 +126,17 @@ views:
                 name: Living Floor
                 tap_action:
                   action: toggle
-              - entity: light.hue_lightstrip_plus_1
+              - entity: light.living_hue_strip
                 icon: 'mdi:led-strip'
                 name: Living
                 tap_action:
                   action: toggle
-              - entity: light.hue_lightstrip_plus_1_2
+              - entity: light.kitchen_strip
                 icon: 'mdi:led-strip'
                 name: Kitchen
                 tap_action:
                   action: toggle
-              - entity: light.dining_floor_lamp
+              - entity: light.dining_table_lamp
                 icon: 'mdi:lamp'
                 name: Dining Table
                 tap_action:
@@ -153,19 +153,19 @@ views:
           - type: glance
             title: Laundry
             entities:
-              - entity: binary_sensor.laundry_199
+              - entity: binary_sensor.laundry_m_199
                 icon: 'mdi:run-fast'
                 name: Motion
               - entity: binary_sensor.door_window_sensor_158d0002ca3100
                 icon: 'mdi:door-closed'
                 name: Door
-              - entity: sensor.6_in_1_multisensor_temperature_1_200
+              - entity: sensor.laundry_t_200
                 icon: 'mdi:oil-temperature'
                 name: Temperature
-              - entity: sensor.6_in_1_multisensor_light_1_201
+              - entity: sensor.laundry_l_201
                 icon: 'mdi:theme-light-dark'
                 name: Light
-              - entity: sensor.6_in_1_multisensor_humidity_1_202
+              - entity: sensor.laundry_h_202
                 icon: 'mdi:water-percent'
                 name: Humidity
       - type: vertical-stack
@@ -193,7 +193,7 @@ views:
               - type: light
                 entity: light.office_dimmer_120
               - type: light
-                entity: light.alfresco_light_260
+                entity: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
       - type: vertical-stack
         cards:
           - type: glance
@@ -299,7 +299,7 @@ views:
         cards:
           - type: custom:mini-graph-card
             entities:
-              - sensor.6_in_1_multisensor_temperature_2_252
+              - sensor.kitchen_t_252
             name: Living Temperature
             icon: mdi:thermometer
             hours_to_show: 24
@@ -484,16 +484,16 @@ views:
         cards:
         - type: entity-filter
           entities:
-            - entity: light.alfresco_light_260
+            - entity: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
               tap_action:
                 action: toggle 
             - entity: light.bath_light_132
               tap_action:
                 action: toggle
-            - entity: light.bath_stripe
+            - entity: light.bath_strip
               tap_action:
                 action: toggle
-            - entity: light.dining_floor_lamp
+            - entity: light.dining_table_lamp
               tap_action:
                 action: toggle
             - entity: light.front_outdoor_lights_59
@@ -502,10 +502,10 @@ views:
             - entity: light.garage_light
               tap_action:
                 action: toggle
-            - entity: light.hue_lightstrip_plus_1
+            - entity: light.living_hue_strip
               tap_action: 
                 action: toggle
-            - entity: light.hue_lightstrip_plus_1_2
+            - entity: light.kitchen_strip
               tap_action: 
                 action: toggle
             - entity: light.kitchen_light_135
@@ -664,7 +664,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.alfresco_light_260
+            entity: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
             style:
               top: 11%
               left: 15.5%
@@ -704,7 +704,7 @@ views:
             icon: 'mdi:led-strip'
             tap_action:
               action: toggle
-            entity: light.hue_lightstrip_plus_1_2
+            entity: light.kitchen_strip
             style:
               top: 25%
               left: 56%
@@ -731,14 +731,14 @@ views:
               "--paper-item-icon-color": '#696969'
           # Temperature
           - type: state-icon
-            entity: sensor.6_in_1_multisensor_temperature_2_252
+            entity: sensor.kitchen_t_252
             icon: 'mdi:thermometer'
             style: 
                 top: 26%
                 left: 35%
                 "--paper-item-icon-color": '#696969'
           - type: state-label
-            entity: sensor.6_in_1_multisensor_temperature_2_252
+            entity: sensor.kitchen_t_252
             icon: 'mdi:thermometer'
             style: 
                 top: 30%
@@ -773,7 +773,7 @@ views:
             icon: 'mdi:lamp'
             tap_action:
               action: toggle
-            entity: light.dining_floor_lamp
+            entity: light.dining_table_lamp
             style:
               top: 3%
               left: 53%
@@ -784,7 +784,7 @@ views:
             icon: 'mdi:led-strip'
             tap_action:
               action: toggle
-            entity: light.hue_lightstrip_plus_1
+            entity: light.living_hue_strip
             style:
               top: 27%
               left: 3%
@@ -803,7 +803,7 @@ views:
           # Laundry Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.laundry_199
+            entity: binary_sensor.laundry_m_199
             style:
               top: 70%
               left: 3%
@@ -811,14 +811,14 @@ views:
 
           # Laundry Temperature
           - type: state-icon
-            entity: sensor.6_in_1_multisensor_temperature_1_200
+            entity: sensor.laundry_t_200
             icon: 'mdi:thermometer'
             style: 
                 top: 70%
                 left: 9%
                 "--paper-item-icon-color": '#696969'
           - type: state-label
-            entity: sensor.6_in_1_multisensor_temperature_1_200
+            entity: sensor.laundry_t_200
             icon: 'mdi:thermometer'
             style: 
                 top: 70%

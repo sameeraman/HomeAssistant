@@ -249,7 +249,7 @@
         entity_id: switch.housealarm
         state: 'off'
       - condition: numeric_state
-        entity_id: sensor.6_in_1_multisensor_temperature_2_252
+        entity_id: sensor.kitchen_t_252
         below: 19
   action:
     - service : switch.turn_on
@@ -535,7 +535,7 @@
       to: 'on'
   action:
     - service: homeassistant.turn_on
-      entity_id:  light.bath_stripe
+      entity_id:  light.bath_strip
 
 # Turn off the Bath strip when there's no Motion in master bedroom
 - id: bathstripoff
@@ -546,7 +546,7 @@
       to: 'off'
   action:
     - service: homeassistant.turn_off
-      entity_id:  light.bath_stripe
+      entity_id:  light.bath_strip
 
 # Alert if the Laundry door was left open for more than 10 minutes
 - id: laundrydoor10mins
@@ -880,7 +880,7 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.alfresco_light_260
+        entity_id: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
         brightness_pct: 30
 
 # Turn off the Alfresco Light when there is no motion 
@@ -896,7 +896,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.alfresco_light_260
+        entity_id: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
@@ -906,7 +906,7 @@
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.alfresco_light_260
+      entity_id: light.fibaro_system_fgrgbwm441_rgbw_controller_level_2
 
 # Alert if the Alfresco Sonos was playing for more than 2 hours
 - id: alfrescosonos2hr
@@ -1160,13 +1160,13 @@
         state: 'off'
   action:
     - service: homeassistant.turn_on
-      entity_id: light.dining_floor_lamp
+      entity_id: light.dining_table_lamp
     - service: homeassistant.turn_on
       entity_id: light.living_floor_lamp
     - service: homeassistant.turn_on
-      entity_id: light.hue_lightstrip_plus_1
+      entity_id: light.living_hue_strip
     - service: homeassistant.turn_on
-      entity_id: light.hue_lightstrip_plus_1_2
+      entity_id: light.kitchen_strip
 
 # Turn off the living mood dim lights at mid night
 - id: turnofflivingdimlights
@@ -1184,26 +1184,26 @@
       - condition: or
         conditions:
           - condition: state
-            entity_id: light.dining_floor_lamp
+            entity_id: light.dining_table_lamp
             state: 'on'
           - condition: state
             entity_id: light.living_floor_lamp
             state: 'on'
           - condition: state
-            entity_id: light.hue_lightstrip_plus_1
+            entity_id: light.living_hue_strip
             state: 'on'
           - condition: state
-            entity_id: light.hue_lightstrip_plus_1_2
+            entity_id: light.kitchen_strip
             state: 'on'
   action:
     - service: homeassistant.turn_off
-      entity_id: light.dining_floor_lamp
+      entity_id: light.dining_table_lamp
     - service: homeassistant.turn_off
       entity_id: light.living_floor_lamp
     - service: homeassistant.turn_off
-      entity_id: light.hue_lightstrip_plus_1
+      entity_id: light.living_hue_strip
     - service: homeassistant.turn_off
-      entity_id: light.hue_lightstrip_plus_1_2
+      entity_id: light.kitchen_strip
 
 # Turn off the Living Sonos (if playing) when the TV is switched on
 - id: turnofflivingsonoswhentvon
@@ -1290,7 +1290,7 @@
         to: 'on'
       # Laundry Motion
       - platform: state
-        entity_id: binary_sensor.laundry_199
+        entity_id: binary_sensor.laundry_m_199
         to: 'on'
       # Room 4 Motion
       - platform: state
@@ -1375,7 +1375,7 @@
         entity_id: light.kitchen_light_135
         state: 'off'
       - condition: state
-        entity_id: light.dining_floor_lamp
+        entity_id: light.dining_table_lamp
         state: 'off'
       - condition: state
         entity_id: group.office_motion

@@ -112,7 +112,7 @@ living_kitchen_motion:
   control: hidden
   entities:
     - binary_sensor.motion_sensor_158d0002742898
-    - binary_sensor.test_device_251
+    - binary_sensor.kitchen_m_251
     - binary_sensor.motion_sensor_158d0002c716b6
     
 living_motion:
@@ -128,7 +128,7 @@ kitchen_motion:
   control: hidden
   entities:
     - binary_sensor.motion_sensor_158d0002742898
-    - binary_sensor.test_device_251
+    - binary_sensor.kitchen_m_251
 
 office_motion:
   name: "All Office Motion Sensors"

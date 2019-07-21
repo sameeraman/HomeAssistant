@@ -4,7 +4,7 @@
     light.living_floor_lamp :
       state: on
       rgb_color: ['255','207','120']
-    light.dining_floor_lamp :
+    light.dining_table_lamp :
       state: on
       rgb_color: ['255','207','120']
     light.kitchen_light_135 : off
@@ -14,11 +14,11 @@
     remote.living :
       state : off
       activity: 'Watch TV'
-    light.hue_lightstrip_plus_1:
+    light.living_hue_strip:
       state: on
       brightness: 30
       rgb_color: ['255','207','120']
-    light.hue_lightstrip_plus_1_2:
+    light.kitchen_strip:
       state: on
       brightness: 133
       rgb_color: ['255','207','120']      
@@ -27,13 +27,13 @@
   friendly_name: Living Active Night Mood
   entities:
     light.living_floor_lamp: off
-    light.dining_floor_lamp : off
+    light.dining_table_lamp : off
     light.kitchen_light_135 : on
     light.living_light_129: on
     media_player.living:
       state: paused
-    light.hue_lightstrip_plus_1 : off
-    light.hue_lightstrip_plus_1_2 : off
+    light.living_hue_strip : off
+    light.kitchen_strip : off
 
 - name: cookingmood
   friendly_name: Cooking Mood
@@ -41,7 +41,7 @@
     light.living_floor_lamp :
       state: on
       rgb_color: ['255','207','120']
-    light.dining_floor_lamp :
+    light.dining_table_lamp :
       state: on
       rgb_color: ['255','207','120']
     light.kitchen_light_135 : on
@@ -51,11 +51,11 @@
     remote.living :
       state : on
       activity: 'Watch TV'
-    light.hue_lightstrip_plus_1:
+    light.living_hue_strip:
       state: on
       brightness: 30
       rgb_color: ['255','207','120']
-    light.hue_lightstrip_plus_1_2:
+    light.kitchen_strip:
       state: on
       brightness: 133
       rgb_color: ['255','207','120']      
@@ -64,7 +64,7 @@
   friendly_name: Turn Off All Living
   entities:
     light.living_floor_lamp: off
-    light.dining_floor_lamp : off
+    light.dining_table_lamp : off
     light.kitchen_light_135 : off
     light.living_light_129: off
     media_player.living:
@@ -72,14 +72,14 @@
     remote.living :
       state : off
       activity: 'Watch TV'
-    light.hue_lightstrip_plus_1 : off
-    light.hue_lightstrip_plus_1_2 : off
+    light.living_hue_strip : off
+    light.kitchen_strip : off
 
 - name: tvwatchingmode
   friendly_name: TV Watching Mood
   entities:
     light.living_floor_lamp: off
-    light.dining_floor_lamp : off
+    light.dining_table_lamp : off
     light.kitchen_light_135 : off
     light.living_light_129: on
     light.office_dimmer_120: off
@@ -88,8 +88,8 @@
     remote.living :
       state : on
       activity: 'Watch TV'
-    light.hue_lightstrip_plus_1 : off
-    light.hue_lightstrip_plus_1_2 : off
+    light.living_hue_strip : off
+    light.kitchen_strip : off
 
 - name: livingred
   friendly_name: Living Red Mode
@@ -97,14 +97,14 @@
     light.living_floor_lamp :
       state: on
       rgb_color: ['255','0','0']
-    light.dining_floor_lamp :
+    light.dining_table_lamp :
       state: on
       rgb_color: ['255','0','0']
-    light.hue_lightstrip_plus_1 :
+    light.living_hue_strip :
       state: on
       brightness: 50
       rgb_color: ['255','0','0']
-    light.hue_lightstrip_plus_1_2:
+    light.kitchen_strip:
       state: on
       brightness: 133
       rgb_color: ['255','0','0']
@@ -115,14 +115,14 @@
     light.living_floor_lamp :
       state: on
       rgb_color: ['0','255','0']
-    light.dining_floor_lamp :
+    light.dining_table_lamp :
       state: on
       rgb_color: ['0','255','0']
-    light.hue_lightstrip_plus_1 :
+    light.living_hue_strip :
       state: on
       brightness: 50
       rgb_color: ['186','255','64']
-    light.hue_lightstrip_plus_1_2 :
+    light.kitchen_strip :
       state: on
       brightness: 133
       rgb_color: ['186','255','64']
@@ -133,14 +133,14 @@
     light.living_floor_lamp :
       state: on
       rgb_color: ['0','0','255']
-    light.dining_floor_lamp :
+    light.dining_table_lamp :
       state: on
       rgb_color: ['0','0','255']
-    light.hue_lightstrip_plus_1 :
+    light.living_hue_strip :
       state: on
       brightness: 50
       rgb_color: ['69','11','255']
-    light.hue_lightstrip_plus_1_2:
+    light.kitchen_strip:
       state: on
       brightness: 133
       rgb_color: ['69','11','255']
@@ -152,15 +152,15 @@
       state: on
       brightness: 254
       color_temp: 377
-    light.dining_floor_lamp :
+    light.dining_table_lamp :
       state: on
       brightness: 254
       color_temp: 377
-    light.hue_lightstrip_plus_1 :
+    light.living_hue_strip :
       state: on
       brightness: 50
       color_temp: 377
-    light.hue_lightstrip_plus_1_2 :
+    light.kitchen_strip :
       state: on
       brightness: 133
       color_temp: 377
@@ -169,6 +169,6 @@
   friendly_name: Turn Off Living Colors
   entities:
     light.living_floor_lamp: off
-    light.dining_floor_lamp : off
-    light.hue_lightstrip_plus_1 : off
-    light.hue_lightstrip_plus_1_2 : off
+    light.dining_table_lamp : off
+    light.living_hue_strip : off
+    light.kitchen_strip : off

@@ -120,11 +120,11 @@ google_assistant:
 emulated_hue:
   expose_by_default: false
   entities:
-    light.alfresco_light_260:
+    light.fibaro_system_fgrgbwm441_rgbw_controller_level_2:
       hidden: false
     light.bath_light_132:
       hidden: false
-    light.bath_stripe:
+    light.bath_strip:
       hidden: false
     light.living_mood_lights:
       hidden: false
