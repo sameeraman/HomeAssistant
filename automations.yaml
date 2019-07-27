@@ -508,6 +508,15 @@
     - platform: state
       entity_id: group.garage_motion
       to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: light.garage_light
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
   action:
     - service: homeassistant.turn_off
       entity_id:  light.garage_light
@@ -1870,6 +1879,12 @@
       to: 'off'
       for: 
         minutes: 5
+    - platform: state
+      entity_id: switch.myair_power
+      from: 'off'
+      to: 'on'
+      for:
+        seconds: 90
   condition:
     condition: and
     conditions:
