@@ -91,6 +91,7 @@ tts:
 # Cloud
 cloud:
 
+light: !include lights.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
@@ -111,9 +112,7 @@ google_assistant:
   exposed_domains:
     - switch
     - light
-    - group
     - media_player
-    - scene
     - camera
 
 #emulated hue
