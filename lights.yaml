@@ -1,4 +1,3 @@
-light:
   - platform: template
     lights:
       theater_volume:
