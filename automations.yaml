@@ -843,6 +843,9 @@
       to: 'off'
       for: 
         minutes: 3
+    - platform: state
+      entity_id: binary_sensor.alfresco_person_sensor
+      to: 'off'
   condition:
     condition: and
     conditions: 
@@ -852,6 +855,12 @@
       - condition: state
         entity_id: media_player.alfresco
         state: 'playing'
+      - condition: state
+        entity_id: binary_sensor.alfresco_person_sensor
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.binary_sensor.motion_sensor_158d0002b5eecd
+        state: 'off'
   action:
     service: media_player.media_pause
     entity_id: media_player.alfresco
@@ -901,6 +910,9 @@
       to: 'off'
       for:
         minutes: 3
+    - platform: state
+      entity_id: binary_sensor.alfresco_person_sensor
+      to: 'off'
   condition:
     condition: and
     conditions: 
@@ -913,6 +925,12 @@
       - condition: state
         entity_id: input_boolean.alfresco_motion_light
         state: 'on'
+      - condition: state
+        entity_id: binary_sensor.alfresco_person_sensor
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.motion_sensor_158d0002b5eecd
+        state: 'off'
   action:
     - service: light.turn_off
       entity_id: light.alfresco_fibaro_dimmer
@@ -1056,12 +1074,15 @@
 # Turn off the Kitchen Light when there is no motion for more than 7 minutes
 - id: kitchenlightoff7min
   alias: Turn off Kitchen Light when there is no motion for more than 7 minutes
-  trigger: 
-    platform: state
-    entity_id: group.kitchen_motion
-    to: 'off'
-    for: 
-      minutes: 7
+  trigger:
+    - platform: state
+      entity_id: group.kitchen_motion
+      to: 'off'
+      for:
+        minutes: 5
+    - platform: state
+      entity_id: binary_sensor.living_person_sensor
+      to: 'off' 
   condition:
     condition: and
     conditions: 
@@ -1071,6 +1092,12 @@
       - condition: state
         entity_id: light.kitchen_light_135
         state: 'on'
+      - condition: state
+        entity_id: binary_sensor.living_person_sensor
+        state: 'off'
+      - condition: state
+        entity_id: group.kitchen_motion
+        state: 'off'
   action:
     - service: homeassistant.turn_off
       entity_id:  light.kitchen_light_135
