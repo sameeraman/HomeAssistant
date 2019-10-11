@@ -125,8 +125,6 @@ emulated_hue:
       hidden: false
     light.bath_strip:
       hidden: false
-    light.living_mood_lights:
-      hidden: false
     light.office_fibaro_dimmer:
       hidden: false
     light.front_outdoor_lights_59:
@@ -292,17 +290,13 @@ remote:
     host: 10.1.1.210
 
 # UniFi
-device_tracker:
-  - platform: unifi
-    host: 10.1.1.218
-    username: !secret unifi_username
-    password: !secret unifi_password
-    interval_seconds: 10
-    verify_ssl: false
-    ssid_filter:
-      - 'theparadise'
-    new_device_defaults:
-      track_new_devices: false
+unifi:
+  controllers:
+    - host: unifi
+      site: SnMNest
+      detection_time: 10
+      ssid_filter:
+        - 'theparadise'
 
 # Ring
 ring:
