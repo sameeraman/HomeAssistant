@@ -293,7 +293,7 @@ remote:
 unifi:
   controllers:
     - host: unifi
-      site: SnMNest
+      site: Default
       detection_time: 10
       ssid_filter:
         - 'theparadise'
