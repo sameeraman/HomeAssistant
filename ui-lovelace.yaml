@@ -687,6 +687,29 @@ views:
               left: 15.5%
               "--paper-item-icon-color": '#696969'
 
+         # Alfresco Image Processing
+          - type: state-icon
+            icon: 'mdi:eye-outline'
+            tap_action:
+              action: toggle
+            entity: binary_sensor.alfresco_person_sensor
+            style:
+              top: 18.5%
+              left: 26%
+              "--paper-item-icon-color": '#696969'
+
+          # Alfresco Music
+          - type: state-icon
+            icon: 'mdi:volume-high'
+            tap_action:
+              action: toggle
+            entity: binary_sensor.alfresco_music_sensor
+            style:
+              top: 11%
+              left: 6%
+              "--paper-item-icon-color": '#696969'
+
+
 # Kitchen
           # Kitchen Light
           - type: state-icon
@@ -766,6 +789,18 @@ views:
               top: 35%
               left: 35%
               "--paper-item-icon-color": '#696969'
+          
+          # Living Image Processing
+          - type: state-icon
+            icon: 'mdi:eye-outline'
+            tap_action:
+              action: toggle
+            entity: binary_sensor.living_person_sensor
+            style:
+              top: 42%
+              left: 3%
+              "--paper-item-icon-color": '#696969'
+
 
           # Living Floor Lamp
           - type: state-icon
