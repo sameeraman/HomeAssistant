@@ -310,3 +310,19 @@ rainmachine:
     - ip_address: 10.1.1.179
       password: !secret rainmachine_password
 
+
+# Image Processing
+image_processing:
+  - platform: doods
+    scan_interval: 30
+    url: "http://10.1.1.207:8080"
+    detector: default
+    source:
+      - entity_id: camera.livingcamera
+      - entity_id: camera.alfrescocamera
+    file_out:
+      - "/config/www/doods/{{ camera_entity.split('.')[1] }}_latest.jpg"
+    confidence: 50
+    labels:
+      - name: person
+        confidence: 40
