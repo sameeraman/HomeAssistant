@@ -846,6 +846,8 @@
     - platform: state
       entity_id: binary_sensor.alfresco_person_sensor
       to: 'off'
+      for:
+        minutes: 2
   condition:
     condition: and
     conditions: 
@@ -913,6 +915,8 @@
     - platform: state
       entity_id: binary_sensor.alfresco_person_sensor
       to: 'off'
+      for:
+        minutes: 2
   condition:
     condition: and
     conditions: 
@@ -1082,7 +1086,9 @@
         minutes: 5
     - platform: state
       entity_id: binary_sensor.living_person_sensor
-      to: 'off' 
+      to: 'off'
+      for:
+        minutes: 3
   condition:
     condition: and
     conditions: 

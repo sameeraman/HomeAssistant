@@ -484,6 +484,11 @@ views:
               name: Sonos Voice Greetings
               tap_action:
                 action: toggle
+            - entity: input_boolean.imageprocessing_sensor
+              icon: 'mdi:flash-red-eye'
+              name: Image Processing
+              tap_action:
+                action: toggle
       - type: vertical-stack
         cards:
         - type: entity-filter
