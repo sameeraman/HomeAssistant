@@ -50,6 +50,9 @@ morning_greet:
 arrival_greet:
   name: Afterwork Arrival Greet
 
+imageprocessing_sensor:
+  name: Imageprocessing Sensor
+
 greetings_on:
   name: Enable Sonos Greetings
   icon: mdi:voice
