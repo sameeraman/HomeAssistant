@@ -246,6 +246,7 @@ views:
                 entity: sun.sun
                 name: 'Living'
                 icon: 'mdi:floor-lamp'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/living
@@ -253,6 +254,7 @@ views:
                 entity: sun.sun
                 name: 'Cameras'
                 icon: 'mdi:cctv'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/cameras
@@ -260,6 +262,7 @@ views:
                 entity: sun.sun
                 name: 'Floor Plan'
                 icon: 'mdi:floor-plan'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/floorplan
@@ -589,6 +592,7 @@ views:
                 entity: sun.sun
                 name: 'Home'
                 icon: 'mdi:tablet-dashboard'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/home
@@ -596,6 +600,7 @@ views:
                 entity: sun.sun
                 name: 'Cameras'
                 icon: 'mdi:cctv'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/cameras
@@ -603,6 +608,7 @@ views:
                 entity: sun.sun
                 name: 'Floor Plan'
                 icon: 'mdi:floor-plan'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/floorplan
@@ -1191,6 +1197,7 @@ views:
                 entity: sun.sun
                 name: 'Living'
                 icon: 'mdi:floor-lamp'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/living
@@ -1198,6 +1205,7 @@ views:
                 entity: sun.sun
                 name: 'Cameras'
                 icon: 'mdi:cctv'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/cameras
