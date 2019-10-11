@@ -242,8 +242,12 @@ views:
         cards:
           - type: glance
             entities:
-              - device_tracker.sameera_oneplus_2
-              - device_tracker.madhushi_iphone
+              - entity: device_tracker.sameera_oneplus_2
+                name: Sameera
+                image: /local/sameera.jpg
+              - entity: device_tracker.madhushi_iphone
+                name: Madhushi
+                image: /local/madhushi.jpg
           - entities:
               - entity: switch.myair_power
                 icon: 'mdi:power-standby'
