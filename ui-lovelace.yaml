@@ -242,7 +242,7 @@ views:
         cards:
           - type: glance
             entities:
-              - device_tracker.sameera_oneplus
+              - device_tracker.sameera_oneplus_2
               - device_tracker.madhushi_iphone
           - entities:
               - entity: switch.myair_power
