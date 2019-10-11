@@ -697,19 +697,19 @@
   alias: Turn on house alarm based on device tracker
   trigger: 
     - platform: state
-      entity_id: device_tracker.sameera_oneplus
+      entity_id: device_tracker.sameera_oneplus_2
       to: 'not_home'
     - platform: state
-      entity_id: device_tracker.madhushi_iphone
+      entity_id: device_tracker.madhushi_iphone_xs
       to: 'not_home'
   condition:
     condition: and
     conditions: 
       - condition: state
-        entity_id: device_tracker.sameera_oneplus
+        entity_id: device_tracker.sameera_oneplus_2
         state: 'not_home'
       - condition: state
-        entity_id: device_tracker.madhushi_iphone
+        entity_id: device_tracker.madhushi_iphone_xs
         state: 'not_home'
       - condition: state
         entity_id: switch.housealarm
@@ -726,10 +726,10 @@
   alias: Turn off house alarm based on device tracker
   trigger: 
     - platform: state
-      entity_id: device_tracker.sameera_oneplus
+      entity_id: device_tracker.sameera_oneplus_2
       to: 'home'
     - platform: state
-      entity_id: device_tracker.madhushi_iphone
+      entity_id: device_tracker.madhushi_iphone_xs
       to: 'home'
   condition:
     condition: and
@@ -743,10 +743,10 @@
       - condition: or
         conditions:
         - condition: state
-          entity_id: device_tracker.sameera_oneplus
+          entity_id: device_tracker.sameera_oneplus_2
           state: 'home'
         - condition: state
-          entity_id: device_tracker.madhushi_iphone
+          entity_id: device_tracker.madhushi_iphone_xs
           state: 'home'
   action:
     - service : switch.turn_off

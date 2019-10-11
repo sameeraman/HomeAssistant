@@ -7,6 +7,7 @@ resources:
     type: module
 views:
   - title: Home
+    path: home
     cards:
       - type: weather-forecast  
         entity: weather.dark_sky
@@ -235,8 +236,38 @@ views:
                   action: toggle
                 type: entity-button
 
+
+# Home Tab Navigation Entities
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: sun.sun
+                name: 'Living'
+                icon: 'mdi:floor-lamp'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/living
+              - type: entity-button
+                entity: sun.sun
+                name: 'Cameras'
+                icon: 'mdi:cctv'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/cameras
+              - type: entity-button
+                entity: sun.sun
+                name: 'Floor Plan'
+                icon: 'mdi:floor-plan'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/floorplan
+
+
 # Living Tab  
   - title: Living
+    path: living
     cards:
       - type: vertical-stack
         cards:
@@ -245,7 +276,7 @@ views:
               - entity: device_tracker.sameera_oneplus_2
                 name: Sameera
                 image: /local/sameera.jpg
-              - entity: device_tracker.madhushi_iphone
+              - entity: device_tracker.madhushi_iphone_xs
                 name: Madhushi
                 image: /local/madhushi.jpg
           - entities:
@@ -549,10 +580,38 @@ views:
             show_state: false
             title: Lights On
 
+# Living Tab Navigation Entities
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: sun.sun
+                name: 'Home'
+                icon: 'mdi:tablet-dashboard'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/home
+              - type: entity-button
+                entity: sun.sun
+                name: 'Cameras'
+                icon: 'mdi:cctv'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/cameras
+              - type: entity-button
+                entity: sun.sun
+                name: 'Floor Plan'
+                icon: 'mdi:floor-plan'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/floorplan
+
 
 
 # Cameras Tab
   - title: Cameras
+    path: cameras
     cards:
       - type: picture-entity 
         title: Front Entrance 
@@ -573,8 +632,36 @@ views:
         title: Outside Back 
         entity:  camera.outsidebackcamera
 
+# Camera Tab Navigation Entities
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: sun.sun
+                name: 'Home'
+                icon: 'mdi:tablet-dashboard'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/home
+              - type: entity-button
+                entity: sun.sun
+                name: 'Living'
+                icon: 'mdi:floor-lamp'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/living
+              - type: entity-button
+                entity: sun.sun
+                name: 'Floor Plan'
+                icon: 'mdi:floor-plan'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/floorplan
+
 # Battery Tab
   - title: Battery
+    path: battery
     cards:
       - type: vertical-stack
         cards:
@@ -614,6 +701,7 @@ views:
 
 # Floor Plan 
   - title: Floor Plan
+    path: floorplan
     cards:
       - type: picture-elements
         image: /local/houseplanv1.svg
@@ -690,8 +778,6 @@ views:
          # Alfresco Image Processing
           - type: state-icon
             icon: 'mdi:eye-outline'
-            tap_action:
-              action: toggle
             entity: binary_sensor.alfresco_person_sensor
             style:
               top: 18.5%
@@ -796,8 +882,6 @@ views:
           # Living Image Processing
           - type: state-icon
             icon: 'mdi:eye-outline'
-            tap_action:
-              action: toggle
             entity: binary_sensor.living_person_sensor
             style:
               top: 42%
@@ -859,6 +943,21 @@ views:
               top: 38%
               left: 5%
               "--paper-item-icon-color": '#696969'
+
+          # Dining Music
+          - type: state-icon
+            icon: 'mdi:volume-high'
+            tap_action:
+              action: call-service
+              service: media_player.media_play_pause
+              service_data: 
+                entity_id: media_player.living
+            entity: binary_sensor.living_music_sensor
+            style:
+              top: 5%
+              left: 49%
+              "--paper-item-icon-color": '#696969'
+              transform: rotate(135deg)
 
 # Laundry
           # Laundry Motion
@@ -1074,3 +1173,39 @@ views:
               top: 70%
               left: 38%
               "--paper-item-icon-color": '#696969'
+
+# Floorplan Tab Navigation Entities
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: entity-button
+                entity: sun.sun
+                name: 'Home'
+                icon: 'mdi:tablet-dashboard'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/home
+              - type: entity-button
+                entity: sun.sun
+                name: 'Living'
+                icon: 'mdi:floor-lamp'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/living
+              - type: entity-button
+                entity: sun.sun
+                name: 'Cameras'
+                icon: 'mdi:cctv'
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/cameras
+
+
+# Google Home Casting
+type: entities
+entities:
+  - type: cast
+    name: Home
+    view: Home
+    hide_if_unavailable: true
