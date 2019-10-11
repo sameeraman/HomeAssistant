@@ -25,7 +25,7 @@ views:
                 icon: 'mdi:hotel'
                 name: Bed
               - entity: sensor.m_bed_room_t_34
-                icon: 'mdi:oil-temperature'
+                icon: 'mdi:coolant-temperature'
                 name: Temperature
               - entity: sensor.m_bed_room_h_36
                 icon: 'mdi:water-percent'
@@ -101,7 +101,7 @@ views:
                 icon: 'mdi:run-fast'
                 name: Motion
               - entity: sensor.kitchen_t_252
-                icon: 'mdi:oil-temperature'
+                icon: 'mdi:coolant-temperature'
                 name: Temperature
               - entity: sensor.kitchen_l_253
                 icon: 'mdi:theme-light-dark'
@@ -160,7 +160,7 @@ views:
                 icon: 'mdi:door-closed'
                 name: Door
               - entity: sensor.laundry_t_200
-                icon: 'mdi:oil-temperature'
+                icon: 'mdi:coolant-temperature'
                 name: Temperature
               - entity: sensor.laundry_l_201
                 icon: 'mdi:theme-light-dark'
@@ -177,7 +177,7 @@ views:
                 icon: 'mdi:run-fast'
                 name: Motion
               - entity: sensor.officeroom_sam_t_346
-                icon: 'mdi:oil-temperature'
+                icon: 'mdi:coolant-temperature'
                 name: Temperature
               - entity: sensor.officeroom_sam_l_347
                 icon: 'mdi:theme-light-dark'
@@ -206,7 +206,7 @@ views:
                 icon: 'mdi:garage-open'
                 name: Door
               - entity: sensor.garage_sensor_t_47
-                icon: 'mdi:oil-temperature'
+                icon: 'mdi:coolant-temperature'
                 name: Temperature
               - entity: sensor.garage_sensor_l_48
                 icon: 'mdi:theme-light-dark'
@@ -702,7 +702,10 @@ views:
           - type: state-icon
             icon: 'mdi:volume-high'
             tap_action:
-              action: toggle
+              action: call-service
+              service: media_player.media_play_pause
+              service_data: 
+                entity_id: media_player.alfresco
             entity: binary_sensor.alfresco_music_sensor
             style:
               top: 10%
@@ -847,7 +850,10 @@ views:
           - type: state-icon
             icon: 'mdi:volume-high'
             tap_action:
-              action: toggle
+              action: call-service
+              service: media_player.media_play_pause
+              service_data: 
+                entity_id: media_player.living
             entity: binary_sensor.living_music_sensor
             style:
               top: 38%
