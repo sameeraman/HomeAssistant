@@ -1183,6 +1183,7 @@ views:
                 entity: sun.sun
                 name: 'Home'
                 icon: 'mdi:tablet-dashboard'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/home
