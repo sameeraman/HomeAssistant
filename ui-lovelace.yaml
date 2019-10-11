@@ -705,8 +705,8 @@ views:
               action: toggle
             entity: binary_sensor.alfresco_music_sensor
             style:
-              top: 11%
-              left: 6%
+              top: 10%
+              left: 10%
               "--paper-item-icon-color": '#696969'
 
 
@@ -841,6 +841,17 @@ views:
             style:
               top: 34%
               left: 13%
+              "--paper-item-icon-color": '#696969'
+
+          # Living Music
+          - type: state-icon
+            icon: 'mdi:volume-high'
+            tap_action:
+              action: toggle
+            entity: binary_sensor.living_music_sensor
+            style:
+              top: 38%
+              left: 5%
               "--paper-item-icon-color": '#696969'
 
 # Laundry

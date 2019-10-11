@@ -861,7 +861,7 @@
         entity_id: binary_sensor.alfresco_person_sensor
         state: 'off'
       - condition: state
-        entity_id: binary_sensor.binary_sensor.motion_sensor_158d0002b5eecd
+        entity_id: binary_sensor.motion_sensor_158d0002b5eecd
         state: 'off'
   action:
     service: media_player.media_pause
