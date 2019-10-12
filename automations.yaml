@@ -321,6 +321,18 @@
         title: 'Air Conditioner was running when the house alarm was turned on {{now().strftime("%Y%m%d-%H%M%S")}}'
         message:  'Air Conditioner was running when the house alarm was turned on. It was turned off automatically.'
 
+# Turn off all lights when the house alarm is turned on (After leaving home)
+- id: turnoffalllightsafterleavinghome
+  alias: Turn off all lights when the house alarm is turned on (After leaving home)
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: switch.housealarm
+      to: 'on'
+      for:
+        minutes: 2
+  action:
+    - service: light.turn_off
 
 # TEST - plex seven news play - not working and still trialing
 - id: plexplay
