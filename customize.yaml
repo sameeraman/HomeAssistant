@@ -75,3 +75,15 @@ binary_sensor.motion_sensor_158d0002b7ec00:
   friendly_name: Office-M2
 binary_sensor.motion_sensor_158d0002b7f1e8:
   friendly_name: Master-M2
+binary_sensor.motion_sensor_158d0001e0ac8e:
+  friendly_name: Master_Bath-M
+binary_sensor.motion_sensor_158d0002742898:
+  friendly_name: Kitchen-M2
+binary_sensor.motion_sensor_158d0002b5eecd:
+  friendly_name: Alfresco-M
+binary_sensor.motion_sensor_158d0002c6382d:
+  friendly_name: Master_Shower-M
+binary_sensor.motion_sensor_158d0002c716b6:
+  friendly_name: Living-M
+binary_sensor.motion_sensor_158d0002c716d7:
+  friendly_name: Garage-M2

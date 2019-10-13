@@ -647,6 +647,7 @@ views:
                 entity: sun.sun
                 name: 'Home'
                 icon: 'mdi:tablet-dashboard'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/home
@@ -654,6 +655,7 @@ views:
                 entity: sun.sun
                 name: 'Living'
                 icon: 'mdi:floor-lamp'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/living
@@ -661,6 +663,7 @@ views:
                 entity: sun.sun
                 name: 'Floor Plan'
                 icon: 'mdi:floor-plan'
+                show_icon: false
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/floorplan
@@ -1045,7 +1048,15 @@ views:
             entity: light.bath_light_132
             style:
               top: 28%
-              left: 72.5%
+              left: 70%
+              "--paper-item-icon-color": '#696969'
+          # Bath Motion
+          - type: state-icon
+            icon: 'mdi:run-fast'
+            entity: binary_sensor.m_bath_motion
+            style:
+              top: 43%
+              left: 78%
               "--paper-item-icon-color": '#696969'
           # Master Motion
           - type: state-icon

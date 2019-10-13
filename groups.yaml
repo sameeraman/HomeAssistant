@@ -156,3 +156,11 @@ master_bath_motion:
     - binary_sensor.motion_sensor_158d0002b7f1e8
     - binary_sensor.motion_sensor_158d0002c6382d
     - binary_sensor.motion_sensor_158d0001e0ac8e
+
+m_bath_motion:
+  name: "All Master Bath Motion Sensors"
+  view: false
+  control: hidden
+  entities:
+    - binary_sensor.motion_sensor_158d0002c6382d
+    - binary_sensor.motion_sensor_158d0001e0ac8e
