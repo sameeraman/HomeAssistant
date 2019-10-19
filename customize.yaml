@@ -87,3 +87,13 @@ binary_sensor.motion_sensor_158d0002c716b6:
   friendly_name: Living-M
 binary_sensor.motion_sensor_158d0002c716d7:
   friendly_name: Garage-M2
+binary_sensor.door_window_sensor_158d0002c0e236:
+  friendly_name: Garage-Door
+binary_sensor.door_window_sensor_158d0002ca3100:
+  friendly_name: Laundry-Door
+binary_sensor.door_window_sensor_158d0003677216:
+  friendly_name: MasterBed-Door
+binary_sensor.door_window_sensor_158d00033a7262:
+  friendly_name: GarageEntrance-Door
+binary_sensor.door_window_sensor_158d0002739295:
+  friendly_name: MainEntrance-Door

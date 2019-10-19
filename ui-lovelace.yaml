@@ -975,7 +975,7 @@ views:
             entity: binary_sensor.laundry_m_199
             style:
               top: 70%
-              left: 3%
+              left: 4%
               "--paper-item-icon-color": '#696969'
 
           # Laundry Temperature
@@ -993,6 +993,15 @@ views:
                 top: 70%
                 left: 15.5%
 
+          # Laundry Door
+          - type: state-icon
+            icon: 'mdi:minus'
+            entity: binary_sensor.door_window_sensor_158d0002ca3100
+            style:
+              top: 65.5%
+              left: -3%
+              "--paper-item-icon-color": '#DBDBDB'
+              transform: 'scale(2,2.5) rotate(90deg)'
 # Garage
           # Garage Motion
           - type: state-icon
@@ -1029,6 +1038,16 @@ views:
               left: 77%
               "--paper-item-icon-color": '#696969'
 
+          # Garage Door
+          - type: state-icon
+            icon: 'mdi:minus'
+            entity: binary_sensor.door_window_sensor_158d0002c0e236
+            style:
+              top: 87%
+              left: 75%
+              "--paper-item-icon-color": '#696969'
+              transform: scale(11,2)
+
 # Master Bedroom
           # Master Light
           - type: state-icon
@@ -1038,7 +1057,7 @@ views:
             entity: light.master_dimmer_123
             style:
               top: 53%
-              left: 70%
+              left: 71%
               "--paper-item-icon-color": '#696969'
           # Bath Light
           - type: state-icon
@@ -1048,15 +1067,15 @@ views:
             entity: light.bath_light_132
             style:
               top: 28%
-              left: 70%
+              left: 71%
               "--paper-item-icon-color": '#696969'
           # Bath Motion
           - type: state-icon
             icon: 'mdi:run-fast'
             entity: binary_sensor.m_bath_motion
             style:
-              top: 43%
-              left: 78%
+              top: 28%
+              left: 76%
               "--paper-item-icon-color": '#696969'
           # Master Motion
           - type: state-icon
@@ -1064,7 +1083,7 @@ views:
             entity: binary_sensor.master_motion
             style:
               top: 43%
-              left: 73%
+              left: 66%
               "--paper-item-icon-color": '#696969'
 
           # Master Temperature
@@ -1072,15 +1091,24 @@ views:
             entity: sensor.m_bed_room_t_34
             icon: 'mdi:thermometer'
             style: 
-                top: 48%
-                left: 70%
+                top: 43%
+                left: 71%
                 "--paper-item-icon-color": '#696969'
           - type: state-label
             entity: sensor.m_bed_room_t_34
             icon: 'mdi:thermometer'
             style: 
-                top: 48%
-                left: 77%
+                top: 43%
+                left: 78%
+
+          # Master Bed Sensor
+          - type: state-icon
+            icon: 'mdi:hotel'
+            entity: binary_sensor.bed_sensor
+            style:
+              top: 48%
+              left: 74%
+              "--paper-item-icon-color": '#696969'
 
           # SAM WR Light
           - type: state-icon
@@ -1116,6 +1144,17 @@ views:
               top: 53%
               left: 77%
               "--paper-item-icon-color": '#696969'
+
+          # Master Bedroom Door
+#          - type: image
+#            image: /local/line3.svg
+#            entity: binary_sensor.door_window_sensor_158d0003677216
+#            state_filter:
+#              "off": opacity(0)
+#            style:
+#              top: 57.5%
+#              left: 31%
+#              transform: 'scale(0.1,0.3)'
 
 
 # Bedroom 4
