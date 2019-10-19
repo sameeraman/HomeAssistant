@@ -848,6 +848,17 @@ views:
               left: 50%
               "--paper-item-icon-color": '#696969'
 
+          # Pantry Door
+          - type: image
+            image: /local/line5vr.svg
+            entity: binary_sensor.pantry_door_18
+            state_filter:
+              "off": 'opacity(0)'
+            style:
+              top: 41%
+              left: 45%
+              transform: 'scale(1,1)'
+
 # Living
           # Living Light
           - type: state-icon
@@ -968,6 +979,18 @@ views:
               "--paper-item-icon-color": '#696969'
               transform: rotate(135deg)
 
+          # Main Entrance Door
+          - type: image
+            image: /local/line5v.svg
+            entity: binary_sensor.door_window_sensor_158d0002739295
+            state_filter:
+              "off": 'opacity(0)'
+            style:
+              top: 68%
+              left: 56.3%
+              transform: 'rotate(0deg) scale(1,1.2)'
+
+
 # Laundry
           # Laundry Motion
           - type: state-icon
@@ -994,14 +1017,27 @@ views:
                 left: 15.5%
 
           # Laundry Door
-          - type: state-icon
-            icon: 'mdi:minus'
+#          - type: state-icon
+#            icon: 'mdi:minus'
+#            entity: binary_sensor.door_window_sensor_158d0002ca3100
+#            style:
+##              top: 65.5%
+#             left: -3%
+#              "--paper-item-icon-color": '#DBDBDB'
+#              transform: 'scale(2,2.5) rotate(90deg)'
+
+          # Laundry Door
+          - type: image
+            image: /local/line5v.svg
             entity: binary_sensor.door_window_sensor_158d0002ca3100
+            state_filter:
+              "off": 'opacity(0)'
             style:
-              top: 65.5%
-              left: -3%
-              "--paper-item-icon-color": '#DBDBDB'
-              transform: 'scale(2,2.5) rotate(90deg)'
+              top: 66.5%
+              left: 0%
+              transform: rotate(0deg)
+
+
 # Garage
           # Garage Motion
           - type: state-icon
@@ -1047,6 +1083,17 @@ views:
               left: 75%
               "--paper-item-icon-color": '#696969'
               transform: scale(11,2)
+
+          # Garage Entry Door
+          - type: image
+            image: /local/line5.svg
+            entity: binary_sensor.door_window_sensor_158d00033a7262
+            state_filter:
+              "off": 'opacity(0)'
+            style:
+              top: 64.2%
+              left: 58.5%
+              transform: rotate(0deg)
 
 # Master Bedroom
           # Master Light
@@ -1146,16 +1193,15 @@ views:
               "--paper-item-icon-color": '#696969'
 
           # Master Bedroom Door
-#          - type: image
-#            image: /local/line3.svg
-#            entity: binary_sensor.door_window_sensor_158d0003677216
-#            state_filter:
-#              "off": opacity(0)
-#            style:
-#              top: 57.5%
-#              left: 31%
-#              transform: 'scale(0.1,0.3)'
-
+          - type: image
+            image: /local/line5.svg
+            entity: binary_sensor.door_window_sensor_158d0003677216
+            state_filter:
+              "off": 'opacity(0)'
+            style:
+              top: 58%
+              left: 58.5%
+              transform: rotate(0deg)
 
 # Bedroom 4
 
