@@ -1385,6 +1385,9 @@
       - condition: numeric_state
         entity_id: sensor.m_bed_room_t_34
         below: 22
+      - condition: state
+        entity_id: input_boolean.bedheater_auto
+        state: 'on'
   action:
     - service : switch.turn_on
       entity_id: switch.bedheater_38

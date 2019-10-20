@@ -72,3 +72,7 @@ party_mood:
 master_pendant_onoff_auto:
   name: Turn On/Off Master Pendant with master light
   icon: mdi:lightbulb-outline
+
+bedheater_auto:
+  name: Turn On Bed Heater Automation
+  icon: mdi:radiator

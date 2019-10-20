@@ -523,6 +523,11 @@ views:
               name: Image Processing
               tap_action:
                 action: toggle
+            - entity: input_boolean.bedheater_auto
+              icon: 'mdi:radiator'
+              name: Bed Heater Automation
+              tap_action:
+                action: toggle
       - type: vertical-stack
         cards:
         - type: entity-filter
