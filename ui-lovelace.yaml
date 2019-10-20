@@ -850,7 +850,7 @@ views:
 
           # Pantry Door
           - type: image
-            image: /local/line5vr.svg
+            image: /local/line6vr.svg
             entity: binary_sensor.pantry_door_18
             state_filter:
               "off": 'opacity(0)'
@@ -981,7 +981,7 @@ views:
 
           # Main Entrance Door
           - type: image
-            image: /local/line5v.svg
+            image: /local/line6v.svg
             entity: binary_sensor.door_window_sensor_158d0002739295
             state_filter:
               "off": 'opacity(0)'
@@ -1028,7 +1028,7 @@ views:
 
           # Laundry Door
           - type: image
-            image: /local/line5v.svg
+            image: /local/line6v.svg
             entity: binary_sensor.door_window_sensor_158d0002ca3100
             state_filter:
               "off": 'opacity(0)'
@@ -1086,7 +1086,7 @@ views:
 
           # Garage Entry Door
           - type: image
-            image: /local/line5.svg
+            image: /local/line6.svg
             entity: binary_sensor.door_window_sensor_158d00033a7262
             state_filter:
               "off": 'opacity(0)'
@@ -1194,7 +1194,7 @@ views:
 
           # Master Bedroom Door
           - type: image
-            image: /local/line5.svg
+            image: /local/line6.svg
             entity: binary_sensor.door_window_sensor_158d0003677216
             state_filter:
               "off": 'opacity(0)'
@@ -1312,5 +1312,5 @@ type: entities
 entities:
   - type: cast
     name: Home
-    view: Home
-    hide_if_unavailable: true
+    view: 'https://sphassio.duckdns.org:8123/lovelace/floorplan'
+    hide_if_unavailable: false
