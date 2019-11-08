@@ -1021,9 +1021,14 @@
 - id: officelightoff
   alias: Turn off Office Light when there is no motion 
   trigger: 
-    platform: state
-    entity_id: group.office_motion
-    to: 'off'
+    - platform: state
+      entity_id: group.office_motion
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.office_person_sensor
+      to: 'off'
+      for:
+        minutes: 3
   condition:
     condition: and
     conditions: 
@@ -1033,6 +1038,9 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
+      - condition: state
+        entity_id: binary_sensor.office_person_sensor
+        state: 'off'
   action:
     - service: homeassistant.turn_off
       entity_id: light.office_fibaro_dimmer
