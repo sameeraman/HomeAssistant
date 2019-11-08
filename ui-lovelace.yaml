@@ -768,6 +768,14 @@ views:
               left: 78%
               "--paper-item-icon-color": '#696969'
 
+          # Office Image Processing
+          - type: state-icon
+            icon: 'mdi:eye-outline'
+            entity: binary_sensor.office_person_sensor
+            style:
+              top: 19%
+              left: 84%
+              "--paper-item-icon-color": '#696969'
 
 # Alfresco
           # Alfresco Light
