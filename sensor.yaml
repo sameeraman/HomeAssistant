@@ -720,4 +720,4 @@
           {% else %}
             60
           {% endif %}
-        unit_of_measurement: 'seconds'
+        unit_of_measurement: 'lx'
