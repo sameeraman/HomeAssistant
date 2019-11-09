@@ -1353,7 +1353,7 @@ views:
                   service: rainmachine.start_zone
                   service_data:
                     zone_id: 6
-                    zone_run_time: sensor.sprinkler_runtime_seconds
+                    zone_run_time: sensor.sprinkler_runtime_seconds1
               - entity: switch.back_lawn
                 icon: 'mdi:sprinkler'
                 name: Back Lawn
