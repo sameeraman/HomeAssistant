@@ -671,7 +671,7 @@
           {{ minutes }}"
         unit_of_measurement: 'minutes'
 
-       front_side_lawn_daily_stats_mins:
+      front_side_lawn_daily_stats_mins:
         friendly_name: Back Planter Boxes Daily Stats Mins
         value_template: "{% set hours = states('sensor.front_side_lawn_daily_stats') | float %} 
           {% set minutes = ((hours % 1) * 60) | round | int %}  
