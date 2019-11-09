@@ -175,6 +175,15 @@ input_select:
      - auto
     icon: mdi:speedometer
 
+  sprinkler_runtime:
+    name: Sprinkler Runtime
+    options:
+      - "1 min"
+      - "2 mins"
+      - "5 mins"
+      - "10 mins"
+    icon: mdi:sprinkler
+    
 input_number:
   myair_inputsettemp:
     name: Aircon Temp
