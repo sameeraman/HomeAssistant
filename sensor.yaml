@@ -664,7 +664,7 @@
         unit_of_measurement: '%'
 
 # Sprinkler Minute Template Sensors        
-        back_planter_boxes_daily_stats_mins:
+      back_planter_boxes_daily_stats_mins:
           value_template: "{% set hours = states('sensor.back_planter_boxes_daily_stats') | float %} 
           {% set minutes = ((hours % 1) * 60) | int %}  
           {{ minutes }}"
