@@ -720,3 +720,4 @@
           {% else %}
             60
           {% endif %}
+        unit_of_measurement: 'seconds'
