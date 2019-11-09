@@ -1332,16 +1332,25 @@ views:
                 name: Front Lawn
                 tap_action:
                   action: call-service
-                  service: rainmachine.start_zone
+                  service: script.rainmachine_zoneon
                   service_data:
-                    zone_id: 2
-                    zone_run_time: sensor.sprinkler_runtime_seconds
+                    id: 2
               - entity: switch.front_side_lawn
                 icon: 'mdi:sprinkler'
                 name: Side Lawn
+                tap_action:
+                  action: call-service
+                  service: script.rainmachine_zoneon
+                  service_data:
+                    id: 3
               - entity: switch.front_plants
                 icon: 'mdi:sprinkler'
                 name: Front Plants
+                tap_action:
+                  action: call-service
+                  service: script.rainmachine_zoneon
+                  service_data:
+                    id: 4
 #              - entity: switch.side_trees
 #                icon: 'mdi:sprinkler'
 #                name: Side Trees
@@ -1352,10 +1361,15 @@ views:
                   action: call-service
                   service: script.rainmachine_zoneon
                   service_data:
-                    id: '6'
+                    id: 6
               - entity: switch.back_lawn
                 icon: 'mdi:sprinkler'
                 name: Back Lawn
+                tap_action:
+                  action: call-service
+                  service: script.rainmachine_zoneon
+                  service_data:
+                    id: 7
             title: Sprinklers
             type: glance
           - type: entities

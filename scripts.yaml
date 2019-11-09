@@ -104,4 +104,4 @@ rainmachine_zoneon:
     - service: rainmachine.start_zone
       data_template:
         zone_id: '{{ id | int }}'
-        zone_run_time: '{{ states(sensor.sprinkler_runtime_seconds) | int }}'
+        zone_run_time: "{{ states('sensor.sprinkler_runtime_seconds') | int }}"
