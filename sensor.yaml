@@ -31,15 +31,64 @@
     duration:
       hours: 4
 
-# Front Plants avg stats
+# Front Lawn daily avg stats
   - platform: history_stats
-    name: front_plants_stats
+    name: front_lawn_daily_stats
+    entity_id: switch.front_lawn
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+# Front Side Lawn daily avg stats
+  - platform: history_stats
+    name: front_side_lawn_daily_stats
+    entity_id: switch.front_side_lawn
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+# Front Plants daily avg stats
+  - platform: history_stats
+    name: front_plants_daily_stats
     entity_id: switch.front_plants
     state: 'on'
     type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
     end: '{{ now() }}'
-    duration:
-      days: 7
+
+# Side Trees daily avg stats
+  - platform: history_stats
+    name: side_trees_daily_stats
+    entity_id: switch.side_trees
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+# Back Planter Boxes daily avg stats
+  - platform: history_stats
+    name: back_planter_boxes_daily_stats
+    entity_id: switch.back_planter_boxes
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+# Back Lawn daily avg stats
+  - platform: history_stats
+    name: back_lawn_daily_stats
+    entity_id: switch.back_lawn
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
+
+
+
+
+
 
 # DarkSky Weather 
   - platform: darksky
