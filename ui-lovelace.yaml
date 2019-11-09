@@ -1319,6 +1319,30 @@ views:
                   action: navigate
                   navigation_path: /lovelace/cameras
 
+# Garden
+  - title: Garden
+    path: garden
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: custom:mini-graph-card
+          entities:
+            - switch.front_plants
+          name: Living Temperature
+          icon: mdi:thermometer
+          hours_to_show: 24
+          points_per_hour: 1
+          line_color: '#46749C'
+          aggregate_func: max
+          show:
+            graph: bar
+            labels: true
+          state_map:
+            - value: "off"
+              label: Clear
+            - value: "on"
+              label: Detected
+
 
 # Google Home Casting
 type: entities

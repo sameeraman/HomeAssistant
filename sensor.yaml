@@ -11,6 +11,7 @@
       - "sleep/minutesAsleep"
       - "sleep/timeInBed"
 
+# Air conditioner average up time for 2 hours
   - platform: history_stats
     name: myair_state_avg2hr
     entity_id: switch.myair_power
@@ -19,7 +20,8 @@
     end: '{{ now() }}'
     duration:
       hours: 2
-      
+
+# Air conditioner average up time for 4 hours
   - platform: history_stats
     name: myair_state_avg4hr
     entity_id: switch.myair_power
@@ -29,7 +31,17 @@
     duration:
       hours: 4
 
-  # DarkSky Weather 
+# Front Plants avg stats
+  - platform: history_stats
+    name: front_plants_stats
+    entity_id: switch.front_plants
+    state: 'on'
+    type: time
+    end: '{{ now() }}'
+    duration:
+      days: 7
+
+# DarkSky Weather 
   - platform: darksky
     api_key: !secret darksky_key
     latitude: !secret darksky_lat
