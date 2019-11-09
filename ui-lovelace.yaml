@@ -1319,26 +1319,57 @@ views:
                   action: navigate
                   navigation_path: /lovelace/cameras
 
+
 # Garden
   - title: Garden
     path: garden
     cards:
       - type: vertical-stack
         cards:
-        - type: custom:mini-graph-card
-          entities:
-            - sensor.back_planter_boxes_daily_stats_mins
-          name: Back Plants
-          icon: mdi:sprinkler
-          hours_to_show: 168
-          aggregate_func: max
-          group_by: date
-          points_per_hour: 0.0416
-          line_color: '#46749C'
-          show:
-            graph: bar
-            labels: true
-          unit: minutes
+          - entities:
+              - entity: switch.front_lawn
+                icon: 'mdi:sprinkler'
+                name: Front Lawn
+                tap_action:
+                  action: toggle
+              - entity: switch.front_side_lawn
+                icon: 'mdi:sprinkler'
+                name: Side Lawn
+              - entity: switch.front_plants
+                icon: 'mdi:sprinkler'
+                name: Front Plants
+#              - entity: switch.side_trees
+#                icon: 'mdi:sprinkler'
+#                name: Side Trees
+              - entity: switch.back_planter_boxes
+                icon: 'mdi:sprinkler'
+                name: Back Plants
+              - entity: switch.back_lawn
+                icon: 'mdi:sprinkler'
+                name: Back Lawn
+            title: Sprinklers
+            type: glance
+          - type: entities
+            title: Run time
+            show_header_toggle: false
+            entities:
+              - input_select.sprinkler_runtime
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.back_planter_boxes_daily_stats_mins
+            name: Back Plants
+            icon: mdi:sprinkler
+            hours_to_show: 168
+            aggregate_func: max
+            group_by: date
+            points_per_hour: 0.0416
+            line_color: '#46749C'
+            show:
+              graph: bar
+              labels: true
+            unit: minutes
 
 # Google Home Casting
 type: entities

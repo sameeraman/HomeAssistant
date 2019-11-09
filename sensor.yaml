@@ -705,3 +705,18 @@
           {% set minutes = ((hours % 1) * 60) | round | int %}  
           {{ minutes }}"
         unit_of_measurement: 'minutes'
+
+      sprinkler_runtime_seconds:
+        friendly_name: Sprinkler Runtime in seconds
+        value_template: >
+          {% if is_state('input_select.sprinkler_runtime', '1 min') %}
+            60
+          {% elif is_state('input_select.sprinkler_runtime', '2 mins') %}
+            120
+          {% elif is_state('input_select.sprinkler_runtime', '5 mins') %}
+            300
+          {% elif is_state('input_select.sprinkler_runtime', '10 mins') %}
+            600
+          {% else %}
+            60
+          {% endif %}

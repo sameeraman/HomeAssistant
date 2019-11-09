@@ -2072,3 +2072,15 @@
   action:
     - service: light.turn_off
       entity_id:  light.mad_wr_dimmer_65
+
+# Set Sprikler Runtime Seconds Sensor
+#- id: setspriklerruntimeseconds
+#  alias: Set Sprikler Runtime Seconds Sensor
+#  initial_state: True
+#  trigger:
+#    entity_id: input_select.sprinkler_runtime
+#    platform: state
+ # action:
+ #   - service: shell_command.myair_setcmd
+ #     data_template:
+ #       json: '%7B%22ac1%22:%7B%22info%22:%7B%22mode%22:%22{{ states.input_select.myair_modeselect.state }}%22%7D%7D%7D'
