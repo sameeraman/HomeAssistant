@@ -1352,7 +1352,7 @@ views:
                   action: call-service
                   service: script.rainmachine_zoneon
                   service_data:
-                    id: '6'
+                    id: 'switch.back_planter_boxes'
                     runtime: sensor.sprinkler_runtime_seconds
               - entity: switch.back_lawn
                 icon: 'mdi:sprinkler'
@@ -1361,6 +1361,7 @@ views:
             type: glance
           - type: entities
             title: Run time
+            icon : 'mdi:alarm'
             show_header_toggle: false
             entities:
               - input_select.sprinkler_runtime

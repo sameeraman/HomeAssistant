@@ -105,6 +105,6 @@ rainmachine_zoneon:
       example: '60'
   sequence:
     - service: rainmachine.start_zone
+      entity_id: '{{ id }}'
       data_template:
-        zone_id: '{{ id | int }}'
         zone_run_time: '{{ runtime | int }}'
