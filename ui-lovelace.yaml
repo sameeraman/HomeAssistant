@@ -1350,10 +1350,10 @@ views:
                 name: Back Plants
                 tap_action:
                   action: call-service
-                  service: rainmachine.start_zone
+                  service: script.rainmachine_zoneon
                   service_data:
-                    zone_id: 6
-                    zone_run_time: sensor.sprinkler_runtime_seconds1
+                    id: '6'
+                    runtime: sensor.sprinkler_runtime_seconds
               - entity: switch.back_lawn
                 icon: 'mdi:sprinkler'
                 name: Back Lawn

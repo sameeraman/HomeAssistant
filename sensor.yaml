@@ -706,7 +706,7 @@
           {{ minutes }}"
         unit_of_measurement: 'minutes'
 
-      sprinkler_runtime_seconds1:
+      sprinkler_runtime_seconds:
         friendly_name: Sprinkler Runtime in seconds
         value_template: >
           {% if is_state('input_select.sprinkler_runtime', '1 min') %}
@@ -720,4 +720,4 @@
           {% else %}
             60
           {% endif %}
-        unit_of_measurement: 'lx'
+        unit_of_measurement: 'seconds'

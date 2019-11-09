@@ -92,3 +92,19 @@ sonos_morning_greet:
         activity: "Watch TV"
     - service: input_boolean.turn_off
       entity_id: input_boolean.morning_greet
+
+# Rainmachine Sprinkler Turn on Call
+rainmachine_zoneon:
+  description: 'Rainmachine Sprinkler Turn on Call'
+  fields:
+    id:
+      description: 'zone id'
+      example: '2'
+    runtime:
+      description: 'Run time'
+      example: '60'
+  sequence:
+    - service: rainmachine.start_zone
+      data_template:
+        zone_id: '{{ id | int }}'
+        zone_run_time: '{{ runtime | int }}'
