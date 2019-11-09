@@ -104,7 +104,7 @@ rainmachine_zoneon:
       description: 'Run time'
       example: '60'
   sequence:
-    - service: rainmachine.start_zone
+    - service: switch.turn_on
       entity_id: '{{ id }}'
       data_template:
         zone_run_time: '{{ runtime | int }}'
