@@ -1327,22 +1327,18 @@ views:
         cards:
         - type: custom:mini-graph-card
           entities:
-            - switch.front_plants
-          name: Living Temperature
-          icon: mdi:thermometer
-          hours_to_show: 24
-          points_per_hour: 1
-          line_color: '#46749C'
+            - sensor.back_planter_boxes_daily_stats
+          name: Back Plants
+          icon: mdi:sprinkler
+          hours_to_show: 168
           aggregate_func: max
+          group_by: date
+          points_per_hour: 0.0416
+          line_color: '#46749C'
           show:
             graph: bar
             labels: true
-          state_map:
-            - value: "off"
-              label: Clear
-            - value: "on"
-              label: Detected
-
+          unit: minutes
 
 # Google Home Casting
 type: entities
