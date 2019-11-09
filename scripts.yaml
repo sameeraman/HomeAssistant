@@ -100,11 +100,8 @@ rainmachine_zoneon:
     id:
       description: 'zone id'
       example: '2'
-    runtime:
-      description: 'Run time'
-      example: '60'
   sequence:
-    - service: switch.turn_on
-      entity_id: '{{ id }}'
+    - service: rainmachine.start_zone
       data_template:
-        zone_run_time: '{{ runtime | int }}'
+        zone_id: '{{ id | int }}'
+        zone_run_time: '{{ states(sensor.sprinkler_runtime_seconds) | int }}'
