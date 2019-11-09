@@ -330,7 +330,10 @@ image_processing:
       - entity_id: camera.livingcamera
     file_out:
       - "/config/www/doods/{{ camera_entity.split('.')[1] }}_latest.jpg"
-    confidence: 50
+    confidence: 40
+    area:
+      top: 0.2
+      covers: true
     labels:
       - name: person
         confidence: 40

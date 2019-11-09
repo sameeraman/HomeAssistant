@@ -1373,21 +1373,25 @@ views:
             title: Sprinklers
             type: glance
 
-          - entities:
-              - entity: switch.front_lawn
-                icon: 'mdi:cancel'
-                name: Cancel
-                tap_action:
-                  action: call-service
-                  service: rainmachine.stop_all
               
+          - type: horizontal-stack
+            cards:
+                          
+            - type: entities
+              show_header_toggle: false
+              entities:
+                - entity: input_select.sprinkler_runtime
+            - type: glance
+              show_state: false              
+              entities:
+                - entity: switch.front_lawn
+                  icon: 'mdi:cancel'
+                  name: Cancel
+                  show_state: false
+                  tap_action:
+                    action: call-service
+                    service: rainmachine.stop_all
 
-          - type: entities
-            title: Run time
-            show_header_toggle: false
-            entities:
-              - entity: input_select.sprinkler_runtime
-                icon: 'mdi:alarm'
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
