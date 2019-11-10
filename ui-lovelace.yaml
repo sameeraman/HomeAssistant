@@ -3,7 +3,7 @@ resources:
     type: module
   - url: /local/config-template-card.js
     type: module
-  - url: /local/mini-graph-card-bundle.js?v=0.4.3
+  - url: /local/mini-graph-card-bundle.js?v=0.8.2
     type: module
 views:
   - title: Home
@@ -1373,10 +1373,8 @@ views:
             title: Sprinklers
             type: glance
 
-              
           - type: horizontal-stack
-            cards:
-                          
+            cards:    
             - type: entities
               show_header_toggle: false
               entities:
@@ -1396,11 +1394,11 @@ views:
         cards:
           - type: custom:mini-graph-card
             entities:
-              - sensor.back_planter_boxes_daily_stats_mins
-            name: Back Plants
+              - sensor.front_lawn_daily_stats_mins
+            name: Front Lawn Week History
             icon: mdi:sprinkler
-            hours_to_show: 168
             aggregate_func: max
+            hours_to_show: 168
             group_by: date
             points_per_hour: 0.0416
             line_color: '#46749C'
@@ -1408,6 +1406,86 @@ views:
               graph: bar
               labels: true
             unit: minutes
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.front_side_lawn_daily_stats_mins
+            name: Front Side Lawn Week History
+            icon: mdi:sprinkler
+            aggregate_func: max
+            hours_to_show: 168
+            group_by: date
+            points_per_hour: 0.0416
+            line_color: '#46749C'
+            show:
+              graph: bar
+              labels: true
+            unit: minutes
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.front_plants_daily_stats_mins
+            name: Front Plants Week History
+            icon: mdi:sprinkler
+            aggregate_func: max
+            hours_to_show: 168
+            group_by: date
+            points_per_hour: 0.0416
+            line_color: '#46749C'
+            show:
+              graph: bar
+              labels: true
+            unit: minutes
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.side_trees_daily_stats_mins
+            name: Side Trees Week History
+            icon: mdi:sprinkler
+            aggregate_func: max
+            hours_to_show: 168
+            group_by: date
+            points_per_hour: 0.0416
+            line_color: '#46749C'
+            show:
+              graph: bar
+              labels: true
+            unit: minutes                  
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.back_planter_boxes_daily_stats_mins
+            name: Back Plants Week History
+            icon: mdi:sprinkler
+            aggregate_func: max
+            hours_to_show: 168
+            group_by: date
+            points_per_hour: 0.0416
+            line_color: '#46749C'
+            show:
+              graph: bar
+              labels: true
+            unit: minutes   
+      - type: vertical-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.back_lawn_daily_stats_mins
+            name: Back Lawn Week History
+            icon: mdi:sprinkler
+            aggregate_func: max
+            hours_to_show: 168
+            group_by: date
+            points_per_hour: 0.0416
+            line_color: '#46749C'
+            show:
+              graph: bar
+              labels: true
+            unit: minutes 
 
 # Google Home Casting
 type: entities

@@ -665,42 +665,42 @@
 
 # Sprinkler Minute Template Sensors
       front_lawn_daily_stats_mins:
-        friendly_name: Back Planter Boxes Daily Stats Mins
+        friendly_name: Front lawn Daily Stats
         value_template: "{% set hours = states('sensor.front_lawn_daily_stats') | float %} 
           {% set minutes = ((hours % 1) * 60) | round | int %}  
           {{ minutes }}"
         unit_of_measurement: 'minutes'
 
       front_side_lawn_daily_stats_mins:
-        friendly_name: Back Planter Boxes Daily Stats Mins
+        friendly_name: Front Side lawn Daily Stats
         value_template: "{% set hours = states('sensor.front_side_lawn_daily_stats') | float %} 
           {% set minutes = ((hours % 1) * 60) | round | int %}  
           {{ minutes }}"
         unit_of_measurement: 'minutes'
       
       front_plants_daily_stats_mins:
-        friendly_name: Back Planter Boxes Daily Stats Mins
+        friendly_name: Front Plants Daily Stats
         value_template: "{% set hours = states('sensor.front_plants_daily_stats') | float %} 
           {% set minutes = ((hours % 1) * 60) | round | int %}  
           {{ minutes }}"
         unit_of_measurement: 'minutes'
 
       side_trees_daily_stats_mins:
-        friendly_name: Back Planter Boxes Daily Stats Mins
+        friendly_name: Side Trees Daily Stats
         value_template: "{% set hours = states('sensor.side_trees_daily_stats') | float %} 
           {% set minutes = ((hours % 1) * 60) | round | int %}  
           {{ minutes }}"
         unit_of_measurement: 'minutes'
 
       back_planter_boxes_daily_stats_mins:
-        friendly_name: Back Planter Boxes Daily Stats Mins
+        friendly_name: Back Planter Boxes Daily Stats
         value_template: "{% set hours = states('sensor.back_planter_boxes_daily_stats') | float %} 
           {% set minutes = ((hours % 1) * 60) | round | int %}  
           {{ minutes }}"
         unit_of_measurement: 'minutes'
 
       back_lawn_daily_stats_mins:
-        friendly_name: Back Planter Boxes Daily Stats Mins
+        friendly_name: Back Lawn Daily Stats
         value_template: "{% set hours = states('sensor.back_lawn_daily_stats') | float %} 
           {% set minutes = ((hours % 1) * 60) | round | int %}  
           {{ minutes }}"
