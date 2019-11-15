@@ -97,3 +97,5 @@ binary_sensor.door_window_sensor_158d00033a7262:
   friendly_name: GarageEntrance-Door
 binary_sensor.door_window_sensor_158d0002739295:
   friendly_name: MainEntrance-Door
+switch.plug_158d000278ff33:
+  friendly_name: Christmas Lights
