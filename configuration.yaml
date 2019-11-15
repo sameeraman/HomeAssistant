@@ -333,6 +333,7 @@ image_processing:
     confidence: 40
     area:
       top: 0.2
+      right: 1.0
       covers: true
     labels:
       - name: person
