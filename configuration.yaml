@@ -335,7 +335,7 @@ image_processing:
       - name: person
         confidence: 30
         area:
-          top: 0.15
+          top: 0.2
           right: 0.95
           left: 0.1
   - platform: doods
