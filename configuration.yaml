@@ -331,13 +331,13 @@ image_processing:
     file_out:
       - "/config/www/doods/{{ camera_entity.split('.')[1] }}_latest.jpg"
     confidence: 40
-    area:
-      top: 0.2
-      right: 1.0
-      covers: true
     labels:
       - name: person
-        confidence: 40
+        confidence: 30
+        area:
+          top: 0.05
+          right: 0.85
+          left: 0.1
   - platform: doods
     scan_interval: 33
     url: "http://10.1.1.207:8080"
