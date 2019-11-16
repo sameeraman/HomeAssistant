@@ -3,8 +3,8 @@
     name: myair
 
 # unify gateway
-- platform: unifigateway
-    host: 10.1.1.218
+  - platform: unifigateway
+    host: '10.1.1.218'
     username: !secret unifi_username
     password: !secret unifi_password
     monitored_conditions:
@@ -732,3 +732,13 @@
             60
           {% endif %}
         unit_of_measurement: 'seconds'
+
+# Unify Gateway sensors
+      unifi_gateway_www_speed_down:
+          friendly_name: 'USG Download Speed'
+          unit_of_measurement: KBps
+          value_template: "{{ states.sensor.unifi_gateway_www.attributes.rx_bytes-r | int / 1024}}"
+      unifi_gateway_www_speed_up:
+          friendly_name: 'USG Upload Speed'
+          unit_of_measurement: KBps
+          value_template: "{{ states.sensor.unifi_gateway_www.attributes.tx_bytes-r | int / 1024 }}"
