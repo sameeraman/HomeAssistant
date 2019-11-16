@@ -276,7 +276,7 @@ views:
         cards:
           - type: glance
             entities:
-              - entity: device_tracker.sameera_oneplus_2
+              - entity: device_tracker.oneplus7t
                 name: Sameera
                 image: /local/sameera.jpg
               - entity: device_tracker.madhushi_iphone_xs
@@ -363,6 +363,19 @@ views:
             hours_to_show: 24
             points_per_hour: 12
             line_width: 2
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.unifi_gateway_www_speed_down
+                name: Download
+              - entity: sensor.unifi_gateway_www_speed_up
+                name: Upload
+            name: Internet Usage
+            icon: mdi:web
+            hours_to_show: 24
+            points_per_hour: 12
+            line_width: 2
+      - type: vertical-stack
+        cards:
           - type: glance
             show_state: false
             title: Kitchen & Living Moods

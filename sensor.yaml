@@ -737,8 +737,8 @@
       unifi_gateway_www_speed_down:
           friendly_name: 'USG Download Speed'
           unit_of_measurement: KBps
-          value_template: "{{ states.sensor.unifi_gateway_www.attributes.rx_bytes-r | int / 1024}}"
+          value_template: "{{ (states.sensor.unifi_gateway_www.attributes['rx_bytes-r'] | int / 1024) | round(1) }}"
       unifi_gateway_www_speed_up:
           friendly_name: 'USG Upload Speed'
           unit_of_measurement: KBps
-          value_template: "{{ states.sensor.unifi_gateway_www.attributes.tx_bytes-r | int / 1024 }}"
+          value_template: "{{ (states.sensor.unifi_gateway_www.attributes['tx_bytes-r'] | int / 1024) | round(1) }}"
