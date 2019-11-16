@@ -2,6 +2,17 @@
     resource: http://10.1.1.180:2025/getSystemData
     name: myair
 
+# unify gateway
+- platform: unifigateway
+    host: 10.1.1.218
+    username: !secret unifi_username
+    password: !secret unifi_password
+    monitored_conditions:
+      - www
+      - wlan
+      - alerts
+      - firmware
+
 # fitbit
   - platform: fitbit
     clock_format: 12H
