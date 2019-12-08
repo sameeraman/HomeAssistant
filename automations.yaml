@@ -1936,7 +1936,7 @@
     platform: event
     event_type: xiaomi_aqara.click
     event_data:
-      entity_id: binary_sensor.switch_158d00035f34ec
+      entity_id: binary_sensor.switch_158d000407e1ec
       click_type: single
   action:
     service: light.toggle
@@ -1949,7 +1949,7 @@
     platform: event
     event_type: xiaomi_aqara.click
     event_data:
-      entity_id: binary_sensor.switch_158d00035f34ec
+      entity_id: binary_sensor.switch_158d000407e1ec
       click_type: double
   action:
     service: light.toggle
