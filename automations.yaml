@@ -423,6 +423,10 @@
       - condition: numeric_state
         entity_id: sensor.illumination_158d0001e0ac8e
         below: 30
+      - condition: time
+        before: '23:59:59'
+      - condition: time
+        after: '05:30:00'
   action:
     - service: homeassistant.turn_on
       entity_id:  light.bath_light_132
