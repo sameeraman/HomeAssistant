@@ -883,9 +883,9 @@
     service: media_player.media_pause
     entity_id: media_player.alfresco
 
-# Turn on Alfresco light with 20% when there is motion in Alfresco
+# Turn on Alfresco light with 50% when there is motion in Alfresco
 - id: turnonalfrescolightwithmotion
-  alias: Turn on Alfresco light with 20% when there is motion in Alfresco
+  alias: Turn on Alfresco light with 50% when there is motion in Alfresco
   trigger: 
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002b5eecd
@@ -917,7 +917,7 @@
     - service: light.turn_on
       data:
         entity_id: light.alfresco_fibaro_dimmer
-        brightness_pct: 30
+        brightness_pct: 50
 
 # Turn off the Alfresco Light when there is no motion 
 - id: alfrescolightoffnomotion
@@ -1903,9 +1903,9 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.master_pendant_onoff_auto
 
-# Toggle Master Pendant lights when Xiaomi Master push button is single pressed
-- id: togglemasterpendentlightspushbutton
-  alias: Toggle Master Pendant lights when Xiaomi push button is single pressed
+# Toggle Master Pendant lights when Xiaomi Madhushi Bedside push button is single pressed
+- id: togglemadhushibedsidependentlightspushbutton
+  alias: Toggle Master Pendant lights when Xiaomi Madhushi Bedside push button is single pressed
   trigger: 
     platform: event
     event_type: xiaomi_aqara.click
@@ -1916,9 +1916,9 @@
     service: light.toggle
     entity_id: light.master_pendant
 
-# Toggle Master Light when Xiaomi Master push button is double pressed
-- id: togglemasterlightpushbuttondouble
-  alias: Toggle Master Light when Xiaomi Master push button is double pressed
+# Toggle Master Light when Xiaomi Madhushi Bedside push button is double pressed
+- id: togglemadhushibedsidemasterlightpushbuttondouble
+  alias: Toggle Master Light when Xiaomi Madhushi Bedside push button is double pressed
   trigger: 
     platform: event
     event_type: xiaomi_aqara.click
@@ -1929,6 +1929,31 @@
     service: light.toggle
     entity_id: light.master_dimmer_123
 
+# Toggle Master Pendant lights when Xiaomi Sameera Bedside push button is single pressed
+- id: togglesameerabedsidependentlightspushbutton
+  alias: Toggle Master Pendant lights when Xiaomi Sameera Bedside push button is single pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d00035f34ec
+      click_type: single
+  action:
+    service: light.toggle
+    entity_id: light.master_pendant
+
+# Toggle Master Light when Xiaomi Sameera Bedside push button is double pressed
+- id: togglesameerabedsidepushbuttondouble
+  alias: Toggle Master Light when Xiaomi Sameera Bedside push button is double pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d00035f34ec
+      click_type: double
+  action:
+    service: light.toggle
+    entity_id: light.master_dimmer_123
 
 # Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
 - id: masteracoff5min
