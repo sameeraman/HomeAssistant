@@ -8,7 +8,7 @@
       state: on
       rgb_color: ['255','207','120']
     light.kitchen_light : off
-    light.living_light_129: off
+    light.living_light: off
     media_player.living:
       state: playing
     remote.living :
@@ -29,7 +29,7 @@
     light.living_floor_lamp: off
     light.dining_table_lamp : off
     light.kitchen_light : on
-    light.living_light_129: on
+    light.living_light: on
     media_player.living:
       state: paused
     light.living_hue_strip : off
@@ -45,7 +45,7 @@
       state: on
       rgb_color: ['255','207','120']
     light.kitchen_light : on
-    light.living_light_129: off
+    light.living_light: off
     media_player.living:
       state: paused
     remote.living :
@@ -66,7 +66,7 @@
     light.living_floor_lamp: off
     light.dining_table_lamp : off
     light.kitchen_light : off
-    light.living_light_129: off
+    light.living_light: off
     media_player.living:
       state: paused
     remote.living :
@@ -81,7 +81,7 @@
     light.living_floor_lamp: off
     light.dining_table_lamp : off
     light.kitchen_light : off
-    light.living_light_129: on
+    light.living_light: on
     light.office_fibaro_dimmer: off
     media_player.living:
       state: paused

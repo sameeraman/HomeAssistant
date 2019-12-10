@@ -117,7 +117,7 @@ views:
             cards:
               - entity: light.kitchen_light
                 type: light
-              - entity: light.living_light_129
+              - entity: light.living_light
                 type: light
           - type: glance
             show_state: false
@@ -575,7 +575,7 @@ views:
             - entity:  light.living_floor_lamp
               tap_action:
                 action: toggle
-            - entity: light.living_light_129
+            - entity: light.living_light
               tap_action: 
                 action: toggle
             - entity: light.mad_wr_dimmer_65
@@ -891,7 +891,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.living_light_129
+            entity: light.living_light
             style:
               top: 34%
               left: 19%

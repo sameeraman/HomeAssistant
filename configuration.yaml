@@ -134,7 +134,7 @@ emulated_hue:
       hidden: false
     light.kitchen_light:
       hidden: false
-    light.living_light_129:
+    light.living_light:
       hidden: false
     light.living_mood_lights:
       hidden: false

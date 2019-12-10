@@ -11,7 +11,7 @@ living:
   icon: mdi:sofa
   view: yes
   entities:
-    - light.living_light_129
+    - light.living_light
     - light.kitchen_light
     - media_player.living_room
     - group.myair

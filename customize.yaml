@@ -1,6 +1,6 @@
 light.office_fibaro_dimmer:
   friendly_name: Office Light
-light.living_light_129:
+light.living_light:
   friendly_name: Living Light
 light.kitchen_light_135:
   friendly_name: Kitchen Light
