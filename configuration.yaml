@@ -72,6 +72,9 @@ map:
 # Track the sun
 sun:
 
+# Zeroconf discovery
+zeroconf:
+
 
 shell_command:
   myair_setcmd: !secret myair_set_cmd
