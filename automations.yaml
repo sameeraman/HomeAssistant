@@ -1088,14 +1088,14 @@
         entity_id: input_boolean.kitchen_light_onoff_auto
         state: 'on'
       - condition: state
-        entity_id: light.kitchen_light_135
+        entity_id: light.kitchen_light
         state: 'off'
       - condition: numeric_state
         entity_id: sensor.illumination_158d0002b5eecd
         below: 100
   action:
     - service: homeassistant.turn_on
-      entity_id:  light.kitchen_light_135
+      entity_id:  light.kitchen_light
     - service: input_boolean.turn_off
       entity_id: input_boolean.kitchen_light_onoff_auto
 
@@ -1120,7 +1120,7 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.kitchen_light_135
+        entity_id: light.kitchen_light
         state: 'on'
       - condition: state
         entity_id: binary_sensor.living_person_sensor
@@ -1130,7 +1130,7 @@
         state: 'off'
   action:
     - service: homeassistant.turn_off
-      entity_id:  light.kitchen_light_135
+      entity_id:  light.kitchen_light
     - service: input_boolean.turn_on
       entity_id: input_boolean.kitchen_light_onoff_auto
 
@@ -1441,7 +1441,7 @@
         entity_id: group.living_kitchen_motion
         state: 'off'
       - condition: state
-        entity_id: light.kitchen_light_135
+        entity_id: light.kitchen_light
         state: 'off'
       - condition: state
         entity_id: light.dining_table_lamp

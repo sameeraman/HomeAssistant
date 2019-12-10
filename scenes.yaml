@@ -7,7 +7,7 @@
     light.dining_table_lamp :
       state: on
       rgb_color: ['255','207','120']
-    light.kitchen_light_135 : off
+    light.kitchen_light : off
     light.living_light_129: off
     media_player.living:
       state: playing
@@ -28,7 +28,7 @@
   entities:
     light.living_floor_lamp: off
     light.dining_table_lamp : off
-    light.kitchen_light_135 : on
+    light.kitchen_light : on
     light.living_light_129: on
     media_player.living:
       state: paused
@@ -44,7 +44,7 @@
     light.dining_table_lamp :
       state: on
       rgb_color: ['255','207','120']
-    light.kitchen_light_135 : on
+    light.kitchen_light : on
     light.living_light_129: off
     media_player.living:
       state: paused
@@ -65,7 +65,7 @@
   entities:
     light.living_floor_lamp: off
     light.dining_table_lamp : off
-    light.kitchen_light_135 : off
+    light.kitchen_light : off
     light.living_light_129: off
     media_player.living:
       state: paused
@@ -80,7 +80,7 @@
   entities:
     light.living_floor_lamp: off
     light.dining_table_lamp : off
-    light.kitchen_light_135 : off
+    light.kitchen_light : off
     light.living_light_129: on
     light.office_fibaro_dimmer: off
     media_player.living:

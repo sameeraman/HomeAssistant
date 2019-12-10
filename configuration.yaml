@@ -132,7 +132,7 @@ emulated_hue:
       hidden: false
     light.front_outdoor_lights_59:
       hidden: false
-    light.kitchen_light_135:
+    light.kitchen_light:
       hidden: false
     light.living_light_129:
       hidden: false

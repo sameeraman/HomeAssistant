@@ -115,7 +115,7 @@ views:
                 name: Humidity
           - type: horizontal-stack
             cards:
-              - entity: light.kitchen_light_135
+              - entity: light.kitchen_light
                 type: light
               - entity: light.living_light_129
                 type: light
@@ -569,7 +569,7 @@ views:
             - entity: light.kitchen_strip
               tap_action: 
                 action: toggle
-            - entity: light.kitchen_light_135
+            - entity: light.kitchen_light
               tap_action:
                 action: toggle
             - entity:  light.living_floor_lamp
@@ -840,7 +840,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.kitchen_light_135
+            entity: light.kitchen_light
             style:
               top: 33%
               left: 50%
