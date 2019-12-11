@@ -1065,11 +1065,11 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.master_dimmer_123
+        entity_id: light.master_light
         state: 'on'
   action:
     - service: homeassistant.turn_off
-      entity_id:  light.master_dimmer_123
+      entity_id:  light.master_light
 
 # Turn on the Kitchen light when there is motion based on light and sunset
 - id: kitchenlightonmotion
@@ -1787,7 +1787,7 @@
       - condition: time
         after: '08:00:00'
       - condition: state
-        entity_id: light.master_dimmer_123
+        entity_id: light.master_light
         state: 'off'
       - condition: numeric_state
         entity_id: sensor.illumination_158d0002b7f1e8
@@ -1826,7 +1826,7 @@
   alias: Turn off Master Pendant Light when Master light is turned on
   trigger: 
     - platform: state
-      entity_id: light.master_dimmer_123
+      entity_id: light.master_light
       to: 'on'
   condition:
     condition: and
@@ -1870,7 +1870,7 @@
   alias: Turn On Master Pendant Light when Master light is turned off 
   trigger: 
     - platform: state
-      entity_id: light.master_dimmer_123
+      entity_id: light.master_light
       to: 'off'
   condition:
     condition: and
@@ -1927,7 +1927,7 @@
       click_type: double
   action:
     service: light.toggle
-    entity_id: light.master_dimmer_123
+    entity_id: light.master_light
 
 # Toggle Master Pendant lights when Xiaomi Sameera Bedside push button is single pressed
 - id: togglesameerabedsidependentlightspushbutton
@@ -1953,7 +1953,7 @@
       click_type: double
   action:
     service: light.toggle
-    entity_id: light.master_dimmer_123
+    entity_id: light.master_light
 
 # Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
 - id: masteracoff5min
@@ -2046,12 +2046,12 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.master_dimmer_123
+        entity_id: light.master_light
         state: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: light.master_dimmer_123
+        entity_id: light.master_light
         brightness_pct: 30
 
 # Set the Master light brightness to 100% when someone get up from the bed
@@ -2068,12 +2068,12 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.master_dimmer_123
+        entity_id: light.master_light
         state: 'on'
   action:
     - service: light.turn_on
       data:
-        entity_id: light.master_dimmer_123
+        entity_id: light.master_light
         brightness_pct: 100
 
 # Turn off the Sameera's Wardrobe light when the light was left on for more than 10 minutes

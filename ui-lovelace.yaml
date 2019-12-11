@@ -60,7 +60,7 @@ views:
                   action: toggle
           - type: horizontal-stack
             cards:
-              - entity: light.master_dimmer_123
+              - entity: light.master_light
                 type: light
               - entity: light.bath_light_132
                 type: light
@@ -581,7 +581,7 @@ views:
             - entity: light.mad_wr_dimmer_65
               tap_action:
                 action: toggle
-            - entity: light.master_dimmer_123
+            - entity: light.master_light
               tap_action: 
                 action: toggle
             - entity: light.office_fibaro_dimmer
@@ -1127,7 +1127,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.master_dimmer_123
+            entity: light.master_light
             style:
               top: 53%
               left: 71%

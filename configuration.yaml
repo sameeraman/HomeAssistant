@@ -138,7 +138,7 @@ emulated_hue:
       hidden: false
     light.living_mood_lights:
       hidden: false
-    light.master_dimmer_123:
+    light.master_light:
       hidden: false
     light.garage_light:
       hidden: false

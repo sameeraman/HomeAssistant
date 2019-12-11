@@ -23,7 +23,7 @@ mbedroom:
   view: yes
   entities:
     - media_player.bedroom
-    - light.master_dimmer_123
+    - light.master_light
     - switch.bedheater_38
     - light.bath_light_132
     - binary_sensor.m_bed_room_m_33
