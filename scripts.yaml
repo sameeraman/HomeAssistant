@@ -53,9 +53,17 @@ sonos_afternoon_greet:
     - service: sonos.restore
       data_template:
         entity_id: media_player.living
+      {% if 'Good' in state_attr('media_player.living', 'media_title') %}
     - service: media_player.media_play
       data_template:
         entity_id: media_player.living
+        media_content_type: playlist
+        media_content_id: Jazz
+      {% else %}
+    - service: media_player.media_play
+      data_template:
+        entity_id: media_player.living
+      {% endif %}
     - service: input_boolean.turn_off
       entity_id: input_boolean.arrival_greet
 
