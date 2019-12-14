@@ -117,6 +117,15 @@ google_assistant:
     - light
     - media_player
     - camera
+entity_config:
+  script.launch_ha_floorplan:
+    expose: true
+    aliases:
+      - Home Assistant floorplan
+  script.launch_ha_dashboard:
+    expose: true
+    aliases:
+      - Home Assistant dashboard
 
 #emulated hue
 emulated_hue:
