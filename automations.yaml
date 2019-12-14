@@ -782,8 +782,8 @@
     entity_id: input_boolean.alfresco_button
     state: 'on'
   action:
-    service: media_player.media_play_pause
-    entity_id: media_player.alfresco
+    - service : script.turn_on
+      entity_id: script.sonos_alfresco_play
 
 # Jump to Next track in Alfresco Music Play when Alfresco Xiaomi push button double press is detected
 - id: nextrackalfrescomusicplaydoublepushbutton
@@ -847,8 +847,8 @@
         entity_id: switch.nightmood
         state: 'off'
   action:
-    service: media_player.media_play
-    entity_id: media_player.alfresco
+    - service : script.turn_on
+      entity_id: script.sonos_alfresco_play
 
 # Turn off Alfresco Music Play with Alfresco No Motion for 3 mins
 - id: turnoffalfrescomusicplaywithnomotion

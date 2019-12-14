@@ -63,7 +63,7 @@ sonos_afternoon_greet:
           {% elif is_state_attr('media_player.living', 'media_title', '') %}
             script.sonos_living_play_jazz
           {% else %}
-            script.sonos_living_play
+            script.sonos_living_play_resume
           {% endif %}
     - service: input_boolean.turn_off
       entity_id: input_boolean.arrival_greet
@@ -115,8 +115,8 @@ rainmachine_zoneon:
         zone_id: '{{ id | int }}'
         zone_run_time: "{{ states('sensor.sprinkler_runtime_seconds') | int }}"
 
-# Play Living Sonos
-sonos_living_play:
+# Resume Living Sonos
+sonos_living_play_resume:
   description: 'Resume Existing Playlist in Living Sonos'
   alias: "Resume Existing Playlist in Living Sonos"
   sequence:
@@ -124,7 +124,7 @@ sonos_living_play:
       data_template:
         entity_id: media_player.living
 
-# Play Living Sonos
+# Play Living Sonos Jazz Playlist
 sonos_living_play_jazz:
   description: 'Play Jazz Playlist in Living Sonos'
   alias: "Play Jazz Playlist in Living Sonos"
@@ -134,3 +134,38 @@ sonos_living_play_jazz:
         entity_id: media_player.living
         media_content_type: playlist
         media_content_id: 'Jazz'
+
+
+# Resume Alfresco Sonos
+sonos_alfresco_play_resume:
+  description: 'Resume Existing Playlist in Alfresco Sonos'
+  alias: "Resume Existing Playlist in Alfresco Sonos"
+  sequence:
+    - service: media_player.media_play
+      data_template:
+        entity_id: media_player.alfresco
+
+# Play Alfresco Sonos Jazz Playlist
+sonos_alfresco_play_jazz:
+  description: 'Play Jazz Playlist in Alfresco Sonos'
+  alias: "Play Jazz Playlist in Alfresco Sonos"
+  sequence:
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.alfresco
+        media_content_type: playlist
+        media_content_id: 'Jazz'
+
+# Play Alfresco Sonos
+sonos_alfresco_play:
+  description: 'Play music in Alfresco Sonos'
+  alias: "Play music in Alfresco Sonos'"
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >-
+          {% if is_state_attr('media_player.alfresco', 'media_title', '') %}
+            script.sonos_alfresco_play_jazz
+          {% else %}
+            script.sonos_alfresco_play_resume
+          {% endif %}
