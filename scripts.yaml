@@ -169,3 +169,19 @@ sonos_alfresco_play:
           {% else %}
             script.sonos_alfresco_play_resume
           {% endif %}
+
+# Launch HA Dashboard
+launchHAdashboard:
+  description: 'Launch Home Assistant Dashboard'
+  alias: "Home Assistant Dashboard"
+  sequence:
+    - service: cast.show_lovelace_view
+      data_template:
+        entity_id: media_player.kitchen_display
+        view_path: Homeddd
+    - delay:
+        seconds:  3
+    - service: cast.show_lovelace_view
+      data_template:
+        entity_id: media_player.kitchen_display
+        view_path: home
