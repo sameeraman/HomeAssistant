@@ -176,12 +176,12 @@ launchHAdashboard:
   alias: "Home Assistant Dashboard"
   sequence:
     - service: cast.show_lovelace_view
-      data_template:
+      data:
         entity_id: media_player.kitchen_display
         view_path: Homeddd
     - delay:
         seconds:  3
     - service: cast.show_lovelace_view
-      data_template:
+      data:
         entity_id: media_player.kitchen_display
         view_path: home

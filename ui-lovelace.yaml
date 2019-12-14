@@ -1501,9 +1501,9 @@ views:
             unit: minutes 
 
 # Google Home Casting
-type: entities
-entities:
-  - type: cast
-    name: Home
-    view: 'https://sphassio.duckdns.org:8123/lovelace/floorplan'
-    hide_if_unavailable: false
+#type: entities
+#entities:
+#  - type: cast
+#    name: Home
+#    view: 'https://sphassio.duckdns.org:8123/lovelace/floorplan'
+#    hide_if_unavailable: false
