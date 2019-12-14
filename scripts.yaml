@@ -56,6 +56,16 @@ sonos_afternoon_greet:
     - service: media_player.media_play
       data_template:
         entity_id: media_player.living
+    - service: script.turn_on
+      data_template:
+        entity_id: >-
+          {% if 'Good' in state_attr('media_player.living', 'media_title') %}
+            script.sonos_living_play_jazz
+          {% elif is_state_attr('media_player.living', 'media_title', '') %}
+            script.sonos_living_play_jazz
+          {% else %}
+            script.sonos_living_play
+          {% endif %}
     - service: input_boolean.turn_off
       entity_id: input_boolean.arrival_greet
 
@@ -105,3 +115,23 @@ rainmachine_zoneon:
       data_template:
         zone_id: '{{ id | int }}'
         zone_run_time: "{{ states('sensor.sprinkler_runtime_seconds') | int }}"
+
+# Play Living Sonos
+sonos_living_play:
+  description: 'Resume Existing Playlist in Living Sonos'
+  alias: "Resume Existing Playlist in Living Sonos"
+  sequence:
+    - service: media_player.media_play
+      data_template:
+        entity_id: media_player.living
+
+# Play Living Sonos
+sonos_living_play_jazz:
+  description: 'Play Jazz Playlist in Living Sonos'
+  alias: "Play Jazz Playlist in Living Sonos"
+  sequence:
+    - service: media_player.media_play
+      data_template:
+        entity_id: media_player.living
+        media_content_type: playlist
+        media_content_id: 'Jazz'
