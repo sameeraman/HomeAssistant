@@ -178,10 +178,14 @@ launch_ha_dashboard:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.kitchen_display
-        view_path: Homeddd
-    - delay:
-        seconds:  3
+        view_path: home
+
+# Launch HA floorplan
+launch_ha_floorplan:
+  description: 'Launch Home Assistant Floorplan'
+  alias: "Home Assistant Floorplan"
+  sequence:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.kitchen_display
-        view_path: home
+        view_path: floorplan
