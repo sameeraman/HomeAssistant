@@ -73,7 +73,7 @@ map:
 sun:
 
 # Zeroconf discovery
-zeroconf:
+#zeroconf:
 
 
 shell_command:
