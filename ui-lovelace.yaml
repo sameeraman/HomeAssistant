@@ -785,6 +785,9 @@ views:
           - type: state-icon
             icon: 'mdi:eye-outline'
             entity: binary_sensor.office_person_sensor
+            hold_action:
+              action: url
+              url_path: !secret officeimgprcurl
             style:
               top: 19%
               left: 84%
@@ -814,6 +817,9 @@ views:
           - type: state-icon
             icon: 'mdi:eye-outline'
             entity: binary_sensor.alfresco_person_sensor
+            hold_action:
+              action: url
+              url_path: !secret alfrescoimgprcurl
             style:
               top: 18.5%
               left: 26%
@@ -929,6 +935,9 @@ views:
           - type: state-icon
             icon: 'mdi:eye-outline'
             entity: binary_sensor.living_person_sensor
+            hold_action:
+              action: url
+              url_path: !secret livingimgprcurl
             style:
               top: 42%
               left: 3%
