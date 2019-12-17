@@ -66,6 +66,14 @@
         turn_off:
           - service: media_player.media_pause
             entity_id: media_player.alfresco
+      floorplan:
+        value_template: "{{ is_state('script.launch_ha_floorplan', 'on') }}"
+        friendly_name: 'Floor Plan'
+        turn_on:
+          - service: script.turn_on
+            entity_id: script.launch_ha_floorplan
+        turn_off:
+        # nothing
   - platform: command_line
     switches:
       # MyAir Air Conditioner Virtual Switches
