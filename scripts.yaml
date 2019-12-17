@@ -188,4 +188,8 @@ launch_ha_floorplan:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.kitchen_display
+        view_path: floorplan1
+    - service: cast.show_lovelace_view
+      data:
+        entity_id: media_player.kitchen_display
         view_path: floorplan
