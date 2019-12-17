@@ -189,6 +189,8 @@ launch_ha_floorplan:
       data:
         entity_id: media_player.kitchen_display
         view_path: floorplan1
+    - delay:
+        seconds:  2  
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.kitchen_display
