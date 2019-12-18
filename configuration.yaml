@@ -366,4 +366,4 @@ image_processing:
     confidence: 50
     labels:
       - name: person
-        confidence: 50
+        confidence: 60
