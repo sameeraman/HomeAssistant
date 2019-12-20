@@ -76,6 +76,12 @@ sun:
 zeroconf:
 
 
+# tuya
+tuya:
+  username: !secret tuyausername
+  password: !secret tuyapassword
+  country_code: !secret tuyacountrycode
+
 shell_command:
   myair_setcmd: !secret myair_set_cmd
   house_alarm_on: "/usr/bin/curl -X GET 'http://10.1.1.150:3480/data_request?id=action&output_format=json&serviceId=urn:micasaverde-com:serviceId:HomeAutomationGateway1&action=SetHouseMode&Mode=2'"
