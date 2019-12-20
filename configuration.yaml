@@ -354,7 +354,9 @@ image_processing:
     confidence: 50
     labels:
       - name: person
-        confidence: 60
+        confidence: 50
+        area:
+          right: 0.93
   - platform: doods
     scan_interval: 35
     url: "http://10.1.1.207:8080"
