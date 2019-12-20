@@ -77,10 +77,11 @@ zeroconf:
 
 
 # tuya
-tuya:
-  username: !secret tuyausername
-  password: !secret tuyapassword
-  country_code: 61
+#tuya:
+#  username: !secret tuyausername
+#  password: !secret tuyapassword
+#  country_code: !secret tuyacountrycode
+#  platform: 'smart_life'
 
 
 shell_command:

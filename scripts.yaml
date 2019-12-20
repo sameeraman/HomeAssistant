@@ -188,7 +188,7 @@ launch_ha_floorplan:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.kitchen_display
-        view_path: floorplan1
+        view_path: https://sphassio.duckdns.org:8123/lovelace/floorplan
     - delay:
         seconds:  5  
     - service: cast.show_lovelace_view

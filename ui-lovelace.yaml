@@ -593,6 +593,12 @@ views:
             - entity: light.sam_wr_dimmer_62
               tap_action: 
                 action: toggle
+            - entity: switch.55170625dc4f227a4fd1_1
+              tap_action: 
+                action: toggle
+            - entity: switch.55170625dc4f227a4fd1_2
+              tap_action: 
+                action: toggle
           state_filter:
             - "on"
           card:
@@ -1042,14 +1048,37 @@ views:
             icon: 'mdi:thermometer'
             style: 
                 top: 70%
-                left: 9%
+                left: 14%
                 "--paper-item-icon-color": '#696969'
           - type: state-label
             entity: sensor.laundry_t_200
             icon: 'mdi:thermometer'
             style: 
                 top: 70%
-                left: 15.5%
+                left: 20%
+
+          # Laundry Light
+          - type: state-icon
+            icon: 'mdi:lightbulb-outline'
+            tap_action:
+              action: toggle
+            entity: switch.55170625dc4f227a4fd1_2
+            style:
+              top: 70%
+              left: 10%
+              "--paper-item-icon-color": '#696969'
+
+          # Laundry Outside Light
+          - type: state-icon
+            icon: 'mdi:track-light'
+            tap_action:
+              action: toggle
+            entity: switch.55170625dc4f227a4fd1_1
+            style:
+              top: 67%
+              left: 2%
+              "--paper-item-icon-color": '#696969'
+
 
           # Laundry Door
 #          - type: state-icon
