@@ -80,7 +80,8 @@ zeroconf:
 tuya:
   username: !secret tuyausername
   password: !secret tuyapassword
-  country_code: !secret tuyacountrycode
+  country_code: '61'
+
 
 shell_command:
   myair_setcmd: !secret myair_set_cmd
