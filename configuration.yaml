@@ -77,11 +77,11 @@ zeroconf:
 
 
 # tuya
-#tuya:
-#  username: !secret tuyausername
-#  password: !secret tuyapassword
-#  country_code: !secret tuyacountrycode
-#  platform: 'smart_life'
+tuya:
+  username: !secret tuyausername
+  password: !secret tuyapassword
+  country_code: !secret tuyacountrycode
+  platform: 'smart_life'
 
 
 shell_command:
@@ -319,11 +319,6 @@ unifi:
       detection_time: 10
       ssid_filter:
         - 'theparadise'
-
-# Ring
-ring:
-  username: !secret ring_username 
-  password: !secret ring_password
 
 
 # Rain Machine (Sprinkler System)
