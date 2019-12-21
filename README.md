@@ -126,6 +126,12 @@ Following are some of the automation that I'm using at my smart home.
 - Turn off the Sameera's Wardrobe light when the light was left on for more than 10 minutes 
 - Turn off the Madhushi's Wardrobe light when the light was left on for more than 10 minutes
 
+## Laundry Automations
+- Turn off the Laundry Outside light when the light was left on for more than 30 minutes
+- Turn off the Laundry light when the light was left on for more than 30 minutes
+- Turn on the Laundry Outdoor light when the laundry door open in the night
+- Turn off the Laundry Outdoor light when the laundry door close in the night
+
 ## Other Automations
 - Send Alerts from Xiaomi Motion and Door sensors when the house is Armed
 - Alert if the Laundry door was left open for more than 10 minutes

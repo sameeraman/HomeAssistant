@@ -2114,4 +2114,68 @@
  #     data_template:
  #       json: '%7B%22ac1%22:%7B%22info%22:%7B%22mode%22:%22{{ states.input_select.myair_modeselect.state }}%22%7D%7D%7D'
 
+# Turn off the Laundry Outside light when the light was left on for more than 30 minutes
+- id: laundryoutsidelight30mins
+  alias: Turn off the Laundry Outside light when the light was left on for more than 30 minutes
+  trigger: 
+    - platform: state
+      entity_id: light.laundry_outside_light
+      to: 'on'
+      for:
+        minutes: 30
+  action:
+    - service: light.turn_off
+      entity_id: light.laundry_outside_light
 
+# Turn off the Laundry light when the light was left on for more than 30 minutes
+- id: laundrylight30mins
+  alias: Turn off the Laundry light when the light was left on for more than 30 minutes
+  trigger: 
+    - platform: state
+      entity_id: light.laundry_light
+      to: 'on'
+      for:
+        minutes: 30
+  action:
+    - service: light.turn_off
+      entity_id: light.laundry_light
+
+# Turn on the Laundry Outdoor light when the laundry door open in the night
+- id: turnonlaundryoutdoorlightwithdooratnight
+  alias: Turn on the Laundry Outdoor light when the laundry door open in the night
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: light.laundry_outside_light
+
+# Turn off the Laundry Outdoor light when the laundry door close in the night
+- id: turnofflaundryoutdoorlightwithdooratnight
+  alias: Turn off the Laundry Outdoor light when the laundry door close in the night
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.laundry_outside_light

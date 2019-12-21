@@ -593,10 +593,10 @@ views:
             - entity: light.sam_wr_dimmer_62
               tap_action: 
                 action: toggle
-            - entity: switch.55170625dc4f227a4fd1_1
+            - entity: light.laundry_outside_light
               tap_action: 
                 action: toggle
-            - entity: switch.55170625dc4f227a4fd1_2
+            - entity: light.laundry_light
               tap_action: 
                 action: toggle
           state_filter:

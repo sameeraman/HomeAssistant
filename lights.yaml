@@ -39,5 +39,5 @@
     entity_id: switch.55170625dc4f227a4fd1_1
 
   - platform: switch
-    name: Laundry  Light
+    name: Laundry Light
     entity_id: switch.55170625dc4f227a4fd1_2
