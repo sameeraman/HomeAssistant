@@ -33,3 +33,11 @@
           {% else %}
             0
           {% endif %}
+
+  - platform: switch
+    name: Laundry Outside Light
+    entity_id: switch.55170625dc4f227a4fd1_1
+
+  - platform: switch
+    name: Laundry  Light
+    entity_id: switch.55170625dc4f227a4fd1_2

@@ -2113,3 +2113,5 @@
  #   - service: shell_command.myair_setcmd
  #     data_template:
  #       json: '%7B%22ac1%22:%7B%22info%22:%7B%22mode%22:%22{{ states.input_select.myair_modeselect.state }}%22%7D%7D%7D'
+
+
