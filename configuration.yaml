@@ -126,6 +126,7 @@ google_assistant:
     - media_player
     - camera
     - script
+    - cover
 
 
 #emulated hue
