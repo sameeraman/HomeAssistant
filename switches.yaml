@@ -126,9 +126,9 @@
         value_template: "{{ is_state('sensor.myair_state', 'on') }}"
 
   - platform: mqtt
-    name: "tuya_mad_wardrobe"
-    command_topic: "cmnd/tuya_mad_wardrobe/power"
-    state_topic: "stat/tuya_mad_wardrobe/POWER"
+    name: "mad_wardrobe_tuya"
+    command_topic: "home/master/mad_wardrobe_tuya/power"
+    state_topic: "home/master/mad_wardrobe_tuya/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
