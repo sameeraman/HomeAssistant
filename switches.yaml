@@ -127,8 +127,8 @@
 
   - platform: mqtt
     name: "mad_wardrobe_tuya"
-    command_topic: "home/master/mad_wardrobe_tuya/power"
-    state_topic: "home/master/mad_wardrobe_tuya/POWER"
+    command_topic: "home/master/mad_wardrobe_tuya/cmnd/power"
+    state_topic: "home/master/mad_wardrobe_tuya/stat/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
