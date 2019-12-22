@@ -1039,7 +1039,7 @@ views:
             entity: binary_sensor.laundry_m_199
             style:
               top: 70%
-              left: 4%
+              left: 5%
               "--paper-item-icon-color": '#696969'
 
           # Laundry Temperature
@@ -1075,9 +1075,10 @@ views:
               action: toggle
             entity: light.laundry_outside_light
             style:
-              top: 67%
-              left: 2%
+              top: 64%
+              left: -1.5%
               "--paper-item-icon-color": '#696969'
+              transform: scaleX(-1)
 
 
           # Laundry Door

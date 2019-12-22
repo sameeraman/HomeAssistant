@@ -2255,3 +2255,43 @@
   action:
     - service: light.turn_off
       entity_id: light.laundry_outside_light
+
+# Turn on the Laundry light when there is motion in the laundry
+- id: turnonlaundryoutlightwithmotion
+  alias: Turn on the Laundry light when there is motion in the laundry
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.laundry_m_199
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: light.laundry_light
+
+# Turn off the Laundry light when there is no motion in the laundry
+- id: turnofflaundrylightwithnomotion
+  alias: Turn off the Laundry light when there is no motion in the laundry
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.laundry_m_199
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.laundry_light
