@@ -36,8 +36,16 @@
 
   - platform: switch
     name: Laundry Outside Light
-    entity_id: switch.55170625dc4f227a4fd1_1
+    entity_id: switch.laundry_outdoor_switch
 
   - platform: switch
     name: Laundry Light
-    entity_id: switch.55170625dc4f227a4fd1_2
+    entity_id: switch.laundry_switch
+
+  - platform: switch
+    name: Madhushi Wardrobe Light
+    entity_id: switch.mad_wardrobe_switch
+
+  - platform: switch
+    name: Sameera Wardrobe Light
+    entity_id: switch.sam_wardrobe_switch
