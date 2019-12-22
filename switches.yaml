@@ -125,10 +125,39 @@
         command_state: '/bin/true'
         value_template: "{{ is_state('sensor.myair_state', 'on') }}"
 
+
   - platform: mqtt
-    name: "mad_wardrobe_tuya"
-    command_topic: "home/master/mad_wardrobe_tuya/cmnd/power"
-    state_topic: "home/master/mad_wardrobe_tuya/stat/POWER"
+    name: "mad_wardrobe_switch"
+    command_topic: "home/master/mad_wardrobe_switch/cmnd/power"
+    state_topic: "home/master/mad_wardrobe_switch/stat/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false
+
+
+  - platform: mqtt
+    name: "laundry_outdoor_switch"
+    command_topic: "home/laundry/laundryswitch/cmnd/power1"
+    state_topic: "home/laundry/laundryswitch/stat/POWER1"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false
+
+  - platform: mqtt
+    name: "laundry_switch"
+    command_topic: "home/laundry/laundryswitch/cmnd/power2"
+    state_topic: "home/laundry/laundryswitch/stat/POWER2"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false
+
+  - platform: mqtt
+    name: "sam_wardrobe_switch"
+    command_topic: "home/master/sam_wardrobe_switch/cmnd/power"
+    state_topic: "home/master/sam_wardrobe_switch/stat/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
