@@ -2076,31 +2076,107 @@
         entity_id: light.master_light
         brightness_pct: 100
 
+
+# Turn on the Sameera Wardrobe light when there is motion
+- id: turnonsameerawardrobelight
+  alias: Turn on the Sameera Wardrobe light when there is motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.sam_wr_sensor_m_232
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: light.sameera_wardrobe_light
+
+# Turn off the Sameera Wardrobe light when there is no motion
+- id: turnoffsameerawardrobelight
+  alias: Turn off the Sameera Wardrobe light when there is no motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.sam_wr_sensor_m_232
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.sameera_wardrobe_light
+
+
+# Turn on the Madhushi Wardrobe light when there is motion
+- id: turnonmadhushiwardrobelight
+  alias: Turn on the Madhushi Wardrobe light when there is motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.mad_wr_sensor_m_79
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: light.madhushi_wardrobe_light
+
+# Turn off the Madhushi Wardrobe light when there is no motion
+- id: turnoffmadhushiwardrobelight
+  alias: Turn off the Madhushi Wardrobe light when there is no motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.mad_wr_sensor_m_79
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.madhushi_wardrobe_light
+
 # Turn off the Sameera's Wardrobe light when the light was left on for more than 10 minutes
 - id: samwrturnoff10
   alias: Turn off the Sameera's Wardrobe light when the light was left on for more than 10 minutes
   trigger: 
     - platform: state
-      entity_id: light.sam_wr_dimmer_62
+      entity_id: light.sameera_wardrobe_light
       to: 'on'
       for:
         minutes: 10
   action:
     - service: light.turn_off
-      entity_id:  light.sam_wr_dimmer_62
+      entity_id:  light.sameera_wardrobe_light
 
 # Turn off the Madhushi's Wardrobe light when the light was left on for more than 10 minutes
 - id: madwrturnoff10
   alias: Turn off the Madhushi's Wardrobe light when the light was left on for more than 10 minutes
   trigger: 
     - platform: state
-      entity_id: light.mad_wr_dimmer_65
+      entity_id: light.madhushi_wardrobe_light
       to: 'on'
       for:
         minutes: 10
   action:
     - service: light.turn_off
-      entity_id:  light.mad_wr_dimmer_65
+      entity_id:  light.madhushi_wardrobe_light
 
 # Set Sprikler Runtime Seconds Sensor
 #- id: setspriklerruntimeseconds

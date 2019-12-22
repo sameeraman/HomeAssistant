@@ -33,7 +33,7 @@ views:
                 name: Humidity
           - type: glance
             entities:
-              - entity: light.mad_wr_dimmer_65
+              - entity: light.madhushi_wardrobe_light
                 icon: 'mdi:lightbulb-on-outline'
                 name: Mad WR
                 tap_action:
@@ -53,7 +53,7 @@ views:
                 name: Bed Heater
                 tap_action:
                   action: toggle
-              - entity: light.sam_wr_dimmer_62
+              - entity: light.sameera_wardrobe_light
                 icon: 'mdi:lightbulb-on-outline'
                 name: Sam WR
                 tap_action:
@@ -578,7 +578,7 @@ views:
             - entity: light.living_light
               tap_action: 
                 action: toggle
-            - entity: light.mad_wr_dimmer_65
+            - entity: light.madhushi_wardrobe_light
               tap_action:
                 action: toggle
             - entity: light.master_light
@@ -590,7 +590,7 @@ views:
             - entity: light.pantry_light
               tap_action:
                 action: toggle
-            - entity: light.sam_wr_dimmer_62
+            - entity: light.sameera_wardrobe_light
               tap_action: 
                 action: toggle
             - entity: light.laundry_outside_light
