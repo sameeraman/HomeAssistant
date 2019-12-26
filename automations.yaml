@@ -510,9 +510,19 @@
       entity_id: group.garage_motion
       to: 'on'
   condition:
-    condition: numeric_state
-    entity_id: sensor.garage_sensor_l_48
-    below: 30
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: sun.sun
+          state: 'below_horizon'
+        - condition: state
+          entity_id: binary_sensor.door_window_sensor_158d0002c0e236
+          state: 'off'
   action:
     - service: homeassistant.turn_on
       entity_id:  light.garage_light
@@ -1014,9 +1024,12 @@
       - condition: state
         entity_id: light.office_fibaro_dimmer
         state: 'off'
-      - condition: numeric_state
-        entity_id: sensor.illumination_158d0002b7ec00
-        below: 100
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
   action:
     - service: homeassistant.turn_on
       entity_id: light.office_fibaro_dimmer
