@@ -62,7 +62,7 @@ views:
             cards:
               - entity: light.master_light
                 type: light
-              - entity: light.bath_light_132
+              - entity: light.bath_light
                 type: light
       - type: vertical-stack
         cards:
@@ -548,7 +548,7 @@ views:
             - entity: light.alfresco_fibaro_dimmer
               tap_action:
                 action: toggle 
-            - entity: light.bath_light_132
+            - entity: light.bath_light
               tap_action:
                 action: toggle
             - entity: light.bath_strip
@@ -1176,7 +1176,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.bath_light_132
+            entity: light.bath_light
             style:
               top: 28%
               left: 71%

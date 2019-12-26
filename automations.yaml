@@ -429,7 +429,7 @@
         after: '05:30:00'
   action:
     - service: homeassistant.turn_on
-      entity_id:  light.bath_light_132
+      entity_id:  light.bath_light
       data_template:
         brightness_pct: >
           {% if is_state('binary_sensor.bed_sensor', 'on')  %}
@@ -465,7 +465,7 @@
         state: 'off'
   action:
     - service: homeassistant.turn_off
-      entity_id:  light.bath_light_132
+      entity_id:  light.bath_light
 
 # Turn on the Pantry Light when the door open
 - id: pantrylighton
@@ -1015,7 +1015,7 @@
         entity_id: light.office_fibaro_dimmer
         state: 'off'
       - condition: numeric_state
-        entity_id: sensor.illumination_158d0002b5eecd
+        entity_id: sensor.illumination_158d0002b7ec00
         below: 100
   action:
     - service: homeassistant.turn_on
@@ -1044,6 +1044,9 @@
         state: 'on'
       - condition: state
         entity_id: binary_sensor.office_person_sensor
+        state: 'off'
+      - condition: state
+        entity_id: group.office_motion
         state: 'off'
   action:
     - service: homeassistant.turn_off

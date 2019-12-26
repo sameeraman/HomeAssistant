@@ -135,6 +135,8 @@ Following are some of the automation that I'm using at my smart home.
 - Turn off the Laundry light when the light was left on for more than 30 minutes
 - Turn on the Laundry Outdoor light when the laundry door open in the night
 - Turn off the Laundry Outdoor light when the laundry door close in the night
+- Turn on the Laundry light when there is motion in the laundry
+- Turn off the Laundry light when there is no motion in the laundry
 
 ## Other Automations
 - Send Alerts from Xiaomi Motion and Door sensors when the house is Armed
