@@ -39,8 +39,12 @@
       bed4_vent:
         device_class: window
         value_template: "{{ is_state('switch.myair_power', 'on') and is_state('switch.myair_zone6', 'on') }}" 
+      mad_bed_sensor:
+        value_template: "{{ states('sensor.mad_bed_sensor_value') | float > -203000 }}" 
+      sam_bed_sensor:
+        value_template: "{{ states('sensor.mad_bed_sensor_value') | float > 246000 }}" 
       bed_sensor:
-        value_template: "{{ states('sensor.bed_sensor_value') | float > -202000 }}" 
+        value_template: "{{ is_state('binary_sensor.sam_bed_sensor', 'on') or is_state('binary_sensor.mad_bed_sensor', 'on') }}" 
       alfresco_person_sensor:
         device_class: motion
         value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('image_processing.doods_alfrescocamera') | float > 0 }}"
