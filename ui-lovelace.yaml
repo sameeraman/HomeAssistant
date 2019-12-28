@@ -908,20 +908,36 @@ views:
               top: 34%
               left: 19%
               "--paper-item-icon-color": '#696969'
-          # Temperature
+
+          # Living Temperature
           - type: state-icon
             entity: sensor.kitchen_t_252
             icon: 'mdi:thermometer'
             style: 
                 top: 26%
-                left: 35%
+                left: 28%
                 "--paper-item-icon-color": '#696969'
           - type: state-label
             entity: sensor.kitchen_t_252
             icon: 'mdi:thermometer'
             style: 
-                top: 30%
-                left: 35%
+                top: 26%
+                left: 34.5%
+
+          # Living Humidity
+          - type: state-icon
+            entity: sensor.kitchen_h_254
+            icon: 'mdi:water-percent'
+            style: 
+                top: 26%
+                left: 12%
+                "--paper-item-icon-color": '#696969'
+          - type: state-label
+            entity: sensor.kitchen_h_254
+            icon: 'mdi:water-percent'
+            style: 
+                top: 26%
+                left: 17.5%
 
           # Living Air Con Vent
           - type: state-icon
@@ -1020,6 +1036,18 @@ views:
               "--paper-item-icon-color": '#696969'
               transform: rotate(135deg)
 
+          # Dining Light
+          - type: state-icon
+            icon: 'mdi:lightbulb-outline'
+            tap_action:
+              action: toggle
+            entity: light.dining_light
+            style:
+              top: 10%
+              left: 40.5%
+              "--paper-item-icon-color": '#696969'
+
+
           # Main Entrance Door
           - type: image
             image: /local/line6v.svg
@@ -1109,8 +1137,8 @@ views:
             icon: 'mdi:run-fast'
             entity: binary_sensor.garage_motion
             style:
-              top: 66%
-              left: 77%
+              top: 70%
+              left: 73%
               "--paper-item-icon-color": '#696969'
 
           # Garage Temperature
@@ -1118,15 +1146,30 @@ views:
             entity: sensor.garage_sensor_t_47
             icon: 'mdi:thermometer'
             style: 
-                top: 71%
+                top: 75%
                 left: 73%
                 "--paper-item-icon-color": '#696969'
           - type: state-label
             entity: sensor.garage_sensor_t_47
             icon: 'mdi:thermometer'
             style: 
-                top: 71%
+                top: 75%
                 left: 80%
+
+          # Switch Box Temperature
+          - type: state-icon
+            entity: sensor.temperature_158d0002731398
+            icon: 'mdi:server-network'
+            style: 
+                top: 62%
+                left: 80%
+                "--paper-item-icon-color": '#696969'
+          - type: state-label
+            entity: sensor.temperature_158d0002731398
+            icon: 'mdi:thermometer'
+            style: 
+                top: 62%
+                left: 87%
 
           # Garage Light
           - type: state-icon
@@ -1135,8 +1178,8 @@ views:
               action: toggle
             entity: light.garage_light
             style:
-              top: 77%
-              left: 77%
+              top: 70%
+              left: 82%
               "--paper-item-icon-color": '#696969'
 
           # Garage Door
@@ -1159,6 +1202,53 @@ views:
               top: 64.2%
               left: 58.5%
               transform: rotate(0deg)
+
+          # Garage Humidity
+          - type: state-icon
+            entity: sensor.garage_sensor_h_49
+            icon: 'mdi:water-percent'
+            style: 
+                top: 79%
+                left: 74%
+                "--paper-item-icon-color": '#696969'
+          - type: state-label
+            entity: sensor.garage_sensor_h_49
+            icon: 'mdi:water-percent'
+            style: 
+                top: 79%
+                left: 80%
+
+# Front Outdoor
+          # Front Ourdoor Light 1
+          - type: state-icon
+            icon: 'mdi:wall-sconce-flat'
+            tap_action:
+              action: toggle
+            entity: light.front_outdoor_lights_59
+            style:
+              top: 92.5%
+              left: 60%
+              "--paper-item-icon-color": '#696969'
+          # Front Ourdoor Light 2
+          - type: state-icon
+            icon: 'mdi:wall-sconce-flat'
+            tap_action:
+              action: toggle
+            entity: light.front_outdoor_lights_59
+            style:
+              top: 92.5%
+              left: 98.3%
+              "--paper-item-icon-color": '#696969'
+          # Front Ourdoor Light 3
+          - type: state-icon
+            icon: 'mdi:wall-sconce-flat'
+            tap_action:
+              action: toggle
+            entity: light.front_outdoor_lights_59
+            style:
+              top: 98.6%
+              left: 1.7%
+              "--paper-item-icon-color": '#696969'
 
 # Master Bedroom
           # Master Light
