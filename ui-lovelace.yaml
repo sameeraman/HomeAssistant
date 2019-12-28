@@ -599,6 +599,9 @@ views:
             - entity: light.laundry_light
               tap_action: 
                 action: toggle
+            - entity: light.dining_light
+              tap_action: 
+                action: toggle
           state_filter:
             - "on"
           card:
