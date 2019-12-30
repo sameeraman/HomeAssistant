@@ -642,29 +642,32 @@ views:
 
 
 
+
 # Cameras Tab
   - title: Cameras
     path: cameras
     cards:
       - type: picture-entity 
         title: Front Entrance 
-        entity:  camera.frontentracecamera
+        entity:  camera.front_entrace_camera
       - type: picture-entity 
         title: Living 
-        entity:  camera.livingcamera
+        entity:  camera.living_camera
       - type: picture-entity 
         title: Hallway 
-        entity:  camera.hallwaycamera
+        entity:  camera.hallway_camera
       - type: picture-entity 
         title: Alfresco 
-        entity:  camera.alfrescocamera
+        entity:  camera.alfresco_camera
       - type: picture-entity 
         title: Outside Right 
-        entity:  camera.outsiderightcamera
+        entity:  camera.outside_right_camera
       - type: picture-entity 
         title: Outside Back 
-        entity:  camera.outsidebackcamera
+        entity:  camera.outside_back_camera
 
+
+        
 # Camera Tab Navigation Entities
       - type: vertical-stack
         cards:
