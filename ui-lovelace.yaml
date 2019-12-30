@@ -649,7 +649,7 @@ views:
     cards:
       - type: picture-entity 
         title: Front Entrance 
-        entity:  camera.front_entrace_camera
+        entity:  camera.front_entrance_camera
       - type: picture-entity 
         title: Living 
         entity:  camera.living_camera
@@ -667,7 +667,7 @@ views:
         entity:  camera.outside_back_camera
 
 
-        
+
 # Camera Tab Navigation Entities
       - type: vertical-stack
         cards:
