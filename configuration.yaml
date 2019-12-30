@@ -75,6 +75,8 @@ sun:
 # Zeroconf discovery
 zeroconf:
 
+# Camera Streams
+stream:
 
 # tuya
 tuya:

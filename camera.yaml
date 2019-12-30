@@ -1,30 +1,36 @@
 # adding all unify cameras
   - platform: generic
+    friendly_name: Outside Right Camera
     name: outsiderightcamera
     stream_source: !secret outsiderightcameraurl
     still_image_url: !secret outsiderightcamerajpeg
     verify_ssl: false
   - platform: generic
+    friendly_name: Outside Back Camera
     name: outsidebackcamera
     stream_source: !secret outsidebackcameraurl
     still_image_url: !secret outsidebackcamerajpeg
     verify_ssl: false
   - platform: generic
+    friendly_name: Living Camera
     name: livingcamera
     stream_source: !secret livingcameraurl
     still_image_url: !secret livingcamerajpeg
     verify_ssl: false
   - platform: generic
+    friendly_name: Alfresco Camera
     name: alfrescocamera
     stream_source: !secret alfrescocameraurl
     still_image_url: !secret alfrescocamerajpeg
     verify_ssl: false
   - platform: generic
+    friendly_name: Front Entrance Camera
     name: frontentracecamera
     stream_source: !secret frontentrancecameraurl
     still_image_url: !secret frontentrancecamerajpeg
     verify_ssl: false
   - platform: generic
+    friendly_name: Hallway Camera
     name: hallwaycamera
     stream_source: !secret hallwaycameraurl
     still_image_url: !secret hallwaycamerajpeg
