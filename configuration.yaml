@@ -374,6 +374,9 @@ xiaomi_aqara:
     - mac: !secret xiaomi_mac
       key: !secret xiaomi_key
 
+# Custom Lovelace Gen
+lovelace_gen:
+
 # Lovelace
 lovelace:
   mode: yaml
