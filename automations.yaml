@@ -1268,9 +1268,43 @@
       entity_id:  switch.myair_zone2
 
 
-# Turn on the living dim light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset and midnight. 
+# Turn on the living mood lights after 30 minutes of sunset if there is motion in living and kitchen 
+- id: turnonlivingdimlightsaftersunset
+  alias: Turn on the living mood lights after 30 minutes of sunset if there is motion in living and kitchen
+  initial_state: True
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "00:30:00"
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: group.living_kitchen_motion
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: light.living_mood_lights
+        state: 'off'
+  action:
+    - service: homeassistant.turn_on
+      entity_id: light.dining_table_lamp
+    - service: homeassistant.turn_on
+      entity_id: light.living_floor_lamp
+    - service: homeassistant.turn_on
+      entity_id: light.living_hue_strip
+    - service: homeassistant.turn_on
+      entity_id: light.kitchen_strip
+
+
+ # Turn on the living mood light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset and midnight. 
 - id: turnonlivingdimlights
-  alias: Turn on the living dim light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset and midnight. 
+  alias: Turn on the living mood light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset and midnight. 
   initial_state: True
   trigger:
     - platform: state
@@ -1289,6 +1323,9 @@
       - condition: state
         entity_id: switch.housealarm
         state: 'off'
+      - condition: state
+        entity_id: light.living_mood_lights
+        state: 'off'
   action:
     - service: homeassistant.turn_on
       entity_id: light.dining_table_lamp
@@ -1301,7 +1338,7 @@
 
 # Turn off the living mood dim lights at mid night
 - id: turnofflivingdimlights
-  alias: Turn on the living mood dim light at midnight
+  alias: Turn off the living mood dim light at midnight
   initial_state: True
   trigger:
     - platform: time
@@ -2141,6 +2178,37 @@
         entity_id: light.master_light
         brightness_pct: 100
 
+# Set the Master light brightness to 100% when light is turned on no one is on the bed
+- id: masterlightbrightness10
+  alias: Set the Master light brightness to 100% when someone get up from the bed
+  trigger: 
+    - platform: state
+      entity_id: light.master_light
+      to: 'on'
+      for:
+        seconds: 2
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.master_light
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.bed_sensor
+        state: 'off'
+      - condition: numeric_state
+        entity_id: light.kitchen_bar_level_8_0
+        value_template: '{% if states.light.master_light.state == "on"  %}{{ states.light.master_light.attributes.brightness }}{% else %}0{% endif %}'
+        below: 76
+        above: 74
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.master_light
+        brightness_pct: 100
 
 # Turn on the Sameera Wardrobe light when there is motion
 - id: turnonsameerawardrobelight

@@ -79,6 +79,7 @@ Following are some of the automation that I'm using at my smart home.
 - Turn on the Kitchen light then there is motion based on light and sunset
 - Turn off the Kitchen Light when there is no motion for more than 10 minutes
 - Turn on the living mood dim lights (light strips and lamps) when there is motion in kitchen/living and when time is between sunset and midnight
+- Turn on the living mood lights after 30 minutes of sunset if there is motion in living and kitchen 
 - Turn off the living mood dim lights at mid night
 - Turn off the Living Sonos (if playing) when the TV is switched on
 - Toggle Living Mood lights when Xiaomi Living push button is single pressed
@@ -129,6 +130,9 @@ Following are some of the automation that I'm using at my smart home.
 - Turn off the Madhushi Wardrobe light when there is no motion
 - Turn off the Sameera's Wardrobe light when the light was left on for more than 10 minutes 
 - Turn off the Madhushi's Wardrobe light when the light was left on for more than 10 minutes
+- Set the Master light brightness to 30% when someone enters the bed
+- Set the Master light brightness to 100% when someone get up from the bed
+- Set the Master light brightness to 100% when light is turned on no one is on the bed
 
 ## Laundry Automations
 - Turn off the Laundry Outside light when the light was left on for more than 30 minutes

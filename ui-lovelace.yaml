@@ -802,7 +802,7 @@ views:
             entity: binary_sensor.office_person_sensor
             hold_action:
               action: url
-              url_path: !file !secret officeimgprcurl
+              url_path: !secret officeimgprcurl
             style:
               top: 19%
               left: 84%
@@ -834,7 +834,7 @@ views:
             entity: binary_sensor.alfresco_person_sensor
             hold_action:
               action: url
-              url_path: !file !secret alfrescoimgprcurl
+              url_path: !secret alfrescoimgprcurl
             style:
               top: 18.5%
               left: 26%
@@ -968,7 +968,7 @@ views:
             entity: binary_sensor.living_person_sensor
             hold_action:
               action: url
-              url_path: !file !secret livingimgprcurl
+              url_path: !secret livingimgprcurl
             style:
               top: 42%
               left: 3%
