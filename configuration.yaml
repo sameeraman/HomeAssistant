@@ -347,7 +347,7 @@ image_processing:
     source:
       - entity_id: camera.livingcamera
     file_out:
-      - "/config/www/doods/{{ camera_entity.split('.')[1] }}_latest.jpg"
+      - !secret doodslocallocation
     confidence: 40
     labels:
       - name: person
@@ -363,7 +363,7 @@ image_processing:
     source:
       - entity_id: camera.alfrescocamera
     file_out:
-      - "/config/www/doods/{{ camera_entity.split('.')[1] }}_latest.jpg"
+      - !secret doodslocallocation
     confidence: 50
     labels:
       - name: person
@@ -377,7 +377,7 @@ image_processing:
     source:
       - entity_id: camera.esp32cam1
     file_out:
-      - "/config/www/doods/{{ camera_entity.split('.')[1] }}_latest.jpg"
+      - !secret doodslocallocation
     confidence: 50
     labels:
       - name: person

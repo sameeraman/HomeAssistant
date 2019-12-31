@@ -721,6 +721,9 @@ views:
             - entity: sensor.garage_motion_2_battery
             - entity: sensor.smoke_sensor_battery
             - entity: sensor.alfresco_button_battery
+            - entity: sensor.madhushi_bedside_button_battery
+            - entity: sensor.sameera_bedside_button_battery
+            - entity: sensor.living_button_battery
             - entity: sensor.temperature_sensor_1_battery
       - type: vertical-stack
         cards:
