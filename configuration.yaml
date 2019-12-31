@@ -122,14 +122,109 @@ vera:
 google_assistant:
   project_id: !secret google_project_id 
   api_key: google_api_key
-  exposed_domains:
-    - switch
-    - light
-    - media_player
-    - camera
-    - script
-    - cover
-
+  expose_by_default: false
+  entity_config:
+    light.alfresco_fibaro_dimmer:
+      expose: true
+      room: Alfresco
+    light.bath_light:
+      expose: true
+      room: Other
+    light.bath_strip:
+      expose: true
+      room: Other
+    light.office_fibaro_dimmer:
+      expose: true
+      room: Office
+    light.front_outdoor_lights_59:
+      expose: true
+      room: Other
+    light.kitchen_light:
+      expose: true
+      room: Kitchen
+    light.living_light:
+      expose: true
+      room: Living
+    light.living_mood_lights:
+      expose: true
+      room: Living
+    light.master_light:
+      expose: true
+      room: Master Bedroom
+    light.garage_light:
+      expose: true
+      room: Garage
+    light.master_pendant:
+      expose: true
+      room: Master Bedroom
+    switch.air_conditioner:
+      expose: true
+      room: Other
+    switch.bedheater_38:
+      expose: true
+      room: Other
+    switch.housealarm:
+      expose: true
+      room: Other
+    switch.living_music:
+      expose: true
+      room: Other
+    switch.alfresco_music:
+      expose: true
+      room: Other
+    switch.nightmood:
+      expose: true
+      room: Other
+    switch.floorplan:
+      expose: true
+      room: Other
+    light.theater_volume:
+      expose: true
+      room: Other
+    switch.plug_158d000278ff33:
+      expose: true
+      room: Other
+    cover.088330014c11ae0ef1ca:
+      expose: true
+      room: Dining Room
+      aliases:
+        - Dining Blinds
+    camera.alfresco_camera:
+      expose: true
+      room: Other
+    camera.front_entrance_camera:
+      expose: true
+      room: Other
+    camera.hallway_camera:
+      expose: true
+      room: Other
+    camera.living_camera:
+      expose: true
+      room: Other
+    camera.outside_back_camera:
+      expose: true
+      room: Other
+    camera.outside_right_camera:
+      expose: true
+      room: Other
+    script.launch_ha_dashboard:
+      expose: true
+      room: Other
+    light.laundry_light:
+      expose: true
+      room: Laundry
+    light.laundry_outside_light:
+      expose: true
+      room: Laundry
+    light.madhushi_wardrobe_light:
+      expose: true
+      room: Other
+    light.sameera_wardrobe_light:
+      expose: true
+      room: Other
+    light.pantry_light:
+      expose: true
+      room: Other
 
 #emulated hue
 emulated_hue:
