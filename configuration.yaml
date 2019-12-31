@@ -345,7 +345,7 @@ image_processing:
     url: "http://10.1.1.207:8080"
     detector: default
     source:
-      - entity_id: camera.livingcamera
+      - entity_id: camera.living_camera
     file_out:
       - !secret doodslocallocation
     confidence: 40
@@ -361,7 +361,7 @@ image_processing:
     url: "http://10.1.1.207:8080"
     detector: default
     source:
-      - entity_id: camera.alfrescocamera
+      - entity_id: camera.alfresco_camera
     file_out:
       - !secret doodslocallocation
     confidence: 50
