@@ -147,7 +147,7 @@ google_assistant:
       room: Living
     light.living_mood_lights:
       expose: true
-      room: Living
+      room: Other
     light.master_light:
       expose: true
       room: Master Bedroom
@@ -156,7 +156,7 @@ google_assistant:
       room: Garage
     light.master_pendant:
       expose: true
-      room: Master Bedroom
+      room: Other
     switch.air_conditioner:
       expose: true
       room: Other
@@ -184,6 +184,9 @@ google_assistant:
     switch.plug_158d000278ff33:
       expose: true
       room: Other
+    light.dining_light:
+      expose: true
+      room: Dining Room
     cover.088330014c11ae0ef1ca:
       expose: true
       room: Dining Room
@@ -215,7 +218,7 @@ google_assistant:
       room: Laundry
     light.laundry_outside_light:
       expose: true
-      room: Laundry
+      room: Other
     light.madhushi_wardrobe_light:
       expose: true
       room: Other
