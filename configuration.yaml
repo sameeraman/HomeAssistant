@@ -439,6 +439,12 @@ panel_custom:
     sidebar_icon: mdi:access-point-network
     url_path: zwave
 
+panel_iframe:
+  tasmoadmin:
+    title: TasmoAdmin
+    icon: mdi:lightbulb-on
+    url: http://10.1.1.224:9541
+
 # Image Processing
 image_processing:
   - platform: doods

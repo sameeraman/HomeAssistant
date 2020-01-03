@@ -1315,6 +1315,7 @@
     conditions: 
       - condition: sun
         after: sunset
+        after_offset: "00:30:00"
       - condition: time
         before: '23:59:59'
       - condition: state
@@ -2428,3 +2429,14 @@
   action:
     - service: light.turn_off
       entity_id: light.laundry_light
+
+
+# Turn off house alarm when Sameera's Phone is connected to the Wifi
+- id: turnofflaundrylightwithnomotion
+  alias: Turn off the Laundry light when there is no motion in the laundry
+  trigger:
+    platform: webhook
+    webhook_id: !secret housealarmwebhookid
+  action:
+    - service : switch.turn_off
+      entity_id: switch.housealarm
