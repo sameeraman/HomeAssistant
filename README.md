@@ -93,7 +93,6 @@ Following are some of the automation that I'm using at my smart home.
 - Turn off the Garage light then there is no motion
 - Alert if the Garage door was left open for more than 10 minutes
 - Alert if the Garage door was left open for more than 60 minutes
-- Turn on the Front Outdoor light for 2 mins then there the garage door open
 - Turn off the Garage light if it was one for more than 60 minutes
 
 ## Alfresco Automation
@@ -141,6 +140,15 @@ Following are some of the automation that I'm using at my smart home.
 - Turn off the Laundry Outdoor light when the laundry door close in the night
 - Turn on the Laundry light when there is motion in the laundry
 - Turn off the Laundry light when there is no motion in the laundry
+
+## Front Outdoor Automation
+- Turn on the Front Outdoor light for 2 mins then there the garage door open
+- Turn on the Front Patio light when there is motion in the patio
+- Turn off the Front Patio light when there is no motion in the patio
+- Turn off the front patio light after 20 minutes
+- Turn on the front entrance light when there the front door open at night
+- Turn off the front entrance light after 1 minute the front door close at night
+- Turn off the front entrance light after 30 minutes
 
 ## Other Automations
 - Send Alerts from Xiaomi Motion and Door sensors when the house is Armed

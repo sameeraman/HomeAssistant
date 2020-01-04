@@ -1260,7 +1260,7 @@ views:
               "--paper-item-icon-color": '#696969'
 
 # Front Outdoor Patio 
-
+          # Patio Light
           - type: state-icon
             icon: 'mdi:lightbulb-outline'
             tap_action:
@@ -1268,6 +1268,15 @@ views:
             entity: light.front_patio_light
             style:
               top: 76%
+              left: 53.4%
+              "--paper-item-icon-color": '#696969'
+
+          # Patio Motion
+          - type: state-icon
+            icon: 'mdi:run-fast'
+            entity: binary_sensor.motion_sensor_158d00033df5c5
+            style:
+              top: 81%
               left: 53.4%
               "--paper-item-icon-color": '#696969'
 

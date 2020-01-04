@@ -1268,14 +1268,13 @@
       entity_id:  switch.myair_zone2
 
 
-# Turn on the living mood lights after 30 minutes of sunset if there is motion in living and kitchen 
+# Turn on the living mood lights after sunset if there is motion in living and kitchen 
 - id: turnonlivingdimlightsaftersunset
-  alias: Turn on the living mood lights after 30 minutes of sunset if there is motion in living and kitchen
+  alias: Turn on the living mood lights after sunset if there is motion in living and kitchen
   initial_state: True
   trigger:
     - platform: sun
       event: sunset
-      offset: "00:30:00"
   condition:
     condition: and
     conditions: 
@@ -1315,7 +1314,6 @@
     conditions: 
       - condition: sun
         after: sunset
-        after_offset: "00:30:00"
       - condition: time
         before: '23:59:59'
       - condition: state
@@ -2440,3 +2438,131 @@
   action:
     - service : switch.turn_off
       entity_id: switch.housealarm
+
+
+# Turn on the Front Patio light when there is motion in the patio
+- id: frontpatiolightonwithmotion
+  alias: Turn on the Front Patio light when there is motion in the patio
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d00033df5c5
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.front_patio_light
+
+
+# Turn off the Front Patio light when there is no motion in the patio
+- id: frontpatiolightoffwithnomotion
+  alias: Turn off the Front Patio light when there is no motion in the patio
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d00033df5c5
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.front_patio_light
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.front_patio_light
+
+# Turn off the front patio light after 20 minutes
+- id: frontpatiolightoffafter20mins
+  alias: # Turn off the front patio light after 20 minutes
+  trigger: 
+    - platform: state
+      entity_id: light.front_patio_light
+      to: 'on'
+      for:
+        minutes: 20
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.front_patio_light
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.front_patio_light
+
+# Turn on the front entrance light when there the front door open at night
+- id: frontentrancelightonwithfrontdooropen
+  alias: Turn on the front entrance light when there the front door open at night
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002739295
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.front_entrance
+
+# Turn off the front entrance light after 1 minute the front door close at night
+- id: frontentrancelightoffwithfrontdoorclose1min
+  alias: Turn off the front entrance light after 1 minute the front door close at night
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d0002739295
+      to: 'off'
+      for:
+        minutes: 1
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.front_entrance
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.front_entrance
+
+# Turn off the front entrance light after 30 minutes
+- id: frontentrancelightoffafter30mins
+  alias: Turn off the front entrance light after 30 minutes
+  trigger: 
+    - platform: state
+      entity_id: light.front_entrance
+      to: 'on'
+      for:
+        minutes: 30
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.front_entrance
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.front_entrance
