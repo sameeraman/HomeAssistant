@@ -136,7 +136,7 @@ google_assistant:
     light.office_fibaro_dimmer:
       expose: true
       room: Office
-    light.front_outdoor_lights_59:
+    light.front_outdoor_light:
       expose: true
       room: Other
     light.kitchen_light:
@@ -228,6 +228,15 @@ google_assistant:
     light.pantry_light:
       expose: true
       room: Other
+    light.front_entrance:
+      expose: true
+      room: Other
+    light.front_patio_light:
+      expose: true
+      room: Other
+    light.bedroom_2_light:
+      expose: true
+      room: Other
 
 #emulated hue
 emulated_hue:
@@ -241,7 +250,7 @@ emulated_hue:
       hidden: false
     light.office_fibaro_dimmer:
       hidden: false
-    light.front_outdoor_lights_59:
+    light.front_outdoor_light:
       hidden: false
     light.kitchen_light:
       hidden: false

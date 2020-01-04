@@ -229,7 +229,7 @@ views:
                 tap_action:
                   action: toggle
                 type: entity-button
-              - entity: light.front_outdoor_lights_59
+              - entity: light.front_outdoor_light
                 icon: 'mdi:lightbulb'
                 name: Front Outdoor
                 tap_action:
@@ -557,7 +557,7 @@ views:
             - entity: light.dining_table_lamp
               tap_action:
                 action: toggle
-            - entity: light.front_outdoor_lights_59
+            - entity: light.front_outdoor_light
               tap_action:
                 action: toggle
             - entity: light.garage_light
@@ -1233,7 +1233,7 @@ views:
             icon: 'mdi:wall-sconce-flat'
             tap_action:
               action: toggle
-            entity: light.front_outdoor_lights_59
+            entity: light.front_outdoor_light
             style:
               top: 92.5%
               left: 60%
@@ -1243,7 +1243,7 @@ views:
             icon: 'mdi:wall-sconce-flat'
             tap_action:
               action: toggle
-            entity: light.front_outdoor_lights_59
+            entity: light.front_outdoor_light
             style:
               top: 92.5%
               left: 98.3%
@@ -1253,10 +1253,44 @@ views:
             icon: 'mdi:wall-sconce-flat'
             tap_action:
               action: toggle
-            entity: light.front_outdoor_lights_59
+            entity: light.front_outdoor_light
             style:
               top: 98.6%
               left: 1.7%
+              "--paper-item-icon-color": '#696969'
+
+# Front Outdoor Patio 
+
+          - type: state-icon
+            icon: 'mdi:lightbulb-outline'
+            tap_action:
+              action: toggle
+            entity: light.front_patio_light
+            style:
+              top: 76%
+              left: 53.4%
+              "--paper-item-icon-color": '#696969'
+
+# Front Entrance Light
+          # Front Entrance Light 1
+          - type: state-icon
+            icon: 'mdi:lightbulb-outline'
+            tap_action:
+              action: toggle
+            entity: light.front_entrance
+            style:
+              top: 63%
+              left: 53.4%
+              "--paper-item-icon-color": '#696969'
+          # Front Entrance Light 2
+          - type: state-icon
+            icon: 'mdi:lightbulb-outline'
+            tap_action:
+              action: toggle
+            entity: light.front_entrance
+            style:
+              top: 53%
+              left: 39%
               "--paper-item-icon-color": '#696969'
 
 # Master Bedroom
@@ -1436,7 +1470,18 @@ views:
               service_data: 
                 entity_id: switch.myair_zone4
             style:
-              top: 70%
+              top: 72%
+              left: 38%
+              "--paper-item-icon-color": '#696969'
+
+          # Bed2 Light
+          - type: state-icon
+            icon: 'mdi:lightbulb-outline'
+            tap_action:
+              action: toggle
+            entity: light.bedroom_2_light
+            style:
+              top: 67%
               left: 38%
               "--paper-item-icon-color": '#696969'
 
