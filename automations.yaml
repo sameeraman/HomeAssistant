@@ -1713,7 +1713,7 @@
     - service: input_boolean.turn_off
       entity_id: input_boolean.arrival_greet
 
-# Activate the Good morning Sonos Greet on First motion for the day
+# Activate the Good morning Sonos Greet on First motion for the day and open the blinds
 - id: activatemorninggreet
   alias: Activate the Good morning Sonos Greet on First motion for the day
   initial_state: True
@@ -1739,6 +1739,8 @@
   action:
     - service : script.turn_on
       entity_id: script.sonos_morning_greet
+    - service: cover.open_cover
+      entity_id: cover.088330014c11ae0ef1ca
 
 # Activate the Afterwork Sonos Greet on Arrival
 - id: activatearrivalgreet
@@ -2483,7 +2485,7 @@
 
 # Turn off the front patio light after 20 minutes
 - id: frontpatiolightoffafter20mins
-  alias: # Turn off the front patio light after 20 minutes
+  alias: Turn off the front patio light after 20 minutes
   trigger: 
     - platform: state
       entity_id: light.front_patio_light
@@ -2566,3 +2568,24 @@
   action:
     - service: light.turn_off
       entity_id: light.front_entrance
+
+
+# Close the Living Blinds after sunset  
+- id: closethelivingblindsaftersunset
+  alias: Close the Living Blinds after sunset 
+  initial_state: True
+  trigger:
+    - platform: sun
+      event: sunset
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: cover.088330014c11ae0ef1ca
+        state: 'open'
+      - condition: state
+        entity_id: input_boolean.blinds_auto
+        state: 'on'
+  action:
+    - service: cover.close_cover
+      entity_id: cover.088330014c11ae0ef1ca

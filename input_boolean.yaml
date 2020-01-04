@@ -76,3 +76,7 @@ master_pendant_onoff_auto:
 bedheater_auto:
   name: Turn On Bed Heater Automation
   icon: mdi:radiator
+
+blinds_auto:
+  name: Turn On Blinds Automation
+  icon: mdi:window-shutter-alert

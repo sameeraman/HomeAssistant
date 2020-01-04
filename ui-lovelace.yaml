@@ -541,6 +541,11 @@ views:
               name: Bed Heater Automation
               tap_action:
                 action: toggle
+            - entity: input_boolean.blinds_auto
+              icon: 'mdi:window-shutter-alert'
+              name: Blinds Automation
+              tap_action:
+                action: toggle
       - type: vertical-stack
         cards:
         - type: entity-filter
