@@ -49,3 +49,7 @@
   - platform: switch
     name: Sameera Wardrobe Light
     entity_id: switch.sam_wardrobe_switch
+
+  - platform: switch
+    name: Front Outdoor Light 1
+    entity_id: switch.front_outdoor_switch

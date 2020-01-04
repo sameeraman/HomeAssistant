@@ -162,3 +162,12 @@
     payload_on: "ON"
     payload_off: "OFF"
     retain: false
+
+  - platform: mqtt
+    name: "front_outdoor_switch"
+    command_topic: "home/outdoor/front_outdoor_switch/cmnd/power"
+    state_topic: "home/outdoor/front_outdoor_switch/stat/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false
