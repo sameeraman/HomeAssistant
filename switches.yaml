@@ -183,8 +183,8 @@
 
   - platform: mqtt
     name: "bedroom2_switch"
-    command_topic: "home/outdoor/bedroom2_switch/cmnd/power"
-    state_topic: "home/outdoor/bedroom2_switch/stat/POWER"
+    command_topic: "home/bedroom2/bedroom2_switch/cmnd/power"
+    state_topic: "home/bedroom2/bedroom2_switch/stat/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
