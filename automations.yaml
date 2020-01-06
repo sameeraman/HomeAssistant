@@ -1739,8 +1739,6 @@
   action:
     - service : script.turn_on
       entity_id: script.sonos_morning_greet
-    - service: cover.open_cover
-      entity_id: cover.088330014c11ae0ef1ca
 
 # Activate the Afterwork Sonos Greet on Arrival
 - id: activatearrivalgreet

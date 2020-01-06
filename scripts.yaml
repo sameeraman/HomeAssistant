@@ -27,6 +27,14 @@ xiaomi_gateway_alarm:
 sonos_afternoon_greet:
   alias: "Sonos afternoon great - Living"
   sequence:
+    - service: cover.open_cover
+      data_template:
+        entity_id: >
+          {% if is_state('sun.sun', 'above_horizon') %}
+            cover.088330014c11ae0ef1ca
+          {% else %}
+            none
+          {% endif %}
     - service: sonos.snapshot
       data_template:
         entity_id: media_player.living
@@ -72,6 +80,14 @@ sonos_afternoon_greet:
 sonos_morning_greet:
   alias: "Sonos morning greet - Living"
   sequence:
+    - service: cover.open_cover
+      data_template:
+        entity_id: >
+          {% if is_state('sun.sun', 'above_horizon') %}
+            cover.088330014c11ae0ef1ca
+          {% else %}
+            none
+          {% endif %}
     - service: sonos.snapshot
       data_template:
         entity_id: media_player.living
