@@ -2589,3 +2589,22 @@
   action:
     - service: cover.close_cover
       entity_id: cover.088330014c11ae0ef1ca
+
+
+# Alert when Office smoke alarm is activated
+- id: alertsmokealarmoffice
+  alias: Alert when Office smoke alarm is activated
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.smoke_sensor_158d00028ee45d
+      from: 'off'
+      to: 'on'
+  action:
+    - service: notify.pushbullet
+      data_template:
+        title: 'SMOKE ALARM IN Office Triggered {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'SMOKE ALARM IN Office Triggered !'
+    - service: notify.sendgrid
+      data_template:
+        title: 'SMOKE ALARM IN Office Triggered {{now().strftime("%Y%m%d-%H%M%S")}}'
+        message:  'SMOKE ALARM IN Office Triggered !'
