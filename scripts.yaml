@@ -30,7 +30,7 @@ sonos_afternoon_greet:
     - service: cover.open_cover
       data_template:
         entity_id: >
-          {% if is_state('sun.sun', 'above_horizon') %}
+          {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
             cover.088330014c11ae0ef1ca
           {% else %}
             none
@@ -83,7 +83,7 @@ sonos_morning_greet:
     - service: cover.open_cover
       data_template:
         entity_id: >
-          {% if is_state('sun.sun', 'above_horizon') %}
+          {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
             cover.088330014c11ae0ef1ca
           {% else %}
             none
