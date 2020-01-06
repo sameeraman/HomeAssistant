@@ -404,14 +404,14 @@ views:
                   service: scene.turn_on
                   service_data:
                     entity_id: scene.tvwatchingmode
-              - entity: scene.livingactivenightmood
-                icon: 'mdi:sofa'
-                name: Active
+              - entity: scene.romanticnightmood
+                icon: 'mdi:heart-circle-outline'
+                name: Romance
                 tap_action:
                   action: call-service
                   service: scene.turn_on
                   service_data:
-                    entity_id: scene.livingactivenightmood
+                    entity_id: scene.romanticnightmood
               - entity: scene.livingoff
                 icon: 'mdi:power-plug-off'
                 name: All Off

@@ -11,6 +11,8 @@
     light.living_light: off
     media_player.living:
       state: playing
+      media_content_type: playlist
+      media_content_id: 'Jazz'
     remote.living :
       state : off
       activity: 'Watch TV'
@@ -21,7 +23,34 @@
     light.kitchen_strip:
       state: on
       brightness: 133
-      rgb_color: ['255','207','120']      
+      rgb_color: ['255','207','120']     
+
+- name: romanticnightmood
+  friendly_name: Romantic Night Mood
+  entities:
+    light.living_floor_lamp :
+      state: on
+      rgb_color: ['255','0','0']
+    light.dining_table_lamp :
+      state: on
+      rgb_color: ['255','0','0']
+    light.kitchen_light : off
+    light.living_light: off
+    media_player.living:
+      state: playing
+      media_content_type: playlist
+      media_content_id: 'Romantic'
+    remote.living :
+      state : off
+      activity: 'Watch TV'
+    light.living_hue_strip:
+      state: on
+      brightness: 30
+      rgb_color: ['255','0','0']
+    light.kitchen_strip:
+      state: on
+      brightness: 133
+      rgb_color: ['255','0','0']
 
 - name: livingactivenightmood
   friendly_name: Living Active Night Mood
