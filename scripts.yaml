@@ -27,14 +27,6 @@ xiaomi_gateway_alarm:
 sonos_afternoon_greet:
   alias: "Sonos afternoon great - Living"
   sequence:
-    - service: cover.open_cover
-      data_template:
-        entity_id: >
-          {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
-            cover.088330014c11ae0ef1ca
-          {% else %}
-            none
-          {% endif %}
     - service: sonos.snapshot
       data_template:
         entity_id: media_player.living
@@ -56,6 +48,14 @@ sonos_afternoon_greet:
           {{secondb[bindex]}} 
           {% set secondr = ["Have a great evening.","Have a good one.","Goodbye.","Talk to you later."] %} {% set sindex = (range(0, (secondr | length - 1) )|random) %} 
           {{secondr[sindex]}}
+    - service: cover.open_cover
+      data_template:
+        entity_id: >
+          {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
+            cover.088330014c11ae0ef1ca
+          {% else %}
+            none
+          {% endif %}
     - delay:
         seconds:  18
     - service: sonos.restore
@@ -80,14 +80,6 @@ sonos_afternoon_greet:
 sonos_morning_greet:
   alias: "Sonos morning greet - Living"
   sequence:
-    - service: cover.open_cover
-      data_template:
-        entity_id: >
-          {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
-            cover.088330014c11ae0ef1ca
-          {% else %}
-            none
-          {% endif %}
     - service: sonos.snapshot
       data_template:
         entity_id: media_player.living
@@ -106,6 +98,14 @@ sonos_morning_greet:
           I will now turn on the TV. ...  
           {% set secondr = ["Have a great day.","Enjoy the day","Have a good one.","Talk to you later."] %} {% set sindex = (range(0, (secondr | length - 1) )|random) %} 
           {{secondr[sindex]}}
+    - service: cover.open_cover
+      data_template:
+        entity_id: >
+          {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
+            cover.088330014c11ae0ef1ca
+          {% else %}
+            none
+          {% endif %}
     - delay:
         seconds:  18
     - service: sonos.restore
