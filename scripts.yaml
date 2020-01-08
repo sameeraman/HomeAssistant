@@ -186,6 +186,27 @@ sonos_alfresco_play:
             script.sonos_alfresco_play_resume
           {% endif %}
 
+# Script that executes when leaving home
+leave_home_workflow:
+  alias: "Leave Home"
+  sequence:
+    - service: cover.close_cover
+      data_template:
+        entity_id: >
+          {% if is_state('input_boolean.blinds_auto', 'on') %}
+            cover.088330014c11ae0ef1ca
+          {% else %}
+            none
+          {% endif %}
+    - service: remote.turn_on
+      entity_id: remote.Living
+      data:
+        activity: "PowerOff"
+    - service: light.turn_off
+      entity_id: light.living_light
+    - service: light.turn_off
+      entity_id: light.kitchen_light
+
 # Launch HA Dashboard
 launch_ha_dashboard:
   description: 'Launch Home Assistant Dashboard'
@@ -204,10 +225,4 @@ launch_ha_floorplan:
     - service: cast.show_lovelace_view
       data:
         entity_id: media_player.kitchen_display
-        view_path: https://sphassio.duckdns.org:8123/lovelace/floorplan
-    - delay:
-        seconds:  5  
-    - service: cast.show_lovelace_view
-      data:
-        entity_id: media_player.kitchen_display
-        view_path: floorplan
+        view_path: "4"

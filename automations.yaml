@@ -1413,6 +1413,20 @@
     service: media_player.media_play_pause
     entity_id: media_player.living
 
+# Execute leaving workflow when Living push button is long pressed
+- id: executeleavingworkflowpushbuttonlong
+  alias: Execute leaving workflow when Living push button is long pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000323d424
+      click_type: long_click_press
+  action:
+    - service : script.turn_on
+      entity_id: script.leave_home_workflow
+
+
 # Alarm when there is motion outside master bedroom and when the night mood is on
 - id: alarmwhennightmood
   alias: Alarm when there is motion outside master bedroom and when the night mood is on
