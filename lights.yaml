@@ -61,3 +61,7 @@
   - platform: switch
     name: Bedroom 2 Light
     entity_id: switch.bedroom2_switch
+
+  - platform: switch
+    name: Hallway Light
+    entity_id: switch.hallway_switch

@@ -189,3 +189,12 @@
     payload_on: "ON"
     payload_off: "OFF"
     retain: false
+
+  - platform: mqtt
+    name: "hallway_switch"
+    command_topic: "home/hallway/hallway_switch/cmnd/power"
+    state_topic: "home/hallway/hallway_switch/stat/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false
