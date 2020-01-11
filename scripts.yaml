@@ -206,6 +206,9 @@ leave_home_workflow:
       entity_id: light.living_light
     - service: light.turn_off
       entity_id: light.kitchen_light
+    - service: media_player.media_pause
+      data_template:
+        entity_id: media_player.living
 
 # Launch HA Dashboard
 launch_ha_dashboard:
