@@ -1058,6 +1058,18 @@ views:
               left: 5%
               "--paper-item-icon-color": '#696969'
 
+          # Living TV
+          - type: state-icon
+            icon: 'mdi:television-classic'
+            tap_action:
+              action: call-service
+              service: script.toggle_tv
+            entity: binary_sensor.living_tv
+            style:
+              top: 33%
+              left: 5%
+              "--paper-item-icon-color": '#696969'
+
           # Dining Music
           - type: state-icon
             icon: 'mdi:volume-high'

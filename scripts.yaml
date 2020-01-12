@@ -229,3 +229,19 @@ launch_ha_floorplan:
       data:
         entity_id: media_player.kitchen_display
         view_path: "4"
+
+
+# Toggle TV
+toggle_tv:
+  description: 'Toggle TV'
+  alias: "Toggle TV"
+  sequence:
+    - service: remote.turn_on
+      entity_id: remote.Living
+      data_template:
+        activity: >-
+          {% if is_state('media_player.yamaha_receiver', 'on') %}
+            "PowerOff"
+          {% else %}
+            "Watch TV"
+          {% endif %}
