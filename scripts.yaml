@@ -241,7 +241,7 @@ toggle_tv:
       data_template:
         activity: >-
           {% if is_state('media_player.yamaha_receiver', 'on') %}
-            "PowerOff"
+            PowerOff
           {% else %}
-            "Watch TV"
+            Watch TV
           {% endif %}
