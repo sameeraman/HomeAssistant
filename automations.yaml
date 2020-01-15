@@ -393,6 +393,10 @@
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d00033a7262
       to: 'on'
+    # Patio-M
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d00033df5c5
+      to: 'on'
   condition:
     condition: state
     entity_id: switch.housealarm
