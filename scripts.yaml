@@ -52,7 +52,9 @@ sonos_afternoon_greet:
       data_template:
         entity_id: >
           {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
-            cover.088330014c11ae0ef1ca
+            - cover.088330014c11ae0ef1ca
+            - cover.8600507250029161f3c6
+            - cover.86005072500291622d8f
           {% else %}
             none
           {% endif %}
@@ -102,7 +104,9 @@ sonos_morning_greet:
       data_template:
         entity_id: >
           {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
-            cover.088330014c11ae0ef1ca
+            - cover.088330014c11ae0ef1ca
+            - cover.8600507250029161f3c6
+            - cover.86005072500291622d8f
           {% else %}
             none
           {% endif %}
@@ -194,7 +198,9 @@ leave_home_workflow:
       data_template:
         entity_id: >
           {% if is_state('input_boolean.blinds_auto', 'on') %}
-            cover.088330014c11ae0ef1ca
+            - cover.088330014c11ae0ef1ca
+            - cover.8600507250029161f3c6
+            - cover.86005072500291622d8f
           {% else %}
             none
           {% endif %}

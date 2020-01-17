@@ -2597,14 +2597,25 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: cover.088330014c11ae0ef1ca
-        state: 'open'
-      - condition: state
         entity_id: input_boolean.blinds_auto
         state: 'on'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: cover.088330014c11ae0ef1ca
+          state: 'open'
+        - condition: state
+          entity_id: cover.8600507250029161f3c6
+          state: 'open'
+        - condition: state
+          entity_id: cover.86005072500291622d8f
+          state: 'open'
   action:
     - service: cover.close_cover
-      entity_id: cover.088330014c11ae0ef1ca
+      entity_id: 
+        - cover.088330014c11ae0ef1ca
+        - cover.8600507250029161f3c6
+        - cover.86005072500291622d8f
 
 
 # Alert when Office smoke alarm is activated
