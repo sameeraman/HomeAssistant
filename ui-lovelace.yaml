@@ -868,6 +868,15 @@ views:
               left: 26%
               "--paper-item-icon-color": '#696969'
 
+         # Alfresco Image Processing
+          - type: state-icon
+            icon: 'mdi:eye-circle'
+            entity: binary_sensor.alfresco_iotedge_vision
+            style:
+              top: 18.5%
+              left: 22%
+              "--paper-item-icon-color": '#696969'
+
           # Alfresco Music
           - type: state-icon
             icon: 'mdi:volume-high'
