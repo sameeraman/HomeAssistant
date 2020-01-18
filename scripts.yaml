@@ -48,13 +48,11 @@ sonos_afternoon_greet:
           {{secondb[bindex]}} 
           {% set secondr = ["Have a great evening.","Have a good one.","Goodbye.","Talk to you later."] %} {% set sindex = (range(0, (secondr | length - 1) )|random) %} 
           {{secondr[sindex]}}
-    - service: cover.open_cover
+    - service: script.turn_on
       data_template:
         entity_id: >
           {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
-            - cover.088330014c11ae0ef1ca
-            - cover.8600507250029161f3c6
-            - cover.86005072500291622d8f
+            script.open_all_blinds
           {% else %}
             none
           {% endif %}
@@ -100,13 +98,11 @@ sonos_morning_greet:
           I will now turn on the TV. ...  
           {% set secondr = ["Have a great day.","Enjoy the day","Have a good one.","Talk to you later."] %} {% set sindex = (range(0, (secondr | length - 1) )|random) %} 
           {{secondr[sindex]}}
-    - service: cover.open_cover
+    - service: script.turn_on
       data_template:
         entity_id: >
           {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
-            - cover.088330014c11ae0ef1ca
-            - cover.8600507250029161f3c6
-            - cover.86005072500291622d8f
+            script.open_all_blinds
           {% else %}
             none
           {% endif %}
@@ -194,13 +190,11 @@ sonos_alfresco_play:
 leave_home_workflow:
   alias: "Leave Home"
   sequence:
-    - service: cover.close_cover
+    - service: script.turn_on
       data_template:
         entity_id: >
           {% if is_state('input_boolean.blinds_auto', 'on') %}
-            - cover.088330014c11ae0ef1ca
-            - cover.8600507250029161f3c6
-            - cover.86005072500291622d8f
+            script.close_all_blinds
           {% else %}
             none
           {% endif %}
@@ -251,3 +245,25 @@ toggle_tv:
           {% else %}
             Watch TV
           {% endif %}
+
+# Open all blinds
+open_all_blinds:
+  alias: "Open all blinds"
+  sequence:
+    - service: cover.open_cover
+      entity_id: cover.088330014c11ae0ef1ca
+    - service: cover.open_cover
+      entity_id: cover.8600507250029161f3c6
+    - service: cover.open_cover
+      entity_id: cover.86005072500291622d8f
+
+# Close all blinds
+close_all_blinds:
+  alias: "Close all blinds"
+  sequence:
+    - service: cover.close_cover
+      entity_id: cover.088330014c11ae0ef1ca
+    - service: cover.close_cover
+      entity_id: cover.8600507250029161f3c6
+    - service: cover.close_cover
+      entity_id: cover.86005072500291622d8f
