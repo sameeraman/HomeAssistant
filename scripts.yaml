@@ -54,7 +54,7 @@ sonos_afternoon_greet:
           {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
             script.open_all_blinds
           {% else %}
-            none
+            script.do_nothing
           {% endif %}
     - delay:
         seconds:  18
@@ -104,7 +104,7 @@ sonos_morning_greet:
           {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
             script.open_all_blinds
           {% else %}
-            none
+            script.do_nothing
           {% endif %}
     - delay:
         seconds:  18
@@ -196,7 +196,7 @@ leave_home_workflow:
           {% if is_state('input_boolean.blinds_auto', 'on') %}
             script.close_all_blinds
           {% else %}
-            none
+            script.do_nothing
           {% endif %}
     - service: remote.turn_on
       entity_id: remote.Living
@@ -267,3 +267,8 @@ close_all_blinds:
       entity_id: cover.8600507250029161f3c6
     - service: cover.close_cover
       entity_id: cover.86005072500291622d8f
+
+# Do Nothing Script
+do_nothing:
+  alias: "Do Nothing Script"
+  sequence:

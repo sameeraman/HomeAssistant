@@ -192,6 +192,12 @@ google_assistant:
       room: Dining Room
       aliases:
         - Dining Blinds
+    cover.8600507250029161f3c6:
+      expose: true
+      room: Living
+    cover.86005072500291622d8f:
+      expose: true
+      room: Living
     camera.alfresco_camera:
       expose: true
       room: Other

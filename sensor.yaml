@@ -799,3 +799,9 @@
           friendly_name: 'USG Upload Speed'
           unit_of_measurement: KBps
           value_template: "{{ (states.sensor.unifi_gateway_www.attributes['tx_bytes-r'] | int / 1024) | round(1) }}"
+
+
+# mqtt alfresco image processing sensor
+  - platform: mqtt
+    name : alfresco_azure_image_processing
+    state_topic: "home/alfresco/image_processing_sensor/state"
