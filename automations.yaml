@@ -621,6 +621,9 @@
     - platform: state
       entity_id: binary_sensor.m_bed_room_m_33
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
+      to: 'on'
   action:
     - service: homeassistant.turn_on
       entity_id:  light.bath_strip
@@ -632,6 +635,18 @@
     - platform: state
       entity_id: binary_sensor.m_bed_room_m_33
       to: 'off'
+    - platform: state
+      entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: binary_sensor.m_bed_room_m_33
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
+        state: 'off'
   action:
     - service: homeassistant.turn_off
       entity_id:  light.bath_strip
