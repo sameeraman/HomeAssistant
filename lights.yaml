@@ -67,5 +67,5 @@
     entity_id: switch.hallway_switch
 
   - platform: switch
-    name: Hallway Light
+    name: Back Outdoor Light
     entity_id: switch.back_outdoor_switch

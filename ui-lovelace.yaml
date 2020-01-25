@@ -1227,7 +1227,7 @@ views:
             icon: 'mdi:thermometer'
             style: 
                 top: 62%
-                left: 87%
+                left: 87.5%
 
           # Garage Light
           - type: state-icon
@@ -1350,6 +1350,20 @@ views:
               top: 53%
               left: 39%
               "--paper-item-icon-color": '#696969'
+
+
+# Back Outdoor 
+          # Back Outdoor Light
+          - type: state-icon
+            icon: 'mdi:track-light'
+            tap_action:
+              action: toggle
+            entity: light.back_outdoor_light
+            style:
+              top: 2%
+              left: 26%
+              "--paper-item-icon-color": '#696969'
+
 
 # Master Bedroom
           # Master Light
