@@ -151,7 +151,7 @@ google_assistant:
     light.master_light:
       expose: true
       room: Master Bedroom
-    light.garage_light:
+    light.garage_fibaro_dimmer:
       expose: true
       room: Garage
     light.master_pendant:
@@ -266,7 +266,7 @@ emulated_hue:
       hidden: false
     light.master_light:
       hidden: false
-    light.garage_light:
+    light.garage_fibaro_dimmer:
       hidden: false
     light.master_pendant:
       hidden: false

@@ -529,7 +529,7 @@
           state: 'off'
   action:
     - service: homeassistant.turn_on
-      entity_id: light.garage_light
+      entity_id: light.garage_fibaro_dimmer
 
 # Turn on the garage light when the garage door close
 - id: garagelightongaragedoorclose
@@ -548,11 +548,11 @@
         entity_id: group.garage_motion
         state: 'on'
       - condition: state
-        entity_id: light.garage_light
+        entity_id: light.garage_fibaro_dimmer
         state: 'off'
   action:
     - service: homeassistant.turn_on
-      entity_id: light.garage_light
+      entity_id: light.garage_fibaro_dimmer
 
 
 # Turn off the garage light then there is no motion
@@ -566,14 +566,14 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.garage_light
+        entity_id: light.garage_fibaro_dimmer
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
   action:
     - service: homeassistant.turn_off
-      entity_id: light.garage_light
+      entity_id: light.garage_fibaro_dimmer
 
 # Turn off the garage light when the garage door open during day time
 - id: garagelightoffwithgaragedoor
@@ -588,7 +588,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.garage_light
+        entity_id: light.garage_fibaro_dimmer
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
@@ -598,20 +598,20 @@
         state: 'above_horizon'
   action:
     - service: homeassistant.turn_off
-      entity_id: light.garage_light
+      entity_id: light.garage_fibaro_dimmer
 
 # Turn off the garage light if it was one for more than 60 minutes
 - id: garagelightoff60min
   alias: Turn off the garage light if it was one for more than 60 minutes
   trigger: 
     - platform: state
-      entity_id: light.garage_light
+      entity_id: light.garage_fibaro_dimmer
       to: 'on'
       for: 
         minutes: 60
   action:
     - service: homeassistant.turn_off
-      entity_id:  light.garage_light
+      entity_id:  light.garage_fibaro_dimmer
 
 
 # Turn on the Bath strip when there is motion in Master bedroom

@@ -240,7 +240,7 @@ views:
                 name: Humidity
           - type: horizontal-stack
             cards:
-              - entity: light.garage_light
+              - entity: light.garage_fibaro_dimmer
                 icon: 'mdi:lightbulb'
                 name: Garage Light
                 tap_action:
@@ -588,7 +588,7 @@ views:
             - entity: light.front_outdoor_light
               tap_action:
                 action: toggle
-            - entity: light.garage_light
+            - entity: light.garage_fibaro_dimmer
               tap_action:
                 action: toggle
             - entity: light.living_hue_strip
@@ -1234,7 +1234,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.garage_light
+            entity: light.garage_fibaro_dimmer
             style:
               top: 70%
               left: 82%
