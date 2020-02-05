@@ -243,6 +243,9 @@ google_assistant:
     light.bedroom_2_light:
       expose: true
       room: Other
+    light.back_outdoor_light:
+      expose: true
+      room: Other
 
 #emulated hue
 emulated_hue:

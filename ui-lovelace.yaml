@@ -1308,6 +1308,22 @@ views:
               left: 1.7%
               "--paper-item-icon-color": '#696969'
 
+# House Alarm
+          # House Alarm
+          - type: image
+            image: /local/shield-home-outline.svg?2
+            entity: switch.housealarm
+            state_filter:
+              "off": 'opacity(0)'
+            tap_action:
+              action: toggle
+            style:
+              top: 87%
+              left: 46%
+              transform: 'scale(1.5,1.5)'
+              "--paper-item-icon-color": '#696969'
+
+
 # Front Outdoor Patio 
           # Patio Light
           - type: state-icon

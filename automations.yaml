@@ -1454,10 +1454,14 @@
       - platform: state
         entity_id: binary_sensor.motion_sensor_158d0002742898
         to: 'on'
+        for:
+          seconds: 125
       # Living-M
       - platform: state
         entity_id: binary_sensor.motion_sensor_158d0002c716b6
         to: 'on'
+        for:
+          seconds: 125
       # Main Door
       - platform: state
         entity_id: binary_sensor.door_window_sensor_158d0002739295
@@ -1466,7 +1470,9 @@
       - platform: state
         entity_id: binary_sensor.motion_sensor_158d0002c716d7
         to: 'on'
-      # Loundry Door
+        for:
+          seconds: 125
+      # Laundry Door
       - platform: state
         entity_id: binary_sensor.door_window_sensor_158d0002ca3100
         to: 'on'
@@ -1474,6 +1480,8 @@
       - platform: state
         entity_id: binary_sensor.motion_sensor_158d0002b7ec00
         to: 'on'
+        for:
+          seconds: 125
       # Alfresco-M
       - platform: state
         entity_id: binary_sensor.motion_sensor_158d0002b5eecd
@@ -1492,10 +1500,14 @@
       - platform: state
         entity_id: binary_sensor.laundry_m_199
         to: 'on'
+        for:
+          seconds: 125
       # Room 4 Motion
       - platform: state
         entity_id: binary_sensor.room4_194
         to: 'on'
+        for:
+          seconds: 125
   condition:
     condition: state
     entity_id: input_boolean.night_mood
