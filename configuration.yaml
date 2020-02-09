@@ -465,7 +465,7 @@ influxdb:
   database: HomeAssistantHistory
   username: homeassistant
   password: !secret influxdbhomeassistantpassword
-  ssl: true
+  ssl: false
   verify_ssl: false
   max_retries: 3
   default_measurement: state
