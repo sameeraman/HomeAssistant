@@ -392,6 +392,7 @@ media_player:
 xiaomi_aqara:
   gateways:
     - mac: !secret xiaomi_mac
+      host: 10.1.1.252
       key: !secret xiaomi_key
 
 # Custom Lovelace Gen
