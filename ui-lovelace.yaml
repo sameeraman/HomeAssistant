@@ -221,7 +221,7 @@ views:
       - type: vertical-stack
         cards:
           - type: glance
-            title: 
+            title: Garage
             entities:
               - entity: binary_sensor.garage_motion
                 icon: 'mdi:run-fast'
