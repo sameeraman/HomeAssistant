@@ -104,7 +104,7 @@ garage_motion:
   control: hidden
   entities:
     - binary_sensor.motion_sensor_158d0002c716d7
-    - binary_sensor.garage_sensor_m_46
+    - binary_sensor.garage_sensor_388
 
 living_kitchen_motion:
   name: "All Living and Kitchen Motion Sensors"

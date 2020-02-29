@@ -221,21 +221,21 @@ views:
       - type: vertical-stack
         cards:
           - type: glance
-            title: Garage
+            title: 
             entities:
-              - entity: binary_sensor.garage_sensor_m_46
+              - entity: binary_sensor.garage_motion
                 icon: 'mdi:run-fast'
                 name: Motion
               - entity: binary_sensor.door_window_sensor_158d0002c0e236
                 icon: 'mdi:garage-open'
                 name: Door
-              - entity: sensor.garage_sensor_t_47
+              - entity: sensor.6_in_1_multisensor_temperature_2_389
                 icon: 'mdi:coolant-temperature'
                 name: Temperature
-              - entity: sensor.garage_sensor_l_48
+              - entity: sensor.6_in_1_multisensor_light_2_390
                 icon: 'mdi:theme-light-dark'
                 name: Light
-              - entity: sensor.garage_sensor_h_49
+              - entity: sensor.6_in_1_multisensor_humidity_2_391
                 icon: 'mdi:water-percent'
                 name: Humidity
           - type: horizontal-stack
@@ -1201,14 +1201,14 @@ views:
 
           # Garage Temperature
           - type: state-icon
-            entity: sensor.garage_sensor_t_47
+            entity: sensor.6_in_1_multisensor_temperature_2_389
             icon: 'mdi:thermometer'
             style: 
                 top: 75%
                 left: 73%
                 "--paper-item-icon-color": '#696969'
           - type: state-label
-            entity: sensor.garage_sensor_t_47
+            entity: sensor.6_in_1_multisensor_temperature_2_389
             icon: 'mdi:thermometer'
             style: 
                 top: 75%
@@ -1263,14 +1263,14 @@ views:
 
           # Garage Humidity
           - type: state-icon
-            entity: sensor.garage_sensor_h_49
+            entity: sensor.6_in_1_multisensor_humidity_2_391
             icon: 'mdi:water-percent'
             style: 
                 top: 79%
                 left: 74%
                 "--paper-item-icon-color": '#696969'
           - type: state-label
-            entity: sensor.garage_sensor_h_49
+            entity: sensor.6_in_1_multisensor_humidity_2_391
             icon: 'mdi:water-percent'
             style: 
                 top: 79%
