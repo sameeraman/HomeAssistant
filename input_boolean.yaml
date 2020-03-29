@@ -1,15 +1,15 @@
 # Input boolean 
 
 alfresco_button:
-  name: Alfresco Button Media Play
+  name: Alfresco button media play
   icon: mdi:music-circle-outline
 
 alfresco_motion_music:
-  name: Alfresco Motion Based Music
+  name: Alfresco motion based music
   icon: mdi:music-circle-outline
 
 alfresco_motion_light:
-  name: Alfresco Motion Based Light On/Off
+  name: Alfresco motion based light On/Off
   icon: mdi:lightbulb-outline
 
 light_on_off_auto:
@@ -25,7 +25,7 @@ zone_off_auto:
   icon: mdi:air-filter
 
 housealarm_auto:
-  name: Turn On House Alarm Based on Device Tracker
+  name: Turn On House Alarm based on device tracker
   icon: mdi:shield-home-outline
 
 nightmood_auto:
@@ -33,7 +33,7 @@ nightmood_auto:
   icon: mdi:weather-night
 
 aircon_on_auto:
-  name: Turn On Air Conditioner Based on Temperature
+  name: Turn On Air Conditioner based on Temperature
   icon: mdi:air-conditioner
 
 night_mood:
@@ -80,3 +80,7 @@ bedheater_auto:
 blinds_auto:
   name: Turn On Blinds Automation
   icon: mdi:window-shutter-alert
+
+garage_light_on_off_auto:
+  name: Turn lights On/Off with based on garage motion
+  icon: mdi:lightbulb-outline

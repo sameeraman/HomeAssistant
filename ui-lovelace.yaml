@@ -521,22 +521,27 @@ views:
                 action: toggle
             - entity: input_boolean.alfresco_motion_music
               icon: 'mdi:music-circle-outline'
-              name: Alfresco Music Based on Motion
+              name: Alfresco Music based on Motion
               tap_action:
                 action: toggle
             - entity: input_boolean.alfresco_motion_light
               icon: 'mdi:lightbulb-outline'
-              name: Alfresco Light On/Off Based on Motion
+              name: Alfresco Light On/Off based on Motion
               tap_action:
                 action: toggle
             - entity: input_boolean.light_on_off_auto
               icon: 'mdi:lightbulb-outline'
-              name: Lights Auto On/Off Based on Motion
+              name: Lights Auto On/Off based on Motion
+              tap_action:
+                action: toggle
+            - entity: input_boolean.garage_light_on_off_auto
+              icon: 'mdi:lightbulb-outline'
+              name: Garage Light Auto On/Off based on Garage Motion
               tap_action:
                 action: toggle
             - entity: input_boolean.zone_off_auto
               icon: 'mdi:air-filter'
-              name: AC Zones Auto On/Off Based on Motion
+              name: AC Zones Auto On/Off based on Motion
               tap_action:
                 action: toggle
             - entity: input_boolean.aircon_on_auto

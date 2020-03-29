@@ -519,6 +519,9 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
+      - condition: state
+        entity_id: input_boolean.garage_light_on_off_auto
+        state: 'on'
       - condition: or
         conditions:
         - condition: state
@@ -570,6 +573,9 @@
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.garage_light_on_off_auto
         state: 'on'
   action:
     - service: homeassistant.turn_off
