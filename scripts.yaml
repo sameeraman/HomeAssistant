@@ -251,8 +251,6 @@ open_all_blinds:
   alias: "Open all blinds"
   sequence:
     - service: cover.open_cover
-      entity_id: cover.088330014c11ae0ef1ca
-    - service: cover.open_cover
       entity_id: cover.8600507250029161f3c6
     - service: cover.open_cover
       entity_id: cover.86005072500291622d8f
@@ -261,8 +259,6 @@ open_all_blinds:
 close_all_blinds:
   alias: "Close all blinds"
   sequence:
-    - service: cover.close_cover
-      entity_id: cover.088330014c11ae0ef1ca
     - service: cover.close_cover
       entity_id: cover.8600507250029161f3c6
     - service: cover.close_cover

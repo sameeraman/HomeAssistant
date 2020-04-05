@@ -1485,7 +1485,7 @@ views:
           # Master Bedroom Door
           - type: image
             image: /local/line6.svg
-            entity: binary_sensor.door_window_sensor_158d0003677216
+            entity: binary_sensor.door_window_sensor_158d00033acf0f
             state_filter:
               "off": 'opacity(0)'
             style:
