@@ -432,7 +432,7 @@
       - condition: time
         after: '05:30:00'
   action:
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id:  light.bath_light
       data_template:
         brightness_pct: >
@@ -468,7 +468,7 @@
         entity_id: binary_sensor.m_bed_room_m_33
         state: 'off'
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id:  light.bath_light
 
 # Turn on the Pantry Light when the door open
@@ -479,7 +479,7 @@
       entity_id: binary_sensor.door_window_sensor_158d00033acf0f
       to: 'on'
   action:
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id:  light.pantry_light
 
 # Turn off the pantry light when the door close
@@ -490,7 +490,7 @@
       entity_id: binary_sensor.door_window_sensor_158d00033acf0f
       to: 'off'
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id:  light.pantry_light
 
 # Turn off the Pantry Light when the door open and left for more than 2 minutes
@@ -503,7 +503,7 @@
       for:
         minutes: 2
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id:  light.pantry_light
 
 # Turn on the garage light then there is motion
@@ -531,7 +531,7 @@
           entity_id: binary_sensor.door_window_sensor_158d0002c0e236
           state: 'off'
   action:
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id: light.garage_fibaro_dimmer
 
 # Turn on the garage light when the garage door close
@@ -554,7 +554,7 @@
         entity_id: light.garage_fibaro_dimmer
         state: 'off'
   action:
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id: light.garage_fibaro_dimmer
 
 
@@ -578,7 +578,7 @@
         entity_id: input_boolean.garage_light_on_off_auto
         state: 'on'
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id: light.garage_fibaro_dimmer
 
 # Turn off the garage light when the garage door open during day time
@@ -603,7 +603,7 @@
         entity_id: sun.sun
         state: 'above_horizon'
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id: light.garage_fibaro_dimmer
 
 # Turn off the garage light if it was one for more than 60 minutes
@@ -616,7 +616,7 @@
       for: 
         minutes: 60
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id:  light.garage_fibaro_dimmer
 
 
@@ -631,7 +631,7 @@
       entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
       to: 'on'
   action:
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id:  light.bath_strip
 
 # Turn off the Bath strip when there's no Motion in master bedroom
@@ -654,7 +654,7 @@
         entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
         state: 'off'
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id:  light.bath_strip
 
 # Alert if the Laundry door was left open for more than 10 minutes
@@ -1105,7 +1105,7 @@
         entity_id: switch.housealarm
         state: 'off'
   action:
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id: light.office_fibaro_dimmer
 
 # Turn off the Office Light when there is no motion 
@@ -1136,7 +1136,7 @@
         entity_id: group.office_motion
         state: 'off'
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id: light.office_fibaro_dimmer
 
 # Turn off the Master Light when there is no motion for more than 5 minutes
@@ -1158,7 +1158,7 @@
         entity_id: light.master_light
         state: 'on'
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id:  light.master_light
 
 # Turn on the Kitchen light when there is motion based on light and sunset
@@ -1184,7 +1184,7 @@
         entity_id: sensor.illumination_158d0002b5eecd
         below: 100
   action:
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id:  light.kitchen_light
     - service: input_boolean.turn_off
       entity_id: input_boolean.kitchen_light_onoff_auto
@@ -1219,7 +1219,7 @@
         entity_id: group.kitchen_motion
         state: 'off'
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id:  light.kitchen_light
     - service: input_boolean.turn_on
       entity_id: input_boolean.kitchen_light_onoff_auto
@@ -1316,13 +1316,13 @@
         entity_id: light.living_mood_lights
         state: 'off'
   action:
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id: light.dining_table_lamp
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id: light.living_floor_lamp
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id: light.living_hue_strip
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id: light.kitchen_strip
 
 
@@ -1351,13 +1351,13 @@
         entity_id: light.living_mood_lights
         state: 'off'
   action:
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id: light.dining_table_lamp
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id: light.living_floor_lamp
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id: light.living_hue_strip
-    - service: homeassistant.turn_on
+    - service: light.turn_on
       entity_id: light.kitchen_strip
 
 # Turn off the living mood dim lights at mid night
@@ -1388,13 +1388,13 @@
             entity_id: light.kitchen_strip
             state: 'on'
   action:
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id: light.dining_table_lamp
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id: light.living_floor_lamp
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id: light.living_hue_strip
-    - service: homeassistant.turn_off
+    - service: light.turn_off
       entity_id: light.kitchen_strip
 
 # Turn off the Living Sonos (if playing) when the TV is switched on
@@ -1519,7 +1519,7 @@
     entity_id: input_boolean.night_mood
     state: 'on'
   action:
-    - service: homeassistant.turn_on
+    - service: script.turn_on
       entity_id: script.xiaomi_gateway_alarm
     - service: notify.pushbullet
       data_template:
@@ -1614,7 +1614,7 @@
         entity_id: input_boolean.nightmood_auto
         state: 'on'
   action:
-    - service: homeassistant.turn_on
+    - service: switch.turn_on
       entity_id: switch.nightmood
 
 # Turn off the Night mood when master bedroom door open in the morning
@@ -1637,7 +1637,7 @@
         entity_id: input_boolean.nightmood_auto
         state: 'on'
   action:
-    - service: homeassistant.turn_off
+    - service: switch.turn_off
       entity_id: switch.nightmood
 
 
