@@ -1504,7 +1504,7 @@
         to: 'on'
       # Laundry Motion
       - platform: state
-        entity_id: binary_sensor.laundry_m_199
+        entity_id: binary_sensor.motion_sensor_158d0004507186
         to: 'on'
         for:
           seconds: 125
@@ -2448,7 +2448,7 @@
   alias: Turn on the Laundry light when there is motion in the laundry
   trigger: 
     - platform: state
-      entity_id: binary_sensor.laundry_m_199
+      entity_id: binary_sensor.motion_sensor_158d0004507186
       to: 'on'
   condition:
     condition: and
@@ -2471,7 +2471,7 @@
   alias: Turn off the Laundry light when there is no motion in the laundry
   trigger: 
     - platform: state
-      entity_id: binary_sensor.laundry_m_199
+      entity_id: binary_sensor.motion_sensor_158d0004507186
       to: 'off'
   condition:
     condition: and

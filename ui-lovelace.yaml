@@ -177,7 +177,7 @@ views:
           - type: glance
             title: Laundry
             entities:
-              - entity: binary_sensor.laundry_m_199
+              - entity: binary_sensor.motion_sensor_158d0004507186
                 icon: 'mdi:run-fast'
                 name: Motion
               - entity: binary_sensor.door_window_sensor_158d0002ca3100
@@ -1126,7 +1126,7 @@ views:
           # Laundry Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.laundry_m_199
+            entity: binary_sensor.motion_sensor_158d0004507186
             style:
               top: 70%
               left: 5%
