@@ -109,3 +109,5 @@ binary_sensor.switch_158d000407e1ec:
   friendly_name: Sameera Bedside Push Button
 binary_sensor.motion_sensor_158d00033df5c5:
   friendly_name: Patio-M
+binary_sensor.door_window_sensor_158d00033acf0f:
+  friendly_name: Pantry-Door

@@ -476,7 +476,7 @@
   alias: Turn on the Pantry Light when the door Open
   trigger: 
     - platform: state
-      entity_id: binary_sensor.pantry_door_18
+      entity_id: binary_sensor.door_window_sensor_158d00033acf0f
       to: 'on'
   action:
     - service: homeassistant.turn_on
@@ -487,7 +487,7 @@
   alias: Turn off the Pantry Light when the door close
   trigger: 
     - platform: state
-      entity_id: binary_sensor.pantry_door_18
+      entity_id: binary_sensor.door_window_sensor_158d00033acf0f
       to: 'off'
   action:
     - service: homeassistant.turn_off
@@ -498,7 +498,7 @@
   alias: Turn off the Pantry Light when the door open and left for more than 2 minutes
   trigger: 
     - platform: state
-      entity_id: binary_sensor.pantry_door_18
+      entity_id: binary_sensor.door_window_sensor_158d00033acf0f
       to: 'on'
       for:
         minutes: 2
@@ -718,7 +718,7 @@
         state: 'on'
         # Pantry Door
       - condition: state
-        entity_id: binary_sensor.pantry_door_18
+        entity_id: binary_sensor.door_window_sensor_158d00033acf0f
         state: 'on' 
         # Garage Entry Door
       - condition: state

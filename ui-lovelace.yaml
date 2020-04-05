@@ -768,7 +768,6 @@ views:
             - entity: sensor.master_motion_battery
             - entity: sensor.mad_wr_battery
             - entity: sensor.office_motion_battery
-            - entity: sensor.pantry_door_battery
             - entity: sensor.room4_motion_battery
             - entity: sensor.sam_wr_motion_battery
             - entity: sensor.kitchen_motion_battery
@@ -940,7 +939,7 @@ views:
           # Pantry Door
           - type: image
             image: /local/line6vr.svg
-            entity: binary_sensor.pantry_door_18
+            entity: binary_sensor.door_window_sensor_158d0003677216
             state_filter:
               "off": 'opacity(0)'
             style:
