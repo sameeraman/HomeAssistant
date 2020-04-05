@@ -1,5 +1,4 @@
 - name: livingnightmood
-  friendly_name: Living Night Mood
   entities:
     light.living_floor_lamp :
       state: on
@@ -26,7 +25,6 @@
       rgb_color: ['255','207','120']     
 
 - name: romanticnightmood
-  friendly_name: Romantic Night Mood
   entities:
     light.living_floor_lamp :
       state: on
@@ -53,7 +51,6 @@
       rgb_color: ['255','0','0']
 
 - name: livingactivenightmood
-  friendly_name: Living Active Night Mood
   entities:
     light.living_floor_lamp: off
     light.dining_table_lamp : off
@@ -65,7 +62,6 @@
     light.kitchen_strip : off
 
 - name: cookingmood
-  friendly_name: Cooking Mood
   entities:
     light.living_floor_lamp :
       state: on
@@ -90,7 +86,6 @@
       rgb_color: ['255','207','120']      
 
 - name: livingoff
-  friendly_name: Turn Off All Living
   entities:
     light.living_floor_lamp: off
     light.dining_table_lamp : off
@@ -105,7 +100,6 @@
     light.kitchen_strip : off
 
 - name: tvwatchingmode
-  friendly_name: TV Watching Mood
   entities:
     light.living_floor_lamp: off
     light.dining_table_lamp : off
@@ -121,7 +115,6 @@
     light.kitchen_strip : off
 
 - name: livingred
-  friendly_name: Living Red Mode
   entities:
     light.living_floor_lamp :
       state: on
@@ -139,7 +132,6 @@
       rgb_color: ['255','0','0']
 
 - name: livinggreen
-  friendly_name: Living Green Mode
   entities:
     light.living_floor_lamp :
       state: on
@@ -157,7 +149,6 @@
       rgb_color: ['186','255','64']
 
 - name: livingblue
-  friendly_name: Living Blue Mode
   entities:
     light.living_floor_lamp :
       state: on
@@ -175,7 +166,6 @@
       rgb_color: ['69','11','255']
 
 - name: livingwarm
-  friendly_name: Living Blue Mode
   entities:
     light.living_floor_lamp :
       state: on
@@ -195,7 +185,6 @@
       color_temp: 377
 
 - name: livingcoloroff
-  friendly_name: Turn Off Living Colors
   entities:
     light.living_floor_lamp: off
     light.dining_table_lamp : off
