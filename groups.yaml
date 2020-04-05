@@ -1,15 +1,11 @@
 kitchen:
   name: Kitchen
-  view: yes
-  icon: mdi:silverware
   entities:
     - light.kitchen_light
     - media_player.living_room_speaker
     - group.kitchen_sensors
 living:
   name: Living Area
-  icon: mdi:sofa
-  view: yes
   entities:
     - light.living_light
     - light.kitchen_light
@@ -19,8 +15,6 @@ living:
     - group.myair_zones
 mbedroom:
   name: Master Bed Room
-  icon: mdi:hotel
-  view: yes
   entities:
     - media_player.bedroom
     - light.master_light
@@ -30,14 +24,11 @@ mbedroom:
     - group.master_sensors
 office:
   name: Office Room
-  icon: mdi:briefcase
-  view: yes
   entities:
     - light.office_fibaro_dimmer
     - group.office_sensors
 kitchen_sensors:
   name: Kitchen Sensors
-  view: no
   entities:
     - binary_sensor.kitchen_sensorm_13
     - sensor.kitchen_sensort_14
@@ -46,8 +37,6 @@ kitchen_sensors:
     - sensor.kitchen_sensoruv_17
 myair:
   name: MyAir Air Conditioner
-  view: no
-  icon: mdi:air-conditioner
   entities:
     - input_select.myair_fanselect
     - input_select.myair_modeselect
@@ -72,7 +61,6 @@ myair_zones:
     - switch.myair_zone6
 office_sensors:
   name: Office Sensors
-  view: no
   entities:
     - binary_sensor.officeroom_sam_m_345
     - sensor.officeroom_sam_t_346
@@ -81,7 +69,6 @@ office_sensors:
     - sensor.officeroom_sam_uv_349
 master_sensors:
   name: Master Bedroom Sensors
-  view: no
   entities:
     - binary_sensor.m_bed_room_m_33
     - sensor.m_bed_room_t_34
@@ -91,8 +78,6 @@ master_sensors:
 
 all_motion:
   name: "All Motion Sensors"
-  view: false
-  control: hidden
   entities:
     - binary_sensor.motion_sensor_158d0002742898
     - binary_sensor.motion_sensor_158d0002c716b6
@@ -100,16 +85,12 @@ all_motion:
 
 garage_motion:
   name: "All Garage Motion Sensors"
-  view: false
-  control: hidden
   entities:
     - binary_sensor.motion_sensor_158d0002c716d7
     - binary_sensor.garage_sensor_388
 
 living_kitchen_motion:
   name: "All Living and Kitchen Motion Sensors"
-  view: false
-  control: hidden
   entities:
     - binary_sensor.motion_sensor_158d0002742898
     - binary_sensor.kitchen_m_251
@@ -117,23 +98,17 @@ living_kitchen_motion:
     
 living_motion:
   name: "All Living Motion Sensors"
-  view: false
-  control: hidden
   entities:
     - binary_sensor.motion_sensor_158d0002c716b6
 
 kitchen_motion:
   name: "All Kitchen Motion Sensors"
-  view: false
-  control: hidden
   entities:
     - binary_sensor.motion_sensor_158d0002742898
     - binary_sensor.kitchen_m_251
 
 office_motion:
   name: "All Office Motion Sensors"
-  view: false
-  control: hidden
   entities:
     - binary_sensor.officeroom_mad_m_297
     - binary_sensor.officeroom_sam_m_345
@@ -141,16 +116,12 @@ office_motion:
 
 master_motion:
   name: "All Master Bedroom Motion Sensors"
-  view: false
-  control: hidden
   entities:
     - binary_sensor.m_bed_room_m_33
     - binary_sensor.motion_sensor_158d0002b7f1e8
 
 master_bath_motion:
   name: "All Master Bedroom and Bath Motion Sensors"
-  view: false
-  control: hidden
   entities:
     - binary_sensor.m_bed_room_m_33
     - binary_sensor.motion_sensor_158d0002b7f1e8
@@ -159,8 +130,6 @@ master_bath_motion:
 
 m_bath_motion:
   name: "All Master Bath Motion Sensors"
-  view: false
-  control: hidden
   entities:
     - binary_sensor.motion_sensor_158d0002c6382d
     - binary_sensor.motion_sensor_158d0001e0ac8e
