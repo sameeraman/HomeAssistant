@@ -1,9 +1,9 @@
 resources:
-  - url: /local/mini-media-player-bundle.js?v=1.0.4
+  - url: /local/mini-media-player-bundle.js?v=1.7
     type: module
   - url: /local/config-template-card.js
     type: module
-  - url: /local/mini-graph-card-bundle.js?v=0.8.2
+  - url: /local/mini-graph-card-bundle.js?v=0.9.3
     type: module
 views:
   - title: Home
