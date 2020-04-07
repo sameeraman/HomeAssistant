@@ -254,6 +254,8 @@ open_all_blinds:
       entity_id: cover.8600507250029161f3c6
     - service: cover.open_cover
       entity_id: cover.86005072500291622d8f
+    - service: cover.open_cover
+      entity_id: cover.48100000c44f33b796fc
 
 # Close all blinds
 close_all_blinds:
@@ -263,6 +265,8 @@ close_all_blinds:
       entity_id: cover.8600507250029161f3c6
     - service: cover.close_cover
       entity_id: cover.86005072500291622d8f
+    - service: cover.close_cover
+      entity_id: cover.48100000c44f33b796fc
 
 # Do Nothing Script
 do_nothing:
