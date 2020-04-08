@@ -635,6 +635,24 @@ views:
             - entity: light.dining_light
               tap_action: 
                 action: toggle
+            - entity: light.front_entrance
+              tap_action: 
+                action: toggle
+            - entity: light.front_patio_light
+              tap_action: 
+                action: toggle
+            - entity: light.hallway_light
+              tap_action: 
+                action: toggle
+            - entity: light.master_pendant
+              tap_action: 
+                action: toggle
+            - entity: light.back_outdoor_light
+              tap_action: 
+                action: toggle
+            - entity: light.bedroom_2_light
+              tap_action: 
+                action: toggle
           state_filter:
             - "on"
           card:

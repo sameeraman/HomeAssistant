@@ -189,7 +189,7 @@ google_assistant:
     light.dining_light:
       expose: true
       room: Dining Room
-    cover.088330014c11ae0ef1ca:
+    cover.48100000c44f33b796fc:
       expose: true
       room: Dining Room
       aliases:
