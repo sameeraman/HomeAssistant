@@ -207,3 +207,12 @@
     payload_on: "ON"
     payload_off: "OFF"
     retain: false
+
+  - platform: mqtt
+    name: "bedheater_switch"
+    command_topic: "home/master/bedheater_switch/cmnd/power"
+    state_topic: "home/master/bedheater_switch/stat/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false
