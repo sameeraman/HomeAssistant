@@ -2269,7 +2269,7 @@
   alias: Turn on the Sameera Wardrobe light when there is motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.sam_wr_motion
+      entity_id: binary_sensor.sam_wr_esp_motion
       to: 'on'
   condition:
     condition: and
@@ -2289,7 +2289,7 @@
   alias: Turn off the Sameera Wardrobe light when there is no motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.sam_wr_motion
+      entity_id: binary_sensor.sam_wr_esp_motion
       to: 'off'
   condition:
     condition: and
@@ -2307,7 +2307,7 @@
   alias: Turn on the Madhushi Wardrobe light when there is motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.mad_wr_sensor_m_79
+      entity_id: binary_sensor.mad_wr_esp_motion
       to: 'on'
   condition:
     condition: and
@@ -2327,7 +2327,7 @@
   alias: Turn off the Madhushi Wardrobe light when there is no motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.mad_wr_sensor_m_79
+      entity_id: binary_sensor.mad_wr_esp_motion
       to: 'off'
   condition:
     condition: and
