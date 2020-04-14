@@ -784,10 +784,8 @@ views:
           entities:
             - entity: sensor.laundry_motion_battery
             - entity: sensor.master_motion_battery
-            - entity: sensor.mad_wr_battery
             - entity: sensor.office_motion_battery
             - entity: sensor.room4_motion_battery
-            - entity: sensor.sam_wr_motion_battery
             - entity: sensor.kitchen_motion_battery
             - entity: sensor.garage_motion_1_battery
 

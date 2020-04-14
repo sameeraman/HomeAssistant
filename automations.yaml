@@ -1658,9 +1658,6 @@
         entity_id: sensor.master_motion_battery
         below: 30
       - condition: numeric_state
-        entity_id: sensor.mad_wr_battery
-        below: 30
-      - condition: numeric_state
         entity_id: sensor.office_motion_battery
         below: 30
       - condition: numeric_state
@@ -1668,9 +1665,6 @@
         below: 30
       - condition: numeric_state
         entity_id: sensor.room4_motion_battery
-        below: 30
-      - condition: numeric_state
-        entity_id: sensor.sam_wr_motion_battery
         below: 30
       - condition: numeric_state
         entity_id: sensor.kitchen_motion_battery
