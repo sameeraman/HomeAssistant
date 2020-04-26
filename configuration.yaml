@@ -159,6 +159,8 @@ google_assistant:
     switch.garage_door:
       expose: true
       room: Garage
+      aliases:
+        - Garage Door
     light.master_pendant:
       expose: true
       room: Other
