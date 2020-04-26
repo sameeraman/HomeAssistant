@@ -216,3 +216,22 @@
     payload_on: "ON"
     payload_off: "OFF"
     retain: false
+
+
+  - platform: mqtt
+    name: "garage_door1"
+    command_topic: "home/garage/garage_door/cmnd/power1"
+    state_topic: "home/garage/garage_door/stat/POWER1"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false    
+
+  - platform: mqtt
+    name: "garage_door2"
+    command_topic: "home/garage/garage_door/cmnd/power2"
+    state_topic: "home/garage/garage_door/stat/POWER2"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false    
