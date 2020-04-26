@@ -156,6 +156,9 @@ google_assistant:
     light.garage_fibaro_dimmer:
       expose: true
       room: Garage
+    switch.garage_door:
+      expose: true
+      room: Garage
     light.master_pendant:
       expose: true
       room: Other
