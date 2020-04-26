@@ -69,4 +69,14 @@
       alfresco_iotedge_vision:
         device_class: motion
         value_template: "{{ is_state('sensor.alfresco_azure_image_processing','on')  }}" 
-        
+
+# mqtt garage sensor
+  - platform: mqtt
+    name: garage_door_sensor
+    state_topic: "home/garage/garage_door/stat/POWER"
+    availability_topic: "home/garage/garage_door/tele/LWT"
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    device_class: door 

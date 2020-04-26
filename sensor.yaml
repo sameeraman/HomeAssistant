@@ -749,7 +749,7 @@
     name : alfresco_azure_image_processing
     state_topic: "home/alfresco/image_processing_sensor/state"
 
-# mqtt garage switch
+# mqtt garage sensor
   - platform: mqtt
     name: garage_door_sensor
     state_topic: "home/garage/garage_door/stat/POWER"
