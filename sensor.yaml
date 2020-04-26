@@ -752,4 +752,4 @@
 # mqtt garage switch
   - platform: mqtt
     name: garage_door_sensor
-    state_topic: "home/garage/garage_door/stat"
+    state_topic: "home/garage/garage_door"
