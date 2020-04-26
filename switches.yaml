@@ -229,8 +229,8 @@
 
   - platform: mqtt
     name: "garage_door2"
-    command_topic: "home/garage/garage_door/cmnd/power2"
-    state_topic: "home/garage/garage_door/stat/POWER2"
+    command_topic: "home/garage/garage_door/cmnd/power"
+    state_topic: "home/garage/garage_door/stat/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
