@@ -960,6 +960,8 @@
       - condition: state
         entity_id: binary_sensor.alfresco_person_sensor
         state: 'off'
+        for:
+          seconds: 40
       - condition: state
         entity_id: binary_sensor.motion_sensor_158d0002b5eecd
         state: 'off'
@@ -1032,6 +1034,8 @@
       - condition: state
         entity_id: binary_sensor.alfresco_person_sensor
         state: 'off'
+        for:
+          seconds: 40
       - condition: state
         entity_id: binary_sensor.motion_sensor_158d0002b5eecd
         state: 'off'
@@ -1215,6 +1219,8 @@
       - condition: state
         entity_id: binary_sensor.living_person_sensor
         state: 'off'
+        for:
+          seconds: 40
       - condition: state
         entity_id: group.kitchen_motion
         state: 'off'
