@@ -746,10 +746,8 @@
       for:
         minutes: 10
   action:
-    - service: notify.pushbullet
-      data_template:
-        title: 'Garage Door was left open for more than 10 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Garage door was left open for more than 10 minutes'
+    - service: script.turn_on
+      entity_id: script.send_snapshot_garage
     - service: notify.sendgrid
       data_template:
         title: 'Garage Door was left open for more than 10 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
@@ -765,14 +763,13 @@
       for:
         minutes: 60
   action:
-    - service: notify.pushbullet
-      data_template:
-        title: 'Garage Door was left open for more than 120 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Garage door was left open for more than 120 minutes'
+    - service: script.turn_on
+      entity_id: script.send_snapshot_garage
     - service: notify.sendgrid
       data_template:
         title: 'Garage Door was left open for more than 120 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Garage door was left open for more than 120 minutes'
+
 
 
 # Turn on the Front Outdoor light for 2 mins then there the garage door open

@@ -286,6 +286,6 @@ send_snapshot_garage:
     - service: notify.pushbullet
       data:
         title: 'Garage Door was left open for more than 10 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Garage Door was left open for more than 10 minutes'
+        message:  'Garage door was left open for more than 10 minutes'
         data:
           file: !secret garagecameranotifytemp
