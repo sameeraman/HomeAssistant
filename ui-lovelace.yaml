@@ -717,9 +717,8 @@ views:
         title: Outside Back 
         entity:  camera.outside_back_camera
       - type: picture-entity 
-        title: Outside Back 
+        title: Garage Camera 
         entity:  camera.garage_camera
-
 
 
 # Camera Tab Navigation Entities
@@ -1218,24 +1217,9 @@ views:
             icon: 'mdi:run-fast'
             entity: binary_sensor.garage_motion
             style:
-              top: 70%
+              top: 69%
               left: 73%
               "--paper-item-icon-color": '#696969'
-
-          # Garage Temperature
-          - type: state-icon
-            entity: sensor.6_in_1_multisensor_temperature_2_389
-            icon: 'mdi:thermometer'
-            style: 
-                top: 75%
-                left: 73%
-                "--paper-item-icon-color": '#696969'
-          - type: state-label
-            entity: sensor.6_in_1_multisensor_temperature_2_389
-            icon: 'mdi:thermometer'
-            style: 
-                top: 75%
-                left: 80%
 
           # Switch Box Temperature
           - type: state-icon
@@ -1259,7 +1243,7 @@ views:
               action: toggle
             entity: light.garage_fibaro_dimmer
             style:
-              top: 70%
+              top: 69%
               left: 82%
               "--paper-item-icon-color": '#696969'
 
@@ -1290,14 +1274,59 @@ views:
             icon: 'mdi:water-percent'
             style: 
                 top: 79%
-                left: 74%
+                left: 67%
                 "--paper-item-icon-color": '#696969'
           - type: state-label
             entity: sensor.6_in_1_multisensor_humidity_2_391
             icon: 'mdi:water-percent'
             style: 
                 top: 79%
-                left: 80%
+                left: 73%
+
+          # Garage Temperature
+          - type: state-icon
+            entity: sensor.6_in_1_multisensor_temperature_2_389
+            icon: 'mdi:thermometer'
+            style: 
+                top: 75%
+                left: 66%
+                "--paper-item-icon-color": '#696969'
+          - type: state-label
+            entity: sensor.6_in_1_multisensor_temperature_2_389
+            icon: 'mdi:thermometer'
+            style: 
+                top: 75%
+                left: 73%
+
+          # Garage Humidity  - ESPHome 
+          - type: state-icon
+            entity: sensor.garage_espmulti_h_2
+            icon: 'mdi:water-percent'
+            style: 
+                top: 79%
+                left: 84%
+                "--paper-item-icon-color": '#696969'
+          - type: state-label
+            entity: sensor.garage_espmulti_h_2
+            icon: 'mdi:water-percent'
+            style: 
+                top: 79%
+                left: 90%
+
+          # Garage Temperature - ESPHome
+          - type: state-icon
+            entity: sensor.garage_espmulti_t_2
+            icon: 'mdi:thermometer'
+            style: 
+                top: 75%
+                left: 83%
+                "--paper-item-icon-color": '#696969'
+          - type: state-label
+            entity: sensor.garage_espmulti_t_2
+            icon: 'mdi:thermometer'
+            style: 
+                top: 75%
+                left: 90%
 
 # Front Outdoor
           # Front Ourdoor Light 1
