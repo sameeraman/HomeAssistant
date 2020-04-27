@@ -32,4 +32,5 @@
   - platform: generic
     name: Garage Camera
     stream_source: !secret garagecameraurl
+    still_image_url: !secret garagecamerajpeg
     verify_ssl: false
