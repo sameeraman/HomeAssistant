@@ -272,3 +272,20 @@ close_all_blinds:
 do_nothing:
   alias: "Do Nothing Script"
   sequence:
+
+# Send snaptshot in Garage
+send_snapshot_garage:
+  alias: "Send snapshot Garage"
+  sequence:
+    - service: camera.snapshot
+      data:
+        entity_id: camera.garage_camera
+        filename: !secret garagecameranotifytemp
+    - delay:
+        seconds: 5
+    - service: notify.pushbullet
+      data:
+        title: 'Garage Door was left open for more than 10 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Garage Door was left open for more than 10 minutes'
+        data:
+          file: !secret garagecameranotifytemp
