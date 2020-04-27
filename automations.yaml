@@ -1710,7 +1710,7 @@
       entity_id: input_boolean.morning_greet
 
 # Turn off the input boolean for Good Morning Greet (if not greeted) at 11:00am
-- id: turnoffgoodmorninggreet
+- id: turnoffgoodmorninggreet11
   alias: Turn off the input boolean for Good Morning Greet (if not greeted) at 11:00am
   initial_state: True
   trigger:
@@ -2189,7 +2189,7 @@
 
 
 # Set the Master light brightness to 30% when someone enters the bed
-- id: masterlightbrightness30
+- id: masterlightbrightness301
   alias: Set the Master light brightness to 30% when someone enters the bed
   trigger: 
     - platform: state
@@ -2233,7 +2233,7 @@
         brightness_pct: 100
 
 # Set the Master light brightness to 100% when light is turned on no one is on the bed
-- id: masterlightbrightness10
+- id: masterlightbrightness100
   alias: Set the Master light brightness to 100% when someone get up from the bed
   trigger: 
     - platform: state
@@ -2467,7 +2467,7 @@
       entity_id: light.laundry_light
 
 # Turn off the Laundry light when there is no motion in the laundry
-- id: turnofflaundrylightwithnomotion
+- id: turnofflaundrylightwithnomotion1
   alias: Turn off the Laundry light when there is no motion in the laundry
   trigger: 
     - platform: state

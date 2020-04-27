@@ -29,3 +29,7 @@
     stream_source: !secret hallwaycameraurl
     still_image_url: !secret hallwaycamerajpeg
     verify_ssl: false
+  - platform: generic
+    name: Garage Camera
+    stream_source: !secret garagecameraurl
+    verify_ssl: false

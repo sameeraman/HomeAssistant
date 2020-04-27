@@ -716,6 +716,9 @@ views:
       - type: picture-entity 
         title: Outside Back 
         entity:  camera.outside_back_camera
+      - type: picture-entity 
+        title: Outside Back 
+        entity:  camera.garage_camera
 
 
 
