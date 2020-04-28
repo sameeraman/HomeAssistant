@@ -167,7 +167,7 @@ google_assistant:
     switch.air_conditioner:
       expose: true
       room: Other
-    switch.bedheater_38:
+    switch.bedheater_switch:
       expose: true
       room: Other
     switch.housealarm:
@@ -282,7 +282,7 @@ emulated_hue:
       hidden: false
     switch.air_conditioner:
       hidden: false
-    switch.bedheater_38:
+    switch.bedheater_switch:
       hidden: false
     switch.housealarm:
       hidden: false

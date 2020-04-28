@@ -48,7 +48,7 @@ views:
                 name: Pendant
                 tap_action:
                   action: toggle
-              - entity: switch.bedheater_38
+              - entity: switch.bedheater_switch
                 icon: 'mdi:radiator'
                 name: Bed Heater
                 tap_action:

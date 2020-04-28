@@ -6,7 +6,7 @@ light.kitchen_light_135:
   friendly_name: Kitchen Light
 light.front_outdoor_light:
   friendly_name: Front Outdoor Lights
-switch.bedheater_38:
+switch.bedheater_switch:
   friendly_name: Bed Heater
 light.master_light:
   friendly_name: Master Light

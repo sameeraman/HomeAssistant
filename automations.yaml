@@ -1547,7 +1547,7 @@
         entity_id: switch.housealarm
         state: 'off'
       - condition: state
-        entity_id: switch.bedheater_38
+        entity_id: switch.bedheater_switch
         state: 'off'
       - condition: numeric_state
         entity_id: sensor.m_bed_room_t_34
@@ -1557,7 +1557,7 @@
         state: 'on'
   action:
     - service : switch.turn_on
-      entity_id: switch.bedheater_38
+      entity_id: switch.bedheater_switch
 
 # Turn off Bed Heater automatically after two hours
 - id: turnoffbedheater2hours
@@ -1565,17 +1565,17 @@
   initial_state: True
   trigger: 
     - platform: state
-      entity_id: switch.bedheater_38
+      entity_id: switch.bedheater_switch
       to: 'on'
       for:
         hours: 2
   condition:
     condition: state
-    entity_id: switch.bedheater_38
+    entity_id: switch.bedheater_switch
     state: 'on'
   action:
     - service: switch.turn_off
-      entity_id: switch.bedheater_38
+      entity_id: switch.bedheater_switch
 
 # Turn on the night mood at midnight when there is no motion in the house
 - id: turnonnightmoodatmidnight

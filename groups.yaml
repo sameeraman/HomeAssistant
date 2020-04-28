@@ -18,7 +18,7 @@ mbedroom:
   entities:
     - media_player.bedroom
     - light.master_light
-    - switch.bedheater_38
+    - switch.bedheater_switch
     - light.bath_light
     - binary_sensor.m_bed_room_m_33
     - group.master_sensors
