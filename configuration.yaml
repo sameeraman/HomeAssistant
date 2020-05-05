@@ -403,13 +403,13 @@ remote:
     host: 10.1.1.210
 
 # UniFi
-unifi:
-  controllers:
-    - host: unifi
-      site: Default
-      detection_time: 10
-      ssid_filter:
-        - 'theparadise'
+#unifi:
+#  controllers:
+#    - host: unifi
+#      site: Default
+#      detection_time: 10
+#      ssid_filter:
+#        - 'theparadise'
 
 
 # Rain Machine (Sprinkler System)
