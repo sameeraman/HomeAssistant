@@ -5,6 +5,8 @@ resources:
     type: module
   - url: /local/mini-graph-card-bundle.js?v=0.9.3
     type: module
+  - url: /local/custom-lovelace/weather-card/weather-card.js
+    type: module
 views:
   - title: Home
     path: home
@@ -1667,6 +1669,9 @@ views:
                 tap_action:
                   action: navigate
                   navigation_path: /lovelace/cameras
+# Floorplan tab Weather card                  
+      - type: custom:weather-card
+        entity: weather.dark_sky
 
 
 # Garden
