@@ -254,45 +254,6 @@ google_assistant:
       expose: true
       room: Other
 
-#emulated hue
-emulated_hue:
-  expose_by_default: false
-  entities:
-    light.alfresco_fibaro_dimmer:
-      hidden: false
-    light.bath_light:
-      hidden: false
-    light.bath_strip:
-      hidden: false
-    light.office_fibaro_dimmer:
-      hidden: false
-    light.front_outdoor_light:
-      hidden: false
-    light.kitchen_light:
-      hidden: false
-    light.living_light:
-      hidden: false
-    light.living_mood_lights:
-      hidden: false
-    light.master_light:
-      hidden: false
-    light.garage_fibaro_dimmer:
-      hidden: false
-    light.master_pendant:
-      hidden: false
-    switch.air_conditioner:
-      hidden: false
-    switch.bedheater_switch:
-      hidden: false
-    switch.housealarm:
-      hidden: false
-    switch.living_music:
-      hidden: false
-    switch.alfresco_music:
-      hidden: false
-    switch.nightmood:
-      hidden: false
-
 
 # MyAir Inputs
 input_select:
