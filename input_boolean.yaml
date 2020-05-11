@@ -88,3 +88,11 @@ garage_light_on_off_auto:
 master_pendant_on_off_auto:
   name: Turn Master Pendant On/Off with based on motion
   icon: mdi:lightbulb-outline
+
+master_wardrobe_on_off_auto:
+  name: Turn Master Wardrobe light On/Off with based on motion
+  icon: mdi:lightbulb-outline
+
+master_bath_on_off_auto:
+  name: Turn Master Bath light On/Off with based on motion
+  icon: mdi:lightbulb-outline

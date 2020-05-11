@@ -431,6 +431,9 @@
         before: '23:59:59'
       - condition: time
         after: '05:30:00'
+      - condition: state
+        entity_id: input_boolean.master_bath_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_on
       entity_id:  light.bath_light
@@ -467,6 +470,9 @@
       - condition: state
         entity_id: binary_sensor.m_bed_room_m_33
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.master_bath_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id:  light.bath_light
@@ -630,6 +636,15 @@
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
       to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_bath_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_on
       entity_id:  light.bath_strip
@@ -653,6 +668,12 @@
       - condition: state
         entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_bath_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id:  light.bath_strip
@@ -2292,6 +2313,9 @@
       - condition: state
         entity_id: switch.housealarm
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.master_wardrobe_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_on
       entity_id: light.sameera_wardrobe_light
@@ -2308,6 +2332,9 @@
     conditions: 
       - condition: state
         entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_wardrobe_on_off_auto
         state: 'on'
   action:
     - service: light.turn_off
@@ -2330,6 +2357,9 @@
       - condition: state
         entity_id: switch.housealarm
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.master_wardrobe_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_on
       entity_id: light.madhushi_wardrobe_light
@@ -2347,6 +2377,9 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_wardrobe_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.madhushi_wardrobe_light
@@ -2360,6 +2393,15 @@
       to: 'on'
       for:
         minutes: 10
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_wardrobe_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id:  light.sameera_wardrobe_light
@@ -2373,6 +2415,15 @@
       to: 'on'
       for:
         minutes: 10
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_wardrobe_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id:  light.madhushi_wardrobe_light

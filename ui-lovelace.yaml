@@ -1947,11 +1947,19 @@ views:
           entities:
             - entity: input_boolean.bedheater_auto
               icon: 'mdi:radiator'
-              name: Bed Heater Automation
+              name: Bed Heater Automation based on Bedroom Temperature
               tap_action:
                 action: toggle
             - entity: input_boolean.master_pendant_on_off_auto
               icon: 'mdi:ceiling-light'
+              tap_action:
+                action: toggle
+            - entity: input_boolean.master_wardrobe_on_off_auto
+              icon: 'mdi:lightbulb-outline'
+              tap_action:
+                action: toggle
+            - entity: input_boolean.master_bath_on_off_auto
+              icon: 'mdi:lightbulb-outline'
               tap_action:
                 action: toggle
       - type: vertical-stack
