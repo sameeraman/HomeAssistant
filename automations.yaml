@@ -1948,6 +1948,9 @@
       - condition: state
         entity_id: binary_sensor.bed_sensor
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.master_pendant_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_on
       data:
@@ -1970,6 +1973,9 @@
       - condition: state
         entity_id: light.master_pendant
         state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_pendant_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.master_pendant
@@ -1990,9 +1996,12 @@
       - condition: state
         entity_id: light.master_pendant
         state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_pendant_on_off_auto
+        state: 'on'
   action:
     - service: input_boolean.turn_on
-      entity_id: input_boolean.master_pendant_onoff_auto
+      entity_id: input_boolean.master_pendant_onoff_with_master_auto
     - service: light.turn_off
       entity_id: light.master_pendant
 
@@ -2014,6 +2023,9 @@
       - condition: state
         entity_id: light.master_pendant
         state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_pendant_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.master_pendant
@@ -2032,29 +2044,32 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: input_boolean.master_pendant_onoff_auto
+        entity_id: input_boolean.master_pendant_onoff_with_master_auto
         state: 'on'
       - condition: state
         entity_id: light.master_pendant
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.master_pendant_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_on
       entity_id: light.master_pendant
     - service: input_boolean.turn_off
-      entity_id: input_boolean.master_pendant_onoff_auto
+      entity_id: input_boolean.master_pendant_onoff_with_master_auto
 
 # Turn off Master Pendant On/Off with Master Light input boolean after 2 hours
 - id: masterpendentlightonoffinputboolean
   alias: Turn off Master Pendant On/Off with Master Light input boolean after 2 hours
   trigger: 
     - platform: state
-      entity_id: input_boolean.master_pendant_onoff_auto
+      entity_id: input_boolean.master_pendant_onoff_with_master_auto
       to: 'on'
       for:
         hours: 2
   action:
     - service: input_boolean.turn_off
-      entity_id: input_boolean.master_pendant_onoff_auto
+      entity_id: input_boolean.master_pendant_onoff_with_master_auto
 
 # Toggle Master Pendant lights when Xiaomi Madhushi Bedside push button is single pressed
 - id: togglemadhushibedsidependentlightspushbutton

@@ -1919,7 +1919,7 @@ views:
                 action: toggle
             - entity: input_boolean.aircon_on_auto
               icon: 'mdi:air-conditioner'
-              name: Auto AC Power On
+              name: Auto AC Power On based on Temperature
               tap_action:
                 action: toggle
             - entity: input_boolean.nightmood_auto
@@ -1948,6 +1948,10 @@ views:
             - entity: input_boolean.bedheater_auto
               icon: 'mdi:radiator'
               name: Bed Heater Automation
+              tap_action:
+                action: toggle
+            - entity: input_boolean.master_pendant_on_off_auto
+              icon: 'mdi:ceiling-light'
               tap_action:
                 action: toggle
       - type: vertical-stack
