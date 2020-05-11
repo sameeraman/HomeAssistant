@@ -71,10 +71,10 @@ party_mood:
 
 master_pendant_onoff_with_master_auto:
   name: Turn On/Off Master Pendant with master light
-  icon: mdi:lightbulb-outline
+  icon: mdi:lightbulb-on-outline
 
 bedheater_auto:
-  name: Turn On Bed Heater Automation
+  name: Bed Heater Automation based on Temperature
   icon: mdi:radiator
 
 blinds_auto:
@@ -82,33 +82,53 @@ blinds_auto:
   icon: mdi:window-shutter-alert
 
 garage_light_on_off_auto:
-  name: Turn lights On/Off with based on Garage motion
-  icon: mdi:lightbulb-outline
+  name: Garage lights On/Off with based on Garage motion
+  icon: mdi:lightbulb-on-outline
 
 garage_light_on_off_door_auto:
-  name: Turn lights On/Off with based on Garage Door
-  icon: mdi:lightbulb-outline
+  name: Garage lights On/Off with based on Garage Door
+  icon: mdi:lightbulb-on-outline
 
 frontoutdoor_light_on_off_auto:
-  name: Turn Front Outdoor light On/Off with based on Garage Door
-  icon: mdi:lightbulb-outline
+  name: Front Outdoor light On/Off with based on Garage Door
+  icon: mdi:lightbulb-on-outline
 
 master_pendant_on_off_auto:
-  name: Turn Master Pendant On/Off with based on motion
-  icon: mdi:lightbulb-outline
+  name: Master Pendant On/Off with based on motion
+  icon: mdi:lightbulb-on-outline
 
 master_wardrobe_on_off_auto:
-  name: Turn Master Wardrobe light On/Off with based on motion
-  icon: mdi:lightbulb-outline
+  name: Master Wardrobe light On/Off with based on motion
+  icon: mdi:lightbulb-on-outline
 
 master_bath_on_off_auto:
-  name: Turn Master Bath light On/Off with based on motion
-  icon: mdi:lightbulb-outline
+  name: Master Bath light On/Off with based on motion
+  icon: mdi:lightbulb-on-outline
 
 master_aircon_vent_on_off_auto:
-  name: Turn Master AirCon Vent On/Off with based on motion
+  name: Master AC Vent On/Off with based on motion
   icon: mdi:air-filter
 
 master_light_brightness_auto:
   name: Adjust Master Light Brightness based on Bedsensor
   icon: mdi:lightbulb-on-outline
+
+master_light_off_auto:
+  name: Master Light Off with based on motion
+  icon: mdi:lightbulb-outline
+
+laundry_outside_light_on_off_auto:
+  name: Laundry outside light On/Off with based on Laundry Door
+  icon: mdi:lightbulb-on-outline
+
+laundry_light_on_off_auto:
+  name: Laundry light On/Off with based on Laundry Motion
+  icon: mdi:track-light
+
+office_light_on_off_auto:
+  name: Office light On/Off with based on Office Motion
+  icon: mdi:lightbulb-on-outline
+
+office_aircon_vent_on_off_auto:
+  name: Office AC Vent On/Off with based on motion
+  icon: mdi:air-filter

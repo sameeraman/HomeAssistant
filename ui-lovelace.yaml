@@ -1946,28 +1946,24 @@ views:
           title: Master Bedroom
           entities:
             - entity: input_boolean.bedheater_auto
-              icon: 'mdi:radiator'
-              name: Bed Heater Automation based on Bedroom Temperature
+              tap_action:
+                action: toggle
+            - entity: input_boolean.master_light_off_auto
               tap_action:
                 action: toggle
             - entity: input_boolean.master_pendant_on_off_auto
-              icon: 'mdi:ceiling-light'
               tap_action:
                 action: toggle
             - entity: input_boolean.master_wardrobe_on_off_auto
-              icon: 'mdi:lightbulb-outline'
               tap_action:
                 action: toggle
             - entity: input_boolean.master_bath_on_off_auto
-              icon: 'mdi:lightbulb-outline'
               tap_action:
                 action: toggle
             - entity: input_boolean.master_aircon_vent_on_off_auto
-              icon: 'mdi:air-filter'
               tap_action:
                 action: toggle
             - entity: input_boolean.master_light_brightness_auto
-              icon: 'mdi:lightbulb-on-outline'
               tap_action:
                 action: toggle
       - type: vertical-stack
@@ -1976,7 +1972,6 @@ views:
           title: Garage
           entities:
             - entity: input_boolean.garage_light_on_off_auto
-              icon: 'mdi:lightbulb-outline'
               name: Garage Light Auto On/Off based on Garage Motion
               tap_action:
                 action: toggle
@@ -2000,7 +1995,25 @@ views:
               tap_action:
                 action: toggle
             - entity: input_boolean.alfresco_motion_light
-              icon: 'mdi:lightbulb-outline'
+              icon: 'mdi:lightbulb-on-outline'
               name: Alfresco Light On/Off based on Motion
+              tap_action:
+                action: toggle
+        - type: entities
+          title: Laundry
+          entities:
+            - entity: input_boolean.laundry_light_on_off_auto
+              tap_action:
+                action: toggle
+            - entity: input_boolean.laundry_outside_light_on_off_auto
+              tap_action:
+                action: toggle
+        - type: entities
+          title: Office Room
+          entities:
+            - entity: input_boolean.office_light_on_off_auto
+              tap_action:
+                action: toggle
+            - entity: input_boolean.office_aircon_vent_on_off_auto
               tap_action:
                 action: toggle

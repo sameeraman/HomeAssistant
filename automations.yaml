@@ -1140,6 +1140,9 @@
       - condition: state
         entity_id: switch.housealarm
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.office_light_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_on
       entity_id: light.office_fibaro_dimmer
@@ -1171,6 +1174,9 @@
       - condition: state
         entity_id: group.office_motion
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.office_light_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.office_fibaro_dimmer
@@ -1192,6 +1198,9 @@
         state: 'on'
       - condition: state
         entity_id: light.master_light
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_light_off_auto
         state: 'on'
   action:
     - service: light.turn_off
@@ -1292,6 +1301,9 @@
       - condition: state
         entity_id: switch.myair_zone2
         state: 'on'
+      - condition: state
+        entity_id: input_boolean.office_aircon_vent_on_off_auto
+        state: 'on'
   action:
     - service: switch.turn_off
       entity_id:  switch.myair_zone2
@@ -1326,6 +1338,9 @@
       - condition: state
         entity_id: switch.myair_zone2
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.office_aircon_vent_on_off_auto
+        state: 'on'
   action:
     - service: switch.turn_on
       entity_id:  switch.myair_zone2
@@ -2428,9 +2443,6 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
-      - condition: state
-        entity_id: input_boolean.master_wardrobe_on_off_auto
-        state: 'on'
   action:
     - service: light.turn_off
       entity_id:  light.sameera_wardrobe_light
@@ -2449,9 +2461,6 @@
     conditions: 
       - condition: state
         entity_id: input_boolean.light_on_off_auto
-        state: 'on'
-      - condition: state
-        entity_id: input_boolean.master_wardrobe_on_off_auto
         state: 'on'
   action:
     - service: light.turn_off
@@ -2478,6 +2487,12 @@
       to: 'on'
       for:
         minutes: 30
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.laundry_outside_light
@@ -2491,6 +2506,12 @@
       to: 'on'
       for:
         minutes: 30
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.laundry_light
@@ -2514,6 +2535,9 @@
       - condition: state
         entity_id: switch.housealarm
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.laundry_outside_light_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_on
       entity_id: light.laundry_outside_light
@@ -2530,6 +2554,9 @@
     conditions: 
       - condition: state
         entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.laundry_outside_light_on_off_auto
         state: 'on'
   action:
     - service: light.turn_off
@@ -2554,6 +2581,9 @@
       - condition: state
         entity_id: switch.housealarm
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.laundry_light_on_off_auto
+        state: 'on'
   action:
     - service: light.turn_on
       entity_id: light.laundry_light
@@ -2570,6 +2600,9 @@
     conditions: 
       - condition: state
         entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.laundry_light_on_off_auto
         state: 'on'
   action:
     - service: light.turn_off
