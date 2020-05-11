@@ -1,3 +1,16 @@
+custom_header:
+  compact_mode: true
+  voice_hide: true
+  header_text: 'SnM Nest'
+  background: var(--app-header-background-color)
+  elements_color: var(--app-header-text-color)
+  active_tab_color: var(--state-icon-active-color)
+  tab_indicator_color: var(--state-icon-active-color)
+  header_text_css: "font-family: 'Roboto'"
+  #button_text:
+    # The next example is using templates. See templates page for more info.
+  #  options: ' {{ time }} | {{ date }}'
+
 resources:
   - url: /local/mini-media-player-bundle.js?v=1.7
     type: module
@@ -5,7 +18,11 @@ resources:
     type: module
   - url: /local/mini-graph-card-bundle.js?v=0.9.3
     type: module
-  - url: /local/custom-lovelace/weather-card/weather-card.js
+  - url: /local/custom-lovelace/weather-card/weather-card.js?v=0.4
+    type: module
+  - url: /local/custom-lovelace/compact-custom-header/custom-header.js
+    type: module
+  - url: /local/custom-lovelace/button-card/button-card.js?v=0.1
     type: module
 views:
   - title: Home
@@ -220,8 +237,6 @@ views:
                 entity: light.office_fibaro_dimmer
               - type: light
                 entity: light.alfresco_fibaro_dimmer
-      - type: vertical-stack
-        cards:
           - type: glance
             title: Garage
             entities:
@@ -263,8 +278,6 @@ views:
 
 
 # Home Tab Navigation Entities
-      - type: vertical-stack
-        cards:
           - type: horizontal-stack
             cards:
               - type: entity-button
@@ -367,7 +380,7 @@ views:
             icon: mdi:thermometer
             hours_to_show: 24
             points_per_hour: 1
-            line_color: '#46749C'
+            line_color: '#5F9AEB'
             show:
               graph: bar
               labels: true
@@ -378,7 +391,7 @@ views:
             icon: mdi:solar-power
             hours_to_show: 24
             points_per_hour: 12
-            line_color: '#46749C'
+            line_color: '#307DFD'
             line_width: 2
           - type: custom:mini-graph-card
             entities:
@@ -506,166 +519,92 @@ views:
               - entity: binary_sensor.garage_motion
                 icon: 'mdi:garage-open'
                 name: Garage
-      - type: vertical-stack
-        cards:
-        - type: entities
-          title: Automation
-          entities:
-            - entity: input_boolean.housealarm_auto
-              icon: 'mdi:shield-home-outline'
-              name: House Alarm Auto Arm/Unarm
-              tap_action:
-                action: toggle
-            - entity: input_boolean.alfresco_button
-              icon: 'mdi:music-circle-outline'
-              name: Alfresco Button Music
-              tap_action:
-                action: toggle
-            - entity: input_boolean.alfresco_motion_music
-              icon: 'mdi:music-circle-outline'
-              name: Alfresco Music based on Motion
-              tap_action:
-                action: toggle
-            - entity: input_boolean.alfresco_motion_light
-              icon: 'mdi:lightbulb-outline'
-              name: Alfresco Light On/Off based on Motion
-              tap_action:
-                action: toggle
-            - entity: input_boolean.light_on_off_auto
-              icon: 'mdi:lightbulb-outline'
-              name: Lights Auto On/Off based on Motion
-              tap_action:
-                action: toggle
-            - entity: input_boolean.garage_light_on_off_auto
-              icon: 'mdi:lightbulb-outline'
-              name: Garage Light Auto On/Off based on Garage Motion
-              tap_action:
-                action: toggle
-            - entity: input_boolean.zone_off_auto
-              icon: 'mdi:air-filter'
-              name: AC Zones Auto On/Off based on Motion
-              tap_action:
-                action: toggle
-            - entity: input_boolean.aircon_on_auto
-              icon: 'mdi:air-conditioner'
-              name: Auto AC Power On
-              tap_action:
-                action: toggle
-            - entity: input_boolean.nightmood_auto
-              icon: 'mdi:weather-night'
-              name: Night Mood Auto
-              tap_action:
-                action: toggle
-            - entity: input_boolean.greetings_on
-              icon: 'mdi:voice'
-              name: Sonos Voice Greetings
-              tap_action:
-                action: toggle
-            - entity: input_boolean.imageprocessing_sensor
-              icon: 'mdi:flash-red-eye'
-              name: Image Processing
-              tap_action:
-                action: toggle
-            - entity: input_boolean.bedheater_auto
-              icon: 'mdi:radiator'
-              name: Bed Heater Automation
-              tap_action:
-                action: toggle
-            - entity: input_boolean.blinds_auto
-              icon: 'mdi:window-shutter-alert'
-              name: Blinds Automation
-              tap_action:
-                action: toggle
-      - type: vertical-stack
-        cards:
-        - type: entity-filter
-          entities:
-            - entity: light.alfresco_fibaro_dimmer
-              tap_action:
-                action: toggle 
-            - entity: light.bath_light
-              tap_action:
-                action: toggle
-            - entity: light.bath_strip
-              tap_action:
-                action: toggle
-            - entity: light.dining_table_lamp
-              tap_action:
-                action: toggle
-            - entity: light.front_outdoor_light
-              tap_action:
-                action: toggle
-            - entity: light.garage_fibaro_dimmer
-              tap_action:
-                action: toggle
-            - entity: light.living_hue_strip
-              tap_action: 
-                action: toggle
-            - entity: light.kitchen_strip
-              tap_action: 
-                action: toggle
-            - entity: light.kitchen_light
-              tap_action:
-                action: toggle
-            - entity:  light.living_floor_lamp
-              tap_action:
-                action: toggle
-            - entity: light.living_light
-              tap_action: 
-                action: toggle
-            - entity: light.madhushi_wardrobe_light
-              tap_action:
-                action: toggle
-            - entity: light.master_light
-              tap_action: 
-                action: toggle
-            - entity: light.office_fibaro_dimmer
-              tap_action:
-                action: toggle
-            - entity: light.pantry_light
-              tap_action:
-                action: toggle
-            - entity: light.sameera_wardrobe_light
-              tap_action: 
-                action: toggle
-            - entity: light.laundry_outside_light
-              tap_action: 
-                action: toggle
-            - entity: light.laundry_light
-              tap_action: 
-                action: toggle
-            - entity: light.dining_light
-              tap_action: 
-                action: toggle
-            - entity: light.front_entrance
-              tap_action: 
-                action: toggle
-            - entity: light.front_patio_light
-              tap_action: 
-                action: toggle
-            - entity: light.hallway_light
-              tap_action: 
-                action: toggle
-            - entity: light.master_pendant
-              tap_action: 
-                action: toggle
-            - entity: light.back_outdoor_light
-              tap_action: 
-                action: toggle
-            - entity: light.bedroom_2_light
-              tap_action: 
-                action: toggle
-          state_filter:
-            - "on"
-          card:
-            type: glance
-            column_width: 20%
-            show_state: false
-            title: Lights On
+          - type: entity-filter
+            entities:
+              - entity: light.alfresco_fibaro_dimmer
+                tap_action:
+                  action: toggle 
+              - entity: light.bath_light
+                tap_action:
+                  action: toggle
+              - entity: light.bath_strip
+                tap_action:
+                  action: toggle
+              - entity: light.dining_table_lamp
+                tap_action:
+                  action: toggle
+              - entity: light.front_outdoor_light
+                tap_action:
+                  action: toggle
+              - entity: light.garage_fibaro_dimmer
+                tap_action:
+                  action: toggle
+              - entity: light.living_hue_strip
+                tap_action: 
+                  action: toggle
+              - entity: light.kitchen_strip
+                tap_action: 
+                  action: toggle
+              - entity: light.kitchen_light
+                tap_action:
+                  action: toggle
+              - entity:  light.living_floor_lamp
+                tap_action:
+                  action: toggle
+              - entity: light.living_light
+                tap_action: 
+                  action: toggle
+              - entity: light.madhushi_wardrobe_light
+                tap_action:
+                  action: toggle
+              - entity: light.master_light
+                tap_action: 
+                  action: toggle
+              - entity: light.office_fibaro_dimmer
+                tap_action:
+                  action: toggle
+              - entity: light.pantry_light
+                tap_action:
+                  action: toggle
+              - entity: light.sameera_wardrobe_light
+                tap_action: 
+                  action: toggle
+              - entity: light.laundry_outside_light
+                tap_action: 
+                  action: toggle
+              - entity: light.laundry_light
+                tap_action: 
+                  action: toggle
+              - entity: light.dining_light
+                tap_action: 
+                  action: toggle
+              - entity: light.front_entrance
+                tap_action: 
+                  action: toggle
+              - entity: light.front_patio_light
+                tap_action: 
+                  action: toggle
+              - entity: light.hallway_light
+                tap_action: 
+                  action: toggle
+              - entity: light.master_pendant
+                tap_action: 
+                  action: toggle
+              - entity: light.back_outdoor_light
+                tap_action: 
+                  action: toggle
+              - entity: light.bedroom_2_light
+                tap_action: 
+                  action: toggle
+            state_filter:
+              - "on"
+            card:
+              type: glance
+              column_width: 20%
+              show_state: false
+              title: Lights On
 
 # Living Tab Navigation Entities
-      - type: vertical-stack
-        cards:
           - type: horizontal-stack
             cards:
               - type: entity-button
@@ -798,7 +737,7 @@ views:
     path: floorplan
     cards:
       - type: picture-elements
-        image: /local/houseplanv1.svg
+        image: /local/floorplan2-dark.svg?v=2
         elements:
 
 # Office Room
@@ -806,14 +745,14 @@ views:
             entity: sensor.officeroom_sam_t_346
             icon: 'mdi:thermometer'
             style: 
-                top: 5%
+                top: 6%
                 left: 67%
-                "--paper-item-icon-color": '#696969'
+                "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.officeroom_sam_t_346
             icon: 'mdi:thermometer'
             style: 
-                top: 5%
+                top: 6%
                 left: 74%
           - type: state-icon
             icon: 'mdi:lightbulb-outline'
@@ -821,18 +760,18 @@ views:
               action: toggle
             entity: light.office_fibaro_dimmer
             style:
-              top: 12%
+              top: 13%
               left: 63.5%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
           
           # Office Motion
           - type: state-icon
             icon: 'mdi:run-fast'
             entity: binary_sensor.office_motion
             style:
-              top: 12%
+              top: 13%
               left: 70.5%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
  
           # Office Air Con Vent  
           - type: state-icon
@@ -844,9 +783,9 @@ views:
               service_data: 
                 entity_id: switch.myair_zone2
             style:
-              top: 12%
+              top: 13%
               left: 78%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Office Image Processing
           - type: state-icon
@@ -856,9 +795,9 @@ views:
               action: url
               url_path: !secret officeimgprcurl
             style:
-              top: 19%
+              top: 20%
               left: 84%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
 # Alfresco
           # Alfresco Light
@@ -869,16 +808,16 @@ views:
             entity: light.alfresco_fibaro_dimmer
             style:
               top: 11%
-              left: 15.5%
-              "--paper-item-icon-color": '#696969'
+              left: 16%
+              "--paper-item-icon-color": '#D8D6D9'
           # Alfresco Motion
           - type: state-icon
             icon: 'mdi:run-fast'
             entity: binary_sensor.motion_sensor_158d0002b5eecd
             style:
-              top: 4%
+              top: 5%
               left: 15.5%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
          # Alfresco Image Processing
           - type: state-icon
@@ -888,18 +827,18 @@ views:
               action: url
               url_path: !secret alfrescoimgprcurl
             style:
-              top: 18.5%
+              top: 20%
               left: 26%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
-         # Alfresco Image Processing IoT Edge
-          - type: state-icon
-            icon: 'mdi:eye-circle'
-            entity: binary_sensor.alfresco_iotedge_vision
-            style:
-              top: 18.5%
-              left: 21%
-              "--paper-item-icon-color": '#696969'
+        #  # Alfresco Image Processing IoT Edge
+        #   - type: state-icon
+        #     icon: 'mdi:eye-circle'
+        #     entity: binary_sensor.alfresco_iotedge_vision
+        #     style:
+        #       top: 20%
+        #       left: 21%
+        #       "--paper-item-icon-color": '#D8D6D9'
 
           # Alfresco Music
           - type: state-icon
@@ -911,9 +850,9 @@ views:
                 entity_id: media_player.alfresco
             entity: binary_sensor.alfresco_music_sensor
             style:
-              top: 10%
+              top: 11%
               left: 10%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
 
 # Kitchen
@@ -924,9 +863,9 @@ views:
               action: toggle
             entity: light.kitchen_light
             style:
-              top: 33%
-              left: 50%
-              "--paper-item-icon-color": '#696969'
+              top: 34%
+              left: 50.5%
+              "--paper-item-icon-color": '#D8D6D9'
           # Pantry Light
           - type: state-icon
             icon: 'mdi:lightbulb-outline'
@@ -936,7 +875,7 @@ views:
             style:
               top: 46%
               left: 55%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
           # Kithcen Strip
           - type: state-icon
             icon: 'mdi:led-strip'
@@ -946,15 +885,16 @@ views:
             style:
               top: 25%
               left: 56%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
+              "--paper-item-icon-active-color": '#FCD546'
           # Kitchen Motion
           - type: state-icon
             icon: 'mdi:run-fast'
             entity: binary_sensor.kitchen_motion
             style:
               top: 28%
-              left: 50%
-              "--paper-item-icon-color": '#696969'
+              left: 50.5%
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Pantry Door
           - type: image
@@ -963,7 +903,7 @@ views:
             state_filter:
               "off": 'opacity(0)'
             style:
-              top: 41%
+              top: 42%
               left: 45%
               transform: 'scale(1,1)'
 
@@ -975,9 +915,9 @@ views:
               action: toggle
             entity: light.living_light
             style:
-              top: 34%
+              top: 35%
               left: 19%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Living Temperature
           - type: state-icon
@@ -986,12 +926,12 @@ views:
             style: 
                 top: 26%
                 left: 28%
-                "--paper-item-icon-color": '#696969'
+                "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.kitchen_t_252
             icon: 'mdi:thermometer'
             style: 
-                top: 26%
+                top: 26.2%
                 left: 34.5%
 
           # Living Humidity
@@ -1001,12 +941,12 @@ views:
             style: 
                 top: 26%
                 left: 12%
-                "--paper-item-icon-color": '#696969'
+                "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.kitchen_h_254
             icon: 'mdi:water-percent'
             style: 
-                top: 26%
+                top: 26.2%
                 left: 17.5%
 
           # Living Air Con Vent
@@ -1021,7 +961,7 @@ views:
             style:
               top: 35%
               left: 35%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
           
           # Living Image Processing
           - type: state-icon
@@ -1032,8 +972,8 @@ views:
               url_path: !secret livingimgprcurl
             style:
               top: 42%
-              left: 3%
-              "--paper-item-icon-color": '#696969'
+              left: 3.3%
+              "--paper-item-icon-color": '#D8D6D9'
 
 
           # Living Floor Lamp
@@ -1045,7 +985,7 @@ views:
             style:
               top: 46%
               left: 3%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
           # Dining Table Lamp
           - type: state-icon
             icon: 'mdi:lamp'
@@ -1053,9 +993,10 @@ views:
               action: toggle
             entity: light.dining_table_lamp
             style:
-              top: 3%
+              top: 4%
               left: 53%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
+              "--paper-item-icon-active-color": '#FCD546'
 
           # Living Strip
           - type: state-icon
@@ -1066,16 +1007,17 @@ views:
             style:
               top: 27%
               left: 3%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
+              "--paper-item-icon-active-color": '#FCD546'
 
           # Living Motion
           - type: state-icon
             icon: 'mdi:run-fast'
             entity: binary_sensor.living_motion
             style:
-              top: 34%
+              top: 35%
               left: 13%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Living Music
           - type: state-icon
@@ -1089,7 +1031,7 @@ views:
             style:
               top: 38%
               left: 5%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Living TV
           - type: state-icon
@@ -1101,7 +1043,7 @@ views:
             style:
               top: 33%
               left: 5%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Dining Music
           - type: state-icon
@@ -1113,9 +1055,9 @@ views:
                 entity_id: media_player.living
             entity: binary_sensor.living_music_sensor
             style:
-              top: 5%
+              top: 6%
               left: 49%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
               transform: rotate(135deg)
 
           # Dining Light
@@ -1125,9 +1067,9 @@ views:
               action: toggle
             entity: light.dining_light
             style:
-              top: 10%
+              top: 11%
               left: 40.5%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
 
           # Main Entrance Door
@@ -1148,24 +1090,24 @@ views:
             icon: 'mdi:run-fast'
             entity: binary_sensor.motion_sensor_158d0004507186
             style:
-              top: 70%
-              left: 5%
-              "--paper-item-icon-color": '#696969'
+              top: 69.5%
+              left: 8.5%
+              "--paper-item-icon-color": '#D8D6D9'
 
-          # Laundry Temperature
-          - type: state-icon
-            entity: sensor.laundry_t_200
-            icon: 'mdi:thermometer'
-            style: 
-                top: 70%
-                left: 14%
-                "--paper-item-icon-color": '#696969'
-          - type: state-label
-            entity: sensor.laundry_t_200
-            icon: 'mdi:thermometer'
-            style: 
-                top: 70%
-                left: 20%
+          # # Laundry Temperature
+          # - type: state-icon
+          #   entity: sensor.laundry_t_200
+          #   icon: 'mdi:thermometer'
+          #   style: 
+          #       top: 70%
+          #       left: 14%
+          #       "--paper-item-icon-color": '#D8D6D9'
+          # - type: state-label
+          #   entity: sensor.laundry_t_200
+          #   icon: 'mdi:thermometer'
+          #   style: 
+          #       top: 70%
+          #       left: 20%
 
           # Laundry Light
           - type: state-icon
@@ -1174,9 +1116,9 @@ views:
               action: toggle
             entity: light.laundry_light
             style:
-              top: 70%
-              left: 10%
-              "--paper-item-icon-color": '#696969'
+              top: 69.5%
+              left: 15%
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Laundry Outside Light
           - type: state-icon
@@ -1187,7 +1129,7 @@ views:
             style:
               top: 64%
               left: -1.5%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
               transform: scaleX(-1)
 
 
@@ -1208,7 +1150,7 @@ views:
             state_filter:
               "off": 'opacity(0)'
             style:
-              top: 66.5%
+              top: 65%
               left: 0%
               transform: rotate(0deg)
 
@@ -1219,9 +1161,9 @@ views:
             icon: 'mdi:run-fast'
             entity: binary_sensor.garage_motion
             style:
-              top: 69%
+              top: 68%
               left: 73%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Switch Box Temperature
           - type: state-icon
@@ -1230,7 +1172,7 @@ views:
             style: 
                 top: 62%
                 left: 80%
-                "--paper-item-icon-color": '#696969'
+                "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.temperature_158d0002731398
             icon: 'mdi:thermometer'
@@ -1245,19 +1187,19 @@ views:
               action: toggle
             entity: light.garage_fibaro_dimmer
             style:
-              top: 69%
+              top: 68%
               left: 82%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Garage Door
           - type: state-icon
             icon: 'mdi:minus'
             entity: binary_sensor.door_window_sensor_158d0002c0e236
             style:
-              top: 87%
-              left: 75%
-              "--paper-item-icon-color": '#696969'
-              transform: scale(11,2)
+              top: 86%
+              left: 75.5%
+              "--paper-item-icon-color": '#D8D6D9'
+              transform: scale(13,2)
 
           # Garage Entry Door
           - type: image
@@ -1275,14 +1217,14 @@ views:
             entity: sensor.6_in_1_multisensor_humidity_2_391
             icon: 'mdi:water-percent'
             style: 
-                top: 79%
+                top: 78%
                 left: 67%
-                "--paper-item-icon-color": '#696969'
+                "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.6_in_1_multisensor_humidity_2_391
             icon: 'mdi:water-percent'
             style: 
-                top: 79%
+                top: 78%
                 left: 73%
 
           # Garage Temperature
@@ -1290,14 +1232,14 @@ views:
             entity: sensor.6_in_1_multisensor_temperature_2_389
             icon: 'mdi:thermometer'
             style: 
-                top: 75%
+                top: 74%
                 left: 66%
-                "--paper-item-icon-color": '#696969'
+                "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.6_in_1_multisensor_temperature_2_389
             icon: 'mdi:thermometer'
             style: 
-                top: 75%
+                top: 74%
                 left: 73%
 
           # Garage Humidity  - ESPHome 
@@ -1305,14 +1247,14 @@ views:
             entity: sensor.garage_espmulti_h_2
             icon: 'mdi:water-percent'
             style: 
-                top: 79%
+                top: 78%
                 left: 84%
-                "--paper-item-icon-color": '#696969'
+                "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.garage_espmulti_h_2
             icon: 'mdi:water-percent'
             style: 
-                top: 79%
+                top: 78%
                 left: 90%
 
           # Garage Temperature - ESPHome
@@ -1320,14 +1262,14 @@ views:
             entity: sensor.garage_espmulti_t_2
             icon: 'mdi:thermometer'
             style: 
-                top: 75%
+                top: 74%
                 left: 83%
-                "--paper-item-icon-color": '#696969'
+                "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.garage_espmulti_t_2
             icon: 'mdi:thermometer'
             style: 
-                top: 75%
+                top: 74%
                 left: 90%
 
 # Front Outdoor
@@ -1338,9 +1280,9 @@ views:
               action: toggle
             entity: light.front_outdoor_light
             style:
-              top: 92.5%
+              top: 91%
               left: 60%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
           # Front Ourdoor Light 2
           - type: state-icon
             icon: 'mdi:wall-sconce-flat'
@@ -1348,9 +1290,9 @@ views:
               action: toggle
             entity: light.front_outdoor_light
             style:
-              top: 92.5%
+              top: 91%
               left: 98.3%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
           # Front Ourdoor Light 3
           - type: state-icon
             icon: 'mdi:wall-sconce-flat'
@@ -1358,9 +1300,29 @@ views:
               action: toggle
             entity: light.front_outdoor_light
             style:
-              top: 98.6%
+              top: 97%
               left: 1.7%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
+          # Front Ourdoor Light 4
+          - type: state-icon
+            icon: 'mdi:wall-sconce-flat'
+            tap_action:
+              action: toggle
+            entity: light.front_outdoor_light
+            style:
+              top: 98.6%
+              left: 21.5%
+              "--paper-item-icon-color": '#D8D6D9'
+          # Front Ourdoor Light 5
+          - type: state-icon
+            icon: 'mdi:wall-sconce-flat'
+            tap_action:
+              action: toggle
+            entity: light.front_outdoor_light
+            style:
+              top: 98.6%
+              left: 40%
+              "--paper-item-icon-color": '#D8D6D9'
 
 # House Alarm
           # House Alarm
@@ -1375,7 +1337,7 @@ views:
               top: 87%
               left: 46%
               transform: 'scale(1.5,1.5)'
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
 
 # Front Outdoor Patio 
@@ -1388,7 +1350,7 @@ views:
             style:
               top: 76%
               left: 53.4%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Patio Motion
           - type: state-icon
@@ -1397,7 +1359,7 @@ views:
             style:
               top: 81%
               left: 53.4%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
 # Front Entrance Light
           # Front Entrance Light 1
@@ -1407,9 +1369,9 @@ views:
               action: toggle
             entity: light.front_entrance
             style:
-              top: 63%
+              top: 61%
               left: 53.4%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
           # Front Entrance Light 2
           - type: state-icon
             icon: 'mdi:lightbulb-outline'
@@ -1419,21 +1381,32 @@ views:
             style:
               top: 53%
               left: 39%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
 
 # Back Outdoor 
-          # Back Outdoor Light
+          # Back Outdoor Light 1
           - type: state-icon
-            icon: 'mdi:track-light'
+            icon: 'mdi:wall-sconce-flat'
             tap_action:
               action: toggle
             entity: light.back_outdoor_light
             style:
-              top: 2%
-              left: 26%
-              "--paper-item-icon-color": '#696969'
-
+              top: -1.5%
+              left: 27%
+              "--paper-item-icon-color": '#D8D6D9'
+              transform: rotate(180deg)
+          # Back Outdoor Light 2
+          - type: state-icon
+            icon: 'mdi:wall-sconce-flat'
+            tap_action:
+              action: toggle
+            entity: light.back_outdoor_light
+            style:
+              top: -1.5%
+              left: 75%
+              "--paper-item-icon-color": '#D8D6D9'
+              transform: rotate(180deg)
 
 # Master Bedroom
           # Master Light
@@ -1445,7 +1418,7 @@ views:
             style:
               top: 53%
               left: 71%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
           # Bath Light
           - type: state-icon
             icon: 'mdi:lightbulb-outline'
@@ -1454,8 +1427,8 @@ views:
             entity: light.bath_light
             style:
               top: 28%
-              left: 71%
-              "--paper-item-icon-color": '#696969'
+              left: 70%
+              "--paper-item-icon-color": '#D8D6D9'
           # Bath Motion
           - type: state-icon
             icon: 'mdi:run-fast'
@@ -1463,15 +1436,15 @@ views:
             style:
               top: 28%
               left: 76%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
           # Master Motion
           - type: state-icon
             icon: 'mdi:run-fast'
             entity: binary_sensor.master_motion
             style:
-              top: 43%
-              left: 66%
-              "--paper-item-icon-color": '#696969'
+              top: 47%
+              left: 65%
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Master Temperature
           - type: state-icon
@@ -1480,7 +1453,7 @@ views:
             style: 
                 top: 43%
                 left: 71%
-                "--paper-item-icon-color": '#696969'
+                "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.m_bed_room_t_34
             icon: 'mdi:thermometer'
@@ -1494,8 +1467,8 @@ views:
             entity: binary_sensor.bed_sensor
             style:
               top: 48%
-              left: 74%
-              "--paper-item-icon-color": '#696969'
+              left: 75%
+              "--paper-item-icon-color": '#D8D6D9'
 
           # SAM WR Light
           - type: state-icon
@@ -1505,8 +1478,8 @@ views:
             entity: light.sameera_wardrobe_light
             style:
               top: 35%
-              left: 82%
-              "--paper-item-icon-color": '#696969'
+              left: 81.5%
+              "--paper-item-icon-color": '#D8D6D9'
           # MAD WR Light
           - type: state-icon
             icon: 'mdi:lightbulb-outline'
@@ -1515,8 +1488,8 @@ views:
             entity: light.madhushi_wardrobe_light
             style:
               top: 35%
-              left: 64%
-              "--paper-item-icon-color": '#696969'
+              left: 64.5%
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Living Air Con Vent
           - type: state-icon
@@ -1530,7 +1503,7 @@ views:
             style:
               top: 53%
               left: 77%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Master Bedroom Door
           - type: image
@@ -1540,7 +1513,7 @@ views:
               "off": 'opacity(0)'
             style:
               top: 58%
-              left: 58.5%
+              left: 58.8%
               transform: rotate(0deg)
 
 # Bedroom 4
@@ -1550,24 +1523,24 @@ views:
             icon: 'mdi:run-fast'
             entity: binary_sensor.room4_194
             style:
-              top: 87%
+              top: 83%
               left: 7%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Room4 Temperature
           - type: state-icon
             entity: sensor.6_in_1_multisensor_temperature_195
             icon: 'mdi:thermometer'
             style: 
-                top: 92%
-                left: 6%
-                "--paper-item-icon-color": '#696969'
+                top: 88%
+                left: 7.5%
+                "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.6_in_1_multisensor_temperature_195
             icon: 'mdi:thermometer'
             style: 
-                top: 92%
-                left: 12.5%
+                top: 88%
+                left: 14%
 
           # Bed 4 Air Con Vent
           - type: state-icon
@@ -1579,9 +1552,9 @@ views:
               service_data: 
                 entity_id: switch.myair_zone6
             style:
-              top: 87%
+              top: 83%
               left: 14%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
 # Bedroom 3
 
@@ -1597,7 +1570,7 @@ views:
             style:
               top: 90%
               left: 34%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
 
 # Bedroom 2
@@ -1614,7 +1587,7 @@ views:
             style:
               top: 72%
               left: 38%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Bed2 Light
           - type: state-icon
@@ -1625,7 +1598,7 @@ views:
             style:
               top: 67%
               left: 38%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
 # Hallway
 
@@ -1638,7 +1611,7 @@ views:
             style:
               top: 65%
               left: 24%
-              "--paper-item-icon-color": '#696969'
+              "--paper-item-icon-color": '#D8D6D9'
 
 # Floorplan Tab Navigation Entities
       - type: vertical-stack
@@ -1672,6 +1645,78 @@ views:
 # Floorplan tab Weather card                  
       - type: custom:weather-card
         entity: weather.dark_sky
+        details: false
+        current: true
+        forecast: true
+        hide_precipitation: true
+      - type: horizontal-stack
+        cards: 
+        - type: "custom:button-card"
+          name: MOOD LIGHTS
+          color_type: card
+          entity_picture: /local/custom-lovelace/icons/lamp.svg
+          entity: light.living_mood_lights
+          show_entity_picture: true
+          tap_action:
+                action: toggle
+          styles:
+            name:
+              - font-familly: Roboto
+              - font-size: 14px
+            entity_picture:
+              - padding: 7%
+
+        - type: "custom:button-card"
+          name: OPEN BLINDS
+          color_type: card
+          entity_picture: /local/custom-lovelace/icons/blinds-open.svg
+          entity: script.open_all_blinds
+          show_entity_picture: true
+          tap_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.open_all_blinds
+          styles:
+            name:
+              - font-familly: Roboto
+              - font-size: 14px
+            entity_picture:
+              - padding: 7%
+        - type: "custom:button-card"
+          color_type: card
+          name: CLOSE BLINDS
+          entity_picture: /local/custom-lovelace/icons/blinds-close.svg
+          entity: script.close_all_blinds
+          show_entity_picture: true
+          tap_action:
+            action: call-service
+            service: script.turn_on
+            service_data:
+              entity_id: script.close_all_blinds
+          styles:
+            name:
+              - font-familly: Roboto
+              - font-size: 14px
+            entity_picture:
+              - padding: 7%
+
+        - type: "custom:button-card"
+          name: A/C
+          color_type: card
+          entity_picture: /local/custom-lovelace/icons/ac.svg
+          entity: switch.myair_power
+          show_entity_picture: true
+          tap_action:
+                action: toggle
+          styles:
+            name:
+              - font-familly: Roboto
+              - font-size: 14px
+            entity_picture:
+              - padding: 7%
+        
+        
 
 
 # Garden
@@ -1744,8 +1789,6 @@ views:
                     action: call-service
                     service: rainmachine.stop_all
 
-      - type: vertical-stack
-        cards:
           - type: custom:mini-graph-card
             entities:
               - sensor.front_lawn_daily_stats_mins
@@ -1760,6 +1803,7 @@ views:
               graph: bar
               labels: true
             unit: minutes
+
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
@@ -1776,8 +1820,7 @@ views:
               graph: bar
               labels: true
             unit: minutes
-      - type: vertical-stack
-        cards:
+
           - type: custom:mini-graph-card
             entities:
               - sensor.front_plants_daily_stats_mins
@@ -1792,8 +1835,7 @@ views:
               graph: bar
               labels: true
             unit: minutes
-      - type: vertical-stack
-        cards:
+
           - type: custom:mini-graph-card
             entities:
               - sensor.side_trees_daily_stats_mins
@@ -1808,6 +1850,8 @@ views:
               graph: bar
               labels: true
             unit: minutes                  
+
+
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
@@ -1824,8 +1868,6 @@ views:
               graph: bar
               labels: true
             unit: minutes   
-      - type: vertical-stack
-        cards:
           - type: custom:mini-graph-card
             entities:
               - sensor.back_lawn_daily_stats_mins
@@ -1848,3 +1890,91 @@ views:
 #    name: Home
 #    view: 'https://sphassio.duckdns.org:8123/lovelace/floorplan'
 #    hide_if_unavailable: false
+
+
+
+# Battery Tab
+  - title: Automations
+    path: automations
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: entities
+          title: Global
+          entities:
+            - entity: input_boolean.housealarm_auto
+              icon: 'mdi:shield-home-outline'
+              name: House Alarm Auto Arm/Unarm
+              tap_action:
+                action: toggle
+            - entity: input_boolean.light_on_off_auto
+              icon: 'mdi:lightbulb-outline'
+              name: Lights Auto On/Off based on Motion
+              tap_action:
+                action: toggle
+            - entity: input_boolean.zone_off_auto
+              icon: 'mdi:air-filter'
+              name: AC Zones Auto On/Off based on Motion
+              tap_action:
+                action: toggle
+            - entity: input_boolean.aircon_on_auto
+              icon: 'mdi:air-conditioner'
+              name: Auto AC Power On
+              tap_action:
+                action: toggle
+            - entity: input_boolean.nightmood_auto
+              icon: 'mdi:weather-night'
+              name: Night Mood Auto
+              tap_action:
+                action: toggle
+            - entity: input_boolean.greetings_on
+              icon: 'mdi:voice'
+              name: Sonos Voice Greetings
+              tap_action:
+                action: toggle
+            - entity: input_boolean.imageprocessing_sensor
+              icon: 'mdi:flash-red-eye'
+              name: Image Processing
+              tap_action:
+                action: toggle
+            - entity: input_boolean.blinds_auto
+              icon: 'mdi:window-shutter-alert'
+              name: Blinds Automation
+              tap_action:
+                action: toggle
+        - type: entities
+          title: Master Bedroom
+          entities:
+            - entity: input_boolean.bedheater_auto
+              icon: 'mdi:radiator'
+              name: Bed Heater Automation
+              tap_action:
+                action: toggle
+      - type: vertical-stack
+        cards:
+        - type: entities
+          title: Garage
+          entities:
+            - entity: input_boolean.garage_light_on_off_auto
+              icon: 'mdi:lightbulb-outline'
+              name: Garage Light Auto On/Off based on Garage Motion
+              tap_action:
+                action: toggle
+        - type: entities
+          title: Alfresco
+          entities:
+            - entity: input_boolean.alfresco_button
+              icon: 'mdi:music-circle-outline'
+              name: Alfresco Button Music
+              tap_action:
+                action: toggle
+            - entity: input_boolean.alfresco_motion_music
+              icon: 'mdi:music-circle-outline'
+              name: Alfresco Music based on Motion
+              tap_action:
+                action: toggle
+            - entity: input_boolean.alfresco_motion_light
+              icon: 'mdi:lightbulb-outline'
+              name: Alfresco Light On/Off based on Motion
+              tap_action:
+                action: toggle
