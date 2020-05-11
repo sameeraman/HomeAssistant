@@ -559,6 +559,9 @@
       - condition: state
         entity_id: light.garage_fibaro_dimmer
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.garage_light_on_off_door_auto
+        state: 'on'
   action:
     - service: light.turn_on
       entity_id: light.garage_fibaro_dimmer
@@ -608,6 +611,9 @@
       - condition: state
         entity_id: sun.sun
         state: 'above_horizon'
+      - condition: state
+        entity_id: input_boolean.garage_light_on_off_door_auto
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.garage_fibaro_dimmer
@@ -803,9 +809,17 @@
       for: 
         seconds: 2
   condition:
-    condition: state
-    entity_id: sun.sun
-    state: 'below_horizon'
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.frontoutdoor_light_on_off_auto
+        state: 'on'
   action:
     - service : script.turn_on
       entity_id: script.garagelight
@@ -2177,6 +2191,9 @@
       - condition: state
         entity_id: binary_sensor.bed_sensor
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.master_aircon_vent_on_off_auto
+        state: 'on'
   action:
     - service: switch.turn_off
       entity_id: switch.myair_zone3
@@ -2208,6 +2225,9 @@
       - condition: state
         entity_id: switch.myair_zone3
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.master_aircon_vent_on_off_auto
+        state: 'on'
       - condition: or
         conditions:
         - condition: state
@@ -2237,6 +2257,9 @@
       - condition: state
         entity_id: light.master_light
         state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_light_brightness_auto
+        state: 'on'
   action:
     - service: light.turn_on
       data:
@@ -2258,6 +2281,9 @@
         state: 'on'
       - condition: state
         entity_id: light.master_light
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_light_brightness_auto
         state: 'on'
   action:
     - service: light.turn_on
@@ -2286,6 +2312,9 @@
       - condition: state
         entity_id: binary_sensor.bed_sensor
         state: 'off'
+      - condition: state
+        entity_id: input_boolean.master_light_brightness_auto
+        state: 'on'
       - condition: numeric_state
         entity_id: light.master_light
         value_template: '{% if states.light.master_light.state == "on"  %}{{ states.light.master_light.attributes.brightness }}{% else %}0{% endif %}'

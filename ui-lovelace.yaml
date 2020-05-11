@@ -1962,6 +1962,14 @@ views:
               icon: 'mdi:lightbulb-outline'
               tap_action:
                 action: toggle
+            - entity: input_boolean.master_aircon_vent_on_off_auto
+              icon: 'mdi:air-filter'
+              tap_action:
+                action: toggle
+            - entity: input_boolean.master_light_brightness_auto
+              icon: 'mdi:lightbulb-on-outline'
+              tap_action:
+                action: toggle
       - type: vertical-stack
         cards:
         - type: entities
@@ -1970,6 +1978,12 @@ views:
             - entity: input_boolean.garage_light_on_off_auto
               icon: 'mdi:lightbulb-outline'
               name: Garage Light Auto On/Off based on Garage Motion
+              tap_action:
+                action: toggle
+            - entity: input_boolean.garage_light_on_off_door_auto
+              tap_action:
+                action: toggle
+            - entity: input_boolean.frontoutdoor_light_on_off_auto
               tap_action:
                 action: toggle
         - type: entities
