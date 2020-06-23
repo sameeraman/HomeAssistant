@@ -1841,10 +1841,10 @@ views:
                   - padding: 7%
 
             - type: "custom:button-card"
-              name: FAIRY
+              name: OFFICE
               color_type: card
               entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: switch.plug_158d000278ff33
+              entity: light.office_fibaro_dimmer
               show_entity_picture: true
               tap_action:
                     action: toggle
