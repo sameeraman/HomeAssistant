@@ -225,13 +225,13 @@
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%220%22%7D%7D%7D'
 
-# Turn on the Air Conditioner on Weekdays at 06:15AM if the kitchen temperature is below 19C
+# Turn on the Air Conditioner on Weekdays at 07:00 AM if the kitchen temperature is below 19C
 - id: turnonairconbelow18c
-  alias: Turn on the Air Conditioner on Weekdays at 06:15AM if the kitchen temperature is below 19C
+  alias: Turn on the Air Conditioner on Weekdays at 07:00 AM if the kitchen temperature is below 19C
   initial_state: True
   trigger:
     - platform: time
-      at: '06:15:00'
+      at: '07:00:00'
   condition:
     condition: and
     conditions: 
@@ -823,6 +823,29 @@
   action:
     - service : script.turn_on
       entity_id: script.garagelight
+
+# Turn off the Front Outdoor light after 5 hours 
+- id: frontoutdoorgaragelightoff
+  alias: Turn on the Front Outdoor light for 2 mins then there the garage door open
+  trigger: 
+    - platform: state
+      entity_id: light.front_outdoor_light
+      to: 'on'
+      for: 
+        hours: 5
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.frontoutdoor_light_on_off_auto
+        state: 'on'
+  action:
+    - service : light.turn_off
+      entity_id: light.front_outdoor_light
+
 
 # Turn on house alarm based on device tracker - Arm when every one is out of the house.
 - id: turnonhousealarmbasedondevicetracker
@@ -2725,15 +2748,15 @@
     - service: light.turn_off
       entity_id: light.front_entrance
 
-# Turn off the front entrance light after 30 minutes
-- id: frontentrancelightoffafter30mins
-  alias: Turn off the front entrance light after 30 minutes
+# Turn off the front entrance light after 60 minutes
+- id: frontentrancelightoffafter60mins
+  alias: Turn off the front entrance light after 60 minutes
   trigger: 
     - platform: state
       entity_id: light.front_entrance
       to: 'on'
       for:
-        minutes: 30
+        minutes: 60
   condition:
     condition: and
     conditions: 
