@@ -2764,6 +2764,9 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
+        entity_id: input_boolean.hallway_light_on_off_auto
+        state: 'on'
+      - condition: state
         entity_id: light.front_entrance
         state: 'on'
   action:

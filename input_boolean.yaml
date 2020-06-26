@@ -132,3 +132,7 @@ office_light_on_off_auto:
 office_aircon_vent_on_off_auto:
   name: Office AC Vent On/Off with based on motion
   icon: mdi:air-filter
+
+hallway_light_on_off_auto:
+  name: Front Hallway light off with no Office Motion
+  icon: mdi:lightbulb-on-outline

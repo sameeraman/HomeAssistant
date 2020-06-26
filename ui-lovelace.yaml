@@ -2168,12 +2168,15 @@ views:
               tap_action:
                 action: toggle
         - type: entities
-          title: Laundry
+          title: Laundry & Hallway
           entities:
             - entity: input_boolean.laundry_light_on_off_auto
               tap_action:
                 action: toggle
             - entity: input_boolean.laundry_outside_light_on_off_auto
+              tap_action:
+                action: toggle
+            - entity: input_boolean.hallway_light_on_off_auto
               tap_action:
                 action: toggle
         - type: entities
