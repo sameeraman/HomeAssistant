@@ -262,11 +262,13 @@ close_all_blinds:
   alias: "Close all blinds"
   sequence:
     - service: cover.close_cover
-      entity_id: cover.8600507250029161f3c6
+      entity_id: cover.77416488d8f15ba1b944
     - service: cover.close_cover
-      entity_id: cover.86005072500291622d8f
+      entity_id: cover.45761564600194f5a502
     - service: cover.close_cover
       entity_id: cover.48100000c44f33b796fc
+    - service: cover.close_cover
+      entity_id: cover.77416488d8f15ba1b976
 
 # Do Nothing Script
 do_nothing:

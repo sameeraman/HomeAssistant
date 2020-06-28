@@ -519,6 +519,12 @@ views:
               - entity: binary_sensor.garage_motion
                 icon: 'mdi:garage-open'
                 name: Garage
+          - type: entities
+            entities:
+              - entity: cover.77416488d8f15ba1b944
+              - entity: cover.45761564600194f5a502
+              - entity: cover.48100000c44f33b796fc
+              - entity: cover.77416488d8f15ba1b976
           - type: entity-filter
             entities:
               - entity: light.alfresco_fibaro_dimmer
