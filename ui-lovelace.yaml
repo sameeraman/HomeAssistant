@@ -520,6 +520,7 @@ views:
                 icon: 'mdi:garage-open'
                 name: Garage
           - type: entities
+            title: Blinds
             entities:
               - entity: cover.77416488d8f15ba1b944
               - entity: cover.45761564600194f5a502
