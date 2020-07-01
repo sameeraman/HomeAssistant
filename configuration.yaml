@@ -115,8 +115,8 @@ camera: !include camera.yaml
 input_boolean: !include input_boolean.yaml
 
 # Vera
-vera:
-  vera_controller_url: !secret vera_url
+#vera:
+#  vera_controller_url: !secret vera_url
 
 
 #google assistant
