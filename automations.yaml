@@ -2774,7 +2774,7 @@
       entity_id: light.front_entrance
 
 
-# Close the Living blinds after sunset  # Test Release
+# Close the Living blinds after sunset 
 - id: closethelivingblindsaftersunset
   alias: Close the Living Blinds after sunset 
   initial_state: True
