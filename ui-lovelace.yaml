@@ -1620,35 +1620,50 @@ views:
               left: 24%
               "--paper-item-icon-color": '#D8D6D9'
 
-# Floorplan Tab Navigation Entities
+# TV Volume
       - type: vertical-stack
         cards:
-          - type: horizontal-stack
-            cards:
-              - type: entity-button
-                entity: sun.sun
-                name: 'Home'
-                icon: 'mdi:tablet-dashboard'
-                show_icon: false
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/home
-              - type: entity-button
-                entity: sun.sun
-                name: 'Living'
-                icon: 'mdi:floor-lamp'
-                show_icon: false
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/living
-              - type: entity-button
-                entity: sun.sun
-                name: 'Cameras'
-                icon: 'mdi:cctv'
-                show_icon: false
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/cameras
+            - type: horizontal-stack
+              cards: 
+              - type: custom:mini-media-player
+                entity: media_player.yamaha_receiver
+                icon: 'mdi:speaker-wireless'
+                name: TV Volume
+                hide:
+                  power: true
+                  controls : true
+                  source: true
+
+
+# # Floorplan Tab Navigation Entities
+#       - type: vertical-stack
+#         cards:
+#           - type: horizontal-stack
+#             cards:
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Home'
+#                 icon: 'mdi:tablet-dashboard'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/home
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Living'
+#                 icon: 'mdi:floor-lamp'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/living
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Cameras'
+#                 icon: 'mdi:cctv'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/cameras
 
 
 # Floorplan tab Weather card    
@@ -1882,18 +1897,11 @@ views:
               line_width: 8
               font_size: 75
 
-# TV Volume
-          - type: horizontal-stack
-            cards: 
-            - type: custom:mini-media-player
-              entity: media_player.yamaha_receiver
-              icon: 'mdi:speaker-wireless'
-              name: TV Volume
-              hide:
-                power: true
-                controls : true
-                source: true
 
+
+
+
+                
 # Garden
   - title: Garden
     path: garden
