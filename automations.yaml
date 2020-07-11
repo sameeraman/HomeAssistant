@@ -1728,9 +1728,6 @@
     condition: or
     conditions: 
       - condition: numeric_state
-        entity_id: sensor.laundry_motion_battery
-        below: 30
-      - condition: numeric_state
         entity_id: sensor.master_motion_battery
         below: 30
       - condition: numeric_state

@@ -87,13 +87,13 @@ garage_motion:
   name: "All Garage Motion Sensors"
   entities:
     - binary_sensor.motion_sensor_158d0002c716d7
-    - binary_sensor.garage_sensor_388
+    - binary_sensor.garage_espmulti_m_2
 
 living_kitchen_motion:
   name: "All Living and Kitchen Motion Sensors"
   entities:
     - binary_sensor.motion_sensor_158d0002742898
-    - binary_sensor.kitchen_m_251
+    - binary_sensor.kitchen_esp_motion
     - binary_sensor.motion_sensor_158d0002c716b6
     
 living_motion:
@@ -105,7 +105,7 @@ kitchen_motion:
   name: "All Kitchen Motion Sensors"
   entities:
     - binary_sensor.motion_sensor_158d0002742898
-    - binary_sensor.kitchen_m_251
+    - binary_sensor.kitchen_esp_motion
 
 office_motion:
   name: "All Office Motion Sensors"
@@ -117,19 +117,19 @@ office_motion:
 master_motion:
   name: "All Master Bedroom Motion Sensors"
   entities:
-    - binary_sensor.m_bed_room_m_33
     - binary_sensor.motion_sensor_158d0002b7f1e8
 
 master_bath_motion:
   name: "All Master Bedroom and Bath Motion Sensors"
   entities:
-    - binary_sensor.m_bed_room_m_33
     - binary_sensor.motion_sensor_158d0002b7f1e8
     - binary_sensor.motion_sensor_158d0002c6382d
     - binary_sensor.motion_sensor_158d0001e0ac8e
+    - binary_sensor.master_bath_esp_motion
 
 m_bath_motion:
   name: "All Master Bath Motion Sensors"
   entities:
     - binary_sensor.motion_sensor_158d0002c6382d
     - binary_sensor.motion_sensor_158d0001e0ac8e
+    - binary_sensor.master_bath_esp_motion
