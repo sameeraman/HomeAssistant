@@ -80,3 +80,11 @@
     payload_available: "Online"
     payload_not_available: "Offline"
     device_class: door 
+
+# Baby Cam Motion Sensor
+  - platform: mqtt
+    name: babycam_motion_sensor
+    state_topic: "home/master/babycam/motion"
+    payload_on: "ON"
+    payload_off: "OFF"
+    device_class: motion 

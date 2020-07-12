@@ -34,3 +34,8 @@
     stream_source: !secret garagecameraurl
     still_image_url: !secret garagecamerajpeg
     verify_ssl: false
+  - platform: generic
+    name: Baby Camera
+    stream_source: !secret babycameraurl
+    still_image_url: !secret babycamerajpeg
+    verify_ssl: false

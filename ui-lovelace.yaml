@@ -667,6 +667,9 @@ views:
       - type: picture-entity 
         title: Garage Camera 
         entity:  camera.garage_camera
+      - type: picture-entity 
+        title: Baby Camera 
+        entity:  camera.baby_camera
 
 
 # Camera Tab Navigation Entities
