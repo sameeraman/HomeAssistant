@@ -74,20 +74,10 @@
   - platform: mqtt
     scheme: template
     name: Office Dimmer Shelly 
-    command_topic: "shellies/officedimmer/light/0/set"
     state_topic: "shellies/officedimmer/light/0/status"
-    command_on_template: >
-      {"turn": "on"
-        {% if brightness is defined%} 
-          , "brightness": {{brightness | float | multiply (0.3922) | round (0)}}
-        {% endif%}
-      }
-    state_template: > 
-      {% if value_json.ison%}
-        on
-      {% else%}
-        off
-      {% endif%}
-    brightness_template: "{{value_json.brightness | float | multiply (2.55) | round (0)}}"
+    state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+    command_topic: "shellies/officedimmer/light/0/set"
+    command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
     command_off_template: '{"turn": "off"}'
+    brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
