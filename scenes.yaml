@@ -105,7 +105,7 @@
     light.dining_table_lamp : off
     light.kitchen_light : off
     light.living_light: on
-    light.office_fibaro_dimmer: off
+    light.office_dimmer: off
     media_player.living:
       state: paused
     remote.living :

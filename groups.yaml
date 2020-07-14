@@ -25,7 +25,7 @@ mbedroom:
 office:
   name: Office Room
   entities:
-    - light.office_fibaro_dimmer
+    - light.office_dimmer
     - group.office_sensors
 kitchen_sensors:
   name: Kitchen Sensors

@@ -1,4 +1,4 @@
-light.office_fibaro_dimmer:
+light.office_dimmer:
   friendly_name: Office Light
 light.living_light:
   friendly_name: Living Light

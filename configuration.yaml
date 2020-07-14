@@ -136,7 +136,7 @@ google_assistant:
     light.bath_strip:
       expose: true
       room: Other
-    light.office_fibaro_dimmer:
+    light.office_dimmer:
       expose: true
       room: Office
     light.front_outdoor_light:

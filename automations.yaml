@@ -1155,7 +1155,7 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.office_fibaro_dimmer
+        entity_id: light.office_dimmer
         state: 'off'
       - condition: state
         entity_id: sun.sun
@@ -1168,7 +1168,7 @@
         state: 'on'
   action:
     - service: light.turn_on
-      entity_id: light.office_fibaro_dimmer
+      entity_id: light.office_dimmer
 
 # Turn off the Office Light when there is no motion 
 - id: officelightoff
@@ -1186,7 +1186,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.office_fibaro_dimmer
+        entity_id: light.office_dimmer
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
@@ -1202,7 +1202,7 @@
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.office_fibaro_dimmer
+      entity_id: light.office_dimmer
 
 # Turn off the Master Light when there is no motion for more than 5 minutes
 - id: masterlightoff5min

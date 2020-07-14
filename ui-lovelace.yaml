@@ -234,7 +234,7 @@ views:
           - type: horizontal-stack
             cards:
               - type: light
-                entity: light.office_fibaro_dimmer
+                entity: light.office_dimmer
               - type: light
                 entity: light.alfresco_fibaro_dimmer
           - type: glance
@@ -567,7 +567,7 @@ views:
               - entity: light.master_light
                 tap_action: 
                   action: toggle
-              - entity: light.office_fibaro_dimmer
+              - entity: light.office_dimmer
                 tap_action:
                   action: toggle
               - entity: light.pantry_light
@@ -768,7 +768,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.office_fibaro_dimmer
+            entity: light.office_dimmer
             style:
               top: 13%
               left: 63.5%
@@ -1869,7 +1869,7 @@ views:
               name: OFFICE
               color_type: card
               entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: light.office_fibaro_dimmer
+              entity: light.office_dimmer
               show_entity_picture: true
               tap_action:
                     action: toggle
