@@ -69,3 +69,25 @@
   - platform: switch
     name: Back Outdoor Light
     entity_id: switch.back_outdoor_switch
+
+
+  - platform: mqtt
+    scheme: template
+    name: Office Dimmer Shelly 
+    command_topic: "shellies/officedimmer/light/0/set"
+    state_topic: "shellies/officedimmer/light/0/status"
+    command_on_template: >
+      {"turn": "on"
+        {% if brightness is defined%} 
+          , "brightness": {{brightness | float | multiply (0.3922) | round (0)}}
+        {% endif%}
+      }
+    state_template: > 
+      {% if value_json.ison%}
+        on
+      {% else%}
+        off
+      {% endif%}
+    brightness_template: "{{value_json.brightness | float | multiply (2.55) | round (0)}}"
+    command_off_template: '{"turn": "off"}'
+    qos: 1
