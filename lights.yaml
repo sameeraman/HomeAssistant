@@ -72,7 +72,7 @@
 
 
   - platform: mqtt
-    scheme: template
+    schema: template
     name: Office Dimmer Shelly 
     state_topic: "shellies/officedimmer/light/0/status"
     state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
