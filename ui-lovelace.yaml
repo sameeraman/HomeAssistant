@@ -735,7 +735,6 @@ views:
           title: Z-Wave Battery Status
           show_header_toggle: false    
           entities:
-            - entity: sensor.laundry_motion_battery
             - entity: sensor.master_motion_battery
             - entity: sensor.office_motion_battery
             - entity: sensor.room4_motion_battery
