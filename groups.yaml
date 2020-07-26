@@ -20,7 +20,6 @@ mbedroom:
     - light.master_light
     - switch.bedheater_switch
     - light.bath_light
-    - binary_sensor.m_bed_room_m_33
     - group.master_sensors
 office:
   name: Office Room
@@ -30,11 +29,7 @@ office:
 kitchen_sensors:
   name: Kitchen Sensors
   entities:
-    - binary_sensor.kitchen_sensorm_13
-    - sensor.kitchen_sensort_14
-    - sensor.kitchen_sensorl_15
-    - sensor.kitchen_sensorh_16
-    - sensor.kitchen_sensoruv_17
+    - binary_sensor.kitchen_esp_motion
 myair:
   name: MyAir Air Conditioner
   entities:
@@ -62,19 +57,19 @@ myair_zones:
 office_sensors:
   name: Office Sensors
   entities:
-    - binary_sensor.officeroom_sam_m_345
-    - sensor.officeroom_sam_t_346
-    - sensor.officeroom_sam_l_347
-    - sensor.officeroom_sam_h_348
-    - sensor.officeroom_sam_uv_349
+    - binary_sensor.office_sam_esp_motion
+    - binary_sensor.office_mad_esp_motion
+    - binary_sensor.motion_sensor_158d0002b7ec00
+    - sensor.office_espmulti_h
+    - sensor.office_espmulti_t
 master_sensors:
   name: Master Bedroom Sensors
   entities:
-    - binary_sensor.m_bed_room_m_33
-    - sensor.m_bed_room_t_34
-    - sensor.m_bed_room_l_35
-    - sensor.m_bed_room_h_36
-    - sensor.m_bed_room_uv_37
+    - binary_sensor.master_cup_esp_motion
+    - sensor.master_baby_cot_espmulti_h
+    - sensor.master_baby_cot_espmulti_t
+    - sensor.master_espmulti_h_2
+    - sensor.master_espmulti_t_2
 
 all_motion:
   name: "All Motion Sensors"
@@ -110,14 +105,15 @@ kitchen_motion:
 office_motion:
   name: "All Office Motion Sensors"
   entities:
-    - binary_sensor.officeroom_mad_m_297
-    - binary_sensor.officeroom_sam_m_345
+    - binary_sensor.office_mad_esp_motion
+    - binary_sensor.office_sam_esp_motion
     - binary_sensor.motion_sensor_158d0002b7ec00
 
 master_motion:
   name: "All Master Bedroom Motion Sensors"
   entities:
     - binary_sensor.motion_sensor_158d0002b7f1e8
+    - binary_sensor.master_cup_esp_motion
 
 master_bath_motion:
   name: "All Master Bedroom and Bath Motion Sensors"

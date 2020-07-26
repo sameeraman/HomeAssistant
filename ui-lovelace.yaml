@@ -35,7 +35,7 @@ views:
           - type: glance
             title: Master Bedroom
             entities:
-              - entity: binary_sensor.m_bed_room_m_33
+              - entity: binary_sensor.master_motion
                 icon: 'mdi:run-fast'
                 name: Motion
               - entity: binary_sensor.door_window_sensor_158d0003677216
@@ -44,10 +44,10 @@ views:
               - entity: binary_sensor.bed_sensor
                 icon: 'mdi:hotel'
                 name: Bed
-              - entity: sensor.m_bed_room_t_34
+              - entity: sensor.master_espmulti_t_2
                 icon: 'mdi:coolant-temperature'
                 name: Temperature
-              - entity: sensor.m_bed_room_h_36
+              - entity: sensor.master_espmulti_h_2
                 icon: 'mdi:water-percent'
                 name: Humidity
           - type: glance
@@ -117,19 +117,16 @@ views:
           - type: glance
             title: Kitchen
             entities:
-              - entity: binary_sensor.kitchen_m_251
+              - entity: binary_sensor.kitchen_motion
                 icon: 'mdi:run-fast'
                 name: Motion
-              - entity: sensor.kitchen_t_252
+              - entity: sensor.living_espmulti_t
                 icon: 'mdi:coolant-temperature'
                 name: Temperature
-              - entity: sensor.kitchen_l_253
+              - entity: sensor.illumination_158d0002c716b6
                 icon: 'mdi:theme-light-dark'
                 name: Light
-              - entity: sensor.kitchen_uv_255
-                icon: 'mdi:white-balance-sunny'
-                name: UV
-              - entity: sensor.kitchen_h_254
+              - entity: sensor.living_espmulti_h
                 icon: 'mdi:water-percent'
                 name: Humidity
           - type: horizontal-stack
@@ -202,33 +199,31 @@ views:
               - entity: binary_sensor.door_window_sensor_158d0002ca3100
                 icon: 'mdi:door-closed'
                 name: Door
-              - entity: sensor.laundry_t_200
-                icon: 'mdi:coolant-temperature'
-                name: Temperature
-              - entity: sensor.laundry_l_201
-                icon: 'mdi:theme-light-dark'
+              - entity: light.laundry_light
+                icon: 'mdi:lightbulb-on-outline'
                 name: Light
-              - entity: sensor.laundry_h_202
-                icon: 'mdi:water-percent'
-                name: Humidity
+                tap_action:
+                  action: toggle
+              - entity: light.laundry_light
+                icon: 'mdi:track-light'
+                name: Outdoor
+                tap_action:
+                  action: toggle
       - type: vertical-stack
         cards:
           - type: glance
             title: Office Room
             entities:
-              - entity: binary_sensor.officeroom_sam_m_345
+              - entity: binary_sensor.office_motion
                 icon: 'mdi:run-fast'
                 name: Motion
-              - entity: sensor.officeroom_sam_t_346
+              - entity: sensor.office_espmulti_t
                 icon: 'mdi:coolant-temperature'
                 name: Temperature
-              - entity: sensor.officeroom_sam_l_347
+              - entity: sensor.illumination_158d0002b7ec00
                 icon: 'mdi:theme-light-dark'
                 name: Light
-              - entity: sensor.officeroom_sam_uv_349
-                icon: 'mdi:white-balance-sunny'
-                name: UV
-              - entity: sensor.officeroom_sam_h_348
+              - entity: sensor.office_espmulti_h
                 icon: 'mdi:water-percent'
                 name: Humidity
           - type: horizontal-stack
@@ -246,13 +241,13 @@ views:
               - entity: binary_sensor.door_window_sensor_158d0002c0e236
                 icon: 'mdi:garage-open'
                 name: Door
-              - entity: sensor.6_in_1_multisensor_temperature_2_389
+              - entity: sensor.garage_espmulti_t_2
                 icon: 'mdi:coolant-temperature'
                 name: Temperature
-              - entity: sensor.6_in_1_multisensor_light_2_390
+              - entity: sensor.garage_espmulti_lx_2
                 icon: 'mdi:theme-light-dark'
                 name: Light
-              - entity: sensor.6_in_1_multisensor_humidity_2_391
+              - entity: sensor.garage_espmulti_h_2
                 icon: 'mdi:water-percent'
                 name: Humidity
           - type: horizontal-stack
@@ -375,7 +370,7 @@ views:
         cards:
           - type: custom:mini-graph-card
             entities:
-              - sensor.kitchen_t_252
+              - sensor.living_espmulti_t
             name: Living Temperature
             icon: mdi:thermometer
             hours_to_show: 24
@@ -729,17 +724,6 @@ views:
             - entity: sensor.sameera_bedside_button_battery
             - entity: sensor.living_button_battery
             - entity: sensor.temperature_sensor_1_battery
-      - type: vertical-stack
-        cards:
-        - type: entities
-          title: Z-Wave Battery Status
-          show_header_toggle: false    
-          entities:
-            - entity: sensor.master_motion_battery
-            - entity: sensor.office_motion_battery
-            - entity: sensor.room4_motion_battery
-            - entity: sensor.kitchen_motion_battery
-            - entity: sensor.garage_motion_1_battery
 
 # Floor Plan 
   - title: Floor Plan
@@ -751,14 +735,14 @@ views:
 
 # Office Room
           - type: state-icon
-            entity: sensor.officeroom_sam_t_346
+            entity: sensor.office_espmulti_t
             icon: 'mdi:thermometer'
             style: 
                 top: 6%
                 left: 67%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
-            entity: sensor.officeroom_sam_t_346
+            entity: sensor.office_espmulti_t
             icon: 'mdi:thermometer'
             style: 
                 top: 6%
@@ -930,14 +914,14 @@ views:
 
           # Living Temperature
           - type: state-icon
-            entity: sensor.kitchen_t_252
+            entity: sensor.living_espmulti_t
             icon: 'mdi:thermometer'
             style: 
                 top: 26%
                 left: 28%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
-            entity: sensor.kitchen_t_252
+            entity: sensor.living_espmulti_t
             icon: 'mdi:thermometer'
             style: 
                 top: 26.2%
@@ -945,14 +929,14 @@ views:
 
           # Living Humidity
           - type: state-icon
-            entity: sensor.kitchen_h_254
+            entity: sensor.living_espmulti_h
             icon: 'mdi:water-percent'
             style: 
                 top: 26%
                 left: 12%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
-            entity: sensor.kitchen_h_254
+            entity: sensor.living_espmulti_h
             icon: 'mdi:water-percent'
             style: 
                 top: 26.2%
@@ -1103,20 +1087,6 @@ views:
               left: 8.5%
               "--paper-item-icon-color": '#D8D6D9'
 
-          # # Laundry Temperature
-          # - type: state-icon
-          #   entity: sensor.laundry_t_200
-          #   icon: 'mdi:thermometer'
-          #   style: 
-          #       top: 70%
-          #       left: 14%
-          #       "--paper-item-icon-color": '#D8D6D9'
-          # - type: state-label
-          #   entity: sensor.laundry_t_200
-          #   icon: 'mdi:thermometer'
-          #   style: 
-          #       top: 70%
-          #       left: 20%
 
           # Laundry Light
           - type: state-icon
@@ -1221,50 +1191,20 @@ views:
               left: 58.5%
               transform: rotate(0deg)
 
-          # Garage Humidity
-          - type: state-icon
-            entity: sensor.6_in_1_multisensor_humidity_2_391
-            icon: 'mdi:water-percent'
-            style: 
-                top: 78%
-                left: 67%
-                "--paper-item-icon-color": '#D8D6D9'
-          - type: state-label
-            entity: sensor.6_in_1_multisensor_humidity_2_391
-            icon: 'mdi:water-percent'
-            style: 
-                top: 78%
-                left: 73%
-
-          # Garage Temperature
-          - type: state-icon
-            entity: sensor.6_in_1_multisensor_temperature_2_389
-            icon: 'mdi:thermometer'
-            style: 
-                top: 74%
-                left: 66%
-                "--paper-item-icon-color": '#D8D6D9'
-          - type: state-label
-            entity: sensor.6_in_1_multisensor_temperature_2_389
-            icon: 'mdi:thermometer'
-            style: 
-                top: 74%
-                left: 73%
-
           # Garage Humidity  - ESPHome 
           - type: state-icon
             entity: sensor.garage_espmulti_h_2
             icon: 'mdi:water-percent'
             style: 
                 top: 78%
-                left: 84%
+                left: 75.5%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.garage_espmulti_h_2
             icon: 'mdi:water-percent'
             style: 
                 top: 78%
-                left: 90%
+                left: 81.5%
 
           # Garage Temperature - ESPHome
           - type: state-icon
@@ -1272,14 +1212,14 @@ views:
             icon: 'mdi:thermometer'
             style: 
                 top: 74%
-                left: 83%
+                left: 74.5%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.garage_espmulti_t_2
             icon: 'mdi:thermometer'
             style: 
                 top: 74%
-                left: 90%
+                left: 81.5%
 
 # Front Outdoor
           # Front Ourdoor Light 1
@@ -1457,14 +1397,14 @@ views:
 
           # Master Temperature
           - type: state-icon
-            entity: sensor.m_bed_room_t_34
+            entity: sensor.master_espmulti_t_2
             icon: 'mdi:thermometer'
             style: 
                 top: 43%
                 left: 71%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
-            entity: sensor.m_bed_room_t_34
+            entity: sensor.master_espmulti_t_2
             icon: 'mdi:thermometer'
             style: 
                 top: 43%
@@ -1530,7 +1470,7 @@ views:
           # Room4 Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.room4_194
+            entity: binary_sensor.bed4_esp_motion
             style:
               top: 83%
               left: 7%
@@ -1538,14 +1478,14 @@ views:
 
           # Room4 Temperature
           - type: state-icon
-            entity: sensor.6_in_1_multisensor_temperature_195
+            entity: sensor.bed4_espmulti_t
             icon: 'mdi:thermometer'
             style: 
                 top: 88%
                 left: 7.5%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
-            entity: sensor.6_in_1_multisensor_temperature_195
+            entity: sensor.bed4_espmulti_t
             icon: 'mdi:thermometer'
             style: 
                 top: 88%
@@ -1884,7 +1824,7 @@ views:
             cards: 
             - type: custom:mini-graph-card
               entities:
-                - entity: sensor.kitchen_t_252
+                - entity: sensor.living_espmulti_t
                   name: LIVING TEMP
               icon: mdi:thermometer
               line_color: var(--accent-color)
@@ -1892,7 +1832,7 @@ views:
               font_size: 75
             - type: custom:mini-graph-card
               entities:
-                - entity: sensor.kitchen_h_254
+                - entity: sensor.living_espmulti_t
                   name: LIVING HUMIDITY
               icon: mdi:water-percent
               line_color: '#307DFD'

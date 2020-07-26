@@ -225,9 +225,9 @@
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%220%22%7D%7D%7D'
 
-# Turn on the Air Conditioner on Weekdays at 07:00 AM if the kitchen temperature is below 19C
+# Turn on the Air Conditioner on Weekdays at 07:00 AM if the living temperature is below 19C
 - id: turnonairconbelow18c
-  alias: Turn on the Air Conditioner on Weekdays at 07:00 AM if the kitchen temperature is below 19C
+  alias: Turn on the Air Conditioner on Weekdays at 07:00 AM if the living temperature is below 19C
   initial_state: True
   trigger:
     - platform: time
@@ -249,7 +249,7 @@
         entity_id: switch.housealarm
         state: 'off'
       - condition: numeric_state
-        entity_id: sensor.kitchen_t_252
+        entity_id: sensor.living_espmulti_t
         below: 19
   action:
     - service : switch.turn_on
@@ -452,8 +452,10 @@
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
       to: 'off'
+      for:
+        minutes: 1
     - platform: state
-      entity_id: binary_sensor.m_bed_room_m_33
+      entity_id: binary_sensor.master_bath_esp_motion
       to: 'off'
   condition:
     condition: and
@@ -467,9 +469,9 @@
       - condition: state
         entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
         state: 'off'
-      - condition: state
-        entity_id: binary_sensor.m_bed_room_m_33
-        state: 'off'
+      # - condition: state
+      #   entity_id: binary_sensor.master_bath_esp_motion
+      #   state: 'off'
       - condition: state
         entity_id: input_boolean.master_bath_on_off_auto
         state: 'on'
@@ -637,7 +639,7 @@
   alias: Turn on Bath strip when there is motion in Master bedroom
   trigger: 
     - platform: state
-      entity_id: binary_sensor.m_bed_room_m_33
+      entity_id: binary_sensor.master_motion
       to: 'on'
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
@@ -660,7 +662,7 @@
   alias: Turn off Bath Strip when there is no more motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.m_bed_room_m_33
+      entity_id: binary_sensor.master_motion
       to: 'off'
     - platform: state
       entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
@@ -669,7 +671,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: binary_sensor.m_bed_room_m_33
+        entity_id: binary_sensor.master_motion
         state: 'off'
       - condition: state
         entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
@@ -1586,10 +1588,8 @@
           seconds: 125
       # Room 4 Motion
       - platform: state
-        entity_id: binary_sensor.room4_194
+        entity_id: binary_sensor.bed4_esp_motion
         to: 'on'
-        for:
-          seconds: 125
   condition:
     condition: state
     entity_id: input_boolean.night_mood
@@ -1606,9 +1606,9 @@
         title: '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
 
-# Turn on Bed Heater at 10pm if the master bedroom temperature is below 22C
+# Turn on Bed Heater at 10pm if the outside temperature is below 18c
 - id: turnonbedheaterelow22c
-  alias: Turn on Bed Heater at 10pm if the master bedroom temperature is below 22C
+  alias: Turn on Bed Heater at 10pm if the outside temperature is below 18c
   initial_state: True
   trigger:
     - platform: time
@@ -1623,8 +1623,8 @@
         entity_id: switch.bedheater_switch
         state: 'off'
       - condition: numeric_state
-        entity_id: sensor.m_bed_room_t_34
-        below: 22
+        entity_id: sensor.dark_sky_temperature
+        below: 18
       - condition: state
         entity_id: input_boolean.bedheater_auto
         state: 'on'
@@ -1716,44 +1716,6 @@
     - service: switch.turn_off
       entity_id: switch.nightmood
 
-
-# Alert on Z-Wave Batteries below 30% at 9:00pm
-- id: zwavebatterybelow30
-  alias: Alert on Z-Wave Batteries below 30% at 9:00pm
-  initial_state: True
-  trigger:
-    - platform: time
-      at: '21:00:00'
-  condition:
-    condition: or
-    conditions: 
-      - condition: numeric_state
-        entity_id: sensor.master_motion_battery
-        below: 30
-      - condition: numeric_state
-        entity_id: sensor.office_motion_battery
-        below: 30
-      - condition: numeric_state
-        entity_id: sensor.pantry_door_battery
-        below: 30
-      - condition: numeric_state
-        entity_id: sensor.room4_motion_battery
-        below: 30
-      - condition: numeric_state
-        entity_id: sensor.kitchen_motion_battery
-        below: 30
-      - condition: numeric_state
-        entity_id: sensor.garage_motion_1_battery
-        below: 30
-  action:
-    - service: notify.pushbullet
-      data_template:
-        title: 'An Z-Wave Battery status is below 30% -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'An Z-Wave Battery status is below 30% -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-    - service: notify.sendgrid
-      data_template:
-        title: ' An Z-Wave Battery status is below 30%  -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  ' An Z-Wave Battery status is below 30%  -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
 
 
 # Turn on the input boolean for Good Morning Greet

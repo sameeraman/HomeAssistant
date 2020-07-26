@@ -12,51 +12,6 @@ light.master_light:
   friendly_name: Master Light
 switch.air_conditioner:
   friendly_name: Air Conditioner
-binary_sensor.kitchen_sensorm_13:
-  friendly_name: Kitchen Motion
-  icon: mdi:run-fast
-sensor.kitchen_sensort_14:
-  friendly_name: Kitchen Temperature
-  icon: mdi:oil-temperature
-sensor.kitchen_sensorl_15:
-  friendly_name: Kitchen Light
-  icon: mdi:theme-light-dark
-sensor.kitchen_sensorh_16:
-  friendly_name: Kitchen Humidity
-  icon: mdi:water-percent
-sensor.kitchen_sensoruv_17:
-  friendly_name: Kitchen UV
-  icon: mdi:white-balance-sunny
-binary_sensor.officeroomsensorm_109:
-  friendly_name: Office Motion
-  icon: mdi:run-fast
-sensor.officeroomsensort_110:
-  friendly_name: Office Temperature
-  icon: mdi:oil-temperature
-sensor.officeroomsensorl_111:
-  friendly_name: Office Light
-  icon: mdi:theme-light-dark
-sensor.officeroomsensorh_112:
-  friendly_name: Office Humidity
-  icon: mdi:water-percent
-sensor.officeroomsensoruv_113:
-  friendly_name: Office UV
-  icon: mdi:white-balance-sunny
-binary_sensor.m_bed_room_m_33:
-  friendly_name: Master Bedroom Motion
-  icon: mdi:run-fast
-sensor.m_bed_room_t_34:
-  friendly_name: Master Bedroom Temperature
-  icon: mdi:oil-temperature
-sensor.m_bed_room_l_35:
-  friendly_name: Master Bedroom Light
-  icon: mdi:theme-light-dark
-sensor.m_bed_room_h_36:
-  friendly_name: Master Bedroom Humidity
-  icon: mdi:water-percent
-sensor.m_bed_room_uv_37:
-  friendly_name: Master Bedroom UV
-  icon: mdi:white-balance-sunny
 switch.myair_zone1:
   icon: mdi:arrow-decision-auto
 switch.myair_zone2:
