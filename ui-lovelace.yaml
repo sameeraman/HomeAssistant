@@ -1692,7 +1692,7 @@ views:
             - type: "custom:button-card"
               name: KITCHEN
               color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
               entity: light.kitchen_dimmer
               show_entity_picture: true
               tap_action:
@@ -1707,7 +1707,7 @@ views:
             - type: "custom:button-card"
               name: LIVING
               color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
               entity: light.living_dimmer
               show_entity_picture: true
               tap_action:
@@ -1722,7 +1722,7 @@ views:
             - type: "custom:button-card"
               name:  ENT HALLWAY
               color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
               entity: light.front_entrance
               show_entity_picture: true
               tap_action:
@@ -1737,7 +1737,7 @@ views:
             - type: "custom:button-card"
               name: DINING
               color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
               entity: light.dining_dimmer
               show_entity_picture: true
               tap_action:
@@ -1792,7 +1792,7 @@ views:
             - type: "custom:button-card"
               name:  HALLWAY
               color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
               entity: light.hallway_light
               show_entity_picture: true
               tap_action:
@@ -1807,7 +1807,7 @@ views:
             - type: "custom:button-card"
               name: OFFICE
               color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
               entity: light.office_dimmer
               show_entity_picture: true
               tap_action:
