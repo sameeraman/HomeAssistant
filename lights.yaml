@@ -73,7 +73,8 @@
 
   - platform: mqtt
     schema: template
-    name: Office Dimmer 
+    name: Office Dimmer
+    friendly_name: "Office Light"
     state_topic: "shellies/officedimmer/light/0/status"
     state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
     command_topic: "shellies/officedimmer/light/0/set"
@@ -84,7 +85,7 @@
 
   - platform: mqtt
     schema: template
-    name: Alfresco Dimmer 
+    name: Alfresco Dimmer
     state_topic: "shellies/alfrescodimmer/light/0/status"
     state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
     command_topic: "shellies/alfrescodimmer/light/0/set"
