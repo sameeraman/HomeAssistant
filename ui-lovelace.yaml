@@ -1832,7 +1832,7 @@ views:
               font_size: 75
             - type: custom:mini-graph-card
               entities:
-                - entity: sensor.living_espmulti_t
+                - entity: sensor.living_espmulti_h
                   name: LIVING HUMIDITY
               icon: mdi:water-percent
               line_color: '#307DFD'

@@ -21,8 +21,6 @@ homeassistant:
   auth_mfa_modules:
     - type: totp
 
-# Show links to resources in log and frontend
-introduction:
 
 # Enables the frontend
 frontend:
