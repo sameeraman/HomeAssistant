@@ -79,9 +79,9 @@ views:
                   action: toggle
           - type: horizontal-stack
             cards:
-              - entity: light.master_light
+              - entity: light.master_dimmer
                 type: light
-              - entity: light.bath_light
+              - entity: light.master_bath_dimmer
                 type: light
       - type: vertical-stack
         cards:
@@ -252,7 +252,7 @@ views:
                 name: Humidity
           - type: horizontal-stack
             cards:
-              - entity: light.garage_fibaro_dimmer
+              - entity: light.garage_dimmer
                 icon: 'mdi:lightbulb'
                 name: Garage Light
                 tap_action:
@@ -526,7 +526,7 @@ views:
               - entity: light.alfresco_dimmer
                 tap_action:
                   action: toggle 
-              - entity: light.bath_light
+              - entity: light.master_bath_dimmer
                 tap_action:
                   action: toggle
               - entity: light.bath_strip
@@ -538,7 +538,7 @@ views:
               - entity: light.front_outdoor_light
                 tap_action:
                   action: toggle
-              - entity: light.garage_fibaro_dimmer
+              - entity: light.garage_dimmer
                 tap_action:
                   action: toggle
               - entity: light.living_hue_strip
@@ -559,7 +559,7 @@ views:
               - entity: light.madhushi_wardrobe_light
                 tap_action:
                   action: toggle
-              - entity: light.master_light
+              - entity: light.master_dimmer
                 tap_action: 
                   action: toggle
               - entity: light.office_dimmer
@@ -1164,7 +1164,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.garage_fibaro_dimmer
+            entity: light.garage_dimmer
             style:
               top: 68%
               left: 82%
@@ -1363,7 +1363,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.master_light
+            entity: light.master_dimmer
             style:
               top: 53%
               left: 71%
@@ -1373,7 +1373,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.bath_light
+            entity: light.master_bath_dimmer
             style:
               top: 28%
               left: 70%

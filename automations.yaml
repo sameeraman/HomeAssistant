@@ -436,7 +436,7 @@
         state: 'on'
   action:
     - service: light.turn_on
-      entity_id:  light.bath_light
+      entity_id:  light.master_bath_dimmer
       data_template:
         brightness_pct: >
           {% if is_state('binary_sensor.bed_sensor', 'on')  %}
@@ -477,7 +477,7 @@
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id:  light.bath_light
+      entity_id:  light.master_bath_dimmer
 
 # Turn on the Pantry Light when the door open
 - id: pantrylighton
@@ -540,7 +540,7 @@
           state: 'off'
   action:
     - service: light.turn_on
-      entity_id: light.garage_fibaro_dimmer
+      entity_id: light.garage_dimmer
 
 # Turn on the garage light when the garage door close
 - id: garagelightongaragedoorclose
@@ -559,14 +559,14 @@
         entity_id: group.garage_motion
         state: 'on'
       - condition: state
-        entity_id: light.garage_fibaro_dimmer
+        entity_id: light.garage_dimmer
         state: 'off'
       - condition: state
         entity_id: input_boolean.garage_light_on_off_door_auto
         state: 'on'
   action:
     - service: light.turn_on
-      entity_id: light.garage_fibaro_dimmer
+      entity_id: light.garage_dimmer
 
 
 # Turn off the garage light then there is no motion
@@ -580,7 +580,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.garage_fibaro_dimmer
+        entity_id: light.garage_dimmer
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
@@ -590,7 +590,7 @@
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.garage_fibaro_dimmer
+      entity_id: light.garage_dimmer
 
 # Turn off the garage light when the garage door open during day time
 - id: garagelightoffwithgaragedoor
@@ -605,7 +605,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.garage_fibaro_dimmer
+        entity_id: light.garage_dimmer
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
@@ -618,20 +618,20 @@
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.garage_fibaro_dimmer
+      entity_id: light.garage_dimmer
 
 # Turn off the garage light if it was one for more than 60 minutes
 - id: garagelightoff60min
   alias: Turn off the garage light if it was one for more than 60 minutes
   trigger: 
     - platform: state
-      entity_id: light.garage_fibaro_dimmer
+      entity_id: light.garage_dimmer
       to: 'on'
       for: 
         minutes: 60
   action:
     - service: light.turn_off
-      entity_id:  light.garage_fibaro_dimmer
+      entity_id:  light.garage_dimmer
 
 
 # Turn on the Bath strip when there is motion in Master bedroom
@@ -1222,14 +1222,14 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.master_light
+        entity_id: light.master_dimmer
         state: 'on'
       - condition: state
         entity_id: input_boolean.master_light_off_auto
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id:  light.master_light
+      entity_id:  light.master_dimmer
 
 # Turn on the Kitchen light when there is motion based on light and sunset
 - id: kitchenlightonmotion
@@ -1972,7 +1972,7 @@
       - condition: time
         after: '08:00:00'
       - condition: state
-        entity_id: light.master_light
+        entity_id: light.master_dimmer
         state: 'off'
       - condition: numeric_state
         entity_id: sensor.illumination_158d0002b7f1e8
@@ -2017,7 +2017,7 @@
   alias: Turn off Master Pendant Light when Master light is turned on
   trigger: 
     - platform: state
-      entity_id: light.master_light
+      entity_id: light.master_dimmer
       to: 'on'
   condition:
     condition: and
@@ -2067,7 +2067,7 @@
   alias: Turn On Master Pendant Light when Master light is turned off 
   trigger: 
     - platform: state
-      entity_id: light.master_light
+      entity_id: light.master_dimmer
       to: 'off'
   condition:
     condition: and
@@ -2127,7 +2127,7 @@
       click_type: double
   action:
     service: light.toggle
-    entity_id: light.master_light
+    entity_id: light.master_dimmer
 
 # Toggle Master Pendant lights when Xiaomi Sameera Bedside push button is single pressed
 - id: togglesameerabedsidependentlightspushbutton
@@ -2153,7 +2153,7 @@
       click_type: double
   action:
     service: light.toggle
-    entity_id: light.master_light
+    entity_id: light.master_dimmer
 
 # Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
 - id: masteracoff5min
@@ -2252,7 +2252,7 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.master_light
+        entity_id: light.master_dimmer
         state: 'on'
       - condition: state
         entity_id: input_boolean.master_light_brightness_auto
@@ -2260,7 +2260,7 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.master_light
+        entity_id: light.master_dimmer
         brightness_pct: 30
 
 # Set the Master light brightness to 100% when someone get up from the bed
@@ -2277,7 +2277,7 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.master_light
+        entity_id: light.master_dimmer
         state: 'on'
       - condition: state
         entity_id: input_boolean.master_light_brightness_auto
@@ -2285,7 +2285,7 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.master_light
+        entity_id: light.master_dimmer
         brightness_pct: 100
 
 # Set the Master light brightness to 100% when light is turned on no one is on the bed
@@ -2293,7 +2293,7 @@
   alias: Set the Master light brightness to 100% when someone get up from the bed
   trigger: 
     - platform: state
-      entity_id: light.master_light
+      entity_id: light.master_dimmer
       to: 'on'
       for:
         seconds: 2
@@ -2304,7 +2304,7 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.master_light
+        entity_id: light.master_dimmer
         state: 'on'
       - condition: state
         entity_id: binary_sensor.bed_sensor
@@ -2313,14 +2313,14 @@
         entity_id: input_boolean.master_light_brightness_auto
         state: 'on'
       - condition: numeric_state
-        entity_id: light.master_light
-        value_template: '{% if states.light.master_light.state == "on"  %}{{ states.light.master_light.attributes.brightness }}{% else %}0{% endif %}'
+        entity_id: light.master_dimmer
+        value_template: '{% if states.light.master_dimmer.state == "on"  %}{{ states.light.master_dimmer.attributes.brightness }}{% else %}0{% endif %}'
         below: 76
         above: 74
   action:
     - service: light.turn_on
       data:
-        entity_id: light.master_light
+        entity_id: light.master_dimmer
         brightness_pct: 100
 
 # Turn on the Sameera Wardrobe light when there is motion

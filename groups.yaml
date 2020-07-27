@@ -17,9 +17,9 @@ mbedroom:
   name: Master Bed Room
   entities:
     - media_player.bedroom
-    - light.master_light
+    - light.master_dimmer
     - switch.bedheater_switch
-    - light.bath_light
+    - light.master_bath_dimmer
     - group.master_sensors
 office:
   name: Office Room

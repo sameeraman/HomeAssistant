@@ -128,7 +128,7 @@ google_assistant:
     light.alfresco_dimmer:
       expose: true
       room: Alfresco
-    light.bath_light:
+    light.master_bath_dimmer:
       expose: true
       room: Other
     light.bath_strip:
@@ -149,10 +149,10 @@ google_assistant:
     light.living_mood_lights:
       expose: true
       room: Other
-    light.master_light:
+    light.master_dimmer:
       expose: true
       room: Master Bedroom
-    light.garage_fibaro_dimmer:
+    light.garage_dimmer:
       expose: true
       room: Garage
     switch.garage_door:
