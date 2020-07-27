@@ -1059,7 +1059,7 @@
   action:
     - service: light.turn_on
       data:
-        entity_id: light.alfresco_fibaro_dimmer
+        entity_id: light.alfresco_dimmer
         brightness_pct: 50
 
 # Turn off the Alfresco Light when there is no motion 
@@ -1080,7 +1080,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.alfresco_fibaro_dimmer
+        entity_id: light.alfresco_dimmer
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
@@ -1098,7 +1098,7 @@
         state: 'off'
   action:
     - service: light.turn_off
-      entity_id: light.alfresco_fibaro_dimmer
+      entity_id: light.alfresco_dimmer
 
 # Alert if the Alfresco Sonos was playing for more than 2 hours
 - id: alfrescosonos2hr
@@ -1248,14 +1248,14 @@
         entity_id: input_boolean.kitchen_light_onoff_auto
         state: 'on'
       - condition: state
-        entity_id: light.kitchen_light
+        entity_id: light.kitchen_dimmer
         state: 'off'
       - condition: numeric_state
         entity_id: sensor.illumination_158d0002b5eecd
         below: 100
   action:
     - service: light.turn_on
-      entity_id:  light.kitchen_light
+      entity_id:  light.kitchen_dimmer
     - service: input_boolean.turn_off
       entity_id: input_boolean.kitchen_light_onoff_auto
 
@@ -1280,7 +1280,7 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.kitchen_light
+        entity_id: light.kitchen_dimmer
         state: 'on'
       - condition: state
         entity_id: binary_sensor.living_person_sensor
@@ -1292,7 +1292,7 @@
         state: 'off'
   action:
     - service: light.turn_off
-      entity_id:  light.kitchen_light
+      entity_id:  light.kitchen_dimmer
     - service: input_boolean.turn_on
       entity_id: input_boolean.kitchen_light_onoff_auto
 
@@ -1669,7 +1669,7 @@
         entity_id: group.living_kitchen_motion
         state: 'off'
       - condition: state
-        entity_id: light.kitchen_light
+        entity_id: light.kitchen_dimmer
         state: 'off'
       - condition: state
         entity_id: light.dining_table_lamp

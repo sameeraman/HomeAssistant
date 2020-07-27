@@ -203,9 +203,9 @@ leave_home_workflow:
       data:
         activity: "PowerOff"
     - service: light.turn_off
-      entity_id: light.living_light
+      entity_id: light.living_dimmer
     - service: light.turn_off
-      entity_id: light.kitchen_light
+      entity_id: light.kitchen_dimmer
     - service: media_player.media_pause
       data_template:
         entity_id: media_player.living

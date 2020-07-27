@@ -131,9 +131,9 @@ views:
                 name: Humidity
           - type: horizontal-stack
             cards:
-              - entity: light.kitchen_light
+              - entity: light.kitchen_dimmer
                 type: light
-              - entity: light.living_light
+              - entity: light.living_dimmer
                 type: light
           - type: glance
             show_state: false
@@ -231,7 +231,7 @@ views:
               - type: light
                 entity: light.office_dimmer
               - type: light
-                entity: light.alfresco_fibaro_dimmer
+                entity: light.alfresco_dimmer
           - type: glance
             title: Garage
             entities:
@@ -523,7 +523,7 @@ views:
               - entity: cover.77416488d8f15ba1b976
           - type: entity-filter
             entities:
-              - entity: light.alfresco_fibaro_dimmer
+              - entity: light.alfresco_dimmer
                 tap_action:
                   action: toggle 
               - entity: light.bath_light
@@ -547,13 +547,13 @@ views:
               - entity: light.kitchen_strip
                 tap_action: 
                   action: toggle
-              - entity: light.kitchen_light
+              - entity: light.kitchen_dimmer
                 tap_action:
                   action: toggle
               - entity:  light.living_floor_lamp
                 tap_action:
                   action: toggle
-              - entity: light.living_light
+              - entity: light.living_dimmer
                 tap_action: 
                   action: toggle
               - entity: light.madhushi_wardrobe_light
@@ -577,7 +577,7 @@ views:
               - entity: light.laundry_light
                 tap_action: 
                   action: toggle
-              - entity: light.dining_light
+              - entity: light.dining_dimmer
                 tap_action: 
                   action: toggle
               - entity: light.front_entrance
@@ -798,7 +798,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.alfresco_fibaro_dimmer
+            entity: light.alfresco_dimmer
             style:
               top: 11%
               left: 16%
@@ -854,7 +854,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.kitchen_light
+            entity: light.kitchen_dimmer
             style:
               top: 34%
               left: 50.5%
@@ -906,7 +906,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.living_light
+            entity: light.living_dimmer
             style:
               top: 35%
               left: 19%
@@ -1058,7 +1058,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.dining_light
+            entity: light.dining_dimmer
             style:
               top: 11%
               left: 40.5%
@@ -1693,7 +1693,7 @@ views:
               name: KITCHEN
               color_type: card
               entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: light.kitchen_light
+              entity: light.kitchen_dimmer
               show_entity_picture: true
               tap_action:
                     action: toggle
@@ -1708,7 +1708,7 @@ views:
               name: LIVING
               color_type: card
               entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: light.living_light
+              entity: light.living_dimmer
               show_entity_picture: true
               tap_action:
                     action: toggle
@@ -1738,7 +1738,7 @@ views:
               name: DINING
               color_type: card
               entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: light.dining_light
+              entity: light.dining_dimmer
               show_entity_picture: true
               tap_action:
                     action: toggle

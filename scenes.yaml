@@ -6,8 +6,8 @@
     light.dining_table_lamp :
       state: on
       rgb_color: ['255','207','120']
-    light.kitchen_light : off
-    light.living_light: off
+    light.kitchen_dimmer : off
+    light.living_dimmer: off
     media_player.living:
       state: playing
       media_content_type: playlist
@@ -32,8 +32,8 @@
     light.dining_table_lamp :
       state: on
       rgb_color: ['255','0','0']
-    light.kitchen_light : off
-    light.living_light: off
+    light.kitchen_dimmer : off
+    light.living_dimmer: off
     media_player.living:
       state: playing
       media_content_type: playlist
@@ -54,8 +54,8 @@
   entities:
     light.living_floor_lamp: off
     light.dining_table_lamp : off
-    light.kitchen_light : on
-    light.living_light: on
+    light.kitchen_dimmer : on
+    light.living_dimmer: on
     media_player.living:
       state: paused
     light.living_hue_strip : off
@@ -69,8 +69,8 @@
     light.dining_table_lamp :
       state: on
       rgb_color: ['255','207','120']
-    light.kitchen_light : on
-    light.living_light: off
+    light.kitchen_dimmer : on
+    light.living_dimmer: off
     media_player.living:
       state: paused
     remote.living :
@@ -89,8 +89,8 @@
   entities:
     light.living_floor_lamp: off
     light.dining_table_lamp : off
-    light.kitchen_light : off
-    light.living_light: off
+    light.kitchen_dimmer : off
+    light.living_dimmer: off
     media_player.living:
       state: paused
     remote.living :
@@ -103,8 +103,8 @@
   entities:
     light.living_floor_lamp: off
     light.dining_table_lamp : off
-    light.kitchen_light : off
-    light.living_light: on
+    light.kitchen_dimmer : off
+    light.living_dimmer: on
     light.office_dimmer: off
     media_player.living:
       state: paused

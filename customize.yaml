@@ -1,9 +1,7 @@
 light.office_dimmer:
   friendly_name: Office Light
-light.living_light:
+light.living_dimmer:
   friendly_name: Living Light
-light.kitchen_light_135:
-  friendly_name: Kitchen Light
 light.front_outdoor_light:
   friendly_name: Front Outdoor Lights
 switch.bedheater_switch:

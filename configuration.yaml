@@ -125,7 +125,7 @@ google_assistant:
   report_state: true
   expose_by_default: false
   entity_config:
-    light.alfresco_fibaro_dimmer:
+    light.alfresco_dimmer:
       expose: true
       room: Alfresco
     light.bath_light:
@@ -140,10 +140,10 @@ google_assistant:
     light.front_outdoor_light:
       expose: true
       room: Other
-    light.kitchen_light:
+    light.kitchen_dimmer:
       expose: true
       room: Kitchen
-    light.living_light:
+    light.living_dimmer:
       expose: true
       room: Living
     light.living_mood_lights:
@@ -190,7 +190,7 @@ google_assistant:
     switch.plug_158d000278ff33:
       expose: true
       room: Other
-    light.dining_light:
+    light.dining_dimmer:
       expose: true
       room: Dining Room
     cover.48100000c44f33b796fc:
