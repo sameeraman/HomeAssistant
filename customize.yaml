@@ -2,6 +2,10 @@ light.office_dimmer:
   friendly_name: Office Light
 light.living_dimmer:
   friendly_name: Living Light
+light.alfresco_dimmer:
+  friendly_name: Alfresco Light
+light.kitchen_dimmer:
+  friendly_name: Kitchen Light
 light.front_outdoor_light:
   friendly_name: Front Outdoor Lights
 switch.bedheater_switch:
