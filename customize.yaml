@@ -6,11 +6,19 @@ light.alfresco_dimmer:
   friendly_name: Alfresco Light
 light.kitchen_dimmer:
   friendly_name: Kitchen Light
+light.dining_dimmer:
+  friendly_name: Dining Light
+light.master_bath_dimmer:
+  friendly_name: Bath Light
+light.garage_dimmer:
+  friendly_name: Garage Light
+light.front_entrance_dimmer:
+  friendly_name: Front Entrance Light
 light.front_outdoor_light:
   friendly_name: Front Outdoor Lights
 switch.bedheater_switch:
   friendly_name: Bed Heater
-light.master_light:
+light.master_dimmer:
   friendly_name: Master Light
 switch.air_conditioner:
   friendly_name: Air Conditioner
