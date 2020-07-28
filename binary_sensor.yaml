@@ -89,6 +89,7 @@
     payload_off: "OFF"
     device_class: motion 
 
+# Dining second switch binary sensor 
   - platform: mqtt
     name: "Dining Dimmer Switch 2"
     state_topic: "shellies/diningdimmer/input/1"

@@ -2601,15 +2601,7 @@
     - service : switch.turn_off
       entity_id: switch.housealarm
 
-# Toggle Dining Light Webhook
-- id: toggledininglightwebhook
-  alias: Toggle Dining Light Webhook
-  trigger:
-    platform: webhook
-    webhook_id: !secret togglediningwebhookid
-  action:
-    - service : light.toggle
-      entity_id: light.dining_dimmer
+
 
 
 # Turn on the Front Patio light when there is motion in the patio
@@ -2778,3 +2770,13 @@
       data_template:
         title: 'SMOKE ALARM IN Office Triggered {{now().strftime("%Y%m%d-%H%M%S")}}'
         message:  'SMOKE ALARM IN Office Triggered !'
+
+# Toggle Dining Light with second Switch
+- id: toggledininglightsecondswitch
+  alias: Toggle Dining Light with second Switch
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.dining_dimmer_switch_2
+  action:
+    - service : light.toggle
+      entity_id: light.dining_dimmer
