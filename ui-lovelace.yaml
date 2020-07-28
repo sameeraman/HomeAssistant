@@ -166,7 +166,7 @@ views:
                 name: Front Patio
                 tap_action:
                   action: toggle
-              - entity: light.front_entrance
+              - entity: light.front_entrance_dimmer
                 icon: 'mdi:lightbulb-on-outline'
                 name: Front Entrance
                 tap_action:
@@ -580,7 +580,7 @@ views:
               - entity: light.dining_dimmer
                 tap_action: 
                   action: toggle
-              - entity: light.front_entrance
+              - entity: light.front_entrance_dimmer
                 tap_action: 
                   action: toggle
               - entity: light.front_patio_light
@@ -1316,7 +1316,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.front_entrance
+            entity: light.front_entrance_dimmer
             style:
               top: 61%
               left: 53.4%
@@ -1326,7 +1326,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.front_entrance
+            entity: light.front_entrance_dimmer
             style:
               top: 53%
               left: 39%
@@ -1723,7 +1723,7 @@ views:
               name:  ENT HALLWAY
               color_type: card
               entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: light.front_entrance
+              entity: light.front_entrance_dimmer
               show_entity_picture: true
               tap_action:
                     action: toggle

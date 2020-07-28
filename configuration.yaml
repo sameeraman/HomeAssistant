@@ -243,7 +243,7 @@ google_assistant:
     light.pantry_light:
       expose: true
       room: Other
-    light.front_entrance:
+    light.front_entrance_dimmer:
       expose: true
       room: Other
     light.front_patio_light:

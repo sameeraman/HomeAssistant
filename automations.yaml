@@ -2683,7 +2683,7 @@
         state: 'on'
   action:
     - service: light.turn_on
-      entity_id: light.front_entrance
+      entity_id: light.front_entrance_dimmer
 
 # Turn off the front entrance light after 1 minute the front door close at night
 - id: frontentrancelightoffwithfrontdoorclose1min
@@ -2701,18 +2701,18 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.front_entrance
+        entity_id: light.front_entrance_dimmer
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.front_entrance
+      entity_id: light.front_entrance_dimmer
 
 # Turn off the front entrance light after 60 minutes
 - id: frontentrancelightoffafter60mins
   alias: Turn off the front entrance light after 60 minutes
   trigger: 
     - platform: state
-      entity_id: light.front_entrance
+      entity_id: light.front_entrance_dimmer
       to: 'on'
       for:
         minutes: 60
@@ -2726,11 +2726,11 @@
         entity_id: input_boolean.hallway_light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.front_entrance
+        entity_id: light.front_entrance_dimmer
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.front_entrance
+      entity_id: light.front_entrance_dimmer
 
 
 # Close the Living blinds after sunset 
