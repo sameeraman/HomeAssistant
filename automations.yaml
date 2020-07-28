@@ -2601,6 +2601,16 @@
     - service : switch.turn_off
       entity_id: switch.housealarm
 
+# Toggle Dining Light Webhook
+- id: toggledininglightwebhook
+  alias: Toggle Dining Light Webhook
+  trigger:
+    platform: webhook
+    webhook_id: !secret togglediningwebhookid
+  action:
+    - service : light.toggle
+      entity_id: light.dining_dimmer
+
 
 # Turn on the Front Patio light when there is motion in the patio
 - id: frontpatiolightonwithmotion
