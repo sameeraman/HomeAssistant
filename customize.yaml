@@ -12,6 +12,12 @@ light.master_bath_dimmer:
   friendly_name: Bath Light
 light.garage_dimmer:
   friendly_name: Garage Light
+light.bed_4_dimmer:
+  friendly_name: Bed 4 Light
+light.bed_3_dimmer:
+  friendly_name: Bed 3 Light
+light.bed_2_dimmer:
+  friendly_name: Bed 2 Light
 light.front_entrance_dimmer:
   friendly_name: Front Entrance Light
 light.front_outdoor_light:
