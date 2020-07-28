@@ -2780,3 +2780,13 @@
   action:
     - service : light.toggle
       entity_id: light.dining_dimmer
+
+# Toggle Front Entrance Light with second Switch
+- id: togglefrontentrancelightsecondswitch
+  alias: Toggle Front Entrance Light with second Switch
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.front_entrance_dimmer_switch_2
+  action:
+    - service : light.toggle
+      entity_id: light.front_entrance_dimmer
