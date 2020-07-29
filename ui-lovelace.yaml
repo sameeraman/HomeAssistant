@@ -2085,6 +2085,9 @@ views:
             - entity: input_boolean.master_bath_on_off_auto
               tap_action:
                 action: toggle
+            - entity: input_boolean.master_wc_on_off_auto
+              tap_action:
+                action: toggle
             - entity: input_boolean.master_aircon_vent_on_off_auto
               tap_action:
                 action: toggle
