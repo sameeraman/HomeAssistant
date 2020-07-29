@@ -171,7 +171,7 @@ views:
                 name: Front Entrance
                 tap_action:
                   action: toggle
-              - entity: light.bedroom_2_light
+              - entity: light.bed_2_dimmer
                 icon: 'mdi:lightbulb-on-outline'
                 name: Bed 2
                 tap_action:
@@ -595,7 +595,7 @@ views:
               - entity: light.back_outdoor_light
                 tap_action: 
                   action: toggle
-              - entity: light.bedroom_2_light
+              - entity: light.bed_2_dimmer
                 tap_action: 
                   action: toggle
             state_filter:
@@ -1386,6 +1386,16 @@ views:
               top: 28%
               left: 76%
               "--paper-item-icon-color": '#D8D6D9'
+          # Master WC Light
+          - type: state-icon
+            icon: 'mdi:lightbulb-outline'
+            tap_action:
+              action: toggle
+            entity: light.master_wc_dimmer
+            style:
+              top: 29%
+              left: 62.5%
+              "--paper-item-icon-color": '#D8D6D9'
           # Master Motion
           - type: state-icon
             icon: 'mdi:run-fast'
@@ -1467,7 +1477,7 @@ views:
 
 # Bedroom 4
 
-          # Room4 Motion
+          # Bed 4 Motion
           - type: state-icon
             icon: 'mdi:run-fast'
             entity: binary_sensor.bed4_esp_motion
@@ -1476,19 +1486,30 @@ views:
               left: 7%
               "--paper-item-icon-color": '#D8D6D9'
 
-          # Room4 Temperature
+          # Bed 4 Light
+          - type: state-icon
+            icon: 'mdi:lightbulb-outline'
+            tap_action:
+              action: toggle
+            entity: light.bed_4_dimmer
+            style:
+              top: 88%
+              left: 12%
+              "--paper-item-icon-color": '#D8D6D9'
+
+          # Bed 4 Temperature
           - type: state-icon
             entity: sensor.bed4_espmulti_t
             icon: 'mdi:thermometer'
             style: 
-                top: 88%
+                top: 93%
                 left: 7.5%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.bed4_espmulti_t
             icon: 'mdi:thermometer'
             style: 
-                top: 88%
+                top: 93%
                 left: 14%
 
           # Bed 4 Air Con Vent
@@ -1506,6 +1527,17 @@ views:
               "--paper-item-icon-color": '#D8D6D9'
 
 # Bedroom 3
+
+          # Bed 3 Light
+          - type: state-icon
+            icon: 'mdi:lightbulb-outline'
+            tap_action:
+              action: toggle
+            entity: light.bed_3_dimmer
+            style:
+              top: 90%
+              left: 27%
+              "--paper-item-icon-color": '#D8D6D9'
 
           # Bed 3 Air Con Vent
           - type: state-icon
@@ -1543,7 +1575,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.bedroom_2_light
+            entity: light.bed_2_dimmer
             style:
               top: 67%
               left: 38%

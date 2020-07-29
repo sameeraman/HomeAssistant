@@ -249,7 +249,16 @@ google_assistant:
     light.front_patio_light:
       expose: true
       room: Other
-    light.bedroom_2_light:
+    light.bed_2_dimmer:
+      expose: true
+      room: Other
+    light.bed_3_dimmer:
+      expose: true
+      room: Other
+    light.bed_4_dimmer:
+      expose: true
+      room: Other
+    light.master_wc_dimmer:
       expose: true
       room: Other
     light.back_outdoor_light:
