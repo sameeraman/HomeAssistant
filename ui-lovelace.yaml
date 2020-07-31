@@ -1705,7 +1705,7 @@ views:
             - type: "custom:button-card"
               name: A/C
               color_type: card
-              entity_picture: /local/custom-lovelace/icons/ac.svg
+              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/ac-on.svg?v=3"; else return "/local/custom-lovelace/icons/ac-on.svg?v=3" ]]]'
               entity: switch.myair_power
               show_entity_picture: true
               tap_action:
@@ -1805,7 +1805,7 @@ views:
             - type: "custom:button-card"
               name: MUSIC
               color_type: card
-              entity_picture: /local/custom-lovelace/icons/music.svg?v=3
+              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/music-on.svg?v=3"; else return "/local/custom-lovelace/icons/music.svg?v=4" ]]]'
               entity: binary_sensor.living_music_sensor
               show_entity_picture: true
               tap_action:

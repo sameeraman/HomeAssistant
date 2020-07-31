@@ -2807,6 +2807,9 @@
       - condition: state
         entity_id: input_boolean.master_wc_on_off_auto
         state: 'on'
+      - condition: state
+        entity_id: light.master_wc_dimmer
+        state: 'off'
   action:
     - service: light.turn_on
       entity_id:  light.master_wc_dimmer
@@ -2828,6 +2831,34 @@
         state: 'on'
       - condition: state
         entity_id: input_boolean.master_wc_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.master_wc_dimmer
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id:  light.master_wc_dimmer
+
+# Turn off the Master WC Light after 20 mins
+- id: masterwcautooff20mins
+  alias: Turn off the Master WC Light after 20 mins
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.master_wc_esp_motion
+      to: 'off'
+      for:
+        minutes: 20
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_wc_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.master_wc_dimmer
         state: 'on'
   action:
     - service: light.turn_off
