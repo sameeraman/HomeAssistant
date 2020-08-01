@@ -24,6 +24,8 @@ resources:
     type: module
   - url: /local/custom-lovelace/button-card/button-card.js?v=0.1
     type: module
+  - url: /local/layout-card.js
+    type: module
 views:
   - title: Home
     path: home
@@ -728,10 +730,15 @@ views:
 # Floor Plan 
   - title: Floor Plan
     path: floorplan
+    panel: true
     cards:
-      - type: picture-elements
-        image: /local/floorplan2-dark.svg?v=2
-        elements:
+      - type: custom:layout-card
+        layout: vertical
+        column_width: [500, 500, 250]
+        cards:
+        - type: picture-elements
+          image: /local/floorplan2-dark.svg?v=2
+          elements:
 
 # Office Room
           - type: state-icon
@@ -1594,20 +1601,15 @@ views:
               left: 24%
               "--paper-item-icon-color": '#D8D6D9'
 
-# TV Volume
-      - type: vertical-stack
-        cards:
-            - type: horizontal-stack
-              cards: 
-              - type: custom:mini-media-player
-                entity: media_player.yamaha_receiver
-                icon: 'mdi:speaker-wireless'
-                name: TV Volume
-                hide:
-                  power: true
-                  controls : true
-                  source: true
-
+# # TV Volume
+        - type: custom:mini-media-player
+          entity: media_player.yamaha_receiver
+          icon: 'mdi:speaker-wireless'
+          name: TV Volume
+          hide:
+            power: true
+            controls : true
+            source: true
 
 # # Floorplan Tab Navigation Entities
 #       - type: vertical-stack
@@ -1641,238 +1643,306 @@ views:
 
 
 # Floorplan tab Weather card    
+        - break
+        - type: custom:layout-card
+          layout: vertical
+          cards:
+            - type: custom:weather-card
+              entity: weather.dark_sky
+              details: false
+              current: true
+              forecast: true
+              hide_precipitation: true
+            - type: horizontal-stack
+              cards: 
+              - type: "custom:button-card"
+                name: MOOD LIGHTS
+                color_type: card
+                entity_picture: /local/custom-lovelace/icons/lamp.svg
+                entity: light.living_mood_lights
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
-      - type: vertical-stack
-        cards:
-          - type: custom:weather-card
-            entity: weather.dark_sky
-            details: false
-            current: true
-            forecast: true
-            hide_precipitation: true
-          - type: horizontal-stack
-            cards: 
-            - type: "custom:button-card"
-              name: MOOD LIGHTS
-              color_type: card
-              entity_picture: /local/custom-lovelace/icons/lamp.svg
-              entity: light.living_mood_lights
-              show_entity_picture: true
-              tap_action:
-                    action: toggle
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
+              - type: "custom:button-card"
+                name: OPEN BLINDS
+                color_type: card
+                entity_picture: /local/custom-lovelace/icons/blinds-open.svg
+                entity: script.open_all_blinds
+                show_entity_picture: true
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.open_all_blinds
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
+              - type: "custom:button-card"
+                color_type: card
+                name: CLOSE BLINDS
+                entity_picture: /local/custom-lovelace/icons/blinds-close.svg
+                entity: script.close_all_blinds
+                show_entity_picture: true
+                tap_action:
+                  action: call-service
+                  service: script.turn_on
+                  service_data:
+                    entity_id: script.close_all_blinds
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
-            - type: "custom:button-card"
-              name: OPEN BLINDS
-              color_type: card
-              entity_picture: /local/custom-lovelace/icons/blinds-open.svg
-              entity: script.open_all_blinds
-              show_entity_picture: true
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.open_all_blinds
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
-            - type: "custom:button-card"
-              color_type: card
-              name: CLOSE BLINDS
-              entity_picture: /local/custom-lovelace/icons/blinds-close.svg
-              entity: script.close_all_blinds
-              show_entity_picture: true
-              tap_action:
-                action: call-service
-                service: script.turn_on
-                service_data:
-                  entity_id: script.close_all_blinds
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
+              - type: "custom:button-card"
+                name: A/C
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/ac-on.svg?v=3"; else return "/local/custom-lovelace/icons/ac-on.svg?v=3" ]]]'
+                entity: switch.myair_power
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
-            - type: "custom:button-card"
-              name: A/C
-              color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/ac-on.svg?v=3"; else return "/local/custom-lovelace/icons/ac-on.svg?v=3" ]]]'
-              entity: switch.myair_power
-              show_entity_picture: true
-              tap_action:
-                    action: toggle
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
+  # Lights horizontal stack
 
-# Lights horizontal stack
+            - type: horizontal-stack
+              cards: 
+              - type: "custom:button-card"
+                name: KITCHEN
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+                entity: light.kitchen_dimmer
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
-          - type: horizontal-stack
-            cards: 
-            - type: "custom:button-card"
-              name: KITCHEN
-              color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: light.kitchen_dimmer
-              show_entity_picture: true
-              tap_action:
-                    action: toggle
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
+              - type: "custom:button-card"
+                name: LIVING
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+                entity: light.living_dimmer
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
-            - type: "custom:button-card"
-              name: LIVING
-              color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: light.living_dimmer
-              show_entity_picture: true
-              tap_action:
-                    action: toggle
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
+              - type: "custom:button-card"
+                name:  ENT HALLWAY
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+                entity: light.front_entrance_dimmer
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
-            - type: "custom:button-card"
-              name:  ENT HALLWAY
-              color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: light.front_entrance_dimmer
-              show_entity_picture: true
-              tap_action:
-                    action: toggle
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
-
-            - type: "custom:button-card"
-              name: DINING
-              color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: light.dining_dimmer
-              show_entity_picture: true
-              tap_action:
-                    action: toggle
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
-
-
-# Third Horizontal Stack
-
-          - type: horizontal-stack
-            cards: 
-            - type: "custom:button-card"
-              name: TV
-              color_type: card
-              entity_picture: /local/custom-lovelace/icons/tv.svg?v=3
-              entity: binary_sensor.living_tv
-              show_entity_picture: true
-              tap_action:
-                action: call-service
-                service: script.toggle_tv
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
-
-            - type: "custom:button-card"
-              name: MUSIC
-              color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/music-on.svg?v=3"; else return "/local/custom-lovelace/icons/music.svg?v=4" ]]]'
-              entity: binary_sensor.living_music_sensor
-              show_entity_picture: true
-              tap_action:
-                action: call-service
-                service: media_player.media_play_pause
-                service_data: 
-                  entity_id: media_player.living
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
+              - type: "custom:button-card"
+                name: DINING
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+                entity: light.dining_dimmer
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
 
-            - type: "custom:button-card"
-              name:  HALLWAY
-              color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: light.hallway_light
-              show_entity_picture: true
-              tap_action:
-                    action: toggle
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
+  # Third Horizontal Stack
 
-            - type: "custom:button-card"
-              name: OFFICE
-              color_type: card
-              entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
-              entity: light.office_dimmer
-              show_entity_picture: true
-              tap_action:
-                    action: toggle
-              styles:
-                name:
-                  - font-familly: Roboto
-                  - font-size: 14px
-                entity_picture:
-                  - padding: 7%
+            - type: horizontal-stack
+              cards: 
+              - type: "custom:button-card"
+                name: TV
+                color_type: card
+                entity_picture: /local/custom-lovelace/icons/tv.svg?v=3
+                entity: binary_sensor.living_tv
+                show_entity_picture: true
+                tap_action:
+                  action: call-service
+                  service: script.toggle_tv
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
-# Temperature and humidity graphs
-          - type: horizontal-stack
-            cards: 
-            - type: custom:mini-graph-card
-              entities:
-                - entity: sensor.living_espmulti_t
-                  name: LIVING TEMP
-              icon: mdi:thermometer
-              line_color: var(--accent-color)
-              line_width: 8
-              font_size: 75
-            - type: custom:mini-graph-card
-              entities:
-                - entity: sensor.living_espmulti_h
-                  name: LIVING HUMIDITY
-              icon: mdi:water-percent
-              line_color: '#307DFD'
-              line_width: 8
-              font_size: 75
+              - type: "custom:button-card"
+                name: MUSIC
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/music-on.svg?v=3"; else return "/local/custom-lovelace/icons/music.svg?v=4" ]]]'
+                entity: binary_sensor.living_music_sensor
+                show_entity_picture: true
+                tap_action:
+                  action: call-service
+                  service: media_player.media_play_pause
+                  service_data: 
+                    entity_id: media_player.living
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
 
+              - type: "custom:button-card"
+                name:  HALLWAY
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+                entity: light.hallway_light
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
+              - type: "custom:button-card"
+                name: OFFICE
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+                entity: light.office_dimmer
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
+
+  # Temperature and humidity graphs
+            - type: horizontal-stack
+              cards: 
+              - type: custom:mini-graph-card
+                entities:
+                  - entity: sensor.living_espmulti_t
+                    name: LIVING TEMP
+                icon: mdi:thermometer
+                line_color: var(--accent-color)
+                line_width: 8
+                font_size: 75
+              - type: custom:mini-graph-card
+                entities:
+                  - entity: sensor.living_espmulti_h
+                    name: LIVING HUMIDITY
+                icon: mdi:water-percent
+                line_color: '#307DFD'
+                line_width: 8
+                font_size: 75
+
+
+# Third Column
+        - break
+        - type: custom:layout-card
+          layout: vertical
+          #column_width: 20%
+          cards:
+            - type: horizontal-stack
+              cards: 
+              - type: "custom:button-card"
+                name: KITCHEN
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+                entity: light.kitchen_dimmer
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
+
+              - type: "custom:button-card"
+                name: LIVING
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+                entity: light.living_dimmer
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
+            - type: horizontal-stack
+              cards: 
+              - type: "custom:button-card"
+                name: KITCHEN
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+                entity: light.kitchen_dimmer
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
+
+              - type: "custom:button-card"
+                name: LIVING
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+                entity: light.living_dimmer
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
 
                 

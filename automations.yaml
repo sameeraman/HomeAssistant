@@ -1196,6 +1196,8 @@
       - condition: state
         entity_id: binary_sensor.office_person_sensor
         state: 'off'
+        for:
+          minutes: 2
       - condition: state
         entity_id: group.office_motion
         state: 'off'
@@ -2844,8 +2846,8 @@
   alias: Turn off the Master WC Light after 20 mins
   trigger: 
     - platform: state
-      entity_id: binary_sensor.master_wc_esp_motion
-      to: 'off'
+      entity_id: light.master_wc_dimmer
+      to: 'on'
       for:
         minutes: 20
   condition:
