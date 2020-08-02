@@ -12,7 +12,7 @@ custom_header:
   #  options: ' {{ time }} | {{ date }}'
 
 resources:
-  - url: /local/mini-media-player-bundle.js?v=1.7
+  - url: /local/mini-media-player-bundle.js?v=1.9.1
     type: module
   - url: /local/config-template-card.js
     type: module
@@ -22,9 +22,9 @@ resources:
     type: module
   - url: /local/custom-lovelace/compact-custom-header/custom-header.js
     type: module
-  - url: /local/custom-lovelace/button-card/button-card.js?v=0.1
+  - url: /local/custom-lovelace/button-card/button-card.js?v=3.3.6
     type: module
-  - url: /local/layout-card.js
+  - url: /local/custom-lovelace/layout-card/layout-card.js
     type: module
 views:
   - title: Home
