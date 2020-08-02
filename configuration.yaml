@@ -366,11 +366,11 @@ media_player:
   - platform: plex
 
 # Xiaomi
-xiaomi_aqara:
-  gateways:
-    - mac: !secret xiaomi_mac
-      host: 10.1.1.252
-      key: !secret xiaomi_key
+# xiaomi_aqara:
+#   gateways:
+#     - mac: !secret xiaomi_mac
+#       host: 10.1.1.252
+#       key: !secret xiaomi_key
 
 # Custom Lovelace Gen
 lovelace_gen:
