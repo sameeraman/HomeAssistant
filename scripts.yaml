@@ -170,6 +170,9 @@ sonos_living_play_lullabies:
         entity_id: media_player.living
         media_content_type: playlist
         media_content_id: 'Lullabies'
+    - service: media_player.shuffle_set
+      data_template:
+        entity_id: media_player.living
         shuffle: true
 
 # Play/Pause Living Sonos Lullabies
