@@ -79,6 +79,9 @@ stream:
 
 # enable browser_mod
 browser_mod:
+  devices:
+    707ee817_f0b8c45b:
+      name: living_tablet
 
 # tuya
 tuya:
