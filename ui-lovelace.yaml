@@ -40,9 +40,9 @@ button_card_templates:
           action: toggle
           ui_sound: &ui_sound |
                   [[[ if (entity.state === 'off') {
-                  hass.callService('media_player', 'play_media', {entity_id: 'media_player.707ee817_f0b8c45b', media_content_id: '/local/custom-lovelace/sound/on.m4a', media_content_type: 'music'}); }
+                  hass.callService('media_player', 'play_media', {entity_id: 'media_player.living_tablet', media_content_id: '/local/custom-lovelace/sound/on.m4a', media_content_type: 'music'}); }
                   else if (entity.state === 'on') {
-                  hass.callService('media_player', 'play_media', {entity_id: 'media_player.707ee817_f0b8c45b', media_content_id: '/local/custom-lovelace/sound/off.m4a', media_content_type: 'music'}); } ]]]
+                  hass.callService('media_player', 'play_media', {entity_id: 'media_player.living_tablet', media_content_id: '/local/custom-lovelace/sound/off.m4a', media_content_type: 'music'}); } ]]]
     styles:
       name:
         - font-familly: Roboto

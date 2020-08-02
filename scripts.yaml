@@ -151,6 +151,16 @@ sonos_living_play_jazz:
         media_content_type: playlist
         media_content_id: 'Jazz'
 
+# Play Living Sonos Lullabies Playlist
+sonos_living_play_lullabies:
+  description: 'Play Lullabies Playlist in Living Sonos'
+  alias: "Play Lullabies Playlist in Living Sonos"
+  sequence:
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.living
+        media_content_type: playlist
+        media_content_id: 'Lullabies'
 
 # Resume Alfresco Sonos
 sonos_alfresco_play_resume:
