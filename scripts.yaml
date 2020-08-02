@@ -140,6 +140,15 @@ sonos_living_play_resume:
       data_template:
         entity_id: media_player.living
 
+# Pause Living Sonos
+sonos_living_pause:
+  description: 'Pause Living Sonos'
+  alias: "Pause Living Sonos"
+  sequence:
+    - service: media_player.media_pause
+      data_template:
+        entity_id: media_player.living
+
 # Play Living Sonos Jazz Playlist
 sonos_living_play_jazz:
   description: 'Play Jazz Playlist in Living Sonos'
@@ -162,6 +171,20 @@ sonos_living_play_lullabies:
         media_content_type: playlist
         media_content_id: 'Lullabies'
         shuffle: true
+
+# Play/Pause Living Sonos Lullabies
+play_pause_sonos_living_play_lullabies:
+  description: 'Play Pause Living Sonos Lullabies'
+  alias: "Play Pause Living Sonos Lullabies"
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state('binary_sensor.lullabies_music_sensor', 'on') %}
+            script.sonos_living_pause
+          {% else %}
+            script.sonos_living_play_lullabies
+          {% endif %}
 
 # Resume Alfresco Sonos
 sonos_alfresco_play_resume:

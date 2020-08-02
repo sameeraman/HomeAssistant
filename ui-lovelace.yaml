@@ -1943,7 +1943,29 @@ views:
                 entity: light.back_outdoor_light
                 template: light
 
-                
+            - type: horizontal-stack
+              cards: 
+              - type: "custom:button-card"
+                name: ALFRESCO
+                entity: light.alfresco_dimmer
+                template: light
+              - type: "custom:button-card"
+                name: LULLABIES
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
+                entity: binary_sensor.lullabies_music_sensor
+                show_entity_picture: true
+                tap_action:
+                  action: call-service
+                  service: script.play_pause_sonos_living_play_lullabies
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
+
+                    
 # Garden
   - title: Garden
     path: garden
