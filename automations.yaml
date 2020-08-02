@@ -52,6 +52,12 @@
   trigger:
     platform: state
     entity_id: sensor.myair_settemp
+  condition:
+    condition: not
+    conditions:
+      - condition: state
+        entity_id: sensor.myair_settemp
+        state: 'unavailable'
   action:
     service: input_number.set_value
     entity_id: input_number.myair_inputsettemp
@@ -92,7 +98,7 @@
     conditions:
       - condition: state
         entity_id: sensor.myair_zone1_cover,sensor.myair_zone2_cover,sensor.myair_zone3_cover,sensor.myair_zone4_cover,sensor.myair_zone5_cover,sensor.myair_zone6_cover
-        state: 'Unavailable'
+        state: 'unavailable'
   action:
     service: input_number.set_value
     data_template:
