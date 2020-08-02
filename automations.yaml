@@ -2147,6 +2147,22 @@
     service: light.toggle
     entity_id: light.master_dimmer
 
+# Play Lullabies when Xiaomi Madhushi Bedside push button is long pressed
+- id: playlullabiesmadhushibedsidemasterlightpushbuttonlong
+  alias: Play Lullabies when Xiaomi Madhushi Bedside push button is long pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d00035f34ec
+      click_type: long_click_press
+  action:
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.master_bedroom_display
+        media_content_id: 'spotify:user:spotify:playlist:15yq0wnH7sel7iIiGHWVqU'
+        media_content_type: playlist
+
 # Toggle Master Pendant lights when Xiaomi Sameera Bedside push button is single pressed
 - id: togglesameerabedsidependentlightspushbutton
   alias: Toggle Master Pendant lights when Xiaomi Sameera Bedside push button is single pressed
@@ -2172,6 +2188,22 @@
   action:
     service: light.toggle
     entity_id: light.master_dimmer
+
+# Play Lullabies when Xiaomi Sameera Bedside push button is long pressed
+- id: playlullabiessameerabedsidemasterlightpushbuttonlong
+  alias: Play Lullabies when Xiaomi Sameera Bedside push button is long pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000407e1ec
+      click_type: long_click_press
+  action:
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.master_bedroom_display
+        media_content_id: 'spotify:user:spotify:playlist:15yq0wnH7sel7iIiGHWVqU'
+        media_content_type: playlist
 
 # Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
 - id: masteracoff5min
