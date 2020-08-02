@@ -381,6 +381,13 @@ lovelace_gen:
 # Lovelace
 lovelace:
   mode: yaml
+  resources:
+    # - url: /local/mini-media-player-bundle.js?v=1.9.1
+    #   type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module
 
 
 weather:
