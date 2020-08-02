@@ -2157,9 +2157,13 @@
       entity_id: binary_sensor.switch_158d00035f34ec
       click_type: long_click_press
   action:
+    - service: media_player.select_source
+      data_template:
+        entity_id: media_player.spotify_kuruculasuriya_mads
+        source: "Master Bedroom display"
     - service: media_player.play_media
       data_template:
-        entity_id: media_player.master_bedroom_display
+        entity_id: media_player.spotify_kuruculasuriya_mads
         media_content_id: 'spotify:user:spotify:playlist:15yq0wnH7sel7iIiGHWVqU'
         media_content_type: playlist
 
@@ -2199,9 +2203,13 @@
       entity_id: binary_sensor.switch_158d000407e1ec
       click_type: long_click_press
   action:
+    - service: media_player.select_source
+      data_template:
+        entity_id: media_player.spotify_kuruculasuriya_mads
+        source: "Master Bedroom display"
     - service: media_player.play_media
       data_template:
-        entity_id: media_player.master_bedroom_display
+        entity_id: media_player.spotify_kuruculasuriya_mads
         media_content_id: 'spotify:user:spotify:playlist:15yq0wnH7sel7iIiGHWVqU'
         media_content_type: playlist
 
