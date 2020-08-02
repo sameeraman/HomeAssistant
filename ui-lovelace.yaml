@@ -12,7 +12,9 @@ custom_header:
   #  options: ' {{ time }} | {{ date }}'
 
 resources:
-  - url: /local/mini-media-player-bundle.js?v=1.9.1
+  # - url: /local/mini-media-player-bundle.js?v=1.9.1
+  #   type: module
+  - url: /local/community/mini-media-playermini-media-player-bundle.js?v=1.9.1
     type: module
   - url: /local/config-template-card.js
     type: module
