@@ -165,15 +165,15 @@ sonos_living_play_lullabies:
   description: 'Play Lullabies Playlist in Living Sonos'
   alias: "Play Lullabies Playlist in Living Sonos"
   sequence:
+    - service: media_player.shuffle_set
+      data_template:
+        entity_id: media_player.living
+        shuffle: true
     - service: media_player.play_media
       data_template:
         entity_id: media_player.living
         media_content_type: playlist
         media_content_id: 'Lullabies'
-    - service: media_player.shuffle_set
-      data_template:
-        entity_id: media_player.living
-        shuffle: true
 
 # Play/Pause Living Sonos Lullabies
 play_pause_sonos_living_play_lullabies:

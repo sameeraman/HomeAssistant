@@ -435,6 +435,12 @@ remote:
     name: living
     host: 10.1.1.210
 
+
+# Spotify 
+spotify:
+  client_id: !secret spotifyclientid
+  client_secret: !secret spotifysecret
+
 # UniFi
 #unifi:
 #  controllers:
