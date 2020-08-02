@@ -20,7 +20,7 @@ resources:
     type: module
   - url: /local/custom-lovelace/weather-card/weather-card.js?v=0.4
     type: module
-  - url: /local/custom-lovelace/compact-custom-header/custom-header.js
+  - url: /local/custom-lovelace/compact-custom-header/custom-header.js?v=1.6.7
     type: module
   - url: /local/custom-lovelace/button-card/button-card.js?v=3.3.6
     type: module
