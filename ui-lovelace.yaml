@@ -11,25 +11,25 @@ custom_header:
     # The next example is using templates. See templates page for more info.
   #  options: ' {{ time }} | {{ date }}'
 
-resources:
-  # - url: /local/mini-media-player-bundle.js?v=1.9.1
+# resources:
+  # # - url: /local/mini-media-player-bundle.js?v=1.9.1
+  # #   type: module
+  # - url: /local/community/mini-media-playermini-media-player-bundle.js?v=1.9.1
   #   type: module
-  - url: /local/community/mini-media-playermini-media-player-bundle.js?v=1.9.1
-    type: module
-  - url: /local/config-template-card.js
-    type: module
-  - url: /local/mini-graph-card-bundle.js?v=0.9.3
-    type: module
-  - url: /local/custom-lovelace/weather-card/weather-card.js?v=0.4
-    type: module
-  - url: /local/custom-lovelace/compact-custom-header/custom-header.js?v=1.6.7
-    type: module
-  - url: /local/custom-lovelace/button-card/button-card.js?v=3.3.6
-    type: module
-  - url: /local/custom-lovelace/layout-card/layout-card.js
-    type: module
-  - url: /local/custom-lovelace/light-popup-card/light-popup-card.js?v=0.4.8.2
-    type: module
+  # - url: /local/config-template-card.js
+  #   type: module
+  # - url: /local/mini-graph-card-bundle.js?v=0.9.3
+  #   type: module
+  # - url: /local/custom-lovelace/weather-card/weather-card.js?v=0.4
+  #   type: module
+  # - url: /local/custom-lovelace/compact-custom-header/custom-header.js?v=1.6.7
+  #   type: module
+  # - url: /local/custom-lovelace/button-card/button-card.js?v=3.3.6
+  #   type: module
+  # - url: /local/custom-lovelace/layout-card/layout-card.js
+  #   type: module
+  # - url: /local/custom-lovelace/light-popup-card/light-popup-card.js?v=0.4.8.2
+  #   type: module
 
 button_card_templates:
   light:
