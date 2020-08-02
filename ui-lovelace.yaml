@@ -26,6 +26,8 @@ resources:
     type: module
   - url: /local/custom-lovelace/layout-card/layout-card.js
     type: module
+  - url: /local/custom-lovelace/light-popup-card/light-popup-card.js?v=0.4.8.2
+    type: module
 views:
   - title: Home
     path: home
@@ -44,7 +46,7 @@ views:
                 icon: 'mdi:door-closed'
                 name: Door
               - entity: binary_sensor.bed_sensor
-                icon: 'mdi:hotel'
+                icon: 'mdi:bed'
                 name: Bed
               - entity: sensor.master_espmulti_t_2
                 icon: 'mdi:coolant-temperature'
@@ -508,7 +510,7 @@ views:
                 icon: 'mdi:sofa'
                 name: Living
               - entity: binary_sensor.master_motion
-                icon: 'mdi:hotel'
+                icon: 'mdi:bed'
                 name: Master
               - entity: binary_sensor.office_motion
                 icon: 'mdi:briefcase-outline'
@@ -1429,7 +1431,7 @@ views:
 
           # Master Bed Sensor
           - type: state-icon
-            icon: 'mdi:hotel'
+            icon: 'mdi:bed'
             entity: binary_sensor.bed_sensor
             style:
               top: 48%

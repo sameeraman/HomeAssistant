@@ -322,28 +322,28 @@ input_number:
     max: 100
     unit_of_measurement: "%"
     step: 5
-    icon: mdi:hotel
+    icon: mdi:bed
   myair_zone4:
     name: Bed 2 Airflow
     min: 5
     max: 100
     unit_of_measurement: "%"
     step: 5
-    icon: mdi:hotel
+    icon: mdi:bed
   myair_zone5:
     name: Bed 3 Airflow
     min: 5
     max: 100
     unit_of_measurement: "%"
     step: 5
-    icon: mdi:hotel
+    icon: mdi:bed
   myair_zone6:
     name: Bed 4 Airflow
     min: 5
     max: 100
     unit_of_measurement: "%"
     step: 5
-    icon: mdi:hotel
+    icon: mdi:bed
   myair_starttimer:
     name: Time to Start
     min: 0
