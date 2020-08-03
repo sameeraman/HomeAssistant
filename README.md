@@ -2,7 +2,7 @@
 
 This provides the yaml configuration used at SnM Nest Home Assistant. If you are interested in trying out Home Assistant please visit the web site [here](https://www.home-assistant.io/)
 
-![resourceslist](images/HomeAutomationv2.png "Home automation Diagram")
+![resourceslist](images/homeautomationv2.png "Home automation Diagram")
 
 # Devices
 
