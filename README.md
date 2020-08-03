@@ -7,7 +7,6 @@ This provides the yaml configuration used at SnM Nest Home Assistant. If you are
 # Devices
 
 - Hass.io running in Docker in a Ubuntu VM. Ubuntu VM is running a Hyper-V host. 
-- Vera Edge for Z-Wave Control
 - Xiaomi Gateway
 - Philips Hue Bridge Gen 2
 - Philips Lights
@@ -19,21 +18,21 @@ This provides the yaml configuration used at SnM Nest Home Assistant. If you are
 - Xiaomi Plug
 - Google Home Hubs
 - Google Hub Minis
-- Amazon Alexa 
 - Logitech Harmony
 - Advantage Air 
-- Fibaro Dimmers
-- AeoTec MultiSensor 6 Gen5
-- AeoTec Smart Switch
+- Shelly Dimmer 2
+- ESP Home Motion and Temperature Sensors
 - UniFi Network Switch
 - UniFi Access Point - NanoHD
 - UniFi Secure Gateway
 - UniFi G3 Flex Camera
 - Yamaha RX-V473
-- Ring Doorbell
+- Google Nest Doorbell
 - Sonos Connect Amp
 - Sonos Play:3
 - RainMachine Pro-8 for Sprinkler Control
+
+> I used to have Z-Wave network with Fibaro Dimmers and a Vera controller. I replaced them with ESPHome sensors and Shelly Dimmer 2 with MQTT integration. The new modules have a huge performance improvements and stability. 
 
 # Release Pipeline
 
