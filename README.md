@@ -2,7 +2,7 @@
 
 This provides the yaml configuration used at SnM Nest Home Assistant. If you are interested in trying out Home Assistant please visit the web site [here](https://www.home-assistant.io/)
 
-![resourceslist](images/HomeAutomation.png "Home automation Diagram")
+![resourceslist](images/HomeAutomationv2.png "Home automation Diagram")
 
 # Devices
 
@@ -35,7 +35,7 @@ This provides the yaml configuration used at SnM Nest Home Assistant. If you are
 - Sonos Play:3
 - RainMachine Pro-8 for Sprinkler Control
 
-# CI/CD - DevOps
+# Release Pipeline
 
 DevOps was implemented with Azure DevOps. Only continuous delivery is configured. Below diagram provides a high level overview of the configuration. For more details around the configuration please visit the [blog post](https://sameeraman.wordpress.com/2018/12/10/local-self-hosted-agents-in-azure-devops/). 
 
@@ -46,11 +46,14 @@ DevOps was implemented with Azure DevOps. Only continuous delivery is configured
 
 Following are some of the Lovelace Dashboards I have created to control the smart home. 
 
-![resourceslist](images/dashboard-crop.png "Home automation Diagram")
+![resourceslist](images/home.png "Home automation Diagram")
 
-![resourceslist](images/dashboard-living.png "Home automation Diagram")
+![resourceslist](images/living.png "Home automation Diagram")
 
-![resourceslist](images/dashboard-camera.png "Home automation Diagram")
+![resourceslist](images/floorplan-animated.gif "Home automation Diagram")
+
+![resourceslist](images/automations.png "Home automation Diagram")
+
 
 # Automations
 

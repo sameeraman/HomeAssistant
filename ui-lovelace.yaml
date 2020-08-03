@@ -1965,7 +1965,7 @@ views:
                   entity_picture:
                     - padding: 7%
 
-                    
+
 # Garden
   - title: Garden
     path: garden
@@ -2270,3 +2270,13 @@ views:
             - entity: input_boolean.office_aircon_vent_on_off_auto
               tap_action:
                 action: toggle
+
+# Baby
+  - title: Baby
+    path: baby
+    cards:
+      - type: picture-entity 
+        entity: camera.baby_camera
+        title: Baby Monitor
+
+
