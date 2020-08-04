@@ -400,7 +400,8 @@ lovelace:
       type: module
     - url: /hacsfiles/light-entity-card/light-entity-card.js
       type: module
-
+    - url: /hacsfiles/stack-in-card/stack-in-card.js
+      type: module
 
 weather:
   - platform: darksky
