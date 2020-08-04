@@ -1881,7 +1881,7 @@ views:
                                   playlist: 'Instrumental'
                             - entity: script.sonos_living_play_playlist
                               name: Sinhala 
-                              icon: mdi:baby-face-outline
+                              icon: mdi:account-music-outline
                               tap_action:
                                 action: call-service
                                 service: script.sonos_living_play_playlist

@@ -183,7 +183,7 @@
       part_of_day:
         friendly_name: 'Part of Day'
         value_template: >
-          {% set hour = now().hour %}
+          {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 7 <= hour < 12 %}    Morning
           {% elif 12 <= hour < 18 %} Afternoon
           {% elif 18 <= hour < 22 %} Evening
@@ -639,3 +639,8 @@
   - platform: mqtt
     name: garage_door_sensor
     state_topic: "home/garage/garage_door/stat/POWER"
+
+# Time sensor
+  - platform: time_date
+    display_options:
+      - 'time'
