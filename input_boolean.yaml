@@ -37,7 +37,7 @@ aircon_on_auto:
   icon: mdi:air-conditioner
 
 aircon_off_timer_auto:
-  name: Set 90 min Air Conditioner Off timer
+  name: Set 90 min AC Auto Off Timer
   icon: mdi:air-conditioner
 
 night_mood:

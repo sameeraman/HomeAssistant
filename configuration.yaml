@@ -75,7 +75,7 @@ sun:
 zeroconf:
 
 # Camera Streams
-stream:
+#stream:
 
 # enable browser_mod
 browser_mod:
