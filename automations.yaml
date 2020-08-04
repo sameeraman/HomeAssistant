@@ -314,9 +314,9 @@
       entity_id: sensor.myair_state_avg4hr
       above: 3.75
   action:
-    - service: shell_command.myair_setcmd
-      data_template:
-        json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
+    # - service: shell_command.myair_setcmd
+    #   data_template:
+    #     json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
     - service: notify.pushbullet
       data_template:
         title: 'Air Conditioner is running for more than 3.75 hours. It was automatically turned off.  {{now().strftime("%Y%m%d-%H%M%S")}}'
