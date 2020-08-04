@@ -38,11 +38,11 @@ button_card_templates:
     show_entity_picture: true
     tap_action:
           action: toggle
-          ui_sound: &ui_sound |
-                  [[[ if (entity.state === 'off') {
-                  hass.callService('media_player', 'play_media', {entity_id: 'media_player.living_tablet', media_content_id: '/local/custom-lovelace/sound/on.m4a', media_content_type: 'music'}); }
-                  else if (entity.state === 'on') {
-                  hass.callService('media_player', 'play_media', {entity_id: 'media_player.living_tablet', media_content_id: '/local/custom-lovelace/sound/off.m4a', media_content_type: 'music'}); } ]]]
+          # ui_sound: &ui_sound |
+          #         [[[ if (entity.state === 'off') {
+          #         hass.callService('media_player', 'play_media', {entity_id: 'media_player.living_tablet', media_content_id: '/local/custom-lovelace/sound/on.m4a', media_content_type: 'music'}); }
+          #         else if (entity.state === 'on') {
+          #         hass.callService('media_player', 'play_media', {entity_id: 'media_player.living_tablet', media_content_id: '/local/custom-lovelace/sound/off.m4a', media_content_type: 'music'}); } ]]]
     styles:
       name:
         - font-familly: Roboto
@@ -2167,6 +2167,9 @@ views:
             - entity: input_boolean.aircon_on_auto
               icon: 'mdi:air-conditioner'
               name: Auto AC Power On based on Temperature
+              tap_action:
+                action: toggle
+            - entity: input_boolean.aircon_off_timer_auto
               tap_action:
                 action: toggle
             - entity: input_boolean.nightmood_auto

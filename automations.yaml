@@ -182,6 +182,12 @@
       to: 'on'
       for:
         seconds: 60
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.aircon_off_timer_auto
+        state: 'on'
   action:
     - service: shell_command.myair_setcmd
       data_template:
@@ -198,9 +204,14 @@
       for:
         seconds: 180
   condition:
-    condition: state
-    entity_id: sensor.myair_stop_timer
-    state: '0'
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.aircon_off_timer_auto
+        state: 'on'
+      - condition: state
+        entity_id: sensor.myair_stop_timer
+        state: '0'
   action:
     - service: shell_command.myair_setcmd
       data_template:
@@ -217,9 +228,14 @@
       for:
         seconds: 240
   condition:
-    condition: state
-    entity_id: sensor.myair_stop_timer
-    state: '0'
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.aircon_off_timer_auto
+        state: 'on'
+      - condition: state
+        entity_id: sensor.myair_stop_timer
+        state: '0'
   action:
     - service: shell_command.myair_setcmd
       data_template:

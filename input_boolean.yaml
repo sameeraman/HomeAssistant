@@ -36,6 +36,10 @@ aircon_on_auto:
   name: Turn On Air Conditioner based on Temperature
   icon: mdi:air-conditioner
 
+aircon_off_timer_auto:
+  name: Set 90 min Air Conditioner Off timer
+  icon: mdi:air-conditioner
+
 night_mood:
   name: Night mood
   icon: mdi:weather-night
