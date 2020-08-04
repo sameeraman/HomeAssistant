@@ -1773,7 +1773,7 @@ views:
                 name: A/C
                 color_type: card
                 entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/ac-on.svg?v=3"; else return "/local/custom-lovelace/icons/ac-on.svg?v=3" ]]]'
-                entity: switch.myair_power
+                entity: switch.air_conditioner
                 show_entity_picture: true
                 tap_action:
                       action: toggle

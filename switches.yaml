@@ -74,6 +74,32 @@
             entity_id: script.launch_ha_floorplan
         turn_off:
         # nothing
+      air_conditioner:
+        value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["state"] }}'
+        turn_on:
+          - service: shell_command.myair_setcmd
+            data_template:
+              json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
+          - service: homeassistant.update_entity
+            data:
+               entity_id: sensor.myair
+          - delay: 00:00:03
+          - service: homeassistant.update_entity
+            data:
+               entity_id: sensor.myair
+        turn_off:
+          - service: shell_command.myair_setcmd
+            data_template:
+              json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
+          - service: homeassistant.update_entity
+            data:
+               entity_id: sensor.myair
+          - delay: 00:00:03
+          - service: homeassistant.update_entity
+            data:
+               entity_id: sensor.myair
+
+
   - platform: command_line
     switches:
       # MyAir Air Conditioner Virtual Switches
@@ -119,11 +145,11 @@
         command_off: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22zones%22:%7B%22z06%22:%7B%22state%22:%22close%22%7D%7D%7D%7D'
         command_state: '/bin/true'
         value_template: "{{ is_state('sensor.myair_zone6_state', 'open') }}"
-      air_conditioner:
-        command_on: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
-        command_off: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
-        command_state: '/bin/true'
-        value_template: "{{ is_state('sensor.myair_state', 'on') }}"
+      # air_conditioner:
+      #   command_on: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
+      #   command_off: 'curl -X GET http://10.1.1.180:2025/setAircon?json=%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
+      #   command_state: '/bin/true'
+      #   value_template: "{{ is_state('sensor.myair_state', 'on') }}"
 
 
   - platform: mqtt

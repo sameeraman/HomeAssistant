@@ -1975,7 +1975,7 @@
       entity_id: input_boolean.housealarm_auto
 
 # Update Automation when Party Mood is turned off
-- id: updateautomationpartymoodon
+- id: updateautomationpartymoodoff
   alias: Update Automation when Party Mood is turned off
   initial_state: True
   trigger:
@@ -2111,7 +2111,7 @@
       entity_id: light.master_pendant
 
 # Turn On Master Pendant Light when Master light is turned off 
-- id: masterpendentlightonwhenmasterlighton
+- id: masterpendentlightonwhenmasterlightoff
   alias: Turn On Master Pendant Light when Master light is turned off 
   trigger: 
     - platform: state

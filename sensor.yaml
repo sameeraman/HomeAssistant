@@ -1,6 +1,10 @@
-  - platform: jsonrest
+# MyAir Sensor
+  - platform: rest
     resource: http://10.1.1.180:2025/getSystemData
     name: myair
+    value_template: 'OK'
+    json_attributes:
+      - aircons
 
 # unify gateway
   - platform: unifigateway
@@ -122,6 +126,14 @@
       - type: instant_readings
       - type: current_values
 
+
+  - platform: rest
+    resource: http://10.1.1.180:2025/getSystemData
+    name: myair
+    value_template: 'OK'
+    json_attributes:
+      - aircons
+
   - platform: template
     sensors:
     # MyAir Sensors (Air Conditioner)
@@ -179,6 +191,7 @@
       myair_stop_timer:
         friendly_name: My Air Stop Timer
         value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["countDownToOff"] }}'
+
     # Time sensors
       part_of_day:
         friendly_name: 'Part of Day'
