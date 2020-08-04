@@ -11,7 +11,9 @@ custom_header:
     # The next example is using templates. See templates page for more info.
   #  options: ' {{ time }} | {{ date }}'
 
-# resources:
+resources:
+  - url: /local/community/popup-backdrop-filter/popup-backdrop-filter.js
+    type: module
   # # - url: /local/mini-media-player-bundle.js?v=1.9.1
   # #   type: module
   # - url: /local/community/mini-media-playermini-media-player-bundle.js?v=1.9.1
@@ -1720,7 +1722,7 @@ views:
               - type: "custom:button-card"
                 name: MOOD LIGHTS
                 color_type: card
-                entity_picture: /local/custom-lovelace/icons/lamp.svg
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lamp-on1.svg?v=4"; else return "/local/custom-lovelace/icons/lamp.svg?v=3" ]]]'
                 entity: light.living_mood_lights
                 show_entity_picture: true
                 tap_action:
@@ -1838,7 +1840,7 @@ views:
                   action: call-service
                   service: browser_mod.popup
                   service_data:
-                    title: '[[[ return entity.attributes.friendly_name ]]]'
+                    title: 'Living Music'
                     deviceID: this
                     card:
                       type: custom:stack-in-card
@@ -1870,6 +1872,25 @@ views:
                               tap_action:
                                 action: call-service
                                 service: script.sonos_living_play_instrumental
+                        - type: glance
+                          show_state: false
+                          entities:
+                            - entity: script.sonos_living_play_playlist
+                              name: Sinhala 
+                              icon: mdi:baby-face-outline
+                              tap_action:
+                                action: call-service
+                                service: script.sonos_living_play_playlist
+                                service_data:
+                                  playlist: 'Sinhala'
+                            - entity: script.sonos_living_play_jazz
+                              name: Bob Marley
+                              icon: mdi:beach
+                              tap_action:
+                                action: call-service
+                                service: script.sonos_living_play_jazz
+                                service_data:
+                                  playlist: 'Bob Marley'
                         - type: entities
                           state_color: true
                           show_header_toggle: false

@@ -182,6 +182,21 @@ sonos_living_play_instrumental:
         media_content_type: playlist
         media_content_id: 'Instrumental'
 
+# Play Living Sonos Playlist
+sonos_living_play_playlist:
+  description: 'Play Playlist in Living Sonos'
+  alias: "Play Playlist in Living Sonos"
+  fields:
+    playlist:
+      description: 'Playlist Name'
+      example: 'Jazz'
+  sequence:
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.living
+        media_content_type: playlist
+        media_content_id: '{{ playlist }}'
+
 # Play Living Sonos Lullabies Playlist
 sonos_living_play_lullabies:
   description: 'Play Lullabies Playlist in Living Sonos'
