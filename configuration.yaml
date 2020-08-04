@@ -402,6 +402,8 @@ lovelace:
       type: module
     - url: /hacsfiles/stack-in-card/stack-in-card.js
       type: module
+    - url: /hacsfiles/popup-backdrop-filter/popup-backdrop-filter.js
+      type: module
 
 weather:
   - platform: darksky

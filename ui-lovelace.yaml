@@ -1834,6 +1834,56 @@ views:
                   service: media_player.media_play_pause
                   service_data: 
                     entity_id: media_player.living
+                hold_action:
+                  action: call-service
+                  service: browser_mod.popup
+                  service_data:
+                    title: '[[[ return entity.attributes.friendly_name ]]]'
+                    deviceID: this
+                    card:
+                      type: custom:stack-in-card
+                      cards:
+                        - type: glance
+                          show_state: false
+                          entities:
+                            - entity: script.sonos_living_play_lullabies
+                              name: Lullabies 
+                              icon: mdi:baby-face-outline
+                              tap_action:
+                                action: call-service
+                                service: script.sonos_living_play_lullabies
+                            - entity: script.sonos_living_play_jazz
+                              name: Jazz
+                              icon: mdi:saxophone
+                              tap_action:
+                                action: call-service
+                                service: script.sonos_living_play_jazz
+                            - entity: script.sonos_living_play_romantic
+                              name: Romance
+                              icon: mdi:heart-circle-outline
+                              tap_action:
+                                action: call-service
+                                service: script.sonos_living_play_romantic
+                            - entity: script.sonos_living_play_instrumental
+                              name: Instrumental
+                              icon: mdi:music-clef-treble
+                              tap_action:
+                                action: call-service
+                                service: script.sonos_living_play_instrumental
+                        - type: entities
+                          state_color: true
+                          show_header_toggle: false
+                          entities:
+                          - entity: media_player.living
+                            type: custom:mini-media-player
+                            info: short
+                            artwork: none
+                            hide:
+                              mute: true
+                              icon: true
+                              power_state: false
+
+
                 styles:
                   name:
                     - font-familly: Roboto
