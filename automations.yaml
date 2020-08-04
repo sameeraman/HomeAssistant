@@ -1654,9 +1654,9 @@
         title: '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
 
-# Turn on Bed Heater at 10pm if the outside temperature is below 18c
+# Turn on Bed Heater at 10pm if the master bedroom temperature is below 25c
 - id: turnonbedheaterelow22c
-  alias: Turn on Bed Heater at 10pm if the outside temperature is below 18c
+  alias: Turn on Bed Heater at 10pm if the master bedroom temperature is below 25c
   initial_state: True
   trigger:
     - platform: time
@@ -1671,8 +1671,8 @@
         entity_id: switch.bedheater_switch
         state: 'off'
       - condition: numeric_state
-        entity_id: sensor.dark_sky_temperature
-        below: 18
+        entity_id: sensor.master_espmulti_t_2
+        below: 25
       - condition: state
         entity_id: input_boolean.bedheater_auto
         state: 'on'
