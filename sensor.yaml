@@ -127,12 +127,6 @@
       - type: current_values
 
 
-  - platform: rest
-    resource: http://10.1.1.180:2025/getSystemData
-    name: myair
-    value_template: 'OK'
-    json_attributes:
-      - aircons
 
   - platform: template
     sensors:
