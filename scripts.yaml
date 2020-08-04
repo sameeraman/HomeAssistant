@@ -160,27 +160,6 @@ sonos_living_play_jazz:
         media_content_type: playlist
         media_content_id: 'Jazz'
 
-# Play Living Sonos Romantic Playlist
-sonos_living_play_romantic:
-  description: 'Play Romantic Playlist in Living Sonos'
-  alias: "Play Romantic Playlist in Living Sonos"
-  sequence:
-    - service: media_player.play_media
-      data_template:
-        entity_id: media_player.living
-        media_content_type: playlist
-        media_content_id: 'Romantic'
-
-# Play Living Sonos Instrumental Playlist
-sonos_living_play_instrumental:
-  description: 'Play Intsrumental Playlist in Living Sonos'
-  alias: "Play Instrumental Playlist in Living Sonos"
-  sequence:
-    - service: media_player.play_media
-      data_template:
-        entity_id: media_player.living
-        media_content_type: playlist
-        media_content_id: 'Instrumental'
 
 # Play Living Sonos Playlist
 sonos_living_play_playlist:
