@@ -1524,7 +1524,8 @@
     service: media_player.media_play_pause
     entity_id: media_player.living
 
-# Toggle Living Mood lights when Xiaomi Living push button is single pressed
+
+# Alarm when Xiaomi Living push button is single pressed
 - id: togglelivingmoodlightspushbutton
   alias: Toggle Living Mood lights when Xiaomi Living push button is single pressed
   trigger: 
@@ -1534,34 +1535,47 @@
       entity_id: binary_sensor.switch_158d000323d424
       click_type: single
   action:
-    service: light.toggle
-    entity_id: light.living_mood_lights
-
-# Toggle Living Sonos when Xiaomi Living push button is double pressed
-- id: togglelivingsonospushbuttondouble
-  alias: Toggle Living Sonos when Xiaomi Living push button is double pressed
-  trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000323d424
-      click_type: double
-  action:
-    service: media_player.media_play_pause
-    entity_id: media_player.living
-
-# Execute leaving workflow when Living push button is long pressed
-- id: executeleavingworkflowpushbuttonlong
-  alias: Execute leaving workflow when Living push button is long pressed
-  trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000323d424
-      click_type: long_click_press
-  action:
     - service : script.turn_on
-      entity_id: script.leave_home_workflow
+      entity_id: script.sonos_alarm_bell
+
+# # Toggle Living Mood lights when Xiaomi Living push button is single pressed
+# - id: togglelivingmoodlightspushbutton
+#   alias: Toggle Living Mood lights when Xiaomi Living push button is single pressed
+#   trigger: 
+#     platform: event
+#     event_type: xiaomi_aqara.click
+#     event_data:
+#       entity_id: binary_sensor.switch_158d000323d424
+#       click_type: single
+#   action:
+#     service: light.toggle
+#     entity_id: light.living_mood_lights
+
+# # Toggle Living Sonos when Xiaomi Living push button is double pressed
+# - id: togglelivingsonospushbuttondouble
+#   alias: Toggle Living Sonos when Xiaomi Living push button is double pressed
+#   trigger: 
+#     platform: event
+#     event_type: xiaomi_aqara.click
+#     event_data:
+#       entity_id: binary_sensor.switch_158d000323d424
+#       click_type: double
+#   action:
+#     service: media_player.media_play_pause
+#     entity_id: media_player.living
+
+# # Execute leaving workflow when Living push button is long pressed
+# - id: executeleavingworkflowpushbuttonlong
+#   alias: Execute leaving workflow when Living push button is long pressed
+#   trigger: 
+#     platform: event
+#     event_type: xiaomi_aqara.click
+#     event_data:
+#       entity_id: binary_sensor.switch_158d000323d424
+#       click_type: long_click_press
+#   action:
+#     - service : script.turn_on
+#       entity_id: script.leave_home_workflow
 
 
 # Alarm when there is motion outside master bedroom and when the night mood is on

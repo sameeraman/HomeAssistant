@@ -330,3 +330,28 @@ send_snapshot_garage:
         message:  'Garage door was left open for more than 10 minutes'
         data:
           file: !secret garagecameranotifytemp
+
+# Sonos Alarm Bell
+sonos_alarm_bell:
+  alias: "Sonos Alarm Bell"
+  sequence:
+    - service: sonos.snapshot
+      data_template:
+        entity_id: media_player.living
+    - service: media_player.media_pause
+      data_template:
+        entity_id: media_player.living
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.living
+        volume_level: "0.60"
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.living
+        media_content_id: !secret dingdong
+        media_content_type: music
+    - delay:
+        seconds:  5
+    - service: sonos.restore
+      data_template:
+        entity_id: media_player.living
