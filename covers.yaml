@@ -1,0 +1,28 @@
+  - platform: template
+    covers:
+      window_1_cover:
+        friendly_name: "Window 1 Cover"
+        value_template: "{{ is_state('input_boolean.dining_blind_1', 'on')  }}"
+        open_cover:
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/diningblind1/cmnd/power1'
+              payload: 'ON'
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.dining_blind_1
+        close_cover:
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/diningblind1/cmnd/power2'
+              payload: 'ON'
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.dining_blind_1
+        stop_cover:
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/diningblind1/cmnd/power1'
+              payload: 'OFF'
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/diningblind1/cmnd/power2'
+              payload: 'OFF'

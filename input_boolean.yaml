@@ -144,3 +144,7 @@ office_aircon_vent_on_off_auto:
 hallway_light_on_off_auto:
   name: Front Hallway light off with no Motion
   icon: mdi:lightbulb-on-outline
+
+dining_blind_1:
+  name: Dining Blind 1 State
+

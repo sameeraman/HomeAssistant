@@ -117,6 +117,7 @@ scene: !include scenes.yaml
 switch: !include switches.yaml
 camera: !include camera.yaml
 input_boolean: !include input_boolean.yaml
+cover: !include covers.yaml
 
 # Vera
 #vera:
