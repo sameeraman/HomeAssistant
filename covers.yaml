@@ -1,7 +1,7 @@
   - platform: template
     covers:
-      window_1_cover:
-        friendly_name: "Window 1 Cover"
+      dining_blind_1:
+        friendly_name: "Dining Blind 1"
         value_template: "{{ is_state('input_boolean.dining_blind_1', 'on')  }}"
         open_cover:
           - service: mqtt.publish
