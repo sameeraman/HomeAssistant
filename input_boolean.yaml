@@ -148,3 +148,11 @@ hallway_light_on_off_auto:
 dining_blind_1:
   name: Dining Blind 1 State
 
+dining_blind_2:
+  name: Dining Blind 2 State
+
+tv_blind_left:
+  name: TV Blind Left State
+
+tv_blind_right:
+  name: TV Blind Right State
