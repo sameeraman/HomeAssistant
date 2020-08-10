@@ -918,6 +918,20 @@ views:
               left: 10%
               "--paper-item-icon-color": '#D8D6D9'
 
+          # Alfresco Temperature
+          - type: state-icon
+            entity: sensor.alfresco_espmulti_t
+            icon: 'mdi:thermometer'
+            style: 
+                top: 18%
+                left: 10%
+                "--paper-item-icon-color": '#D8D6D9'
+          - type: state-label
+            entity: sensor.alfresco_espmulti_t
+            icon: 'mdi:thermometer'
+            style: 
+                top: 18%
+                left: 16%
 
 # Kitchen
           # Kitchen Light

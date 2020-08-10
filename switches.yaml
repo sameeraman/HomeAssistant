@@ -7,11 +7,9 @@
         turn_on:
           - service: input_boolean.turn_on
             entity_id: input_boolean.house_alarm
-          - service: shell_command.house_alarm_on
         turn_off:
           - service: input_boolean.turn_off
             entity_id: input_boolean.house_alarm
-          - service: shell_command.house_alarm_off
       nightmood:
         value_template: '{{ states("input_boolean.night_mood") }}'
         friendly_name: 'Night Mood'
