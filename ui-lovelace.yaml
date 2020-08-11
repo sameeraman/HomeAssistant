@@ -583,10 +583,12 @@ views:
           - type: entities
             title: Blinds
             entities:
-              - entity: cover.dining_blind_1
-              - entity: cover.dining_blind_2
               - entity: cover.tv_blind_left
               - entity: cover.tv_blind_right
+              - entity: cover.living_blind_1
+              - entity: cover.living_blind_2
+              - entity: cover.dining_blind_1
+              - entity: cover.dining_blind_2
           - type: entity-filter
             entities:
               - entity: light.alfresco_dimmer
