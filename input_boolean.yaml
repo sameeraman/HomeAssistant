@@ -156,3 +156,9 @@ tv_blind_left:
 
 tv_blind_right:
   name: TV Blind Right State
+
+living_blind_1:
+  name: Living Blind 1 State
+
+living_blind_2:
+  name: Living Blind 2 State

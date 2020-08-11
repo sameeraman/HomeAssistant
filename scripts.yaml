@@ -304,26 +304,34 @@ open_all_blinds:
   alias: "Open all blinds"
   sequence:
     - service: cover.open_cover
-      entity_id: cover.dining_blind_1
-    - service: cover.open_cover
-      entity_id: cover.dining_blind_2
-    - service: cover.open_cover
       entity_id: cover.tv_blind_left
     - service: cover.open_cover
       entity_id: cover.tv_blind_right
+    - service: cover.open_cover
+      entity_id: cover.living_blind_1
+    - service: cover.open_cover
+      entity_id: cover.living_blind_2
+    - service: cover.open_cover
+      entity_id: cover.dining_blind_1
+    - service: cover.open_cover
+      entity_id: cover.dining_blind_2
 
 # Close all blinds
 close_all_blinds:
   alias: "Close all blinds"
   sequence:
     - service: cover.close_cover
-      entity_id: cover.dining_blind_1
-    - service: cover.close_cover
-      entity_id: cover.dining_blind_2
-    - service: cover.close_cover
       entity_id: cover.tv_blind_left
     - service: cover.close_cover
       entity_id: cover.tv_blind_right
+    - service: cover.close_cover
+      entity_id: cover.living_blind_1
+    - service: cover.close_cover
+      entity_id: cover.living_blind_2
+    - service: cover.close_cover
+      entity_id: cover.dining_blind_1
+    - service: cover.close_cover
+      entity_id: cover.dining_blind_2
 
 # Do Nothing Script
 do_nothing:

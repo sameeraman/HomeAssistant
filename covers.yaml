@@ -105,3 +105,55 @@
             data:
               topic: 'home/living/blinds/tvblindright/cmnd/power2'
               payload: 'OFF'
+      living_blind_1:
+        friendly_name: "Living Blind 1"
+        value_template: "{{ is_state('input_boolean.living_blind_1', 'on')  }}"
+        open_cover:
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/livingblind1/cmnd/power1'
+              payload: 'ON'
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.living_blind_1
+        close_cover:
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/livingblind1/cmnd/power2'
+              payload: 'ON'
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.living_blind_1
+        stop_cover:
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/livingblind1/cmnd/power1'
+              payload: 'OFF'
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/livingblind1/cmnd/power2'
+              payload: 'OFF'
+      living_blind_2:
+        friendly_name: "Living Blind 2"
+        value_template: "{{ is_state('input_boolean.living_blind_2', 'on')  }}"
+        open_cover:
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/livingblind2/cmnd/power1'
+              payload: 'ON'
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.living_blind_2
+        close_cover:
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/livingblind2/cmnd/power2'
+              payload: 'ON'
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.living_blind_2
+        stop_cover:
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/livingblind2/cmnd/power1'
+              payload: 'OFF'
+          - service: mqtt.publish
+            data:
+              topic: 'home/living/blinds/livingblind2/cmnd/power2'
+              payload: 'OFF'
