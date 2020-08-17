@@ -313,8 +313,8 @@ open_all_blinds:
       entity_id: cover.living_blind_2
     - service: cover.open_cover
       entity_id: cover.dining_blind_1
-    - service: cover.open_cover
-      entity_id: cover.dining_blind_2
+    # - service: cover.open_cover
+    #   entity_id: cover.dining_blind_2
 
 # Close all blinds
 close_all_blinds:
@@ -330,8 +330,8 @@ close_all_blinds:
       entity_id: cover.living_blind_2
     - service: cover.close_cover
       entity_id: cover.dining_blind_1
-    - service: cover.close_cover
-      entity_id: cover.dining_blind_2
+    # - service: cover.close_cover
+    #   entity_id: cover.dining_blind_2
 
 # Do Nothing Script
 do_nothing:
