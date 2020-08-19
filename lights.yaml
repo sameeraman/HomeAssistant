@@ -81,6 +81,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -92,6 +94,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -103,6 +107,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -114,6 +120,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -125,6 +133,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -136,6 +146,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -147,6 +159,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -158,6 +172,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -169,6 +185,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -180,6 +198,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -191,6 +211,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -202,6 +224,8 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
 
   - platform: mqtt
     schema: template
@@ -213,3 +237,5 @@
     command_off_template: '{"turn": "off"}'
     brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
     qos: 1
+    retain: false
+    optimistic: false
