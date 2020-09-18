@@ -1538,6 +1538,19 @@
     - service : script.turn_on
       entity_id: script.sonos_alarm_bell
 
+# Toggle Vaporizer when Living push button is long pressed
+- id: executeleavingworkflowpushbuttonlong
+  alias: Toggle Vaporizer when Living push button is long pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000323d424
+      click_type: long_click_press
+  action:
+    - service : switch.toggle
+      entity_id: switch.plug_158d000278ff33
+
 # # Toggle Living Mood lights when Xiaomi Living push button is single pressed
 # - id: togglelivingmoodlightspushbutton
 #   alias: Toggle Living Mood lights when Xiaomi Living push button is single pressed
