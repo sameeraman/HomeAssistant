@@ -435,12 +435,12 @@ sonos:
       - 10.1.1.161
 
 # # Sonoff LAN
-# sonoff:
-#   username: !secret sonoffLANusername
-#   password: !secret sonoffLANpassword
-#   devices:
-#     1000ddeb7c:
-#       devicekey: !secret sonoffLANkey1
+sonoff:
+  username: !secret sonoffLANusername
+  password: !secret sonoffLANpassword
+  devices:
+    1000ddeb7c:
+      devicekey: !secret sonoffLANkey1
 
 
 
