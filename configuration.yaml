@@ -501,7 +501,7 @@ influxdb:
 image_processing:
   - platform: doods
     scan_interval: 30
-    url: "http://10.1.1.207:8080"
+    url: "http://10.1.1.104:8080"
     detector: default
     source:
       - entity_id: camera.living_camera
@@ -517,7 +517,7 @@ image_processing:
           left: 0.1
   - platform: doods
     scan_interval: 33
-    url: "http://10.1.1.207:8080"
+    url: "http://10.1.1.104:8080"
     detector: default
     source:
       - entity_id: camera.alfresco_camera
@@ -531,7 +531,7 @@ image_processing:
           right: 0.93
   - platform: doods
     scan_interval: 35
-    url: "http://10.1.1.207:8080"
+    url: "http://10.1.1.104:8080"
     detector: default
     source:
       - entity_id: camera.esp32cam1
