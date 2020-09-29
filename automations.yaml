@@ -468,7 +468,7 @@
         state: 'on'
   action:
     - service: light.turn_on
-      entity_id:  light.master_bath_dimmer_light_0
+      entity_id:  light.master_bath_dimmer
       data_template:
         brightness_pct: >
           {% if is_state('binary_sensor.bed_sensor', 'on')  %}
@@ -509,7 +509,7 @@
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id:  light.master_bath_dimmer_light_0
+      entity_id:  light.master_bath_dimmer
 
 # Turn on the Pantry Light when the door open
 - id: pantrylighton

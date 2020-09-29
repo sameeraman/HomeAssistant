@@ -147,7 +147,7 @@ views:
             cards:
               - entity: light.master_dimmer
                 type: light
-              - entity: light.master_bath_dimmer_light_0
+              - entity: light.master_bath_dimmer
                 type: light
       - type: vertical-stack
         cards:
@@ -594,7 +594,7 @@ views:
               - entity: light.alfresco_dimmer
                 tap_action:
                   action: toggle 
-              - entity: light.master_bath_dimmer_light_0
+              - entity: light.master_bath_dimmer
                 tap_action:
                   action: toggle
               - entity: light.bath_strip
@@ -1460,7 +1460,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.master_bath_dimmer_light_0
+            entity: light.master_bath_dimmer
             style:
               top: 28%
               left: 70%
@@ -1978,7 +1978,7 @@ views:
                 template: light
               - type: "custom:button-card"
                 name: MASTER BATH
-                entity: light.master_bath_dimmer_light_0
+                entity: light.master_bath_dimmer
                 template: light
             - type: horizontal-stack
               cards: 

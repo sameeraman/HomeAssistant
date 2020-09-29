@@ -8,7 +8,7 @@ light.kitchen_dimmer:
   friendly_name: Kitchen Light
 light.dining_dimmer:
   friendly_name: Dining Light
-light.master_bath_dimmer_light_0:
+light.master_bath_dimmer:
   friendly_name: Bath Light
 light.garage_dimmer:
   friendly_name: Garage Light

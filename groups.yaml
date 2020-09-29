@@ -19,7 +19,7 @@ mbedroom:
     - media_player.bedroom
     - light.master_dimmer
     - switch.bedheater_switch
-    - light.master_bath_dimmer_light_0
+    - light.master_bath_dimmer
     - group.master_sensors
 office:
   name: Office Room
