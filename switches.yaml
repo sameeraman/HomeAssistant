@@ -253,8 +253,8 @@
 
   - platform: mqtt
     name: "smartplug2"
-    command_topic: "home/master/smartplug2/cmnd/power"
-    state_topic: "home/master/smartplug2/stat/POWER"
+    command_topic: "home/master/smartplug2/cmnd/power1"
+    state_topic: "home/master/smartplug2/stat/POWER1"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
