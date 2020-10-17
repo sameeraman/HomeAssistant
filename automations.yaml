@@ -1549,7 +1549,7 @@
       click_type: long_click_press
   action:
     - service : switch.toggle
-      entity_id: switch.plug_158d000278ff33
+      entity_id: switch.smartplug2
 
 # # Toggle Living Mood lights when Xiaomi Living push button is single pressed
 # - id: togglelivingmoodlightspushbutton

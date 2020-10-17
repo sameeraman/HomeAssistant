@@ -84,3 +84,5 @@ binary_sensor.door_window_sensor_158d00033acf0f:
   friendly_name: Pantry-Door
 binary_sensor.motion_sensor_158d0004507186:
   friendly_name: Laundry-M
+:
+  friendly_name: Vaporizer 
