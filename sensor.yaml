@@ -654,6 +654,7 @@
 
 # Australian Bureau of Meteorology (BOM)
   - platform: bom
+    station: IDW60901.94609
     monitored_conditions:
       - apparent_t
       - cloud
