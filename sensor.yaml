@@ -654,14 +654,14 @@
 
 # Australian Bureau of Meteorology (BOM)
   - platform: bom
-    station: IDW60901.94609
+    station: !secret bomstationid
     monitored_conditions:
       - apparent_t
       - cloud
-      - cloud_base_m
-      - cloud_oktas
-      - cloud_type_id
-      - cloud_type
+ #     - cloud_base_m
+ #     - cloud_oktas
+ #     - cloud_type_id
+ #     - cloud_type
       - delta_t
       - gust_kmh
       - gust_kt

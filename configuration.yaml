@@ -415,7 +415,7 @@ weather:
     mode: daily
   - platform: bom
     name: bom-jandakot
-    station: IDW60901.94609
+    station: !secret bomstationid
 
 
 
