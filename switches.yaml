@@ -253,7 +253,6 @@
 
   - platform: mqtt
     name: "smartplug2"
-    friendly_name: 'Vaporizer'
     command_topic: "home/master/smartplug2/cmnd/power"
     state_topic: "home/master/smartplug2/stat/POWER"
     qos: 1
