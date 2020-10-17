@@ -651,3 +651,5 @@
   - platform: time_date
     display_options:
       - 'time'
+
+# Australian Bureau of Meteorology (BOM)

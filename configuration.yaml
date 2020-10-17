@@ -413,6 +413,10 @@ weather:
     latitude: !secret darksky_lat
     longitude: !secret darksky_long
     mode: daily
+  - platform: bom
+    name: bom-jandakot
+    station: IDW60901.94609
+
 
 
 # pushbullet & sendgrid
