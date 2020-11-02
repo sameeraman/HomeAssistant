@@ -2964,3 +2964,48 @@
   action:
     - service: light.turn_off
       entity_id:  light.master_wc_dimmer
+
+
+# Turn off the Main WC Light after 20 mins
+- id: mainwcautooff20mins
+  alias: Turn off the Main WC Light after 20 mins
+  trigger: 
+    - platform: state
+      entity_id: switch.sonoff_1000ddeb7c_1
+      to: 'on'
+      for:
+        minutes: 20
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.sonoff_1000ddeb7c_1
+        state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id:  switch.sonoff_1000ddeb7c_1
+
+# Turn off the Main WC Fan after 10 mins
+- id: mainwcautooff20mins
+  alias: Turn off the Main WC Fan after 10 mins
+  trigger: 
+    - platform: state
+      entity_id: switch.sonoff_1000ddeb7c_2
+      to: 'on'
+      for:
+        minutes: 10
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.sonoff_1000ddeb7c_2
+        state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id:  switch.sonoff_1000ddeb7c_2

@@ -1681,6 +1681,32 @@ views:
               left: 24%
               "--paper-item-icon-color": '#D8D6D9'
 
+# Main WC 
+
+          # Main WC Fan
+          - type: image
+            entity: switch.sonoff_1000ddeb7c_2
+            tap_action:
+              action: toggle
+            image: /local/custom-lovelace/icons/fan-on.svg
+            state_image:
+              "off": /local/custom-lovelace/icons/fan-off.svg
+            style:
+              top: 60%
+              left: 2%
+              transform: scale(0.8,0.8)
+
+          # Main WC Light
+          - type: state-icon
+            icon: 'mdi:lightbulb-outline'
+            tap_action:
+              action: toggle
+            entity: switch.sonoff_1000ddeb7c_1
+            style:
+              top: 61.7%
+              left: 10%
+              "--paper-item-icon-color": '#D8D6D9'
+
 # # TV Volume
         - type: custom:mini-media-player
           entity: media_player.yamaha_receiver
