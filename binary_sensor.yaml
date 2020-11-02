@@ -72,6 +72,10 @@
       lullabies_music_sensor:
         device_class: sound
         value_template: "{{ is_state('media_player.living', 'playing') and 'Lullabies' in state_attr('media_player.living', 'media_content_id') }}" 
+      garage_door_angle:
+        device_class: door
+        value_template: "{{  states.sensor.coordination_158d0003232371.state.split(',')[1] | float > -500 }}" 
+        
 
 # mqtt garage sensor
   - platform: mqtt
