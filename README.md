@@ -134,6 +134,7 @@ Following are some of the automation that I'm using at my smart home.
 - Set the Master light brightness to 30% when someone enters the bed
 - Set the Master light brightness to 100% when someone get up from the bed
 - Set the Master light brightness to 100% when light is turned on no one is on the bed
+- Turn off the Master Bath Fan after 10 mins
 
 ## Laundry Automations
 - Turn off the Laundry Outside light when the light was left on for more than 30 minutes
@@ -166,3 +167,5 @@ Following are some of the automation that I'm using at my smart home.
 - Update Automation when Party Mood is turned on
 - Update Automation when Party Mood is turned off
 - Alert on Z-Wave Batteries below 30% at 9:00pm
+- Turn off the Main WC Fan after 10 mins
+- Turn off the Main WC Light after 20 mins
