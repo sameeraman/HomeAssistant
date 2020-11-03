@@ -206,9 +206,9 @@
     retain: false
 
   - platform: mqtt
-    name: "bedroom2_switch"
-    command_topic: "home/bedroom2/bedroom2_switch/cmnd/power"
-    state_topic: "home/bedroom2/bedroom2_switch/stat/POWER"
+    name: "master_bath_fan"
+    command_topic: "home/master/master_bath_fan/cmnd/power"
+    state_topic: "home/master/master_bath_fan/stat/POWER"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
