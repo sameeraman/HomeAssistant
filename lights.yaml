@@ -58,9 +58,6 @@
     name: Front Patio Light
     entity_id: switch.front_patio_switch
 
-  - platform: switch
-    name: Bedroom 2 Light
-    entity_id: switch.bedroom2_switch
 
   - platform: switch
     name: Hallway Light

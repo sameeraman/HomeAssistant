@@ -1562,6 +1562,19 @@ views:
               left: 58.8%
               transform: rotate(0deg)
 
+          # Master Bath Fan
+          - type: image
+            entity: switch.master_bath_fan
+            tap_action:
+              action: toggle
+            image: /local/custom-lovelace/icons/fan-on.svg
+            state_image:
+              "off": /local/custom-lovelace/icons/fan-off.svg
+            style:
+              top: 27%
+              left: 81.2%
+              transform: scale(0.8,0.8)
+
 # Bedroom 4
 
           # Bed 4 Motion

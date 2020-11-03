@@ -234,8 +234,8 @@
 
   - platform: mqtt
     name: "bedheater_switch"
-    command_topic: "home/master/bedheater_switch/cmnd/power"
-    state_topic: "home/master/bedheater_switch/stat/POWER"
+    command_topic: "home/master/bedheater_switch/cmnd/power1"
+    state_topic: "home/master/bedheater_switch/stat/POWER1"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
