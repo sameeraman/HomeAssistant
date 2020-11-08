@@ -1232,19 +1232,19 @@ views:
               "--paper-item-icon-color": '#D8D6D9'
 
           # Switch Box Temperature
-          - type: state-icon
-            entity: sensor.temperature_158d0002731398
-            icon: 'mdi:server-network'
-            style: 
-                top: 62%
-                left: 80%
-                "--paper-item-icon-color": '#D8D6D9'
-          - type: state-label
-            entity: sensor.temperature_158d0002731398
-            icon: 'mdi:thermometer'
-            style: 
-                top: 62%
-                left: 87.5%
+          # - type: state-icon
+          #   entity: sensor.temperature_158d0002731398
+          #   icon: 'mdi:server-network'
+          #   style: 
+          #       top: 62%
+          #       left: 80%
+          #       "--paper-item-icon-color": '#D8D6D9'
+          # - type: state-label
+          #   entity: sensor.temperature_158d0002731398
+          #   icon: 'mdi:thermometer'
+          #   style: 
+          #       top: 62%
+          #       left: 87.5%
 
           # Garage Light
           - type: state-icon
@@ -1635,7 +1635,7 @@ views:
               action: toggle
             entity: light.bed_3_dimmer
             style:
-              top: 90%
+              top: 89%
               left: 27%
               "--paper-item-icon-color": '#D8D6D9'
 
@@ -1649,9 +1649,34 @@ views:
               service_data: 
                 entity_id: switch.myair_zone5
             style:
-              top: 90%
+              top: 89%
               left: 34%
               "--paper-item-icon-color": '#D8D6D9'
+
+          # Bed 3 Temperature
+          - type: state-icon
+            entity: sensor.bed3_espmulti_t
+            icon: 'mdi:thermometer'
+            style: 
+                top: 84%
+                left: 26.5%
+                "--paper-item-icon-color": '#D8D6D9'
+          - type: state-label
+            entity: sensor.bed3_espmulti_t
+            icon: 'mdi:thermometer'
+            style: 
+                top: 84%
+                left: 33%
+
+          # Bed 3 Motion
+          - type: state-icon
+            icon: 'mdi:run-fast'
+            entity: binary_sensor.bed3_esp_motion
+            style:
+              top: 94%
+              left: 27%
+              "--paper-item-icon-color": '#D8D6D9'
+
 
 
 # Bedroom 2
@@ -1667,7 +1692,7 @@ views:
                 entity_id: switch.myair_zone4
             style:
               top: 72%
-              left: 38%
+              left: 37%
               "--paper-item-icon-color": '#D8D6D9'
 
           # Bed2 Light
@@ -1678,8 +1703,33 @@ views:
             entity: light.bed_2_dimmer
             style:
               top: 67%
-              left: 38%
+              left: 37%
               "--paper-item-icon-color": '#D8D6D9'
+
+          # Bed 2 Temperature
+          - type: state-icon
+            entity: sensor.bed2_espmulti_t
+            icon: 'mdi:thermometer'
+            style: 
+                top: 62%
+                left: 32.5%
+                "--paper-item-icon-color": '#D8D6D9'
+          - type: state-label
+            entity: sensor.bed2_espmulti_t
+            icon: 'mdi:thermometer'
+            style: 
+                top: 62%
+                left: 39%
+
+          # Bed 2 Motion
+          - type: state-icon
+            icon: 'mdi:run-fast'
+            entity: binary_sensor.bed2_esp_motion
+            style:
+              top: 67%
+              left: 44.5%
+              "--paper-item-icon-color": '#D8D6D9'
+
 
 # Hallway
 
