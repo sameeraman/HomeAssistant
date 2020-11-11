@@ -206,6 +206,9 @@ google_assistant:
     switch.plug_158d000278ff33:
       expose: true
       room: Other
+    switch.smartplug5:
+      expose: true
+      room: Other
     light.dining_dimmer:
       expose: true
       room: Dining Room
