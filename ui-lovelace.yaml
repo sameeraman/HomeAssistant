@@ -2125,10 +2125,25 @@ views:
 
             - type: horizontal-stack
               cards: 
+              # - type: "custom:button-card"
+              #   name: ALFRESCO
+              #   entity: light.alfresco_dimmer
+              #   template: light
               - type: "custom:button-card"
-                name: ALFRESCO
-                entity: light.alfresco_dimmer
-                template: light
+                name: XMAS TREE
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg?v=3"; else return "/local/custom-lovelace/icons/christmas-tree?v=4" ]]]'
+                entity: switch.smartplug5
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
+
               - type: "custom:button-card"
                 name: LULLABIES
                 color_type: card
