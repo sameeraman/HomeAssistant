@@ -2132,7 +2132,7 @@ views:
               - type: "custom:button-card"
                 name: XMAS TREE
                 color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg?v=3"; else return "/local/custom-lovelace/icons/christmas-tree?v=4" ]]]'
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
                 entity: switch.smartplug5
                 show_entity_picture: true
                 tap_action:
