@@ -1575,6 +1575,22 @@ views:
               left: 81.2%
               transform: scale(0.8,0.8)
 
+
+          # Master WC Fan
+          - type: image
+            entity: switch.sonoff_1000ddec78_1
+            tap_action:
+              action: toggle
+            image: /local/custom-lovelace/icons/fan-on.svg
+            state_image:
+              "off": /local/custom-lovelace/icons/fan-off.svg
+            style:
+              top: 23%
+              left: 60.2%
+              transform: scale(0.6,0.6)
+
+
+
 # Bedroom 4
 
           # Bed 4 Motion
@@ -1755,9 +1771,9 @@ views:
             state_image:
               "off": /local/custom-lovelace/icons/fan-off.svg
             style:
-              top: 60%
+              top: 59.7%
               left: 2%
-              transform: scale(0.8,0.8)
+              transform: scale(0.6,0.6)
 
           # Main WC Light
           - type: state-icon

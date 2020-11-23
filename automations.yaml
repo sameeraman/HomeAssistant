@@ -3036,4 +3036,26 @@
         state: 'on'
   action:
     - service: switch.turn_off
-      entity_id:  switch.master_bath_fan
+      entity_id: switch.master_bath_fan
+
+# Turn off the Master Bath Fan after 10 mins
+- id: masterwcfanautooff10mins
+  alias: Turn off the Master WC Fan after 10 mins
+  trigger: 
+    - platform: state
+      entity_id: switch.sonoff_1000ddec78_1
+      to: 'on'
+      for:
+        minutes: 10
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.sonoff_1000ddec78_1
+        state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.sonoff_1000ddec78_1
