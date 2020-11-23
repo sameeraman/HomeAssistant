@@ -67,6 +67,9 @@
     name: Back Outdoor Light
     entity_id: switch.back_outdoor_switch
 
+  - platform: switch
+    name: Master WC Light
+    entity_id: switch.sonoff_1000ddec78_2
 
   - platform: mqtt
     schema: template
@@ -224,15 +227,3 @@
     retain: false
     optimistic: false
 
-  - platform: mqtt
-    schema: template
-    name: Master WC Dimmer 
-    state_topic: "shellies/masterwcdimmer/light/0/status"
-    state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
-    command_topic: "shellies/masterwcdimmer/light/0/set"
-    command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
-    command_off_template: '{"turn": "off"}'
-    brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
-    qos: 1
-    retain: false
-    optimistic: false

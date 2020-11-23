@@ -1478,7 +1478,7 @@ views:
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.master_wc_dimmer
+            entity: light.master_wc_light
             style:
               top: 29%
               left: 62.5%
@@ -2073,7 +2073,7 @@ views:
               cards: 
               - type: "custom:button-card"
                 name: MASTER WC
-                entity: light.master_wc_dimmer
+                entity: light.master_wc_light
                 template: light
               - type: "custom:button-card"
                 name: GARAGE

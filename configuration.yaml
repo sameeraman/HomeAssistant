@@ -274,7 +274,7 @@ google_assistant:
     light.bed_4_dimmer:
       expose: true
       room: Other
-    light.master_wc_dimmer:
+    light.master_wc_light:
       expose: true
       room: Other
     light.back_outdoor_light:

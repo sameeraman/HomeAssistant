@@ -2915,11 +2915,11 @@
         entity_id: input_boolean.master_wc_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.master_wc_dimmer
+        entity_id: light.master_wc_light
         state: 'off'
   action:
     - service: light.turn_on
-      entity_id:  light.master_wc_dimmer
+      entity_id:  light.master_wc_light
 
 # Turn off the Master WC Light when there's no motion
 - id: masterwcautooff
@@ -2940,18 +2940,18 @@
         entity_id: input_boolean.master_wc_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.master_wc_dimmer
+        entity_id: light.master_wc_light
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id:  light.master_wc_dimmer
+      entity_id:  light.master_wc_light
 
 # Turn off the Master WC Light after 20 mins
 - id: masterwcautooff20mins
   alias: Turn off the Master WC Light after 20 mins
   trigger: 
     - platform: state
-      entity_id: light.master_wc_dimmer
+      entity_id: light.master_wc_light
       to: 'on'
       for:
         minutes: 20
@@ -2965,11 +2965,11 @@
         entity_id: input_boolean.master_wc_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.master_wc_dimmer
+        entity_id: light.master_wc_light
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id:  light.master_wc_dimmer
+      entity_id:  light.master_wc_light
 
 
 # Turn off the Main WC Light after 20 mins
