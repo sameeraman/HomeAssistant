@@ -39,3 +39,8 @@
     stream_source: !secret babycameraurl
     still_image_url: !secret babycamerajpeg
     verify_ssl: false
+  - platform: generic
+    name: Front Outdoor Camera
+    stream_source: !secret frontoutdoorcameraurl
+    still_image_url: !secret frontoutdoorcamerajpeg
+    verify_ssl: false

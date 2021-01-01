@@ -713,6 +713,9 @@ views:
         title: Front Entrance 
         entity:  camera.front_entrance_camera
       - type: picture-entity 
+        title: Front Entrance 
+        entity:  camera.front_outdoor_camera
+      - type: picture-entity 
         title: Living 
         entity:  camera.living_camera
       - type: picture-entity 
