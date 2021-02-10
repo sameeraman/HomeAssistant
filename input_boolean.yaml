@@ -162,3 +162,6 @@ living_blind_1:
 
 living_blind_2:
   name: Living Blind 2 State
+
+frontentrance_light_auto_off_with_frontdoor:
+  name: Turn off Front Entrance light after sometime with Front door open. 

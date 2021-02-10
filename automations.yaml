@@ -1436,8 +1436,9 @@
       entity_id: light.living_hue_strip
     - service: light.turn_on
       entity_id: light.kitchen_strip
-    - service: switch.turn_on
-      entity_id: switch.smartplug5
+# Christmas light     
+#    - service: switch.turn_on
+#      entity_id: switch.smartplug5
 
 
  # Turn on the living mood light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset and midnight. 
@@ -1473,8 +1474,9 @@
       entity_id: light.living_hue_strip
     - service: light.turn_on
       entity_id: light.kitchen_strip
-    - service: switch.turn_on
-      entity_id: switch.smartplug5
+# Christmas light  
+#    - service: switch.turn_on
+#      entity_id: switch.smartplug5
 
 # Turn off the living mood dim lights at mid night
 - id: turnofflivingdimlights
@@ -1512,8 +1514,9 @@
       entity_id: light.living_hue_strip
     - service: light.turn_off
       entity_id: light.kitchen_strip
-    - service: switch.turn_off
-      entity_id: switch.smartplug5
+# Christmast light
+#    - service: switch.turn_off
+#      entity_id: switch.smartplug5
 
 # Turn off the Living Sonos (if playing) when the TV is switched on
 - id: turnofflivingsonoswhentvon
@@ -2792,9 +2795,14 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
+      - condition: state
+        entity_id: light.front_entrance_dimmer
+        state: 'off'
   action:
     - service: light.turn_on
       entity_id: light.front_entrance_dimmer
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.frontentrance_light_auto_off_with_frontdoor
 
 # Turn off the front entrance light after 1 minute the front door close at night
 - id: frontentrancelightoffwithfrontdoorclose1min
@@ -2814,9 +2822,15 @@
       - condition: state
         entity_id: light.front_entrance_dimmer
         state: 'on'
+      - condition: state
+        entity_id: input_boolean.frontentrance_light_auto_off_with_frontdoor
+        state: 'on'
   action:
     - service: light.turn_off
       entity_id: light.front_entrance_dimmer
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.frontentrance_light_auto_off_with_frontdoor
+
 
 # Turn off the front entrance light after 60 minutes
 - id: frontentrancelightoffafter60mins
