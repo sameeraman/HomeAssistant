@@ -941,9 +941,64 @@
     - service : switch.turn_off
       entity_id: switch.housealarm
 
-# Toggle Alfresco Music Play with Alfresco Xiaomi push button
-- id: togglealfrescomusicplaypushbutton
-  alias: Toggle Alfresco Music Play with Alfresco Xiaomi push button
+# # Toggle Alfresco Music Play with Alfresco Xiaomi push button
+# - id: togglealfrescomusicplaypushbutton
+#   alias: Toggle Alfresco Music Play with Alfresco Xiaomi push button
+#   trigger: 
+#     platform: event
+#     event_type: xiaomi_aqara.click
+#     event_data:
+#       entity_id: binary_sensor.switch_158d0002860904
+#       click_type: single
+#   condition:
+#     condition: state
+#     entity_id: input_boolean.alfresco_button
+#     state: 'on'
+#   action:
+#     - service : script.turn_on
+#       entity_id: script.sonos_alfresco_play
+
+# # Jump to Next track in Alfresco Music Play when Alfresco Xiaomi push button double press is detected
+# - id: nextrackalfrescomusicplaydoublepushbutton
+#   alias: Jump to Next track in Alfresco Music Play when Alfresco Xiaomi push button double press is detected
+#   trigger: 
+#     platform: event
+#     event_type: xiaomi_aqara.click
+#     event_data:
+#       entity_id: binary_sensor.switch_158d0002860904
+#       click_type: double
+#   condition:
+#     condition: state
+#     entity_id: input_boolean.alfresco_button
+#     state: 'on'
+#   action:
+#     service: media_player.media_next_track
+#     entity_id: media_player.alfresco
+
+# # Toggle Alfresco Automation with Alfresco Xiaomi push button long press
+# - id: togglealfrescoautomationpushbutton
+#   alias: Toggle Alfresco Automation with Alfresco Xiaomi push button long press
+#   trigger: 
+#     platform: event
+#     event_type: xiaomi_aqara.click
+#     event_data:
+#       entity_id: binary_sensor.switch_158d0002860904
+#       click_type: long_click_press
+#   condition:
+#     condition: state
+#     entity_id: input_boolean.alfresco_button
+#     state: 'on'
+#   action:
+#     - service: input_boolean.toggle
+#       data:
+#         entity_id: input_boolean.alfresco_motion_music
+#     - service: input_boolean.toggle
+#       data:
+#         entity_id: input_boolean.alfresco_motion_light
+
+# Toggle Office Light with Alfresco Xiaomi push button
+- id: toggleofficelightpushbutton
+  alias: Toggle Office Light with Alfresco Xiaomi push button
   trigger: 
     platform: event
     event_type: xiaomi_aqara.click
@@ -956,45 +1011,7 @@
     state: 'on'
   action:
     - service : script.turn_on
-      entity_id: script.sonos_alfresco_play
-
-# Jump to Next track in Alfresco Music Play when Alfresco Xiaomi push button double press is detected
-- id: nextrackalfrescomusicplaydoublepushbutton
-  alias: Jump to Next track in Alfresco Music Play when Alfresco Xiaomi push button double press is detected
-  trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d0002860904
-      click_type: double
-  condition:
-    condition: state
-    entity_id: input_boolean.alfresco_button
-    state: 'on'
-  action:
-    service: media_player.media_next_track
-    entity_id: media_player.alfresco
-
-# Toggle Alfresco Automation with Alfresco Xiaomi push button long press
-- id: togglealfrescoautomationpushbutton
-  alias: Toggle Alfresco Automation with Alfresco Xiaomi push button long press
-  trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d0002860904
-      click_type: long_click_press
-  condition:
-    condition: state
-    entity_id: input_boolean.alfresco_button
-    state: 'on'
-  action:
-    - service: input_boolean.toggle
-      data:
-        entity_id: input_boolean.alfresco_motion_music
-    - service: input_boolean.toggle
-      data:
-        entity_id: input_boolean.alfresco_motion_light
+      entity_id: light.office_dimmer
 
 # Turn on Alfresco Music Play with Alfresco Motion
 - id: turnonalfrescomusicplaywithmotion
