@@ -4,6 +4,10 @@ alfresco_button:
   name: Alfresco button media play
   icon: mdi:music-circle-outline
 
+office_button:
+  name: Office Light On/Off button 
+  icon: mdi:lightbulb-outline
+
 alfresco_motion_music:
   name: Alfresco motion based music
   icon: mdi:music-circle-outline

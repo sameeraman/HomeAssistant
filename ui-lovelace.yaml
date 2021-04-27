@@ -2489,6 +2489,9 @@ views:
             - entity: input_boolean.office_aircon_vent_on_off_auto
               tap_action:
                 action: toggle
+            - entity: input_boolean.office_button
+              tap_action:
+                action: toggle
 
 # Baby
   - title: Baby
