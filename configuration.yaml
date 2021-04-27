@@ -424,9 +424,9 @@ weather:
     latitude: !secret darksky_lat
     longitude: !secret darksky_long
     mode: daily
-  - platform: bom
-    name: bom-jandakot
-    station: !secret bomstationid
+  # - platform: bom
+  #   name: bom-jandakot
+  #   station: !secret bomstationid
 
 
 

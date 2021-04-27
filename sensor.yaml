@@ -652,35 +652,35 @@
     display_options:
       - 'time'
 
-# Australian Bureau of Meteorology (BOM)
-  - platform: bom
-    station: !secret bomstationid
-    monitored_conditions:
-      - apparent_t
-      - cloud
- #     - cloud_base_m
- #     - cloud_oktas
- #     - cloud_type_id
- #     - cloud_type
-      - delta_t
-      - gust_kmh
-      - gust_kt
-      - air_temp
-      - dewpt
-      - local_date_time
-      - local_date_time_full
-      - press
-      - press_qnh
-      - press_msl
-      - press_tend
-      - rain_trace
-      - rel_hum
-      - sea_state
-      - swell_dir_worded
-      - swell_height
-      - swell_period
-      - vis_km
-      - weather
-      - wind_dir
-      - wind_spd_kmh
-      - wind_spd_kt
+# # Australian Bureau of Meteorology (BOM)
+#   - platform: bom
+#     station: !secret bomstationid
+#     monitored_conditions:
+#       - apparent_t
+#       - cloud
+#  #     - cloud_base_m
+#  #     - cloud_oktas
+#  #     - cloud_type_id
+#  #     - cloud_type
+#       - delta_t
+#       - gust_kmh
+#       - gust_kt
+#       - air_temp
+#       - dewpt
+#       - local_date_time
+#       - local_date_time_full
+#       - press
+#       - press_qnh
+#       - press_msl
+#       - press_tend
+#       - rain_trace
+#       - rel_hum
+#       - sea_state
+#       - swell_dir_worded
+#       - swell_height
+#       - swell_period
+#       - vis_km
+#       - weather
+#       - wind_dir
+#       - wind_spd_kmh
+#       - wind_spd_kt
