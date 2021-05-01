@@ -1550,8 +1550,9 @@
     service: media_player.media_play_pause
     entity_id: media_player.living
 
+
 # Play Sienna Youtube when Xiaomi Living push button is single pressed
-- id: siennayoutubelightspushbutton
+- id: siennayoutubelivingpushbuttondouble
   alias: Play Sienna Youtube when Xiaomi Living push button is single pressed
   trigger: 
     platform: event
@@ -1559,6 +1560,20 @@
     event_data:
       entity_id: binary_sensor.switch_158d000323d424
       click_type: single
+  action:
+    - service : script.turn_on
+      entity_id: script.youtube_sienna
+
+
+# Play Sienna Youtube when Xiaomi Living push button is double pressed
+- id: siennayoutubelivingpushbuttondouble
+  alias: Play Sienna Youtube when Xiaomi Living push button is double pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000323d424
+      click_type: double
   action:
     - service : media_player.play_media
       entity_id: media_player.living_tv
@@ -1569,6 +1584,7 @@
             "app_name": "youtube",
             "media_id": "vkRDOcma9Qk"
           }'
+
 
 
 # # Alarm when Xiaomi Living push button is single pressed

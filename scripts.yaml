@@ -379,3 +379,43 @@ sonos_alarm_bell:
     - service: sonos.restore
       data_template:
         entity_id: media_player.living
+
+
+# Turn on Google TV
+google_tv_on:
+  description: 'Turn on Google TV'
+  alias: "Turn on Google TV"
+  sequence:
+    - service: remote.turn_on
+      entity_id: remote.Living
+      data_template:
+        activity: 'Google TV'
+    - delay:
+        seconds:  20
+
+# Play Youtube Videos for Sienna
+youtube_sienna:
+  alias: "Play Youtube Videos for Sienna"
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state('media_player.yamaha_receiver', 'on') %}
+            script.google_tv_on
+          {% else %}
+            script.do_nothing
+          {% endif %}
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.living
+        volume_level: "0.65"
+    - service : media_player.play_media
+      entity_id: media_player.living_tv
+      data:
+        media_content_type: cast
+        media_content_id: >
+          {
+            "app_name": "youtube",
+            {% set videolist = ["vkRDOcma9Qk","FPQ7oBWCTgs","TBRdYaYTs18","JqIqywOBWAY","U80sqVMPBtQ","aUiswwr77L8","pZ_7dZbYGjU","fMMJ5IIbHLw","FubT0Pf9QPk"] %} {% set sindex = (range(0, (videolist | length - 1) )|random) %} 
+            "media_id": "{{videolist[sindex]}}"
+          }
