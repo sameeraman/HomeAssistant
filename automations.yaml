@@ -1550,10 +1550,9 @@
     service: media_player.media_play_pause
     entity_id: media_player.living
 
-
-# Alarm when Xiaomi Living push button is single pressed
-- id: togglelivingmoodlightspushbutton
-  alias: Toggle Living Mood lights when Xiaomi Living push button is single pressed
+# Play Sienna Youtube when Xiaomi Living push button is single pressed
+- id: siennayoutubelightspushbutton
+  alias: Play Sienna Youtube when Xiaomi Living push button is single pressed
   trigger: 
     platform: event
     event_type: xiaomi_aqara.click
@@ -1561,21 +1560,42 @@
       entity_id: binary_sensor.switch_158d000323d424
       click_type: single
   action:
-    - service : script.turn_on
-      entity_id: script.sonos_alarm_bell
+    - service : media_player.play_media
+      entity_id: media_player.living_tv
+      data:
+        media_content_type: cast
+        media_content_id: '
+          {
+            "app_name": "youtube",
+            "media_id": "vkRDOcma9Qk"
+          }'
 
-# Toggle Vaporizer when Living push button is long pressed
-- id: executeleavingworkflowpushbuttonlong
-  alias: Toggle Vaporizer when Living push button is long pressed
-  trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000323d424
-      click_type: long_click_press
-  action:
-    - service : switch.toggle
-      entity_id: switch.smartplug2
+
+# # Alarm when Xiaomi Living push button is single pressed
+# - id: togglelivingmoodlightspushbutton
+#   alias: Toggle Living Mood lights when Xiaomi Living push button is single pressed
+#   trigger: 
+#     platform: event
+#     event_type: xiaomi_aqara.click
+#     event_data:
+#       entity_id: binary_sensor.switch_158d000323d424
+#       click_type: single
+#   action:
+#     - service : script.turn_on
+#       entity_id: script.sonos_alarm_bell
+
+# # Toggle Vaporizer when Living push button is long pressed
+# - id: executeleavingworkflowpushbuttonlong
+#   alias: Toggle Vaporizer when Living push button is long pressed
+#   trigger: 
+#     platform: event
+#     event_type: xiaomi_aqara.click
+#     event_data:
+#       entity_id: binary_sensor.switch_158d000323d424
+#       click_type: long_click_press
+#   action:
+#     - service : switch.toggle
+#       entity_id: switch.smartplug2
 
 # # Toggle Living Mood lights when Xiaomi Living push button is single pressed
 # - id: togglelivingmoodlightspushbutton
