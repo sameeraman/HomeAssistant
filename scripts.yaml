@@ -400,7 +400,7 @@ youtube_sienna:
     - service: script.turn_on
       data_template:
         entity_id: >
-          {% if is_state('media_player.yamaha_receiver', 'on') %}
+          {% if is_state('media_player.yamaha_receiver', 'off') %}
             script.google_tv_on
           {% else %}
             script.do_nothing
