@@ -387,7 +387,7 @@ google_tv_on:
   alias: "Turn on Google TV"
   sequence:
     - service: remote.turn_on
-      entity_id: remote.Living
+      entity_id: remote.living
       data_template:
         activity: 'Google TV'
     - delay:
@@ -408,7 +408,12 @@ youtube_sienna:
     - service: media_player.volume_set
       data_template:
         entity_id: media_player.living
-        volume_level: "0.65"
+        volume_level: "0.70"
+    - service: remote.send_command
+      entity_id: remote.living
+      data_template:
+        device: "Samsung TV"
+        command: "InputHdmi1"
     - service : media_player.play_media
       entity_id: media_player.living_tv
       data:
