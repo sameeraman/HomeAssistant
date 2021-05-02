@@ -1585,6 +1585,18 @@
             "media_id": "vkRDOcma9Qk"
           }'
 
+# Toggle TV Power when Living push button is long pressed
+- id: executetvtogglepushbuttonlong
+  alias: Toggle TV Power when Living push button is long pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000323d424
+      click_type: long_click_press
+  action:
+    - service : script.turn_on
+      entity_id: script.toggle_tv
 
 
 # # Alarm when Xiaomi Living push button is single pressed
