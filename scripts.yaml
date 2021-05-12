@@ -389,9 +389,9 @@ google_tv_on:
     - service: remote.turn_on
       entity_id: remote.living
       data_template:
-        activity: 'Watch TV'
+        activity: 'Google TV'
     - delay:
-        seconds:  30
+        seconds: 20
 
 # Play Youtube Videos for Sienna
 youtube_sienna:
@@ -414,6 +414,10 @@ youtube_sienna:
     #   data_template:
     #     device: "Samsung TV"
     #     command: "InputHdmi1"
+    - service : media_player.turn_on
+      entity_id: media_player.living_tv
+    - delay:
+        seconds: 5
     - service : media_player.play_media
       entity_id: media_player.living_tv
       data:
