@@ -209,6 +209,9 @@ google_assistant:
     switch.smartplug5:
       expose: true
       room: Other
+    switch.smartplug2:
+      expose: true
+      room: Other
     light.dining_dimmer:
       expose: true
       room: Dining Room

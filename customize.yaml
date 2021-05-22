@@ -90,8 +90,6 @@ binary_sensor.vibration_158d0003232371:
   friendly_name: Garage Door Vibration 
 sensor.coordination_158d0003232371:
   friendly_name: Garage Door Angle
-switch.smartplug2:
-  friendly_name: Christmas Lights
 switch.sonoff_1000ddeb7c_1:
   friendly_name: Main WC Light
 switch.sonoff_1000ddeb7c_2:
