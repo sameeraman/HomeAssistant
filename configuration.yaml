@@ -400,25 +400,25 @@ lovelace:
   resources:
     # - url: /local/mini-media-player-bundle.js?v=1.9.1
     #   type: module
-    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+    - url: /local/community/mini-media-player/mini-media-player-bundle.js
       type: module
-    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+    - url: /local/community/mini-graph-card/mini-graph-card-bundle.js
       type: module
-    - url: /hacsfiles/custom-header/custom-header.js
+    - url: /local/community/custom-header/custom-header.js
       type: module
-    - url: /hacsfiles/weather-card/weather-card.js
+    - url: /local/community/weather-card/weather-card.js
       type: module
-    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+    - url: /local/community/lovelace-layout-card/layout-card.js
       type: module  
-    - url: /hacsfiles/button-card/button-card.js
+    - url: /local/community/button-card/button-card.js
       type: module
-    - url: /hacsfiles/light-popup-card/light-popup-card.js
+    - url: /local/community/light-popup-card/light-popup-card.js
       type: module
-    - url: /hacsfiles/light-entity-card/light-entity-card.js
+    - url: /local/community/light-entity-card/light-entity-card.js
       type: module
-    - url: /hacsfiles/stack-in-card/stack-in-card.js
+    - url: /local/community/stack-in-card/stack-in-card.js
       type: module
-    - url: /hacsfiles/popup-backdrop-filter/popup-backdrop-filter.js
+    - url: /local/community/popup-backdrop-filter/popup-backdrop-filter.js
       type: module
 
 weather:
