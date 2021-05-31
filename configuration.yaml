@@ -484,6 +484,46 @@ spotify:
 #        - 'theparadise'
 
 
+homekit:
+  - filter:
+      include_entities:
+        - binary_sensor.living_room_motion
+        - light.alfresco_dimmer
+        - light.master_bath_dimmer
+        - light.bath_strip
+        - light.office_dimmer
+        - light.front_outdoor_light
+        - light.kitchen_dimmer
+        - light.living_dimmer
+        - light.living_mood_lights
+        - light.master_dimmer
+        - light.garage_dimmer
+        - switch.garage_door
+        - light.master_pendant
+        - switch.air_conditioner
+        - switch.bedheater_switch
+        - switch.housealarm
+        - switch.living_music
+        - switch.alfresco_music
+        - switch.nightmood
+        - light.theater_volume
+        - switch.plug_158d000278ff33
+        - switch.smartplug5
+        - switch.smartplug2
+        - light.dining_dimmer
+        - light.laundry_light
+        - light.laundry_outside_light
+        - light.madhushi_wardrobe_light
+        - light.sameera_wardrobe_light
+        - light.pantry_light
+        - light.front_entrance_dimmer
+        - light.front_patio_light
+        - light.bed_2_dimmer
+        - light.bed_3_dimmer
+        - light.bed_4_dimmer
+        - light.master_wc_light
+        - light.back_outdoor_light
+
 # Rain Machine (Sprinkler System)
 rainmachine:
   controllers:
