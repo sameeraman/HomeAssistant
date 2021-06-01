@@ -1473,22 +1473,37 @@ views:
                   entity_picture:
                     - padding: 7%
 
+              # - type: "custom:button-card"
+              #   name: LULLABIES
+              #   color_type: card
+              #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
+              #   entity: binary_sensor.lullabies_music_sensor
+              #   show_entity_picture: true
+              #   tap_action:
+              #     action: call-service
+              #     service: script.play_pause_sonos_living_play_lullabies
+              #   styles:
+              #     name:
+              #       - font-familly: Roboto
+              #       - font-size: 14px
+              #     entity_picture:
+              #       - padding: 7%
+
+
               - type: "custom:button-card"
-                name: LULLABIES
+                name: VAPORIZER
                 color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
-                entity: binary_sensor.lullabies_music_sensor
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/vap.svg?v=3"; else return "/local/custom-lovelace/icons/vap.svg?v=4" ]]]'
+                entity: switch.smartplug2
                 show_entity_picture: true
                 tap_action:
-                  action: call-service
-                  service: script.play_pause_sonos_living_play_lullabies
+                  action: toggle
                 styles:
                   name:
                     - font-familly: Roboto
                     - font-size: 14px
                   entity_picture:
                     - padding: 7%
-
 
 # Home View
   - title: Home
