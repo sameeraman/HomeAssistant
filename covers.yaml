@@ -172,7 +172,7 @@
           data:
             entity_id: switch.garage_door
         icon_template: >-
-          {% if is_state('switch.garage_door_opener_16', 'on') %}
+          {% if is_state('binary_sensor.garage_door_angle', 'on') %}
             mdi:garage-open
           {% else %}
             mdi:garage
