@@ -171,7 +171,7 @@ google_assistant:
     light.garage_dimmer:
       expose: true
       room: Garage
-    switch.garage_door:
+    cover.garage_door:
       expose: true
       room: Garage
       aliases:
@@ -490,7 +490,7 @@ homekit:
         - light.living_mood_lights
         - light.master_dimmer
         - light.garage_dimmer
-        - switch.garage_door
+        - cover.garage_door
         - light.master_pendant
         - switch.air_conditioner
         - switch.bedheater_switch
@@ -515,6 +515,7 @@ homekit:
         - light.bed_4_dimmer
         - light.master_wc_light
         - light.back_outdoor_light
+        - cover.living_blinds
 
 # Rain Machine (Sprinkler System)
 rainmachine:

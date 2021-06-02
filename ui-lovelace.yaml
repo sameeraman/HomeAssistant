@@ -558,7 +558,7 @@ views:
           # Garage Door
           - type: state-icon
             icon: 'mdi:minus'
-            entity: binary_sensor.door_window_sensor_158d0002c0e236
+            entity: binary_sensor.garage_door_angle
             style:
               top: 86%
               left: 75.5%
@@ -1736,7 +1736,7 @@ views:
               - entity: binary_sensor.garage_motion
                 icon: 'mdi:run-fast'
                 name: Motion
-              - entity: binary_sensor.door_window_sensor_158d0002c0e236
+              - entity: binary_sensor.garage_door_angle
                 icon: 'mdi:garage-open'
                 name: Door
               - entity: sensor.garage_espmulti_t_2

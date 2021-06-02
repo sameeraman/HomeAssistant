@@ -118,6 +118,34 @@ sonos_morning_greet:
     - service: input_boolean.turn_off
       entity_id: input_boolean.morning_greet
 
+# Script that executes good morning greet
+garage_door_warning:
+  alias: "Sonos Garage Door warning 30 mins"
+  sequence:
+    - service: sonos.snapshot
+      data_template:
+        entity_id: media_player.living
+    - service: media_player.media_pause
+      data_template:
+        entity_id: media_player.living
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.living
+        volume_level: "0.60"
+    - service: tts.google_translate_say
+      data_template:
+        entity_id: media_player.living
+        message: >
+          Warning!. Garage Door was opened for more than 30 minutes
+    - delay:
+        seconds:  10
+    - service: sonos.restore
+      data_template:
+        entity_id: media_player.living
+
+
+
+
 # Rainmachine Sprinkler Turn on Call
 rainmachine_zoneon:
   description: 'Rainmachine Sprinkler Turn on Call'
