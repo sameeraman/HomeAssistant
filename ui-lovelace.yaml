@@ -1862,8 +1862,62 @@ views:
             type: glance
           - type: custom:mini-media-player
             entity: media_player.living
+
+          - type: glance
+            show_state: false
+            entities:
+              - entity: script.sonos_living_play_lullabies
+                name: Lullabies 
+                icon: mdi:baby-face-outline
+                tap_action:
+                  action: call-service
+                  service: script.sonos_living_play_lullabies
+              - entity: script.sonos_living_play_jazz
+                name: Jazz
+                icon: mdi:saxophone
+                tap_action:
+                  action: call-service
+                  service: script.sonos_living_play_jazz
+              - entity: script.sonos_living_play_playlist
+                name: Romance
+                icon: mdi:heart-circle-outline
+                tap_action:
+                  action: call-service
+                  service: script.sonos_living_play_playlist
+                  service_data:
+                    playlist: 'Romantic'
+          - type: glance
+            show_state: false
+            entities:
+              - entity: script.sonos_living_play_playlist
+                name: Instrumental
+                icon: mdi:music-clef-treble
+                tap_action:
+                  action: call-service
+                  service: script.sonos_living_play_playlist
+                  service_data:
+                    playlist: 'Instrumental'
+              - entity: script.sonos_living_play_playlist
+                name: Sinhala 
+                icon: mdi:account-music-outline
+                tap_action:
+                  action: call-service
+                  service: script.sonos_living_play_playlist
+                  service_data:
+                    playlist: 'Sinhala'
+              - entity: script.sonos_living_play_jazz
+                name: Bob Marley
+                icon: mdi:beach
+                tap_action:
+                  action: call-service
+                  service: script.sonos_living_play_playlist
+                  service_data:
+                    playlist: 'Bob Marley'
+
           - type: custom:mini-media-player
             entity: media_player.alfresco
+
+
       - type: vertical-stack
         cards:
           - type: custom:mini-graph-card
