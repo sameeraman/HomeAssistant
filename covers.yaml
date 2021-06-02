@@ -157,6 +157,29 @@
             data:
               topic: 'home/living/blinds/livingblind2/cmnd/power2'
               payload: 'OFF'
+      garage_door:
+        friendly_name: "Garage Door"
+        open_cover:
+          service: switch.turn_on
+          data:
+            entity_id: switch.garage_door
+        close_cover:
+          service: switch.turn_off
+          data:
+            entity_id: switch.garage_door
+        stop_cover:
+          service: switch.turn_on
+          data:
+            entity_id: switch.garage_door
+        icon_template: >-
+          {% if is_state('switch.garage_door_opener_16', 'on') %}
+            mdi:garage-open
+          {% else %}
+            mdi:garage
+          {% endif %} 
+
+
+
 
   - platform: group
     name: Living Blinds
