@@ -157,3 +157,13 @@
             data:
               topic: 'home/living/blinds/livingblind2/cmnd/power2'
               payload: 'OFF'
+
+  - platform: group
+    name: Living Blinds
+    entities:
+      - cover.dining_blind_1
+      - cover.dining_blind_2
+      - cover.living_blind_1
+      - cover.living_blind_2
+      - cover.tv_blind_left
+      - cover.tv_blind_right
