@@ -215,15 +215,7 @@ google_assistant:
     light.dining_dimmer:
       expose: true
       room: Dining Room
-    cover.48100000c44f33b796fc:
-      expose: true
-      room: Dining Room
-      aliases:
-        - Dining Blinds
-    cover.8600507250029161f3c6:
-      expose: true
-      room: Living
-    cover.86005072500291622d8f:
+    cover.living_blinds:
       expose: true
       room: Living
     camera.alfresco_camera:

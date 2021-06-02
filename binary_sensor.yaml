@@ -76,7 +76,7 @@
         device_class: door
 #        value_template: "{{  states.sensor.coordination_158d0003232371.state.split(',')[1] | float > -500 }}" 
         value_template: >-
-          {% if is_state('sensor.coordination_158d000323237', 'Unknown') %}
+          {% if is_state('sensor.coordination_158d000323237', 'unknown') or is_state('sensor.coordination_158d000323237', 'Unknown') %}
             off
           {% else %}
             {{  states.sensor.coordination_158d0003232371.state.split(',')[1] | float > -500 }}
