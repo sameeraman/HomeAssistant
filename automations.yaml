@@ -1599,31 +1599,31 @@
       entity_id: script.toggle_tv
 
 
-# # Alarm when Xiaomi Living push button is single pressed
-# - id: togglelivingmoodlightspushbutton
-#   alias: Toggle Living Mood lights when Xiaomi Living push button is single pressed
-#   trigger: 
-#     platform: event
-#     event_type: xiaomi_aqara.click
-#     event_data:
-#       entity_id: binary_sensor.switch_158d000323d424
-#       click_type: single
-#   action:
-#     - service : script.turn_on
-#       entity_id: script.sonos_alarm_bell
+# Alarm when Xiaomi Living push button is single pressed
+- id: togglelivingmoodlightspushbutton
+  alias: Toggle Living Mood lights when Xiaomi Living push button is single pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000407e21a
+      click_type: single
+  action:
+    - service : script.turn_on
+      entity_id: script.sonos_alarm_bell
 
-# # Toggle Vaporizer when Living push button is long pressed
-# - id: executeleavingworkflowpushbuttonlong
-#   alias: Toggle Vaporizer when Living push button is long pressed
-#   trigger: 
-#     platform: event
-#     event_type: xiaomi_aqara.click
-#     event_data:
-#       entity_id: binary_sensor.switch_158d000323d424
-#       click_type: long_click_press
-#   action:
-#     - service : switch.toggle
-#       entity_id: switch.smartplug2
+# Toggle Vaporizer when Living push button is long pressed
+- id: executeleavingworkflowpushbuttonlong
+  alias: Toggle Vaporizer when Living push button is long pressed
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000407e21a
+      click_type: long_click_press
+  action:
+    - service : switch.toggle
+      entity_id: switch.smartplug2
 
 # # Toggle Living Mood lights when Xiaomi Living push button is single pressed
 # - id: togglelivingmoodlightspushbutton
