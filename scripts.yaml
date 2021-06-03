@@ -442,10 +442,12 @@ youtube_sienna:
     #   data_template:
     #     device: "Samsung TV"
     #     command: "InputHdmi1"
+    - service : media_player.media_stop
+      entity_id: media_player.living_tv
     - service : media_player.turn_on
       entity_id: media_player.living_tv
     - delay:
-        seconds: 5
+        seconds: 3
     - service : media_player.play_media
       entity_id: media_player.living_tv
       data:
