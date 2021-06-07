@@ -1635,9 +1635,9 @@
       entity_id: script.toggle_tv
 
 
-# Alarm when Xiaomi Living push button is single pressed
-- id: togglelivingmoodlightspushbutton
-  alias: Toggle Living Mood lights when Xiaomi Living push button is single pressed
+# Alarm when Xiaomi Master push button is single pressed (Baby help)
+- id: alarmmasterpushbutton
+  alias: Alarm when Xiaomi Master push button is single pressed (Baby help)
   trigger: 
     platform: event
     event_type: xiaomi_aqara.click
@@ -1647,6 +1647,34 @@
   action:
     - service : script.turn_on
       entity_id: script.sonos_alarm_bell
+
+# Alarm when Xiaomi Master push button is single pressed (Baby help)
+- id: alarmmasterpushbutton
+  alias: Alarm when Xiaomi Master push button is single pressed (Baby help)
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000407e21a
+      click_type: single
+  action:
+    - service : script.turn_on
+      entity_id: script.sonos_alarm_bell
+
+# Turn off master light and turn on pendant light when master push button is double pressed 
+- id: masterlightdoublepushbutton
+  alias: Turn off master light and turn on pendant light when master push button is double pressed 
+  trigger: 
+    platform: event
+    event_type: xiaomi_aqara.click
+    event_data:
+      entity_id: binary_sensor.switch_158d000407e21a
+      click_type: double
+  action:
+    - service: light.turn_on
+      entity_id: light.master_pendant
+    - service: light.turn_off
+      entity_id: light.master_dimmer
 
 # Toggle Vaporizer when Living push button is long pressed
 - id: executeleavingworkflowpushbuttonlong
