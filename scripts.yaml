@@ -388,7 +388,7 @@ send_snapshot_garage:
         title: "{{ title }}"
         message:  "{{ message }}"
         data:
-          file: !secret garagecameranotifytemp
+          image: !secret garagecameranotifytemp
 
 # Sonos Alarm Bell
 sonos_alarm_bell:

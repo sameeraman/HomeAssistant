@@ -843,9 +843,9 @@
         title: 'Garage Door was left open for more than 60 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Garage door was left open for more than 60 minutes'
 
-# Alert if the Garage door was left open for more than 30 minutes
+# Alert if the Garage door was left open for more than 120 minutes
 - id: garagedoor120mins
-  alias: Alert if the Garage door was left open for more than 30 minutes
+  alias: Alert if the Garage door was left open for more than 120 minutes
   trigger: 
     - platform: state
       entity_id: binary_sensor.garage_door_angle
@@ -864,8 +864,8 @@
       entity_id: script.garage_door_warning
     - service: notify.sendgrid
       data_template:
-        title: 'Garage Door was left open for more than 30 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Garage door was left open for more than 30 minutes'
+        title: 'Garage Door was left open for more than 2 hours - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Garage door was left open for more than 2 hours'
 
 
 
