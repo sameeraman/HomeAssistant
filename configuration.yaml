@@ -435,6 +435,12 @@ notify:
     api_key: !secret sendgrid_key
     sender: !secret sendgrid_sender
     recipient: !secret sendgrid_receiver
+  - name: phoneapps
+    platform: group
+    services:
+      - service: mobile_app_sameera_iphone
+      - service: mobile_app_madhushi_iphone
+
 
 # SONOS
 sonos:

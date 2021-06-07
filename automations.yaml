@@ -290,16 +290,16 @@
 # Alert when Air conditioner is left on for more than 1.75 hours. 
 - id: myairruntimealert4hrs
   alias: Alert when Air conditioner is left on for more than 1.75 hours
-  initial_state: True
+  initial_state: false
   trigger:
     - platform: numeric_state
       entity_id: sensor.myair_state_avg2hr
       above: 1.75
   action:
-    - service: notify.pushbullet
+    - service: notify.phoneapps
       data_template:
-        title: 'Air Conditioner is running for more than 1.75 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
-        message:  'Air Conditioner is running for more than 1.75 hours'
+        title: 'Air Conditioner running for 1.75 hours - Alert!'
+        message:  'Air Conditioner is running for more than 1.75 hours at {{now().strftime("%Y%m%d-%H%M%S")}}'
     - service: notify.sendgrid
       data_template:
         title: 'Air Conditioner is running for more than 1.75 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
@@ -317,10 +317,10 @@
     # - service: shell_command.myair_setcmd
     #   data_template:
     #     json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
-    - service: notify.pushbullet
+    - service: notify.phoneapps
       data_template:
-        title: 'Air Conditioner is running for more than 3.75 hours. It was automatically turned off.  {{now().strftime("%Y%m%d-%H%M%S")}}'
-        message:  'Air Conditioner is running for more than 3.75 hours. It was automatically turned off.'
+        title: 'Air Conditioner is running for more than 3.75 hours - Turned off'
+        message:  'Air Conditioner is running for more than 3.75 hours. It was automatically turned off. {{now().strftime("%Y%m%d-%H%M%S")}}'
     - service: notify.sendgrid
       data_template:
         title: 'Air Conditioner is running for more than 3.75 hours. It was automatically turned off. {{now().strftime("%Y%m%d-%H%M%S")}}'
@@ -344,10 +344,10 @@
     - service: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
-    - service: notify.pushbullet
+    - service: notify.phoneapps
       data_template:
-        title: 'Air Conditioner was running when the house alarm was turned on {{now().strftime("%Y%m%d-%H%M%S")}}'
-        message:  'Air Conditioner was running when the house alarm was turned on. It was turned off automatically.'
+        title: 'Air Conditioner was left turned on with House alarm'
+        message:  'Air Conditioner was running when the house alarm was turned on at {{now().strftime("%Y%m%d-%H%M%S")}}. It was turned off automatically.'
     - service: notify.sendgrid
       data_template:
         title: 'Air Conditioner was running when the house alarm was turned on {{now().strftime("%Y%m%d-%H%M%S")}}'
@@ -434,7 +434,7 @@
     entity_id: switch.housealarm
     state: 'on'
   action:
-    - service: notify.pushbullet
+    - service: notify.phoneapps
       data_template:
         title: 'Motion Detected {{now().strftime("%Y%m%d-%H%M%S")}}'
         message:  '{{ states[trigger.entity_id.split(".")[0]][ trigger.entity_id.split(".")[1]].name }}  has triggered'
@@ -718,24 +718,24 @@
     - service: light.turn_off
       entity_id:  light.bath_strip
 
-# Alert if the Laundry door was left open for more than 10 minutes
-- id: laundrydoor10mins
-  alias: Alert if the Laundry door was left open for more than 10 minutes
+# Alert if the Laundry door was left open for more than 60 minutes
+- id: laundrydoor60mins
+  alias: Alert if the Laundry door was left open for more than 60 minutes
   trigger: 
     - platform: state
       entity_id: binary_sensor.door_window_sensor_158d0002ca3100
       to: 'on'
       for:
-        minutes: 10
+        minutes: 60
   action:
-    - service: notify.pushbullet
+    - service: notify.phoneapps
       data_template:
-        title: 'Laundry Door was left open for more than 10 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Laundry door was left open for more than 10 minutes'
+        title: 'Laundry Door 60 minute Alert!'
+        message:  'Laundry door was left open for more than 60 minutes at {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: notify.sendgrid
       data_template:
-        title: 'Laundry Door was left open for more than 10 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Laundry door was left open for more than 10 minutes'
+        title: 'Laundry Door was left open for more than 60 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Laundry door was left open for more than 60 minutes'
 
 # Alert if the Laundry door was left open for more than 60 minutes
 - id: laundrydoor120mins
@@ -747,10 +747,10 @@
       for:
         minutes: 120
   action:
-    - service: notify.pushbullet
+    - service: notify.phoneapps
       data_template:
-        title: 'Laundry Door was left open for more than 120 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Laundry door was left open for more than 120 minutes'
+        title: 'Laundry Door 2 hour Alert! '
+        message:  'Laundry door was left open for more than 2 hours at {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: notify.sendgrid
       data_template:
         title: 'Laundry Door was left open for more than 120 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
@@ -786,9 +786,9 @@
         entity_id: binary_sensor.door_window_sensor_158d00033a7262
         state: 'on' 
   action:
-    - service: notify.pushbullet
+    - service: notify.notify.phoneapps
       data_template:
-        title: '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        title: '{{ A door was left open at 10pm today - Please check!'
         message:  '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: notify.sendgrid
       data_template:
@@ -797,18 +797,23 @@
 
 
 
-# Alert if the Garage door was left open for more than 10 minutes
-- id: garagedoor10mins
-  alias: Alert if the Garage door was left open for more than 10 minutes
+# Alert if the Garage door was left open for more than 30 minutes
+- id: garagedoor30mins
+  alias: Alert if the Garage door was left open for more than 30 minutes
   trigger: 
     - platform: state
       entity_id: binary_sensor.garage_door_angle
       to: 'on'
       for:
-        minutes: 10
+        minutes: 30
   action:
     - service: script.turn_on
-      entity_id: script.send_snapshot_garage
+      target:
+        entity_id: script.send_snapshot_garage
+      data:
+        variables:
+          title: 'Garage Door 30 minutes Alert!'
+          message: 'Garage door was left open for more than 30 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: notify.sendgrid
       data_template:
         title: 'Garage Door was left open for more than 10 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
@@ -825,22 +830,36 @@
         minutes: 60
   action:
     - service: script.turn_on
-      entity_id: script.send_snapshot_garage
+      target:
+        entity_id: script.send_snapshot_garage
+      data:
+        variables:
+          title: 'Garage Door 60 minutes Alert!'
+          message: 'Garage door was left open for more than 60 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+    - service: script.turn_on
+      entity_id: script.garage_door_warning
     - service: notify.sendgrid
       data_template:
         title: 'Garage Door was left open for more than 60 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Garage door was left open for more than 60 minutes'
 
 # Alert if the Garage door was left open for more than 30 minutes
-- id: garagedoor30mins
+- id: garagedoor120mins
   alias: Alert if the Garage door was left open for more than 30 minutes
   trigger: 
     - platform: state
       entity_id: binary_sensor.garage_door_angle
       to: 'on'
       for:
-        minutes: 30
+        minutes: 120
   action:
+    - service: script.turn_on
+      target:
+        entity_id: script.send_snapshot_garage
+      data:
+        variables:
+          title: 'Garage Door 2 hour Alert!'
+          message: 'Garage door was left open for more than 2 hours- {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: script.turn_on
       entity_id: script.garage_door_warning
     - service: notify.sendgrid
@@ -1178,10 +1197,10 @@
   action:
     - service: media_player.media_pause
       entity_id: media_player.alfresco
-    - service: notify.pushbullet
+    - service: notify.phoneapps
       data_template:
-        title: 'Alfresco Music was playing for more than 2 hours -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Alfresco Music was playing for more than 2 hours'
+        title: 'Alfresco Music was playing for more than 2 hours.'
+        message:  'Alfresco Music was playing for more than 2 hours at  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: notify.sendgrid
       data_template:
         title: 'Alfresco Music was playing for more than 2 hours - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
@@ -1199,10 +1218,10 @@
   action:
     - service: media_player.media_pause
       entity_id: media_player.alfresco
-    - service: notify.pushbullet
+    - service: notify.phoneapps
       data_template:
-        title: 'Alfresco Music was playing for more than 4 hours - Turned off -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Alfresco Music was playing for more than 4 hours. It was turned off'
+        title: 'Alfresco Music was playing for more than 4 hours - Turned off'
+        message:  'Alfresco Music was playing for more than 4 hours. It was turned off. {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: notify.sendgrid
       data_template:
         title: 'Alfresco Music was playing for more than 4 hours - Turned off - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
@@ -1749,9 +1768,9 @@
   action:
     - service: script.turn_on
       entity_id: script.xiaomi_gateway_alarm
-    - service: notify.pushbullet
+    - service: notify.phoneapps
       data_template:
-        title: '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        title: '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on'
         message:  '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: notify.sendgrid
       data_template:
@@ -2967,10 +2986,10 @@
       from: 'off'
       to: 'on'
   action:
-    - service: notify.pushbullet
+    - service: notify.phoneapps
       data_template:
-        title: 'SMOKE ALARM IN Office Triggered {{now().strftime("%Y%m%d-%H%M%S")}}'
-        message:  'SMOKE ALARM IN Office Triggered !'
+        title: 'SMOKE ALARM IN Office Triggered !'
+        message:  'SMOKE ALARM IN Office Triggered {{now().strftime("%Y%m%d-%H%M%S")}}'
     - service: notify.sendgrid
       data_template:
         title: 'SMOKE ALARM IN Office Triggered {{now().strftime("%Y%m%d-%H%M%S")}}'

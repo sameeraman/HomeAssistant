@@ -369,6 +369,13 @@ do_nothing:
 # Send snaptshot in Garage
 send_snapshot_garage:
   alias: "Send snapshot Garage"
+  fields:
+    title:
+      description: "The title of the notification"
+      example: "State change"
+    message:
+      description: "The message content"
+      example: "The light is on!"
   sequence:
     - service: camera.snapshot
       data:
@@ -376,10 +383,10 @@ send_snapshot_garage:
         filename: !secret garagecameranotifytemp
     - delay:
         seconds: 5
-    - service: notify.pushbullet
+    - service: notify.phoneapps
       data:
-        title: 'Garage Door was left open for more than 10 minutes -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Garage door was left open for more than 10 minutes'
+        title: "{{ title }}"
+        message:  "{{ message }}"
         data:
           file: !secret garagecameranotifytemp
 
