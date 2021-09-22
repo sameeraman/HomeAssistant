@@ -462,7 +462,7 @@ youtube_sienna:
         media_content_id: >
           {
             "app_name": "youtube",
-            {% set videolist = ["ddjPSIt_3YE","FPQ7oBWCTgs","1NZY-AM9HUc","BQ0wZm9nLqY","U80sqVMPBtQ","ZbAfFLkJPwA","YAJCWyKpDZA","fMMJ5IIbHLw","Vnd_JK6u4wA","6lEya-UvCH4"] %} {% set sindex = (range(0, (videolist | length - 1) )|random) %} 
+            {% set videolist = ["ddjPSIt_3YE","FPQ7oBWCTgs","RPAq9bElBv8","BQ0wZm9nLqY","U80sqVMPBtQ","ZbAfFLkJPwA","YAJCWyKpDZA","fMMJ5IIbHLw","Vnd_JK6u4wA","6lEya-UvCH4"] %} {% set sindex = (range(0, (videolist | length - 1) )|random) %} 
             "media_id": "{{videolist[sindex]}}"
           }
 
