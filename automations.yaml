@@ -1588,7 +1588,7 @@
 
 
 # Play Sienna Youtube when Xiaomi Living push button is single pressed
-- id: siennayoutubelivingpushbuttondouble
+- id: siennayoutubelivingpushbuttonsingle
   alias: Play Sienna Youtube when Xiaomi Living push button is single pressed
   trigger: 
     platform: event
@@ -1648,18 +1648,7 @@
     - service : script.turn_on
       entity_id: script.sonos_alarm_bell
 
-# Alarm when Xiaomi Master push button is single pressed (Baby help)
-- id: alarmmasterpushbutton
-  alias: Alarm when Xiaomi Master push button is single pressed (Baby help)
-  trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000407e21a
-      click_type: single
-  action:
-    - service : script.turn_on
-      entity_id: script.sonos_alarm_bell
+
 
 # Turn off master light and turn on pendant light when master push button is double pressed 
 - id: masterlightdoublepushbutton
@@ -2237,7 +2226,7 @@
       entity_id: light.master_pendant
 
 # Turn off Master Pendant Light if it was turned on for more than 1 hour
-- id: masterpendentlightonwhenmasterlighton
+- id: masterpendentlightoffwhenmasterlighton1hr
   alias: Turn off Master Pendant Light if it was turned on for more than 1 hour
   trigger: 
     - platform: state
