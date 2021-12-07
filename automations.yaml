@@ -3193,3 +3193,20 @@
   action:
     - service: switch.turn_off
       entity_id: switch.sonoff_1000ddec78_1
+
+# Nest Door Bell Alert
+- id: nestdoorbell alert
+  alias: Alert Phones when Nest Doorbell is pressed
+  trigger: 
+    - platform: event
+      event_type: nest_event
+      event_data:
+        device_id: camera.front_door
+        type: doorbell_chime
+  action:
+    - service: notify.phoneapps
+      data_template:
+        title: 'Someone at the front door'
+        message:  'Front door bell was pressed'
+        data:
+          image: /api/camera_proxy/camera.front_door       
