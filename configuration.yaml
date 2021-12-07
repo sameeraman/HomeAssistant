@@ -553,6 +553,13 @@ influxdb:
     instance: prod
     source: homeassistant
 
+# Nest Doorbell
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+  project_id: !secret nest_project_id
+  subscriber_id: !secret nest_subscriber_id
+
 
 # Image Processing
 image_processing:
