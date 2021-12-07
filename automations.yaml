@@ -3201,7 +3201,7 @@
     - platform: event
       event_type: nest_event
       event_data:
-        device_id: camera.front_door
+        device_id: !secret nest_doorbell_device_id
         type: doorbell_chime
   action:
     - service: notify.phoneapps
