@@ -120,4 +120,9 @@
   - platform: mqtt
     name: "Frigate Office Desk Camera"
     state_topic: "frigate/officetable/person"
-    value_template: "{%if states(entity_id) | float > 0 -%}ON{%-else-%}OFF{%-endif%}"
+    value_template: >-
+      {% if states(entity_id) | float > 0 %}
+        on
+      {% else %}
+        off
+      {% endif %}
