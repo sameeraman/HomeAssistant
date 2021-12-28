@@ -81,6 +81,10 @@
           {% else %}
             {{  states.sensor.coordination_158d0003232371.state.split(',')[1] | float > -500 }}
           {% endif %}
+# Frigate
+      frigate_office_desk_camera:
+        device_class: motion
+        value_template: "{{ states('sensor.frigate_office_desk_camera_value') | float > 0}}" 
 
 # mqtt garage sensor
   - platform: mqtt
@@ -115,14 +119,3 @@
     payload_on: "1"
     payload_off: "0" 
 
-# Frigate MQTT Office Camera
-
-  - platform: mqtt
-    name: "Frigate Office Desk Camera"
-    state_topic: "frigate/officetable/person"
-    value_template: >-
-      {% if states('sensor.frigate_office_desk_camera_value') | float > 0 %}
-        on
-      {% else %}
-        off
-      {% endif %}
