@@ -114,3 +114,10 @@
     state_topic: "shellies/frontentrancedimmer/input/1"
     payload_on: "1"
     payload_off: "0" 
+
+# Frigate MQTT Office Camera
+
+  - platform: mqtt
+    name: "Frigate Office Desk Camera"
+    state_topic: "frigate/living/person"
+    value_template: "{%if states(entity_id) | float > 0 -%}ON{%-else-%}OFF{%-endif%}"

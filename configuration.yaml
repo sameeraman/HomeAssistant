@@ -561,47 +561,47 @@ nest:
   subscriber_id: !secret nest_subscriber_id
 
 
-# Image Processing
-image_processing:
-  - platform: doods
-    scan_interval: 30
-    url: "http://10.1.1.104:8080"
-    detector: default
-    source:
-      - entity_id: camera.living_camera
-    file_out:
-      - !secret doodslocallocation
-    confidence: 40
-    labels:
-      - name: person
-        confidence: 30
-        area:
-          top: 0.2
-          right: 0.95
-          left: 0.1
-  - platform: doods
-    scan_interval: 33
-    url: "http://10.1.1.104:8080"
-    detector: default
-    source:
-      - entity_id: camera.alfresco_camera
-    file_out:
-      - !secret doodslocallocation
-    confidence: 50
-    labels:
-      - name: person
-        confidence: 50
-        area:
-          right: 0.93
-  - platform: doods
-    scan_interval: 35
-    url: "http://10.1.1.104:8080"
-    detector: default
-    source:
-      - entity_id: camera.esp32cam1
-    file_out:
-      - !secret doodslocallocation
-    confidence: 50
-    labels:
-      - name: person
-        confidence: 60
+# # Image Processing
+# image_processing:
+#   - platform: doods
+#     scan_interval: 30
+#     url: "http://10.1.1.104:8080"
+#     detector: default
+#     source:
+#       - entity_id: camera.living_camera
+#     file_out:
+#       - !secret doodslocallocation
+#     confidence: 40
+#     labels:
+#       - name: person
+#         confidence: 30
+#         area:
+#           top: 0.2
+#           right: 0.95
+#           left: 0.1
+#   - platform: doods
+#     scan_interval: 33
+#     url: "http://10.1.1.104:8080"
+#     detector: default
+#     source:
+#       - entity_id: camera.alfresco_camera
+#     file_out:
+#       - !secret doodslocallocation
+#     confidence: 50
+#     labels:
+#       - name: person
+#         confidence: 50
+#         area:
+#           right: 0.93
+#   - platform: doods
+#     scan_interval: 35
+#     url: "http://10.1.1.104:8080"
+#     detector: default
+#     source:
+#       - entity_id: camera.esp32cam1
+#     file_out:
+#       - !secret doodslocallocation
+#     confidence: 50
+#     labels:
+#       - name: person
+#         confidence: 60
