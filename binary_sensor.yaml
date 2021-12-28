@@ -121,7 +121,7 @@
     name: "Frigate Office Desk Camera"
     state_topic: "frigate/officetable/person"
     value_template: >-
-      {% if states(entity_id) | float > 0 %}
+      {% if states('sensor.frigate_office_desk_camera_value') | float > 0 %}
         on
       {% else %}
         off

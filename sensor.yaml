@@ -684,3 +684,9 @@
 #       - wind_dir
 #       - wind_spd_kmh
 #       - wind_spd_kt
+
+
+# mqtt garage sensor
+  - platform: mqtt
+    name: "Frigate Office Desk Camera Value"
+    state_topic: "frigate/officetable/person"
