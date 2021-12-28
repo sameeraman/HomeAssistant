@@ -49,7 +49,7 @@
           # Office Image Processing
           - type: state-icon
             icon: 'mdi:eye-outline'
-            entity: binary_sensor.office_person_sensor
+            entity: binary_sensor.frigate_office_desk_camera
             hold_action:
               action: url
               url_path: !secret officeimgprcurl
@@ -81,7 +81,7 @@
          # Alfresco Image Processing
           - type: state-icon
             icon: 'mdi:eye-outline'
-            entity: binary_sensor.alfresco_person_sensor
+            entity: binary_sensor.frigate_alfresco_camera
             hold_action:
               action: url
               url_path: !secret alfrescoimgprcurl
@@ -239,7 +239,7 @@
           # Living Image Processing
           - type: state-icon
             icon: 'mdi:eye-outline'
-            entity: binary_sensor.living_person_sensor
+            entity: binary_sensor.frigate_living_camera
             hold_action:
               action: url
               url_path: !secret livingimgprcurl

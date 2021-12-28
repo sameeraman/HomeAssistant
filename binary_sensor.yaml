@@ -85,6 +85,12 @@
       frigate_office_desk_camera:
         device_class: motion
         value_template: "{{ states('sensor.frigate_office_desk_camera_value') | float > 0}}" 
+      frigate_living_camera:
+        device_class: motion
+        value_template: "{{ states('sensor.frigate_living_camera_value') | float > 0}}" 
+      frigate_alfresco_camera:
+        device_class: motion
+        value_template: "{{ states('sensor.frigate_alfresco_camera_value') | float > 0}}" 
 
 # mqtt garage sensor
   - platform: mqtt

@@ -690,3 +690,13 @@
   - platform: mqtt
     name: "Frigate Office Desk Camera Value"
     state_topic: "frigate/officetable/person"
+
+# mqtt frigate living sensor value
+  - platform: mqtt
+    name: "Frigate Living Camera Value"
+    state_topic: "frigate/living/person"
+
+# mqtt frigate alfresco sensor value
+  - platform: mqtt
+    name: "Frigate Alfresco Camera Value"
+    state_topic: "frigate/alfresco/person"
