@@ -1265,10 +1265,10 @@
       entity_id: group.office_motion
       to: 'off'
     - platform: state
-      entity_id: binary_sensor.office_person_sensor
+      entity_id: binary_sensor.frigate_office_desk_camera
       to: 'off'
       for:
-        minutes: 3
+        minutes: 2
   condition:
     condition: and
     conditions: 
@@ -1279,7 +1279,7 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: binary_sensor.office_person_sensor
+        entity_id: binary_sensor.frigate_office_desk_camera
         state: 'off'
         for:
           minutes: 2
