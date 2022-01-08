@@ -1054,7 +1054,7 @@
   alias: Turn on Alfresco Music Play with Alfresco Motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0002b5eecd
+      entity_id: binary_sensor.frigate_alfresco_camera
       to: 'on'
   condition:
     condition: and
@@ -1086,7 +1086,7 @@
       for: 
         minutes: 3
     - platform: state
-      entity_id: binary_sensor.alfresco_person_sensor
+      entity_id: binary_sensor.frigate_alfresco_camera
       to: 'off'
       for:
         minutes: 2
@@ -1100,7 +1100,7 @@
         entity_id: media_player.alfresco
         state: 'playing'
       - condition: state
-        entity_id: binary_sensor.alfresco_person_sensor
+        entity_id: binary_sensor.frigate_alfresco_camera
         state: 'off'
         for:
           seconds: 40
@@ -1157,7 +1157,7 @@
       for:
         minutes: 3
     - platform: state
-      entity_id: binary_sensor.alfresco_person_sensor
+      entity_id: binary_sensor.frigate_alfresco_camera
       to: 'off'
       for:
         minutes: 2
@@ -1174,7 +1174,7 @@
         entity_id: input_boolean.alfresco_motion_light
         state: 'on'
       - condition: state
-        entity_id: binary_sensor.alfresco_person_sensor
+        entity_id: binary_sensor.frigate_alfresco_camera
         state: 'off'
         for:
           seconds: 40
