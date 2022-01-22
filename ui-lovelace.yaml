@@ -992,10 +992,11 @@ views:
           - type: custom:mini-graph-card
             entities:
               - sensor.watermeter_water_pulsecounter
-            name: Energy Consumption
+            name: Water Consumption
             icon: mdi:water
-            hours_to_show: 12
+            hours_to_show: 8
             points_per_hour: 60
+            line_color: '#307DFD'
             line_width: 2
       - type: vertical-stack
         cards:
