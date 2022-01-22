@@ -636,6 +636,11 @@
           unit_of_measurement: KBps
           value_template: "{{ (states.sensor.unifi_gateway_www.attributes['tx_bytes-r'] | int / 1024) | round(1) }}"
 
+# water meter
+      water_usage_liters:
+        unit_of_measurement: 'l'
+        friendly_name: 'Water Usage Liters'
+        value_template: "{{ states('counter.water_meter_count') | int }}"
 
 # mqtt alfresco image processing sensor
   - platform: mqtt

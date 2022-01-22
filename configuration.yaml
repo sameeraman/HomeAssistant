@@ -560,6 +560,22 @@ nest:
   project_id: !secret nest_project_id
   subscriber_id: !secret nest_subscriber_id
 
+# Counters
+counter:
+  water_meter_count:
+    initial: 0
+    step: 1
+    icon: mdi:cup-water
+
+# Utility Meters
+utility_meter:
+  water_meter_daily:
+    source: sensor.water_usage_liters
+    cycle: daily
+
+  water_meter_monthly:
+    source: sensor.water_usage_liters
+    cycle: monthly
 
 # # Image Processing
 # image_processing:
