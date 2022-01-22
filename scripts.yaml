@@ -37,7 +37,7 @@ sonos_afternoon_greet:
       data_template:
         entity_id: media_player.living
         volume_level: "0.60"
-    - service: tts.google_translate_say
+    - service: tts.google_say
       data_template:
         entity_id: media_player.living
         message: >
@@ -90,7 +90,7 @@ sonos_morning_greet:
       data_template:
         entity_id: media_player.living
         volume_level: "0.60"
-    - service: tts.google_translate_say
+    - service: tts.google_say
       data_template:
         entity_id: media_player.living
         message: >
@@ -132,7 +132,7 @@ garage_door_warning:
       data_template:
         entity_id: media_player.living
         volume_level: "0.60"
-    - service: tts.google_translate_say
+    - service: tts.google_say
       data_template:
         entity_id: media_player.living
         message: >
