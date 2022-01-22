@@ -989,6 +989,14 @@ views:
             hours_to_show: 24
             points_per_hour: 12
             line_width: 2
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.watermeter_water_pulsecounter
+            name: Energy Consumption
+            icon: mdi:water
+            hours_to_show: 24
+            points_per_hour: 60
+            line_width: 2
       - type: vertical-stack
         cards:
           - type: glance
