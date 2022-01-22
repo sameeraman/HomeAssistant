@@ -837,10 +837,10 @@ views:
         cards:
           - type: glance
             entities:
-              - entity: device_tracker.oneplus7t
+              - entity: device_tracker.iphone_3
                 name: Sameera
                 image: /local/sameera.jpg
-              - entity: device_tracker.madhushi_iphone_xs
+              - entity: device_tracker.madhushi_iphone_2
                 name: Madhushi
                 image: /local/madhushi.jpg
           - entities:
@@ -994,7 +994,7 @@ views:
               - sensor.watermeter_water_pulsecounter
             name: Energy Consumption
             icon: mdi:water
-            hours_to_show: 24
+            hours_to_show: 12
             points_per_hour: 60
             line_width: 2
       - type: vertical-stack
