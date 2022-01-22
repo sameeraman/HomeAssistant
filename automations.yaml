@@ -788,8 +788,8 @@
   action:
     - service: notify.phoneapps
       data_template:
-        title: '{{ A door was left open at 10pm today - Please check!'
-        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        title: 'A door was left open at 10pm today - Please check!'
+        message: '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: notify.sendgrid
       data_template:
         title: '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'

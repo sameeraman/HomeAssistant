@@ -837,7 +837,7 @@ views:
         cards:
           - type: glance
             entities:
-              - entity: device_tracker.iphone_3
+              - entity: device_tracker.iphone_2
                 name: Sameera
                 image: /local/sameera.jpg
               - entity: device_tracker.madhushi_iphone_2
