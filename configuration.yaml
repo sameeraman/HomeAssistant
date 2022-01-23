@@ -94,12 +94,12 @@ browser_mod:
         - light
         - media_player
 
-# tuya
-tuya:
-  username: !secret tuyausername
-  password: !secret tuyapassword
-  country_code: !secret tuyacountrycode
-  platform: 'smart_life'
+# tuya - Moved to UI Integration
+# tuya:
+#   username: !secret tuyausername
+#   password: !secret tuyapassword
+#   country_code: !secret tuyacountrycode
+#   platform: 'smart_life'
 
 
 shell_command:
