@@ -1356,10 +1356,10 @@
       for:
         minutes: 5
     - platform: state
-      entity_id: binary_sensor.living_person_sensor
+      entity_id: binary_sensor.frigate_living_camera
       to: 'off'
       for:
-        minutes: 3
+        minutes: 1
   condition:
     condition: and
     conditions: 
@@ -1370,7 +1370,7 @@
         entity_id: light.kitchen_dimmer
         state: 'on'
       - condition: state
-        entity_id: binary_sensor.living_person_sensor
+        entity_id: binary_sensor.frigate_living_camera
         state: 'off'
         for:
           seconds: 40

@@ -45,15 +45,6 @@
         value_template: "{{ states('sensor.sam_bed_sensor_value') | float > 230000 }}" 
       bed_sensor:
         value_template: "{{ is_state('binary_sensor.sam_bed_sensor', 'on') or is_state('binary_sensor.mad_bed_sensor', 'on') }}" 
-      alfresco_person_sensor:
-        device_class: motion
-        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('image_processing.doods_alfresco_camera') | float > 0 }}"
-      living_person_sensor:
-        device_class: motion
-        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('image_processing.doods_living_camera') | float > 0 }}" 
-      office_person_sensor:
-        device_class: motion
-        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('image_processing.doods_esp32cam1') | float > 0 }}" 
       living_music_sensor:
         device_class: sound
         value_template: "{{ is_state('media_player.living', 'playing') }}" 
@@ -84,13 +75,13 @@
 # Frigate
       frigate_office_desk_camera:
         device_class: motion
-        value_template: "{{ states('sensor.frigate_office_desk_camera_value') | float > 0}}" 
+        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('sensor.frigate_office_desk_camera_value') | float > 0}}" 
       frigate_living_camera:
         device_class: motion
-        value_template: "{{ states('sensor.frigate_living_camera_value') | float > 0}}" 
+        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('sensor.frigate_living_camera_value') | float > 0}}" 
       frigate_alfresco_camera:
         device_class: motion
-        value_template: "{{ states('sensor.frigate_alfresco_camera_value') | float > 0}}" 
+        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('sensor.frigate_alfresco_camera_value') | float > 0}}" 
 
 # mqtt garage sensor
   - platform: mqtt
