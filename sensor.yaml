@@ -118,13 +118,14 @@
         - temperature_high
 
 
-#  Efergy solar monitoring
-  - platform: efergy
-    app_token: !secret efergy_appkey
-    utc_offset: 0
-    monitored_variables:
-      - type: instant_readings
-      - type: current_values
+# #  Efergy solar monitoring
+# # Moving Efergy to UI Integration
+#   - platform: efergy
+#     app_token: !secret efergy_appkey
+#     utc_offset: 0
+#     monitored_variables:
+#       - type: instant_readings
+#       - type: current_values
 
 
 
