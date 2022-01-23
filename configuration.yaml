@@ -532,12 +532,12 @@ homekit:
 #       password: !secret rainmachine_password
 
 
-# Z-wave Graph
-panel_custom:
-  - name: zwavegraph2
-    sidebar_title: Z-Wave Graph
-    sidebar_icon: mdi:access-point-network
-    url_path: zwave
+# # Z-wave Graph - Removing Z-Wave as it's not in use
+# panel_custom:
+#   - name: zwavegraph2
+#     sidebar_title: Z-Wave Graph
+#     sidebar_icon: mdi:access-point-network
+#     url_path: zwave
 
 
 #influxDB
