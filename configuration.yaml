@@ -31,8 +31,8 @@ config:
 
 http:
   base_url: !secret http_base_url
-  ssl_certificate: /ssl/fullchain.pem
-  ssl_key: /ssl/privkey.pem
+  #ssl_certificate: /ssl/fullchain.pem
+  #ssl_key: /ssl/privkey.pem
   # api_password: !secret http_password
   # Secrets are defined in the file secrets.yaml
   # api_password: !secret http_password
