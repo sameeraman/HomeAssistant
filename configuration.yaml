@@ -547,19 +547,31 @@ homekit:
 
 
 #influxDB
+# influxdb:
+#   host: !secret influxdbhost
+#   port: !secret influxdbport
+#   database: HomeAssistantHistory
+#   username: homeassistant
+#   password: !secret influxdbhomeassistantpassword
+#   ssl: false
+#   verify_ssl: false
+#   max_retries: 3
+#   default_measurement: state
+#   tags:
+#     instance: prod
+#     source: homeassistant
+
 influxdb:
+  api_version: 2
+  ssl: false
   host: !secret influxdbhost
   port: !secret influxdbport
-  database: HomeAssistantHistory
-  username: homeassistant
-  password: !secret influxdbhomeassistantpassword
-  ssl: false
-  verify_ssl: false
-  max_retries: 3
-  default_measurement: state
+  token: !secret influxdbtoken
+  organization: !secret influxdborgid
+  bucket: HomeAssistantHistory
   tags:
-    instance: prod
     source: homeassistant
+
 
 # Nest Doorbell
 nest:
