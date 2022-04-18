@@ -1,6 +1,6 @@
 homeassistant:
   # Name of the location where Home Assistant is running
-  name: Home
+  name: homeassistant
   # Location required to calculate the time the sun rises and sets
   latitude: !secret latitude_value
   longitude: !secret longitude_value
@@ -13,6 +13,7 @@ homeassistant:
   # Customization file
   customize: !include customize.yaml
 
+  external_url: !secret http_local_url
   whitelist_external_dirs:
     - /share
    #- /home/homeassistant/
@@ -26,11 +27,16 @@ homeassistant:
 frontend:
   themes: !include_dir_merge_named www/themes/
 
+
+
 # Enables configuration UI
 config:
 
 http:
-  base_url: !secret http_base_url
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.30.33.0/24
+  #base_url: !secret http_base_url
   #ssl_certificate: /ssl/fullchain.pem
   #ssl_key: /ssl/privkey.pem
   # api_password: !secret http_password
