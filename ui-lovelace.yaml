@@ -124,35 +124,6 @@ views:
             controls : true
             source: true
 
-# # Floorplan Tab Navigation Entities
-#       - type: vertical-stack
-#         cards:
-#           - type: horizontal-stack
-#             cards:
-#               - type: entity-button
-#                 entity: sun.sun
-#                 name: 'Home'
-#                 icon: 'mdi:tablet-dashboard'
-#                 show_icon: false
-#                 tap_action:
-#                   action: navigate
-#                   navigation_path: /lovelace/home
-#               - type: entity-button
-#                 entity: sun.sun
-#                 name: 'Living'
-#                 icon: 'mdi:floor-lamp'
-#                 show_icon: false
-#                 tap_action:
-#                   action: navigate
-#                   navigation_path: /lovelace/living
-#               - type: entity-button
-#                 entity: sun.sun
-#                 name: 'Cameras'
-#                 icon: 'mdi:cctv'
-#                 show_icon: false
-#                 tap_action:
-#                   action: navigate
-#                   navigation_path: /lovelace/cameras
 
 
 # Floorplan tab Weather card    
@@ -963,7 +934,7 @@ views:
               labels: true
           - type: custom:mini-graph-card
             entities:
-              - sensor.efergy_757728
+              - sensor.power_usage_622020
             name: Solar Generation
             icon: mdi:solar-power
             hours_to_show: 24
@@ -972,7 +943,7 @@ views:
             line_width: 2
           - type: custom:mini-graph-card
             entities:
-              - sensor.efergy_622020
+              - sensor.power_usage_622020
             name: Energy Consumption
             icon: mdi:flash
             hours_to_show: 24
