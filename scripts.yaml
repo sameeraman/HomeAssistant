@@ -233,6 +233,37 @@ play_pause_sonos_living_play_lullabies:
             script.sonos_living_play_lullabies
           {% endif %}
 
+# Play Living Sonos Montessori Playlist
+sonos_living_play_montessori:
+  description: 'Play Montessori Playlist in Living Sonos'
+  alias: "Play Montessori Playlist in Living Sonos"
+  sequence:
+    - service: media_player.shuffle_set
+      data_template:
+        entity_id: media_player.living
+        shuffle: true
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.living
+        media_content_type: playlist
+        media_content_id: 'Montessori'
+
+# Play/Pause Living Sonos Montessori
+play_pause_sonos_living_play_montessori:
+  description: 'Play Pause Living Sonos Montessori'
+  alias: "Play Pause Living Sonos Montessori"
+  sequence:
+    - service: script.turn_on
+      data_template:
+        entity_id: >
+          {% if is_state('binary_sensor.montessori_music_sensor', 'on') %}
+            script.sonos_living_pause
+          {% else %}
+            script.sonos_living_play_montessori
+          {% endif %}
+
+
+
 # Resume Alfresco Sonos
 sonos_alfresco_play_resume:
   description: 'Resume Existing Playlist in Alfresco Sonos'
