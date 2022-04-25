@@ -479,7 +479,7 @@ views:
                 name: YTUBE KIDS
                 color_type: card
                 entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/youtube.svg"; else return "/local/custom-lovelace/icons/youtube.svg" ]]]'
-                entity: switch.smartplug5
+                entity: switch.side_trees
                 show_entity_picture: true
                 tap_action:
                   action: call-service
