@@ -143,7 +143,33 @@ garage_door_warning:
       data_template:
         entity_id: media_player.living
 
-
+# Script that executes good morning greet
+sonos_warning:
+  alias: "Sonos Warning Message"
+  fields:
+    message:
+      description: "The warning message content"
+      example: "Warning! Garage door is open"
+  sequence:
+    - service: sonos.snapshot
+      data_template:
+        entity_id: media_player.living
+    - service: media_player.media_pause
+      data_template:
+        entity_id: media_player.living
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.living
+        volume_level: "0.60"
+    - service: tts.google_say
+      data_template:
+        entity_id: media_player.living
+        message: "{{ message }}"
+    - delay:
+        seconds:  15
+    - service: sonos.restore
+      data_template:
+        entity_id: media_player.living
 
 
 # Rainmachine Sprinkler Turn on Call
@@ -493,7 +519,7 @@ youtube_sienna:
         media_content_id: >
           {
             "app_name": "youtube",
-            {% set videolist = ["ddjPSIt_3YE","FPQ7oBWCTgs","RPAq9bElBv8","uCkszsDvpXc","U80sqVMPBtQ","MlYRPd44guk","ARDf25lSzRk","a9PpVo6b7z0","CkQ2I8zsVyY","gBTYOTh7VlA","vSVr4HBPYUI","fMMJ5IIbHLw","Vnd_JK6u4wA","6lEya-UvCH4","U8T1F4I-sjM","Lw5hCMcoBLc"] %} {% set sindex = (range(0, (videolist | length - 1) )|random) %} 
+            {% set videolist = ["mN3dCN98DUU","ddjPSIt_3YE","FPQ7oBWCTgs","RPAq9bElBv8","uCkszsDvpXc","U80sqVMPBtQ","MlYRPd44guk","ARDf25lSzRk","a9PpVo6b7z0","CkQ2I8zsVyY","gBTYOTh7VlA","vSVr4HBPYUI","fMMJ5IIbHLw","Vnd_JK6u4wA","6lEya-UvCH4","U8T1F4I-sjM","Lw5hCMcoBLc"] %} {% set sindex = (range(0, (videolist | length - 1) )|random) %} 
             "media_id": "{{videolist[sindex]}}"
           }
 
