@@ -158,6 +158,7 @@
               topic: 'home/living/blinds/livingblind2/cmnd/power2'
               payload: 'OFF'
       garage_door:
+        device_class: garage
         friendly_name: "Garage Door"
         open_cover:
           service: switch.turn_on
