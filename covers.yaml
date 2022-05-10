@@ -1,6 +1,7 @@
   - platform: template
     covers:
       dining_blind_1:
+        device_class: blind
         friendly_name: "Dining Blind 1"
         optimistic: false
         value_template: "{{ is_state('input_boolean.dining_blind_1', 'on')  }}"
@@ -28,6 +29,7 @@
               topic: 'home/living/blinds/diningblind1/cmnd/power2'
               payload: 'OFF'
       dining_blind_2:
+        device_class: blind
         friendly_name: "Dining Blind 2"
         value_template: "{{ is_state('input_boolean.dining_blind_2', 'on')  }}"
         open_cover:
@@ -54,6 +56,7 @@
               topic: 'home/living/blinds/diningblind2/cmnd/power2'
               payload: 'OFF'
       tv_blind_left:
+        device_class: blind
         friendly_name: "TV Blind Left"
         value_template: "{{ is_state('input_boolean.tv_blind_left', 'on')  }}"
         open_cover:
@@ -80,6 +83,7 @@
               topic: 'home/living/blinds/tvblindleft/cmnd/power2'
               payload: 'OFF'
       tv_blind_right:
+        device_class: blind
         friendly_name: "TV Blind Right"
         value_template: "{{ is_state('input_boolean.tv_blind_right', 'on')  }}"
         open_cover:
@@ -106,6 +110,7 @@
               topic: 'home/living/blinds/tvblindright/cmnd/power2'
               payload: 'OFF'
       living_blind_1:
+        device_class: blind
         friendly_name: "Living Blind 1"
         value_template: "{{ is_state('input_boolean.living_blind_1', 'on')  }}"
         open_cover:
@@ -132,6 +137,7 @@
               topic: 'home/living/blinds/livingblind1/cmnd/power2'
               payload: 'OFF'
       living_blind_2:
+        device_class: blind
         friendly_name: "Living Blind 2"
         value_template: "{{ is_state('input_boolean.living_blind_2', 'on')  }}"
         open_cover:
