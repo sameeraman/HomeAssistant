@@ -2850,7 +2850,7 @@
       entity_id: binary_sensor.door_window_sensor_158d0002ca3100
       to: 'on'
       for:
-        minutes: 2
+        minutes: 120
   action:
     - service: notify.phoneapps
       data_template:
