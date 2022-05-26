@@ -718,44 +718,6 @@
     - service: light.turn_off
       entity_id:  light.bath_strip
 
-# Alert if the Laundry door was left open for more than 60 minutes
-- id: laundrydoor60mins
-  alias: Alert if the Laundry door was left open for more than 60 minutes
-  trigger: 
-    - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0002ca3100
-      to: 'on'
-      for:
-        minutes: 60
-  action:
-    - service: notify.phoneapps
-      data_template:
-        title: 'Laundry Door 60 minute Alert!'
-        message:  'Laundry door was left open for more than 60 minutes at {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-    - service: notify.sendgrid
-      data_template:
-        title: 'Laundry Door was left open for more than 60 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Laundry door was left open for more than 60 minutes'
-
-# Alert if the Laundry door was left open for more than 60 minutes
-- id: laundrydoor120mins
-  alias: Alert if the Laundry door was left open for more than 60 minutes
-  trigger: 
-    - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0002ca3100
-      to: 'on'
-      for:
-        minutes: 120
-  action:
-    - service: notify.phoneapps
-      data_template:
-        title: 'Laundry Door 2 hour Alert! '
-        message:  'Laundry door was left open for more than 2 hours at {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-    - service: notify.sendgrid
-      data_template:
-        title: 'Laundry Door was left open for more than 120 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Laundry door was left open for more than 120 minutes'
-
 # Alert if any door was left open everyday at 10pm
 - id: dailydooropenalert
   alias: Alert if any door was left open everyday at 10pm
@@ -821,8 +783,8 @@
           message: 'Warning! Garage door was left open for more than 30 minutes. Please check.'
     - service: notify.sendgrid
       data_template:
-        title: 'Garage Door was left open for more than 10 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  'Garage door was left open for more than 10 minutes'
+        title: 'Garage Door was left open for more than 30 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message:  'Garage door was left open for more than 30 minutes'
 
 # Alert if the Garage door was left open for more than 60 minutes
 - id: garagedoor60mins
@@ -2866,6 +2828,10 @@
       for:
         minutes: 60
   action:
+    - service: notify.phoneapps
+      data_template:
+        title: 'Laundry Door 60 minute Alert!'
+        message:  'Laundry door was left open for more than 60 minutes at {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: script.turn_on
       entity_id: script.sonos_warning
       data:
@@ -2886,6 +2852,10 @@
       for:
         minutes: 2
   action:
+    - service: notify.phoneapps
+      data_template:
+        title: 'Laundry Door 2 hour Alert! '
+        message:  'Laundry door was left open for more than 2 hours at {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
     - service: script.turn_on
       entity_id: script.sonos_warning
       data:
