@@ -705,3 +705,20 @@
   - platform: mqtt
     name: "Frigate Alfresco Camera Value"
     state_topic: "frigate/alfresco/person"
+
+# ATHOM Smartplug 6 Sensors
+  - platform: mqtt
+    name: "Smartplug6 Power"
+    state_topic: "home/office/smartplug6/tele/SENSOR"
+    value_template: "{{ value_json.ENERGY.Power }}"
+    unit_of_measurement: "W"
+  - platform: mqtt
+    name: "Smartplug6 Voltage"
+    state_topic: "home/office/smartplug6/tele/SENSOR"
+    value_template: "{{value_json.ENERGY.Voltage }}"
+    unit_of_measurement : "V"
+  - platform: mqtt
+    name: "Smartplug6 Current"
+    state_topic: "home/office/smartplug6/tele/SENSOR"
+    value_template: "{{ value_json.ENERGY.Current }}"
+    unit_of_measurement: "A"
