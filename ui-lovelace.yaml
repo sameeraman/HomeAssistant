@@ -1546,6 +1546,9 @@ views:
             - entity: input_boolean.master_light_brightness_auto
               tap_action:
                 action: toggle
+            - entity: input_boolean.master_light_onoff_night_auto
+              tap_action:
+                action: toggle
       - type: vertical-stack
         cards:
         - type: entities

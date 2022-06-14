@@ -3242,3 +3242,42 @@
         message:  'Front door bell was pressed'
         data:
           image: /api/camera_proxy/camera.front_door       
+
+# Turn off the marter bedroom light automations at night 
+- id: turnoffmasterbedroomlightautomationsatnight
+  alias: Turn off the marter bedroom light automations at night 
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '20:00:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.master_light_onoff_night_auto
+        state: 'on'
+  action:
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.master_wardrobe_on_off_auto
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.master_bath_on_off_auto
+
+
+# Turn on the marter bedroom light automations in the morning
+- id: turnonmasterbedroomlightautomationsinmorning
+  alias: Turn on the marter bedroom light automations in the morning
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '07:00:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.master_light_onoff_night_auto
+        state: 'on'
+  action:
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.master_wardrobe_on_off_auto
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.master_bath_on_off_auto

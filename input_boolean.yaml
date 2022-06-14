@@ -81,6 +81,10 @@ master_pendant_onoff_with_master_auto:
   name: Turn On/Off Master Pendant with master light
   icon: mdi:lightbulb-on-outline
 
+master_light_onoff_night_auto:
+  name: Turn On/Off Master Light Automation at night
+  icon: mdi:lightbulb-on-outline
+
 bedheater_auto:
   name: Bed Heater Automation based on Temperature
   icon: mdi:radiator
