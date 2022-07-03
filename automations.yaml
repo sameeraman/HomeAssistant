@@ -3261,6 +3261,8 @@
       entity_id: input_boolean.master_wardrobe_on_off_auto
     - service: input_boolean.turn_off
       entity_id: input_boolean.master_bath_on_off_auto
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.master_wc_on_off_auto
 
 
 # Turn on the marter bedroom light automations in the morning
@@ -3281,3 +3283,5 @@
       entity_id: input_boolean.master_wardrobe_on_off_auto
     - service: input_boolean.turn_on
       entity_id: input_boolean.master_bath_on_off_auto
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.master_wc_on_off_auto
