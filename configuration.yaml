@@ -641,3 +641,9 @@ utility_meter:
 #     labels:
 #       - name: person
 #         confidence: 60
+
+azure_event_hub:
+  filter:
+    include_domains:
+      - switch
+      - light
