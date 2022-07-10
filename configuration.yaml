@@ -647,3 +647,7 @@ azure_event_hub:
     include_domains:
       - switch
       - light
+      - group
+      - input_boolean
+      - sensor
+      - binary_sensor
