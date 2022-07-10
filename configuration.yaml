@@ -651,3 +651,4 @@ azure_event_hub:
       - input_boolean
       - sensor
       - binary_sensor
+      - cover
