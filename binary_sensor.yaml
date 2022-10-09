@@ -89,10 +89,10 @@
 # mqtt garage sensor
   - platform: mqtt
     name: garage_door_sensor
-    state_topic: "home/garage/garage_door/stat/POWER"
+    state_topic: "home/garage/garage_door/stat/POWER2"
     availability_topic: "home/garage/garage_door/tele/LWT"
-    payload_on: "ON"
-    payload_off: "OFF"
+    payload_on: "Open"
+    payload_off: "Closed"
     payload_available: "Online"
     payload_not_available: "Offline"
     device_class: door 

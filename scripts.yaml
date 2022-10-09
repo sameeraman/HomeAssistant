@@ -264,6 +264,10 @@ sonos_living_play_montessori:
   description: 'Play Montessori Playlist in Living Sonos'
   alias: "Play Montessori Playlist in Living Sonos"
   sequence:
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.living
+        volume_level: "0.60"
     - service: media_player.shuffle_set
       data_template:
         entity_id: media_player.living

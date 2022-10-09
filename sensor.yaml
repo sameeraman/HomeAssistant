@@ -650,7 +650,7 @@
 # mqtt garage sensor
   - platform: mqtt
     name: garage_door_sensor
-    state_topic: "home/garage/garage_door/stat/POWER"
+    state_topic: "home/garage/garage_door/stat/POWER2"
 
 # Time sensor
   - platform: time_date
