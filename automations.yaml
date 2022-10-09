@@ -737,7 +737,7 @@
         state: 'on'
         # Garage Door
       - condition: state
-        entity_id: binary_sensor.garage_door_angle
+        entity_id: binary_sensor.garage_door_sensor
         state: 'on'
         # Pantry Door
       - condition: state
@@ -764,7 +764,7 @@
   alias: Alert if the Garage door was left open for more than 30 minutes
   trigger: 
     - platform: state
-      entity_id: binary_sensor.garage_door_angle
+      entity_id: binary_sensor.garage_door_sensor
       to: 'on'
       for:
         minutes: 30
@@ -791,7 +791,7 @@
   alias: Alert if the Garage door was left open for more than 60 minutes
   trigger: 
     - platform: state
-      entity_id: binary_sensor.garage_door_angle
+      entity_id: binary_sensor.garage_door_sensor
       to: 'on'
       for:
         minutes: 60
@@ -818,7 +818,7 @@
   alias: Alert if the Garage door was left open for more than 120 minutes
   trigger: 
     - platform: state
-      entity_id: binary_sensor.garage_door_angle
+      entity_id: binary_sensor.garage_door_sensor
       to: 'on'
       for:
         minutes: 120
@@ -845,7 +845,7 @@
   alias: Alert if the Garage door was left open for more than 4 hours
   trigger: 
     - platform: state
-      entity_id: binary_sensor.garage_door_angle
+      entity_id: binary_sensor.garage_door_sensor
       to: 'on'
       for:
         minutes: 240

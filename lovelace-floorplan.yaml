@@ -453,7 +453,7 @@
           # Garage Door
           - type: state-icon
             icon: 'mdi:minus'
-            entity: binary_sensor.garage_door_angle
+            entity: binary_sensor.garage_door_sensor
             style:
               top: 86%
               left: 75.5%
