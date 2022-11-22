@@ -283,7 +283,9 @@ google_assistant:
     light.back_outdoor_light:
       expose: true
       room: Other
-
+    light.christmas_tree_light:
+      expose: true
+      room: Other
 
 # MyAir Inputs
 input_select:
