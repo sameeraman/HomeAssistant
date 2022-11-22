@@ -261,6 +261,14 @@
     payload_off: "OFF"
     retain: false
 
+  - platform: mqtt
+    name: "smartplug3"
+    command_topic: "home/living/smartplug3/cmnd/power1"
+    state_topic: "home/living/smartplug3/stat/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: false
 
   - platform: mqtt
     name: "smartplug5"
