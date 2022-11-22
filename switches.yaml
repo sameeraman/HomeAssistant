@@ -264,7 +264,7 @@
   - platform: mqtt
     name: "smartplug3"
     command_topic: "home/living/smartplug3/cmnd/power1"
-    state_topic: "home/living/smartplug3/stat/POWER"
+    state_topic: "home/living/smartplug3/stat/POWER1"
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
