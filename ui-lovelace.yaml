@@ -461,20 +461,20 @@ views:
               #   name: ALFRESCO
               #   entity: light.alfresco_dimmer
               #   template: light
-              # - type: "custom:button-card"
-              #   name: XMAS TREE
-              #   color_type: card
-              #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
-              #   entity: switch.smartplug5
-              #   show_entity_picture: true
-              #   tap_action:
-              #         action: toggle
-              #   styles:
-              #     name:
-              #       - font-familly: Roboto
-              #       - font-size: 14px
-              #     entity_picture:
-              #       - padding: 7%
+              - type: "custom:button-card"
+                name: XMAS TREE
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
+                entity: switch.smartplug3
+                show_entity_picture: true
+                tap_action:
+                      action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
               - type: "custom:button-card"
                 name: YTUBE KIDS
                 color_type: card
@@ -508,20 +508,20 @@ views:
               #       - padding: 7%
 
 
-              - type: "custom:button-card"
-                name: VAPORIZER
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/vap.svg?v=3"; else return "/local/custom-lovelace/icons/vap.svg?v=4" ]]]'
-                entity: switch.smartplug2
-                show_entity_picture: true
-                tap_action:
-                  action: toggle
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
+              # - type: "custom:button-card"
+              #   name: VAPORIZER
+              #   color_type: card
+              #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/vap.svg?v=3"; else return "/local/custom-lovelace/icons/vap.svg?v=4" ]]]'
+              #   entity: switch.smartplug2
+              #   show_entity_picture: true
+              #   tap_action:
+              #     action: toggle
+              #   styles:
+              #     name:
+              #       - font-familly: Roboto
+              #       - font-size: 14px
+              #     entity_picture:
+              #       - padding: 7%
 
 # Home View
   - title: Home
