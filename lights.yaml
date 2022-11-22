@@ -58,6 +58,9 @@
     name: Front Patio Light
     entity_id: switch.front_patio_switch
 
+  - platform: switch
+    name: Christmas Tree Light
+    entity_id: switch.smartplug3
 
   - platform: switch
     name: Hallway Light
