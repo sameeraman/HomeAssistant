@@ -532,6 +532,7 @@ homekit:
         - light.master_wc_light
         - light.back_outdoor_light
         - cover.living_blinds
+        - light.christmas_tree_light
 
 # # Rain Machine (Sprinkler System)
 # rainmachine:
