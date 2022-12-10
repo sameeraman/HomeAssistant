@@ -3305,3 +3305,20 @@
     - service: light.turn_on
       entity_id: light.outdoor_christmas_strip_1
 
+# Turn off the Outdoor Chritmast light strip at 9pm
+- id: turnoffoutdoorchristmaslightstripat9pm
+  alias: Turn off the Outdoor Chritmast light strip at 9pm
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '21:00:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.christmas_lights_auto
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.outdoor_christmas_strip_1
+      
