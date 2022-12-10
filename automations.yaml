@@ -3285,3 +3285,23 @@
       entity_id: input_boolean.master_bath_on_off_auto
     - service: input_boolean.turn_on
       entity_id: input_boolean.master_wc_on_off_auto
+
+
+# Turn on the Outdoor Christmas light strip 30mins after the sunset
+- id: turnonoutdoorchristmaslightstrip30minsaftersunset
+  alias: Turn on the Outdoor Christmas light strip 30mins after the sunset
+  initial_state: True
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: '00:30:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.christmas_lights_auto
+        state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.outdoor_christmas_strip_1
+

@@ -63,6 +63,10 @@
     entity_id: switch.smartplug3
 
   - platform: switch
+    name: Outdoor Christmas Strip 1
+    entity_id: switch.smartplug7
+
+  - platform: switch
     name: Hallway Light
     entity_id: switch.hallway_switch
 

@@ -429,10 +429,27 @@ views:
 
             - type: horizontal-stack
               cards: 
+              # - type: "custom:button-card"
+              #   name: LAUNDRY
+              #   entity: light.laundry_light
+              #   template: light
+
               - type: "custom:button-card"
-                name: LAUNDRY
-                entity: light.laundry_light
-                template: light
+                name: XMAS STRIP
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-lights1.png"; else return "/local/custom-lovelace/icons/christmas-lights1.png" ]]]'
+                entity: light.outdoor_christmas_strip_1
+                show_entity_picture: true
+                tap_action:
+                  action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
+
+
               # - type: "custom:button-card"
               #   name: LAUNDRY OUT
               #   entity: light.laundry_outside_light
@@ -1517,6 +1534,11 @@ views:
             - entity: input_boolean.blinds_auto
               icon: 'mdi:window-shutter-alert'
               name: Blinds Automation
+              tap_action:
+                action: toggle
+            - entity: input_boolean.christmas_lights_auto
+              icon: 'mdi:string-lights'
+              name: Outdoor Christmas Lights Automation
               tap_action:
                 action: toggle
         - type: entities
