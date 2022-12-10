@@ -173,3 +173,6 @@ living_blind_2:
 
 frontentrance_light_auto_off_with_frontdoor:
   name: Turn off Front Entrance light after sometime with Front door open. 
+
+christmas_lights_auto:
+  name: Outdoor Christmas Lights Automation
