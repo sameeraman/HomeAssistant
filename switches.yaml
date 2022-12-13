@@ -71,13 +71,13 @@
           - service: remote.turn_on
             data:
               entity_id: remote.Living
-              command: "Watch TV"
+              activity: "Watch TV"
         turn_off:
           - service: remote.turn_on
             entity_id: remote.Living
             data:
               entity_id: remote.Living
-              command: "PowerOff"
+              activity: "PowerOff"
       floorplan:
         value_template: "{{ is_state('script.launch_ha_floorplan', 'on') }}"
         friendly_name: 'Floor Plan'
