@@ -382,7 +382,7 @@ toggle_tv:
       entity_id: remote.Living
       data_template:
         activity: >-
-          {% if is_state('media_player.yamaha_receiver', 'on') %}
+          {% if is_state('binary_sensor.living_tv', 'on') %}
             PowerOff
           {% else %}
             Watch TV
