@@ -226,6 +226,9 @@ google_assistant:
     cover.living_blinds:
       expose: true
       room: Living
+    switch.tv:
+      expose: true
+      room: Living
     camera.alfresco_camera:
       expose: true
       room: Other
@@ -533,6 +536,7 @@ homekit:
         - light.back_outdoor_light
         - cover.living_blinds
         - light.christmas_tree_light
+        - switch.tv
 
 # # Rain Machine (Sprinkler System)
 # rainmachine:
