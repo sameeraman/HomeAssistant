@@ -383,6 +383,8 @@ input_number:
     unit_of_measurement: "mins"
     icon: mdi:clock-end
 
+wake_on_lan:
+
 # Samsung Smart Tv
 samsungtv:
   - host: 10.1.1.78
