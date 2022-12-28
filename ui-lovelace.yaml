@@ -116,7 +116,7 @@ views:
 
 # # TV Volume
         - type: custom:mini-media-player
-          entity: media_player.yamaha_receiver
+          entity: media_player.denon_avc_x3700h
           icon: 'mdi:speaker-wireless'
           name: TV Volume
           hide:
@@ -699,7 +699,7 @@ views:
                   action: toggle
 
           - type: custom:mini-media-player
-            entity: media_player.yamaha_receiver
+            entity: media_player.denon_avc_x3700h
             icon: 'mdi:speaker-wireless'
             hide:
               power: true
