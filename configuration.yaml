@@ -386,7 +386,10 @@ input_number:
 # Samsung Smart Tv
 samsungtv:
   - host: 10.1.1.78
-
+    turn_on_action:
+          - service: wake_on_lan.send_magic_packet
+            data:
+              mac: e0:9d:13:3d:70:af
 
 
 # Xiaomi
