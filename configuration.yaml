@@ -286,6 +286,11 @@ google_assistant:
     light.christmas_tree_light:
       expose: true
       room: Other
+    media_player.samsungtv_ade6ef96_9365_40cb_b442_7cfbb076d128:
+      expose: true
+      room: Living
+      aliases:
+        - TV
 
 # MyAir Inputs
 input_select:
