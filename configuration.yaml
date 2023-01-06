@@ -226,9 +226,6 @@ google_assistant:
     cover.living_blinds:
       expose: true
       room: Living
-    switch.tv:
-      expose: true
-      room: Living
     camera.alfresco_camera:
       expose: true
       room: Other
