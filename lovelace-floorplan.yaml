@@ -730,15 +730,15 @@
               left: 64.5%
               "--paper-item-icon-color": '#D8D6D9'
 
-          # Living Air Con Vent
+          # Master Air Con Vent
           - type: state-icon
             icon: 'mdi:air-filter'
             entity: binary_sensor.master_vent
             tap_action:
               action: call-service
-              service: switch.toggle
+              service: cover.toggle
               service_data: 
-                entity_id: switch.myair_zone3
+                entity_id: cover.master_bed
             style:
               top: 53%
               left: 77%
@@ -827,9 +827,9 @@
             entity: binary_sensor.bed4_vent
             tap_action:
               action: call-service
-              service: switch.toggle
+              service: cover.toggle
               service_data: 
-                entity_id: switch.myair_zone6
+                entity_id: cover.bed_4
             style:
               top: 83%
               left: 14%
@@ -854,9 +854,9 @@
             entity: binary_sensor.bed3_vent
             tap_action:
               action: call-service
-              service: switch.toggle
+              service: cover.toggle
               service_data: 
-                entity_id: switch.myair_zone5
+                entity_id: cover.bed_3
             style:
               top: 89%
               left: 34%
@@ -896,9 +896,9 @@
             entity: binary_sensor.bed2_vent
             tap_action:
               action: call-service
-              service: switch.toggle
+              service: cover.toggle
               service_data: 
-                entity_id: switch.myair_zone4
+                entity_id: cover.bed_2
             style:
               top: 72%
               left: 37%
