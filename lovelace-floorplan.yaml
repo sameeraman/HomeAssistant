@@ -38,9 +38,9 @@
             entity: binary_sensor.office_vent
             tap_action:
               action: call-service
-              service: switch.toggle
+              service: cover.toggle
               service_data: 
-                entity_id: switch.myair_zone2
+                entity_id: cover.office
             style:
               top: 13%
               left: 78%
@@ -228,9 +228,9 @@
             entity: binary_sensor.living_vent
             tap_action:
               action: call-service
-              service: switch.toggle
+              service: cover.toggle
               service_data: 
-                entity_id: switch.myair_zone1
+                entity_id: cover.living
             style:
               top: 35%
               left: 35%

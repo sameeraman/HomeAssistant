@@ -23,10 +23,10 @@
         value_template: "{{ is_state('group.garage_motion', 'on') }}" 
       office_vent:
         device_class: window
-        value_template: "{{ is_state('switch.myair_power', 'on') and is_state('switch.myair_zone2', 'on') }}" 
+        value_template: "{{ ((states('climate.ac')) | string != 'off') and is_state('cover.office', 'open') }}" 
       living_vent:
         device_class: window
-        value_template: "{{ is_state('switch.myair_power', 'on') and is_state('switch.myair_zone1', 'on') }}"
+        value_template: "{{ ((states('climate.ac')) | string != 'off') and is_state('cover.living', 'open') }}"
       master_vent:
         device_class: window
         value_template: "{{ is_state('switch.myair_power', 'on') and is_state('switch.myair_zone3', 'on') }}"
