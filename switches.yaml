@@ -90,11 +90,11 @@
         #value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["state"] }}'
         value_template: "{{ (states('climate.ac')) | string != 'off' }}"
         turn_on:
-          - service: climate.turn_on
-            entity_id: climate.ac
-          #- service: shell_command.myair_setcmd
-          #  data_template:
-          #    json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
+          # - service: climate.turn_on
+          #   entity_id: climate.ac
+          - service: shell_command.myair_setcmd
+            data_template:
+              json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
           # - service: homeassistant.update_entity
           #   data:
           #      entity_id: sensor.myair
@@ -103,11 +103,11 @@
           #   data:
           #      entity_id: sensor.myair
         turn_off:
-          - service: climate.turn_off
-            entity_id: climate.ac
-          #- service: shell_command.myair_setcmd
-          #  data_template:
-          #    json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
+          # - service: climate.turn_off
+          #   entity_id: climate.ac
+          - service: shell_command.myair_setcmd
+            data_template:
+              json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
           # - service: homeassistant.update_entity
           #   data:
           #      entity_id: sensor.myair
