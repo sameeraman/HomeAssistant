@@ -1,0 +1,353 @@
+# mqtt garage sensor
+  binary_sensor:
+    - name: garage_door_sensor
+      state_topic: "home/garage/garage_door/stat/POWER2"
+      availability_topic: "home/garage/garage_door/tele/LWT"
+      payload_on: "Open"
+      payload_off: "Closed"
+      payload_available: "Online"
+      payload_not_available: "Offline"
+      device_class: door 
+
+# Baby Cam Motion Sensor
+    - name: babycam_motion_sensor
+      state_topic: "home/master/babycam/motion"
+      payload_on: "ON"
+      payload_off: "OFF"
+      device_class: motion 
+
+# Dining Shelly second switch binary sensor 
+    - name: "Dining Dimmer Switch 2"
+      state_topic: "shellies/diningdimmer/input/1"
+      payload_on: "1"
+      payload_off: "0" 
+
+# Front entrance dimmer second switch binary sensor 
+    - name: "Front Entrance Dimmer Switch 2"
+      state_topic: "shellies/frontentrancedimmer/input/1"
+      payload_on: "1"
+      payload_off: "0" 
+
+  lights:
+    - name: Office Dimmer
+      schema: template
+      state_topic: "shellies/officedimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/officedimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+    - name: Alfresco Dimmer 
+      schema: template
+      state_topic: "shellies/alfrescodimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/alfrescodimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+    - name: Dining Dimmer 
+      schema: template
+      state_topic: "shellies/diningdimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/diningdimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+
+    - name: Kitchen Dimmer 
+      schema: template    
+      state_topic: "shellies/kitchendimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/kitchendimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+    - name: Living Dimmer 
+      schema: template
+      state_topic: "shellies/livingdimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/livingdimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+    - name: Bed 4 Dimmer 
+      schema: template
+      state_topic: "shellies/bed4dimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/bed4dimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+    - name: Master Dimmer 
+      schema: template
+      state_topic: "shellies/masterdimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/masterdimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+    - name: Master Bath Dimmer 
+      schema: template
+      state_topic: "shellies/masterbathdimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/masterbathdimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+    - name: Garage Dimmer 
+      schema: template
+      state_topic: "shellies/garagedimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/garagedimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+    - name: Front Entrance Dimmer 
+      schema: template
+      state_topic: "shellies/frontentrancedimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/frontentrancedimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+    - name: Bed 3 Dimmer 
+      schema: template
+      state_topic: "shellies/bed3dimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/bed3dimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+    - name: Bed 2 Dimmer 
+      schema: template
+      state_topic: "shellies/bed2dimmer/light/0/status"
+      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+      command_topic: "shellies/bed2dimmer/light/0/set"
+      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+      command_off_template: '{"turn": "off"}'
+      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+      qos: 1
+      retain: false
+      optimistic: false
+
+  sensor:
+
+  # mqtt alfresco image processing sensor
+    - name : alfresco_azure_image_processing
+      state_topic: "home/alfresco/image_processing_sensor/state"
+
+# mqtt garage sensor
+    - name: garage_door_sensor
+      state_topic: "home/garage/garage_door/stat/POWER2"
+
+
+
+# mqtt frigate office desk sensor value
+    - name: "Frigate Office Desk Camera Value"
+      state_topic: "frigate/officetable/person"
+
+# mqtt frigate living sensor value
+    - name: "Frigate Living Camera Value"
+      state_topic: "frigate/living/person"
+
+# mqtt frigate alfresco sensor value
+    - name: "Frigate Alfresco Camera Value"
+      state_topic: "frigate/alfresco/person"
+
+# ATHOM Smartplug 6 Sensors
+  
+    - name: "Smartplug6 Power"
+      state_topic: "home/office/smartplug6/tele/SENSOR"
+      value_template: "{{ value_json.ENERGY.Power }}"
+      unit_of_measurement: "W"
+    - name: "Smartplug6 Voltage"
+      state_topic: "home/office/smartplug6/tele/SENSOR"
+      value_template: "{{value_json.ENERGY.Voltage }}"
+      unit_of_measurement : "V"
+    - name: "Smartplug6 Current"
+      state_topic: "home/office/smartplug6/tele/SENSOR"
+      value_template: "{{ value_json.ENERGY.Current }}"
+      unit_of_measurement: "A"
+
+  switches:
+    - name: "mad_wardrobe_switch"
+      command_topic: "home/master/mad_wardrobe_switch/cmnd/power"
+      state_topic: "home/master/mad_wardrobe_switch/stat/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+
+    - name: "laundry_outdoor_switch"
+      command_topic: "home/laundry/laundryswitch/cmnd/power1"
+      state_topic: "home/laundry/laundryswitch/stat/POWER1"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "laundry_switch"
+      command_topic: "home/laundry/laundryswitch/cmnd/power2"
+      state_topic: "home/laundry/laundryswitch/stat/POWER2"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "sam_wardrobe_switch"
+      command_topic: "home/master/sam_wardrobe_switch/cmnd/power"
+      state_topic: "home/master/sam_wardrobe_switch/stat/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "front_outdoor_switch"
+      command_topic: "home/outdoor/front_outdoor_switch/cmnd/power"
+      state_topic: "home/outdoor/front_outdoor_switch/stat/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "front_patio_switch"
+      command_topic: "home/outdoor/front_patio_switch/cmnd/power"
+      state_topic: "home/outdoor/front_patio_switch/stat/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "master_bath_fan"
+      command_topic: "home/master/master_bath_fan/cmnd/power"
+      state_topic: "home/master/master_bath_fan/stat/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "hallway_switch"
+      command_topic: "home/hallway/hallway_switch/cmnd/power"
+      state_topic: "home/hallway/hallway_switch/stat/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "back_outdoor_switch"
+      command_topic: "home/outdoor/back_outdoor_switch/cmnd/power"
+      state_topic: "home/outdoor/back_outdoor_switch/stat/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "bedheater_switch"
+      command_topic: "home/master/bedheater_switch/cmnd/power1"
+      state_topic: "home/master/bedheater_switch/stat/POWER1"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+
+    - name: "garage_door"
+      command_topic: "home/garage/garage_door/cmnd/power1"
+      state_topic: "home/garage/garage_door/stat/POWER1"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false    
+
+    - name: "smartplug2"
+      command_topic: "home/master/smartplug2/cmnd/power1"
+      state_topic: "home/master/smartplug2/stat/POWER1"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "smartplug3"
+      command_topic: "home/living/smartplug3/cmnd/power1"
+      state_topic: "home/living/smartplug3/stat/POWER1"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "smartplug5"
+      command_topic: "home/master/smartplug5/cmnd/power1"
+      state_topic: "home/master/smartplug5/stat/POWER1"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "smartplug4"
+      command_topic: "home/office/smartplug4/cmnd/power1"
+      state_topic: "home/office/smartplug4/stat/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "smartplug6"
+      command_topic: "home/office/smartplug6/cmnd/power1"
+      state_topic: "home/office/smartplug6/stat/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+    - name: "smartplug7"
+      command_topic: "home/garage/smartplug7/cmnd/power1"
+      state_topic: "home/garage/smartplug7/stat/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false

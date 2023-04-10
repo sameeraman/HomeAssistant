@@ -642,16 +642,6 @@
         friendly_name: 'Water Usage Liters'
         value_template: "{{ states('counter.water_meter_count') | int }}"
 
-# mqtt alfresco image processing sensor
-  - platform: mqtt
-    name : alfresco_azure_image_processing
-    state_topic: "home/alfresco/image_processing_sensor/state"
-
-# mqtt garage sensor
-  - platform: mqtt
-    name: garage_door_sensor
-    state_topic: "home/garage/garage_door/stat/POWER2"
-
 # Time sensor
   - platform: time_date
     display_options:
@@ -689,36 +679,3 @@
 #       - wind_dir
 #       - wind_spd_kmh
 #       - wind_spd_kt
-
-
-# mqtt frigate office desk sensor value
-  - platform: mqtt
-    name: "Frigate Office Desk Camera Value"
-    state_topic: "frigate/officetable/person"
-
-# mqtt frigate living sensor value
-  - platform: mqtt
-    name: "Frigate Living Camera Value"
-    state_topic: "frigate/living/person"
-
-# mqtt frigate alfresco sensor value
-  - platform: mqtt
-    name: "Frigate Alfresco Camera Value"
-    state_topic: "frigate/alfresco/person"
-
-# ATHOM Smartplug 6 Sensors
-  - platform: mqtt
-    name: "Smartplug6 Power"
-    state_topic: "home/office/smartplug6/tele/SENSOR"
-    value_template: "{{ value_json.ENERGY.Power }}"
-    unit_of_measurement: "W"
-  - platform: mqtt
-    name: "Smartplug6 Voltage"
-    state_topic: "home/office/smartplug6/tele/SENSOR"
-    value_template: "{{value_json.ENERGY.Voltage }}"
-    unit_of_measurement : "V"
-  - platform: mqtt
-    name: "Smartplug6 Current"
-    state_topic: "home/office/smartplug6/tele/SENSOR"
-    value_template: "{{ value_json.ENERGY.Current }}"
-    unit_of_measurement: "A"

@@ -86,36 +86,5 @@
         device_class: motion
         value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('sensor.frigate_alfresco_camera_value') | float > 0}}" 
 
-# mqtt garage sensor
-  - platform: mqtt
-    name: garage_door_sensor
-    state_topic: "home/garage/garage_door/stat/POWER2"
-    availability_topic: "home/garage/garage_door/tele/LWT"
-    payload_on: "Open"
-    payload_off: "Closed"
-    payload_available: "Online"
-    payload_not_available: "Offline"
-    device_class: door 
 
-# Baby Cam Motion Sensor
-  - platform: mqtt
-    name: babycam_motion_sensor
-    state_topic: "home/master/babycam/motion"
-    payload_on: "ON"
-    payload_off: "OFF"
-    device_class: motion 
-
-# Dining Shelly second switch binary sensor 
-  - platform: mqtt
-    name: "Dining Dimmer Switch 2"
-    state_topic: "shellies/diningdimmer/input/1"
-    payload_on: "1"
-    payload_off: "0" 
-
-# Front entrance dimmer second switch binary sensor 
-  - platform: mqtt
-    name: "Front Entrance Dimmer Switch 2"
-    state_topic: "shellies/frontentrancedimmer/input/1"
-    payload_on: "1"
-    payload_off: "0" 
 

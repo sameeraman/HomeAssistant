@@ -117,6 +117,9 @@ sensor: !include sensor.yaml
 # Binary Sensors
 binary_sensor: !include binary_sensor.yaml
 
+# mqtt devices
+mqtt: !include mqtt.yaml
+
 # Text to speech
 tts:
   - platform: google_translate
