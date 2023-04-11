@@ -50,7 +50,7 @@ http:
 # the developers to assist with development of Home Assistant.
 # For more information, please see:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-updater:
+#updater:
   # Optional, allows Home Assistant developers to focus on popular components.
   # include_used_components: true
 
@@ -425,7 +425,7 @@ lovelace:
       type: module
     - url: /local/community/lovelace-layout-card/layout-card.js
       type: module  
-    - url: /local/community/button-card/button-card.js
+    - url: /local/community/button-card/button-card.js?v=3.5
       type: module
     - url: /local/community/light-popup-card/light-popup-card.js
       type: module
@@ -435,13 +435,18 @@ lovelace:
       type: module
     - url: /local/community/popup-backdrop-filter/popup-backdrop-filter.js
       type: module
+    - url: /local/community/platinum-weather-card/platinum-weather-card.js
+      type: module
+    - url: /local/community/lovelace-card-mod/card-mod.js
+      type: module
+
 
 weather:
-  - platform: darksky
-    api_key: !secret darksky_key
-    latitude: !secret darksky_lat
-    longitude: !secret darksky_long
-    mode: daily
+  # - platform: darksky
+  #   api_key: !secret darksky_key
+  #   latitude: !secret darksky_lat
+  #   longitude: !secret darksky_long
+  #   mode: daily
   # - platform: bom
   #   name: bom-jandakot
   #   station: !secret bomstationid

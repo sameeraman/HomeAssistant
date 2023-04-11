@@ -105,17 +105,17 @@
 
 
 
-# DarkSky Weather 
-  - platform: darksky
-    api_key: !secret darksky_key
-    latitude: !secret darksky_lat
-    longitude: !secret darksky_long
-    scan_interval: '00:10:00'
-    monitored_conditions:
-        - summary
-        - temperature
-        - hourly_summary
-        - temperature_high
+# # DarkSky Weather 
+#   - platform: darksky
+#     api_key: !secret darksky_key
+#     latitude: !secret darksky_lat
+#     longitude: !secret darksky_long
+#     scan_interval: '00:10:00'
+#     monitored_conditions:
+#         - summary
+#         - temperature
+#         - hourly_summary
+#         - temperature_high
 
 
 # # #  Efergy solar monitoring - Moved to integration

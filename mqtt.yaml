@@ -28,7 +28,7 @@
       payload_on: "1"
       payload_off: "0" 
 
-  lights:
+  light:
     - name: Office Dimmer
       schema: template
       state_topic: "shellies/officedimmer/light/0/status"
@@ -213,7 +213,7 @@
       value_template: "{{ value_json.ENERGY.Current }}"
       unit_of_measurement: "A"
 
-  switches:
+  switch:
     - name: "mad_wardrobe_switch"
       command_topic: "home/master/mad_wardrobe_switch/cmnd/power"
       state_topic: "home/master/mad_wardrobe_switch/stat/POWER"
