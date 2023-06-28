@@ -141,6 +141,7 @@ views:
               entity_sun: sun.sun
               entity_forecast_icon: weather.home
               entity_temperature: weather.home
+              entity_apparent_temp: sensor.home_weather_temp_feels_like
               entity_humidity: weather.home
               entity_wind_bearing: weather.home
               entity_wind_speed: weather.home
@@ -153,7 +154,7 @@ views:
               entity_pop_1: weather.home
               entity_pos_1: weather.home
               option_show_overview_decimals: true
-              entity_forecast_min: weather.home
+              entity_forecast_min: sensor.home_weather_min_temp
               entity_forecast_max: weather.home
               slot_l1: popforecast
               slot_l2: forecast_min
@@ -180,7 +181,12 @@ views:
                   margin-top: -5px;
                   }
                   .current-temp {
-                  margin-top: 15px;  
+                  margin-top: 10px;
+                  margin-right: 10px;  
+                  }
+                  .slot-section {
+                  margin-left: 130px;
+                  margin-top: -15px;  
                   }
 
 
@@ -416,6 +422,9 @@ views:
                     .graph__container__svg {
                     margin-top: -25px;  
                     }
+                    .states {
+                    margin-top: -10px; 
+                    }
                 
               - type: custom:mini-graph-card
                 entities:
@@ -429,6 +438,9 @@ views:
                   style: |
                     .graph__container__svg {
                     margin-top: -25px;  
+                    }
+                    .states {
+                    margin-top: -10px; 
                     }
                 
 
@@ -500,19 +512,25 @@ views:
               #   template: light
 
               - type: "custom:button-card"
-                name: XMAS STRIP
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-lights1.png"; else return "/local/custom-lovelace/icons/christmas-lights1.png" ]]]'
-                entity: light.outdoor_christmas_strip_1
-                show_entity_picture: true
-                tap_action:
-                  action: toggle
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
+                name: ALFRESCO
+                entity: light.alfresco_dimmer
+                template: light
+
+
+              # - type: "custom:button-card"
+              #   name: XMAS STRIP
+              #   color_type: card
+              #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-lights1.png"; else return "/local/custom-lovelace/icons/christmas-lights1.png" ]]]'
+              #   entity: light.outdoor_christmas_strip_1
+              #   show_entity_picture: true
+              #   tap_action:
+              #     action: toggle
+              #   styles:
+              #     name:
+              #       - font-familly: Roboto
+              #       - font-size: 14px
+              #     entity_picture:
+              #       - padding: 7%
 
 
               # - type: "custom:button-card"
@@ -543,20 +561,23 @@ views:
               #   name: ALFRESCO
               #   entity: light.alfresco_dimmer
               #   template: light
-              - type: "custom:button-card"
-                name: XMAS TREE
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
-                entity: switch.smartplug3
-                show_entity_picture: true
-                tap_action:
-                      action: toggle
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
+
+
+              # - type: "custom:button-card"
+              #   name: XMAS TREE
+              #   color_type: card
+              #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
+              #   entity: switch.smartplug3
+              #   show_entity_picture: true
+              #   tap_action:
+              #         action: toggle
+              #   styles:
+              #     name:
+              #       - font-familly: Roboto
+              #       - font-size: 14px
+              #     entity_picture:
+              #       - padding: 7%
+
               - type: "custom:button-card"
                 name: YTUBE KIDS
                 color_type: card
@@ -590,27 +611,25 @@ views:
               #       - padding: 7%
 
 
-              # - type: "custom:button-card"
-              #   name: VAPORIZER
-              #   color_type: card
-              #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/vap.svg?v=3"; else return "/local/custom-lovelace/icons/vap.svg?v=4" ]]]'
-              #   entity: switch.smartplug2
-              #   show_entity_picture: true
-              #   tap_action:
-              #     action: toggle
-              #   styles:
-              #     name:
-              #       - font-familly: Roboto
-              #       - font-size: 14px
-              #     entity_picture:
-              #       - padding: 7%
+              - type: "custom:button-card"
+                name: VAPORIZER
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/vap.svg?v=3"; else return "/local/custom-lovelace/icons/vap.svg?v=4" ]]]'
+                entity: switch.smartplug2
+                show_entity_picture: true
+                tap_action:
+                  action: toggle
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
 
 # Home View
   - title: Home
     path: home
     cards:
-      - type: weather-forecast  
-        entity: weather.dark_sky
       - type: vertical-stack
         cards:
           - type: glance
@@ -890,10 +909,10 @@ views:
         cards:
           - type: glance
             entities:
-              - entity: device_tracker.iphone_2
+              - entity: device_tracker.iphone_3
                 name: Sameera
                 image: /local/sameera.jpg
-              - entity: device_tracker.madhushi_iphone_2
+              - entity: device_tracker.madhushi_iphone_3
                 name: Madhushi
                 image: /local/madhushi.jpg
           - entities:
@@ -1289,28 +1308,28 @@ views:
     cards:
       - type: picture-entity 
         title: Front Entrance 
-        entity:  camera.front_entrance_camera
+        entity:  camera.front_entrance_camera_high
       - type: picture-entity 
         title: Front Entrance 
-        entity:  camera.front_outdoor_camera
+        entity:  camera.front_outdoor_camera_high
       - type: picture-entity 
         title: Living 
-        entity:  camera.living_camera
+        entity:  camera.living_camera_high
       - type: picture-entity 
         title: Hallway 
-        entity:  camera.hallway_camera
+        entity:  camera.hallway_camera_high
       - type: picture-entity 
         title: Alfresco 
-        entity:  camera.alfresco_camera
+        entity:  camera.alfresco_camera_high
       - type: picture-entity 
         title: Outside Right 
-        entity:  camera.outside_right_camera
+        entity:  camera.outside_right_camera_high
       - type: picture-entity 
         title: Outside Back 
-        entity:  camera.outside_back_camera
+        entity:  camera.outside_back_camera_high
       - type: picture-entity 
         title: Garage Camera 
-        entity:  camera.garage_camera
+        entity:  camera.garage_camera_high
       - type: picture-entity 
         title: Baby Camera 
         entity:  camera.baby_camera

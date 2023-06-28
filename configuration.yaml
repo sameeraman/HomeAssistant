@@ -435,7 +435,7 @@ lovelace:
       type: module
     - url: /local/community/popup-backdrop-filter/popup-backdrop-filter.js
       type: module
-    - url: /local/community/platinum-weather-card/platinum-weather-card.js
+    - url: /local/community/platinum-weather-card/platinum-weather-card.js?v=1.3
       type: module
     - url: /local/community/lovelace-card-mod/card-mod.js
       type: module
