@@ -563,36 +563,36 @@ views:
               #   template: light
 
 
-              # - type: "custom:button-card"
-              #   name: XMAS TREE
-              #   color_type: card
-              #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
-              #   entity: switch.smartplug3
-              #   show_entity_picture: true
-              #   tap_action:
-              #         action: toggle
-              #   styles:
-              #     name:
-              #       - font-familly: Roboto
-              #       - font-size: 14px
-              #     entity_picture:
-              #       - padding: 7%
-
               - type: "custom:button-card"
-                name: YTUBE KIDS
+                name: XMAS TREE
                 color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/youtube.svg"; else return "/local/custom-lovelace/icons/youtube.svg" ]]]'
-                entity: switch.side_trees
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
+                entity: switch.smartplug3
                 show_entity_picture: true
                 tap_action:
-                  action: call-service
-                  service: script.youtube_sienna
+                      action: toggle
                 styles:
                   name:
                     - font-familly: Roboto
                     - font-size: 14px
                   entity_picture:
                     - padding: 7%
+
+              # - type: "custom:button-card"
+              #   name: YTUBE KIDS
+              #   color_type: card
+              #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/youtube.svg"; else return "/local/custom-lovelace/icons/youtube.svg" ]]]'
+              #   entity: switch.side_trees
+              #   show_entity_picture: true
+              #   tap_action:
+              #     action: call-service
+              #     service: script.youtube_sienna
+              #   styles:
+              #     name:
+              #       - font-familly: Roboto
+              #       - font-size: 14px
+              #     entity_picture:
+              #       - padding: 7%
 
               # - type: "custom:button-card"
               #   name: LULLABIES
