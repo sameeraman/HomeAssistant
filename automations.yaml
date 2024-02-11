@@ -1676,6 +1676,20 @@
     - service : switch.toggle
       entity_id: switch.smartplug2
 
+
+# Turn off Vaporizer after three hours
+- id: turnoffvaparizerafter3hr
+  alias: Toggle Vaporizer when Living push button is long pressed
+  trigger:
+    - platform: state
+      entity_id: switch.smartplug2
+      to: 'on'
+      for:
+        minutes: 1
+  action:
+    - service : switch.turn_off
+      entity_id: switch.smartplug2
+
 # # Toggle Living Mood lights when Xiaomi Living push button is single pressed
 # - id: togglelivingmoodlightspushbutton
 #   alias: Toggle Living Mood lights when Xiaomi Living push button is single pressed
