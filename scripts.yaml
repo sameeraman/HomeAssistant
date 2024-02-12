@@ -388,14 +388,10 @@ toggle_tv:
             Watch TV
           {% endif %}
 
-# Open all blinds
+# Open all blinds, don't open tv blides if it's before 11am. 
 open_all_blinds:
   alias: "Open all blinds"
   sequence:
-    - service: cover.open_cover
-      entity_id: cover.tv_blind_left
-    - service: cover.open_cover
-      entity_id: cover.tv_blind_right
     - service: cover.open_cover
       entity_id: cover.living_blind_1
     - service: cover.open_cover
@@ -404,6 +400,12 @@ open_all_blinds:
       entity_id: cover.dining_blind_1
     - service: cover.open_cover
       entity_id: cover.dining_blind_2
+    - condition: template
+      value_template: "{{ now().hour > 11 }}"
+    - service: cover.open_cover
+      entity_id: cover.tv_blind_left
+    - service: cover.open_cover
+      entity_id: cover.tv_blind_right
 
 # Close all blinds
 close_all_blinds:
