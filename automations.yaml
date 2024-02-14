@@ -459,10 +459,10 @@
       - condition: numeric_state
         entity_id: sensor.illumination_158d0001e0ac8e
         below: 30
-      - condition: time
-        before: '23:59:59'
-      - condition: time
-        after: '05:30:00'
+#      - condition: time
+#        before: '23:59:59'
+#      - condition: time
+#        after: '05:30:00'
       - condition: state
         entity_id: input_boolean.master_bath_on_off_auto
         state: 'on'
@@ -3257,9 +3257,9 @@
         data:
           image: /api/camera_proxy/camera.front_door       
 
-# Turn off the marter bedroom light automations at night 
+# Turn off the master bedroom light automations at night 
 - id: turnoffmasterbedroomlightautomationsatnight
-  alias: Turn off the marter bedroom light automations at night 
+  alias: Turn off the master bedroom light automations at night 
   initial_state: True
   trigger:
     - platform: time
