@@ -28,6 +28,19 @@
       payload_on: "1"
       payload_off: "0" 
 
+# Master Bath Presence binary sensor 
+    - name: "Master Bath Presence binary sensor"
+      state_topic: "home/master/bath_presence_sensor/presence"
+      payload_on: "1"
+      payload_off: "0" 
+
+# Master WC Presence binary sensor 
+    - name: "Master WC Presence binary sensor"
+      state_topic: "home/master/wc_presence_sensor/presence"
+      payload_on: "1"
+      payload_off: "0" 
+
+
   light:
     - name: Office Dimmer
       schema: template

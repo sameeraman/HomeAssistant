@@ -459,10 +459,10 @@
       - condition: numeric_state
         entity_id: sensor.illumination_158d0001e0ac8e
         below: 30
-#      - condition: time
-#        before: '23:59:59'
-#      - condition: time
-#        after: '05:30:00'
+      - condition: time
+        before: '20:59:59'
+      - condition: time
+        after: '07:30:00'
       - condition: state
         entity_id: input_boolean.master_bath_on_off_auto
         state: 'on'
