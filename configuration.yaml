@@ -120,6 +120,9 @@ binary_sensor: !include binary_sensor.yaml
 # mqtt devices
 mqtt: !include mqtt.yaml
 
+# alerts
+alert: !include alerts.yaml
+
 # Text to speech
 tts:
   - platform: google_translate
@@ -466,7 +469,7 @@ notify:
   - name: phoneapps
     platform: group
     services:
-      - service: mobile_app_sameera_iphone
+      - service: mobile_app_sameera_iphone_15_pro
       - service: mobile_app_madhushi_iphone
 
 

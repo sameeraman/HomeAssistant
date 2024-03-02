@@ -32,13 +32,15 @@
     - name: "Master Bath Presence binary sensor"
       state_topic: "home/master/bath_presence_sensor/presence"
       payload_on: "1"
-      payload_off: "0" 
+      payload_off: "0"
+      device_class: motion  
 
 # Master WC Presence binary sensor 
     - name: "Master WC Presence binary sensor"
       state_topic: "home/master/wc_presence_sensor/presence"
       payload_on: "1"
-      payload_off: "0" 
+      payload_off: "0"
+      device_class: motion 
 
 
   light:

@@ -300,6 +300,7 @@
       data_template:
         title: 'Air Conditioner running for 1.75 hours - Alert!'
         message:  'Air Conditioner is running for more than 1.75 hours at {{now().strftime("%Y%m%d-%H%M%S")}}'
+        persistent: true 
     - service: notify.sendgrid
       data_template:
         title: 'Air Conditioner is running for more than 1.75 hours {{now().strftime("%Y%m%d-%H%M%S")}}'

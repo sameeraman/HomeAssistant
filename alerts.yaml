@@ -1,0 +1,13 @@
+
+garage_door:
+  name: Garage is open
+  entity_id: binary_sensor.garage_door_sensor
+  state: "on"   # Optional, 'on' is the default value
+  repeat:
+    - 1
+    - 2
+    - 3
+  can_acknowledge: true  # Optional, default is true
+  skip_first: false  # Optional, false is the default
+  notifiers:
+    - phoneapps
