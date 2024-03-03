@@ -5,7 +5,7 @@ garage_door:
   entity_id: binary_sensor.garage_door_sensor
   state: "on"   # Optional, 'on' is the default value
   repeat:
-    - 30
+    - 1
   can_acknowledge: true  # Optional, default is true
   skip_first: true  # Optional, false is the default
   data:
@@ -24,7 +24,7 @@ laundry_door:
   entity_id: binary_sensor.door_window_sensor_158d0002ca3100
   state: "on"   # Optional, 'on' is the default value
   repeat:
-    - 60
+    - 1
   can_acknowledge: true  # Optional, default is true
   skip_first: true  # Optional, false is the default
   data:
