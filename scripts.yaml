@@ -41,7 +41,8 @@ sonos_afternoon_greet:
       target: 
         entity_id: tts.google_en_com_au
       data_template:
-        entity_id: media_player.living
+        media_player_entity_id: media_player.living
+        language: en
         message: >
           Good Evening!, Welcome back home. ... {% set seconda = ["Hope you had a great day.","Hope you had a fantastic day.","I beleive you had a fantastic day."] %} {% set aindex = (range(0, (seconda | length - 1) )|random) %} 
           {{seconda[aindex]}}
@@ -96,7 +97,8 @@ sonos_morning_greet:
       target: 
         entity_id: tts.google_en_com_au
       data_template:
-        entity_id: media_player.living
+        media_player_entity_id: media_player.living
+        language: en
         message: >
           Good morning!. It's currently {{ states('sensor.dark_sky_summary') }} and {{ states('sensor.dark_sky_temperature') |round}} degrees in Treeby. Today it will be {{  states('sensor.dark_sky_hourly_summary') |replace(".", "")}} ... 
           I will now turn on the TV. ...  
@@ -140,7 +142,8 @@ garage_door_warning:
       target: 
         entity_id: tts.google_en_com_au
       data_template:
-        entity_id: media_player.living
+        media_player_entity_id: media_player.living
+        language: en
         message: >
           Warning!. Garage Door was opened for more than 30 minutes
     - delay:
@@ -171,7 +174,8 @@ sonos_warning:
       target: 
         entity_id: tts.google_en_com_au
       data_template:
-        entity_id: media_player.living
+        media_player_entity_id: media_player.living
+        language: en
         message: "{{ message }}"
     - delay:
         seconds:  15

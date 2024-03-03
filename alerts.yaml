@@ -20,7 +20,7 @@ garage_door:
 
 laundry_door:
   name: "Laundry door is open alert"
-  message: "The laundry door has been open for {{ relative_time(states.input_boolean.christmas_lights_auto.last_changed) }}" 
+  message: "The laundry door has been open for {{ relative_time(states.binary_sensor.door_window_sensor_158d0002ca3100.last_changed) }}" 
   done_message: "The laundry door was left open for more than 60 mins. But it is now closed."
   entity_id: binary_sensor.door_window_sensor_158d0002ca3100
   state: "on"   # Optional, 'on' is the default value
