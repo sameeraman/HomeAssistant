@@ -3359,3 +3359,19 @@
         title: "{{ trigger.event.data.service_data.message }}"
         notification_id: "garage_door_open"
       
+- id: sonoswarningalert
+  alias: Sonos Warning Alert
+  initial_state: True
+  trigger:
+    - platform: event
+      event_type: call_service
+      event_data:
+        domain: notify
+        service: sonos_speak
+  action:
+    - service: script.turn_on
+      entity_id: script.sonos_warning
+      data:
+        variables:
+          message: 'Warning! {{ trigger.event.data.service_data.message }}. Please check.'
+      

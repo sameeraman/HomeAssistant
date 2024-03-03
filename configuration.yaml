@@ -475,7 +475,9 @@ notify:
   - platform: group
     name: ha_persistent
     services: []
-
+  - platform: group
+    name: sonos_speak
+    services: []
 # SONOS
 sonos:
   media_player:
