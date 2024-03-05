@@ -674,9 +674,9 @@
     - platform: state
       entity_id: binary_sensor.master_motion
       to: 'on'
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
-      to: 'on'
+    # - platform: state
+    #   entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
+    #   to: 'on'
   condition:
     condition: and
     conditions: 
@@ -697,9 +697,9 @@
     - platform: state
       entity_id: binary_sensor.master_motion
       to: 'off'
-    - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
-      to: 'off'
+    # - platform: state
+    #   entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
+    #   to: 'off'
   condition:
     condition: and
     conditions: 
