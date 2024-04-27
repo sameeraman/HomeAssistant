@@ -3373,3 +3373,26 @@
         variables:
           message: 'Warning! {{ trigger.event.data.service_data.message }}. Please check.'
       
+
+
+# Turn on Smartplug7 (Laundry) at 9am to start charging  - Cheapest Power bracket start
+- id: turnonsmartplug7laundry
+  alias: Turn on Smartplug7 (Laundry) at 9am to start charging 
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '09:00:00'
+  action:
+    - service : switch.turn_on
+      entity_id: switch.smartplug7
+
+# Turn Off Smartplug7 (Laundry) at 3pm to stop charging  - Cheapest Power bracket end
+- id: turnonsmartplug7laundry
+  alias: Turn Off Smartplug7 (Laundry) at 3pm to stop charging 
+  initial_state: True
+  trigger:
+    - platform: time
+      at: '15:00:00'
+  action:
+    - service : switch.turn_off
+      entity_id: switch.smartplug7
