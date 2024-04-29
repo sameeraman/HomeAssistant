@@ -3376,7 +3376,7 @@
 
 
 # Turn on Smartplug7 (Laundry) at 9am to start charging  - Cheapest Power bracket start
-- id: turnonsmartplug7laundry
+- id: turnonsmartplug7laundry9am
   alias: Turn on Smartplug7 (Laundry) at 9am to start charging 
   initial_state: True
   trigger:
@@ -3387,7 +3387,7 @@
       entity_id: switch.smartplug7
 
 # Turn Off Smartplug7 (Laundry) at 3pm to stop charging  - Cheapest Power bracket end
-- id: turnonsmartplug7laundry
+- id: turnoffsmartplug7laundry3pm
   alias: Turn Off Smartplug7 (Laundry) at 3pm to stop charging 
   initial_state: True
   trigger:
