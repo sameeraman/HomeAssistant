@@ -359,9 +359,20 @@
       payload_off: "OFF"
       retain: false
 
+# Pantry Vaccume Charger
     - name: "smartplug7"
       command_topic: "home/living/smartplug7/cmnd/power1"
       state_topic: "home/living/smartplug7/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+
+# Office Table Studio Light
+    - name: "smartplug8"
+      command_topic: "home/office/smartplug8/cmnd/power1"
+      state_topic: "home/office/smartplug8/POWER"
       qos: 1
       payload_on: "ON"
       payload_off: "OFF"
