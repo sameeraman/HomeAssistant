@@ -45,4 +45,5 @@
     still_image_url: !secret frontoutdoorcamerajpeg
     verify_ssl: false
   - platform: thermal_vision
+    name: Thermal Camera 1
     host: !secret camera_url_th
