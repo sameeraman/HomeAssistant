@@ -67,6 +67,9 @@ conversation:
 
 # Enables support for tracking state changes over time
 history:
+  exclude:
+    entities:
+      - sensor.sensor_pixels
 
 # enable the recorder component
 recorder:
