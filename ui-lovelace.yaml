@@ -1731,8 +1731,15 @@ views:
       - type: vertical-stack
         cards:
           - type: glance
-            title: Master Bedroom
+            title: Office room
             entities:
               - entity: binary_sensor.person_detected
                 icon: 'mdi:run-fast'
-                name: Motion
+                name: Thermal Motion
+              - entity: light.office_dimmer
+                type: light
+              - entity: group.office_motion
+                icon: 'mdi:run-fast'
+                name: Office Motion PIR
+
+
