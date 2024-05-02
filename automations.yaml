@@ -1263,6 +1263,9 @@
     - platform: state
       entity_id: group.office_motion
       to: 'off'
+    - platform: state
+      entity_id: binary_sensor.person_detected
+      to: 'off'
   condition:
     condition: and
     conditions: 

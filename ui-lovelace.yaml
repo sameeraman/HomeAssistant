@@ -1722,3 +1722,17 @@ views:
         title: Baby Monitor
 
 
+  - title: Dev
+    path: dev
+    cards:
+      - type: picture-entity 
+        entity: camera.thermal_camera_1
+        title: Thermal Camera
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Master Bedroom
+            entities:
+              - entity: binary_sensor.person_detected
+                icon: 'mdi:run-fast'
+                name: Motion
