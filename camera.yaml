@@ -44,3 +44,5 @@
     stream_source: !secret frontoutdoorcameraurl
     still_image_url: !secret frontoutdoorcamerajpeg
     verify_ssl: false
+  - platform: thermal_vision
+    host: !secret camera_url_th
