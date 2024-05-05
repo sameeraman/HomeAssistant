@@ -112,13 +112,13 @@ office_motion:
 master_motion:
   name: "All Master Bedroom Motion Sensors"
   entities:
-    # - binary_sensor.motion_sensor_158d0002b7f1e8
+    - binary_sensor.master_motion_zb
     - binary_sensor.master_cup_esp_motion
 
 master_bath_motion:
   name: "All Master Bedroom and Bath Motion Sensors"
   entities:
-    # - binary_sensor.motion_sensor_158d0002b7f1e8
+    - binary_sensor.master_motion_zb
     - binary_sensor.motion_sensor_158d0002c6382d
     - binary_sensor.motion_sensor_158d0001e0ac8e
     - binary_sensor.master_bath_esp_motion

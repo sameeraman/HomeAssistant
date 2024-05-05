@@ -44,8 +44,6 @@ switch.myair_power:
   icon: mdi:power-standby
 binary_sensor.motion_sensor_158d0002b7ec00:
   friendly_name: Office-M2
-binary_sensor.motion_sensor_158d0002b7f1e8:
-  friendly_name: Master-M2
 binary_sensor.motion_sensor_158d0001e0ac8e:
   friendly_name: Master_Bath-M
 binary_sensor.motion_sensor_158d0002742898:

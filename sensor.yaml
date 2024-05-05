@@ -338,25 +338,6 @@
             mdi:battery-charging-wireless-outline
           {% endif %}
         unit_of_measurement: '%'
-      master_motion_2_battery:
-        friendly_name: Master Motion Sensor 2 Battery
-        value_template: >
-          {% if is_state('binary_sensor.motion_sensor_158d0002b7f1e8', 'unknown') %}
-            110
-          {% else %}
-            {{ states.binary_sensor.motion_sensor_158d0002b7f1e8.attributes["battery_level"] | float}}
-          {% endif %}
-        icon_template: >
-          {% set battery_level_xod1 = states.binary_sensor.motion_sensor_158d0002b7f1e8.attributes.battery_level|default(0)|int %}
-          {% set battery_round_xod1 = (battery_level_xod1 / 10) |int * 10 %}
-          {% if battery_round_xod1 >= 100 or is_state('binary_sensor.motion_sensor_158d0002b7f1e8', 'unknown') %}
-            mdi:battery
-          {% elif battery_round_xod1 > 0 %}
-            mdi:battery-{{ battery_round_xod1 }}
-          {% else %}
-            mdi:battery-charging-wireless-outline
-          {% endif %}
-        unit_of_measurement: '%'
       shower_motion_battery:
         friendly_name: Shower Motion Sensor Battery
         value_template: >
