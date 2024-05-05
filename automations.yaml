@@ -697,18 +697,18 @@
     - platform: state
       entity_id: binary_sensor.master_motion
       to: 'off'
-    - platform: state
-      entity_id: binary_sensor.master_motion_zb
-      to: 'off'
+    # - platform: state
+    #   entity_id: binary_sensor.master_motion_zb
+    #   to: 'off'
   condition:
     condition: and
     conditions: 
-      - condition: state
-        entity_id: binary_sensor.master_motion
-        state: 'off'
-      - condition: state
-        entity_id: binary_sensor.master_motion_zb
-        state: 'off'
+      # - condition: state
+      #   entity_id: binary_sensor.master_motion
+      #   state: 'off'
+      # - condition: state
+      #   entity_id: binary_sensor.master_motion_zb
+      #   state: 'off'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
