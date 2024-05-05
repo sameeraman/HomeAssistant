@@ -416,7 +416,7 @@
       to: 'on'
     # Master-M2
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
+      entity_id: binary_sensor.master_motion_zb
       to: 'on'
     # Alfresco-M
     - platform: state
@@ -675,7 +675,7 @@
       entity_id: binary_sensor.master_motion
       to: 'on'
     # - platform: state
-    #   entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
+    #   entity_id: binary_sensor.master_motion_zb
     #   to: 'on'
   condition:
     condition: and
@@ -697,9 +697,9 @@
     - platform: state
       entity_id: binary_sensor.master_motion
       to: 'off'
-    # - platform: state
-    #   entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
-    #   to: 'off'
+    - platform: state
+      entity_id: binary_sensor.master_motion_zb
+      to: 'off'
   condition:
     condition: and
     conditions: 
@@ -707,7 +707,7 @@
         entity_id: binary_sensor.master_motion
         state: 'off'
       - condition: state
-        entity_id: binary_sensor.motion_sensor_158d0002b7f1e8
+        entity_id: binary_sensor.master_motion_zb
         state: 'off'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
