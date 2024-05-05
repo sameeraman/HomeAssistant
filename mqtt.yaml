@@ -1,6 +1,3 @@
-  discovery: true
-  discovery_prefix: homeassistant
-
 # mqtt garage sensor
   binary_sensor:
     - name: garage_door_sensor
