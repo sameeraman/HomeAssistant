@@ -1678,7 +1678,7 @@
 
 # Turn off Vaporizer after three hours
 - id: turnoffvaparizerafter3hr
-  alias: Toggle Vaporizer when Living push button is long pressed
+  alias: Turn off Vaporizer after three hours
   trigger:
     - platform: state
       entity_id: switch.smartplug2
