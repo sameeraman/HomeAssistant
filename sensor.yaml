@@ -623,6 +623,11 @@
         friendly_name: 'Water Usage Liters'
         value_template: "{{ states('counter.water_meter_count') | int }}"
 
+      uptime_minutes:
+        friendly_name: UpTime Minutes
+        value_template: >
+          {{ (as_timestamp(now()) - as_timestamp(states('sensor.uptime'))) // 60| round (0)  }}
+
 # Time sensor
   - platform: time_date
     display_options:
