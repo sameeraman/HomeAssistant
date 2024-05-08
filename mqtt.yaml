@@ -21,12 +21,18 @@
       state_topic: "shellies/diningdimmer/input/1"
       payload_on: "1"
       payload_off: "0" 
+      qos: 1
+      retain: false
+      optimistic: false
 
 # Front entrance dimmer second switch binary sensor 
     - name: "Front Entrance Dimmer Switch 2"
       state_topic: "shellies/frontentrancedimmer/input/1"
       payload_on: "1"
       payload_off: "0" 
+      qos: 1
+      retain: false
+      optimistic: false
 
 # Master Bath Presence binary sensor 
     - name: "Master Bath Presence binary sensor"
