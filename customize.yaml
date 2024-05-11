@@ -54,8 +54,6 @@ binary_sensor.motion_sensor_158d0002c6382d:
   friendly_name: Master_Shower-M
 binary_sensor.motion_sensor_158d0002c716b6:
   friendly_name: Living-M
-binary_sensor.motion_sensor_158d0002c716d7:
-  friendly_name: Garage-M2
 binary_sensor.door_window_sensor_158d0002c0e236:
   friendly_name: Garage-Door
 binary_sensor.door_window_sensor_158d0002ca3100:

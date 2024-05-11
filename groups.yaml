@@ -81,7 +81,7 @@ all_motion:
 garage_motion:
   name: "All Garage Motion Sensors"
   entities:
-    - binary_sensor.motion_sensor_158d0002c716d7
+    - binary_sensor.garage_motion_zb_1
     - binary_sensor.garage_espmulti_m_2
 
 living_kitchen_motion:

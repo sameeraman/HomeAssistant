@@ -404,7 +404,7 @@
       to: 'on'
     # Garage-M2
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0002c716d7
+      entity_id: binary_sensor.garage_motion_zb_1
       to: 'on'
     # Loundry Door
     - platform: state
@@ -1751,7 +1751,7 @@
         to: 'on'
       # Garage-M2
       - platform: state
-        entity_id: binary_sensor.motion_sensor_158d0002c716d7
+        entity_id: binary_sensor.garage_motion_zb_1
         to: 'on'
         for:
           seconds: 125
