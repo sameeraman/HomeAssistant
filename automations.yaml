@@ -1035,8 +1035,8 @@
 - id: toggleofficelightpushbutton
   alias: Toggle Office Light with Alfresco Xiaomi push button
   trigger: 
-    - device_id: 0x00158d0002860904
-      discovery_id: 0x00158d0002860904 action_single
+    - device_id: office_button_zb_1
+      discovery_id: office_button_zb_1 action_single
       domain: mqtt
       platform: device
       subtype: double
