@@ -1039,7 +1039,7 @@
       discovery_id: office_button_zb_1 action_single
       domain: mqtt
       platform: device
-      subtype: double
+      subtype: single
       type: action
   condition:
     condition: state
