@@ -1035,11 +1035,12 @@
 - id: toggleofficelightpushbutton
   alias: Toggle Office Light with Alfresco Xiaomi push button
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d0002860904
-      click_type: single
+    - device_id: office_button_zb_1
+      discovery_id: 0x00158d0002860904 action_single
+      domain: mqtt
+      platform: device
+      subtype: single
+      type: action
   condition:
     condition: state
     entity_id: input_boolean.office_button
