@@ -388,19 +388,19 @@
   trigger: 
     # Kitchen-M2  
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0002742898
+      entity_id: binary_sensor.kitchen_motion_zb_1
       to: 'on'
     # Bath-M
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
+      entity_id: binary_sensor.master_bath_motion_zb_1
       to: 'on'
     # Living-M
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0002c716b6
+      entity_id: binary_sensor.living_motion_zb_1
       to: 'on'
     # Main Door
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0002739295
+      entity_id: binary_sensor.main_entrance_door_zb
       to: 'on'
     # Garage-M2
     - platform: state
@@ -408,11 +408,11 @@
       to: 'on'
     # Loundry Door
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+      entity_id: binary_sensor.laundry_door_zb
       to: 'on'
     # Office-M2
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0002b7ec00
+      entity_id: binary_sensor.office_motion_zb_1
       to: 'on'
     # Master-M2
     - platform: state
@@ -424,7 +424,7 @@
       to: 'on'
     # Garage Entry door
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d00033a7262
+      entity_id: binary_sensor.garage_entrance_door_zb
       to: 'on'
     # Patio-M
     - platform: state
@@ -449,7 +449,7 @@
   alias: Turn on Bath Light when there is motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
+      entity_id: binary_sensor.master_bath_motion_zb_1
       to: 'on'
   condition:
     condition: and
@@ -483,7 +483,7 @@
   alias: Turn off Bath Light when there is no more motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
+      entity_id: binary_sensor.master_bath_motion_zb_1
       to: 'off'
       for:
         minutes: 1
@@ -497,10 +497,10 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: binary_sensor.motion_sensor_158d0002c6382d
+        entity_id: binary_sensor.master_shower_motion_zb_1
         state: 'off'
       - condition: state
-        entity_id: binary_sensor.motion_sensor_158d0001e0ac8e
+        entity_id: binary_sensor.master_bath_motion_zb_1
         state: 'off'
       # - condition: state
       #   entity_id: binary_sensor.master_bath_esp_motion
@@ -730,11 +730,11 @@
     conditions:
         # Main Door
       - condition: state
-        entity_id: binary_sensor.door_window_sensor_158d0002739295
+        entity_id: binary_sensor.main_entrance_door_zb
         state: 'on'
         # Laundry Door
       - condition: state
-        entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+        entity_id: binary_sensor.laundry_door_zb
         state: 'on'
         # Garage Door
       - condition: state
@@ -746,7 +746,7 @@
         state: 'on' 
         # Garage Entry Door
       - condition: state
-        entity_id: binary_sensor.door_window_sensor_158d00033a7262
+        entity_id: binary_sensor.garage_entrance_door_zb
         state: 'on' 
   action:
     - service: notify.phoneapps
@@ -1735,19 +1735,19 @@
   trigger: 
       # Kitchen-M2  
       - platform: state
-        entity_id: binary_sensor.motion_sensor_158d0002742898
+        entity_id: binary_sensor.kitchen_motion_zb_1
         to: 'on'
         for:
           seconds: 125
       # Living-M
       - platform: state
-        entity_id: binary_sensor.motion_sensor_158d0002c716b6
+        entity_id: binary_sensor.living_motion_zb_1
         to: 'on'
         for:
           seconds: 125
       # Main Door
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d0002739295
+        entity_id: binary_sensor.main_entrance_door_zb
         to: 'on'
       # Garage-M2
       - platform: state
@@ -1757,11 +1757,11 @@
           seconds: 125
       # Laundry Door
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+        entity_id: binary_sensor.laundry_door_zb
         to: 'on'
       # Office-M2
       - platform: state
-        entity_id: binary_sensor.motion_sensor_158d0002b7ec00
+        entity_id: binary_sensor.office_motion_zb_1
         to: 'on'
         for:
           seconds: 125
@@ -1773,7 +1773,7 @@
           seconds: 125
       # Garage Entry door
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d00033a7262
+        entity_id: binary_sensor.garage_entrance_door_zb
         to: 'on'
       # Garage door
       - platform: state
@@ -1877,7 +1877,7 @@
         entity_id: group.office_motion
         state: 'off'
       - condition: state
-        entity_id: binary_sensor.door_window_sensor_158d0003677216
+        entity_id: binary_sensor.master_door_zb
         state: 'off'
       - condition: state
         entity_id: switch.housealarm
@@ -1897,7 +1897,7 @@
   alias: Turn off the Night mood when master bedroom door open in the morning
   trigger: 
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0003677216
+      entity_id: binary_sensor.master_door_zb
       to: 'on'
   condition:
     condition: and
@@ -2744,7 +2744,7 @@
   alias: Turn on the Laundry Outdoor light when the laundry door open in the night
   trigger: 
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+      entity_id: binary_sensor.laundry_door_zb
       to: 'on'
   condition:
     condition: and
@@ -2770,7 +2770,7 @@
   alias: Turn off the Laundry Outdoor light when the laundry door close in the night
   trigger: 
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0002ca3100
+      entity_id: binary_sensor.laundry_door_zb
       to: 'off'
   condition:
     condition: and
@@ -2830,54 +2830,6 @@
   action:
     - service: light.turn_off
       entity_id: light.laundry_light
-
-# # Alert if the Laundry door was left open for more than 60 minutes
-# - id: laundrydoor60mins
-#   alias: Alert if the Laundry door was left open for more than 60 minutes
-#   trigger: 
-#     - platform: state
-#       entity_id: binary_sensor.door_window_sensor_158d0002ca3100
-#       to: 'on'
-#       for:
-#         minutes: 60
-#   action:
-#     - service: notify.phoneapps
-#       data_template:
-#         title: 'Laundry Door 60 minute Alert!'
-#         message:  'Laundry door was left open for more than 60 minutes at {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-#     - service: script.turn_on
-#       entity_id: script.sonos_warning
-#       data:
-#         variables:
-#           message: 'Warning! Laundry Door was left open for more than 60 minutes. Please check.'
-#     - service: notify.sendgrid
-#       data_template:
-#         title: 'Laundry Door was left open for more than 60 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-#         message:  'Laundry door was left open for more than 60 minutes'
-
-# # Alert if the Laundry door was left open for more than 120 minutes
-# - id: laundrydoor120mins
-#   alias: Alert if the Laundry door was left open for more than 120 minutes
-#   trigger: 
-#     - platform: state
-#       entity_id: binary_sensor.door_window_sensor_158d0002ca3100
-#       to: 'on'
-#       for:
-#         minutes: 120
-#   action:
-#     - service: notify.phoneapps
-#       data_template:
-#         title: 'Laundry Door 2 hour Alert! '
-#         message:  'Laundry door was left open for more than 2 hours at {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-#     - service: script.turn_on
-#       entity_id: script.sonos_warning
-#       data:
-#         variables:
-#           message: 'Warning! Laundry Door was left open for more than 120 minutes. Please check.'
-#     - service: notify.sendgrid
-#       data_template:
-#         title: 'Laundry Door was left open for more than 120 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-#         message:  'Laundry door was left open for more than 120 minutes'
 
 # Turn on the Front Patio light when there is motion in the patio
 - id: frontpatiolightonwithmotion
@@ -2947,7 +2899,7 @@
   alias: Turn on the front entrance light when there the front door open at night
   trigger: 
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0002739295
+      entity_id: binary_sensor.main_entrance_door_zb
       to: 'on'
   condition:
     condition: and
@@ -2972,7 +2924,7 @@
   alias: Turn off the front entrance light after 1 minute the front door close at night
   trigger: 
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0002739295
+      entity_id: binary_sensor.main_entrance_door_zb
       to: 'off'
       for:
         minutes: 1

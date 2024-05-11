@@ -359,7 +359,7 @@
           # Main Entrance Door 
           - type: image
             image: /local/line6v.svg
-            entity: binary_sensor.door_window_sensor_158d0002739295
+            entity: binary_sensor.main_entrance_door_zb
             state_filter:
               "off": 'opacity(0)'
             style:
@@ -404,19 +404,9 @@
 
 
           # Laundry Door
-#          - type: state-icon
-#            icon: 'mdi:minus'
-#            entity: binary_sensor.door_window_sensor_158d0002ca3100
-#            style:
-##              top: 65.5%
-#             left: -3%
-#              "--paper-item-icon-color": '#DBDBDB'
-#              transform: 'scale(2,2.5) rotate(90deg)'
-
-          # Laundry Door
           - type: image
             image: /local/line6v.svg
-            entity: binary_sensor.door_window_sensor_158d0002ca3100
+            entity: binary_sensor.laundry_door_zb
             state_filter:
               "off": 'opacity(0)'
             style:
@@ -474,7 +464,7 @@
           # Garage Entry Door
           - type: image
             image: /local/line6.svg
-            entity: binary_sensor.door_window_sensor_158d00033a7262
+            entity: binary_sensor.garage_entrance_door_zb
             state_filter:
               "off": 'opacity(0)'
             style:
@@ -758,7 +748,7 @@
           # Master Bedroom Door
           - type: image
             image: /local/line6.svg
-            entity: binary_sensor.door_window_sensor_158d0003677216
+            entity: binary_sensor.master_door_zb
             state_filter:
               "off": 'opacity(0)'
             style:

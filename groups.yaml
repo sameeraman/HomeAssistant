@@ -59,7 +59,7 @@ office_sensors:
   entities:
     - binary_sensor.office_sam_esp_motion
     - binary_sensor.office_mad_esp_motion
-    - binary_sensor.motion_sensor_158d0002b7ec00
+    - binary_sensor.office_motion_zb_1
     - sensor.office_espmulti_h
     - sensor.office_espmulti_t
 master_sensors:
@@ -74,9 +74,9 @@ master_sensors:
 all_motion:
   name: "All Motion Sensors"
   entities:
-    - binary_sensor.motion_sensor_158d0002742898
-    - binary_sensor.motion_sensor_158d0002c716b6
-    - binary_sensor.door_window_sensor_158d0002739295
+    - binary_sensor.kitchen_motion_zb_1
+    - binary_sensor.living_motion_zb_1
+    - binary_sensor.main_entrance_door_zb
 
 garage_motion:
   name: "All Garage Motion Sensors"
@@ -87,19 +87,19 @@ garage_motion:
 living_kitchen_motion:
   name: "All Living and Kitchen Motion Sensors"
   entities:
-    - binary_sensor.motion_sensor_158d0002742898
+    - binary_sensor.kitchen_motion_zb_1
     - binary_sensor.kitchen_esp_motion
-    - binary_sensor.motion_sensor_158d0002c716b6
+    - binary_sensor.living_motion_zb_1
     
 living_motion:
   name: "All Living Motion Sensors"
   entities:
-    - binary_sensor.motion_sensor_158d0002c716b6
+    - binary_sensor.living_motion_zb_1
 
 kitchen_motion:
   name: "All Kitchen Motion Sensors"
   entities:
-    - binary_sensor.motion_sensor_158d0002742898
+    - binary_sensor.kitchen_motion_zb_1
     - binary_sensor.kitchen_esp_motion
 
 office_motion:
@@ -107,7 +107,7 @@ office_motion:
   entities:
     - binary_sensor.office_mad_esp_motion
     - binary_sensor.office_sam_esp_motion
-    - binary_sensor.motion_sensor_158d0002b7ec00
+    - binary_sensor.office_motion_zb_1
 
 master_motion:
   name: "All Master Bedroom Motion Sensors"
@@ -119,13 +119,13 @@ master_bath_motion:
   name: "All Master Bedroom and Bath Motion Sensors"
   entities:
     - binary_sensor.master_motion_zb
-    - binary_sensor.motion_sensor_158d0002c6382d
-    - binary_sensor.motion_sensor_158d0001e0ac8e
+    - binary_sensor.master_shower_motion_zb_1
+    - binary_sensor.master_bath_motion_zb_1
     - binary_sensor.master_bath_esp_motion
 
 m_bath_motion:
   name: "All Master Bath Motion Sensors"
   entities:
-    - binary_sensor.motion_sensor_158d0002c6382d
-    - binary_sensor.motion_sensor_158d0001e0ac8e
+    - binary_sensor.master_shower_motion_zb_1
+    - binary_sensor.master_bath_motion_zb_1
     - binary_sensor.master_bath_esp_motion

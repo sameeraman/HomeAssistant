@@ -638,7 +638,7 @@ views:
               - entity: binary_sensor.master_motion
                 icon: 'mdi:run-fast'
                 name: Motion
-              - entity: binary_sensor.door_window_sensor_158d0003677216
+              - entity: binary_sensor.master_door_zb
                 icon: 'mdi:door-closed'
                 name: Door
               - entity: binary_sensor.bed_sensor
@@ -796,7 +796,7 @@ views:
               - entity: binary_sensor.motion_sensor_158d0004507186
                 icon: 'mdi:run-fast'
                 name: Motion
-              - entity: binary_sensor.door_window_sensor_158d0002ca3100
+              - entity: binary_sensor.laundry_door_zb
                 icon: 'mdi:door-closed'
                 name: Door
               - entity: light.laundry_light
