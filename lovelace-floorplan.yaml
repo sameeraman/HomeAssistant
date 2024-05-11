@@ -181,6 +181,17 @@
               transform: 'scale(1,1)'
 
 # Living
+          # Living Sliding Door
+          - type: image
+            image: /local/line6.svg
+            entity: binary_sensor.living_sliding_door
+            state_filter:
+              "off": 'opacity(0)'
+            style:
+              top: 21.5%
+              left: 13%
+              transform: 'scale(1.5,1.0)'
+
           # Living Light
           - type: state-icon
             icon: 'mdi:lightbulb-outline'
@@ -345,14 +356,14 @@
               "--paper-item-icon-color": '#D8D6D9'
 
 
-          # Main Entrance Door
+          # Main Entrance Door 
           - type: image
             image: /local/line6v.svg
             entity: binary_sensor.door_window_sensor_158d0002739295
             state_filter:
               "off": 'opacity(0)'
             style:
-              top: 68%
+              top: 66%
               left: 56.3%
               transform: 'rotate(0deg) scale(1,1.2)'
 
