@@ -172,7 +172,7 @@
           # Pantry Door
           - type: image
             image: /local/line6vr.svg
-            entity: binary_sensor.door_window_sensor_158d00033acf0f
+            entity: binary_sensor.pantry_door_zb
             state_filter:
               "off": 'opacity(0)'
             style:
@@ -585,7 +585,7 @@
           # Patio Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.motion_sensor_158d00033df5c5
+            entity: binary_sensor.patio_motion_zb_1
             style:
               top: 81%
               left: 53.4%

@@ -428,7 +428,7 @@
       to: 'on'
     # Patio-M
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d00033df5c5
+      entity_id: binary_sensor.patio_motion_zb_1
       to: 'on'
   condition:
     condition: state
@@ -517,7 +517,7 @@
   alias: Turn on the Pantry Light when the door Open
   trigger: 
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d00033acf0f
+      entity_id: binary_sensor.pantry_door_zb
       to: 'on'
   action:
     - service: light.turn_on
@@ -528,7 +528,7 @@
   alias: Turn off the Pantry Light when the door close
   trigger: 
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d00033acf0f
+      entity_id: binary_sensor.pantry_door_zb
       to: 'off'
   action:
     - service: light.turn_off
@@ -539,7 +539,7 @@
   alias: Turn off the Pantry Light when the door open and left for more than 2 minutes
   trigger: 
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d00033acf0f
+      entity_id: binary_sensor.pantry_door_zb
       to: 'on'
       for:
         minutes: 2
@@ -569,7 +569,7 @@
           entity_id: sun.sun
           state: 'below_horizon'
         - condition: state
-          entity_id: binary_sensor.door_window_sensor_158d0002c0e236
+          entity_id: binary_sensor.garage_door_zb
           state: 'off'
   action:
     - service: light.turn_on
@@ -580,7 +580,7 @@
   alias: Turn on the garage light when the garage door close
   trigger: 
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0002c0e236
+      entity_id: binary_sensor.garage_door_zb
       to: 'off'
   condition:
     condition: and
@@ -630,7 +630,7 @@
   alias: Turn off the garage light when the garage door open during day time
   trigger: 
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0002c0e236
+      entity_id: binary_sensor.garage_door_zb
       to: 'on'
       for: 
         seconds: 2
@@ -742,7 +742,7 @@
         state: 'on'
         # Pantry Door
       - condition: state
-        entity_id: binary_sensor.door_window_sensor_158d00033acf0f
+        entity_id: binary_sensor.pantry_door_zb
         state: 'on' 
         # Garage Entry Door
       - condition: state
@@ -873,7 +873,7 @@
   alias: Turn on the Front Outdoor light for 2 mins then there the garage door open
   trigger: 
     - platform: state
-      entity_id: binary_sensor.door_window_sensor_158d0002c0e236
+      entity_id: binary_sensor.garage_door_zb
       to: 'on'
       for: 
         seconds: 2
@@ -1784,7 +1784,7 @@
         to: 'on'
       # Garage door
       - platform: state
-        entity_id: binary_sensor.door_window_sensor_158d0002c0e236
+        entity_id: binary_sensor.garage_door_zb
         to: 'on'
       # Laundry Motion
       - platform: state
@@ -2849,7 +2849,7 @@
   alias: Turn on the Front Patio light when there is motion in the patio
   trigger: 
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d00033df5c5
+      entity_id: binary_sensor.patio_motion_zb_1
       to: 'on'
   condition:
     condition: and
@@ -2870,7 +2870,7 @@
   alias: Turn off the Front Patio light when there is no motion in the patio
   trigger: 
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d00033df5c5
+      entity_id: binary_sensor.patio_motion_zb_1
       to: 'off'
   condition:
     condition: and
