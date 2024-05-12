@@ -2313,11 +2313,12 @@
 - id: togglemadhushibedsidependentlightspushbutton
   alias: Toggle Master Pendant lights when Xiaomi Madhushi Bedside push button is single pressed
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d00035f34ec
-      click_type: single
+    - device_id: 1ea7f1d28de97a28f6e4822af22b3af0
+      discovery_id: madhushi_bedside_button_zb_1 action_single
+      domain: mqtt
+      platform: device
+      subtype: single
+      type: action
   action:
     service: light.toggle
     entity_id: light.master_pendant
@@ -2326,11 +2327,12 @@
 - id: togglemadhushibedsidemasterlightpushbuttondouble
   alias: Toggle Master Light when Xiaomi Madhushi Bedside push button is double pressed
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d00035f34ec
-      click_type: double
+    - device_id: 1ea7f1d28de97a28f6e4822af22b3af0
+      discovery_id: madhushi_bedside_button_zb_1 action_double
+      domain: mqtt
+      platform: device
+      subtype: double
+      type: action
   action:
     service: light.toggle
     entity_id: light.master_dimmer
@@ -2339,11 +2341,12 @@
 - id: playlullabiesmadhushibedsidemasterlightpushbuttonlong
   alias: Play Lullabies when Xiaomi Madhushi Bedside push button is long pressed
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d00035f34ec
-      click_type: long_click_press
+    - device_id: 1ea7f1d28de97a28f6e4822af22b3af0
+      discovery_id: madhushi_bedside_button_zb_1 action_hold
+      domain: mqtt
+      platform: device
+      subtype: hold
+      type: action
   action:
     - service: media_player.select_source
       data_template:
@@ -2359,11 +2362,12 @@
 - id: togglesameerabedsidependentlightspushbutton
   alias: Toggle Master Pendant lights when Xiaomi Sameera Bedside push button is single pressed
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000407e1ec
-      click_type: single
+    - device_id: 51fb81aecedc7d0428f8a70b0f171164
+      discovery_id: sameera_bedside_button_zb_1 action_single
+      domain: mqtt
+      platform: device
+      subtype: single
+      type: action
   action:
     service: light.toggle
     entity_id: light.master_pendant
@@ -2372,11 +2376,12 @@
 - id: togglesameerabedsidepushbuttondouble
   alias: Toggle Master Light when Xiaomi Sameera Bedside push button is double pressed
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000407e1ec
-      click_type: double
+    - device_id: 51fb81aecedc7d0428f8a70b0f171164
+      discovery_id: sameera_bedside_button_zb_1 action_double
+      domain: mqtt
+      platform: device
+      subtype: double
+      type: action
   action:
     service: light.toggle
     entity_id: light.master_dimmer
@@ -2385,11 +2390,12 @@
 - id: playlullabiessameerabedsidemasterlightpushbuttonlong
   alias: Play Lullabies when Xiaomi Sameera Bedside push button is long pressed
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000407e1ec
-      click_type: long_click_press
+    - device_id: 51fb81aecedc7d0428f8a70b0f171164
+      discovery_id: sameera_bedside_button_zb_1 action_hold
+      domain: mqtt
+      platform: device
+      subtype: hold
+      type: action
   action:
     - service: media_player.select_source
       data_template:
