@@ -742,6 +742,17 @@
               left: 58.8%
               transform: rotate(0deg)
 
+          # Master Bedroom bath strip
+          - type: image
+            image: /local/line7.svg
+            entity: light.bath_strip
+            state_filter:
+              "off": 'opacity(0)'
+            style:
+              top: 25%
+              left: 67%
+              transform: rotate(0deg)
+
           # Master Bath Fan
           - type: image
             entity: switch.master_bath_fan
