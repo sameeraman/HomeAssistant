@@ -372,7 +372,7 @@
           # Laundry Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.motion_sensor_158d0004507186
+            entity: binary_sensor.laundry_motion_zb_1
             style:
               top: 69.5%
               left: 8.5%
@@ -425,20 +425,6 @@
               left: 73%
               "--paper-item-icon-color": '#D8D6D9'
 
-          # Switch Box Temperature
-          # - type: state-icon
-          #   entity: sensor.temperature_158d0002731398
-          #   icon: 'mdi:server-network'
-          #   style: 
-          #       top: 62%
-          #       left: 80%
-          #       "--paper-item-icon-color": '#D8D6D9'
-          # - type: state-label
-          #   entity: sensor.temperature_158d0002731398
-          #   icon: 'mdi:thermometer'
-          #   style: 
-          #       top: 62%
-          #       left: 87.5%
 
           # Garage Light
           - type: state-icon

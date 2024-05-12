@@ -723,7 +723,7 @@ views:
               - entity: sensor.living_espmulti_t
                 icon: 'mdi:coolant-temperature'
                 name: Temperature
-              - entity: sensor.illumination_158d0002c716b6
+              - entity: sensor.0x00158d0002c716b6_illuminance_lux
                 icon: 'mdi:theme-light-dark'
                 name: Light
               - entity: sensor.living_espmulti_h
@@ -793,7 +793,7 @@ views:
           - type: glance
             title: Laundry
             entities:
-              - entity: binary_sensor.motion_sensor_158d0004507186
+              - entity: binary_sensor.laundry_motion_zb_1
                 icon: 'mdi:run-fast'
                 name: Motion
               - entity: binary_sensor.laundry_door_zb
@@ -820,7 +820,7 @@ views:
               - entity: sensor.office_espmulti_t
                 icon: 'mdi:coolant-temperature'
                 name: Temperature
-              - entity: sensor.illumination_158d0002b7ec00
+              - entity: sensor.0x00158d0002b7ec00_illuminance_lux
                 icon: 'mdi:theme-light-dark'
                 name: Light
               - entity: sensor.office_espmulti_h
@@ -915,48 +915,45 @@ views:
               - entity: device_tracker.madhushi_iphone_3
                 name: Madhushi
                 image: /local/madhushi.jpg
+          - type: thermostat
+            entity: climate.ac
+            features:
+              - type: "climate-hvac-modes"
+                hvac_modes:
+                  - heat
+                  - cool
+                  - dry
+                  - fan_only
+                  - "off"
+              - type: "climate-fan-modes"
+                style: "icons"
+                fan_modes:
+                  - low
+                  - medium
+                  - high
+                  - auto
           - entities:
-              - entity: switch.myair_power
-                icon: 'mdi:power-standby'
-                name: AC Power
-                tap_action:
-                  action: toggle
-              - entity: sensor.myair_mode
-                icon: 'mdi:air-conditioner'
-                name: Mode
-              - entity: sensor.myair_fanspeed
-                icon: 'mdi:speedometer'
-                name: Speed
-              - entity: sensor.myair_settemp
-                icon: 'mdi:thermometer'
-                name: Temperature
-              - entity: sensor.myair_stop_timer
-                icon: 'mdi:clock-end'
-                name: Timer
-            title: Air Conditioner
-            type: glance
-          - entities:
-              - entity: switch.myair_zone1
+              - entity: cover.living
                 icon: 'mdi:arrow-decision-auto'
                 name: Living
                 tap_action:
                   action: toggle
-              - entity: switch.myair_zone2
+              - entity: cover.office
                 icon: 'mdi:arrow-decision-auto'
-                name: Theatre
+                name: Office
                 tap_action:
                   action: toggle
-              - entity: switch.myair_zone3
+              - entity: cover.master_bed
                 icon: 'mdi:arrow-decision-auto'
                 name: Master
                 tap_action:
                   action: toggle
-              - entity: switch.myair_zone4
+              - entity: cover.bed_2
                 icon: 'mdi:arrow-decision-auto'
                 name: Bed 2
                 tap_action:
                   action: toggle
-              - entity: switch.myair_zone5
+              - entity: cover.bed_3
                 icon: 'mdi:arrow-decision-auto'
                 name: Bed 3
                 tap_action:

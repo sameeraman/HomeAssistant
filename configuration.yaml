@@ -221,9 +221,6 @@ google_assistant:
     light.theater_volume:
       expose: true
       room: Other
-    switch.plug_158d000278ff33:
-      expose: true
-      room: Other
     switch.smartplug5:
       expose: true
       room: Other
@@ -544,7 +541,6 @@ homekit:
         - switch.alfresco_music
         - switch.nightmood
         - light.theater_volume
-        - switch.plug_158d000278ff33
         - switch.smartplug5
         - switch.smartplug2
         - light.dining_dimmer

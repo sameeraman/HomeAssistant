@@ -458,7 +458,7 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: numeric_state
-        entity_id: sensor.illumination_158d0001e0ac8e
+        entity_id: sensor.0x00158d0001e0ac8e_illuminance_lux
         below: 30
       - condition: time
         before: '20:59:59'
@@ -1788,7 +1788,7 @@
         to: 'on'
       # Laundry Motion
       - platform: state
-        entity_id: binary_sensor.motion_sensor_158d0004507186
+        entity_id: binary_sensor.laundry_motion_zb_1
         to: 'on'
         for:
           seconds: 125
@@ -2181,7 +2181,7 @@
         entity_id: light.master_dimmer
         state: 'off'
       - condition: numeric_state
-        entity_id: sensor.illumination_158d0002b7f1e8
+        entity_id: sensor.0x00158d0002b7f1e8_illuminance_lux
         below: 20
       - condition: state
         entity_id: binary_sensor.bed_sensor
@@ -2803,7 +2803,7 @@
   alias: Turn on the Laundry light when there is motion in the laundry
   trigger: 
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0004507186
+      entity_id: binary_sensor.laundry_motion_zb_1
       to: 'on'
   condition:
     condition: and
@@ -2829,7 +2829,7 @@
   alias: Turn off the Laundry light when there is no motion in the laundry
   trigger: 
     - platform: state
-      entity_id: binary_sensor.motion_sensor_158d0004507186
+      entity_id: binary_sensor.laundry_motion_zb_1
       to: 'off'
   condition:
     condition: and

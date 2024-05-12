@@ -42,10 +42,6 @@ switch.myair_zone6:
   icon: mdi:arrow-decision-auto
 switch.myair_power:
   icon: mdi:power-standby
-switch.plug_158d000278ff33:
-  friendly_name: NotAllocated 
-binary_sensor.motion_sensor_158d0004507186:
-  friendly_name: Laundry-M
 switch.smartplug2:
   friendly_name: Vaporizer 
 binary_sensor.vibration_158d0003232371:
