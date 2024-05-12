@@ -1589,11 +1589,12 @@
 - id: siennayoutubelivingpushbuttonsingle
   alias: Play Sienna Youtube when Xiaomi Living push button is single pressed
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000323d424
-      click_type: single
+    - device_id: 1e62bbc69e1738b2a657a34ba218ef59
+      discovery_id: kitchen_button_zb_1 action_single
+      domain: mqtt
+      platform: device
+      subtype: single
+      type: action
   action:
     - service : script.turn_on
       entity_id: script.youtube_sienna
@@ -1603,11 +1604,12 @@
 - id: siennayoutubelivingpushbuttondouble
   alias: Play Sienna Youtube when Xiaomi Living push button is double pressed
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000323d424
-      click_type: double
+    - device_id: 1e62bbc69e1738b2a657a34ba218ef59
+      discovery_id: kitchen_button_zb_1 action_double
+      domain: mqtt
+      platform: device
+      subtype: double
+      type: action
   action:
     - service : media_player.play_media
       entity_id: media_player.living_tv
@@ -1623,11 +1625,12 @@
 - id: executetvtogglepushbuttonlong
   alias: Toggle TV Power when Living push button is long pressed
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000323d424
-      click_type: long_click_press
+    - device_id: 1e62bbc69e1738b2a657a34ba218ef59
+      discovery_id: kitchen_button_zb_1 action_hold
+      domain: mqtt
+      platform: device
+      subtype: hold
+      type: action
   action:
     - service : script.turn_on
       entity_id: script.toggle_tv
@@ -1637,11 +1640,12 @@
 - id: alarmmasterpushbutton
   alias: Alarm when Xiaomi Master push button is single pressed (Baby help)
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000407e21a
-      click_type: single
+    - device_id: 3e6bfa4cc0dcdfe87afee2ade6670ebd
+      discovery_id: vaporiser_button_zb_1 action_single
+      domain: mqtt
+      platform: device
+      subtype: single
+      type: action
   action:
     - service : script.turn_on
       entity_id: script.sonos_alarm_bell
@@ -1652,11 +1656,12 @@
 - id: masterlightdoublepushbutton
   alias: Turn off master light and turn on pendant light when master push button is double pressed 
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000407e21a
-      click_type: double
+    - device_id: 3e6bfa4cc0dcdfe87afee2ade6670ebd
+      discovery_id: vaporiser_button_zb_1 action_double
+      domain: mqtt
+      platform: device
+      subtype: double
+      type: action
   action:
     - service: light.turn_on
       entity_id: light.master_pendant
@@ -1667,11 +1672,12 @@
 - id: executeleavingworkflowpushbuttonlong
   alias: Toggle Vaporizer when Living push button is long pressed
   trigger: 
-    platform: event
-    event_type: xiaomi_aqara.click
-    event_data:
-      entity_id: binary_sensor.switch_158d000407e21a
-      click_type: long_click_press
+    - device_id: 3e6bfa4cc0dcdfe87afee2ade6670ebd
+      discovery_id: vaporiser_button_zb_1 action_hold
+      domain: mqtt
+      platform: device
+      subtype: hold
+      type: action
   action:
     - service : switch.toggle
       entity_id: switch.smartplug2
