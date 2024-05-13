@@ -2650,7 +2650,7 @@
       entity_id: binary_sensor.mad_wr_esp_motion
       to: 'off'
       for: 
-        minutes: 2
+        seconds: 30
   condition:
     condition: and
     conditions: 
