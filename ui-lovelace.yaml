@@ -1227,7 +1227,7 @@ views:
               - entity: light.office_dimmer
                 tap_action:
                   action: toggle
-              - entity: light.pantry_light
+              - entity: light.pantry_light_mqtt
                 tap_action:
                   action: toggle
               - entity: light.sameera_wardrobe_light

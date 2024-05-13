@@ -266,7 +266,7 @@ google_assistant:
     light.sameera_wardrobe_light:
       expose: true
       room: Other
-    light.pantry_light:
+    light.pantry_light_mqtt:
       expose: true
       room: Other
     light.front_entrance_dimmer:
@@ -548,7 +548,7 @@ homekit:
         - light.laundry_outside_light
         - light.madhushi_wardrobe_light
         - light.sameera_wardrobe_light
-        - light.pantry_light
+        - light.pantry_light_mqtt
         - light.front_entrance_dimmer
         - light.front_patio_light
         - light.bed_2_dimmer

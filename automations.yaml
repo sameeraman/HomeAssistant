@@ -521,7 +521,7 @@
       to: 'on'
   action:
     - service: light.turn_on
-      entity_id:  light.pantry_light
+      entity_id:  light.pantry_light_mqtt
 
 # Turn off the pantry light when the door close
 - id: pantrylightoff
@@ -532,7 +532,7 @@
       to: 'off'
   action:
     - service: light.turn_off
-      entity_id:  light.pantry_light
+      entity_id:  light.pantry_light_mqtt
 
 # Turn off the Pantry Light when the door open and left for more than 2 minutes
 - id: pantrylightofftimer
@@ -545,7 +545,7 @@
         minutes: 2
   action:
     - service: light.turn_off
-      entity_id:  light.pantry_light
+      entity_id:  light.pantry_light_mqtt
 
 # Turn on the garage light then there is motion
 - id: garagelighton
