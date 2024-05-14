@@ -3083,6 +3083,8 @@
     - platform: state
       entity_id: binary_sensor.person_detected_2
       to: 'off'
+      for:
+        seconds: 15
   condition:
     condition: and
     conditions: 
