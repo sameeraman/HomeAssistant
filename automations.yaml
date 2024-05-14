@@ -3055,7 +3055,7 @@
   alias: Turn on the Master WC Light when there's  motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.master_wc_presence_binary_sensor
+      entity_id: binary_sensor.master_wc_esp_th_motion
       to: 'on'
   condition:
     condition: and
@@ -3078,7 +3078,10 @@
   alias: Turn off the Master WC Light when there's no motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.master_wc_presence_binary_sensor
+      entity_id: binary_sensor.master_wc_esp_th_motion
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.person_detected_2
       to: 'off'
   condition:
     condition: and
@@ -3092,6 +3095,12 @@
       - condition: state
         entity_id: light.master_wc_light
         state: 'on'
+      - condition: state
+        entity_id: binary_sensor.master_wc_esp_th_motion
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.person_detected_2
+        state: 'off'
   action:
     - service: light.turn_off
       entity_id:  light.master_wc_light
