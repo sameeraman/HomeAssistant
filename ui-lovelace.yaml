@@ -1739,4 +1739,23 @@ views:
                 icon: 'mdi:run-fast'
                 name: Office Motion PIR
 
+  - title: Dev2
+    path: dev2
+    cards:
+      - type: picture-entity 
+        entity: camera.thermal_vision_wc
+        title: Thermal Camera WC
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Office room
+            entities:
+              - entity: binary_sensor.person_detected_2
+                icon: 'mdi:run-fast'
+                name: Thermal Motion
+              - entity: light.master_wc_light
+                type: light
+              - entity: binary_sensor.master_wc_esp_th_motion
+                icon: 'mdi:run-fast'
+                name: Office Motion PIR
 

@@ -49,3 +49,8 @@
     overlay: true
     pixel_sensor: sensor.sensor_pixels
     auto_range: true
+  - platform: thermal_vision
+    name: Thermal Camera WC
+    overlay: true
+    pixel_sensor: sensor.sensor_pixels_2
+    auto_range: true
