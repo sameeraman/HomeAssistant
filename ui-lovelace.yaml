@@ -1743,7 +1743,7 @@ views:
     path: dev2
     cards:
       - type: picture-entity 
-        entity: camera.thermal_vision_wc
+        entity: camera.thermal_camera_wc
         title: Thermal Camera WC
       - type: vertical-stack
         cards:
