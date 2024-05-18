@@ -81,5 +81,5 @@
   - platform: group
     name: "Master Pendant"
     entities:
-      - light.master_pendant_zb_1
-      - light.master_pendant_zb_2
+      - light.master_pendant_1_mqtt
+      - light.master_pendant_2_mqtt
