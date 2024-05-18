@@ -195,7 +195,7 @@
       brightness_state_topic: "zigbee2mqtt/pantry_light_1"
       brightness_command_topic: "zigbee2mqtt/pantry_light_1/set/brightness"
       xy_state_topic: "zigbee2mqtt/pantry_light_1"
-      xy_command_topic: "zigbee2mqtt/pantry_light_1/set/xy"
+      xy_command_topic: "zigbee2mqtt/pantry_light_1/set/color_xy"
       color_temp_state_topic: "zigbee2mqtt/pantry_light_1"
       color_temp_command_topic: "zigbee2mqtt/pantry_light_1/set/color_temp"
       state_value_template: "{{ value_json.state }}"
