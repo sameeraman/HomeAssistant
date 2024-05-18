@@ -77,3 +77,9 @@
   - platform: switch
     name: Master WC Light
     entity_id: switch.sonoff_1000ddec78_2
+
+  - platform: group
+    name: "Master Pendant"
+    entities:
+      - light.master_pendant_zb_1
+      - light.master_pendant_zb_2
