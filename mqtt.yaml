@@ -203,6 +203,7 @@
       color_temp_value_template: "{{ value_json.color_temp }}"
       rgb_value_template: "{{ value_json.color | join(',') }}"
       xy_value_template: "{{ value_json.color.x }},{{ value_json.color.y }}"
+      xy_command_template: '{"color": {"x": {{ x }}, "y": {{ color.y }}}}'
       qos: 0
       payload_on: "ON"
       payload_off: "OFF"
