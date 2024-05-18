@@ -207,6 +207,7 @@
       payload_on: "ON"
       payload_off: "OFF"
       optimistic: false
+      retain: false
 
     - name: "Bath Strip MQTT"
       state_topic: "zigbee2mqtt/bath_strip_zb_1"
@@ -226,6 +227,7 @@
       payload_on: "ON"
       payload_off: "OFF"
       optimistic: false
+      retain: false
 
   sensor:
 

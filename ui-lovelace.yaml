@@ -657,7 +657,7 @@ views:
                 name: Mad WR
                 tap_action:
                   action: toggle
-              - entity: light.bath_strip
+              - entity: light.bath_strip_mqtt
                 icon: 'mdi:led-strip'
                 name: Bath Strip
                 tap_action:
@@ -1191,7 +1191,7 @@ views:
               - entity: light.master_bath_dimmer
                 tap_action:
                   action: toggle
-              - entity: light.bath_strip
+              - entity: light.bath_strip_mqtt
                 tap_action:
                   action: toggle
               - entity: light.dining_table_lamp

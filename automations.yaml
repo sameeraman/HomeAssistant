@@ -688,7 +688,7 @@
         state: 'on'
   action:
     - service: light.turn_on
-      entity_id:  light.bath_strip
+      entity_id:  light.bath_strip_mqtt
 
 # Turn off the Bath strip when there's no Motion in master bedroom
 - id: bathstripoff
@@ -717,7 +717,7 @@
         state: 'on'
   action:
     - service: light.turn_off
-      entity_id:  light.bath_strip
+      entity_id:  light.bath_strip_mqtt
 
 # Alert if any door was left open everyday at 10pm
 - id: dailydooropenalert

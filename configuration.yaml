@@ -165,7 +165,7 @@ google_assistant:
     light.master_bath_dimmer:
       expose: true
       room: Other
-    light.bath_strip:
+    light.bath_strip_mqtt:
       expose: true
       room: Other
     light.office_dimmer:
@@ -524,7 +524,7 @@ homekit:
         - binary_sensor.living_room_motion
         - light.alfresco_dimmer
         - light.master_bath_dimmer
-        - light.bath_strip
+        - light.bath_strip_mqtt
         - light.office_dimmer
         - light.front_outdoor_light
         - light.kitchen_dimmer
