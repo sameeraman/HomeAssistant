@@ -229,6 +229,46 @@
       optimistic: false
       retain: false
 
+    - name: "Master Pendant 1 MQTT"
+      state_topic: "zigbee2mqtt/master_pendant_zb_1"
+      command_topic: "zigbee2mqtt/master_pendant_zb_1/set"
+      brightness_state_topic: "zigbee2mqtt/master_pendant_zb_1"
+      brightness_command_topic: "zigbee2mqtt/master_pendant_zb_1/set/brightness"
+      xy_state_topic: "zigbee2mqtt/master_pendant_zb_1"
+      xy_command_topic: "zigbee2mqtt/master_pendant_zb_1/set"
+      color_temp_state_topic: "zigbee2mqtt/master_pendant_zb_1"
+      color_temp_command_topic: "zigbee2mqtt/master_pendant_zb_1/set/color_temp"
+      state_value_template: "{{ value_json.state }}"
+      brightness_value_template: "{{ value_json.brightness }}"
+      color_temp_value_template: "{{ value_json.color_temp }}"
+      xy_value_template: "{{ value_json.color.x }},{{ value_json.color.y }}"
+      xy_command_template: '{"color": {"x": {{ x }}, "y": {{ y }}}}'
+      qos: 0
+      payload_on: "ON"
+      payload_off: "OFF"
+      optimistic: false
+      retain: false
+
+    - name: "Master Pendant 2 MQTT"
+      state_topic: "zigbee2mqtt/master_pendant_zb_2"
+      command_topic: "zigbee2mqtt/master_pendant_zb_2/set"
+      brightness_state_topic: "zigbee2mqtt/master_pendant_zb_2"
+      brightness_command_topic: "zigbee2mqtt/master_pendant_zb_2/set/brightness"
+      xy_state_topic: "zigbee2mqtt/master_pendant_zb_2"
+      xy_command_topic: "zigbee2mqtt/master_pendant_zb_2/set"
+      color_temp_state_topic: "zigbee2mqtt/master_pendant_zb_2"
+      color_temp_command_topic: "zigbee2mqtt/master_pendant_zb_2/set/color_temp"
+      state_value_template: "{{ value_json.state }}"
+      brightness_value_template: "{{ value_json.brightness }}"
+      color_temp_value_template: "{{ value_json.color_temp }}"
+      xy_value_template: "{{ value_json.color.x }},{{ value_json.color.y }}"
+      xy_command_template: '{"color": {"x": {{ x }}, "y": {{ y }}}}'
+      qos: 0
+      payload_on: "ON"
+      payload_off: "OFF"
+      optimistic: false
+      retain: false
+
   sensor:
 
   # mqtt alfresco image processing sensor
