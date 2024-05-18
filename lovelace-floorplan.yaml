@@ -635,6 +635,34 @@
               top: 53%
               left: 71%
               "--paper-item-icon-color": '#D8D6D9'
+
+          # Master Pendant Light 1
+          - type: state-icon
+            icon: 'mdi:ceiling-light'
+            tap_action:
+              action: toggle
+            entity: light.master_pendant_1_mqtt
+            style:
+              top: 57%
+              left: 67%
+              "--paper-item-icon-color": '#D8D6D9'
+              "--paper-item-icon-active-color": '#FCD546'
+              "--rgb-state-light-color": '#FCD546'
+
+          # Master Pendant Light 2
+          - type: state-icon
+            icon: 'mdi:ceiling-light'
+            tap_action:
+              action: toggle
+            entity: light.master_pendant_2_mqtt
+            style:
+              top: 57%
+              left: 84.6%
+              "--paper-item-icon-color": '#D8D6D9'
+              "--paper-item-icon-active-color": '#FCD546'
+              "--rgb-state-light-color": '#FCD546'
+
+
           # Bath Light
           - type: state-icon
             icon: 'mdi:lightbulb-outline'
