@@ -87,7 +87,7 @@
   - platform: group
     name: "Living Mood Lights"
     entities:
-      - light.dining_table_lamp_mqtt_mqtt
+      - light.dining_table_lamp_mqtt
       - light.living_tv_strip_mqtt
-      - light.kitchen_strip_mqtt_mqtt
-      - light.living_floor_lamp_mqtt_mqtt
+      - light.kitchen_strip_mqtt
+      - light.living_floor_lamp_mqtt
