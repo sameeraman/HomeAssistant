@@ -72,7 +72,7 @@
           # Alfresco Motion
           - type: state-icon
             icon: 'mdi:run-fast'
-            entity: binary_sensor.motion_sensor_158d0002b5eecd
+            entity: binary_sensor.alfresco_esp_motion
             style:
               top: 5%
               left: 15.5%
