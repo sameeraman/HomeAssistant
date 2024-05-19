@@ -154,7 +154,7 @@
             icon: 'mdi:led-strip'
             tap_action:
               action: toggle
-            entity: light.kitchen_strip
+            entity: light.kitchen_strip_mqtt
             style:
               top: 25%
               left: 56%
@@ -265,7 +265,7 @@
             icon: 'mdi:lamp'
             tap_action:
               action: toggle
-            entity: light.living_floor_lamp
+            entity: light.living_floor_lamp_mqtt
             style:
               top: 46%
               left: 3%
@@ -275,7 +275,7 @@
             icon: 'mdi:lamp'
             tap_action:
               action: toggle
-            entity: light.dining_table_lamp
+            entity: light.dining_table_lamp_mqtt
             style:
               top: 4%
               left: 53%
@@ -287,7 +287,7 @@
             icon: 'mdi:led-strip'
             tap_action:
               action: toggle
-            entity: light.living_hue_strip
+            entity: light.living_tv_strip_mqtt
             style:
               top: 27%
               left: 3%

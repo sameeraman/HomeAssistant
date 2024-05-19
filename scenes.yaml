@@ -1,9 +1,9 @@
 - name: livingnightmood
   entities:
-    light.living_floor_lamp :
+    light.living_floor_lamp_mqtt :
       state: on
       rgb_color: ['255','207','120']
-    light.dining_table_lamp :
+    light.dining_table_lamp_mqtt :
       state: on
       rgb_color: ['255','207','120']
     light.kitchen_dimmer : off
@@ -15,21 +15,21 @@
     remote.living :
       state : off
       activity: 'Watch TV'
-    light.living_hue_strip:
+    light.living_tv_strip_mqtt:
       state: on
       brightness: 30
       rgb_color: ['255','207','120']
-    light.kitchen_strip:
+    light.kitchen_strip_mqtt:
       state: on
       brightness: 133
       rgb_color: ['255','207','120']     
 
 - name: romanticnightmood
   entities:
-    light.living_floor_lamp :
+    light.living_floor_lamp_mqtt :
       state: on
       rgb_color: ['255','0','0']
-    light.dining_table_lamp :
+    light.dining_table_lamp_mqtt :
       state: on
       rgb_color: ['255','0','0']
     light.kitchen_dimmer : off
@@ -41,32 +41,32 @@
     remote.living :
       state : off
       activity: 'Watch TV'
-    light.living_hue_strip:
+    light.living_tv_strip_mqtt:
       state: on
       brightness: 30
       rgb_color: ['255','0','0']
-    light.kitchen_strip:
+    light.kitchen_strip_mqtt:
       state: on
       brightness: 133
       rgb_color: ['255','0','0']
 
 - name: livingactivenightmood
   entities:
-    light.living_floor_lamp: off
-    light.dining_table_lamp : off
+    light.living_floor_lamp_mqtt: off
+    light.dining_table_lamp_mqtt : off
     light.kitchen_dimmer : on
     light.living_dimmer: on
     media_player.living:
       state: paused
-    light.living_hue_strip : off
-    light.kitchen_strip : off
+    light.living_tv_strip_mqtt : off
+    light.kitchen_strip_mqtt : off
 
 - name: cookingmood
   entities:
-    light.living_floor_lamp :
+    light.living_floor_lamp_mqtt :
       state: on
       rgb_color: ['255','207','120']
-    light.dining_table_lamp :
+    light.dining_table_lamp_mqtt :
       state: on
       rgb_color: ['255','207','120']
     light.kitchen_dimmer : on
@@ -76,19 +76,19 @@
     remote.living :
       state : on
       activity: 'Watch TV'
-    light.living_hue_strip:
+    light.living_tv_strip_mqtt:
       state: on
       brightness: 30
       rgb_color: ['255','207','120']
-    light.kitchen_strip:
+    light.kitchen_strip_mqtt:
       state: on
       brightness: 133
       rgb_color: ['255','207','120']      
 
 - name: livingoff
   entities:
-    light.living_floor_lamp: off
-    light.dining_table_lamp : off
+    light.living_floor_lamp_mqtt: off
+    light.dining_table_lamp_mqtt : off
     light.kitchen_dimmer : off
     light.living_dimmer: off
     media_player.living:
@@ -96,13 +96,13 @@
     remote.living :
       state : off
       activity: 'Watch TV'
-    light.living_hue_strip : off
-    light.kitchen_strip : off
+    light.living_tv_strip_mqtt : off
+    light.kitchen_strip_mqtt : off
 
 - name: tvwatchingmode
   entities:
-    light.living_floor_lamp: off
-    light.dining_table_lamp : off
+    light.living_floor_lamp_mqtt: off
+    light.dining_table_lamp_mqtt : off
     light.kitchen_dimmer : off
     light.living_dimmer: on
     light.office_dimmer: off
@@ -111,82 +111,82 @@
     remote.living :
       state : on
       activity: 'Watch TV'
-    light.living_hue_strip : off
-    light.kitchen_strip : off
+    light.living_tv_strip_mqtt : off
+    light.kitchen_strip_mqtt : off
 
 - name: livingred
   entities:
-    light.living_floor_lamp :
+    light.living_floor_lamp_mqtt :
       state: on
       rgb_color: ['255','0','0']
-    light.dining_table_lamp :
+    light.dining_table_lamp_mqtt :
       state: on
       rgb_color: ['255','0','0']
-    light.living_hue_strip :
+    light.living_tv_strip_mqtt :
       state: on
       brightness: 50
       rgb_color: ['255','0','0']
-    light.kitchen_strip:
+    light.kitchen_strip_mqtt:
       state: on
       brightness: 133
       rgb_color: ['255','0','0']
 
 - name: livinggreen
   entities:
-    light.living_floor_lamp :
+    light.living_floor_lamp_mqtt :
       state: on
       rgb_color: ['0','255','0']
-    light.dining_table_lamp :
+    light.dining_table_lamp_mqtt :
       state: on
       rgb_color: ['0','255','0']
-    light.living_hue_strip :
+    light.living_tv_strip_mqtt :
       state: on
       brightness: 50
       rgb_color: ['186','255','64']
-    light.kitchen_strip :
+    light.kitchen_strip_mqtt :
       state: on
       brightness: 133
       rgb_color: ['186','255','64']
 
 - name: livingblue
   entities:
-    light.living_floor_lamp :
+    light.living_floor_lamp_mqtt :
       state: on
       rgb_color: ['0','0','255']
-    light.dining_table_lamp :
+    light.dining_table_lamp_mqtt :
       state: on
       rgb_color: ['0','0','255']
-    light.living_hue_strip :
+    light.living_tv_strip_mqtt :
       state: on
       brightness: 50
       rgb_color: ['69','11','255']
-    light.kitchen_strip:
+    light.kitchen_strip_mqtt:
       state: on
       brightness: 133
       rgb_color: ['69','11','255']
 
 - name: livingwarm
   entities:
-    light.living_floor_lamp :
+    light.living_floor_lamp_mqtt :
       state: on
       brightness: 254
       color_temp: 377
-    light.dining_table_lamp :
+    light.dining_table_lamp_mqtt :
       state: on
       brightness: 254
       color_temp: 377
-    light.living_hue_strip :
+    light.living_tv_strip_mqtt :
       state: on
       brightness: 50
       color_temp: 377
-    light.kitchen_strip :
+    light.kitchen_strip_mqtt :
       state: on
       brightness: 133
       color_temp: 377
 
 - name: livingcoloroff
   entities:
-    light.living_floor_lamp: off
-    light.dining_table_lamp : off
-    light.living_hue_strip : off
-    light.kitchen_strip : off
+    light.living_floor_lamp_mqtt: off
+    light.dining_table_lamp_mqtt : off
+    light.living_tv_strip_mqtt : off
+    light.kitchen_strip_mqtt : off

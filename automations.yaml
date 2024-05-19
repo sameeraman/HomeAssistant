@@ -1480,13 +1480,13 @@
         state: 'off'
   action:
     - service: light.turn_on
-      entity_id: light.dining_table_lamp
+      entity_id: light.dining_table_lamp_mqtt
     - service: light.turn_on
-      entity_id: light.living_floor_lamp
+      entity_id: light.living_floor_lamp_mqtt
     - service: light.turn_on
-      entity_id: light.living_hue_strip
+      entity_id: light.living_tv_strip_mqtt
     - service: light.turn_on
-      entity_id: light.kitchen_strip
+      entity_id: light.kitchen_strip_mqtt
 # Christmas light     
     - service: switch.turn_on
       entity_id: switch.smartplug3
@@ -1518,13 +1518,13 @@
         state: 'off'
   action:
     - service: light.turn_on
-      entity_id: light.dining_table_lamp
+      entity_id: light.dining_table_lamp_mqtt
     - service: light.turn_on
-      entity_id: light.living_floor_lamp
+      entity_id: light.living_floor_lamp_mqtt
     - service: light.turn_on
-      entity_id: light.living_hue_strip
+      entity_id: light.living_tv_strip_mqtt
     - service: light.turn_on
-      entity_id: light.kitchen_strip
+      entity_id: light.kitchen_strip_mqtt
 # Christmas light  
     - service: switch.turn_on
       entity_id: switch.smartplug3
@@ -1545,26 +1545,26 @@
       - condition: or
         conditions:
           - condition: state
-            entity_id: light.dining_table_lamp
+            entity_id: light.dining_table_lamp_mqtt
             state: 'on'
           - condition: state
-            entity_id: light.living_floor_lamp
+            entity_id: light.living_floor_lamp_mqtt
             state: 'on'
           - condition: state
-            entity_id: light.living_hue_strip
+            entity_id: light.living_tv_strip_mqtt
             state: 'on'
           - condition: state
-            entity_id: light.kitchen_strip
+            entity_id: light.kitchen_strip_mqtt
             state: 'on'
   action:
     - service: light.turn_off
-      entity_id: light.dining_table_lamp
+      entity_id: light.dining_table_lamp_mqtt
     - service: light.turn_off
-      entity_id: light.living_floor_lamp
+      entity_id: light.living_floor_lamp_mqtt
     - service: light.turn_off
-      entity_id: light.living_hue_strip
+      entity_id: light.living_tv_strip_mqtt
     - service: light.turn_off
-      entity_id: light.kitchen_strip
+      entity_id: light.kitchen_strip_mqtt
 # Christmast light
     - service: switch.turn_off
       entity_id: switch.smartplug3
@@ -1878,7 +1878,7 @@
         entity_id: light.kitchen_dimmer
         state: 'off'
       - condition: state
-        entity_id: light.dining_table_lamp
+        entity_id: light.dining_table_lamp_mqtt
         state: 'off'
       - condition: state
         entity_id: group.office_motion

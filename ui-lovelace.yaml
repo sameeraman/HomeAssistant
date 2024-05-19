@@ -738,22 +738,22 @@ views:
           - type: glance
             show_state: false
             entities:
-              - entity: light.living_floor_lamp
+              - entity: light.living_floor_lamp_mqtt
                 icon: 'mdi:lamp'
                 name: Living Floor
                 tap_action:
                   action: toggle
-              - entity: light.living_hue_strip
+              - entity: light.living_tv_strip_mqtt
                 icon: 'mdi:led-strip'
                 name: Living
                 tap_action:
                   action: toggle
-              - entity: light.kitchen_strip
+              - entity: light.kitchen_strip_mqtt
                 icon: 'mdi:led-strip'
                 name: Kitchen
                 tap_action:
                   action: toggle
-              - entity: light.dining_table_lamp
+              - entity: light.dining_table_lamp_mqtt
                 icon: 'mdi:lamp'
                 name: Dining Table
                 tap_action:
@@ -1194,7 +1194,7 @@ views:
               - entity: light.bath_strip_mqtt
                 tap_action:
                   action: toggle
-              - entity: light.dining_table_lamp
+              - entity: light.dining_table_lamp_mqtt
                 tap_action:
                   action: toggle
               - entity: light.front_outdoor_light
@@ -1203,16 +1203,16 @@ views:
               - entity: light.garage_dimmer
                 tap_action:
                   action: toggle
-              - entity: light.living_hue_strip
+              - entity: light.living_tv_strip_mqtt
                 tap_action: 
                   action: toggle
-              - entity: light.kitchen_strip
+              - entity: light.kitchen_strip_mqtt
                 tap_action: 
                   action: toggle
               - entity: light.kitchen_dimmer
                 tap_action:
                   action: toggle
-              - entity:  light.living_floor_lamp
+              - entity:  light.living_floor_lamp_mqtt
                 tap_action:
                   action: toggle
               - entity: light.living_dimmer
