@@ -1032,7 +1032,7 @@ views:
               labels: true
           - type: custom:mini-graph-card
             entities:
-              - sensor.power_usage_757728
+              - sensor.solar_generation
             name: Solar Generation
             icon: mdi:solar-power
             hours_to_show: 24
@@ -1041,7 +1041,7 @@ views:
             line_width: 2
           - type: custom:mini-graph-card
             entities:
-              - sensor.power_usage_622020
+              - sensor.electricity_usage
             name: Energy Consumption
             icon: mdi:flash
             hours_to_show: 24

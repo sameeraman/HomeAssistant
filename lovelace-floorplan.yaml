@@ -577,6 +577,39 @@
               left: 53.4%
               "--paper-item-icon-color": '#D8D6D9'
 
+
+# Electricity Stats
+          # Electricity Usage
+          - type: state-icon
+            entity: sensor.electricity_usage
+            icon: 'mdi:flash'
+            style: 
+                top: 97%
+                left: 50%
+                "--paper-item-icon-color": '#D8D6D9'
+          - type: state-label
+            entity: sensor.electricity_usage
+            icon: 'mdi:flash'
+            style: 
+                top: 97%
+                left: 59.5%
+
+          # Solar Generation
+          - type: state-icon
+            entity: sensor.solar_generation
+            icon: 'mdi:solar-power'
+            style: 
+                top: 97%
+                left: 76%
+                "--paper-item-icon-color": '#D8D6D9'
+          - type: state-label
+            entity: sensor.solar_generation
+            icon: 'mdi:solar-power'
+            style: 
+                top: 97%
+                left: 85%
+
+
 # Front Entrance Light
           # Front Entrance Light 1
           - type: state-icon
