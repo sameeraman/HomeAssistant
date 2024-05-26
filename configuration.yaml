@@ -456,6 +456,8 @@ lovelace:
       type: module
     - url: /local/community/lovelace-card-mod/card-mod.js
       type: module
+    - url: /local/community/power-flow-card-plus/power-flow-card-plus.js
+      type: module
 
 
 weather:
