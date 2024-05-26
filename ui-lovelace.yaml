@@ -1268,33 +1268,33 @@ views:
               show_state: false
               title: Lights On
 
-# Living Tab Navigation Entities
-          - type: horizontal-stack
-            cards:
-              - type: entity-button
-                entity: sun.sun
-                name: 'Home'
-                icon: 'mdi:tablet-dashboard'
-                show_icon: false
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/home
-              - type: entity-button
-                entity: sun.sun
-                name: 'Cameras'
-                icon: 'mdi:cctv'
-                show_icon: false
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/cameras
-              - type: entity-button
-                entity: sun.sun
-                name: 'Floor Plan'
-                icon: 'mdi:floor-plan'
-                show_icon: false
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/floorplan
+# # Living Tab Navigation Entities
+#           - type: horizontal-stack
+#             cards:
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Home'
+#                 icon: 'mdi:tablet-dashboard'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/home
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Cameras'
+#                 icon: 'mdi:cctv'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/cameras
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Floor Plan'
+#                 icon: 'mdi:floor-plan'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/floorplan
 
 
 
@@ -1332,63 +1332,247 @@ views:
         entity:  camera.baby_camera
 
 
-# Camera Tab Navigation Entities
-      - type: vertical-stack
-        cards:
-          - type: horizontal-stack
-            cards:
-              - type: entity-button
-                entity: sun.sun
-                name: 'Home'
-                icon: 'mdi:tablet-dashboard'
-                show_icon: false
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/home
-              - type: entity-button
-                entity: sun.sun
-                name: 'Living'
-                icon: 'mdi:floor-lamp'
-                show_icon: false
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/living
-              - type: entity-button
-                entity: sun.sun
-                name: 'Floor Plan'
-                icon: 'mdi:floor-plan'
-                show_icon: false
-                tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/floorplan
+# # Camera Tab Navigation Entities
+#       - type: vertical-stack
+#         cards:
+#           - type: horizontal-stack
+#             cards:
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Home'
+#                 icon: 'mdi:tablet-dashboard'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/home
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Living'
+#                 icon: 'mdi:floor-lamp'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/living
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Floor Plan'
+#                 icon: 'mdi:floor-plan'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/floorplan
 
-# Battery Tab
-  - title: Battery
-    path: battery
+
+# UltraSync Security System (ComNav)
+  - title: ComNav
+    path: comnav
     cards:
       - type: vertical-stack
         cards:
-        - type: entities
-          title: Xiaomi Battery Status
-          show_header_toggle: false    
-          entities:
-            - entity: sensor.main_door_battery
-            - entity: sensor.garage_door_battery
-            - entity: sensor.laundry_door_battery
-            - entity: sensor.bath_motion_battery
-            - entity: sensor.kitchen_motion_2_battery
-            - entity: sensor.alfresco_motion_battery
-            - entity: sensor.office_motion_2_battery
-            - entity: sensor.master_motion_2_battery
-            - entity: sensor.shower_motion_battery
-            - entity: sensor.living_motion_battery
-            - entity: sensor.garage_motion_2_battery
-            - entity: sensor.smoke_sensor_battery
-            - entity: sensor.alfresco_button_battery
-            - entity: sensor.madhushi_bedside_button_battery
-            - entity: sensor.sameera_bedside_button_battery
-            - entity: sensor.living_button_battery
-            - entity: sensor.temperature_sensor_1_battery
+          - type: custom:button-card
+            name: 'Home Alarm'
+            show_state: true
+            color_type: icon
+            # | x | x | x |   |
+            # | x | x | x |   |
+            gridcol: 1 / span 3
+            gridrow: 1 / span 2
+            style: |
+              ha-card {
+                box-shadow: none;
+              }
+
+            entity: sensor.ultrasync_area1state
+            tap_action:
+              action: >
+                [[[
+                  if (entity.state.startsWith("Armed") || entity.state.includes("Delay") || entity.state.includes("Alarm"))
+                      return "call-service";
+                  else
+                      return "none";
+                ]]]
+
+              service: ultrasync.disarm
+
+            icon: >
+              [[[
+                if (entity.state.includes("Ready"))
+                    return "mdi:shield-home-outline";
+                else if (entity.state.startsWith("Armed"))
+                    return "mdi:shield-lock";
+                else if (entity.state.includes("Delay"))
+                    return "mdi:shield-home";
+                else if (entity.state.includes("Fire"))
+                    return "mdi:fire-alert";
+                else if (entity.state.includes("Medical"))
+                    return "mdi:ambulance";
+                else if (entity.state.includes("Alarm"))
+                    return "mdi:shield-alert";
+                else if (entity.state.includes("Low Battery"))
+                    return "mdi:battery-low";
+                else if (entity.state.includes("Sensor"))
+                    return "mdi:alert-circle";
+                else // Unknown
+                    return "mdi:lock-question";
+              ]]]
+
+            styles:
+              state:
+                - font-weight: bold
+                - font-size: 1.2em
+
+              icon:
+                - color: >
+                    [[[
+                      if (entity.state == "Ready")
+                          return "#00a30e"; // Green
+                      else if (entity.state.startsWith("Not Ready"))
+                          return "#c7a600"; // Orange
+                      else if (entity.state.startsWith("Armed"))
+                          return "#9e0000"; // Red
+                      else if (entity.state.includes("Delay"))
+                          return "#c7a600"; // Orange
+                      else if (entity.state.includes("Alarm"))
+                          return "#9e0000"; // Red
+                      else if (entity.state.includes("Sensor"))
+                          return "#c7a600"; // Orange
+                      else
+                          return "#005f9e"; // Blue
+                    ]]]
+
+              card:
+                - animation: >
+                    [[[
+                      if (entity.state.includes("Delay") || entity.state.includes("Alarm"))
+                          return "blink 2s ease infinite";
+                      else
+                          return undefined;
+                    ]]]
+
+          - type: custom:button-card
+            name: 'Stay'
+            tooltip: 'Set Alarm in Stay/Night mode.'
+            color_type: icon
+            # |   |   |   | x |
+            # |   |   |   |   |
+            gridcol: 4
+            gridrow: 1
+            style: |
+              ha-card {
+                box-shadow: none;
+                height: 100%;
+              }
+
+            entity: sensor.ultrasync_area1state
+            tap_action:
+              action: >
+                [[[
+                  if (entity.state == "Ready")
+                      return "call-service";
+                  else
+                      return "none";
+                ]]]
+
+              service: ultrasync.stay
+            icon: >
+              [[[
+                if (entity.state.includes("Armed Stay"))
+                    return "mdi:shield-check";
+                else if (entity.state.includes("Delay"))
+                    return "mdi:shield-lock";
+                else
+                    return "mdi:shield-half-full";
+              ]]]
+
+            styles:
+              icon:
+                - color: >
+                    [[[
+                      if (entity.state == "Ready")
+                          return "#005f9e"; // Blue
+                      else
+                          return undefined;
+                    ]]]
+
+                - filter: >
+                    [[[
+                      if (entity.state != "Ready")
+                          return "grayscale(100%)";
+                      else
+                          return "grayscale(0)";
+                    ]]]
+
+          - type: custom:button-card
+            name: 'Away'
+            tooltip: 'Set Alarm in Away mode.'
+            color_type: icon
+            # |   |   |   |   |
+            # |   |   |   | x |
+            gridcol: 4
+            gridrow: 2
+            style: |
+              ha-card {
+                box-shadow: none;
+                height: 100%;
+              }
+
+            entity: sensor.ultrasync_area1state
+            tap_action:
+              action: >
+                [[[
+                  if (entity.state == "Ready")
+                      return "call-service";
+                  else
+                      return "none";
+                ]]]
+
+              service: ultrasync.away
+            icon: >
+              [[[
+                if (entity.state.includes("Armed Away"))
+                    return "mdi:shield-check";
+                else if (entity.state.includes("Delay"))
+                    return "mdi:shield-lock";
+                else
+                    return "mdi:shield";
+              ]]]
+
+            styles:
+              icon:
+                - color: >
+                    [[[
+                      if (entity.state == "Ready")
+                          return "#005f9e"; // Blue
+                      else
+                          return undefined;
+                    ]]]
+
+                - filter: >
+                    [[[
+                      if (entity.state != "Ready")
+                          return "grayscale(100%)";
+                      else
+                          return "grayscale(0)";
+                    ]]]
+
+
+# Energy Tab
+  - title: Energy
+    path: energy
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: energy-distribution
+          title: Home Energy Distribution
+          link_dashboard: true
+          solar:
+            entity: sensor.solar_generation
+            name: Solar Production
+            color: '#ff9800'    
+          home:
+            entity: sensor.electricity_usage
+            name: Home Usage
+            color: '#f44336'
 
 
 # Garden

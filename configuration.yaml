@@ -17,6 +17,8 @@ homeassistant:
   whitelist_external_dirs:
     - /share
    #- /home/homeassistant/
+  currency: AUD
+  country: AU
 
   # Enable MFA
   auth_mfa_modules:
