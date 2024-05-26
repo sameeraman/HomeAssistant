@@ -67,6 +67,9 @@ mobile_app:
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
+# Enable Energy
+energy:
+
 # Enables support for tracking state changes over time
 history:
   exclude:
