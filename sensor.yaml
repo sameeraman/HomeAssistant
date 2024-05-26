@@ -17,6 +17,19 @@
       - alerts
       - firmware
 
+# Energy 
+  - platform: integration
+    source: sensor.electricity_usage
+    name: electricity_consumed
+    unit_prefix: k
+    round: 2
+    
+  - platform: integration
+    source: sensor.solar_generation
+    name: solar_generated
+    unit_prefix: k
+    round: 2
+
 # fitbit
   - platform: fitbit
     clock_format: 12H
