@@ -404,10 +404,10 @@
         value_template: >
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 0 <= hour < 6 %} 0.1845
-          {% elif 6 <= hour < 8 %} 0.2255
-          {% elif 9 <= hour < 14 %} 0.0820
-          {% elif 15 <= hour < 20 %} 0.5125
-          {% elif 21 <= hour < 22 %} 0.2255
+          {% elif 6 <= hour < 9 %} 0.2255
+          {% elif 9 <= hour < 15 %} 0.0820
+          {% elif 15 <= hour < 21 %} 0.5125
+          {% elif 21 <= hour < 23 %} 0.2255
           {% elif 23 <= hour < 24 %} 0.1845
           {% else %} Unknown
           {% endif %}
