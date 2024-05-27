@@ -56,3 +56,5 @@ switch.sonoff_1000ddec78_1:
   friendly_name: Master WC Fan
 switch.sonoff_1000ddec78_2:
   friendly_name: Master WC Light
+sensor.grid_consumption_integration:
+  friendly_name: Grid Total
