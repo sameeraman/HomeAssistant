@@ -484,7 +484,6 @@
     
   - platform: integration
     source: sensor.solar_generation
-    friendly_name: Solar Generated
     name: solar_generated
     unit_prefix: k
     round: 2
@@ -492,7 +491,6 @@
   - platform: integration
     source: sensor.solar_feed
     name: solar_feed_to_grid
-    friendly_name: Solar Export
     unit_prefix: k
     round: 2
 
@@ -505,14 +503,12 @@
   - platform: integration
     source: sensor.grid_consumption
     name: grid_consumption_integration
-    friendly_name: Grid Total
     unit_prefix: k
     round: 2
 
   - platform: integration
     source: sensor.grid_consumption_peak
     name: grid_consumption_peak_integration
-    friendly_name: Grid Peak
     unit_prefix: k
     round: 2
 
@@ -526,14 +522,12 @@
   - platform: integration
     source: sensor.grid_consumption_offpeak
     name: grid_consumption_offpeak_integration
-    friendly_name: Grid Offpeak
     unit_prefix: k
     round: 2
 
   - platform: integration
     source: sensor.grid_consumption_superoffpeak
     name: grid_consumption_superoffpeak_integration
-    friendly_name: Grid Super Offpeak
     unit_prefix: k
     round: 2
 
