@@ -375,6 +375,17 @@
         value_template: >
           {{ (as_timestamp(now()) - as_timestamp(states('sensor.uptime'))) // 60| round (0)  }}
 
+# Solar Feed
+      solar_feed:
+        friendly_name: "Solar Feed (Excess Power)"
+        unit_of_measurement: "W"
+        value_template: >
+          {% set solar_gen = states('sensor.solar_generation') | float(0) %}
+          {% set electricity_usage = states('sensor.electricity_usage') | float(0) %}
+          {% set excess_power = (solar_gen - electricity_usage) | round(2) %}
+          {{ max(excess_power, 0) }}
+          
+
 # Time sensor
   - platform: time_date
     display_options:

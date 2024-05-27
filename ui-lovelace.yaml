@@ -1562,17 +1562,18 @@ views:
     cards:
       - type: vertical-stack
         cards:
-        - type: energy-distribution
-          title: Home Energy Distribution
-          link_dashboard: true
-          solar:
-            entity: sensor.solar_generation
-            name: Solar Production
-            color: '#ff9800'    
-          home:
-            entity: sensor.electricity_usage
-            name: Home Usage
-            color: '#f44336'
+          - type: custom:power-flow-card-plus
+            entities:
+              grid:
+                entity:
+                  consumption: sensor.electricity_usage
+                  display_state: one_way
+                  color_circle: true
+              solar:
+                entity: sensor.solar_generation
+              home:
+                entity: sensor.electricity_usage
+
 
 
 # Garden
