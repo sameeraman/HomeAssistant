@@ -58,3 +58,15 @@ switch.sonoff_1000ddec78_2:
   friendly_name: Master WC Light
 sensor.grid_consumption_integration:
   friendly_name: Grid Total
+sensor.grid_consumption_superoffpeak_integration:
+  friendly_name: Grid Super Offpeak
+sensor.grid_consumption_offpeak_integration:
+  friendly_name: Grid Offpeak
+sensor.grid_consumption_overnight_integration:
+  friendly_name: Grid Overnight
+sensor.grid_consumption_peak_integration:
+  friendly_name: Grid Peak
+sensor.solar_feed_to_grid:
+  friendly_name: Solar Export
+sensor.solar_generated:
+  friendly_name: Solar Generated
