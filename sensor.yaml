@@ -17,18 +17,7 @@
       - alerts
       - firmware
 
-# Energy 
-  - platform: integration
-    source: sensor.electricity_usage
-    name: electricity_consumed
-    unit_prefix: k
-    round: 2
-    
-  - platform: integration
-    source: sensor.solar_generation
-    name: solar_generated
-    unit_prefix: k
-    round: 2
+
 
 # fitbit
   - platform: fitbit
@@ -379,17 +368,37 @@
       solar_feed:
         friendly_name: "Solar Feed (Excess Power)"
         unit_of_measurement: "W"
+        device_class: energy
         value_template: >
           {% set solar_gen = states('sensor.solar_generation') | float(0) %}
           {% set electricity_usage = states('sensor.electricity_usage') | float(0) %}
           {% set excess_power = (solar_gen - electricity_usage) | round(2) %}
           {{ max(excess_power, 0) }}
-          
+
 
 # Time sensor
   - platform: time_date
     display_options:
       - 'time'
+
+# Energy 
+  - platform: integration
+    source: sensor.electricity_usage
+    name: electricity_consumed
+    unit_prefix: k
+    round: 2
+    
+  - platform: integration
+    source: sensor.solar_generation
+    name: solar_generated
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.solar_feed
+    name: solar_generated
+    unit_prefix: k
+    round: 2
 
 # # Australian Bureau of Meteorology (BOM)
 #   - platform: bom

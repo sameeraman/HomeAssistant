@@ -1566,14 +1566,13 @@ views:
             entities:
               grid:
                 entity:
-                  consumption: sensor.electricity_usage
+                  production: sensor.solar_feed
                   display_state: one_way
                   color_circle: true
               solar:
                 entity: sensor.solar_generation
               home:
                 entity: sensor.electricity_usage
-
 
 
 # Garden
