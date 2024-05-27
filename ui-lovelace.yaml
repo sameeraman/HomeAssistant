@@ -1554,7 +1554,6 @@ views:
                       else
                           return "grayscale(0)";
                     ]]]
-
 # Energy Tab
   - title: Energy
     path: energy
@@ -1564,10 +1563,7 @@ views:
           - type: custom:power-flow-card-plus
             entities:
               grid:
-                entity:
-                  production: sensor.solar_feed
-                  display_state: one_way
-                  color_circle: true
+                entity: sensor.grid_power
               solar:
                 entity: sensor.solar_generation
               home:

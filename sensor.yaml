@@ -375,6 +375,17 @@
           {% set excess_power = (solar_gen - electricity_usage) | round(2) %}
           {{ max(excess_power, 0) }}
 
+# Grid Consumption
+      grid_consumption:
+        friendly_name: "Grid Consumption"
+        unit_of_measurement: "W"
+        device_class: power
+        value_template: >
+          {% set solar_gen = states('sensor.solar_generation') | float(0) %}
+          {% set electricity_usage = states('sensor.electricity_usage') | float(0) %}
+          {% set grid_consumption = (electricity_usage - solar_gen) | round(2) %}
+          {{ max(grid_consumption, 0) }}
+
 # Energy Grid Power Value
       grid_power:
         friendly_name: "Grid Power"
@@ -429,6 +440,12 @@
   - platform: integration
     source: sensor.grid_power
     name: grid_power_integration
+    unit_prefix: k
+    round: 2
+
+  - platform: integration
+    source: sensor.grid_consumption
+    name: grid_consumption_integration
     unit_prefix: k
     round: 2
 
