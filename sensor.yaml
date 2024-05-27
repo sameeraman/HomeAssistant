@@ -368,7 +368,7 @@
       solar_feed:
         friendly_name: "Solar Feed (Excess Power)"
         unit_of_measurement: "W"
-        device_class: energy
+        device_class: power
         value_template: >
           {% set solar_gen = states('sensor.solar_generation') | float(0) %}
           {% set electricity_usage = states('sensor.electricity_usage') | float(0) %}
@@ -397,6 +397,7 @@
   - platform: integration
     source: sensor.solar_feed
     name: solar_feed_to_grid
+    device_class: energy
     unit_prefix: k
     round: 2
 
