@@ -380,7 +380,8 @@
         friendly_name: "Water Meter"
         unit_of_measurement: "m³"
         device_class: water
-        value_template: "{{ states('sensor.watermeter_water_pulsecounter') | float(0)/1000}}"
+        value_template: "{{ states('counter.water_meter_count') | float(0)/1000}}"
+        state_class: total_increasing
 
 
 
@@ -410,7 +411,7 @@
 
   - platform: integration
     source: sensor.watermeter
-    name: water_meter_daily
+    name: water_meter_daily_integration
     round: 3
 
 # # Australian Bureau of Meteorology (BOM)
