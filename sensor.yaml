@@ -515,7 +515,6 @@
   - platform: integration
     source: sensor.grid_consumption_overnight
     name: grid_consumption_overnight_integration
-    friendly_name: Grid Overnight
     unit_prefix: k
     round: 2
 
