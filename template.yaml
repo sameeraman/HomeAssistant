@@ -1,0 +1,8 @@
+- sensor:
+# Water meter
+    - name: "Water Meter"
+      unit_of_measurement: "m³"
+      state: "{{ (states('counter.water_meter_count')|float / 1000 ) }}"
+      device_class: water
+      state_class: total_increasing
+

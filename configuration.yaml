@@ -127,6 +127,9 @@ browser_mod:
 shell_command:
   myair_setcmd: !secret myair_set_cmd
 
+# Templates 
+template: !include template.yaml
+
 # Sensors
 sensor: !include sensor.yaml
 

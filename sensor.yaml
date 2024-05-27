@@ -375,13 +375,6 @@
           {% set excess_power = (solar_gen - electricity_usage) | round(2) %}
           {{ max(excess_power, 0) }}
 
-# Water meter
-      watermeter:
-        friendly_name: "Water Meter"
-        unit_of_measurement: "m³"
-        device_class: water
-        value_template: "{{ states('counter.water_meter_count') | float(0)/1000}}"
-        state_class: total_increasing
 
 
 
