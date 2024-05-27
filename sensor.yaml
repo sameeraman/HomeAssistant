@@ -396,7 +396,7 @@
 
   - platform: integration
     source: sensor.solar_feed
-    name: solar_generated
+    name: solar_feed_to_grid
     unit_prefix: k
     round: 2
 
