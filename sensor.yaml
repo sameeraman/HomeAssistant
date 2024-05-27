@@ -422,7 +422,7 @@
           {% set electricity_usage = states('sensor.electricity_usage') | float(0) %}
           {% set grid_consumption = max((electricity_usage - solar_gen) | round(2), 0) %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
-          {% if 0 <= hour < 6 %} {{ grid_consumption }}
+          {% if 15 <= hour < 21 %} {{ grid_consumption }}
           {% else %} 0
           {% endif %}
 
@@ -436,7 +436,7 @@
           {% set electricity_usage = states('sensor.electricity_usage') | float(0) %}
           {% set grid_consumption = max((electricity_usage - solar_gen) | round(2), 0) %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
-          {% if 15 <= hour < 21 %}  {{ grid_consumption }}
+          {% if 0 <= hour < 6 %}  {{ grid_consumption }}
           {% elif 23 <= hour < 24 %}  {{ grid_consumption }}
           {% else %} 0
           {% endif %}
