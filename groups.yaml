@@ -107,7 +107,7 @@ office_motion:
   name: "All Office Motion Sensors"
   entities:
     - binary_sensor.office_mad_esp_motion
-    - binary_sensor.office_sam_esp_motion
+    # - binary_sensor.office_sam_esp_motion
     - binary_sensor.office_motion_zb_1
 
 master_motion:

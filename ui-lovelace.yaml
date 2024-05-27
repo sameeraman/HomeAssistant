@@ -1555,7 +1555,6 @@ views:
                           return "grayscale(0)";
                     ]]]
 
-
 # Energy Tab
   - title: Energy
     path: energy
@@ -1573,7 +1572,17 @@ views:
                 entity: sensor.solar_generation
               home:
                 entity: sensor.electricity_usage
-
+          - type: energy-solar-consumed-gauge
+          - type: energy-self-sufficiency-gauge
+      - type: vertical-stack
+        cards:
+          - type: energy-usage-graph
+          - type: energy-solar-graph
+          - type: energy-water-graph
+      - type: vertical-stack
+        cards:
+          - type: energy-sources-table
+          - type: energy-date-selection
 
 # Garden
   - title: Garden
