@@ -375,6 +375,17 @@
           {% set excess_power = (solar_gen - electricity_usage) | round(2) %}
           {{ max(excess_power, 0) }}
 
+# Energy Grid Power Value
+      grid_power:
+        friendly_name: "Grid Power"
+        unit_of_measurement: "W"
+        device_class: power
+        value_template: >
+          {% set solar_gen = states('sensor.solar_generation') | float(0) %}
+          {% set electricity_usage = states('sensor.electricity_usage') | float(0) %}
+          {% set excess_power = (solar_gen - electricity_usage) | round(2) %}
+          {{ excess_power }}
+
 
       synergy_electrity_rate:
         friendly_name: 'Synergy Electricity Rate'
