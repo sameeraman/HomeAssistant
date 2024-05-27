@@ -409,10 +409,10 @@
     unit_prefix: k
     round: 2
 
-  - platform: integration
-    source: sensor.watermeter
-    name: water_meter_daily_integration
-    round: 3
+  # - platform: integration
+  #   source: sensor.watermeter
+  #   name: water_meter_daily_integration
+  #   round: 3
 
 # # Australian Bureau of Meteorology (BOM)
 #   - platform: bom
