@@ -378,6 +378,7 @@
 
       synergy_electrity_rate:
         friendly_name: 'Synergy Electricity Rate'
+        unit_of_measurement: "AUD/kWh"
         value_template: >
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 0 <= hour < 6 %} 0.1845
