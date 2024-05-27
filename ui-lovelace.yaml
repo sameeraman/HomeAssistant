@@ -1946,5 +1946,9 @@ views:
                 type: light
               - entity: binary_sensor.master_wc_esp_th_motion
                 icon: 'mdi:run-fast'
-                name: Office Motion PIR
+                name: Motion PIR Thermal
+              - entity: binary_sensor.master_wc_esp_motion
+                icon: 'mdi:run-fast'
+                name: Motion PIR Old
+                
 
