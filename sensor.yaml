@@ -479,7 +479,6 @@
           {% set solar_gen = states('sensor.solar_generation') | float(0) %}
           {% set electricity_usage = states('sensor.electricity_usage') | float(0) %}
           {% set solar_usage = (electricity_usage - solar_gen) | round(2) %}
-          {{ max(solar_usage, 0) }}
           {% if solar_gen <= electricity_usage %}  {{ solar_gen }}
           {% else %} {{ electricity_usage }}
           {% endif %}
