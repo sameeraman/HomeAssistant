@@ -554,7 +554,6 @@
   - platform: integration
     source: sensor.solar_own_usage_saving_now
     name: solar_own_usage_saving_integration
-    unit_prefix: k
     round: 2
 
 
