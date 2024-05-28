@@ -484,12 +484,17 @@
           {% endif %}
 
 
-# Solar Usage benefit in AUD
+# Solar Usage Savings in AUD
       solar_own_usage_saving_now:
         friendly_name: 'Solar Own Usage Saving Now'
         unit_of_measurement: "AUD"
         value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.solar_own_usage_power') | float / 1000 }}"
 
+# Solar Export earnings in AUD
+      solar_export_earnings_now:
+        friendly_name: 'Solar Export Earnings Now'
+        unit_of_measurement: "AUD"
+        value_template: "{{ 0.07 | float * states('sensor.solar_feed') | float / 1000 }}"
 
 # Time sensor
   - platform: time_date
@@ -556,6 +561,10 @@
     name: solar_own_usage_saving_integration
     round: 2
 
+  - platform: integration
+    source: sensor.solar_export_earnings_now
+    name: solar_export_earnings_integration
+    round: 2
 
   # - platform: integration
   #   source: sensor.watermeter
