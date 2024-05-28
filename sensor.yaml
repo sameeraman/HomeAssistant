@@ -470,6 +470,24 @@
           {% else %} 0
           {% endif %}
 
+# Solar usage
+      solar_own_usage_power:
+        friendly_name: "Solar Usage Power"
+        unit_of_measurement: "W"
+        device_class: power
+        value_template: >
+          {% set solar_gen = states('sensor.solar_generation') | float(0) %}
+          {% set electricity_usage = states('sensor.electricity_usage') | float(0) %}
+          {% set solar_usage = (electricity_usage - solar_gen) | round(2) %}
+          {{ max(solar_usage, 0) }}
+
+# Solar Usage benefit in AUD
+      solar_own_usage_saving_now:
+        friendly_name: 'Solar Own Usage Saving Now'
+        unit_of_measurement: "AUD"
+        value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.solar_own_usage_power') | float / 1000 }}"
+
+
 # Time sensor
   - platform: time_date
     display_options:
@@ -529,6 +547,13 @@
     name: grid_consumption_superoffpeak_integration
     unit_prefix: k
     round: 2
+
+  - platform: integration
+    source: sensor.solar_own_usage_saving_now
+    name: solar_own_usage_saving_integration
+    unit_prefix: k
+    round: 2
+
 
   # - platform: integration
   #   source: sensor.watermeter
