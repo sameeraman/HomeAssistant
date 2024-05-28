@@ -1554,6 +1554,8 @@ views:
                       else
                           return "grayscale(0)";
                     ]]]
+
+
 # Energy Tab
   - title: Energy
     path: energy
@@ -1568,8 +1570,10 @@ views:
                 entity: sensor.solar_generation
               home:
                 entity: sensor.electricity_usage
-          - type: energy-solar-consumed-gauge
-          - type: energy-self-sufficiency-gauge
+          - type: horizontal-stack
+            cards: 
+            - type: energy-solar-consumed-gauge
+            - type: energy-self-sufficiency-gauge
           - type: horizontal-stack
             cards: 
             - type: "custom:button-card"
@@ -1579,7 +1583,7 @@ views:
               entity: sensor.solar_own_usage_saving_integration
               show_entity_picture: true
               show_state: true
-              size: 30%
+              size: 40%
               units: 'AUD'
               tap_action:
                     action: none
@@ -1598,14 +1602,39 @@ views:
                 entity_picture:
                   - padding: 7%
             - type: "custom:button-card"
-              name: SOLAR EXPORT EARNING
+              name: SOLAR EARNING
               color_type: card
               entity_picture: '/local/custom-lovelace/icons/export-earning.svg'
               entity: sensor.solar_export_earnings_integration
               show_entity_picture: true
               show_state: true
-              size: 30%
+              size: 40%
               units: 'AUD'
+              tap_action:
+                    action: none
+              styles:
+                card:
+                  - background-color: var(--ha-card-background)
+                name:
+                  - font-familly: Roboto
+                  - font-size: 14px
+                  - color: var(--primary-text-color)
+                state:
+                  - font-familly: Roboto
+                  - color: var(--primary-text-color)
+                  - font-weight: bold
+                  - font-size: 18px
+                entity_picture:
+                  - padding: 7%
+            - type: "custom:button-card"
+              name: WATER USAGE
+              color_type: card
+              entity_picture: '/local/custom-lovelace/icons/water-drop.svg'
+              entity: sensor.water_meter_daily
+              show_entity_picture: true
+              show_state: true
+              size: 40%
+              units: 'L'
               tap_action:
                     action: none
               styles:
