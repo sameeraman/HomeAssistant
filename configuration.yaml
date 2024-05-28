@@ -640,6 +640,10 @@ utility_meter:
     source: sensor.water_usage_liters
     cycle: daily
 
+  water_meter_weekly:
+    source: sensor.water_usage_liters
+    cycle: weekly
+
   water_meter_monthly:
     source: sensor.water_usage_liters
     cycle: monthly
@@ -647,6 +651,10 @@ utility_meter:
   solar_savings_daily:
     source: sensor.solar_own_usage_saving_integration
     cycle: daily
+
+  solar_savings_weekly:
+    source: sensor.solar_own_usage_saving_integration
+    cycle: weekly
 
   solar_savings_monthly:
     source: sensor.solar_own_usage_saving_integration
@@ -659,6 +667,19 @@ utility_meter:
   solar_savings_monthly_1:
     source: sensor.solar_own_usage_saving_now
     cycle: monthly
+
+  solar_export_earnings_daily:
+    source: sensor.solar_export_earnings_integration
+    cycle: daily
+
+  solar_export_earnings_weekly:
+    source: sensor.solar_export_earnings_integration
+    cycle: weekly
+
+  solar_export_earnings_monthly:
+    source: sensor.solar_export_earnings_integration
+    cycle: monthly
+
 # # Image Processing
 # image_processing:
 #   - platform: doods
