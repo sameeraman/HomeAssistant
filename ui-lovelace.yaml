@@ -190,7 +190,6 @@ views:
                   }
 
 
-
               # entity: weather.dark_sky
               # details: false
               # current: true
@@ -425,7 +424,9 @@ views:
                     .states {
                     margin-top: -10px; 
                     }
-                
+
+            # - type: horizontal-stack
+            #   cards: 
               - type: custom:mini-graph-card
                 entities:
                   - entity: sensor.living_espmulti_h
@@ -442,7 +443,7 @@ views:
                     .states {
                     margin-top: -10px; 
                     }
-                
+
 
 
 # Third Column
@@ -451,6 +452,18 @@ views:
           layout: vertical
           #column_width: 20%
           cards:
+
+            - type: custom:power-flow-card-plus
+              entities:
+                grid:
+                  entity: sensor.grid_power
+                solar:
+                  entity: sensor.solar_generation
+                home:
+                  entity: sensor.electricity_usage
+
+
+
             - type: horizontal-stack
               cards: 
               - type: "custom:button-card"
@@ -458,22 +471,19 @@ views:
                 entity: light.master_dimmer
                 template: light
               - type: "custom:button-card"
-                name: MASTER BATH
+                name: M BATH
                 entity: light.master_bath_dimmer
+                template: light
+              - type: "custom:button-card"
+                name: M WC
+                entity: light.master_wc_light
                 template: light
             - type: horizontal-stack
               cards: 
-              - type: "custom:button-card"
-                name: MASTER WC
-                entity: light.master_wc_light
-                template: light
               - type: "custom:button-card"
                 name: GARAGE
                 entity:  light.garage_dimmer
                 template: light
-
-            - type: horizontal-stack
-              cards: 
               - type: "custom:button-card"
                 name: PATIO
                 entity: light.front_patio_light
@@ -482,6 +492,10 @@ views:
                 name: BED 2
                 entity: light.bed_2_dimmer
                 template: light
+
+            # - type: horizontal-stack
+            #   cards: 
+
             - type: horizontal-stack
               cards: 
               - type: "custom:button-card"
@@ -492,29 +506,37 @@ views:
                 name: BED 4
                 entity: light.bed_4_dimmer
                 template: light
+              - type: "custom:button-card"
+                name: BED 4
+                entity: light.bed_4_dimmer
+                template: light
 
             - type: horizontal-stack
               cards: 
               - type: "custom:button-card"
-                name: FRONT OUT
+                name: FR OUT
                 entity: light.front_outdoor_light
                 template: light
               - type: "custom:button-card"
-                name: BACK OUT
+                name: BK OUT
                 entity: light.back_outdoor_light
                 template: light
+              - type: "custom:button-card"
+                name: ALFRSCO
+                entity: light.alfresco_dimmer
+                template: light
 
-            - type: horizontal-stack
-              cards: 
+            # - type: horizontal-stack
+            #   cards: 
+
+
+
               # - type: "custom:button-card"
               #   name: LAUNDRY
               #   entity: light.laundry_light
               #   template: light
 
-              - type: "custom:button-card"
-                name: ALFRESCO
-                entity: light.alfresco_dimmer
-                template: light
+
 
 
               # - type: "custom:button-card"
@@ -538,21 +560,6 @@ views:
               #   entity: light.laundry_outside_light
               #   template: light
 
-              - type: "custom:button-card"
-                name: SIENNA
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
-                entity: binary_sensor.montessori_music_sensor
-                show_entity_picture: true
-                tap_action:
-                  action: call-service
-                  service: script.play_pause_sonos_living_play_montessori
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
 
 
             - type: horizontal-stack
@@ -595,7 +602,24 @@ views:
               #       - padding: 7%
 
               - type: "custom:button-card"
-                name: LULLABIES
+                name: SIENNA
+                color_type: card
+                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
+                entity: binary_sensor.montessori_music_sensor
+                show_entity_picture: true
+                tap_action:
+                  action: call-service
+                  service: script.play_pause_sonos_living_play_montessori
+                styles:
+                  name:
+                    - font-familly: Roboto
+                    - font-size: 14px
+                  entity_picture:
+                    - padding: 7%
+
+
+              - type: "custom:button-card"
+                name: LULABIES
                 color_type: card
                 entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
                 entity: binary_sensor.lullabies_music_sensor
@@ -612,7 +636,7 @@ views:
 
 
               - type: "custom:button-card"
-                name: VAPORIZER
+                name: VAPRZER
                 color_type: card
                 entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/vap.svg?v=3"; else return "/local/custom-lovelace/icons/vap.svg?v=4" ]]]'
                 entity: switch.smartplug2
