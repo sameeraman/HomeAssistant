@@ -70,13 +70,13 @@
 # Frigate
       frigate_office_desk_camera:
         device_class: motion
-        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('sensor.frigate_office_desk_camera_value') | float > 0}}" 
+        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('sensor.frigate_office_desk_camera_value') not in ['unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.frigate_office_desk_camera_value') | float > 0}}" 
       frigate_living_camera:
         device_class: motion
-        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('sensor.frigate_living_camera_value') | float > 0}}" 
+        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('sensor.frigate_living_camera_value') not in ['unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.frigate_living_camera_value') | float > 0}}" 
       frigate_alfresco_camera:
         device_class: motion
-        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('sensor.frigate_alfresco_camera_value') | float > 0}}" 
+        value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('sensor.frigate_alfresco_camera_value') not in ['unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.frigate_alfresco_camera_value') | float > 0}}" 
 
 
 
