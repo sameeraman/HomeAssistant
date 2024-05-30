@@ -672,10 +672,10 @@
   alias: Turn on Bath strip when there is motion in Master bedroom
   trigger: 
     - platform: state
-      entity_id: binary_sensor.master_motion
+      entity_id: group.master_bath_motion
       to: 'on'
     # - platform: state
-    #   entity_id: binary_sensor.master_motion_zb
+    #   entity_id: binary_sensor.master_motion
     #   to: 'on'
   condition:
     condition: and
