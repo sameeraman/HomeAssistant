@@ -1544,12 +1544,20 @@
   trigger:
     - platform: time
       at: '23:58:59'
+    - platform: state
+      entity_id: group.living_kitchen_motion
+      to: 'off'
+      for:
+        minutes: 5
   condition:
     condition: and
     conditions: 
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
+      - condition: state
+        entity_id: binary_sensor.frigate_living_camera
+        state: 'off'
       - condition: or
         conditions:
           - condition: state
@@ -3063,7 +3071,7 @@
   alias: Turn on the Master WC Light when there's  motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.master_wc_esp_motion
+      entity_id: binary_sensor.master_wc_esp_th_motion
       to: 'on'
   condition:
     condition: and
