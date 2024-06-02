@@ -3119,6 +3119,8 @@
       - condition: state
         entity_id: binary_sensor.person_detected_2
         state: 'off'
+        for:
+          seconds: 2
   action:
     - service: light.turn_off
       entity_id:  light.master_wc_light

@@ -75,6 +75,7 @@ all_motion:
   name: "All Motion Sensors"
   entities:
     - binary_sensor.kitchen_motion_zb_1
+    - binary_sensor.kitchen_motion_zb_2
     - binary_sensor.living_motion_zb_1
     - binary_sensor.main_entrance_door_zb
 
@@ -89,6 +90,7 @@ living_kitchen_motion:
   name: "All Living and Kitchen Motion Sensors"
   entities:
     - binary_sensor.kitchen_motion_zb_1
+    - binary_sensor.kitchen_motion_zb_2
     - binary_sensor.kitchen_esp_motion
     - binary_sensor.living_motion_zb_1
     
@@ -101,6 +103,7 @@ kitchen_motion:
   name: "All Kitchen Motion Sensors"
   entities:
     - binary_sensor.kitchen_motion_zb_1
+    - binary_sensor.kitchen_motion_zb_2
     - binary_sensor.kitchen_esp_motion
 
 office_motion:
