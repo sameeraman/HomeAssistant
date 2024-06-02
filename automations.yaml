@@ -1343,14 +1343,15 @@
       - condition: state
         entity_id: light.kitchen_dimmer
         state: 'off'
-      - condition: numeric_state
-        entity_id: sensor.illumination_158d0002b5eecd
-        below: 100
+      # - condition: numeric_state
+      #   entity_id: sensor.0x00158d0002c716b6_illuminance_lux
+      #   below: 50
   action:
     - service: light.turn_on
       entity_id:  light.kitchen_dimmer
     - service: input_boolean.turn_off
       entity_id: input_boolean.kitchen_light_onoff_auto
+
 
 # Turn off the Kitchen Light when there is no motion for more than 7 minutes
 - id: kitchenlightoff7min
@@ -1388,6 +1389,73 @@
       entity_id:  light.kitchen_dimmer
     - service: input_boolean.turn_on
       entity_id: input_boolean.kitchen_light_onoff_auto
+
+
+# Turn off the Living Light when there is no motion for more than 4 minutes
+- id: livinglightoff4min
+  alias: Turn off Living Light when there is no motion for more than 4 minutes
+  trigger:
+    - platform: state
+      entity_id: group.living_kitchen_motion
+      to: 'off'
+      for:
+        minutes: 4
+    - platform: state
+      entity_id: binary_sensor.frigate_living_camera
+      to: 'off'
+      for:
+        minutes: 4
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.living_dimmer
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.frigate_living_camera
+        state: 'off'
+        for:
+          seconds: 60
+      - condition: state
+        entity_id: group.living_kitchen_motion
+        state: 'off'
+  action:
+    - service: light.turn_off
+      entity_id:  light.living_dimmer
+    - service: input_boolean.turn_on
+      entity_id: input_boolean.living_light_onoff_auto
+
+# Turn on the Living light when there is motion
+- id: turnonlivinglightonmotion
+  alias: Turn on the Living light then there is motion
+  trigger: 
+    - platform: state
+      entity_id: group.living_kitchen_motion
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.living_light_onoff_auto
+        state: 'on'
+      - condition: state
+        entity_id: light.living_dimmer
+        state: 'off'
+      # - condition: numeric_state
+      #   entity_id: sensor.0x00158d0002c716b6_illuminance_lux
+      #   below: 50
+  action:
+    - service: light.turn_on
+      entity_id:  light.living_dimmer
+    - service: input_boolean.turn_off
+      entity_id: input_boolean.living_light_onoff_auto
+
 
 # Turn off the Office AC Vent when there is no motion for more than 5 minutes in the office
 - id: officeacoff10min
