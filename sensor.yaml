@@ -433,7 +433,7 @@
           {% if 15 <= hour < 21 %} {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.electricity_usage') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.electricity_usage') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.time') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  }}"
 
 
 # Grid Consumption - Overnight
@@ -450,7 +450,7 @@
           {% elif 23 <= hour < 24 %}  {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.electricity_usage') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.electricity_usage') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.time') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  }}"
 
 
 # Grid Consumption - Offpeak
@@ -467,7 +467,7 @@
           {% elif 21 <= hour < 23 %}  {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.electricity_usage') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.electricity_usage') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.time') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  }}"
 
 
 # Grid Consumption Super OffPeak
@@ -483,7 +483,7 @@
           {% if 9 <= hour < 15 %} {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.electricity_usage') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.electricity_usage') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.time') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  }}"
 
 
 # Solar usage
@@ -507,13 +507,15 @@
         friendly_name: 'Solar Own Usage Saving Now'
         unit_of_measurement: "AUD"
         value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.solar_own_usage_power') | float / 1000 }}"
+        availability_template: "{{ states('sensor.synergy_electrity_rate') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.solar_own_usage_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 # Solar Export earnings in AUD
       solar_export_earnings_now:
         friendly_name: 'Solar Export Earnings Now'
         unit_of_measurement: "AUD"
         value_template: "{{ 0.07 | float * states('sensor.solar_feed') | float / 1000 }}"
-
+        availability_template: "{{ states('sensor.solar_feed') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        
 # Time sensor
   - platform: time_date
     display_options:
@@ -555,34 +557,40 @@
     name: grid_consumption_peak_integration
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.grid_consumption_overnight
     name: grid_consumption_overnight_integration
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.grid_consumption_offpeak
     name: grid_consumption_offpeak_integration
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.grid_consumption_superoffpeak
     name: grid_consumption_superoffpeak_integration
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.solar_own_usage_saving_now
     name: solar_own_usage_saving_integration
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.solar_export_earnings_now
     name: solar_export_earnings_integration
     round: 2
+    method: left
 
   # - platform: integration
   #   source: sensor.watermeter
