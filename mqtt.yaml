@@ -359,6 +359,26 @@
       optimistic: false
       retain: false
 
+# Master bed strip
+    - name: "Master bed strip MQTT"
+      state_topic: "zigbee2mqtt/master_bed_strip_zb_1"
+      command_topic: "zigbee2mqtt/master_bed_strip_zb_1/set"
+      brightness_state_topic: "zigbee2mqtt/master_bed_strip_zb_1"
+      brightness_command_topic: "zigbee2mqtt/master_bed_strip_zb_1/set/brightness"
+      xy_state_topic: "zigbee2mqtt/master_bed_strip_zb_1"
+      xy_command_topic: "zigbee2mqtt/master_bed_strip_zb_1/set"
+      color_temp_state_topic: "zigbee2mqtt/master_bed_strip_zb_1"
+      color_temp_command_topic: "zigbee2mqtt/master_bed_strip_zb_1/set/color_temp"
+      state_value_template: "{{ value_json.state }}"
+      brightness_value_template: "{{ value_json.brightness }}"
+      color_temp_value_template: "{{ value_json.color_temp }}"
+      xy_value_template: "{{ value_json.color.x }},{{ value_json.color.y }}"
+      xy_command_template: '{"color": {"x": {{ x }}, "y": {{ y }}}}'
+      qos: 0
+      payload_on: "ON"
+      payload_off: "OFF"
+      optimistic: false
+      retain: false
 
 
   sensor:
