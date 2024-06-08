@@ -719,6 +719,48 @@
     - service: light.turn_off
       entity_id:  light.bath_strip_mqtt
 
+
+# Turn on the Master Bed strip when there is motion in Master bedroom
+- id: masterbedstripon
+  alias: Turn on Master Bed strip when there is motion in Master bedroom
+  trigger: 
+    - platform: state
+      entity_id: group.master_bath_motion
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_bath_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.master_bed_strip_mqtt
+
+# Turn off the Master Bed strip when there's no Motion in master bedroom
+- id: masterbedstripoff
+  alias: Turn off Master Bed Strip when there is no more motion
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.master_motion
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.master_bath_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.master_bed_strip_mqtt
+
+
 # Alert if any door was left open everyday at 10pm
 - id: dailydooropenalert
   alias: Alert if any door was left open everyday at 10pm
