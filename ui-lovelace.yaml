@@ -109,33 +109,280 @@ views:
     cards: !include lovelace-livingtab-view.yaml
 
 
-# Home Tab Navigation Entities
+
+# Home View
+  - title: Home
+    path: home
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Master Bedroom
+            entities:
+              - entity: binary_sensor.master_motion
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: binary_sensor.master_door_zb
+                icon: 'mdi:door-closed'
+                name: Door
+              - entity: binary_sensor.bed_sensor
+                icon: 'mdi:bed'
+                name: Bed
+              - entity: sensor.master_espmulti_t_2
+                icon: 'mdi:coolant-temperature'
+                name: Temperature
+              - entity: sensor.master_espmulti_h_2
+                icon: 'mdi:water-percent'
+                name: Humidity
+          - type: glance
+            entities:
+              - entity: light.madhushi_wardrobe_light
+                icon: 'mdi:lightbulb-on-outline'
+                name: Mad WR
+                tap_action:
+                  action: toggle
+              - entity: light.bath_strip_mqtt
+                icon: 'mdi:led-strip'
+                name: Bath Strip
+                tap_action:
+                  action: toggle
+              - entity: light.master_pendant
+                icon: 'mdi:ceiling-light'
+                name: Pendant
+                tap_action:
+                  action: toggle
+              - entity: switch.bedheater_switch
+                icon: 'mdi:radiator'
+                name: Bed Heater
+                tap_action:
+                  action: toggle
+              - entity: light.sameera_wardrobe_light
+                icon: 'mdi:lightbulb-on-outline'
+                name: Sam WR
+                tap_action:
+                  action: toggle
           - type: horizontal-stack
             cards:
-              - type: entity-button
-                entity: sun.sun
-                name: 'Living'
-                icon: 'mdi:floor-lamp'
-                show_icon: false
+              - entity: light.master_dimmer
+                type: light
+              - entity: light.master_bath_dimmer
+                type: light
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: House Moods
+            show_state: false
+            entities:
+              - entity: switch.housealarm
+                icon: 'mdi:shield-home-outline'
+                name: Away
                 tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/living
-              - type: entity-button
-                entity: sun.sun
-                name: 'Cameras'
-                icon: 'mdi:cctv'
-                show_icon: false
+                  action: toggle
+              - entity: switch.guest_mood
+                icon: 'mdi:account-supervisor'
+                name: Guest
                 tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/cameras
-              - type: entity-button
-                entity: sun.sun
-                name: 'Floor Plan'
-                icon: 'mdi:floor-plan'
-                show_icon: false
+                  action: toggle
+              - entity: switch.party_mood
+                icon: 'mdi:glass-cocktail'
+                name: Party
                 tap_action:
-                  action: navigate
-                  navigation_path: /lovelace/floorplan
+                  action: toggle
+              - entity: switch.vacation_mood
+                icon: 'mdi:airplane'
+                name: Vacation
+                tap_action:
+                  action: toggle
+              - entity: switch.nightmood
+                icon: 'mdi:weather-night'
+                name: Night
+                tap_action:
+                  action: toggle
+          - type: glance
+            title: Kitchen
+            entities:
+              - entity: binary_sensor.kitchen_motion
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: sensor.living_espmulti_t
+                icon: 'mdi:coolant-temperature'
+                name: Temperature
+              - entity: sensor.0x00158d0002c716b6_illuminance_lux
+                icon: 'mdi:theme-light-dark'
+                name: Light
+              - entity: sensor.living_espmulti_h
+                icon: 'mdi:water-percent'
+                name: Humidity
+          - type: horizontal-stack
+            cards:
+              - entity: light.kitchen_dimmer
+                type: light
+              - entity: light.living_dimmer
+                type: light
+          - type: glance
+            show_state: false
+            entities:
+              - entity: light.living_floor_lamp_mqtt
+                icon: 'mdi:lamp'
+                name: Living Floor
+                tap_action:
+                  action: toggle
+              - entity: light.living_tv_strip_mqtt
+                icon: 'mdi:led-strip'
+                name: Living
+                tap_action:
+                  action: toggle
+              - entity: light.kitchen_strip_mqtt
+                icon: 'mdi:led-strip'
+                name: Kitchen
+                tap_action:
+                  action: toggle
+              - entity: light.dining_table_lamp_mqtt
+                icon: 'mdi:lamp'
+                name: Dining Table
+                tap_action:
+                  action: toggle
+          - type: glance
+            show_state: false
+            entities:
+              - entity: light.front_patio_light
+                icon: 'mdi:lightbulb-on-outline'
+                name: Front Patio
+                tap_action:
+                  action: toggle
+              - entity: light.front_entrance_dimmer
+                icon: 'mdi:lightbulb-on-outline'
+                name: Front Entrance
+                tap_action:
+                  action: toggle
+              - entity: light.bed_2_dimmer
+                icon: 'mdi:lightbulb-on-outline'
+                name: Bed 2
+                tap_action:
+                  action: toggle
+              - entity: light.hallway_light
+                icon: 'mdi:lightbulb-on-outline'
+                name: Hallway
+                tap_action:
+                  action: toggle
+
+          - type: custom:mini-media-player
+            entity: media_player.denon_avc_x3700h
+            icon: 'mdi:speaker-wireless'
+            hide:
+              power: true
+              controls : true
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Laundry
+            entities:
+              - entity: binary_sensor.laundry_motion_zb_1
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: binary_sensor.laundry_door_zb
+                icon: 'mdi:door-closed'
+                name: Door
+              - entity: light.laundry_light
+                icon: 'mdi:lightbulb-on-outline'
+                name: Light
+                tap_action:
+                  action: toggle
+              - entity: light.laundry_outside_light
+                icon: 'mdi:track-light'
+                name: Outdoor
+                tap_action:
+                  action: toggle
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Office Room
+            entities:
+              - entity: binary_sensor.office_motion
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: sensor.office_espmulti_t
+                icon: 'mdi:coolant-temperature'
+                name: Temperature
+              - entity: sensor.0x00158d0002b7ec00_illuminance_lux
+                icon: 'mdi:theme-light-dark'
+                name: Light
+              - entity: sensor.office_espmulti_h
+                icon: 'mdi:water-percent'
+                name: Humidity
+          - type: horizontal-stack
+            cards:
+              - type: light
+                entity: light.office_dimmer
+              - type: light
+                entity: light.alfresco_dimmer
+          - type: glance
+            title: Garage
+            entities:
+              - entity: binary_sensor.garage_motion
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: binary_sensor.garage_door_sensor
+                icon: 'mdi:garage-open'
+                name: Door
+              - entity: sensor.garage_espmulti_t_2
+                icon: 'mdi:coolant-temperature'
+                name: Temperature
+              - entity: sensor.garage_espmulti_lx_2
+                icon: 'mdi:theme-light-dark'
+                name: Light
+              - entity: sensor.garage_espmulti_h_2
+                icon: 'mdi:water-percent'
+                name: Humidity
+          - type: horizontal-stack
+            cards:
+              - entity: light.garage_dimmer
+                icon: 'mdi:lightbulb'
+                name: Garage Light
+                tap_action:
+                  action: toggle
+                type: entity-button
+              - entity: switch.housealarm
+                icon: 'mdi:home-lock'
+                name: House Alarm
+                tap_action:
+                  action: toggle
+                type: entity-button
+              - entity: light.front_outdoor_light
+                icon: 'mdi:lightbulb'
+                name: Front Outdoor
+                tap_action:
+                  action: toggle
+                type: entity-button
+
+
+# # Home Tab Navigation Entities
+#           - type: horizontal-stack
+#             cards:
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Living'
+#                 icon: 'mdi:floor-lamp'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/living
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Cameras'
+#                 icon: 'mdi:cctv'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/cameras
+#               - type: entity-button
+#                 entity: sun.sun
+#                 name: 'Floor Plan'
+#                 icon: 'mdi:floor-plan'
+#                 show_icon: false
+#                 tap_action:
+#                   action: navigate
+#                   navigation_path: /lovelace/floorplan
 
 
 # Living Tab  
