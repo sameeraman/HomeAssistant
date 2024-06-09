@@ -97,11 +97,4 @@ views:
   - title: Tab view
     path: tabview
     panel: true
-    cards:
-      - type: custom:layout-card
-        layout: vertical
-        column_width: [500, 500, 250]
-        cards:
-        - type: picture-elements
-          image: /local/floorplan2-dark.svg?v=2
-          elements: !include lovelace-floorplan.yaml
+    cards: !include lovelace-livingtab-view.yaml
