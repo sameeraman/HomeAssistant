@@ -467,7 +467,7 @@ lovelace:
   dashboards:
     lovelace-living: # Needs to contain a hyphen (-)
       mode: yaml
-      filename: lovelace-living.yaml
+      filename: lovelace-living-dashboard.yaml
       title: Living
       icon: mdi:sofa
       show_in_sidebar: true
