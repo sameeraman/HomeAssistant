@@ -695,7 +695,7 @@
   alias: Turn off Bath Strip when there is no more motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.master_motion
+      entity_id: binary_sensor.master_bath_motion
       to: 'off'
     # - platform: state
     #   entity_id: binary_sensor.master_motion_zb
@@ -745,7 +745,7 @@
   alias: Turn off Master Bed Strip when there is no more motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.master_motion
+      entity_id: binary_sensor.master_bath_motion
       to: 'off'
   condition:
     condition: and

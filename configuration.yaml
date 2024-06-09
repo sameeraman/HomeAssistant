@@ -461,6 +461,9 @@ lovelace:
       type: module
     - url: /local/community/power-flow-card-plus/power-flow-card-plus.js
       type: module
+    - url: /local/custom-lovelace/icons/laundry-icons/7segmentfontload.js
+      type: module
+
 
 
 weather:

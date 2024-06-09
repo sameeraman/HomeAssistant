@@ -828,7 +828,7 @@ views:
                 name: Light
                 tap_action:
                   action: toggle
-              - entity: light.laundry_light
+              - entity: light.laundry_outside_light
                 icon: 'mdi:track-light'
                 name: Outdoor
                 tap_action:
@@ -2057,3 +2057,210 @@ views:
                 name: Motion PIR Old
                 
 
+  - title: Laundry
+    path: laundry
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Laundry
+            entities:
+              - entity: binary_sensor.laundry_motion_zb_1
+                icon: 'mdi:run-fast'
+                name: Motion
+              - entity: binary_sensor.laundry_door_zb
+                icon: 'mdi:door-closed'
+                name: Door
+              - entity: light.laundry_light
+                icon: 'mdi:lightbulb-on-outline'
+                name: Light
+                tap_action:
+                  action: toggle
+              - entity: light.laundry_outside_light
+                icon: 'mdi:track-light'
+                name: Outdoor
+                tap_action:
+                  action: toggle
+
+          - type: picture-elements
+            title: Washing Machine
+            elements:
+              - type: image
+                entity: sensor.washer_run_state
+                image: /local/custom-lovelace/icons/laundry-icons/sensing.png
+                state_image:
+                  Detecting: /local/custom-lovelace/icons/laundry-icons/sensing-on.png
+                style:
+                  top: 33%
+                  left: 39%
+                  width: 15%
+                  image-rendering: crisp
+              - type: image
+                entity: sensor.washer_run_state
+                image: /local/custom-lovelace/icons/laundry-icons/wash.png
+                state_image:
+                  Washing: /local/custom-lovelace/icons/laundry-icons/wash-on.png
+                style:
+                  top: 33%
+                  left: 55%
+                  width: 15%
+                  image-rendering: crisp
+              - type: image
+                entity: sensor.washer_run_state
+                image: /local/custom-lovelace/icons/laundry-icons/rinse.png
+                state_image:
+                  Rinsing: /local/custom-lovelace/icons/laundry-icons/rinse-on.png
+                style:
+                  top: 33%
+                  left: 71%
+                  width: 15%
+                  image-rendering: crisp
+              - type: image
+                entity: sensor.washer_run_state
+                image: /local/custom-lovelace/icons/laundry-icons/spin.png
+                state_image:
+                  Spinning: /local/custom-lovelace/icons/laundry-icons/spin-on.png
+                style:
+                  top: 33%
+                  left: 87%
+                  width: 15%
+                  image-rendering: crisp
+              - type: image
+                entity: sensor.washer
+                image: /local/custom-lovelace/icons/laundry-icons/wifi.png
+                state_image:
+                  on: /local/custom-lovelace/icons/laundry-icons/wifi-on.png
+                style:
+                  top: 73%
+                  left: 39%
+                  width: 7%
+                  image-rendering: crisp
+              - type: image
+                entity: sensor.washer_door_lock
+                image: /local/custom-lovelace/icons/laundry-icons/lock.png
+                state_image:
+                  on: /local/custom-lovelace/icons/laundry-icons/lock-on.png
+                style:
+                  top: 73%
+                  left: 52%
+                  width: 7%
+                  image-rendering: crisp
+              # - type: state-label
+              #   entity: sensor.blank
+              #   prefix: '18:88'
+              #   style:
+              #     color: '#555'
+              #     font-family: segment7
+              #     font-size: 50px
+              #     left: 95%
+              #     top: 74%
+              #     transform: 'translate(-100%,-50%)'
+              - type: state-label
+                entity: sensor.fcb97e3fb7af_laundry_time_remaining
+                style:
+                  color: '#FCD646'
+                  font-family: segment7
+                  font-size: 50px
+                  left: 95%
+                  top: 74%
+                  transform: 'translate(-100%,-50%)'
+            image: /local/custom-lovelace/icons/laundry-icons/hass-fp-washer-card-bg.png?v=3
+          # - type: conditional
+          #   conditions:
+          #     - entity: sensor.washer_run_state
+          #       state_not: '-'
+          #   card:
+          #     type: entities
+          #     entities:
+          #       - entity: sensor.washer
+          #         type: attribute
+          #         attribute: current_course
+          #         name: Current Course
+          #         icon: 'mdi:tune-vertical-variant'
+          #       - entity: sensor.washer
+          #         type: attribute
+          #         attribute: water_temp
+          #         name: Water Temperature
+          #         icon: 'mdi:coolant-temperature'
+          #       - entity: sensor.washer
+          #         type: attribute
+          #         attribute: spin_speed
+          #         name: Spin Speed
+          #         icon: 'mdi:rotate-right'
+          #     state_color: false      
+       
+          - type: picture-elements
+            title: Dryer
+            elements:
+            - type: image
+              entity: sensor.dryer_run_state
+              image: /local/custom-lovelace/icons/laundry-icons/dry.png
+              state_image:
+                Drying: /local/custom-lovelace/icons/laundry-icons/dry-on.png
+              style:
+                top: 33%
+                left: 69%
+                width: 15%
+                image-rendering: crisp
+            - type: image
+              entity: sensor.dryer_run_state
+              image: /local/custom-lovelace/icons/laundry-icons/cool.png
+              state_image:
+                Cooling: /local/custom-lovelace/icons/laundry-icons/cool-on.png
+              style:
+                top: 33%
+                left: 87%
+                width: 15%
+                image-rendering: crisp
+            - type: image
+              entity: sensor.dryer
+              image: /local/custom-lovelace/icons/laundry-icons/wifi.png
+              state_image:
+                'on': /local/custom-lovelace/icons/laundry-icons/wifi-on.png
+              style:
+                top: 73%
+                left: 39%
+                width: 7%
+                image-rendering: crisp
+            # - type: state-label
+            #   entity: sensor.blank
+            #   prefix: '18:88'
+            #   style:
+            #     color: '#555'
+            #     font-family: segment7
+            #     font-size: 50px
+            #     left: 95%
+            #     top: 74%
+            #     transform: 'translate(-100%,-50%)'
+            - type: state-label
+              entity: sensor.d828c9f3fc0c_laundry_time_remaining
+              style:
+                color: '#FCD646'
+                font-family: segment7
+                font-size: 50px
+                left: 95%
+                top: 74%
+                transform: 'translate(-100%,-50%)'
+            image: /local/custom-lovelace/icons/laundry-icons/hass-fp-dryer-card-bg.png?v=1
+          # - type: conditional
+          #   conditions:
+          #     - entity: sensor.dryer_run_state
+          #       state_not: '-'
+          #   card:
+          #     type: entities
+          #     entities:
+          #       - entity: sensor.dryer
+          #         type: attribute
+          #         attribute: current_course
+          #         name: Current Course
+          #         icon: 'mdi:tune-vertical-variant'
+          #       - entity: sensor.dryer
+          #         type: attribute
+          #         attribute: temp_control
+          #         name: Temperature Control
+          #         icon: 'mdi:thermometer'
+          #       - entity: sensor.dryer
+          #         type: attribute
+          #         attribute: dry_level
+          #         name: Dry Level
+          #         icon: 'mdi:air-filter'

@@ -527,30 +527,35 @@
     name: electricity_consumed
     unit_prefix: k
     round: 2
+    method: left
     
   - platform: integration
     source: sensor.solar_generation
     name: solar_generated
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.solar_feed
     name: solar_feed_to_grid
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.grid_power
     name: grid_power_integration
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.grid_consumption
     name: grid_consumption_integration
     unit_prefix: k
     round: 2
+    method: left
 
   - platform: integration
     source: sensor.grid_consumption_peak
