@@ -464,7 +464,14 @@ lovelace:
     - url: /local/custom-lovelace/icons/laundry-icons/7segmentfontload.js
       type: module
 
-
+  dashboards:
+    lovelace-living: # Needs to contain a hyphen (-)
+      mode: yaml
+      filename: lovelace-living.yaml
+      title: Living
+      icon: mdi:sofa
+      show_in_sidebar: true
+      require_admin: false
 
 weather:
   # - platform: darksky

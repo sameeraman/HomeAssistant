@@ -1,0 +1,107 @@
+custom_header:
+  compact_mode: true
+  voice_hide: true
+  header_text: 'SnM Nest - Living'
+  background: var(--app-header-background-color)
+  elements_color: var(--app-header-text-color)
+  active_tab_color: var(--state-icon-active-color)
+  tab_indicator_color: var(--state-icon-active-color)
+  header_text_css: "font-family: 'Roboto'"
+  #button_text:
+    # The next example is using templates. See templates page for more info.
+  #  options: ' {{ time }} | {{ date }}'
+
+# resources:
+#   - url: /local/community/popup-backdrop-filter/popup-backdrop-filter.js
+#     type: module
+#   - url: /local/community/button-card/button-card.js?v=3.5
+#     type: module
+  # # - url: /local/mini-media-player-bundle.js?v=1.9.1
+  # #   type: module
+  # - url: /local/community/mini-media-playermini-media-player-bundle.js?v=1.9.1
+  #   type: module
+  # - url: /local/config-template-card.js
+  #   type: module
+  # - url: /local/mini-graph-card-bundle.js?v=0.9.3
+  #   type: module
+  # - url: /local/custom-lovelace/weather-card/weather-card.js?v=0.4
+  #   type: module
+  # - url: /local/custom-lovelace/compact-custom-header/custom-header.js?v=1.6.7
+  #   type: module
+  # - url: /local/custom-lovelace/button-card/button-card.js?v=3.3.6
+  #   type: module
+  # - url: /local/custom-lovelace/layout-card/layout-card.js
+  #   type: module
+  # - url: /local/custom-lovelace/light-popup-card/light-popup-card.js?v=0.4.8.2
+  #   type: module
+
+button_card_templates:
+  light:
+    color_type: card
+    entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/light-on.svg?v=3"; else return "/local/custom-lovelace/icons/light.svg" ]]]'
+    show_entity_picture: true
+    tap_action:
+          action: toggle
+          # ui_sound: &ui_sound |
+          #         [[[ if (entity.state === 'off') {
+          #         hass.callService('media_player', 'play_media', {entity_id: 'media_player.living_tablet', media_content_id: '/local/custom-lovelace/sound/on.m4a', media_content_type: 'music'}); }
+          #         else if (entity.state === 'on') {
+          #         hass.callService('media_player', 'play_media', {entity_id: 'media_player.living_tablet', media_content_id: '/local/custom-lovelace/sound/off.m4a', media_content_type: 'music'}); } ]]]
+    styles:
+      name:
+        - font-familly: Roboto
+        - font-size: 14px
+      entity_picture:
+        - padding: 7%
+    hold_action:
+          action: call-service
+          service: browser_mod.popup
+          service_data:
+            title: '[[[ return entity.attributes.friendly_name ]]]'
+            deviceID: this
+            card:
+              type: entities
+              entities:
+                - type: custom:light-popup-card
+                  entity: '[[[ return entity.entity_id ]]]'
+                  icon: none
+                  fullscreen: false
+                  brightnessWidth: 130px
+                  brightnessHeight: 360px
+                  borderRadius: 1.7em
+                  sliderColor: '#c7c7c7'
+                  sliderTrackColor: rgba(25, 25, 25, 0.9)
+                  actionSize: 4.5em
+                  actionsInARow: 2
+                  style: |
+                    #popup {
+                      margin: -2.4em 0 1.4em 0; }
+                    #popup > div.range-holder > input[type=range] {
+                      cursor: grab; }
+                    #brightnessValue {
+                      color: rgba(255, 255, 255, 0.8); margin: -1em 0 0 0; font-size: 2em; font-weight: 400; 
+                      position: absolute; z-index: 100; font-family: SF Display; letter-spacing: 0.02em; pointer-events: none; 
+                      mix-blend-mode: difference; text-align:center; width: 3.4em; height: 3.4em; }
+                    #popup > div.range-holder > input[type=range]::-webkit-slider-thumb {
+                      border: 0; eight: 0; width: 0; cursor: grabbing; }
+                    #popup > div.action-holder > div > div {
+                      margin: 0.8em 0.5em -0.8em 0.5em; }
+                    #popup > div.action-holder > div:nth-child(2) > div:nth-child(2) > span {
+                      background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 80%), 
+                      conic-gradient(rgb(120,39,230), rgb(230,34,231), rgb(228,5,136), rgb(228,25,25), rgb(229,105,30), rgb(232,226,46), 
+                      rgb(125,230,41), rgb(52,232,40), rgb(51,231,92), rgb(52,232,224),rgb(32,125,229), rgb(18,39,229), rgb(120,39,230));
+                      border-width: 2px; border-color: #e6e6e6; --size: 4.4em !important; }
+
+views:
+# Living Tab View
+  - title: Tab view
+    path: tabview
+    panel: true
+    cards:
+      - type: custom:layout-card
+        layout: vertical
+        column_width: [500, 500, 250]
+        cards:
+        - type: picture-elements
+          image: /local/floorplan2-dark.svg?v=2
+          elements: !include lovelace-floorplan.yaml
