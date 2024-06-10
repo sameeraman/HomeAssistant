@@ -56,17 +56,17 @@ living_sliding_door:
     - sonos_speak
 
 
-laundry_washer_complete_alert:
-  name: "Laundry Washer Complete Alert"
-  message: " \u1F455 The laundry Washer job has been completed" 
-  #done_message: "The laundry Washer job has been completed"
-  entity_id: sensor.fcb97e3fb7af_laundry_machine_state
-  state: "Finished"   # Optional, 'on' is the default value
-  can_acknowledge: true  # Optional, default is true
-  data:
-    tag: laundry-door
-    notification_id: laundry_door
-  notifiers:
-    - phoneapps
-    #- persistent_notification
-    #- sonos_speak
+# laundry_washer_complete_alert:
+#   name: "Laundry Washer Complete Alert"
+#   message: " \u1F455 The laundry Washer job has been completed" 
+#   #done_message: "The laundry Washer job has been completed"
+#   entity_id: sensor.fcb97e3fb7af_laundry_machine_state
+#   state: "Finished"   # Optional, 'on' is the default value
+#   can_acknowledge: true  # Optional, default is true
+#   data:
+#     tag: laundry-door
+#     notification_id: laundry_door
+#   notifiers:
+#     - phoneapps
+#     #- persistent_notification
+#     #- sonos_speak

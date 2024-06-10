@@ -1653,7 +1653,7 @@ views:
             title: Dryer
             elements:
             - type: image
-              entity: sensor.dryer_run_state
+              entity: sensor.d828c9f3fc0c_laundry_sub_cycle
               image: /local/custom-lovelace/icons/laundry-icons/dry.png
               state_image:
                 Drying: /local/custom-lovelace/icons/laundry-icons/dry-on.png
@@ -1663,7 +1663,7 @@ views:
                 width: 15%
                 image-rendering: crisp
             - type: image
-              entity: sensor.dryer_run_state
+              entity: sensor.d828c9f3fc0c_laundry_sub_cycle
               image: /local/custom-lovelace/icons/laundry-icons/cool.png
               state_image:
                 Cooling: /local/custom-lovelace/icons/laundry-icons/cool-on.png
