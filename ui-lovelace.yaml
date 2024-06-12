@@ -1451,6 +1451,9 @@ views:
             - entity: input_boolean.hallway_light_on_off_auto
               tap_action:
                 action: toggle
+            - entity: input_boolean.laundry_washer_dryer_notification
+              tap_action:
+                action: toggle
         - type: entities
           title: Office Room
           entities:
@@ -1546,40 +1549,40 @@ views:
             title: Washing Machine
             elements:
               - type: image
-                entity: sensor.washer_run_state
+                entity: sensor.fcb97e3fb7af_laundry_sub_cycle
                 image: /local/custom-lovelace/icons/laundry-icons/sensing.png
                 state_image:
-                  Detecting: /local/custom-lovelace/icons/laundry-icons/sensing-on.png
+                  'Load Size Detection': /local/custom-lovelace/icons/laundry-icons/sensing-on.png
                 style:
                   top: 33%
                   left: 39%
                   width: 15%
                   image-rendering: crisp
               - type: image
-                entity: sensor.washer_run_state
+                entity: sensor.fcb97e3fb7af_laundry_sub_cycle
                 image: /local/custom-lovelace/icons/laundry-icons/wash.png
                 state_image:
-                  Washing: /local/custom-lovelace/icons/laundry-icons/wash-on.png
+                  Wash: /local/custom-lovelace/icons/laundry-icons/wash-on.png
                 style:
                   top: 33%
                   left: 55%
                   width: 15%
                   image-rendering: crisp
               - type: image
-                entity: sensor.washer_run_state
+                entity: sensor.fcb97e3fb7af_laundry_sub_cycle
                 image: /local/custom-lovelace/icons/laundry-icons/rinse.png
                 state_image:
-                  Rinsing: /local/custom-lovelace/icons/laundry-icons/rinse-on.png
+                  Rinse: /local/custom-lovelace/icons/laundry-icons/rinse-on.png
                 style:
                   top: 33%
                   left: 71%
                   width: 15%
                   image-rendering: crisp
               - type: image
-                entity: sensor.washer_run_state
+                entity: sensor.fcb97e3fb7af_laundry_sub_cycle
                 image: /local/custom-lovelace/icons/laundry-icons/spin.png
                 state_image:
-                  Spinning: /local/custom-lovelace/icons/laundry-icons/spin-on.png
+                  Spin: /local/custom-lovelace/icons/laundry-icons/spin-on.png
                 style:
                   top: 33%
                   left: 87%
@@ -1666,7 +1669,7 @@ views:
               entity: sensor.d828c9f3fc0c_laundry_sub_cycle
               image: /local/custom-lovelace/icons/laundry-icons/cool.png
               state_image:
-                Cooling: /local/custom-lovelace/icons/laundry-icons/cool-on.png
+                'Cool Down': /local/custom-lovelace/icons/laundry-icons/cool-on.png
               style:
                 top: 33%
                 left: 87%

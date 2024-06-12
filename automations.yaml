@@ -3509,3 +3509,48 @@
   action:
     - service : switch.turn_off
       entity_id: switch.smartplug7
+
+
+# Alert when the washing machine has completed its job
+- id: alertwashingmachinecompleted
+  alias: Alert when the washing machine has completed its job
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: sensor.fcb97e3fb7af_laundry_machine_state
+      from: 'Run'
+      to: 'Finished'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.laundry_washer_dryer_notification
+        state: 'on'
+  action:
+    - service: notify.phoneapps
+      data_template:
+        title: '🧺 👕 Washing machine job completed! 🎉'
+        message:  'Washing machine job completed on {{now().strftime("%Y%m%d-%H%M%S")}}'
+
+
+
+# Alert when the dryer has completed its job
+- id: alertdryermachinecompleted
+  alias: Alert when the dryer has completed its job
+  initial_state: True
+  trigger:
+    - platform: state
+      entity_id: sensor.d828c9f3fc0c_laundry_machine_state
+      from: 'Run'
+      to: 'Stand'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.laundry_washer_dryer_notification
+        state: 'on'
+  action:
+    - service: notify.phoneapps
+      data_template:
+        title: '👚💨 🧺 Dryer job completed ! 🎉'
+        message:  'Dryer job completed on {{now().strftime("%Y%m%d-%H%M%S")}}'

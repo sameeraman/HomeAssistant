@@ -180,3 +180,6 @@ frontentrance_light_auto_off_with_frontdoor:
 
 christmas_lights_auto:
   name: Outdoor Christmas Lights Automation
+
+laundry_washer_dryer_notification:
+  name: Send Notifications when washer or dryer complete jobs
