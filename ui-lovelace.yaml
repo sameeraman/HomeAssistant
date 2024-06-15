@@ -1452,6 +1452,7 @@ views:
               tap_action:
                 action: toggle
             - entity: input_boolean.laundry_washer_dryer_notification
+              icon: 'mdi:bell-cog'
               tap_action:
                 action: toggle
         - type: entities

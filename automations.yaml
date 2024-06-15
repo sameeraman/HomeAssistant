@@ -1621,6 +1621,9 @@
     - platform: state
       entity_id: group.living_kitchen_motion
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.entry_hallway_motion_zb_1
+      to: 'on'
   condition:
     condition: and
     conditions: 
