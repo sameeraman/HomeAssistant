@@ -499,7 +499,7 @@ notify:
     platform: group
     services:
       - service: mobile_app_sameera_iphone_15_pro
-      - service: mobile_app_madhushi_iphone
+      - service: mobile_app_madhushi_iphone_2
   - platform: group
     name: ha_persistent
     services: []

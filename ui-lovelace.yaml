@@ -393,7 +393,7 @@ views:
         cards:
           - type: glance
             entities:
-              - entity: device_tracker.iphone_3
+              - entity: device_tracker.sameera_iphone_15_pro
                 name: Sameera
                 image: /local/sameera.jpg
               - entity: device_tracker.madhushi_iphone_3
@@ -1357,7 +1357,7 @@ views:
               tap_action:
                 action: toggle
             - entity: input_boolean.greetings_on
-              icon: 'mdi:voice'
+              icon: 'mdi:account-voice'
               name: Sonos Voice Greetings
               tap_action:
                 action: toggle
