@@ -485,8 +485,11 @@
     - platform: state
       entity_id: binary_sensor.master_bath_motion_zb_1
       to: 'off'
+    - platform: state
+      entity_id: binary_sensor.master_bath_person_detected
+      to: 'off'
       for:
-        minutes: 1
+        seconds: 30
     # - platform: state
     #   entity_id: binary_sensor.master_bath_esp_motion
     #   to: 'off'
@@ -501,6 +504,9 @@
         state: 'off'
       - condition: state
         entity_id: binary_sensor.master_bath_motion_zb_1
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.master_bath_person_detected
         state: 'off'
       # - condition: state
       #   entity_id: binary_sensor.master_bath_esp_motion
