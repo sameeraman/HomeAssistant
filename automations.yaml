@@ -490,9 +490,9 @@
       to: 'off'
       for:
         seconds: 30
-    # - platform: state
-    #   entity_id: binary_sensor.master_bath_esp_motion
-    #   to: 'off'
+    - platform: state
+      entity_id: binary_sensor.master_shower_motion_zb_1
+      to: 'off'
   condition:
     condition: and
     conditions: 
