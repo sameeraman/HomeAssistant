@@ -54,3 +54,8 @@
     overlay: true
     pixel_sensor: sensor.sensor_pixels_2
     auto_range: true
+  - platform: thermal_vision
+    name: Master Bath Thermal
+    overlay: true
+    pixel_sensor: sensor.master_bath_sensor_pixels
+    auto_range: true

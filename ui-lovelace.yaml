@@ -1519,7 +1519,27 @@ views:
               - entity: binary_sensor.master_wc_esp_motion
                 icon: 'mdi:run-fast'
                 name: Motion PIR Old
-                
+      - type: picture-entity 
+        entity: camera.master_bath_thermal
+        title: Master Bath Thermal
+      - type: vertical-stack
+        cards:
+          - type: glance
+            title: Master Bath
+            entities:
+              - entity: binary_sensor.master_bath_person_detected
+                icon: 'mdi:run-fast'
+                name: Thermal Motion
+              - entity: light.master_bath_dimmer
+                type: light
+              - entity: binary_sensor.master_bath_motion_zb_1
+                icon: 'mdi:run-fast'
+                name: Master Bath Motion
+              - entity: binary_sensor.master_shower_motion_zb_1
+                icon: 'mdi:run-fast'
+                name: Shower Motion
+
+
 
   - title: Laundry
     path: laundry
