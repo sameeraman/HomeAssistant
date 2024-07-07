@@ -76,6 +76,7 @@ history:
     entities:
       - sensor.sensor_pixels
       - sensor.sensor_pixels_2
+      - sensor.master_bath_sensor_pixels
 
 # enable the recorder component
 recorder:
