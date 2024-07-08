@@ -84,6 +84,8 @@ recorder:
       entities:
         - sensor.sensor_pixels
         - sensor.sensor_pixels_2
+        - sensor.master_bath_sensor_pixels
+
 
 # View all events in a logbook
 logbook:
@@ -91,6 +93,8 @@ logbook:
       entities:
         - sensor.sensor_pixels
         - sensor.sensor_pixels_2
+        - sensor.master_bath_sensor_pixels
+        
 # Enables a map showing the location of tracked devices
 map:
 
