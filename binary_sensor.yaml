@@ -40,7 +40,7 @@
         device_class: window
         value_template: "{{ ((states('climate.ac')) | string != 'off') and is_state('cover.bed_4', 'open') }}" 
       mad_bed_sensor:
-        value_template: "{{ states('sensor.mad_bed_sensor_value') | float > -205000 }}" 
+        value_template: "{{ states('sensor.mad_bed_sensor_value') | float > -180000 }}" 
       sam_bed_sensor:
         value_template: "{{ states('sensor.sam_bed_sensor_value') | float > 230000 }}" 
       bed_sensor:
