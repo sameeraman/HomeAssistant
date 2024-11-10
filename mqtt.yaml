@@ -569,3 +569,21 @@
       payload_on: "ON"
       payload_off: "OFF"
       retain: false
+
+# Christmas Tree Light
+    - name: "smartplug9"
+      command_topic: "home/office/smartplug9/cmnd/power1"
+      state_topic: "home/office/smartplug9/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
+
+# Christmas Santa Lamp 
+    - name: "smartplug11"
+      command_topic: "home/office/smartplug11/cmnd/power1"
+      state_topic: "home/office/smartplug11/POWER"
+      qos: 1
+      payload_on: "ON"
+      payload_off: "OFF"
+      retain: false
