@@ -1618,7 +1618,7 @@
       entity_id: light.kitchen_strip_mqtt
 # Christmas light     
     - service: switch.turn_on
-      entity_id: switch.smartplug3
+      entity_id: switch.smartplug9
 
 
  # Turn on the living mood light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset and midnight. 
@@ -1659,7 +1659,7 @@
       entity_id: light.kitchen_strip_mqtt
 # Christmas light  
     - service: switch.turn_on
-      entity_id: switch.smartplug3
+      entity_id: switch.smartplug9
 
 # Turn off the living mood dim lights at mid night
 - id: turnofflivingdimlights
@@ -1707,7 +1707,7 @@
       entity_id: light.kitchen_strip_mqtt
 # Christmast light
     - service: switch.turn_off
-      entity_id: switch.smartplug3
+      entity_id: switch.smartplug9
 
 # Turn off the Living Sonos (if playing) when the TV is switched on
 - id: turnofflivingsonoswhentvon
