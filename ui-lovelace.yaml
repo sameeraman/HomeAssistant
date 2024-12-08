@@ -500,14 +500,13 @@ views:
             show_state: false
             entities:
               - entity: script.sonos_living_play_playlist
-                name: Instrumental
+                name: Christmas
                 icon: mdi:candycane
                 tap_action:
                   action: call-service
                   service: script.sonos_living_play_playlist
                   service_data:
                     playlist: 'Christmas Instrumental'
-                    
           - type: custom:mini-media-player
             entity: media_player.alfresco
 
