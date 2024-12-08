@@ -1102,6 +1102,24 @@
     - service : light.toggle
       entity_id: light.office_dimmer
 
+# Toggle Office flash light with Alfresco Xiaomi push double button
+- id: toggleofficeflashlightpushdoublebutton
+  alias: Toggle Office flash light with Alfresco Xiaomi push double button
+  trigger: 
+    - device_id: 0df9d2a2068243697a431274c6b8120a
+      discovery_id: office_button_zb_1 action_double
+      domain: mqtt
+      platform: device
+      subtype: double
+      type: action
+  condition:
+    condition: state
+    entity_id: input_boolean.office_button
+    state: 'on'
+  action:
+    - service : switch.toggle
+      entity_id: switch.smartplug8
+
 # Turn on Alfresco Music Play with Alfresco Motion
 - id: turnonalfrescomusicplaywithmotion
   alias: Turn on Alfresco Music Play with Alfresco Motion
