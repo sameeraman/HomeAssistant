@@ -39,11 +39,11 @@ laundry_door:
 living_sliding_door:
   name: "Living Sliding door is open alert"
   message: "The living sliding door has been open for {{ relative_time(states.binary_sensor.living_sliding_door.last_changed) }}" 
-  done_message: "The living sliding door was left open for more than 2 hours. But it is now closed."
+  done_message: "The living sliding door was left open for more than 8 hours. But it is now closed."
   entity_id: binary_sensor.living_sliding_door
   state: "on"   # Optional, 'on' is the default value
   repeat:
-    - 240
+    - 480
     - 60
   can_acknowledge: true  # Optional, default is true
   skip_first: true  # Optional, false is the default

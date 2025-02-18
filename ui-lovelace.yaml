@@ -1506,11 +1506,11 @@ views:
               - entity: group.office_motion
                 icon: 'mdi:run-fast'
                 name: Office Motion PIR
-      - type: picture-entity 
-        entity: camera.thermal_camera_wc
-        title: Thermal Camera WC
       - type: vertical-stack
         cards:
+          - type: picture-entity 
+            entity: camera.thermal_camera_wc
+            title: Thermal Camera WC
           - type: glance
             title: Master WC
             entities:
@@ -1525,11 +1525,20 @@ views:
               - entity: binary_sensor.master_wc_esp_motion
                 icon: 'mdi:run-fast'
                 name: Motion PIR Old
-      - type: picture-entity 
-        entity: camera.master_bath_thermal
-        title: Master Bath Thermal
+          - type: glance
+            title: Master WC Sensor Values
+            entities:
+              - entity: sensor.master_bath_thermal_sensor_temperature
+                name:  Temp
+              - entity: sensor.master_bath_thermal_sensor_min
+                name : Min Temp
+              - entity: sensor.master_bath_thermal_sensor_max
+                name: Max Temp
       - type: vertical-stack
         cards:
+          - type: picture-entity 
+            entity: camera.master_bath_thermal
+            title: Master Bath Thermal    
           - type: glance
             title: Master Bath
             entities:
@@ -1544,6 +1553,7 @@ views:
               - entity: binary_sensor.master_shower_motion_zb_1
                 icon: 'mdi:run-fast'
                 name: Shower Motion
+
 
 
 

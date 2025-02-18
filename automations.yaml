@@ -3187,9 +3187,9 @@
     - platform: state
       entity_id: binary_sensor.dining_dimmer_switch_2
   condition:
-   - condition: numeric_state  
-     entity_id: sensor.uptime_minutes
-     above: 0.9
+    - condition: numeric_state  
+      entity_id: sensor.uptime_minutes
+      above: 0.9
   action:
     - service : light.toggle
       entity_id: light.dining_dimmer
@@ -3201,11 +3201,11 @@
     - platform: state
       entity_id: binary_sensor.front_entrance_dimmer_switch_2
   condition:
-   - condition: numeric_state  
-     entity_id: sensor.uptime_minutes
-     above: 0.9
+    - condition: numeric_state  
+      entity_id: sensor.uptime_minutes
+      above: 0.9
   action:
-    - service : light.toggle
+    - service: light.toggle
       entity_id: light.front_entrance_dimmer
 
 # Turn on the Master WC Light when there's  motion
@@ -3213,7 +3213,7 @@
   alias: Turn on the Master WC Light when there's  motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.master_wc_esp_th_motion
+      entity_id: binary_sensor.master_bath_mlx90640_motion_sensor
       to: 'on'
   condition:
     condition: and
@@ -3236,10 +3236,10 @@
   alias: Turn off the Master WC Light when there's no motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.master_wc_esp_th_motion
+      entity_id: binary_sensor.master_bath_mlx90640_motion_sensor
       to: 'off'
     - platform: state
-      entity_id: binary_sensor.person_detected_2
+      entity_id: binary_sensor.master_bath_mlx90640_thermal_sensor
       to: 'off'
       for:
         seconds: 15
