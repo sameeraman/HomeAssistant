@@ -69,6 +69,9 @@
       master_wc_mlx90640_thermal_sensor:
         device_class: occupancy
         value_template: "{{ states('sensor.master_wc_mlx90640_max_temp') | float > 29.0 }}" 
+      master_bath_mlx90640_thermal_sensor:
+        device_class: occupancy
+        value_template: "{{ states('sensor.master_bath_mlx90640_max_temp') | float > 29.5 }}" 
 
 # Frigate
       frigate_office_desk_camera:

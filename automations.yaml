@@ -486,7 +486,7 @@
       entity_id: binary_sensor.master_bath_motion_zb_1
       to: 'off'
     - platform: state
-      entity_id: binary_sensor.master_bath_person_detected
+      entity_id: binary_sensor.master_bath_mlx90640_thermal_sensor
       to: 'off'
       for:
         seconds: 30
@@ -508,7 +508,7 @@
         entity_id: binary_sensor.master_bath_motion_zb_1
         state: 'off'
       - condition: state
-        entity_id: binary_sensor.master_bath_person_detected
+        entity_id: binary_sensor.master_bath_mlx90640_thermal_sensor
         state: 'off'
       # - condition: state
       #   entity_id: binary_sensor.master_bath_esp_motion
