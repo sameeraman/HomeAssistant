@@ -3213,7 +3213,7 @@
   alias: Turn on the Master WC Light when there's  motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.master_bath_mlx90640_motion_sensor
+      entity_id: binary_sensor.master_wc_mlx90640_motion_sensor
       to: 'on'
   condition:
     condition: and
@@ -3236,10 +3236,10 @@
   alias: Turn off the Master WC Light when there's no motion
   trigger: 
     - platform: state
-      entity_id: binary_sensor.master_bath_mlx90640_motion_sensor
+      entity_id: binary_sensor.master_wc_mlx90640_motion_sensor
       to: 'off'
     - platform: state
-      entity_id: binary_sensor.master_bath_mlx90640_thermal_sensor
+      entity_id: binary_sensor.master_wc_mlx90640_thermal_sensor
       to: 'off'
       for:
         seconds: 15
@@ -3256,10 +3256,10 @@
         entity_id: light.master_wc_light
         state: 'on'
       - condition: state
-        entity_id: binary_sensor.master_bath_mlx90640_motion_sensor
+        entity_id: binary_sensor.master_wc_mlx90640_motion_sensor
         state: 'off'
       - condition: state
-        entity_id: binary_sensor.master_bath_mlx90640_thermal_sensor
+        entity_id: binary_sensor.master_wc_mlx90640_thermal_sensor
         state: 'off'
         for:
           seconds: 2
