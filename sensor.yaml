@@ -515,7 +515,22 @@
         unit_of_measurement: "AUD"
         value_template: "{{ 0.07 | float * states('sensor.solar_feed') | float / 1000 }}"
         availability_template: "{{ states('sensor.solar_feed') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
-        
+
+# MLX90640 Thermal WC Sensor 
+      master_wc_mlx90640_temp_diff:
+        friendly_name: 'Master WC MLX90640 Temp Difference'
+        unit_of_measurement: "°C"
+        value_template: "{{ states('sensor.master_wc_mlx90640_max_temp') | float - states('sensor.master_wc_mlx90640_min_temp') | float }}"
+        availability_template: "{{ states('sensor.master_wc_mlx90640_max_temp') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.master_wc_mlx90640_min_temp') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+
+# MLX90640 Thermal Bath Sensor 
+      master_bath_mlx90640_temp_diff:
+        friendly_name: 'Master Bath MLX90640 Temp Difference'
+        unit_of_measurement: "°C"
+        value_template: "{{ states('sensor.master_bath_mlx90640_max_temp') | float - states('sensor.master_bath_mlx90640_min_temp') | float }}"
+        availability_template: "{{ states('sensor.master_bath_mlx90640_max_temp') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.master_bath_mlx90640_min_temp') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+
+
 # Time sensor
   - platform: time_date
     display_options:
