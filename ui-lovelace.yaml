@@ -1509,51 +1509,57 @@ views:
       - type: vertical-stack
         cards:
           - type: picture-entity 
-            entity: camera.thermal_camera_wc
+            entity: camera.wc_thermal
             title: Thermal Camera WC
           - type: glance
             title: Master WC
             entities:
-              - entity: binary_sensor.person_detected_2
+              - entity: binary_sensor.master_wc_mlx90640_thermal_sensor
                 icon: 'mdi:run-fast'
-                name: Thermal Motion
-              - entity: light.master_wc_light
-                type: light
-              - entity: binary_sensor.master_wc_esp_th_motion
-                icon: 'mdi:run-fast'
-                name: Motion PIR Thermal
+                name: Thermal Sensor
               - entity: binary_sensor.master_wc_esp_motion
                 icon: 'mdi:run-fast'
-                name: Motion PIR Old
+                name: Motion PIR
+              - entity: light.master_wc_light
+                type: light
           - type: glance
             title: Master WC Sensor Values
             entities:
-              - entity: sensor.master_bath_thermal_sensor_temperature
-                name:  Temp
-              - entity: sensor.master_bath_thermal_sensor_min
-                name : Min Temp
-              - entity: sensor.master_bath_thermal_sensor_max
+              - entity: sensor.master_wc_mlx90640_max_temp
                 name: Max Temp
+              - entity: sensor.master_wc_mlx90640_min_temp
+                name : Min Temp
+              - entity: sensor.master_wc_mlx90640_temp_diff
+                name:  Temp Diff
+
       - type: vertical-stack
         cards:
           - type: picture-entity 
-            entity: camera.master_bath_thermal
+            entity: camera.bath_thermal
             title: Master Bath Thermal    
           - type: glance
             title: Master Bath
             entities:
-              - entity: binary_sensor.master_bath_person_detected
+              - entity: binary_sensor.master_bath_mlx90640_thermal_sensor
                 icon: 'mdi:run-fast'
                 name: Thermal Motion
-              - entity: light.master_bath_dimmer
-                type: light
               - entity: binary_sensor.master_bath_motion_zb_1
                 icon: 'mdi:run-fast'
                 name: Master Bath Motion
               - entity: binary_sensor.master_shower_motion_zb_1
                 icon: 'mdi:run-fast'
                 name: Shower Motion
-
+              - entity: light.master_bath_dimmer
+                type: light
+          - type: glance
+            title: Master Bath Sensor Values
+            entities:
+              - entity: sensor.master_bath_mlx90640_max_temp
+                name: Max Temp
+              - entity: sensor.master_bath_mlx90640_min_temp
+                name : Min Temp
+              - entity: sensor.master_bath_mlx90640_temp_diff
+                name:  Temp Diff
 
 
 
