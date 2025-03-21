@@ -1508,9 +1508,10 @@ views:
                 name: Office Motion PIR
       - type: vertical-stack
         cards:
-          - type: picture-entity 
-            entity: camera.wc_thermal
-            title: Thermal Camera WC
+          # - type: picture-entity 
+          #   entity: camera.wc_thermal
+          #   title: Thermal Camera WC
+
           - type: glance
             title: Master WC
             entities:
@@ -1532,11 +1533,35 @@ views:
               - entity: sensor.master_wc_mlx90640_temp_diff
                 name:  Temp Diff
 
+          - type: history-graph
+            title: "WC Thermal History"
+            hours_to_show: 0.2
+            show_names: false
+            entities:
+              - entity: binary_sensor.master_wc_mlx90640_thermal_sensor
+                name: ""
+              - entity: sensor.master_wc_mlx90640_max_temp
+                name: "Max Temp"
+              - entity: sensor.master_wc_mlx90640_min_temp
+                name: "Min Temp"
+              # - entity: sensor.master_wc_mlx90640_temp_diff
+              #   name: "Temp Diff"
+
+          - type: history-graph
+            title: "WC Thermal Difference"
+            hours_to_show: 0.2
+            show_names: false
+            min_y_axis: 0
+            max_y_axis: 10
+            entities:
+              - entity: sensor.master_wc_mlx90640_temp_diff
+                name: "Temp Diff"
+
       - type: vertical-stack
         cards:
-          - type: picture-entity 
-            entity: camera.bath_thermal
-            title: Master Bath Thermal    
+          # - type: picture-entity 
+          #   entity: camera.bath_thermal
+          #   title: Master Bath Thermal   
           - type: glance
             title: Master Bath
             entities:
@@ -1559,7 +1584,29 @@ views:
               - entity: sensor.master_bath_mlx90640_min_temp
                 name : Min Temp
               - entity: sensor.master_bath_mlx90640_temp_diff
-                name:  Temp Diff
+                name:  Temp Diff 
+          - type: history-graph
+            title: "Bath Thermal History"
+            hours_to_show: 0.2
+            show_names: false
+            entities:
+              - entity: binary_sensor.master_bath_mlx90640_thermal_sensor
+                name: ""
+              - entity: sensor.master_bath_mlx90640_max_temp
+                name: "Max Temp"
+              - entity: sensor.master_bath_mlx90640_min_temp
+                name: "Min Temp"
+              # - entity: sensor.master_bath_mlx90640_temp_diff
+              #   name: "Temp Diff"
+          - type: history-graph
+            title: "Bath Thermal Difference"
+            hours_to_show: 0.2
+            show_names: false
+            min_y_axis: 0
+            max_y_axis: 10
+            entities:
+              - entity: sensor.master_bath_mlx90640_temp_diff
+                name: "Temp Diff"
 
 
 

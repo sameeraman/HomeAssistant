@@ -49,11 +49,3 @@
     overlay: true
     pixel_sensor: sensor.sensor_pixels
     auto_range: true
-  - platform: generic
-    name: WC Thermal
-    still_image_url: !secret wcthermalstill
-    verify_ssl: false
-  - platform: generic
-    name: Bath Thermal
-    still_image_url: !secret baththermalstill
-    verify_ssl: false
