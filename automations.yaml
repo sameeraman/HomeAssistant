@@ -3585,10 +3585,10 @@
         message:  'Dryer job completed on {{now().strftime("%Y%m%d-%H%M%S")}}'
 
 
-- alias: "Purge Thermal MLX Sensor Values every hour"
+- alias: "Purge Thermal MLX Sensor Values Daily"
   trigger:
-    - platform: time_pattern
-      minutes: "/60"
+    - platform: time
+      at: "02:00:00"
   action:
     - service: recorder.purge_entities
       target:
