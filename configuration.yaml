@@ -131,7 +131,7 @@ browser_mod:
 
 shell_command:
   myair_setcmd: !secret myair_set_cmd
-  delete_master_wc_mlx90640_max_temp_history: "sqlite3 /config/home-assistant_v2.db \"DELETE FROM states WHERE entity_id = 'sensor.master_wc_mlx90640_max_temp' AND last_updated < datetime('now', '-1 hour'); DELETE FROM events WHERE event_data LIKE '%sensor.master_wc_mlx90640_max_temp%' AND time_fired < datetime('now', '-1 hour');\""
+
 # Templates 
 template: !include template.yaml
 

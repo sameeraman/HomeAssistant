@@ -3590,7 +3590,13 @@
     - platform: time_pattern
       minutes: "/60"
   action:
-    - service: shell_command.delete_master_wc_mlx90640_max_temp_history
+    - service: recorder.purge_entities
+      target:
+        entity_id: 
+          - sensor.master_bath_mlx90640_max_temp
+          - sensor.master_bath_mlx90640_min_temp
+      data:
+        keep_days: 1
     - service: system_log.write
       data:
         message: "Purged history for Thermal MLX Sensor Values"
