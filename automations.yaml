@@ -3583,3 +3583,15 @@
       data_template:
         title: '👚💨 🧺 Dryer job completed ! 🎉'
         message:  'Dryer job completed on {{now().strftime("%Y%m%d-%H%M%S")}}'
+
+
+- alias: "Purge Thermal MLX Sensor Values every hour"
+  trigger:
+    - platform: time_pattern
+      minutes: "/60"
+  action:
+    - service: shell_command.delete_master_wc_mlx90640_max_temp_history
+    - service: system_log.write
+      data:
+        message: "Purged history for Thermal MLX Sensor Values"
+        level: info
