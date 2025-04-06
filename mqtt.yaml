@@ -381,6 +381,23 @@
       retain: false
 
 
+# Office cabinet light stripe
+    - name: "Office Cabinet Light Stripe"
+      unique_id: office_cabinate_stripe_zb_1
+      state_topic: "zigbee2mqtt/office_cabinate_stripe_zb_1"
+      command_topic: "zigbee2mqtt/office_cabinate_stripe_zb_1/set"
+      brightness_state_topic: "zigbee2mqtt/office_cabinate_stripe_zb_1"
+      brightness_command_topic: "zigbee2mqtt/office_cabinate_stripe_zb_1/set"
+      brightness_scale: 254
+      state_value_template: "{{ value_json.state }}"
+      brightness_value_template: "{{ value_json.brightness }}"
+      payload_on: "ON"
+      payload_off: "OFF"
+      optimistic: false
+      qos: 0
+      retain: false
+
+
   sensor:
 
   # mqtt alfresco image processing sensor
