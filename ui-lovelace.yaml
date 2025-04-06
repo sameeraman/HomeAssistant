@@ -1329,7 +1329,7 @@ views:
 
 
 
-# Battery Tab
+# Automation control Tab
   - title: Automations
     path: automations
     cards:
@@ -1475,6 +1475,9 @@ views:
               tap_action:
                 action: toggle
             - entity: input_boolean.office_button
+              tap_action:
+                action: toggle
+            - entity: input_boolean.office_cabinet_light_on_off_auto
               tap_action:
                 action: toggle
 

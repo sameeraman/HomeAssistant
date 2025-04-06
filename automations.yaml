@@ -3605,3 +3605,201 @@
       data:
         message: "Purged history for Thermal MLX Sensor Values"
         level: info
+
+
+# Turn on Office cabinet light when there is motion in Living and kitchen
+- id: turnonofficecabinetlightwithmotion
+  alias: Turn on Office cabinet light when there is motion in Living and kitchen
+  trigger: 
+    - platform: state
+      entity_id: group.living_kitchen_motion
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.office_cabinet_light_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.office_cabinet_light_strip
+        brightness_pct: 25
+    - service: light.turn_on
+      data:
+        entity_id: light.office_cabinet_bottom_light_strip
+        brightness_pct: 25
+
+# Turn off Office cabinet light when there is no motion in Living and kitchen
+- id: turnoffofficecabinetlightwithnomotion
+  alias: Turn off Office cabinet light when there is no motion in Living and kitchen
+  trigger: 
+    - platform: state
+      entity_id: group.living_kitchen_motion
+      to: 'off'
+      for:
+        minutes: 3
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.office_cabinet_light_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.office_cabinet_light_strip
+    - service: light.turn_off
+      entity_id: light.office_cabinet_bottom_light_strip
+
+# Set the brightness to 70 percent of the Office cabinet lights when the Office Dimmer is turned on
+- id: setbrightness70officecabinetlights
+  alias: Set the brightness to 70 percent of the Office cabinet lights when the Office Dimmer is turned on
+  trigger: 
+    - platform: state
+      entity_id: light.office_dimmer
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.office_cabinet_light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.office_cabinet_light_strip
+        brightness_pct: 70
+    - service: light.turn_on
+      data:
+        entity_id: light.office_cabinet_bottom_light_strip
+        brightness_pct: 70
+
+# Set the brightness to 25 percent of the Office cabinet lights when the Office Dimmer is turned off
+- id: setbrightness25officecabinetlights
+  alias: Set the brightness to 25 percent of the Office cabinet lights when the Office Dimmer is turned off
+  trigger: 
+    - platform: state
+      entity_id: light.office_dimmer
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.office_cabinet_light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.office_cabinet_light_strip
+        brightness_pct: 25
+    - service: light.turn_on
+      data:
+        entity_id: light.office_cabinet_bottom_light_strip
+        brightness_pct: 25
+
+
+# Turn on the Office Cabinet lights when there is motion in the office during day time
+- id: turnonofficecabinetlightswithmotiondaytime
+  alias: Turn on the Office Cabinet lights when there is motion in the office during day time
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.office_motion_zb_1
+      to: 'on'
+    - platform: state
+      entity_id: group.living_kitchen_motion
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.office_cabinet_light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: sun.sun
+        state: 'above_horizon'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+  action:
+    - service: light.turn_on
+      data:
+        entity_id: light.office_cabinet_light_strip
+        brightness_pct: 25
+    - service: light.turn_on
+      data:
+        entity_id: light.office_cabinet_bottom_light_strip
+        brightness_pct: 25
+
+# Turn off the Office Cabinet lights when there is no motion in the office during day time
+- id: turnoffofficecabinetlightswithnomotiondaytime
+  alias: Turn off the Office Cabinet lights when there is no motion in the office during day time
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.office_motion_zb_1
+      to: 'off'
+      for:
+        minutes: 2
+    - platform: state
+      entity_id: group.living_kitchen_motion
+      to: 'off'
+      for:
+        minutes: 2
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.office_cabinet_light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: sun.sun
+        state: 'above_horizon'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+  action:
+    - service: light.turn_off
+      entity_id: light.office_cabinet_light_strip
+    - service: light.turn_off
+      entity_id: light.office_cabinet_bottom_light_strip

@@ -414,7 +414,7 @@
       retain: false
 
 # Laundry light stripe
-    - name: "Office Cabinet Bottom Light Stripe"
+    - name: "Laundry Light Stripe"
       unique_id: laundry_strip_zb_1
       state_topic: "zigbee2mqtt/laundry_strip_zb_1"
       command_topic: "zigbee2mqtt/laundry_strip_zb_1/set"
