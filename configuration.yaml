@@ -77,6 +77,10 @@ history:
       - sensor.sensor_pixels
       - sensor.sensor_pixels_2
       - sensor.master_bath_sensor_pixels
+      - sensor.master_bath_mlx90640_mean_temp
+      - sensor.master_bath_mlx90640_median_temperature
+      - sensor.master_wc_mlx90640_mean_temp
+      - sensor.master_wc_mlx90640_median_temperature
 
 # enable the recorder component
 recorder:
@@ -85,6 +89,10 @@ recorder:
         - sensor.sensor_pixels
         - sensor.sensor_pixels_2
         - sensor.master_bath_sensor_pixels
+        - sensor.master_bath_mlx90640_mean_temp
+        - sensor.master_bath_mlx90640_median_temperature
+        - sensor.master_wc_mlx90640_mean_temp
+        - sensor.master_wc_mlx90640_median_temperature
 
 
 # View all events in a logbook
@@ -94,6 +102,10 @@ logbook:
         - sensor.sensor_pixels
         - sensor.sensor_pixels_2
         - sensor.master_bath_sensor_pixels
+        - sensor.master_bath_mlx90640_mean_temp
+        - sensor.master_bath_mlx90640_median_temperature
+        - sensor.master_wc_mlx90640_mean_temp
+        - sensor.master_wc_mlx90640_median_temperature
         
 # Enables a map showing the location of tracked devices
 map:
