@@ -387,7 +387,7 @@
       state_topic: "zigbee2mqtt/office_cabinate_stripe_zb_1"
       command_topic: "zigbee2mqtt/office_cabinate_stripe_zb_1/set"
       brightness_state_topic: "zigbee2mqtt/office_cabinate_stripe_zb_1"
-      brightness_command_topic: "zigbee2mqtt/office_cabinate_stripe_zb_1/set"
+      brightness_command_topic: "zigbee2mqtt/office_cabinate_stripe_zb_1/set/brightness"
       brightness_scale: 254
       state_value_template: "{{ value_json.state }}"
       brightness_value_template: "{{ value_json.brightness }}"
