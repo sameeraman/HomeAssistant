@@ -3633,11 +3633,11 @@
     - service: light.turn_on
       data:
         entity_id: light.office_cabinet_light_strip
-        brightness_pct: 15
+        brightness_pct: 10
     - service: light.turn_on
       data:
         entity_id: light.office_cabinet_bottom_light_strip
-        brightness_pct: 15
+        brightness_pct: 10
 
 # Turn off Office cabinet light when there is no motion in Living and kitchen
 - id: turnoffofficecabinetlightwithnomotion
@@ -3669,9 +3669,9 @@
     - service: light.turn_off
       entity_id: light.office_cabinet_bottom_light_strip
 
-# Set the brightness to 60 percent of the Office cabinet lights when the Office Dimmer is turned on
+# Set the brightness to 50 percent of the Office cabinet lights when the Office Dimmer is turned on
 - id: setbrightness60officecabinetlights
-  alias: Set the brightness to 60 percent of the Office cabinet lights when the Office Dimmer is turned on
+  alias: Set the brightness to 50 percent of the Office cabinet lights when the Office Dimmer is turned on
   trigger: 
     - platform: state
       entity_id: light.office_dimmer
@@ -3695,15 +3695,15 @@
     - service: light.turn_on
       data:
         entity_id: light.office_cabinet_light_strip
-        brightness_pct: 60
+        brightness_pct: 50
     - service: light.turn_on
       data:
         entity_id: light.office_cabinet_bottom_light_strip
-        brightness_pct: 60
+        brightness_pct: 50
 
-# Set the brightness to 15 percent of the Office cabinet lights when the Office Dimmer is turned off
+# Set the brightness to 10 percent of the Office cabinet lights when the Office Dimmer is turned off
 - id: setbrightness25officecabinetlights
-  alias: Set the brightness to 15 percent of the Office cabinet lights when the Office Dimmer is turned off
+  alias: Set the brightness to 10 percent of the Office cabinet lights when the Office Dimmer is turned off
   trigger: 
     - platform: state
       entity_id: light.office_dimmer
@@ -3727,11 +3727,11 @@
     - service: light.turn_on
       data:
         entity_id: light.office_cabinet_light_strip
-        brightness_pct: 15
+        brightness_pct: 10
     - service: light.turn_on
       data:
         entity_id: light.office_cabinet_bottom_light_strip
-        brightness_pct: 15
+        brightness_pct: 10
 
 
 # Turn on the Office Cabinet lights when there is motion in the office during day time
