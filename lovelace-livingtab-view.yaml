@@ -1,8 +1,14 @@
       - type: custom:layout-card
-        layout: vertical
-        column_width: [500, 500, 250]
+        layout_type: custom:vertical-layout
+        layout:
+          max_cols: 3
+          column_widths: 500px 500px 300px
+        # layout_type: custom:vertical-layout
+        
         cards:
         - type: picture-elements
+          view_layout:
+            column: 1
           image: /local/floorplan2-dark.svg?v=2
           elements: !include lovelace-floorplan.yaml
 
@@ -12,6 +18,8 @@
           entity: media_player.denon_avc_x3700h
           icon: 'mdi:speaker-wireless'
           name: TV Volume
+          view_layout:
+            column: 1
           hide:
             power: true
             controls : true
@@ -20,581 +28,628 @@
 
 
 # Floorplan tab Weather card    
-        - break
-        - type: custom:layout-card
-          layout: vertical
-          cards:
-            - type: custom:platinum-weather-card
-              section_order:
-                - overview
-                - slots
-                - daily_forecast
-              entity_sun: sun.sun
-              entity_forecast_icon: weather.home
-              entity_temperature: weather.home
-              entity_apparent_temp: sensor.home_weather_temp_feels_like
-              entity_humidity: weather.home
-              entity_wind_bearing: weather.home
-              entity_wind_speed: weather.home
-              entity_pressure: weather.home
-              entity_pop: weather.home
-              entity_pos: weather.home
-              entity_forecast_max_1: weather.home
-              entity_forecast_icon_1: weather.home
-              entity_forecast_min_1: weather.home
-              entity_pop_1: weather.home
-              entity_pos_1: weather.home
-              option_show_overview_decimals: true
-              entity_forecast_min: sensor.home_weather_min_temp
-              entity_forecast_max: weather.home
-              slot_l1: popforecast
-              slot_l2: forecast_min
-              slot_l3: remove
-              slot_l4: remove
-              slot_l5: remove
-              slot_r1: humidity
-              slot_r2: forecast_max
-              slot_r3: remove
-              slot_r4: remove
-              slot_r5: remove
-              card_mod:
-                style: |
-                  .overview-top {
-                    margin-top: -5px;
-                    margin-bottom: -35px;
-                    padding-right: 25px;
-                  }
-                  .slot-section {
-                  margin-top: -10px;
-                  padding-left: 40px;
-                  }
-                  .daily-forecast-horiz-section {
-                  margin-top: -5px;
-                  }
-                  .current-temp {
-                  margin-top: 10px;
-                  margin-right: 10px;  
-                  }
-                  .slot-section {
-                  margin-left: 130px;
-                  margin-top: -15px;  
-                  }
+        # - break
+        # - type: custom:layout-break
+        #   view_layout:
+        #     column: 1
+
+        # - type: weather-forecast
+        #   entity: weather.home
+        #   name: Weather
+        #   show_forecast: true
+        #   forecast_type: daily
+        #   show_humidity: true
+        #   show_pressure: true
+        #   show_wind_speed: true
+        #   show_wind_bearing: true
+        #   show_precipitation: true
+        #   show_sun: true
+        #   # show_forecast: false
 
 
-              # entity: weather.dark_sky
-              # details: false
-              # current: true
-              # forecast: true
-              # hide_precipitation: true
-            - type: horizontal-stack
-              cards: 
-              - type: "custom:button-card"
-                name: MOOD LIGHTS
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lamp-on1.svg?v=4"; else return "/local/custom-lovelace/icons/lamp.svg?v=3" ]]]'
-                entity: light.living_mood_lights
-                show_entity_picture: true
-                tap_action:
-                      action: toggle
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
 
-              - type: "custom:button-card"
-                name: OPEN BLINDS
-                color_type: card
-                entity_picture: /local/custom-lovelace/icons/blinds-open.svg
-                entity: script.open_all_blinds
-                show_entity_picture: true
-                tap_action:
-                  action: call-service
-                  service: script.turn_on
-                  service_data:
-                    entity_id: script.open_all_blinds
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
-              - type: "custom:button-card"
-                color_type: card
-                name: CLOSE BLINDS
-                entity_picture: /local/custom-lovelace/icons/blinds-close.svg
-                entity: script.close_all_blinds
-                show_entity_picture: true
-                tap_action:
-                  action: call-service
-                  service: script.turn_on
-                  service_data:
-                    entity_id: script.close_all_blinds
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
-
-              - type: "custom:button-card"
-                name: A/C
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/ac-on.svg?v=3"; else return "/local/custom-lovelace/icons/ac-on.svg?v=3" ]]]'
-                entity: switch.air_conditioner
-                show_entity_picture: true
-                tap_action:
-                      action: toggle
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
-
-  # Lights horizontal stack
-
-            - type: horizontal-stack
-              cards: 
-              - type: "custom:button-card"
-                name: KITCHEN
-                entity: light.kitchen_dimmer
-                template: light
-              - type: "custom:button-card"
-                name: LIVING
-                entity: light.living_dimmer
-                template: light
-              - type: "custom:button-card"
-                name: ENT HALLWAY
-                entity: light.front_entrance_dimmer
-                template: light
-              - type: "custom:button-card"
-                name: DINING
-                entity: light.dining_dimmer
-                template: light
-
-  # Third Horizontal Stack
-
-            - type: horizontal-stack
-              cards: 
-              - type: "custom:button-card"
-                name: TV
-                color_type: card
-                entity_picture: /local/custom-lovelace/icons/tv.svg?v=3
-                entity: binary_sensor.living_tv
-                show_entity_picture: true
-                tap_action:
-                  action: call-service
-                  service: script.toggle_tv
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
-
-              - type: "custom:button-card"
-                name: MUSIC
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/music-on.svg?v=3"; else return "/local/custom-lovelace/icons/music.svg?v=4" ]]]'
-                entity: binary_sensor.living_music_sensor
-                show_entity_picture: true
-                tap_action:
-                  action: call-service
-                  service: media_player.media_play_pause
-                  service_data: 
-                    entity_id: media_player.living
-                # hold_action:
-                #   action: call-service
-                #   service: browser_mod.popup
-                #   service_data:
-                #     title: 'Living Music'
-                #     deviceID: this
-                #     card:
-                #       type: custom:stack-in-card
-                #       cards:
-                #         - type: glance
-                #           show_state: false
-                #           entities:
-                #             - entity: script.sonos_living_play_lullabies
-                #               name: Lullabies 
-                #               icon: mdi:baby-face-outline
-                #               tap_action:
-                #                 action: call-service
-                #                 service: script.sonos_living_play_lullabies
-                #             - entity: script.sonos_living_play_jazz
-                #               name: Jazz
-                #               icon: mdi:saxophone
-                #               tap_action:
-                #                 action: call-service
-                #                 service: script.sonos_living_play_jazz
-                #             - entity: script.sonos_living_play_playlist
-                #               name: Romance
-                #               icon: mdi:heart-circle-outline
-                #               tap_action:
-                #                 action: call-service
-                #                 service: script.sonos_living_play_playlist
-                #                 service_data:
-                #                   playlist: 'Romantic'
-                #         - type: glance
-                #           show_state: false
-                #           entities:
-                #             - entity: script.sonos_living_play_playlist
-                #               name: Instrumental
-                #               icon: mdi:music-clef-treble
-                #               tap_action:
-                #                 action: call-service
-                #                 service: script.sonos_living_play_playlist
-                #                 service_data:
-                #                   playlist: 'Instrumental'
-                #             - entity: script.sonos_living_play_playlist
-                #               name: Sinhala 
-                #               icon: mdi:account-music-outline
-                #               tap_action:
-                #                 action: call-service
-                #                 service: script.sonos_living_play_playlist
-                #                 service_data:
-                #                   playlist: 'Sinhala'
-                #             - entity: script.sonos_living_play_jazz
-                #               name: Bob Marley
-                #               icon: mdi:beach
-                #               tap_action:
-                #                 action: call-service
-                #                 service: script.sonos_living_play_playlist
-                #                 service_data:
-                #                   playlist: 'Bob Marley'
-                #         - type: glance
-                #           show_state: false
-                #           entities:
-                #             - entity: script.sonos_living_play_playlist
-                #               name: Instrumental
-                #               icon: mdi:candycane
-                #               tap_action:
-                #                 action: call-service
-                #                 service: script.sonos_living_play_playlist
-                #                 service_data:
-                #                   playlist: 'Christmas Instrumental'
-                #             # - entity: script.sonos_living_play_playlist
-                #             #   name: Sinhala 
-                #             #   icon: mdi:account-music-outline
-                #             #   tap_action:
-                #             #     action: call-service
-                #             #     service: script.sonos_living_play_playlist
-                #             #     service_data:
-                #             #       playlist: 'Sinhala'
-                #             # - entity: script.sonos_living_play_jazz
-                #             #   name: Bob Marley
-                #             #   icon: mdi:beach
-                #             #   tap_action:
-                #             #     action: call-service
-                #             #     service: script.sonos_living_play_playlist
-                #             #     service_data:
-                #             #       playlist: 'Bob Marley'
-                #         - type: entities
-                #           state_color: true
-                #           show_header_toggle: false
-                #           entities:
-                #           - entity: media_player.living
-                #             type: custom:mini-media-player
-                #             info: short
-                #             artwork: none
-                #             hide:
-                #               mute: true
-                #               icon: true
-                #               power_state: false
+        - type: custom:layout-break
+        - type: custom:platinum-weather-card
+          view_layout:
+            column: 2
+          section_order:
+            - overview
+            - slots
+            - daily_forecast
+          weather_entity: weather.home
+          forecast_type: daily
+          entity_sun: sun.sun
+          entity_forecast_icon: weather.home
+          entity_temperature: weather.home
+          entity_apparent_temp: sensor.home_weather_temp_feels_like
+          entity_humidity: weather.home
+          entity_wind_bearing: weather.home
+          entity_wind_speed: weather.home
+          entity_pressure: weather.home
+          entity_pop: weather.home
+          entity_pos: weather.home
+          entity_forecast_max_1: weather.home
+          entity_forecast_icon_1: weather.home
+          entity_forecast_min_1: weather.home
+          entity_pop_1: weather.home
+          entity_pos_1: weather.home
+          option_show_overview_decimals: true
+          # entity_forecast_min: sensor.home_weather_min_temp
+          entity_forecast_min: weather.home
+          entity_forecast_max: weather.home
+          slot_l1: popforecast
+          slot_l2: forecast_min
+          slot_l3: remove
+          slot_l4: remove
+          slot_l5: remove
+          slot_r1: humidity
+          slot_r2: forecast_max
+          slot_r3: remove
+          slot_r4: remove
+          slot_r5: remove
+          card_mod:
+            style: |
+              .overview-top {
+                margin-top: -5px;
+                margin-bottom: -35px;
+                padding-right: 25px;
+              }
+              .slot-section {
+              margin-top: -10px;
+              padding-left: 40px;
+              }
+              .daily-forecast-horiz-section {
+              margin-top: -5px;
+              }
+              .current-temp {
+              margin-top: 10px;
+              margin-right: 10px;  
+              }
+              .slot-section {
+              margin-left: 130px;
+              margin-top: -15px;  
+              }
 
 
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
+          # entity: weather.dark_sky
+          # details: false
+          # current: true
+          # forecast: true
+          # hide_precipitation: true
+        - type: horizontal-stack
+          view_layout:
+            column: 2
+          cards: 
+          - type: "custom:button-card"
+            name: MOOD LIGHTS
+            color_type: card
+            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lamp-on1.svg?v=4"; else return "/local/custom-lovelace/icons/lamp.svg?v=3" ]]]'
+            entity: light.living_mood_lights
+            show_entity_picture: true
+            tap_action:
+                  action: toggle
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
 
-              - type: "custom:button-card"
-                name: HALLWAY
-                entity: light.hallway_light
-                template: light
+          - type: "custom:button-card"
+            name: OPEN BLINDS
+            color_type: card
+            entity_picture: /local/custom-lovelace/icons/blinds-open.svg
+            entity: script.open_all_blinds
+            show_entity_picture: true
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.open_all_blinds
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
+          - type: "custom:button-card"
+            color_type: card
+            name: CLOSE BLINDS
+            entity_picture: /local/custom-lovelace/icons/blinds-close.svg
+            entity: script.close_all_blinds
+            show_entity_picture: true
+            tap_action:
+              action: call-service
+              service: script.turn_on
+              service_data:
+                entity_id: script.close_all_blinds
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
 
-              - type: "custom:button-card"
-                name: OFFICE
-                entity: light.office_dimmer
-                template: light
+          - type: "custom:button-card"
+            name: A/C
+            color_type: card
+            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/ac-on.svg?v=3"; else return "/local/custom-lovelace/icons/ac-on.svg?v=3" ]]]'
+            entity: switch.air_conditioner
+            show_entity_picture: true
+            tap_action:
+                  action: toggle
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
+
+# Lights horizontal stack
+
+        - type: horizontal-stack
+          view_layout:
+            column: 2
+          cards: 
+          - type: "custom:button-card"
+            name: KITCHEN
+            entity: light.kitchen_dimmer
+            template: light
+          - type: "custom:button-card"
+            name: LIVING
+            entity: light.living_dimmer
+            template: light
+          - type: "custom:button-card"
+            name: ENT HALLWAY
+            entity: light.front_entrance_dimmer
+            template: light
+          - type: "custom:button-card"
+            name: DINING
+            entity: light.dining_dimmer
+            template: light
+
+# Third Horizontal Stack
+
+        - type: horizontal-stack
+          view_layout:
+            column: 2
+          cards: 
+          - type: "custom:button-card"
+            name: TV
+            color_type: card
+            entity_picture: /local/custom-lovelace/icons/tv.svg?v=3
+            entity: binary_sensor.living_tv
+            show_entity_picture: true
+            tap_action:
+              action: call-service
+              service: script.toggle_tv
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
+
+          - type: "custom:button-card"
+            name: MUSIC
+            color_type: card
+            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/music-on.svg?v=3"; else return "/local/custom-lovelace/icons/music.svg?v=4" ]]]'
+            entity: binary_sensor.living_music_sensor
+            show_entity_picture: true
+            tap_action:
+              action: call-service
+              service: media_player.media_play_pause
+              service_data: 
+                entity_id: media_player.living
+            # hold_action:
+            #   action: call-service
+            #   service: browser_mod.popup
+            #   service_data:
+            #     title: 'Living Music'
+            #     deviceID: this
+            #     card:
+            #       type: custom:stack-in-card
+            #       cards:
+            #         - type: glance
+            #           show_state: false
+            #           entities:
+            #             - entity: script.sonos_living_play_lullabies
+            #               name: Lullabies 
+            #               icon: mdi:baby-face-outline
+            #               tap_action:
+            #                 action: call-service
+            #                 service: script.sonos_living_play_lullabies
+            #             - entity: script.sonos_living_play_jazz
+            #               name: Jazz
+            #               icon: mdi:saxophone
+            #               tap_action:
+            #                 action: call-service
+            #                 service: script.sonos_living_play_jazz
+            #             - entity: script.sonos_living_play_playlist
+            #               name: Romance
+            #               icon: mdi:heart-circle-outline
+            #               tap_action:
+            #                 action: call-service
+            #                 service: script.sonos_living_play_playlist
+            #                 service_data:
+            #                   playlist: 'Romantic'
+            #         - type: glance
+            #           show_state: false
+            #           entities:
+            #             - entity: script.sonos_living_play_playlist
+            #               name: Instrumental
+            #               icon: mdi:music-clef-treble
+            #               tap_action:
+            #                 action: call-service
+            #                 service: script.sonos_living_play_playlist
+            #                 service_data:
+            #                   playlist: 'Instrumental'
+            #             - entity: script.sonos_living_play_playlist
+            #               name: Sinhala 
+            #               icon: mdi:account-music-outline
+            #               tap_action:
+            #                 action: call-service
+            #                 service: script.sonos_living_play_playlist
+            #                 service_data:
+            #                   playlist: 'Sinhala'
+            #             - entity: script.sonos_living_play_jazz
+            #               name: Bob Marley
+            #               icon: mdi:beach
+            #               tap_action:
+            #                 action: call-service
+            #                 service: script.sonos_living_play_playlist
+            #                 service_data:
+            #                   playlist: 'Bob Marley'
+            #         - type: glance
+            #           show_state: false
+            #           entities:
+            #             - entity: script.sonos_living_play_playlist
+            #               name: Instrumental
+            #               icon: mdi:candycane
+            #               tap_action:
+            #                 action: call-service
+            #                 service: script.sonos_living_play_playlist
+            #                 service_data:
+            #                   playlist: 'Christmas Instrumental'
+            #             # - entity: script.sonos_living_play_playlist
+            #             #   name: Sinhala 
+            #             #   icon: mdi:account-music-outline
+            #             #   tap_action:
+            #             #     action: call-service
+            #             #     service: script.sonos_living_play_playlist
+            #             #     service_data:
+            #             #       playlist: 'Sinhala'
+            #             # - entity: script.sonos_living_play_jazz
+            #             #   name: Bob Marley
+            #             #   icon: mdi:beach
+            #             #   tap_action:
+            #             #     action: call-service
+            #             #     service: script.sonos_living_play_playlist
+            #             #     service_data:
+            #             #       playlist: 'Bob Marley'
+            #         - type: entities
+            #           state_color: true
+            #           show_header_toggle: false
+            #           entities:
+            #           - entity: media_player.living
+            #             type: custom:mini-media-player
+            #             info: short
+            #             artwork: none
+            #             hide:
+            #               mute: true
+            #               icon: true
+            #               power_state: false
 
 
-  # Temperature and humidity graphs
-            - type: horizontal-stack
-              cards: 
-              - type: custom:mini-graph-card
-                entities:
-                  - entity: sensor.living_espmulti_t
-                    name: LIVING TEMP
-                icon: mdi:thermometer
-                line_color: var(--accent-color)
-                line_width: 8
-                font_size: 75
-                card_mod:
-                  style: |
-                    .graph__container__svg {
-                    margin-top: -25px;  
-                    }
-                    .states {
-                    margin-top: -10px; 
-                    }
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
 
-            # - type: horizontal-stack
-            #   cards: 
-              - type: custom:mini-graph-card
-                entities:
-                  - entity: sensor.living_espmulti_h
-                    name: LIVING HUMIDITY
-                icon: mdi:water-percent
-                line_color: '#307DFD'
-                line_width: 8
-                font_size: 75
-                card_mod:
-                  style: |
-                    .graph__container__svg {
-                    margin-top: -25px;  
-                    }
-                    .states {
-                    margin-top: -10px; 
-                    }
+          - type: "custom:button-card"
+            name: HALLWAY
+            entity: light.hallway_light
+            template: light
+
+          - type: "custom:button-card"
+            name: OFFICE
+            entity: light.office_dimmer
+            template: light
+
+
+# Temperature and humidity graphs
+        - type: horizontal-stack
+          view_layout:
+            column: 2
+          cards: 
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.living_espmulti_t
+                name: LIVING TEMP
+            icon: mdi:thermometer
+            line_color: var(--accent-color)
+            line_width: 8
+            font_size: 75
+            card_mod:
+              style: |
+                .graph__container__svg {
+                margin-top: -25px;  
+                }
+                .states {
+                margin-top: -10px; 
+                }
+
+        # - type: horizontal-stack
+        #   cards: 
+          - type: custom:mini-graph-card
+            entities:
+              - entity: sensor.living_espmulti_h
+                name: LIVING HUMIDITY
+            icon: mdi:water-percent
+            line_color: '#307DFD'
+            line_width: 8
+            font_size: 75
+            card_mod:
+              style: |
+                .graph__container__svg {
+                margin-top: -25px;  
+                }
+                .states {
+                margin-top: -10px; 
+                }
 
 
 
 # Third Column
-        - break
-        - type: custom:layout-card
-          layout: vertical
-          #column_width: 20%
-          cards:
+        # - break
+        - type: custom:layout-break
+        # - type: custom:layout-card
+        #   layout_type: custom:vertical-layout
+        #   #column_width: 20%
+        #   max_width: 100
+        #   cards:
 
-            - type: custom:power-flow-card-plus
-              entities:
-                grid:
-                  entity: sensor.grid_power
-                solar:
-                  entity: sensor.solar_generation
-                home:
-                  entity: sensor.electricity_usage
-
-
-
-            - type: horizontal-stack
-              cards: 
-              - type: "custom:button-card"
-                name: MASTER
-                entity: light.master_dimmer
-                template: light
-              - type: "custom:button-card"
-                name: M BATH
-                entity: light.master_bath_dimmer
-                template: light
-              - type: "custom:button-card"
-                name: M WC
-                entity: light.master_wc_light
-                template: light
-            - type: horizontal-stack
-              cards: 
-              - type: "custom:button-card"
-                name: GARAGE
-                entity:  light.garage_dimmer
-                template: light
-              - type: "custom:button-card"
-                name: PATIO
-                entity: light.front_patio_light
-                template: light
-              - type: "custom:button-card"
-                name: BED 2
-                entity: light.bed_2_dimmer
-                template: light
-
-            # - type: horizontal-stack
-            #   cards: 
-
-            - type: horizontal-stack
-              cards: 
-              - type: "custom:button-card"
-                name: BED 3
-                entity: light.bed_3_dimmer
-                template: light
-              - type: "custom:button-card"
-                name: BED 4
-                entity: light.bed_4_dimmer
-                template: light
-              - type: "custom:button-card"
-                name: BED 4
-                entity: light.bed_4_dimmer
-                template: light
-
-            - type: horizontal-stack
-              cards: 
-              - type: "custom:button-card"
-                name: FR OUT
-                entity: light.front_outdoor_light
-                template: light
-              - type: "custom:button-card"
-                name: BK OUT
-                entity: light.back_outdoor_light
-                template: light
-              - type: "custom:button-card"
-                name: ALFRSCO
-                entity: light.alfresco_dimmer
-                template: light
-
-            - type: horizontal-stack
-              cards: 
+        - type: custom:power-flow-card-plus
+          view_layout:
+            column: 3
+            width: 250px
+          entities:
+            grid:
+              entity: sensor.grid_power
+            solar:
+              entity: sensor.solar_generation
+            home:
+              entity: sensor.electricity_usage
 
 
 
-              # - type: "custom:button-card"
-              #   name: LAUNDRY
-              #   entity: light.laundry_light
-              #   template: light
+        - type: horizontal-stack
+          view_layout:
+            column: 3        
+          cards: 
+          - type: "custom:button-card"
+            name: MASTER
+            entity: light.master_dimmer
+            template: light
+          - type: "custom:button-card"
+            name: M BATH
+            entity: light.master_bath_dimmer
+            template: light
+          - type: "custom:button-card"
+            name: M WC
+            entity: light.master_wc_light
+            template: light
+        - type: horizontal-stack
+          view_layout:
+            column: 3
+          cards: 
+          - type: "custom:button-card"
+            name: GARAGE
+            entity:  light.garage_dimmer
+            template: light
+          - type: "custom:button-card"
+            name: PATIO
+            entity: light.front_patio_light
+            template: light
+          - type: "custom:button-card"
+            name: BED 2
+            entity: light.bed_2_dimmer
+            template: light
+
+        # - type: horizontal-stack
+        #   cards: 
+
+        - type: horizontal-stack
+          view_layout:
+            column: 3
+          cards: 
+          - type: "custom:button-card"
+            name: BED 3
+            entity: light.bed_3_dimmer
+            template: light
+          - type: "custom:button-card"
+            name: BED 4
+            entity: light.bed_4_dimmer
+            template: light
+          - type: "custom:button-card"
+            name: BED 4
+            entity: light.bed_4_dimmer
+            template: light
+
+        - type: horizontal-stack
+          view_layout:
+            column: 3
+          cards: 
+          - type: "custom:button-card"
+            name: FR OUT
+            entity: light.front_outdoor_light
+            template: light
+          - type: "custom:button-card"
+            name: BK OUT
+            entity: light.back_outdoor_light
+            template: light
+          - type: "custom:button-card"
+            name: ALFRSCO
+            entity: light.alfresco_dimmer
+            template: light
+
+        - type: horizontal-stack
+          view_layout:
+            column: 3
+          cards: 
+
+
+
+          # - type: "custom:button-card"
+          #   name: LAUNDRY
+          #   entity: light.laundry_light
+          #   template: light
 
 
 
 
-              - type: "custom:button-card"
-                name: STRIP
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-lights1.png"; else return "/local/custom-lovelace/icons/christmas-lights1.png" ]]]'
-                entity: light.outdoor_christmas_strip_1
-                show_entity_picture: true
-                tap_action:
+          - type: "custom:button-card"
+            name: STRIP
+            color_type: card
+            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-lights1.png"; else return "/local/custom-lovelace/icons/christmas-lights1.png" ]]]'
+            entity: light.outdoor_christmas_strip_1
+            show_entity_picture: true
+            tap_action:
+              action: toggle
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
+
+          - type: "custom:button-card"
+            name: TREE
+            color_type: card
+            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
+            entity: switch.smartplug9
+            show_entity_picture: true
+            tap_action:
                   action: toggle
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
-
-              - type: "custom:button-card"
-                name: TREE
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
-                entity: switch.smartplug9
-                show_entity_picture: true
-                tap_action:
-                      action: toggle
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
 
 
-              - type: "custom:button-card"
-                name: LANTERN
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lantern.svg"; else return "/local/custom-lovelace/icons/lantern.svg" ]]]'
-                entity: switch.smartplug11
-                show_entity_picture: true
-                tap_action:
-                      action: toggle
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
-
-              # - type: "custom:button-card"
-              #   name: LAUNDRY OUT
-              #   entity: light.laundry_outside_light
-              #   template: light
-
-
-
-            - type: horizontal-stack
-              cards: 
-              # - type: "custom:button-card"
-              #   name: ALFRESCO
-              #   entity: light.alfresco_dimmer
-              #   template: light
-
-
-              # - type: "custom:button-card"
-              #   name: XMAS TREE
-              #   color_type: card
-              #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
-              #   entity: switch.smartplug3
-              #   show_entity_picture: true
-              #   tap_action:
-              #         action: toggle
-              #   styles:
-              #     name:
-              #       - font-familly: Roboto
-              #       - font-size: 14px
-              #     entity_picture:
-              #       - padding: 7%
-
-              # - type: "custom:button-card"
-              #   name: YTUBE KIDS
-              #   color_type: card
-              #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/youtube.svg"; else return "/local/custom-lovelace/icons/youtube.svg" ]]]'
-              #   entity: switch.side_trees
-              #   show_entity_picture: true
-              #   tap_action:
-              #     action: call-service
-              #     service: script.youtube_sienna
-              #   styles:
-              #     name:
-              #       - font-familly: Roboto
-              #       - font-size: 14px
-              #     entity_picture:
-              #       - padding: 7%
-
-              - type: "custom:button-card"
-                name: SIENNA
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
-                entity: binary_sensor.montessori_music_sensor
-                show_entity_picture: true
-                tap_action:
-                  action: call-service
-                  service: script.play_pause_sonos_living_play_montessori
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
-
-
-              - type: "custom:button-card"
-                name: LULABIES
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
-                entity: binary_sensor.lullabies_music_sensor
-                show_entity_picture: true
-                tap_action:
-                  action: call-service
-                  service: script.play_pause_sonos_living_play_lullabies
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
-
-
-              - type: "custom:button-card"
-                name: VAPRZER
-                color_type: card
-                entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/vap.svg?v=3"; else return "/local/custom-lovelace/icons/vap.svg?v=4" ]]]'
-                entity: switch.smartplug2
-                show_entity_picture: true
-                tap_action:
+          - type: "custom:button-card"
+            name: LANTERN
+            color_type: card
+            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lantern.svg"; else return "/local/custom-lovelace/icons/lantern.svg" ]]]'
+            entity: switch.smartplug11
+            show_entity_picture: true
+            tap_action:
                   action: toggle
-                styles:
-                  name:
-                    - font-familly: Roboto
-                    - font-size: 14px
-                  entity_picture:
-                    - padding: 7%
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
+
+          # - type: "custom:button-card"
+          #   name: LAUNDRY OUT
+          #   entity: light.laundry_outside_light
+          #   template: light
+
+
+
+        - type: horizontal-stack
+          view_layout:
+            column: 3
+          cards: 
+          # - type: "custom:button-card"
+          #   name: ALFRESCO
+          #   entity: light.alfresco_dimmer
+          #   template: light
+
+
+          # - type: "custom:button-card"
+          #   name: XMAS TREE
+          #   color_type: card
+          #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
+          #   entity: switch.smartplug3
+          #   show_entity_picture: true
+          #   tap_action:
+          #         action: toggle
+          #   styles:
+          #     name:
+          #       - font-familly: Roboto
+          #       - font-size: 14px
+          #     entity_picture:
+          #       - padding: 7%
+
+          # - type: "custom:button-card"
+          #   name: YTUBE KIDS
+          #   color_type: card
+          #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/youtube.svg"; else return "/local/custom-lovelace/icons/youtube.svg" ]]]'
+          #   entity: switch.side_trees
+          #   show_entity_picture: true
+          #   tap_action:
+          #     action: call-service
+          #     service: script.youtube_sienna
+          #   styles:
+          #     name:
+          #       - font-familly: Roboto
+          #       - font-size: 14px
+          #     entity_picture:
+          #       - padding: 7%
+
+          - type: "custom:button-card"
+            name: SIENNA
+            color_type: card
+            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
+            entity: binary_sensor.montessori_music_sensor
+            show_entity_picture: true
+            tap_action:
+              action: call-service
+              service: script.play_pause_sonos_living_play_montessori
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
+
+
+          - type: "custom:button-card"
+            name: LULABIES
+            color_type: card
+            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
+            entity: binary_sensor.lullabies_music_sensor
+            show_entity_picture: true
+            tap_action:
+              action: call-service
+              service: script.play_pause_sonos_living_play_lullabies
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
+
+
+          - type: "custom:button-card"
+            name: VAPRZER
+            color_type: card
+            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/vap.svg?v=3"; else return "/local/custom-lovelace/icons/vap.svg?v=4" ]]]'
+            entity: switch.smartplug2
+            show_entity_picture: true
+            tap_action:
+              action: toggle
+            styles:
+              name:
+                - font-familly: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
 
