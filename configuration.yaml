@@ -119,19 +119,19 @@ zeroconf:
 # Camera Streams
 #stream:
 
-# enable browser_mod
-browser_mod:
-  devices:
-    707ee817_f0b8c45b:
-      name: living_tablet
-      disable:
-        - light
-        - media_player
-    bf4081ba_fb11dc13:
-      name: living_tablet2
-      disable:
-        - light
-        - media_player
+# # enable browser_mod
+# browser_mod:
+#   devices:
+#     707ee817_f0b8c45b:
+#       name: living_tablet
+#       disable:
+#         - light
+#         - media_player
+#     bf4081ba_fb11dc13:
+#       name: living_tablet2
+#       disable:
+#         - light
+#         - media_player
 
 # tuya - Moved to UI Integration
 # tuya:

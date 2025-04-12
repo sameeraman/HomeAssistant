@@ -494,7 +494,7 @@
       entity_id: binary_sensor.master_shower_motion_zb_1
       to: 'off'
       for:
-        seconds: 60
+        seconds: 240
   condition:
     condition: and
     conditions: 
