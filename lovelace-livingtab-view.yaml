@@ -495,71 +495,64 @@
             entity: light.alfresco_dimmer
             template: light
 
-        - type: horizontal-stack
-          view_layout:
-            column: 3
-          cards: 
 
+        # - type: horizontal-stack
+        #   view_layout:
+        #     column: 3
+        #   cards: 
+        #   # - type: "custom:button-card"
+        #   #   name: LAUNDRY
+        #   #   entity: light.laundry_light
+        #   #   template: light
+        #   - type: "custom:button-card"
+        #     name: STRIP
+        #     color_type: card
+        #     entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-lights1.png"; else return "/local/custom-lovelace/icons/christmas-lights1.png" ]]]'
+        #     entity: light.outdoor_christmas_strip_1
+        #     show_entity_picture: true
+        #     tap_action:
+        #       action: toggle
+        #     styles:
+        #       name:
+        #         - font-family: Roboto
+        #         - font-size: 14px
+        #       entity_picture:
+        #         - padding: 7%
 
+        #   - type: "custom:button-card"
+        #     name: TREE
+        #     color_type: card
+        #     entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
+        #     entity: switch.smartplug9
+        #     show_entity_picture: true
+        #     tap_action:
+        #           action: toggle
+        #     styles:
+        #       name:
+        #         - font-family: Roboto
+        #         - font-size: 14px
+        #       entity_picture:
+        #         - padding: 7%
 
-          # - type: "custom:button-card"
-          #   name: LAUNDRY
-          #   entity: light.laundry_light
-          #   template: light
+        #   - type: "custom:button-card"
+        #     name: LANTERN
+        #     color_type: card
+        #     entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lantern.svg"; else return "/local/custom-lovelace/icons/lantern.svg" ]]]'
+        #     entity: switch.smartplug11
+        #     show_entity_picture: true
+        #     tap_action:
+        #           action: toggle
+        #     styles:
+        #       name:
+        #         - font-family: Roboto
+        #         - font-size: 14px
+        #       entity_picture:
+        #         - padding: 7%
 
-
-
-
-          - type: "custom:button-card"
-            name: STRIP
-            color_type: card
-            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-lights1.png"; else return "/local/custom-lovelace/icons/christmas-lights1.png" ]]]'
-            entity: light.outdoor_christmas_strip_1
-            show_entity_picture: true
-            tap_action:
-              action: toggle
-            styles:
-              name:
-                - font-family: Roboto
-                - font-size: 14px
-              entity_picture:
-                - padding: 7%
-
-          - type: "custom:button-card"
-            name: TREE
-            color_type: card
-            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
-            entity: switch.smartplug9
-            show_entity_picture: true
-            tap_action:
-                  action: toggle
-            styles:
-              name:
-                - font-family: Roboto
-                - font-size: 14px
-              entity_picture:
-                - padding: 7%
-
-
-          - type: "custom:button-card"
-            name: LANTERN
-            color_type: card
-            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lantern.svg"; else return "/local/custom-lovelace/icons/lantern.svg" ]]]'
-            entity: switch.smartplug11
-            show_entity_picture: true
-            tap_action:
-                  action: toggle
-            styles:
-              name:
-                - font-family: Roboto
-                - font-size: 14px
-              entity_picture:
-                - padding: 7%
-
-          # - type: "custom:button-card"
-          #   name: LAUNDRY OUT
-          #   entity: light.laundry_outside_light
-          #   template: light
+        #   # - type: "custom:button-card"
+        #   #   name: LAUNDRY OUT
+        #   #   entity: light.laundry_outside_light
+        #   #   template: light
 
 
 

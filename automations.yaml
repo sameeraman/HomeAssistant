@@ -3033,7 +3033,63 @@
     - service: light.turn_on
       entity_id: light.laundry_strip_zb_1
 
+# Turn on the Laundry strip when someone open the laundry door
+- id: turnonlaundrystripwithdooropen
+  alias: Turn on the Laundry strip when someone open the laundry door
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.laundry_inside_door_zb_1
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.laundry_strip_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: binary_sensor.laundry_motion_zb_1
+        state: 'off'
+  action:
+    - service: light.turn_on
+      entity_id: light.laundry_strip_zb_1
 
+# Turn Off the Laundry strip when someone close the laundry door
+- id: turnofflaundrystripwithdoorclose
+  alias: Turn Off the Laundry strip when someone close the laundry door
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.laundry_inside_door_zb_1
+      to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.laundry_strip_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.laundry_light
+    - service: light.turn_off
+      entity_id: light.laundry_strip_zb_1
+      
 # Turn off the Laundry light when there is no motion in the laundry
 - id: turnofflaundrylightwithnomotion1
   alias: Turn off the Laundry light when there is no motion in the laundry
@@ -3042,7 +3098,7 @@
       entity_id: binary_sensor.laundry_motion_zb_1
       to: 'off'
       for:
-        minutes: 1
+        minutes: 2
   condition:
     condition: and
     conditions: 
@@ -3062,7 +3118,7 @@
 - id: togglelaundrylightwithpushbutton
   alias: Toggle Laundry Light with Laundry Xiaomi push button
   trigger: 
-    - device_id: 1ea7f1d28de97a28f6e4822af22b3af0
+    - device_id: e2974c22607b482168ebe89a84f9528b
       discovery_id: laundry_button_zb_1 action_single
       domain: mqtt
       platform: device

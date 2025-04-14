@@ -313,6 +313,11 @@ views:
               - entity: binary_sensor.office_motion
                 icon: 'mdi:run-fast'
                 name: Motion
+              - entity: group.office_cabinet_strips
+                icon: 'mdi:led-strip'
+                name: Cabinet Strip
+                tap_action:
+                  action: toggle
               - entity: sensor.office_espmulti_t
                 icon: 'mdi:coolant-temperature'
                 name: Temperature
