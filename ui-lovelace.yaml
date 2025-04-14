@@ -93,6 +93,14 @@ button_card_templates:
     #                   border-width: 2px; border-color: #e6e6e6; --size: 4.4em !important; }
 
 views:
+
+# Living Tab View
+  - title: Tab view
+    path: tabview
+    panel: true
+    cards: !include lovelace-livingtab-view.yaml
+
+
 # Floor Plan 
   - title: Floor Plan
     path: floorplan
@@ -100,13 +108,6 @@ views:
       - type: picture-elements
         image: /local/floorplan2-dark.svg?v=2
         elements: !include lovelace-floorplan.yaml
-
-
-# Living Tab View
-  - title: Tab view
-    path: tabview
-    panel: true
-    cards: !include lovelace-livingtab-view.yaml
 
 
 
@@ -275,22 +276,33 @@ views:
       - type: vertical-stack
         cards:
           - type: glance
-            title: Laundry
+            title: Laundry Inside
             entities:
               - entity: binary_sensor.laundry_motion_zb_1
                 icon: 'mdi:run-fast'
                 name: Motion
-              - entity: binary_sensor.laundry_door_zb
-                icon: 'mdi:door-closed'
-                name: Door
+              - entity: binary_sensor.laundry_inside_door_zb_1
+                icon: 'mdi:door'
+                name: Inside Door 
               - entity: light.laundry_light
                 icon: 'mdi:lightbulb-on-outline'
-                name: Light
+                name: Indoor Light
                 tap_action:
                   action: toggle
+              - entity: light.laundry_strip_zb_1
+                icon: 'mdi:led-strip'
+                name: Strip Light
+                tap_action:
+                  action: toggle
+          - type: glance
+            title: Laundry Outside
+            entities:
+              - entity: binary_sensor.laundry_door_zb
+                icon: 'mdi:door-closed'
+                name: Outside Door
               - entity: light.laundry_outside_light
                 icon: 'mdi:track-light'
-                name: Outdoor
+                name: Outdoor Light
                 tap_action:
                   action: toggle
       - type: vertical-stack
@@ -1458,6 +1470,12 @@ views:
             - entity: input_boolean.laundry_outside_light_on_off_auto
               tap_action:
                 action: toggle
+            - entity: input_boolean.laundry_strip_on_off_auto
+              tap_action:
+                action: toggle
+            - entity: input_boolean.laundry_button_on_off
+              tap_action:
+                action: toggle
             - entity: input_boolean.hallway_light_on_off_auto
               tap_action:
                 action: toggle
@@ -1629,22 +1647,33 @@ views:
       - type: vertical-stack
         cards:
           - type: glance
-            title: Laundry
+            title: Laundry Inside
             entities:
               - entity: binary_sensor.laundry_motion_zb_1
                 icon: 'mdi:run-fast'
                 name: Motion
-              - entity: binary_sensor.laundry_door_zb
-                icon: 'mdi:door-closed'
-                name: Door
+              - entity: binary_sensor.laundry_inside_door_zb_1
+                icon: 'mdi:door'
+                name: Inside Door 
               - entity: light.laundry_light
                 icon: 'mdi:lightbulb-on-outline'
-                name: Light
+                name: Indoor Light
                 tap_action:
                   action: toggle
+              - entity: light.laundry_strip_zb_1
+                icon: 'mdi:led-strip'
+                name: Strip Light
+                tap_action:
+                  action: toggle
+          - type: glance
+            title: Laundry Outside
+            entities:
+              - entity: binary_sensor.laundry_door_zb
+                icon: 'mdi:door-closed'
+                name: Outside Door
               - entity: light.laundry_outside_light
                 icon: 'mdi:track-light'
-                name: Outdoor
+                name: Outdoor Light
                 tap_action:
                   action: toggle
 

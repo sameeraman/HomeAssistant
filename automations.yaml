@@ -2910,6 +2910,25 @@
     - service: light.turn_off
       entity_id: light.laundry_light
 
+# Turn off the Laundry Strip when the light was left on for more than 30 minutes
+- id: laundrystrip30mins
+  alias: Turn off the Laundry Strip when the light was left on for more than 30 minutes
+  trigger: 
+    - platform: state
+      entity_id: light.laundry_strip_zb_1
+      to: 'on'
+      for:
+        minutes: 30
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_off
+      entity_id: light.laundry_strip_zb_1
+
 # Turn on the Laundry Outdoor light when the laundry door open in the night
 - id: turnonlaundryoutdoorlightwithdooratnight
   alias: Turn on the Laundry Outdoor light when the laundry door open in the night
@@ -2963,6 +2982,9 @@
     - platform: state
       entity_id: binary_sensor.laundry_motion_zb_1
       to: 'on'
+    - platform: state
+      entity_id: binary_sensor.laundry_inside_door_zb_1
+      to: 'on'
   condition:
     condition: and
     conditions: 
@@ -2982,6 +3004,36 @@
     - service: light.turn_on
       entity_id: light.laundry_light
 
+# Turn on the Laundry strip when there is motion in the laundry
+- id: turnonlaundryoutstripwithmotion
+  alias: Turn on the Laundry strip when there is motion in the laundry
+  trigger: 
+    - platform: state
+      entity_id: binary_sensor.laundry_motion_zb_1
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.laundry_inside_door_zb_1
+      to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: sun.sun
+        state: 'below_horizon'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: switch.housealarm
+        state: 'off'
+      - condition: state
+        entity_id: input_boolean.laundry_strip_on_off_auto
+        state: 'on'
+  action:
+    - service: light.turn_on
+      entity_id: light.laundry_strip_zb_1
+
+
 # Turn off the Laundry light when there is no motion in the laundry
 - id: turnofflaundrylightwithnomotion1
   alias: Turn off the Laundry light when there is no motion in the laundry
@@ -2989,6 +3041,8 @@
     - platform: state
       entity_id: binary_sensor.laundry_motion_zb_1
       to: 'off'
+      for:
+        minutes: 1
   condition:
     condition: and
     conditions: 
@@ -3001,6 +3055,27 @@
   action:
     - service: light.turn_off
       entity_id: light.laundry_light
+    - service: light.turn_off
+      entity_id: light.laundry_strip_zb_1
+
+# Toggle Laundry Light with Laundry Xiaomi push button
+- id: togglelaundrylightwithpushbutton
+  alias: Toggle Laundry Light with Laundry Xiaomi push button
+  trigger: 
+    - device_id: 1ea7f1d28de97a28f6e4822af22b3af0
+      discovery_id: laundry_button_zb_1 action_single
+      domain: mqtt
+      platform: device
+      subtype: single
+      type: action
+  condition:
+    condition: state
+    entity_id: input_boolean.laundry_button_on_off
+    state: 'on'
+  action:
+    service: light.toggle
+    entity_id: light.laundry_light
+
 
 # Turn on the Front Patio light when there is motion in the patio
 - id: frontpatiolightonwithmotion

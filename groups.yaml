@@ -26,6 +26,11 @@ office:
   entities:
     - light.office_dimmer
     - group.office_sensors
+office_cabinet_strips:
+  name: Office Cabinet Strips
+  entities:
+    - light.office_cabinet_light_strip
+    - light.office_cabinet_bottom_light_strip
 kitchen_sensors:
   name: Kitchen Sensors
   entities:

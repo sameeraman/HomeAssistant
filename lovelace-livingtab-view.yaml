@@ -130,7 +130,7 @@
                   action: toggle
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
@@ -148,7 +148,7 @@
                 entity_id: script.open_all_blinds
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
@@ -165,7 +165,7 @@
                 entity_id: script.close_all_blinds
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
@@ -180,7 +180,7 @@
                   action: toggle
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
@@ -225,7 +225,7 @@
               service: script.toggle_tv
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
@@ -343,7 +343,7 @@
 
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
@@ -520,7 +520,7 @@
               action: toggle
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
@@ -535,7 +535,7 @@
                   action: toggle
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
@@ -551,7 +551,7 @@
                   action: toggle
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
@@ -583,7 +583,7 @@
           #         action: toggle
           #   styles:
           #     name:
-          #       - font-familly: Roboto
+          #       - font-family: Roboto
           #       - font-size: 14px
           #     entity_picture:
           #       - padding: 7%
@@ -599,7 +599,7 @@
           #     service: script.youtube_sienna
           #   styles:
           #     name:
-          #       - font-familly: Roboto
+          #       - font-family: Roboto
           #       - font-size: 14px
           #     entity_picture:
           #       - padding: 7%
@@ -615,7 +615,7 @@
               service: script.play_pause_sonos_living_play_montessori
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
@@ -632,7 +632,7 @@
               service: script.play_pause_sonos_living_play_lullabies
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
@@ -648,7 +648,7 @@
               action: toggle
             styles:
               name:
-                - font-familly: Roboto
+                - font-family: Roboto
                 - font-size: 14px
               entity_picture:
                 - padding: 7%

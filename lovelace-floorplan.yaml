@@ -58,6 +58,22 @@
               left: 84%
               "--paper-item-icon-color": '#D8D6D9'
 
+
+          # Office Cabinet strip
+          - type: image
+            image: /local/line7.svg
+            entity: binary_sensor.office_cabinet_strips
+            tap_action:
+              action: call-service
+              service: light.toggle
+              service_data: 
+                entity_id: group.office_cabinet_strips
+            style:
+              top: 2.5%
+              left: 66%
+              transform: 'scale(2.5,1)'
+
+
 # Alfresco
           # Alfresco Light
           - type: state-icon
@@ -375,7 +391,7 @@
             entity: binary_sensor.laundry_motion_zb_1
             style:
               top: 69.5%
-              left: 8.5%
+              left: 7.5%
               "--paper-item-icon-color": '#D8D6D9'
 
 
@@ -387,7 +403,7 @@
             entity: light.laundry_light
             style:
               top: 69.5%
-              left: 15%
+              left: 13%
               "--paper-item-icon-color": '#D8D6D9'
 
           # Laundry Outside Light
@@ -402,7 +418,6 @@
               "--paper-item-icon-color": '#D8D6D9'
               transform: scaleX(-1)
 
-
           # Laundry Door
           - type: image
             image: /local/line6v.svg
@@ -414,6 +429,27 @@
               left: 0%
               transform: rotate(0deg)
 
+          # Laundry strip
+          - type: image
+            image: /local/line7.svg
+            entity: light.laundry_strip_zb_1
+            tap_action:
+              action: toggle
+            style:
+              top: 75%
+              left: 7.5%
+              transform: 'scale(1.1,1)'
+
+          # Laundry Inside Door
+          - type: image
+            image: /local/line6.svg
+            entity: binary_sensor.laundry_inside_door_zb_1
+            state_filter:
+              "off": 'opacity(0)'
+            style:
+              top: 71%
+              left: 15%
+              transform: rotate(0deg)
 
 # Garage
           # Garage Motion

@@ -145,6 +145,14 @@ laundry_light_on_off_auto:
   name: Laundry light On/Off with based on Laundry Motion
   icon: mdi:track-light
 
+laundry_strip_on_off_auto:
+  name: Laundry Strip On/Off with based on Laundry Motion
+  icon: mdi:led-strip
+
+laundry_button_on_off:
+  name: Laundry Light On/Off with based Button Press
+  icon: mdi:lightbulb-on-outline
+
 office_light_on_off_auto:
   name: Office light On/Off with based on Office Motion
   icon: mdi:lightbulb-on-outline
