@@ -1240,7 +1240,7 @@ views:
                   show_state: false
                   tap_action:
                     action: call-service
-                    service: rainmachine.stop_all
+                    action: rainmachine.stop_all
 
           - type: custom:mini-graph-card
             entities:
