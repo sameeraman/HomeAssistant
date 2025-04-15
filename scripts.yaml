@@ -1,23 +1,23 @@
 # Script to Turn on the Front outdoor lights when Garage door open and Turn off after 2 minutes.
 garagelight:
   sequence:
-    - service: light.turn_on
+    - action: light.turn_on
       entity_id: light.front_outdoor_light
     - delay:
         minutes: 4
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.front_outdoor_light
 
 # Script to execute the Xiaomi Gatway alarm
 xiaomi_gateway_alarm:
   sequence:
-    - service: xiaomi_aqara.play_ringtone
+    - action: xiaomi_aqara.play_ringtone
       data:
         ringtone_id: 2
         ringtone_vol: 15
         gw_mac: !secret xiaomi_mac
     - delay: 00:00:05
-    - service: xiaomi_aqara.play_ringtone
+    - action: xiaomi_aqara.play_ringtone
       data:
         ringtone_id: 2
         ringtone_vol: 15
@@ -27,17 +27,17 @@ xiaomi_gateway_alarm:
 sonos_afternoon_greet:
   alias: "Sonos afternoon great - Living"
   sequence:
-    - service: sonos.snapshot
+    - action: sonos.snapshot
       data_template:
         entity_id: media_player.living
-    - service: media_player.media_pause
+    - action: media_player.media_pause
       data_template:
         entity_id: media_player.living
-    - service: media_player.volume_set
+    - action: media_player.volume_set
       data_template:
         entity_id: media_player.living
         volume_level: "0.60"
-    - service: tts.speak
+    - action: tts.speak
       target: 
         entity_id: tts.google_en_com_au
       data_template:
@@ -51,7 +51,7 @@ sonos_afternoon_greet:
           {{secondb[bindex]}} 
           {% set secondr = ["Have a great evening.","Have a good one.","Goodbye.","Talk to you later."] %} {% set sindex = (range(0, (secondr | length - 1) )|random) %} 
           {{secondr[sindex]}}
-    - service: script.turn_on
+    - action: script.turn_on
       data_template:
         entity_id: >
           {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
@@ -61,12 +61,12 @@ sonos_afternoon_greet:
           {% endif %}
     - delay:
         seconds:  18
-    - service: sonos.restore
+    - action: sonos.restore
       data_template:
         entity_id: media_player.living
     - delay:
         seconds:  2
-    - service: script.turn_on
+    - action: script.turn_on
       data_template:
         entity_id: >-
           {% if 'Good' in state_attr('media_player.living', 'media_title') %}
@@ -76,24 +76,24 @@ sonos_afternoon_greet:
           {% else %}
             script.sonos_living_play_resume
           {% endif %}
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.arrival_greet
 
 # Script that executes good morning greet
 sonos_morning_greet:
   alias: "Sonos morning greet - Living"
   sequence:
-    - service: sonos.snapshot
+    - action: sonos.snapshot
       data_template:
         entity_id: media_player.living
-    - service: media_player.media_pause
+    - action: media_player.media_pause
       data_template:
         entity_id: media_player.living
-    - service: media_player.volume_set
+    - action: media_player.volume_set
       data_template:
         entity_id: media_player.living
         volume_level: "0.60"
-    - service: tts.speak
+    - action: tts.speak
       target: 
         entity_id: tts.google_en_com_au
       data_template:
@@ -104,7 +104,7 @@ sonos_morning_greet:
           I will now turn on the TV. ...  
           {% set secondr = ["Have a great day.","Enjoy the day","Have a good one.","Talk to you later."] %} {% set sindex = (range(0, (secondr | length - 1) )|random) %} 
           {{secondr[sindex]}}
-    - service: script.turn_on
+    - action: script.turn_on
       data_template:
         entity_id: >
           {% if is_state('sun.sun', 'above_horizon') and is_state('input_boolean.blinds_auto', 'on') %}
@@ -114,31 +114,31 @@ sonos_morning_greet:
           {% endif %}
     - delay:
         seconds:  18
-    - service: sonos.restore
+    - action: sonos.restore
       data_template:
         entity_id: media_player.living
-    - service: remote.turn_on
+    - action: remote.turn_on
       entity_id: remote.Living
       data:
         activity: "Watch TV"
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.morning_greet
 
 # Script that executes good morning greet
 garage_door_warning:
   alias: "Sonos Garage Door warning 30 mins"
   sequence:
-    - service: sonos.snapshot
+    - action: sonos.snapshot
       data_template:
         entity_id: media_player.living
-    - service: media_player.media_pause
+    - action: media_player.media_pause
       data_template:
         entity_id: media_player.living
-    - service: media_player.volume_set
+    - action: media_player.volume_set
       data_template:
         entity_id: media_player.living
         volume_level: "0.60"
-    - service: tts.speak
+    - action: tts.speak
       target: 
         entity_id: tts.google_en_com_au
       data_template:
@@ -148,7 +148,7 @@ garage_door_warning:
           Warning!. Garage Door was opened for more than 30 minutes
     - delay:
         seconds:  10
-    - service: sonos.restore
+    - action: sonos.restore
       data_template:
         entity_id: media_player.living
 
@@ -160,17 +160,17 @@ sonos_warning:
       description: "The warning message content"
       example: "Warning! Garage door is open"
   sequence:
-    - service: sonos.snapshot
+    - action: sonos.snapshot
       data_template:
         entity_id: media_player.living
-    - service: media_player.media_pause
+    - action: media_player.media_pause
       data_template:
         entity_id: media_player.living
-    - service: media_player.volume_set
+    - action: media_player.volume_set
       data_template:
         entity_id: media_player.living
         volume_level: "0.60"
-    - service: tts.speak
+    - action: tts.speak
       target: 
         entity_id: tts.google_en_com_au
       data_template:
@@ -179,7 +179,7 @@ sonos_warning:
         message: "{{ message }}"
     - delay:
         seconds:  15
-    - service: sonos.restore
+    - action: sonos.restore
       data_template:
         entity_id: media_player.living
 
@@ -192,7 +192,7 @@ rainmachine_zoneon:
       description: 'zone id'
       example: '2'
   sequence:
-    - service: rainmachine.start_zone
+    - action: rainmachine.start_zone
       data_template:
         zone_id: '{{ id | int }}'
         zone_run_time: "{{ states('sensor.sprinkler_runtime_seconds') | int }}"
@@ -202,7 +202,7 @@ sonos_living_play_resume:
   description: 'Resume Existing Playlist in Living Sonos'
   alias: "Resume Existing Playlist in Living Sonos"
   sequence:
-    - service: media_player.media_play
+    - action: media_player.media_play
       data_template:
         entity_id: media_player.living
 
@@ -211,7 +211,7 @@ sonos_living_pause:
   description: 'Pause Living Sonos'
   alias: "Pause Living Sonos"
   sequence:
-    - service: media_player.media_pause
+    - action: media_player.media_pause
       data_template:
         entity_id: media_player.living
 
@@ -220,7 +220,7 @@ sonos_living_play_jazz:
   description: 'Play Jazz Playlist in Living Sonos'
   alias: "Play Jazz Playlist in Living Sonos"
   sequence:
-    - service: media_player.play_media
+    - action: media_player.play_media
       data_template:
         entity_id: media_player.living
         media_content_type: playlist
@@ -236,7 +236,7 @@ sonos_living_play_playlist:
       description: 'Playlist Name'
       example: 'Jazz'
   sequence:
-    - service: media_player.play_media
+    - action: media_player.play_media
       data_template:
         entity_id: media_player.living
         media_content_type: playlist
@@ -247,11 +247,11 @@ sonos_living_play_lullabies:
   description: 'Play Lullabies Playlist in Living Sonos'
   alias: "Play Lullabies Playlist in Living Sonos"
   sequence:
-    - service: media_player.shuffle_set
+    - action: media_player.shuffle_set
       data_template:
         entity_id: media_player.living
         shuffle: true
-    - service: media_player.play_media
+    - action: media_player.play_media
       data_template:
         entity_id: media_player.living
         media_content_type: playlist
@@ -262,7 +262,7 @@ play_pause_sonos_living_play_lullabies:
   description: 'Play Pause Living Sonos Lullabies'
   alias: "Play Pause Living Sonos Lullabies"
   sequence:
-    - service: script.turn_on
+    - action: script.turn_on
       data_template:
         entity_id: >
           {% if is_state('binary_sensor.lullabies_music_sensor', 'on') %}
@@ -276,15 +276,15 @@ sonos_living_play_montessori:
   description: 'Play Montessori Playlist in Living Sonos'
   alias: "Play Montessori Playlist in Living Sonos"
   sequence:
-    - service: media_player.volume_set
+    - action: media_player.volume_set
       data_template:
         entity_id: media_player.living
         volume_level: "0.60"
-    - service: media_player.shuffle_set
+    - action: media_player.shuffle_set
       data_template:
         entity_id: media_player.living
         shuffle: true
-    - service: media_player.play_media
+    - action: media_player.play_media
       data_template:
         entity_id: media_player.living
         media_content_type: playlist
@@ -295,7 +295,7 @@ play_pause_sonos_living_play_montessori:
   description: 'Play Pause Living Sonos Montessori'
   alias: "Play Pause Living Sonos Montessori"
   sequence:
-    - service: script.turn_on
+    - action: script.turn_on
       data_template:
         entity_id: >
           {% if is_state('binary_sensor.montessori_music_sensor', 'on') %}
@@ -311,7 +311,7 @@ sonos_alfresco_play_resume:
   description: 'Resume Existing Playlist in Alfresco Sonos'
   alias: "Resume Existing Playlist in Alfresco Sonos"
   sequence:
-    - service: media_player.media_play
+    - action: media_player.media_play
       data_template:
         entity_id: media_player.alfresco
 
@@ -320,7 +320,7 @@ sonos_alfresco_play_jazz:
   description: 'Play Jazz Playlist in Alfresco Sonos'
   alias: "Play Jazz Playlist in Alfresco Sonos"
   sequence:
-    - service: media_player.play_media
+    - action: media_player.play_media
       data_template:
         entity_id: media_player.alfresco
         media_content_type: playlist
@@ -331,7 +331,7 @@ sonos_alfresco_play:
   description: 'Play music in Alfresco Sonos'
   alias: "Play music in Alfresco Sonos'"
   sequence:
-    - service: script.turn_on
+    - action: script.turn_on
       data_template:
         entity_id: >-
           {% if is_state_attr('media_player.alfresco', 'media_title', '') %}
@@ -344,7 +344,7 @@ sonos_alfresco_play:
 leave_home_workflow:
   alias: "Leave Home"
   sequence:
-    - service: script.turn_on
+    - action: script.turn_on
       data_template:
         entity_id: >
           {% if is_state('input_boolean.blinds_auto', 'on') %}
@@ -352,15 +352,15 @@ leave_home_workflow:
           {% else %}
             script.do_nothing
           {% endif %}
-    - service: remote.turn_on
+    - action: remote.turn_on
       entity_id: remote.Living
       data:
         activity: "PowerOff"
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.living_dimmer
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.kitchen_dimmer
-    - service: media_player.media_pause
+    - action: media_player.media_pause
       data_template:
         entity_id: media_player.living
 
@@ -369,7 +369,7 @@ launch_ha_dashboard:
   description: 'Launch Home Assistant Dashboard'
   alias: "Home Assistant Dashboard"
   sequence:
-    - service: cast.show_lovelace_view
+    - action: cast.show_lovelace_view
       data:
         entity_id: media_player.kitchen_display
         view_path: home
@@ -379,7 +379,7 @@ launch_ha_floorplan:
   description: 'Launch Home Assistant Floorplan'
   alias: "Home Assistant Floorplan"
   sequence:
-    - service: cast.show_lovelace_view
+    - action: cast.show_lovelace_view
       data:
         entity_id: media_player.kitchen_display
         view_path: "4"
@@ -390,7 +390,7 @@ toggle_tv:
   description: 'Toggle TV'
   alias: "Toggle TV"
   sequence:
-    - service: remote.turn_on
+    - action: remote.turn_on
       entity_id: remote.Living
       data_template:
         activity: >-
@@ -404,36 +404,36 @@ toggle_tv:
 open_all_blinds:
   alias: "Open all blinds"
   sequence:
-    - service: cover.open_cover
+    - action: cover.open_cover
       entity_id: cover.living_blind_1
-    - service: cover.open_cover
+    - action: cover.open_cover
       entity_id: cover.living_blind_2
-    - service: cover.open_cover
+    - action: cover.open_cover
       entity_id: cover.dining_blind_1
-    - service: cover.open_cover
+    - action: cover.open_cover
       entity_id: cover.dining_blind_2
     - condition: template
       value_template: "{{ now().hour > 11 }}"
-    - service: cover.open_cover
+    - action: cover.open_cover
       entity_id: cover.tv_blind_left
-    - service: cover.open_cover
+    - action: cover.open_cover
       entity_id: cover.tv_blind_right
 
 # Close all blinds
 close_all_blinds:
   alias: "Close all blinds"
   sequence:
-    - service: cover.close_cover
+    - action: cover.close_cover
       entity_id: cover.tv_blind_left
-    - service: cover.close_cover
+    - action: cover.close_cover
       entity_id: cover.tv_blind_right
-    - service: cover.close_cover
+    - action: cover.close_cover
       entity_id: cover.living_blind_1
-    - service: cover.close_cover
+    - action: cover.close_cover
       entity_id: cover.living_blind_2
-    - service: cover.close_cover
+    - action: cover.close_cover
       entity_id: cover.dining_blind_1
-    - service: cover.close_cover
+    - action: cover.close_cover
       entity_id: cover.dining_blind_2
 
 # Do Nothing Script
@@ -452,13 +452,13 @@ send_snapshot_garage:
       description: "The message content"
       example: "The light is on!"
   sequence:
-    - service: camera.snapshot
+    - action: camera.snapshot
       data:
         entity_id: camera.garage_camera
         filename: !secret garagecameranotifytemp
     - delay:
         seconds: 5
-    - service: notify.phoneapps
+    - action: notify.phoneapps
       data:
         title: "{{ title }}"
         message:  "{{ message }}"
@@ -469,24 +469,24 @@ send_snapshot_garage:
 sonos_alarm_bell:
   alias: "Sonos Alarm Bell"
   sequence:
-    - service: sonos.snapshot
+    - action: sonos.snapshot
       data_template:
         entity_id: media_player.living
-    - service: media_player.media_pause
+    - action: media_player.media_pause
       data_template:
         entity_id: media_player.living
-    - service: media_player.volume_set
+    - action: media_player.volume_set
       data_template:
         entity_id: media_player.living
         volume_level: "0.60"
-    - service: media_player.play_media
+    - action: media_player.play_media
       data_template:
         entity_id: media_player.living
         media_content_id: !secret dingdong
         media_content_type: music
     - delay:
         seconds:  5
-    - service: sonos.restore
+    - action: sonos.restore
       data_template:
         entity_id: media_player.living
 
@@ -496,7 +496,7 @@ google_tv_on:
   description: 'Turn on Google TV'
   alias: "Turn on Google TV"
   sequence:
-    - service: remote.turn_on
+    - action: remote.turn_on
       entity_id: remote.living
       data_template:
         activity: 'Google TV'
@@ -507,7 +507,7 @@ google_tv_on:
 youtube_sienna:
   alias: "Play Youtube Videos for Sienna"
   sequence:
-    - service: script.turn_on
+    - action: script.turn_on
       data_template:
         entity_id: >
           {% if is_state('media_player.yamaha_receiver', 'off') %}
@@ -515,22 +515,22 @@ youtube_sienna:
           {% else %}
             script.do_nothing
           {% endif %}
-    - service: media_player.volume_set
+    - action: media_player.volume_set
       data_template:
         entity_id: media_player.living
         volume_level: "0.70"
-    # - service: remote.send_command
+    # - action: remote.send_command
     #   entity_id: remote.living
     #   data_template:
     #     device: "Samsung TV"
     #     command: "InputHdmi1"
-    - service : media_player.media_stop
+    - action: media_player.media_stop
       entity_id: media_player.living_tv
-    - service : media_player.turn_on
+    - action: media_player.turn_on
       entity_id: media_player.living_tv
     - delay:
         seconds: 3
-    - service : media_player.play_media
+    - action: media_player.play_media
       entity_id: media_player.living_tv
       data:
         media_content_type: cast

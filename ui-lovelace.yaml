@@ -353,24 +353,24 @@ views:
                 name: Humidity
           - type: horizontal-stack
             cards:
-              - entity: light.garage_dimmer
+              - type: button
+                entity: light.garage_dimmer
                 icon: 'mdi:lightbulb'
                 name: Garage Light
                 tap_action:
                   action: toggle
-                type: entity-button
               - entity: switch.housealarm
                 icon: 'mdi:home-lock'
                 name: House Alarm
                 tap_action:
                   action: toggle
-                type: entity-button
+                type: button
               - entity: light.front_outdoor_light
                 icon: 'mdi:lightbulb'
                 name: Front Outdoor
                 tap_action:
                   action: toggle
-                type: entity-button
+                type: button
 
 
 # # Home Tab Navigation Entities
@@ -815,31 +815,31 @@ views:
     path: cameras
     cards:
       - type: picture-entity 
-        title: Front Entrance 
+        name: Front Entrance 
         entity:  camera.front_entrance_camera_high
       - type: picture-entity 
-        title: Front Entrance 
+        name: Front Entrance 
         entity:  camera.front_outdoor_camera_high
       - type: picture-entity 
-        title: Living 
+        name: Living 
         entity:  camera.living_camera_high
       - type: picture-entity 
-        title: Hallway 
+        name: Hallway 
         entity:  camera.hallway_camera_high
       - type: picture-entity 
-        title: Alfresco 
+        name: Alfresco 
         entity:  camera.alfresco_camera_high
       - type: picture-entity 
-        title: Outside Right 
+        name: Outside Right 
         entity:  camera.outside_right_camera_high
       - type: picture-entity 
-        title: Outside Back 
+        name: Outside Back 
         entity:  camera.outside_back_camera_high
       - type: picture-entity 
-        title: Garage Camera 
+        name: Garage Camera 
         entity:  camera.garage_camera_high
       - type: picture-entity 
-        title: Baby Camera 
+        name: Baby Camera 
         entity:  camera.baby_camera
 
 
@@ -1240,7 +1240,7 @@ views:
                   show_state: false
                   tap_action:
                     action: call-service
-                    action: rainmachine.stop_all
+                    service: rainmachine.stop_all
 
           - type: custom:mini-graph-card
             entities:
@@ -1510,7 +1510,7 @@ views:
     cards:
       - type: picture-entity 
         entity: camera.baby_camera
-        title: Baby Monitor
+        name: Baby Monitor
 
 
   - title: Dev
@@ -1518,7 +1518,7 @@ views:
     cards:
       - type: picture-entity 
         entity: camera.thermal_camera_1
-        title: Thermal Camera
+        name: Thermal Camera
       - type: vertical-stack
         cards:
           - type: glance

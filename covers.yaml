@@ -6,25 +6,25 @@
         optimistic: false
         value_template: "{{ is_state('input_boolean.dining_blind_1', 'on')  }}"
         open_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/diningblind1/cmnd/power1'
               payload: 'ON'
-          - service: input_boolean.turn_on
+          - action: input_boolean.turn_on
             entity_id: input_boolean.dining_blind_1
         close_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/diningblind1/cmnd/power2'
               payload: 'ON'
-          - service: input_boolean.turn_off
+          - action: input_boolean.turn_off
             entity_id: input_boolean.dining_blind_1
         stop_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/diningblind1/cmnd/power1'
               payload: 'OFF'
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/diningblind1/cmnd/power2'
               payload: 'OFF'
@@ -33,25 +33,25 @@
         friendly_name: "Dining Blind 2"
         value_template: "{{ is_state('input_boolean.dining_blind_2', 'on')  }}"
         open_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/diningblind2/cmnd/power1'
               payload: 'ON'
-          - service: input_boolean.turn_on
+          - action: input_boolean.turn_on
             entity_id: input_boolean.dining_blind_2
         close_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/diningblind2/cmnd/power2'
               payload: 'ON'
-          - service: input_boolean.turn_off
+          - action: input_boolean.turn_off
             entity_id: input_boolean.dining_blind_2
         stop_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/diningblind2/cmnd/power1'
               payload: 'OFF'
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/diningblind2/cmnd/power2'
               payload: 'OFF'
@@ -60,25 +60,25 @@
         friendly_name: "TV Blind Left"
         value_template: "{{ is_state('input_boolean.tv_blind_left', 'on')  }}"
         open_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/tvblindleft/cmnd/power1'
               payload: 'ON'
-          - service: input_boolean.turn_on
+          - action: input_boolean.turn_on
             entity_id: input_boolean.tv_blind_left
         close_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/tvblindleft/cmnd/power2'
               payload: 'ON'
-          - service: input_boolean.turn_off
+          - action: input_boolean.turn_off
             entity_id: input_boolean.tv_blind_left
         stop_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/tvblindleft/cmnd/power1'
               payload: 'OFF'
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/tvblindleft/cmnd/power2'
               payload: 'OFF'
@@ -87,25 +87,25 @@
         friendly_name: "TV Blind Right"
         value_template: "{{ is_state('input_boolean.tv_blind_right', 'on')  }}"
         open_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/tvblindright/cmnd/power1'
               payload: 'ON'
-          - service: input_boolean.turn_on
+          - action: input_boolean.turn_on
             entity_id: input_boolean.tv_blind_right
         close_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/tvblindright/cmnd/power2'
               payload: 'ON'
-          - service: input_boolean.turn_off
+          - action: input_boolean.turn_off
             entity_id: input_boolean.tv_blind_right
         stop_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/tvblindright/cmnd/power1'
               payload: 'OFF'
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/tvblindright/cmnd/power2'
               payload: 'OFF'
@@ -114,25 +114,25 @@
         friendly_name: "Living Blind 1"
         value_template: "{{ is_state('input_boolean.living_blind_1', 'on')  }}"
         open_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/livingblind1/cmnd/power1'
               payload: 'ON'
-          - service: input_boolean.turn_on
+          - action: input_boolean.turn_on
             entity_id: input_boolean.living_blind_1
         close_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/livingblind1/cmnd/power2'
               payload: 'ON'
-          - service: input_boolean.turn_off
+          - action: input_boolean.turn_off
             entity_id: input_boolean.living_blind_1
         stop_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/livingblind1/cmnd/power1'
               payload: 'OFF'
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/livingblind1/cmnd/power2'
               payload: 'OFF'
@@ -141,25 +141,25 @@
         friendly_name: "Living Blind 2"
         value_template: "{{ is_state('input_boolean.living_blind_2', 'on')  }}"
         open_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/livingblind2/cmnd/power1'
               payload: 'ON'
-          - service: input_boolean.turn_on
+          - action: input_boolean.turn_on
             entity_id: input_boolean.living_blind_2
         close_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/livingblind2/cmnd/power2'
               payload: 'ON'
-          - service: input_boolean.turn_off
+          - action: input_boolean.turn_off
             entity_id: input_boolean.living_blind_2
         stop_cover:
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/livingblind2/cmnd/power1'
               payload: 'OFF'
-          - service: mqtt.publish
+          - action: mqtt.publish
             data:
               topic: 'home/living/blinds/livingblind2/cmnd/power2'
               payload: 'OFF'
@@ -168,15 +168,15 @@
         friendly_name: "Garage Door"
         value_template: "{{ is_state('binary_sensor.garage_door_sensor', 'on')  }}"
         open_cover:
-          service: switch.turn_on
+          action: switch.turn_on
           data:
             entity_id: switch.garage_door
         close_cover:
-          service: switch.turn_off
+          action: switch.turn_off
           data:
             entity_id: switch.garage_door
         stop_cover:
-          service: switch.turn_on
+          action: switch.turn_on
           data:
             entity_id: switch.garage_door
         icon_template: >-

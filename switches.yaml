@@ -5,75 +5,75 @@
         value_template: '{{ states("input_boolean.house_alarm") }}'
         friendly_name: 'House Alarm'
         turn_on:
-          - service: input_boolean.turn_on
+          - action: input_boolean.turn_on
             entity_id: input_boolean.house_alarm
         turn_off:
-          - service: input_boolean.turn_off
+          - action: input_boolean.turn_off
             entity_id: input_boolean.house_alarm
       nightmood:
         value_template: '{{ states("input_boolean.night_mood") }}'
         friendly_name: 'Night Mood'
         turn_on:
-          - service: input_boolean.turn_on
+          - action: input_boolean.turn_on
             entity_id: input_boolean.night_mood
         turn_off:
-          - service: input_boolean.turn_off
+          - action: input_boolean.turn_off
             entity_id: input_boolean.night_mood
       guest_mood:
         value_template: '{{ states("input_boolean.guest_mood") }}'
         friendly_name: 'Guest Mood'
         turn_on:
-          - service: input_boolean.turn_on
+          - action: input_boolean.turn_on
             entity_id: input_boolean.guest_mood
         turn_off:
-          - service: input_boolean.turn_off
+          - action: input_boolean.turn_off
             entity_id: input_boolean.guest_mood
       vacation_mood:
         value_template: '{{ states("input_boolean.vacation_mood") }}'
         friendly_name: 'Vacation Mood'
         turn_on:
-          - service: input_boolean.turn_on
+          - action: input_boolean.turn_on
             entity_id: input_boolean.vacation_mood
         turn_off:
-          - service: input_boolean.turn_off
+          - action: input_boolean.turn_off
             entity_id: input_boolean.vacation_mood
       party_mood:
         value_template: '{{ states("input_boolean.party_mood") }}'
         friendly_name: 'Vacation Mood'
         turn_on:
-          - service: input_boolean.turn_on
+          - action: input_boolean.turn_on
             entity_id: input_boolean.party_mood
         turn_off:
-          - service: input_boolean.turn_off
+          - action: input_boolean.turn_off
             entity_id: input_boolean.party_mood
       living_music:
         value_template: "{{ is_state('media_player.living', 'playing') }}"
         friendly_name: 'Living Music'
         turn_on:
-          - service: media_player.media_play
+          - action: media_player.media_play
             entity_id: media_player.living
         turn_off:
-          - service: media_player.media_pause
+          - action: media_player.media_pause
             entity_id: media_player.living
       alfresco_music:
         value_template: "{{ is_state('media_player.alfresco', 'playing') }}"
         friendly_name: 'Alfresco Music'
         turn_on:
-          - service: media_player.media_play
+          - action: media_player.media_play
             entity_id: media_player.alfresco
         turn_off:
-          - service: media_player.media_pause
+          - action: media_player.media_pause
             entity_id: media_player.alfresco
       tv:
         value_template: "{{ is_state('binary_sensor.living_tv', 'on') }}"
         friendly_name: 'TV'
         turn_on:
-          - service: remote.turn_on
+          - action: remote.turn_on
             data:
               entity_id: remote.Living
               activity: "Watch TV"
         turn_off:
-          - service: remote.turn_on
+          - action: remote.turn_on
             entity_id: remote.Living
             data:
               entity_id: remote.Living
@@ -82,7 +82,7 @@
         value_template: "{{ is_state('script.launch_ha_floorplan', 'on') }}"
         friendly_name: 'Floor Plan'
         turn_on:
-          - service: script.turn_on
+          - action: script.turn_on
             entity_id: script.launch_ha_floorplan
         turn_off:
         # nothing
@@ -90,29 +90,29 @@
         #value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["state"] }}'
         value_template: "{{ (states('climate.ac')) | string != 'off' }}"
         turn_on:
-          # - service: climate.turn_on
+          # - action: climate.turn_on
           #   entity_id: climate.ac
-          - service: shell_command.myair_setcmd
+          - action: shell_command.myair_setcmd
             data_template:
               json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22on%22%7D%7D%7D'
-          # - service: homeassistant.update_entity
+          # - action: homeassistant.update_entity
           #   data:
           #      entity_id: sensor.myair
           # - delay: 00:00:03
-          # - service: homeassistant.update_entity
+          # - action: homeassistant.update_entity
           #   data:
           #      entity_id: sensor.myair
         turn_off:
-          # - service: climate.turn_off
+          # - action: climate.turn_off
           #   entity_id: climate.ac
-          - service: shell_command.myair_setcmd
+          - action: shell_command.myair_setcmd
             data_template:
               json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
-          # - service: homeassistant.update_entity
+          # - action: homeassistant.update_entity
           #   data:
           #      entity_id: sensor.myair
           # - delay: 00:00:03
-          # - service: homeassistant.update_entity
+          # - action: homeassistant.update_entity
           #   data:
           #      entity_id: sensor.myair
 

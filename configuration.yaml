@@ -14,7 +14,7 @@ homeassistant:
   customize: !include customize.yaml
 
   external_url: !secret http_local_url
-  whitelist_external_dirs:
+  allowlist_external_dirs:
     - /share
    #- /home/homeassistant/
   currency: AUD
@@ -490,8 +490,8 @@ lovelace:
       show_in_sidebar: true
       require_admin: false
 
-weather:
-  # - platform: darksky
+weather: []
+  # - trigger: darksky
   #   api_key: !secret darksky_key
   #   latitude: !secret darksky_lat
   #   longitude: !secret darksky_long

@@ -3,10 +3,10 @@
   alias: Set MyAir Mode Selector
   initial_state: True
   trigger:
-    platform: state
-    entity_id: sensor.myair_mode
-  action:
-    service: input_select.select_option
+    - trigger: state
+      entity_id: sensor.myair_mode
+  actions:
+    action: input_select.select_option
     entity_id: input_select.myair_modeselect
     data_template:
       option: '{{ states.sensor.myair_mode.state }}'
@@ -15,10 +15,10 @@
   alias: Set MyAir AC mode
   initial_state: True
   trigger:
-    entity_id: input_select.myair_modeselect
-    platform: state
-  action:
-    - service: shell_command.myair_setcmd
+    - trigger: state
+      entity_id: input_select.myair_modeselect
+  actions:
+    - action: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22mode%22:%22{{ states.input_select.myair_modeselect.state }}%22%7D%7D%7D'
 
@@ -27,10 +27,10 @@
   alias: Set MyAir Fan Selector
   initial_state: True
   trigger:
-    platform: state
-    entity_id: sensor.myair_fanspeed
-  action:
-    service: input_select.select_option
+    - trigger: state
+      entity_id: sensor.myair_fanspeed
+  actions:
+    action: input_select.select_option
     entity_id: input_select.myair_fanselect
     data_template:
       option: '{{ states.sensor.myair_fanspeed.state }}'
@@ -38,10 +38,10 @@
   alias: Set MyAir AC fan
   initial_state: True
   trigger:
-    entity_id: input_select.myair_fanselect
-    platform: state
-  action:
-    - service: shell_command.myair_setcmd
+    - trigger: state
+      entity_id: input_select.myair_fanselect
+  actions:
+    - action: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22fan%22:%22{{ states.input_select.myair_fanselect.state }}%22%7D%7D%7D'
 
@@ -50,16 +50,16 @@
   alias: Set MyAir Temp Selector
   initial_state: True
   trigger:
-    platform: state
-    entity_id: sensor.myair_settemp
+    - trigger: state
+      entity_id: sensor.myair_settemp
   condition:
     condition: not
     conditions:
       - condition: state
         entity_id: sensor.myair_settemp
         state: 'unavailable'
-  action:
-    service: input_number.set_value
+  actions:
+    action: input_number.set_value
     entity_id: input_number.myair_inputsettemp
     data_template:
       value: '{{ states.sensor.myair_settemp.state }}'
@@ -67,10 +67,10 @@
   alias: Set MyAir AC Temp
   initial_state: True
   trigger:
-    entity_id: input_number.myair_inputsettemp
-    platform: state
-  action:
-    - service: shell_command.myair_setcmd
+    - trigger: state
+      entity_id: input_number.myair_inputsettemp
+  actions:
+    - action: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22setTemp%22:%22{{ states.input_number.myair_inputsettemp.state }}%22%7D%7D%7D'
 
@@ -78,20 +78,20 @@
 - id: setmyairzoneairflow
   alias: Set MyAir Zone Airflow
   trigger:
-    entity_id: input_number.myair_zone1,input_number.myair_zone2,input_number.myair_zone3,input_number.myair_zone4,input_number.myair_zone5,input_number.myair_zone6
-    platform: state
-  action:
-    - service: shell_command.myair_setcmd
+    - trigger: state
+      entity_id: input_number.myair_zone1,input_number.myair_zone2,input_number.myair_zone3,input_number.myair_zone4,input_number.myair_zone5,input_number.myair_zone6
+  actions:
+    - action: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22zones%22:%7B%22{{ trigger.entity_id|replace("input_number.myair_zone","z0") }}%22:%7B%22value%22:%22{{ trigger.to_state.state | int }}%22%7D%7D%7D%7D'
-    - service: homeassistant.update_entity
+    - action: homeassistant.update_entity
       data:
           entity_id: sensor.myair
 
 - id: setmyairzoneflowselector
   alias: Set MyAir Zone Airflow Selector
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: sensor.myair_zone1_cover,sensor.myair_zone2_cover,sensor.myair_zone3_cover,sensor.myair_zone4_cover,sensor.myair_zone5_cover,sensor.myair_zone6_cover
   condition:
     condition: not
@@ -99,8 +99,8 @@
       - condition: state
         entity_id: sensor.myair_zone1_cover,sensor.myair_zone2_cover,sensor.myair_zone3_cover,sensor.myair_zone4_cover,sensor.myair_zone5_cover,sensor.myair_zone6_cover
         state: 'unavailable'
-  action:
-    service: input_number.set_value
+  actions:
+    action: input_number.set_value
     data_template:
       entity_id: '{{ trigger.entity_id | replace("sensor.","input_number.") | replace("_cover","") }}'
       value: >
@@ -129,13 +129,13 @@
   alias: Set MyAir Start Timer
   initial_state: True
   trigger:
-    entity_id: input_number.myair_starttimer
-    platform: state
+    - trigger: state
+      entity_id: input_number.myair_starttimer
   condition:    
     condition: template
     value_template: "{{ states('sensor.myair_start_timer') | float  != states('input_number.myair_starttimer') | float }}"
-  action:
-    - service: shell_command.myair_setcmd
+  actions:
+    - action: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOn%22:%22{{ states.input_number.myair_starttimer.state }}%22%7D%7D%7D'
 
@@ -144,13 +144,13 @@
   alias: Set MyAir Stop Timer
   initial_state: True
   trigger:
-    entity_id: input_number.myair_stoptimer
-    platform: state
+    - trigger: state
+      entity_id: input_number.myair_stoptimer
   condition:    
     condition: template
     value_template: "{{ states('sensor.myair_stop_timer') | float  != states('input_number.myair_stoptimer') | float }}"
-  action:
-    - service: shell_command.myair_setcmd
+  actions:
+    - action: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%22{{ states.input_number.myair_stoptimer.state }}%22%7D%7D%7D'
 
@@ -158,10 +158,10 @@
 - id: setmyairzonetimeselector
   alias: Set MyAir Zone Timer Selector
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: sensor.myair_start_timer,sensor.myair_stop_timer
-  action:
-    service: input_number.set_value
+  actions:
+    action: input_number.set_value
     data_template:
       entity_id: '{{ trigger.entity_id | replace("sensor.","input_number.") | replace("_timer","timer") }}'
       value: >
@@ -176,7 +176,7 @@
   alias: Set Air conditioner stop timer to 90 mins when it is turned on
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: sensor.myair_state
       from: 'off'
       to: 'on'
@@ -188,8 +188,8 @@
       - condition: state
         entity_id: input_boolean.aircon_off_timer_auto
         state: 'on'
-  action:
-    - service: shell_command.myair_setcmd
+  actions:
+    - action: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2290%22%7D%7D%7D'
 
@@ -198,7 +198,7 @@
   alias: Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set - second try
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: switch.myair_power
       to: 'on'
       for:
@@ -212,8 +212,8 @@
       - condition: state
         entity_id: sensor.myair_stop_timer
         state: '0'
-  action:
-    - service: shell_command.myair_setcmd
+  actions:
+    - action: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2287%22%7D%7D%7D'
 
@@ -222,7 +222,7 @@
   alias: Set MyAir Stop Timer to 90 when air con Switch is turned on but stop timer still not set - third try
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: switch.myair_power
       to: 'on'
       for:
@@ -236,8 +236,8 @@
       - condition: state
         entity_id: sensor.myair_stop_timer
         state: '0'
-  action:
-    - service: shell_command.myair_setcmd
+  actions:
+    - action: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%2286%22%7D%7D%7D'
 
@@ -246,14 +246,14 @@
   alias: Reset Air Conditioner Stop Timer to 0 when the air conditioner is turned off  
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: sensor.myair_state
       from: 'on'
       to: 'off'
       for:
         seconds: 30
-  action:
-    - service: shell_command.myair_setcmd
+  actions:
+    - action: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22countDownToOff%22:%220%22%7D%7D%7D'
 
@@ -262,7 +262,7 @@
   alias: Turn on the Air Conditioner on Weekdays at 07:00 AM if the living temperature is below 19C
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '07:00:00'
   condition:
     condition: and
@@ -283,8 +283,8 @@
       - condition: numeric_state
         entity_id: sensor.living_espmulti_t
         below: 19
-  action:
-    - service : switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id: switch.air_conditioner
 
 # Alert when Air conditioner is left on for more than 1.75 hours. 
@@ -292,16 +292,16 @@
   alias: Alert when Air conditioner is left on for more than 1.75 hours
   initial_state: false
   trigger:
-    - platform: numeric_state
+    - trigger: numeric_state
       entity_id: sensor.myair_state_avg2hr
       above: 1.75
-  action:
-    - service: notify.phoneapps
+  actions:
+    - action: notify.phoneapps
       data_template:
         title: 'Air Conditioner running for 1.75 hours - Alert!'
         message:  'Air Conditioner is running for more than 1.75 hours at {{now().strftime("%Y%m%d-%H%M%S")}}'
         persistent: true 
-    - service: notify.sendgrid
+    - action: notify.sendgrid
       data_template:
         title: 'Air Conditioner is running for more than 1.75 hours {{now().strftime("%Y%m%d-%H%M%S")}}'
         message:  'Air Conditioner is running for more than 1.75 hours'
@@ -311,18 +311,18 @@
   alias: Alert when Air conditioner is left On for more than 3.75 hours
   initial_state: True
   trigger:
-    - platform: numeric_state
+    - trigger: numeric_state
       entity_id: sensor.myair_state_avg4hr
       above: 3.75
-  action:
-    # - service: shell_command.myair_setcmd
+  actions:
+    # - action: shell_command.myair_setcmd
     #   data_template:
     #     json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
-    - service: notify.phoneapps
+    - action: notify.phoneapps
       data_template:
         title: 'Air Conditioner is running for more than 3.75 hours - Turned off'
         message:  'Air Conditioner is running for more than 3.75 hours. It was automatically turned off. {{now().strftime("%Y%m%d-%H%M%S")}}'
-    - service: notify.sendgrid
+    - action: notify.sendgrid
       data_template:
         title: 'Air Conditioner is running for more than 3.75 hours. It was automatically turned off. {{now().strftime("%Y%m%d-%H%M%S")}}'
         message:  'Air Conditioner is running for more than 3.75 hours. It was automatically turned off.'
@@ -332,7 +332,7 @@
   alias: Alert and Turn off air conditioner if it is left On when the house alarm is on (After leaving home)
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: switch.housealarm
       to: 'on'
       for:
@@ -341,15 +341,15 @@
     condition: state
     entity_id: sensor.myair_state
     state: 'on'
-  action:
-    - service: shell_command.myair_setcmd
+  actions:
+    - action: shell_command.myair_setcmd
       data_template:
         json: '%7B%22ac1%22:%7B%22info%22:%7B%22state%22:%22off%22%7D%7D%7D'
-    - service: notify.phoneapps
+    - action: notify.phoneapps
       data_template:
         title: 'Air Conditioner was left turned on with House alarm'
         message:  'Air Conditioner was running when the house alarm was turned on at {{now().strftime("%Y%m%d-%H%M%S")}}. It was turned off automatically.'
-    - service: notify.sendgrid
+    - action: notify.sendgrid
       data_template:
         title: 'Air Conditioner was running when the house alarm was turned on {{now().strftime("%Y%m%d-%H%M%S")}}'
         message:  'Air Conditioner was running when the house alarm was turned on. It was turned off automatically.'
@@ -359,24 +359,24 @@
   alias: Turn off all lights when the house alarm is turned on (After leaving home)
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: switch.housealarm
       to: 'on'
       for:
         minutes: 2
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
 
 # TEST - plex seven news play - not working and still trialing
 - id: plexplay
   alias: plex seven news play
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: switch.myair_zone6
       to: 'on'
-  action:
-    - service: media_player.play_media
+  actions:
+    - action: media_player.play_media
       entity_id: media_player.living_room
       data:
         media_content_id: '{ \"library_name\" : \"TV Shows\", \"show_name\" : \"Seven News\", \"season_number\" : 2019, \"episode_number\" : \"04-23\", \"shuffle\": \"0\" }'
@@ -385,61 +385,61 @@
 # Send Alerts from Xiaomi Motion and Door sensors when the house is Armed
 - id: xiaomi_alerts
   alias: Send Alerts from Xiaomi Motion and Door sensors when the house is Armed
-  trigger: 
+  triggers: 
     # Kitchen-M2  
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.kitchen_motion_zb_1
       to: 'on'
     # Bath-M
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.master_bath_motion_zb_1
       to: 'on'
     # Living-M
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.living_motion_zb_1
       to: 'on'
     # Main Door
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.main_entrance_door_zb
       to: 'on'
     # Garage-M2
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.garage_motion_zb_1
       to: 'on'
     # Loundry Door
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.laundry_door_zb
       to: 'on'
     # Office-M2
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.office_motion_zb_1
       to: 'on'
     # Master-M2
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.master_motion_zb
       to: 'on'
     # Alfresco-M
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.motion_sensor_158d0002b5eecd
       to: 'on'
     # Garage Entry door
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.garage_entrance_door_zb
       to: 'on'
     # Patio-M
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.patio_motion_zb_1
       to: 'on'
   condition:
     condition: state
     entity_id: switch.housealarm
     state: 'on'
-  action:
-    - service: notify.phoneapps
+  actions:
+    - action: notify.phoneapps
       data_template:
         title: 'Motion Detected {{now().strftime("%Y%m%d-%H%M%S")}}'
         message:  '{{ states[trigger.entity_id.split(".")[0]][ trigger.entity_id.split(".")[1]].name }}  has triggered'
-    - service: notify.sendgrid
+    - action: notify.sendgrid
       data_template:
         title: 'Motion Detected {{now().strftime("%Y%m%d-%H%M%S")}}'
         message:  '{{ states[trigger.entity_id.split(".")[0]][ trigger.entity_id.split(".")[1]].name }}  has triggered'
@@ -447,8 +447,8 @@
 # Turn on the Bath Light when there is motion
 - id: bathlighton
   alias: Turn on Bath Light when there is motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.master_bath_motion_zb_1
       to: 'on'
   condition:
@@ -467,8 +467,8 @@
       - condition: state
         entity_id: input_boolean.master_bath_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id:  light.master_bath_dimmer
       data_template:
         brightness_pct: >
@@ -481,16 +481,16 @@
 # Turn off the Bath Light when there's no Motion in shower and Bathroom
 - id: bathlightoff
   alias: Turn off Bath Light when there is no more motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.master_bath_motion_zb_1
       to: 'off'
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.master_bath_mlx90640_thermal_sensor
       to: 'off'
       for:
         seconds: 30
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.master_shower_motion_zb_1
       to: 'off'
       for:
@@ -516,50 +516,50 @@
       - condition: state
         entity_id: input_boolean.master_bath_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.master_bath_dimmer
 
 # Turn on the Pantry Light when the door open
 - id: pantrylighton
   alias: Turn on the Pantry Light when the door Open
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.pantry_door_zb
       to: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id:  light.pantry_light_mqtt
 
 # Turn off the pantry light when the door close
 - id: pantrylightoff
   alias: Turn off the Pantry Light when the door close
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.pantry_door_zb
       to: 'off'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.pantry_light_mqtt
 
 # Turn off the Pantry Light when the door open and left for more than 2 minutes
 - id: pantrylightofftimer
   alias: Turn off the Pantry Light when the door open and left for more than 2 minutes
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.pantry_door_zb
       to: 'on'
       for:
         minutes: 2
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.pantry_light_mqtt
 
 # Turn on the garage light then there is motion
 - id: garagelighton
   alias: Turn on Garage Light when there is motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.garage_motion
       to: 'on'
   condition:
@@ -579,15 +579,15 @@
         - condition: state
           entity_id: binary_sensor.garage_door_zb
           state: 'off'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.garage_dimmer
 
 # Turn on the garage light when the garage door close
 - id: garagelightongaragedoorclose
   alias: Turn on the garage light when the garage door close
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.garage_door_zb
       to: 'off'
   condition:
@@ -605,16 +605,16 @@
       - condition: state
         entity_id: input_boolean.garage_light_on_off_door_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.garage_dimmer
 
 
 # Turn off the garage light then there is no motion
 - id: garagelightoff
   alias: Turn off Garage Light when there is no motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.garage_motion
       to: 'off'
   condition:
@@ -629,15 +629,15 @@
       - condition: state
         entity_id: input_boolean.garage_light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.garage_dimmer
 
 # Turn off the garage light when the garage door open during day time
 - id: garagelightoffwithgaragedoor
   alias: Turn off the garage light when the garage door open during day time
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.garage_door_zb
       to: 'on'
       for: 
@@ -657,32 +657,32 @@
       - condition: state
         entity_id: input_boolean.garage_light_on_off_door_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.garage_dimmer
 
 # Turn off the garage light if it was one for more than 60 minutes
 - id: garagelightoff60min
   alias: Turn off the garage light if it was one for more than 60 minutes
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.garage_dimmer
       to: 'on'
       for: 
         minutes: 60
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.garage_dimmer
 
 
 # Turn on the Bath strip when there is motion in Master bedroom
 - id: bathstripon
   alias: Turn on Bath strip when there is motion in Master bedroom
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.master_bath_motion
       to: 'on'
-    # - platform: state
+    # - trigger: state
     #   entity_id: binary_sensor.master_motion
     #   to: 'on'
   condition:
@@ -694,18 +694,18 @@
       - condition: state
         entity_id: input_boolean.master_bath_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id:  light.bath_strip_mqtt
 
 # Turn off the Bath strip when there's no Motion in master bedroom
 - id: bathstripoff
   alias: Turn off Bath Strip when there is no more motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.master_bath_motion
       to: 'off'
-    # - platform: state
+    # - trigger: state
     #   entity_id: binary_sensor.master_motion_zb
     #   to: 'off'
   condition:
@@ -723,16 +723,16 @@
       - condition: state
         entity_id: input_boolean.master_bath_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.bath_strip_mqtt
 
 
 # Turn on the Master Bed strip when there is motion in Master bedroom
 - id: masterbedstripon
   alias: Turn on Master Bed strip when there is motion in Master bedroom
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.master_bath_motion
       to: 'on'
   condition:
@@ -747,15 +747,15 @@
       - condition: state
         entity_id: sun.sun
         state: 'below_horizon'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.master_bed_strip_mqtt
 
 # Turn off the Master Bed strip when there's no Motion in master bedroom
 - id: masterbedstripoff
   alias: Turn off Master Bed Strip when there is no more motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.master_bath_motion
       to: 'off'
   condition:
@@ -767,16 +767,16 @@
       - condition: state
         entity_id: input_boolean.master_bath_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.master_bed_strip_mqtt
 
 
 # Alert if any door was left open everyday at 10pm
 - id: dailydooropenalert
   alias: Alert if any door was left open everyday at 10pm
-  trigger: 
-    - platform: time
+  triggers: 
+    - trigger: time
       at: '22:00:00'
   condition:
     condition: or
@@ -801,12 +801,12 @@
       - condition: state
         entity_id: binary_sensor.garage_entrance_door_zb
         state: 'on' 
-  action:
-    - service: notify.phoneapps
+  actions:
+    - action: notify.phoneapps
       data_template:
         title: 'A door was left open at 10pm today - Please check!'
         message: '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-    - service: notify.sendgrid
+    - action: notify.sendgrid
       data_template:
         title: '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
@@ -816,26 +816,26 @@
 # # Alert if the Garage door was left open for more than 30 minutes
 # - id: garagedoor30mins
 #   alias: Alert if the Garage door was left open for more than 30 minutes
-#   trigger: 
-#     - platform: state
+#   triggers: 
+#     - trigger: state
 #       entity_id: binary_sensor.garage_door_sensor
 #       to: 'on'
 #       for:
 #         minutes: 30
-#   action:
-#     - service: script.turn_on
+#   actions:
+#     - action: script.turn_on
 #       target:
 #         entity_id: script.send_snapshot_garage
 #       data:
 #         variables:
 #           title: 'Garage Door 30 minutes Alert!'
 #           message: 'Garage door was left open for more than 30 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-#     - service: script.turn_on
+#     - action: script.turn_on
 #       entity_id: script.sonos_warning
 #       data:
 #         variables:
 #           message: 'Warning! Garage door was left open for more than 30 minutes. Please check.'
-#     - service: notify.sendgrid
+#     - action: notify.sendgrid
 #       data_template:
 #         title: 'Garage Door was left open for more than 30 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
 #         message:  'Garage door was left open for more than 30 minutes'
@@ -843,26 +843,26 @@
 # # Alert if the Garage door was left open for more than 60 minutes
 # - id: garagedoor60mins
 #   alias: Alert if the Garage door was left open for more than 60 minutes
-#   trigger: 
-#     - platform: state
+#   triggers: 
+#     - trigger: state
 #       entity_id: binary_sensor.garage_door_sensor
 #       to: 'on'
 #       for:
 #         minutes: 60
-#   action:
-#     - service: script.turn_on
+#   actions:
+#     - action: script.turn_on
 #       target:
 #         entity_id: script.send_snapshot_garage
 #       data:
 #         variables:
 #           title: 'Garage Door 60 minutes Alert!'
 #           message: 'Garage door was left open for more than 60 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-#     - service: script.turn_on
+#     - action: script.turn_on
 #       entity_id: script.sonos_warning
 #       data:
 #         variables:
 #           message: 'Warning! Garage door was left open for more than 60 minutes. Please check.'
-#     - service: notify.sendgrid
+#     - action: notify.sendgrid
 #       data_template:
 #         title: 'Garage Door was left open for more than 60 minutes - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
 #         message:  'Garage door was left open for more than 60 minutes'
@@ -870,26 +870,26 @@
 # # Alert if the Garage door was left open for more than 120 minutes
 # - id: garagedoor120mins
 #   alias: Alert if the Garage door was left open for more than 120 minutes
-#   trigger: 
-#     - platform: state
+#   triggers: 
+#     - trigger: state
 #       entity_id: binary_sensor.garage_door_sensor
 #       to: 'on'
 #       for:
 #         minutes: 120
-#   action:
-#     - service: script.turn_on
+#   actions:
+#     - action: script.turn_on
 #       target:
 #         entity_id: script.send_snapshot_garage
 #       data:
 #         variables:
 #           title: 'Garage Door 2 hour Alert!'
 #           message: 'Garage door was left open for more than 2 hours- {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-#     - service: script.turn_on
+#     - action: script.turn_on
 #       entity_id: script.sonos_warning
 #       data:
 #         variables:
 #           message: 'Warning! Garage door was left open for more than 2 hours. Please check.'
-#     - service: notify.sendgrid
+#     - action: notify.sendgrid
 #       data_template:
 #         title: 'Garage Door was left open for more than 2 hours - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
 #         message:  'Garage door was left open for more than 2 hours'
@@ -897,26 +897,26 @@
 # # Alert if the Garage door was left open for more than 240 minutes
 # - id: garagedoor240mins
 #   alias: Alert if the Garage door was left open for more than 4 hours
-#   trigger: 
-#     - platform: state
+#   triggers: 
+#     - trigger: state
 #       entity_id: binary_sensor.garage_door_sensor
 #       to: 'on'
 #       for:
 #         minutes: 240
-#   action:
-#     - service: script.turn_on
+#   actions:
+#     - action: script.turn_on
 #       target:
 #         entity_id: script.send_snapshot_garage
 #       data:
 #         variables:
 #           title: 'Garage Door 4 hour Alert!'
 #           message: 'Garage door was left open for more than 4 hours- {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-#     - service: script.turn_on
+#     - action: script.turn_on
 #       entity_id: script.sonos_warning
 #       data:
 #         variables:
 #           message: 'Warning! Garage door was left open for more than 4 hours. Please check.'
-#     - service: notify.sendgrid
+#     - action: notify.sendgrid
 #       data_template:
 #         title: 'Garage Door was left open for more than 4 hours - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
 #         message:  'Garage door was left open for more than 4 hours'
@@ -924,8 +924,8 @@
 # Turn on the Front Outdoor light for 2 mins then there the garage door open
 - id: frontoutdoorgaragelight
   alias: Turn on the Front Outdoor light for 2 mins then there the garage door open
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.garage_door_zb
       to: 'on'
       for: 
@@ -942,15 +942,15 @@
       - condition: state
         entity_id: input_boolean.frontoutdoor_light_on_off_auto
         state: 'on'
-  action:
-    - service : script.turn_on
+  actions:
+    - action: script.turn_on
       entity_id: script.garagelight
 
 # Turn off the Front Outdoor light after 5 hours 
 - id: frontoutdoorgaragelightoff
   alias: Turn on the Front Outdoor light for 2 mins then there the garage door open
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.front_outdoor_light
       to: 'on'
       for: 
@@ -964,19 +964,19 @@
       - condition: state
         entity_id: input_boolean.frontoutdoor_light_on_off_auto
         state: 'on'
-  action:
-    - service : light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.front_outdoor_light
 
 
 # Turn on house alarm based on device tracker - Arm when every one is out of the house.
 - id: turnonhousealarmbasedondevicetracker
   alias: Turn on house alarm based on device tracker
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: device_tracker.oneplus7t
       to: 'not_home'
-    - platform: state
+    - trigger: state
       entity_id: device_tracker.madhushi_iphone_xs
       to: 'not_home'
   condition:
@@ -994,18 +994,18 @@
       - condition: state
         entity_id: input_boolean.housealarm_auto
         state: 'on'
-  action:
-    - service : switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id: switch.housealarm
 
 # Turn off house alarm based on device tracker - Unarm when anyone is back at home
 - id: turnoffhousealarmbasedondevicetracker
   alias: Turn off house alarm based on device tracker
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: device_tracker.oneplus7t
       to: 'home'
-    - platform: state
+    - trigger: state
       entity_id: device_tracker.madhushi_iphone_xs
       to: 'home'
   condition:
@@ -1025,14 +1025,14 @@
         - condition: state
           entity_id: device_tracker.madhushi_iphone_xs
           state: 'home'
-  action:
-    - service : switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.housealarm
 
 # # Toggle Alfresco Music Play with Alfresco Xiaomi push button
 # - id: togglealfrescomusicplaypushbutton
 #   alias: Toggle Alfresco Music Play with Alfresco Xiaomi push button
-#   trigger: 
+#   triggers: 
 #     platform: event
 #     event_type: xiaomi_aqara.click
 #     event_data:
@@ -1042,14 +1042,14 @@
 #     condition: state
 #     entity_id: input_boolean.alfresco_button
 #     state: 'on'
-#   action:
+#   actions:
 #     - service : script.turn_on
 #       entity_id: script.sonos_alfresco_play
 
 # # Jump to Next track in Alfresco Music Play when Alfresco Xiaomi push button double press is detected
 # - id: nextrackalfrescomusicplaydoublepushbutton
 #   alias: Jump to Next track in Alfresco Music Play when Alfresco Xiaomi push button double press is detected
-#   trigger: 
+#   triggers: 
 #     platform: event
 #     event_type: xiaomi_aqara.click
 #     event_data:
@@ -1059,14 +1059,14 @@
 #     condition: state
 #     entity_id: input_boolean.alfresco_button
 #     state: 'on'
-#   action:
-#     service: media_player.media_next_track
+#   actions:
+#     action: media_player.media_next_track
 #     entity_id: media_player.alfresco
 
 # # Toggle Alfresco Automation with Alfresco Xiaomi push button long press
 # - id: togglealfrescoautomationpushbutton
 #   alias: Toggle Alfresco Automation with Alfresco Xiaomi push button long press
-#   trigger: 
+#   triggers: 
 #     platform: event
 #     event_type: xiaomi_aqara.click
 #     event_data:
@@ -1076,55 +1076,55 @@
 #     condition: state
 #     entity_id: input_boolean.alfresco_button
 #     state: 'on'
-#   action:
-#     - service: input_boolean.toggle
+#   actions:
+#     - action: input_boolean.toggle
 #       data:
 #         entity_id: input_boolean.alfresco_motion_music
-#     - service: input_boolean.toggle
+#     - action: input_boolean.toggle
 #       data:
 #         entity_id: input_boolean.alfresco_motion_light
 
 # Toggle Office Light with Alfresco Xiaomi push button
 - id: toggleofficelightpushbutton
   alias: Toggle Office Light with Alfresco Xiaomi push button
-  trigger: 
-    - device_id: 0df9d2a2068243697a431274c6b8120a
+  triggers: 
+    - trigger: device
+      device_id: 0df9d2a2068243697a431274c6b8120a
       discovery_id: office_button_zb_1 action_single
       domain: mqtt
-      platform: device
       subtype: single
       type: action
   condition:
     condition: state
     entity_id: input_boolean.office_button
     state: 'on'
-  action:
-    - service : light.toggle
+  actions:
+    - action: light.toggle
       entity_id: light.office_dimmer
 
 # Toggle Office flash light with Alfresco Xiaomi push double button
 - id: toggleofficeflashlightpushdoublebutton
   alias: Toggle Office flash light with Alfresco Xiaomi push double button
-  trigger: 
-    - device_id: 0df9d2a2068243697a431274c6b8120a
+  triggers:
+    - trigger: device
+      device_id: 0df9d2a2068243697a431274c6b8120a
       discovery_id: office_button_zb_1 action_double
       domain: mqtt
-      platform: device
       subtype: double
       type: action
   condition:
     condition: state
     entity_id: input_boolean.office_button
     state: 'on'
-  action:
-    - service : switch.toggle
+  actions:
+    - action: switch.toggle
       entity_id: switch.smartplug8
 
 # Turn on Alfresco Music Play with Alfresco Motion
 - id: turnonalfrescomusicplaywithmotion
   alias: Turn on Alfresco Music Play with Alfresco Motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.frigate_alfresco_camera
       to: 'on'
   condition:
@@ -1143,20 +1143,20 @@
       - condition: state
         entity_id: switch.nightmood
         state: 'off'
-  action:
-    - service : script.turn_on
+  actions:
+    - action: script.turn_on
       entity_id: script.sonos_alfresco_play
 
 # Turn off Alfresco Music Play with Alfresco No Motion for 3 mins
 - id: turnoffalfrescomusicplaywithnomotion
   alias: Turn off Alfresco Music Play with Alfresco No Motion for 3 mins
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.motion_sensor_158d0002b5eecd
       to: 'off'
       for: 
         minutes: 3
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.frigate_alfresco_camera
       to: 'off'
       for:
@@ -1178,15 +1178,15 @@
       - condition: state
         entity_id: binary_sensor.motion_sensor_158d0002b5eecd
         state: 'off'
-  action:
-    service: media_player.media_pause
+  actions:
+    action: media_player.media_pause
     entity_id: media_player.alfresco
 
 # Turn on Alfresco light with 50% when there is motion in Alfresco
 - id: turnonalfrescolightwithmotion
   alias: Turn on Alfresco light with 50% when there is motion in Alfresco
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.motion_sensor_158d0002b5eecd
       to: 'on'
   condition:
@@ -1212,8 +1212,8 @@
       - condition: numeric_state
         entity_id: sensor.illumination_158d0002b5eecd
         below: 20
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       data:
         entity_id: light.alfresco_dimmer
         brightness_pct: 50
@@ -1221,13 +1221,13 @@
 # Turn off the Alfresco Light when there is no motion 
 - id: alfrescolightoffnomotion
   alias: Turn off the Alfresco Light when there is no motion 
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.motion_sensor_158d0002b5eecd
       to: 'off'
       for:
         minutes: 3
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.frigate_alfresco_camera
       to: 'off'
       for:
@@ -1252,27 +1252,27 @@
       - condition: state
         entity_id: binary_sensor.motion_sensor_158d0002b5eecd
         state: 'off'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.alfresco_dimmer
 
 # Alert if the Alfresco Sonos was playing for more than 2 hours
 - id: alfrescosonos2hr
   alias: Alert if the Alfresco Sonos was playing for more than 2 hours
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: media_player.alfresco
       to: 'playing'
       for:
         hours: 2
-  action:
-    - service: media_player.media_pause
+  actions:
+    - action: media_player.media_pause
       entity_id: media_player.alfresco
-    - service: notify.phoneapps
+    - action: notify.phoneapps
       data_template:
         title: 'Alfresco Music was playing for more than 2 hours.'
         message:  'Alfresco Music was playing for more than 2 hours at  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-    - service: notify.sendgrid
+    - action: notify.sendgrid
       data_template:
         title: 'Alfresco Music was playing for more than 2 hours - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Alfresco Music was playing for more than 2 hours'
@@ -1280,20 +1280,20 @@
 # Alert and Turn off if the Alfresco Sonos was playing for more than 4 hours
 - id: alfrescosonos4hrs
   alias: Alert and Turn off if the Alfresco Sonos was playing for more than 4 hours
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: media_player.alfresco
       to: 'playing'
       for:
         hours: 4
-  action:
-    - service: media_player.media_pause
+  actions:
+    - action: media_player.media_pause
       entity_id: media_player.alfresco
-    - service: notify.phoneapps
+    - action: notify.phoneapps
       data_template:
         title: 'Alfresco Music was playing for more than 4 hours - Turned off'
         message:  'Alfresco Music was playing for more than 4 hours. It was turned off. {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-    - service: notify.sendgrid
+    - action: notify.sendgrid
       data_template:
         title: 'Alfresco Music was playing for more than 4 hours - Turned off - {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  'Alfresco Music was playing for more than 4 hours. It was turned off'
@@ -1302,8 +1302,8 @@
 # Turn on the Office light then there is motion
 - id: officelightonmotion
   alias: Turn on Office Light when there is motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.office_motion
       to: 'on'
   condition:
@@ -1324,23 +1324,23 @@
       - condition: state
         entity_id: input_boolean.office_light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.office_dimmer
 
 # Turn off the Office Light when there is no motion 
 - id: officelightoff
   alias: Turn off Office Light when there is no motion 
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.office_motion
       to: 'off'
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.person_detected
       to: 'off'
       for:
         minutes: 2
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.frigate_office_desk_camera
       to: 'off'
       for:
@@ -1366,19 +1366,19 @@
       - condition: state
         entity_id: input_boolean.office_light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.office_dimmer
 
 # Turn off the Master Light when there is no motion for more than 5 minutes
 - id: masterlightoff5min
   alias: Turn off Master Light when there is no motion for more than 5 minutes
-  trigger: 
-    platform: state
-    entity_id: group.master_motion
-    to: 'off'
-    for: 
-      minutes: 5
+  triggers: 
+    - trigger: state
+      entity_id: group.master_motion
+      to: 'off'
+      for: 
+        minutes: 5
   condition:
     condition: and
     conditions: 
@@ -1391,15 +1391,15 @@
       - condition: state
         entity_id: input_boolean.master_light_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.master_dimmer
 
 # Turn on the Kitchen light when there is motion based on light and sunset
 - id: kitchenlightonmotion
   alias: Turn on the Kitchen light then there is motion based on light and sunset
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.kitchen_motion
       to: 'on'
   condition:
@@ -1417,10 +1417,10 @@
       # - condition: numeric_state
       #   entity_id: sensor.0x00158d0002c716b6_illuminance_lux
       #   below: 50
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id:  light.kitchen_dimmer
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.kitchen_light_onoff_auto
 
 
@@ -1428,12 +1428,12 @@
 - id: kitchenlightoff7min
   alias: Turn off Kitchen Light when there is no motion for more than 7 minutes
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: group.kitchen_motion
       to: 'off'
       for:
         minutes: 5
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.frigate_living_camera
       to: 'off'
       for:
@@ -1455,10 +1455,10 @@
       - condition: state
         entity_id: group.kitchen_motion
         state: 'off'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.kitchen_dimmer
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.kitchen_light_onoff_auto
 
 
@@ -1466,12 +1466,12 @@
 - id: livinglightoff4min
   alias: Turn off Living Light when there is no motion for more than 4 minutes
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: group.living_kitchen_motion
       to: 'off'
       for:
         minutes: 4
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.frigate_living_camera
       to: 'off'
       for:
@@ -1493,17 +1493,17 @@
       - condition: state
         entity_id: group.living_kitchen_motion
         state: 'off'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.living_dimmer
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.living_light_onoff_auto
 
 # Turn on the Living light when there is motion
 - id: turnonlivinglightonmotion
   alias: Turn on the Living light then there is motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.living_kitchen_motion
       to: 'on'
   condition:
@@ -1521,23 +1521,23 @@
       # - condition: numeric_state
       #   entity_id: sensor.0x00158d0002c716b6_illuminance_lux
       #   below: 50
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id:  light.living_dimmer
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.living_light_onoff_auto
 
 
 # Turn off the Office AC Vent when there is no motion for more than 5 minutes in the office
 - id: officeacoff10min
   alias: Turn off Office vent when there is no motion for more than 5 minutes
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.office_motion
       to: 'off'
       for: 
         minutes: 5
-    - platform: state
+    - trigger: state
       entity_id: switch.myair_power
       from: 'off'
       to: 'on'
@@ -1561,20 +1561,20 @@
       - condition: state
         entity_id: input_boolean.office_aircon_vent_on_off_auto
         state: 'on'
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id:  switch.myair_zone2
 
 # Turn On the Office AC Vent when there is motion for more than 3 minutes in the office
 - id: officeacon3min
   alias: Turn on Office vent when there is motion for more than 3 minutes
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.office_motion
       to: 'on'
       for: 
         minutes: 3
-    - platform: state
+    - trigger: state
       entity_id: switch.myair_power
       from: 'off'
       to: 'on'
@@ -1598,8 +1598,8 @@
       - condition: state
         entity_id: input_boolean.office_aircon_vent_on_off_auto
         state: 'on'
-  action:
-    - service: switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id:  switch.myair_zone2
 
 
@@ -1608,7 +1608,7 @@
   alias: Turn on the living mood lights after sunset if there is motion in living and kitchen
   initial_state: True
   trigger:
-    - platform: sun
+    - trigger: sun
       event: sunset
   condition:
     condition: and
@@ -1625,17 +1625,17 @@
       - condition: state
         entity_id: light.living_mood_lights
         state: 'off'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.dining_table_lamp_mqtt
-    - service: light.turn_on
+    - action: light.turn_on
       entity_id: light.living_floor_lamp_mqtt
-    - service: light.turn_on
+    - action: light.turn_on
       entity_id: light.living_tv_strip_mqtt
-    - service: light.turn_on
+    - action: light.turn_on
       entity_id: light.kitchen_strip_mqtt
 # Christmas light     
-    - service: switch.turn_on
+    - action: switch.turn_on
       entity_id: switch.smartplug9
 
 
@@ -1644,10 +1644,10 @@
   alias: Turn on the living mood light (light strips and lamps) when there is motion in kitchen/living and when time is between sunset and midnight. 
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: group.living_kitchen_motion
       to: 'on'
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.entry_hallway_motion_zb_1
       to: 'on'
   condition:
@@ -1666,17 +1666,17 @@
       - condition: state
         entity_id: light.living_mood_lights
         state: 'off'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.dining_table_lamp_mqtt
-    - service: light.turn_on
+    - action: light.turn_on
       entity_id: light.living_floor_lamp_mqtt
-    - service: light.turn_on
+    - action: light.turn_on
       entity_id: light.living_tv_strip_mqtt
-    - service: light.turn_on
+    - action: light.turn_on
       entity_id: light.kitchen_strip_mqtt
 # Christmas light  
-    - service: switch.turn_on
+    - action: switch.turn_on
       entity_id: switch.smartplug9
 
 # Turn off the living mood dim lights at mid night
@@ -1684,9 +1684,9 @@
   alias: Turn off the living mood dim light at midnight
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '23:58:59'
-    - platform: state
+    - trigger: state
       entity_id: group.living_kitchen_motion
       to: 'off'
       for:
@@ -1714,62 +1714,62 @@
           - condition: state
             entity_id: light.kitchen_strip_mqtt
             state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.dining_table_lamp_mqtt
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.living_floor_lamp_mqtt
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.living_tv_strip_mqtt
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.kitchen_strip_mqtt
 # Christmast light
-    - service: switch.turn_off
+    - action: switch.turn_off
       entity_id: switch.smartplug9
 
 # Turn off the Living Sonos (if playing) when the TV is switched on
 - id: turnofflivingsonoswhentvon
   alias: Turn off the Living Sonos (if playing) when the TV is switched on
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: media_player.samsungtv_ade6ef96_9365_40cb_b442_7cfbb076d128
       to: 'on'
   condition:
     condition: state
     entity_id: media_player.living
     state: 'playing'
-  action:
-    service: media_player.media_play_pause
+  actions:
+    action: media_player.media_play_pause
     entity_id: media_player.living
 
 
 # Play Sienna Youtube when Xiaomi Living push button is single pressed
 - id: siennayoutubelivingpushbuttonsingle
   alias: Play Sienna Youtube when Xiaomi Living push button is single pressed
-  trigger: 
-    - device_id: 1e62bbc69e1738b2a657a34ba218ef59
+  triggers: 
+    - trigger: device
+      device_id: 1e62bbc69e1738b2a657a34ba218ef59
       discovery_id: kitchen_button_zb_1 action_single
       domain: mqtt
-      platform: device
       subtype: single
       type: action
-  action:
-    - service : script.turn_on
+  actions:
+    - action: script.turn_on
       entity_id: script.youtube_sienna
 
 
 # Play Sienna Youtube when Xiaomi Living push button is double pressed
 - id: siennayoutubelivingpushbuttondouble
   alias: Play Sienna Youtube when Xiaomi Living push button is double pressed
-  trigger: 
-    - device_id: 1e62bbc69e1738b2a657a34ba218ef59
+  triggers: 
+    - trigger: device
+      device_id: 1e62bbc69e1738b2a657a34ba218ef59
       discovery_id: kitchen_button_zb_1 action_double
       domain: mqtt
-      platform: device
       subtype: double
       type: action
-  action:
-    - service : media_player.play_media
+  actions:
+    - action: media_player.play_media
       entity_id: media_player.living_tv
       data:
         media_content_type: cast
@@ -1782,30 +1782,30 @@
 # Toggle TV Power when Living push button is long pressed
 - id: executetvtogglepushbuttonlong
   alias: Toggle TV Power when Living push button is long pressed
-  trigger: 
-    - device_id: 1e62bbc69e1738b2a657a34ba218ef59
+  triggers: 
+    - trigger: device
+      device_id: 1e62bbc69e1738b2a657a34ba218ef59
       discovery_id: kitchen_button_zb_1 action_hold
       domain: mqtt
-      platform: device
       subtype: hold
       type: action
-  action:
-    - service : script.turn_on
+  actions:
+    - action: script.turn_on
       entity_id: script.toggle_tv
 
 
 # Alarm when Xiaomi Master push button is single pressed (Baby help)
 - id: alarmmasterpushbutton
   alias: Alarm when Xiaomi Master push button is single pressed (Baby help)
-  trigger: 
-    - device_id: 3e6bfa4cc0dcdfe87afee2ade6670ebd
+  triggers:
+    - trigger: device
+      device_id: 3e6bfa4cc0dcdfe87afee2ade6670ebd
       discovery_id: vaporiser_button_zb_1 action_single
       domain: mqtt
-      platform: device
       subtype: single
       type: action
-  action:
-    - service : script.turn_on
+  actions:
+    - action: script.turn_on
       entity_id: script.sonos_alarm_bell
 
 
@@ -1813,31 +1813,31 @@
 # Turn off master light and turn on pendant light when master push button is double pressed 
 - id: masterlightdoublepushbutton
   alias: Turn off master light and turn on pendant light when master push button is double pressed 
-  trigger: 
-    - device_id: 3e6bfa4cc0dcdfe87afee2ade6670ebd
+  triggers: 
+    - trigger: device
+      device_id: 3e6bfa4cc0dcdfe87afee2ade6670ebd
       discovery_id: vaporiser_button_zb_1 action_double
       domain: mqtt
-      platform: device
       subtype: double
       type: action
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.master_pendant
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.master_dimmer
 
 # Toggle Vaporizer when Living push button is long pressed
 - id: executeleavingworkflowpushbuttonlong
   alias: Toggle Vaporizer when Living push button is long pressed
-  trigger: 
-    - device_id: 3e6bfa4cc0dcdfe87afee2ade6670ebd
+  triggers: 
+    - trigger: device
+      device_id: 3e6bfa4cc0dcdfe87afee2ade6670ebd
       discovery_id: vaporiser_button_zb_1 action_hold
       domain: mqtt
-      platform: device
       subtype: hold
       type: action
-  action:
-    - service : switch.toggle
+  actions:
+    - action: switch.toggle
       entity_id: switch.smartplug2
 
 
@@ -1845,51 +1845,51 @@
 - id: turnoffvaparizerafter3hr
   alias: Turn off Vaporizer after three hours
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: switch.smartplug2
       to: 'on'
       for:
         hours: 3
-  action:
-    - service : switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.smartplug2
 
 # # Toggle Living Mood lights when Xiaomi Living push button is single pressed
 # - id: togglelivingmoodlightspushbutton
 #   alias: Toggle Living Mood lights when Xiaomi Living push button is single pressed
-#   trigger: 
+#   triggers: 
 #     platform: event
 #     event_type: xiaomi_aqara.click
 #     event_data:
 #       entity_id: binary_sensor.switch_158d000323d424
 #       click_type: single
-#   action:
-#     service: light.toggle
+#   actions:
+#     action: light.toggle
 #     entity_id: light.living_mood_lights
 
 # # Toggle Living Sonos when Xiaomi Living push button is double pressed
 # - id: togglelivingsonospushbuttondouble
 #   alias: Toggle Living Sonos when Xiaomi Living push button is double pressed
-#   trigger: 
+#   triggers: 
 #     platform: event
 #     event_type: xiaomi_aqara.click
 #     event_data:
 #       entity_id: binary_sensor.switch_158d000323d424
 #       click_type: double
-#   action:
-#     service: media_player.media_play_pause
+#   actions:
+#     action: media_player.media_play_pause
 #     entity_id: media_player.living
 
 # # Execute leaving workflow when Living push button is long pressed
 # - id: executeleavingworkflowpushbuttonlong
 #   alias: Execute leaving workflow when Living push button is long pressed
-#   trigger: 
+#   triggers: 
 #     platform: event
 #     event_type: xiaomi_aqara.click
 #     event_data:
 #       entity_id: binary_sensor.switch_158d000323d424
 #       click_type: long_click_press
-#   action:
+#   actions:
 #     - service : script.turn_on
 #       entity_id: script.leave_home_workflow
 
@@ -1897,75 +1897,75 @@
 # Alarm when there is motion outside master bedroom and when the night mood is on
 - id: alarmwhennightmood
   alias: Alarm when there is motion outside master bedroom and when the night mood is on
-  trigger: 
+  triggers: 
       # Kitchen-M2  
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.kitchen_motion_zb_1
         to: 'on'
         for:
           seconds: 125
       # Living-M
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.living_motion_zb_1
         to: 'on'
         for:
           seconds: 125
       # Main Door
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.main_entrance_door_zb
         to: 'on'
       # Garage-M2
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.garage_motion_zb_1
         to: 'on'
         for:
           seconds: 125
       # Laundry Door
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.laundry_door_zb
         to: 'on'
       # Office-M2
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.office_motion_zb_1
         to: 'on'
         for:
           seconds: 125
       # Alfresco-M
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.motion_sensor_158d0002b5eecd
         to: 'on'
         for:
           seconds: 125
       # Garage Entry door
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.garage_entrance_door_zb
         to: 'on'
       # Garage door
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.garage_door_zb
         to: 'on'
       # Laundry Motion
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.laundry_motion_zb_1
         to: 'on'
         for:
           seconds: 125
       # Room 4 Motion
-      - platform: state
+      - trigger: state
         entity_id: binary_sensor.bed4_esp_motion
         to: 'on'
   condition:
     condition: state
     entity_id: input_boolean.night_mood
     state: 'on'
-  action:
-    - service: script.turn_on
+  actions:
+    - action: script.turn_on
       entity_id: script.xiaomi_gateway_alarm
-    - service: notify.phoneapps
+    - action: notify.phoneapps
       data_template:
         title: '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on'
         message:  '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-    - service: notify.sendgrid
+    - action: notify.sendgrid
       data_template:
         title: '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
         message:  '{{ trigger.to_state.attributes.friendly_name }} Motion Detected while night mood is on -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
@@ -1975,7 +1975,7 @@
   alias: Turn on Bed Heater at 10pm if the master bedroom temperature is below 25c
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '22:00:00'
   condition:
     condition: and
@@ -1992,16 +1992,16 @@
       - condition: state
         entity_id: input_boolean.bedheater_auto
         state: 'on'
-  action:
-    - service : switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id: switch.bedheater_switch
 
 # Turn off Bed Heater automatically after two hours
 - id: turnoffbedheater2hours
   alias: Turn off Bed Heater automatically after two hours
   initial_state: True
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: switch.bedheater_switch
       to: 'on'
       for:
@@ -2010,8 +2010,8 @@
     condition: state
     entity_id: switch.bedheater_switch
     state: 'on'
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.bedheater_switch
 
 # Turn on the night mood at midnight when there is no motion in the house
@@ -2019,9 +2019,9 @@
   alias: Turn on the night mood at midnight when there is no motion in the house
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '23:59:59'
-    - platform: time
+    - trigger: time
       at: '01:00:00'
   condition:
     condition: and
@@ -2053,15 +2053,15 @@
       - condition: state
         entity_id: input_boolean.nightmood_auto
         state: 'on'
-  action:
-    - service: switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id: switch.nightmood
 
 # Turn off the Night mood when master bedroom door open in the morning
 - id: turnoffnightmoodmorning
   alias: Turn off the Night mood when master bedroom door open in the morning
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.master_door_zb
       to: 'on'
   condition:
@@ -2076,8 +2076,8 @@
       - condition: state
         entity_id: input_boolean.nightmood_auto
         state: 'on'
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.nightmood
 
 
@@ -2087,7 +2087,7 @@
   alias: Turn on the input boolean for Good Morning Greet
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '04:00:00'
   condition:
     condition: and
@@ -2098,8 +2098,8 @@
       - condition: state
         entity_id: switch.nightmood
         state: 'on'
-  action:
-    - service: input_boolean.turn_on
+  actions:
+    - action: input_boolean.turn_on
       entity_id: input_boolean.morning_greet
 
 # Turn off the input boolean for Good Morning Greet (if not greeted) at 11:00am
@@ -2107,7 +2107,7 @@
   alias: Turn off the input boolean for Good Morning Greet (if not greeted) at 11:00am
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '11:00:00'
   condition:
     condition: and
@@ -2115,8 +2115,8 @@
       - condition: state
         entity_id: input_boolean.morning_greet
         state: 'on'
-  action:
-    - service: input_boolean.turn_off
+  actions:
+    - action: input_boolean.turn_off
       entity_id: input_boolean.morning_greet
 
 # Turn on the input boolean for Afterwork Arrival Greet
@@ -2124,7 +2124,7 @@
   alias: Turn on the input boolean for Afterwork Arrival Greet
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: switch.housealarm
       to: 'on'
       for: 
@@ -2136,8 +2136,8 @@
         entity_id: switch.housealarm
         state: 'on'
         # add not vacation mood logic
-  action:
-    - service: input_boolean.turn_on
+  actions:
+    - action: input_boolean.turn_on
       entity_id: input_boolean.arrival_greet
 
 # Turn off the input boolean for Afterwork Arrival Greet (if not greeted) at 10:00pm
@@ -2145,7 +2145,7 @@
   alias: Turn off the input boolean for Afterwork Arrival Greet (if not greeted) at 10:00pm
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '22:00:00'
   condition:
     condition: and
@@ -2153,8 +2153,8 @@
       - condition: state
         entity_id: input_boolean.arrival_greet
         state: 'on'
-  action:
-    - service: input_boolean.turn_off
+  actions:
+    - action: input_boolean.turn_off
       entity_id: input_boolean.arrival_greet
 
 # Activate the Good morning Sonos Greet on First motion for the day and open the blinds
@@ -2162,7 +2162,7 @@
   alias: Activate the Good morning Sonos Greet on First motion for the day
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: group.living_kitchen_motion
       to: 'on'
   condition:
@@ -2180,8 +2180,8 @@
       - condition: state
         entity_id: input_boolean.greetings_on
         state: 'on'
-  action:
-    - service : script.turn_on
+  actions:
+    - action: script.turn_on
       entity_id: script.sonos_morning_greet
 
 # Activate the Afterwork Sonos Greet on Arrival
@@ -2189,7 +2189,7 @@
   alias: Activate the Afterwork Sonos Greet on Arrival
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: group.living_kitchen_motion
       to: 'on'
   condition:
@@ -2207,8 +2207,8 @@
       - condition: state
         entity_id: input_boolean.greetings_on
         state: 'on'
-  action:
-    - service : script.turn_on
+  actions:
+    - action: script.turn_on
       entity_id: script.sonos_afternoon_greet
 
 
@@ -2217,7 +2217,7 @@
   alias: Turn off Sonos if it is left On when the house alarm is on (After leaving home)
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: switch.housealarm
       to: 'on'
       for:
@@ -2231,10 +2231,10 @@
       - condition: state
         entity_id: media_player.alfresco
         state: 'playing'
-  action:
-    - service: media_player.media_pause
+  actions:
+    - action: media_player.media_pause
       entity_id: media_player.alfresco
-    - service: media_player.media_pause
+    - action: media_player.media_pause
       entity_id: media_player.living
 
 
@@ -2243,13 +2243,13 @@
   alias: Update Automation when Guest Mood is turned on
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: input_boolean.guest_mood
       to: 'on'
-  action:
-    - service: input_boolean.turn_off
+  actions:
+    - action: input_boolean.turn_off
       entity_id: input_boolean.nightmood_auto
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.housealarm_auto
 
 # Update Automation when Guest Mood is turned off
@@ -2257,13 +2257,13 @@
   alias: Update Automation when Guest Mood is turned off
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: input_boolean.guest_mood
       to: 'off'
-  action:
-    - service: input_boolean.turn_on
+  actions:
+    - action: input_boolean.turn_on
       entity_id: input_boolean.nightmood_auto
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.housealarm_auto
 
 # Update Automation when Party Mood is turned on
@@ -2271,23 +2271,23 @@
   alias: Update Automation when Party Mood is turned on
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: input_boolean.party_mood
       to: 'on'
-  action:
-    - service: input_boolean.turn_off
+  actions:
+    - action: input_boolean.turn_off
       entity_id: input_boolean.nightmood_auto
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.greetings_on
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.light_on_off_auto
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.alfresco_motion_music
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.alfresco_motion_light
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.zone_off_auto
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.housealarm_auto
 
 # Update Automation when Party Mood is turned off
@@ -2295,31 +2295,31 @@
   alias: Update Automation when Party Mood is turned off
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: input_boolean.party_mood
       to: 'off'
-  action:
-    - service: input_boolean.turn_on
+  actions:
+    - action: input_boolean.turn_on
       entity_id: input_boolean.nightmood_auto
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.greetings_on
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.light_on_off_auto
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.alfresco_motion_music
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.alfresco_motion_light
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.zone_off_auto
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.housealarm_auto
 
 
 # Turn on Master Pendant Light when there is motion
 - id: masterpendentlightonmotion
   alias: Turn on Master Pendant Light when there is motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.master_motion
       to: 'on'
   condition:
@@ -2347,8 +2347,8 @@
       - condition: state
         entity_id: input_boolean.master_pendant_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       data:
         entity_id: light.master_pendant
         brightness_pct: 30
@@ -2356,8 +2356,8 @@
 # Turn off Master Pendant Light when there is no motion
 - id: masterpendentlightoffmotion
   alias: Turn off Master Pendant Light when there is no motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.master_motion
       to: 'off'
   condition:
@@ -2372,15 +2372,15 @@
       - condition: state
         entity_id: input_boolean.master_pendant_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.master_pendant
 
 # Turn off Master Pendant Light when Master light is turned on
 - id: masterpendentlightonwhenmasterlighton
   alias: Turn off Master Pendant Light when Master light is turned on
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.master_dimmer
       to: 'on'
   condition:
@@ -2395,17 +2395,17 @@
       - condition: state
         entity_id: input_boolean.master_pendant_on_off_auto
         state: 'on'
-  action:
-    - service: input_boolean.turn_on
+  actions:
+    - action: input_boolean.turn_on
       entity_id: input_boolean.master_pendant_onoff_with_master_auto
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.master_pendant
 
 # Turn off Master Pendant Light if it was turned on for more than 1 hour
 - id: masterpendentlightoffwhenmasterlighton1hr
   alias: Turn off Master Pendant Light if it was turned on for more than 1 hour
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.master_pendant
       to: 'on'
       for:
@@ -2422,15 +2422,15 @@
       - condition: state
         entity_id: input_boolean.master_pendant_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.master_pendant
 
 # Turn On Master Pendant Light when Master light is turned off 
 - id: masterpendentlightonwhenmasterlightoff
   alias: Turn On Master Pendant Light when Master light is turned off 
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.master_dimmer
       to: 'off'
   condition:
@@ -2448,69 +2448,69 @@
       - condition: state
         entity_id: input_boolean.master_pendant_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.master_pendant
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.master_pendant_onoff_with_master_auto
 
 # Turn off Master Pendant On/Off with Master Light input boolean after 2 hours
 - id: masterpendentlightonoffinputboolean
   alias: Turn off Master Pendant On/Off with Master Light input boolean after 2 hours
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: input_boolean.master_pendant_onoff_with_master_auto
       to: 'on'
       for:
         hours: 2
-  action:
-    - service: input_boolean.turn_off
+  actions:
+    - action: input_boolean.turn_off
       entity_id: input_boolean.master_pendant_onoff_with_master_auto
 
 # Toggle Master Pendant lights when Xiaomi Madhushi Bedside push button is single pressed
 - id: togglemadhushibedsidependentlightspushbutton
   alias: Toggle Master Pendant lights when Xiaomi Madhushi Bedside push button is single pressed
-  trigger: 
-    - device_id: 1ea7f1d28de97a28f6e4822af22b3af0
+  triggers: 
+    - trigger: device
+      device_id: 1ea7f1d28de97a28f6e4822af22b3af0
       discovery_id: madhushi_bedside_button_zb_1 action_single
       domain: mqtt
-      platform: device
       subtype: single
       type: action
-  action:
-    service: light.toggle
+  actions:
+    action: light.toggle
     entity_id: light.master_pendant
 
 # Toggle Master Light when Xiaomi Madhushi Bedside push button is double pressed
 - id: togglemadhushibedsidemasterlightpushbuttondouble
   alias: Toggle Master Light when Xiaomi Madhushi Bedside push button is double pressed
-  trigger: 
-    - device_id: 1ea7f1d28de97a28f6e4822af22b3af0
+  triggers: 
+    - trigger: device
+      device_id: 1ea7f1d28de97a28f6e4822af22b3af0
       discovery_id: madhushi_bedside_button_zb_1 action_double
       domain: mqtt
-      platform: device
       subtype: double
       type: action
-  action:
-    service: light.toggle
+  actions:
+    action: light.toggle
     entity_id: light.master_dimmer
 
 # Play Lullabies when Xiaomi Madhushi Bedside push button is long pressed
 - id: playlullabiesmadhushibedsidemasterlightpushbuttonlong
   alias: Play Lullabies when Xiaomi Madhushi Bedside push button is long pressed
-  trigger: 
-    - device_id: 1ea7f1d28de97a28f6e4822af22b3af0
+  triggers: 
+    - trigger: device
+      device_id: 1ea7f1d28de97a28f6e4822af22b3af0
       discovery_id: madhushi_bedside_button_zb_1 action_hold
       domain: mqtt
-      platform: device
       subtype: hold
       type: action
-  action:
-    - service: media_player.select_source
+  actions:
+    - action: media_player.select_source
       data_template:
         entity_id: media_player.spotify_kuruculasuriya_mads
         source: "Master Bedroom display"
-    - service: media_player.play_media
+    - action: media_player.play_media
       data_template:
         entity_id: media_player.spotify_kuruculasuriya_mads
         media_content_id: 'spotify:user:spotify:playlist:15yq0wnH7sel7iIiGHWVqU'
@@ -2519,47 +2519,47 @@
 # Toggle Master Pendant lights when Xiaomi Sameera Bedside push button is single pressed
 - id: togglesameerabedsidependentlightspushbutton
   alias: Toggle Master Pendant lights when Xiaomi Sameera Bedside push button is single pressed
-  trigger: 
-    - device_id: 51fb81aecedc7d0428f8a70b0f171164
+  triggers: 
+    - trigger: device
+      device_id: 51fb81aecedc7d0428f8a70b0f171164
       discovery_id: sameera_bedside_button_zb_1 action_single
       domain: mqtt
-      platform: device
       subtype: single
       type: action
-  action:
-    service: light.toggle
+  actions:
+    action: light.toggle
     entity_id: light.master_pendant
 
 # Toggle Master Light when Xiaomi Sameera Bedside push button is double pressed
 - id: togglesameerabedsidepushbuttondouble
   alias: Toggle Master Light when Xiaomi Sameera Bedside push button is double pressed
-  trigger: 
-    - device_id: 51fb81aecedc7d0428f8a70b0f171164
+  triggers: 
+    - trigger: device
+      device_id: 51fb81aecedc7d0428f8a70b0f171164
       discovery_id: sameera_bedside_button_zb_1 action_double
       domain: mqtt
-      platform: device
       subtype: double
       type: action
-  action:
-    service: light.toggle
+  actions:
+    action: light.toggle
     entity_id: light.master_dimmer
 
 # Play Lullabies when Xiaomi Sameera Bedside push button is long pressed
 - id: playlullabiessameerabedsidemasterlightpushbuttonlong
   alias: Play Lullabies when Xiaomi Sameera Bedside push button is long pressed
-  trigger: 
-    - device_id: 51fb81aecedc7d0428f8a70b0f171164
+  triggers: 
+    - trigger: device
+      device_id: 51fb81aecedc7d0428f8a70b0f171164
       discovery_id: sameera_bedside_button_zb_1 action_hold
       domain: mqtt
-      platform: device
       subtype: hold
       type: action
-  action:
-    - service: media_player.select_source
+  actions:
+    - action: media_player.select_source
       data_template:
         entity_id: media_player.spotify_kuruculasuriya_mads
         source: "Master Bedroom display"
-    - service: media_player.play_media
+    - action: media_player.play_media
       data_template:
         entity_id: media_player.spotify_kuruculasuriya_mads
         media_content_id: 'spotify:user:spotify:playlist:15yq0wnH7sel7iIiGHWVqU'
@@ -2568,13 +2568,13 @@
 # Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
 - id: masteracoff5min
   alias: Turn off the Master AC Vent when there is no motion for more than 5 minutes and no one in Bed 
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.master_bath_motion
       to: 'off'
       for: 
         minutes: 5
-    - platform: state
+    - trigger: state
       entity_id: switch.myair_power
       from: 'off'
       to: 'on'
@@ -2601,20 +2601,20 @@
       - condition: state
         entity_id: input_boolean.master_aircon_vent_on_off_auto
         state: 'on'
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.myair_zone3
 
 # Turn On the Master AC Vent when there is motion for more than 3 minutes in the Master bedroom
 - id: masteracon3min
   alias: Turn On the Master AC Vent when there is motion for more than 3 minutes in the Master bedroom
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.master_bath_motion
       to: 'on'
       for: 
         minutes: 3
-    - platform: state
+    - trigger: state
       entity_id: switch.myair_power
       from: 'off'
       to: 'on'
@@ -2643,16 +2643,16 @@
         - condition: state
           entity_id: group.master_bath_motion
           state: 'on'
-  action:
-    - service: switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id:  switch.myair_zone3
 
 
 # Set the Master light brightness to 30% when someone enters the bed
 - id: masterlightbrightness301
   alias: Set the Master light brightness to 30% when someone enters the bed
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.bed_sensor
       to: 'on'
   condition:
@@ -2667,8 +2667,8 @@
       - condition: state
         entity_id: input_boolean.master_light_brightness_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       data:
         entity_id: light.master_dimmer
         brightness_pct: 30
@@ -2676,8 +2676,8 @@
 # Set the Master light brightness to 100% when someone get up from the bed
 - id: masterlightbrightness10
   alias: Set the Master light brightness to 100% when someone get up from the bed
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.bed_sensor
       to: 'off'
   condition:
@@ -2692,8 +2692,8 @@
       - condition: state
         entity_id: input_boolean.master_light_brightness_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       data:
         entity_id: light.master_dimmer
         brightness_pct: 100
@@ -2701,8 +2701,8 @@
 # Set the Master light brightness to 100% when light is turned on no one is on the bed
 - id: masterlightbrightness100
   alias: Set the Master light brightness to 100% when someone get up from the bed
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.master_dimmer
       to: 'on'
       for:
@@ -2727,8 +2727,8 @@
         value_template: '{% if states.light.master_dimmer.state == "on"  %}{{ states.light.master_dimmer.attributes.brightness }}{% else %}0{% endif %}'
         below: 76
         above: 74
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       data:
         entity_id: light.master_dimmer
         brightness_pct: 100
@@ -2736,8 +2736,8 @@
 # Turn on the Sameera Wardrobe light when there is motion
 - id: turnonsameerawardrobelight
   alias: Turn on the Sameera Wardrobe light when there is motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.sam_wr_esp_motion
       to: 'on'
   condition:
@@ -2752,15 +2752,15 @@
       - condition: state
         entity_id: input_boolean.master_wardrobe_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.sameera_wardrobe_light
 
 # Turn off the Sameera Wardrobe light when there is no motion
 - id: turnoffsameerawardrobelight
   alias: Turn off the Sameera Wardrobe light when there is no motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.sam_wr_esp_motion
       to: 'off'
   condition:
@@ -2772,16 +2772,16 @@
       - condition: state
         entity_id: input_boolean.master_wardrobe_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.sameera_wardrobe_light
 
 
 # Turn on the Madhushi Wardrobe light when there is motion
 - id: turnonmadhushiwardrobelight
   alias: Turn on the Madhushi Wardrobe light when there is motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.mad_wr_esp_motion
       to: 'on'
   condition:
@@ -2796,15 +2796,15 @@
       - condition: state
         entity_id: input_boolean.master_wardrobe_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.madhushi_wardrobe_light
 
 # Turn off the Madhushi Wardrobe light when there is no motion
 - id: turnoffmadhushiwardrobelight
   alias: Turn off the Madhushi Wardrobe light when there is no motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.mad_wr_esp_motion
       to: 'off'
       for: 
@@ -2818,15 +2818,15 @@
       - condition: state
         entity_id: input_boolean.master_wardrobe_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.madhushi_wardrobe_light
 
 # Turn off the Sameera's Wardrobe light when the light was left on for more than 10 minutes
 - id: samwrturnoff10
   alias: Turn off the Sameera's Wardrobe light when the light was left on for more than 10 minutes
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.sameera_wardrobe_light
       to: 'on'
       for:
@@ -2837,15 +2837,15 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.sameera_wardrobe_light
 
 # Turn off the Madhushi's Wardrobe light when the light was left on for more than 10 minutes
 - id: madwrturnoff10
   alias: Turn off the Madhushi's Wardrobe light when the light was left on for more than 10 minutes
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.madhushi_wardrobe_light
       to: 'on'
       for:
@@ -2856,8 +2856,8 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.madhushi_wardrobe_light
 
 # Set Sprikler Runtime Seconds Sensor
@@ -2867,16 +2867,16 @@
 #  trigger:
 #    entity_id: input_select.sprinkler_runtime
 #    platform: state
- # action:
- #   - service: shell_command.myair_setcmd
+ # actions:
+ #   - action: shell_command.myair_setcmd
  #     data_template:
  #       json: '%7B%22ac1%22:%7B%22info%22:%7B%22mode%22:%22{{ states.input_select.myair_modeselect.state }}%22%7D%7D%7D'
 
 # Turn off the Laundry Outside light when the light was left on for more than 30 minutes
 - id: laundryoutsidelight30mins
   alias: Turn off the Laundry Outside light when the light was left on for more than 30 minutes
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.laundry_outside_light
       to: 'on'
       for:
@@ -2887,15 +2887,15 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.laundry_outside_light
 
 # Turn off the Laundry light when the light was left on for more than 30 minutes
 - id: laundrylight30mins
   alias: Turn off the Laundry light when the light was left on for more than 30 minutes
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.laundry_light
       to: 'on'
       for:
@@ -2906,15 +2906,15 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.laundry_light
 
 # Turn off the Laundry Strip when the light was left on for more than 30 minutes
 - id: laundrystrip30mins
   alias: Turn off the Laundry Strip when the light was left on for more than 30 minutes
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.laundry_strip_zb_1
       to: 'on'
       for:
@@ -2925,15 +2925,15 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.laundry_strip_zb_1
 
 # Turn on the Laundry Outdoor light when the laundry door open in the night
 - id: turnonlaundryoutdoorlightwithdooratnight
   alias: Turn on the Laundry Outdoor light when the laundry door open in the night
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.laundry_door_zb
       to: 'on'
   condition:
@@ -2951,15 +2951,15 @@
       - condition: state
         entity_id: input_boolean.laundry_outside_light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.laundry_outside_light
 
 # Turn off the Laundry Outdoor light when the laundry door close in the night
 - id: turnofflaundryoutdoorlightwithdooratnight
   alias: Turn off the Laundry Outdoor light when the laundry door close in the night
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.laundry_door_zb
       to: 'off'
   condition:
@@ -2971,18 +2971,18 @@
       - condition: state
         entity_id: input_boolean.laundry_outside_light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.laundry_outside_light
 
 # Turn on the Laundry light when there is motion in the laundry
 - id: turnonlaundryoutlightwithmotion
   alias: Turn on the Laundry light when there is motion in the laundry
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.laundry_motion_zb_1
       to: 'on'
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.laundry_inside_door_zb_1
       to: 'on'
   condition:
@@ -3000,18 +3000,18 @@
       - condition: state
         entity_id: input_boolean.laundry_light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.laundry_light
 
 # Turn on the Laundry strip when there is motion in the laundry
 - id: turnonlaundryoutstripwithmotion
   alias: Turn on the Laundry strip when there is motion in the laundry
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.laundry_motion_zb_1
       to: 'on'
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.laundry_inside_door_zb_1
       to: 'on'
   condition:
@@ -3029,15 +3029,15 @@
       - condition: state
         entity_id: input_boolean.laundry_strip_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.laundry_strip_zb_1
 
 # Turn on the Laundry strip when someone open the laundry door
 - id: turnonlaundrystripwithdooropen
   alias: Turn on the Laundry strip when someone open the laundry door
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.laundry_inside_door_zb_1
       to: 'on'
   condition:
@@ -3058,15 +3058,15 @@
       - condition: state
         entity_id: binary_sensor.laundry_motion_zb_1
         state: 'off'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.laundry_strip_zb_1
 
 # Turn Off the Laundry strip when someone close the laundry door
 - id: turnofflaundrystripwithdoorclose
   alias: Turn Off the Laundry strip when someone close the laundry door
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.laundry_inside_door_zb_1
       to: 'off'
   condition:
@@ -3084,17 +3084,17 @@
       - condition: state
         entity_id: input_boolean.laundry_strip_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.laundry_light
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.laundry_strip_zb_1
-      
+
 # Turn off the Laundry light when there is no motion in the laundry
 - id: turnofflaundrylightwithnomotion1
   alias: Turn off the Laundry light when there is no motion in the laundry
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.laundry_motion_zb_1
       to: 'off'
       for:
@@ -3108,36 +3108,36 @@
       - condition: state
         entity_id: input_boolean.laundry_light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.laundry_light
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.laundry_strip_zb_1
 
 # Toggle Laundry Light with Laundry Xiaomi push button
 - id: togglelaundrylightwithpushbutton
   alias: Toggle Laundry Light with Laundry Xiaomi push button
-  trigger: 
-    - device_id: e2974c22607b482168ebe89a84f9528b
+  triggers: 
+    - trigger: device
+      device_id: e2974c22607b482168ebe89a84f9528b
       discovery_id: laundry_button_zb_1 action_single
       domain: mqtt
-      platform: device
       subtype: single
       type: action
   condition:
     condition: state
     entity_id: input_boolean.laundry_button_on_off
     state: 'on'
-  action:
-    service: light.toggle
+  actions:
+    action: light.toggle
     entity_id: light.laundry_light
 
 
 # Turn on the Front Patio light when there is motion in the patio
 - id: frontpatiolightonwithmotion
   alias: Turn on the Front Patio light when there is motion in the patio
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.patio_motion_zb_1
       to: 'on'
   condition:
@@ -3149,16 +3149,16 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.front_patio_light
 
 
 # Turn off the Front Patio light when there is no motion in the patio
 - id: frontpatiolightoffwithnomotion
   alias: Turn off the Front Patio light when there is no motion in the patio
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.patio_motion_zb_1
       to: 'off'
   condition:
@@ -3170,15 +3170,15 @@
       - condition: state
         entity_id: light.front_patio_light
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.front_patio_light
 
 # Turn off the front patio light after 20 minutes
 - id: frontpatiolightoffafter20mins
   alias: Turn off the front patio light after 20 minutes
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.front_patio_light
       to: 'on'
       for:
@@ -3192,15 +3192,15 @@
       - condition: state
         entity_id: light.front_patio_light
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.front_patio_light
 
 # Turn on the front entrance light when there the front door open at night
 - id: frontentrancelightonwithfrontdooropen
   alias: Turn on the front entrance light when there the front door open at night
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.main_entrance_door_zb
       to: 'on'
   condition:
@@ -3215,17 +3215,17 @@
       - condition: state
         entity_id: light.front_entrance_dimmer
         state: 'off'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.front_entrance_dimmer
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.frontentrance_light_auto_off_with_frontdoor
 
 # Turn off the front entrance light after 1 minute the front door close at night
 - id: frontentrancelightoffwithfrontdoorclose1min
   alias: Turn off the front entrance light after 1 minute the front door close at night
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.main_entrance_door_zb
       to: 'off'
       for:
@@ -3242,18 +3242,18 @@
       - condition: state
         entity_id: input_boolean.frontentrance_light_auto_off_with_frontdoor
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.front_entrance_dimmer
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.frontentrance_light_auto_off_with_frontdoor
 
 
 # Turn off the front entrance light after 60 minutes
 - id: frontentrancelightoffafter60mins
   alias: Turn off the front entrance light after 60 minutes
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.front_entrance_dimmer
       to: 'on'
       for:
@@ -3270,8 +3270,8 @@
       - condition: state
         entity_id: light.front_entrance_dimmer
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.front_entrance_dimmer
 
 
@@ -3280,7 +3280,7 @@
   alias: Close the Living Blinds after sunset 
   initial_state: True
   trigger:
-    - platform: sun
+    - trigger: sun
       event: sunset
   condition:
     condition: and
@@ -3288,8 +3288,8 @@
       - condition: state
         entity_id: input_boolean.blinds_auto
         state: 'on'
-  action:
-    - service : script.turn_on
+  actions:
+    - action: script.turn_on
       entity_id: script.close_all_blinds
 
 
@@ -3297,16 +3297,16 @@
 - id: alertsmokealarmoffice
   alias: Alert when Office smoke alarm is activated
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.smoke_sensor_158d00028ee45d
       from: 'off'
       to: 'on'
-  action:
-    - service: notify.phoneapps
+  actions:
+    - action: notify.phoneapps
       data_template:
         title: 'SMOKE ALARM IN Office Triggered !'
         message:  'SMOKE ALARM IN Office Triggered {{now().strftime("%Y%m%d-%H%M%S")}}'
-    - service: notify.sendgrid
+    - action: notify.sendgrid
       data_template:
         title: 'SMOKE ALARM IN Office Triggered {{now().strftime("%Y%m%d-%H%M%S")}}'
         message:  'SMOKE ALARM IN Office Triggered !'
@@ -3315,35 +3315,35 @@
 - id: toggledininglightsecondswitch
   alias: Toggle Dining Light with second Switch
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.dining_dimmer_switch_2
   condition:
     - condition: numeric_state  
       entity_id: sensor.uptime_minutes
       above: 0.9
-  action:
-    - service : light.toggle
+  actions:
+    - action: light.toggle
       entity_id: light.dining_dimmer
 
 # Toggle Front Entrance Light with second Switch
 - id: togglefrontentrancelightsecondswitch
   alias: Toggle Front Entrance Light with second Switch
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.front_entrance_dimmer_switch_2
   condition:
     - condition: numeric_state  
       entity_id: sensor.uptime_minutes
       above: 0.9
-  action:
-    - service: light.toggle
+  actions:
+    - action: light.toggle
       entity_id: light.front_entrance_dimmer
 
 # Turn on the Master WC Light when there's  motion
 - id: masterwcautoon
   alias: Turn on the Master WC Light when there's  motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.master_wc_mlx90640_motion_sensor
       to: 'on'
   condition:
@@ -3358,18 +3358,18 @@
       - condition: state
         entity_id: light.master_wc_light
         state: 'off'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id:  light.master_wc_light
 
 # Turn off the Master WC Light when there's no motion
 - id: masterwcautooff
   alias: Turn off the Master WC Light when there's no motion
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.master_wc_mlx90640_motion_sensor
       to: 'off'
-    - platform: state
+    - trigger: state
       entity_id: binary_sensor.master_wc_mlx90640_thermal_sensor
       to: 'off'
       for:
@@ -3394,15 +3394,15 @@
         state: 'off'
         for:
           seconds: 2
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.master_wc_light
 
 # Turn off the Master WC Light after 20 mins
 - id: masterwcautooff20mins
   alias: Turn off the Master WC Light after 20 mins
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.master_wc_light
       to: 'on'
       for:
@@ -3419,16 +3419,16 @@
       - condition: state
         entity_id: light.master_wc_light
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id:  light.master_wc_light
 
 
 # Turn off the Main WC Light after 20 mins
 - id: mainwcautooff20mins
   alias: Turn off the Main WC Light after 20 mins
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: switch.sonoff_1000ddeb7c_1
       to: 'on'
       for:
@@ -3442,15 +3442,15 @@
       - condition: state
         entity_id: switch.sonoff_1000ddeb7c_1
         state: 'on'
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id:  switch.sonoff_1000ddeb7c_1
 
 # Turn off the Main WC Fan after 10 mins
 - id: mainwcfanautooff10mins
   alias: Turn off the Main WC Fan after 10 mins
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: switch.sonoff_1000ddeb7c_2
       to: 'on'
       for:
@@ -3464,15 +3464,15 @@
       - condition: state
         entity_id: switch.sonoff_1000ddeb7c_2
         state: 'on'
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id:  switch.sonoff_1000ddeb7c_2
 
 # Turn off the Master Bath Fan after 10 mins
 - id: masterfanautooff10mins
   alias: Turn off the Master Bath Fan after 10 mins
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: switch.master_bath_fan
       to: 'on'
       for:
@@ -3486,15 +3486,15 @@
       - condition: state
         entity_id: switch.master_bath_fan
         state: 'on'
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.master_bath_fan
 
 # Turn off the Master Bath Fan after 10 mins
 - id: masterwcfanautooff10mins
   alias: Turn off the Master WC Fan after 10 mins
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: switch.sonoff_1000ddec78_1
       to: 'on'
       for:
@@ -3508,21 +3508,21 @@
       - condition: state
         entity_id: switch.sonoff_1000ddec78_1
         state: 'on'
-  action:
-    - service: switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.sonoff_1000ddec78_1
 
 # Nest Door Bell Alert
 - id: nestdoorbell alert
   alias: Alert Phones when Nest Doorbell is pressed
-  trigger: 
-    - platform: event
+  triggers: 
+    - trigger: event
       event_type: nest_event
       event_data:
         device_id: !secret nest_doorbell_device_id
         type: doorbell_chime
-  action:
-    - service: notify.phoneapps
+  actions:
+    - action: notify.phoneapps
       data_template:
         title: 'Someone at the front door'
         message:  'Front door bell was pressed'
@@ -3534,7 +3534,7 @@
   alias: Turn off the master bedroom light automations at night 
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '20:00:00'
   condition:
     condition: and
@@ -3542,12 +3542,12 @@
       - condition: state
         entity_id: input_boolean.master_light_onoff_night_auto
         state: 'on'
-  action:
-    # - service: input_boolean.turn_off
+  actions:
+    # - action: input_boolean.turn_off
     #   entity_id: input_boolean.master_wardrobe_on_off_auto
-    - service: input_boolean.turn_off
+    - action: input_boolean.turn_off
       entity_id: input_boolean.master_bath_on_off_auto
-    # - service: input_boolean.turn_off
+    # - action: input_boolean.turn_off
     #   entity_id: input_boolean.master_wc_on_off_auto
 
 
@@ -3556,7 +3556,7 @@
   alias: Turn on the marter bedroom light automations in the morning
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '07:00:00'
   condition:
     condition: and
@@ -3564,12 +3564,12 @@
       - condition: state
         entity_id: input_boolean.master_light_onoff_night_auto
         state: 'on'
-  action:
-    # - service: input_boolean.turn_on
+  actions:
+    # - action: input_boolean.turn_on
     #   entity_id: input_boolean.master_wardrobe_on_off_auto
-    - service: input_boolean.turn_on
+    - action: input_boolean.turn_on
       entity_id: input_boolean.master_bath_on_off_auto
-    # - service: input_boolean.turn_on
+    # - action: input_boolean.turn_on
     #   entity_id: input_boolean.master_wc_on_off_auto
 
 
@@ -3578,7 +3578,7 @@
   alias: Turn on the Outdoor Christmas light strip 30mins after the sunset
   initial_state: True
   trigger:
-    - platform: sun
+    - trigger: sun
       event: sunset
       offset: '00:30:00'
   condition:
@@ -3587,8 +3587,8 @@
       - condition: state
         entity_id: input_boolean.christmas_lights_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       entity_id: light.outdoor_christmas_strip_1
 
 # Turn off the Outdoor Chritmast light strip at 9pm
@@ -3596,7 +3596,7 @@
   alias: Turn off the Outdoor Chritmast light strip at 9pm
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '21:00:00'
   condition:
     condition: and
@@ -3604,8 +3604,8 @@
       - condition: state
         entity_id: input_boolean.christmas_lights_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.outdoor_christmas_strip_1
       
 
@@ -3613,18 +3613,18 @@
   alias: Create Garage Door Open Persistent Notification
   initial_state: True
   trigger:
-    - platform: event
+    - trigger: event
       event_type: call_service
       event_data:
         domain: notify
-        service: ha_persistent
-  action:
-    - service: camera.snapshot
+        action: ha_persistent
+  actions:
+    - action: camera.snapshot
       entity_id: camera.garage_camera_high
       data:
         filename: !secret garagecameralocallocation
     - delay: 00:00:02
-    - service: persistent_notification.create
+    - action: persistent_notification.create
       data_template: 
         message: !secret garagedooropenmsg
         title: "{{ trigger.event.data.service_data.message }}"
@@ -3634,13 +3634,13 @@
   alias: Sonos Warning Alert
   initial_state: True
   trigger:
-    - platform: event
+    - trigger: event
       event_type: call_service
       event_data:
         domain: notify
-        service: sonos_speak
-  action:
-    - service: script.turn_on
+        action: sonos_speak
+  actions:
+    - action: script.turn_on
       entity_id: script.sonos_warning
       data:
         variables:
@@ -3653,10 +3653,10 @@
   alias: Turn on Smartplug7 (Pantry) at 9am to start charging 
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '09:00:00'
-  action:
-    - service : switch.turn_on
+  actions:
+    - action: switch.turn_on
       entity_id: switch.smartplug7
 
 # Turn Off Smartplug7 (Pantry) at 3pm to stop charging  - Cheapest Power bracket end
@@ -3664,10 +3664,10 @@
   alias: Turn Off Smartplug7 (Pantry) at 3pm to stop charging 
   initial_state: True
   trigger:
-    - platform: time
+    - trigger: time
       at: '15:00:00'
-  action:
-    - service : switch.turn_off
+  actions:
+    - action: switch.turn_off
       entity_id: switch.smartplug7
 
 
@@ -3676,7 +3676,7 @@
   alias: Alert when the washing machine has completed its job
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: sensor.fcb97e3fb7af_laundry_machine_state
       from: 'Run'
       to: 'Finished'
@@ -3686,8 +3686,8 @@
       - condition: state
         entity_id: input_boolean.laundry_washer_dryer_notification
         state: 'on'
-  action:
-    - service: notify.phoneapps
+  actions:
+    - action: notify.phoneapps
       data_template:
         title: '🧺 👕 Washing machine job completed! 🎉'
         message:  'Washing machine job completed on {{now().strftime("%Y%m%d-%H%M%S")}}'
@@ -3699,7 +3699,7 @@
   alias: Alert when the dryer has completed its job
   initial_state: True
   trigger:
-    - platform: state
+    - trigger: state
       entity_id: sensor.d828c9f3fc0c_laundry_machine_state
       from: 'Run'
       to: 'Stand'
@@ -3709,8 +3709,8 @@
       - condition: state
         entity_id: input_boolean.laundry_washer_dryer_notification
         state: 'on'
-  action:
-    - service: notify.phoneapps
+  actions:
+    - action: notify.phoneapps
       data_template:
         title: '👚💨 🧺 Dryer job completed ! 🎉'
         message:  'Dryer job completed on {{now().strftime("%Y%m%d-%H%M%S")}}'
@@ -3718,10 +3718,10 @@
 
 - alias: "Purge Thermal MLX Sensor Values Daily"
   trigger:
-    - platform: time
+    - trigger: time
       at: "03:00:00"
-  action:
-    - service: recorder.purge_entities
+  actions:
+    - action: recorder.purge_entities
       target:
         entity_id: 
           - sensor.master_bath_mlx90640_max_temp
@@ -3732,7 +3732,7 @@
           - sensor.master_wc_mlx90640_temp_diff
       data:
         keep_days: 1
-    - service: system_log.write
+    - action: system_log.write
       data:
         message: "Purged history for Thermal MLX Sensor Values"
         level: info
@@ -3741,8 +3741,8 @@
 # Turn on Office cabinet light when there is motion in Living and kitchen
 - id: turnonofficecabinetlightwithmotion
   alias: Turn on Office cabinet light when there is motion in Living and kitchen
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.living_kitchen_motion
       to: 'on'
   condition:
@@ -3760,12 +3760,12 @@
       - condition: state
         entity_id: input_boolean.office_cabinet_light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       data:
         entity_id: light.office_cabinet_light_strip
         brightness_pct: 10
-    - service: light.turn_on
+    - action: light.turn_on
       data:
         entity_id: light.office_cabinet_bottom_light_strip
         brightness_pct: 10
@@ -3773,8 +3773,8 @@
 # Turn off Office cabinet light when there is no motion in Living and kitchen
 - id: turnoffofficecabinetlightwithnomotion
   alias: Turn off Office cabinet light when there is no motion in Living and kitchen
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: group.living_kitchen_motion
       to: 'off'
       for:
@@ -3794,17 +3794,17 @@
       - condition: state
         entity_id: input_boolean.office_cabinet_light_on_off_auto
         state: 'on'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.office_cabinet_light_strip
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.office_cabinet_bottom_light_strip
 
 # Set the brightness to 50 percent of the Office cabinet lights when the Office Dimmer is turned on
 - id: setbrightness60officecabinetlights
   alias: Set the brightness to 50 percent of the Office cabinet lights when the Office Dimmer is turned on
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.office_dimmer
       to: 'on'
   condition:
@@ -3822,12 +3822,12 @@
       - condition: state
         entity_id: switch.housealarm
         state: 'off'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       data:
         entity_id: light.office_cabinet_light_strip
         brightness_pct: 50
-    - service: light.turn_on
+    - action: light.turn_on
       data:
         entity_id: light.office_cabinet_bottom_light_strip
         brightness_pct: 50
@@ -3835,8 +3835,8 @@
 # Set the brightness to 10 percent of the Office cabinet lights when the Office Dimmer is turned off
 - id: setbrightness25officecabinetlights
   alias: Set the brightness to 10 percent of the Office cabinet lights when the Office Dimmer is turned off
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: light.office_dimmer
       to: 'off'
   condition:
@@ -3854,12 +3854,12 @@
       - condition: state
         entity_id: switch.housealarm
         state: 'off'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       data:
         entity_id: light.office_cabinet_light_strip
         brightness_pct: 10
-    - service: light.turn_on
+    - action: light.turn_on
       data:
         entity_id: light.office_cabinet_bottom_light_strip
         brightness_pct: 10
@@ -3868,11 +3868,11 @@
 # Turn on the Office Cabinet lights when there is motion in the office during day time
 - id: turnonofficecabinetlightswithmotiondaytime
   alias: Turn on the Office Cabinet lights when there is motion in the office during day time
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.office_motion_zb_1
       to: 'on'
-    - platform: state
+    - trigger: state
       entity_id: group.living_kitchen_motion
       to: 'on'
   condition:
@@ -3890,12 +3890,12 @@
       - condition: state
         entity_id: switch.housealarm
         state: 'off'
-  action:
-    - service: light.turn_on
+  actions:
+    - action: light.turn_on
       data:
         entity_id: light.office_cabinet_light_strip
         brightness_pct: 15
-    - service: light.turn_on
+    - action: light.turn_on
       data:
         entity_id: light.office_cabinet_bottom_light_strip
         brightness_pct: 15
@@ -3903,13 +3903,13 @@
 # Turn off the Office Cabinet lights when there is no motion in the office during day time
 - id: turnoffofficecabinetlightswithnomotiondaytime
   alias: Turn off the Office Cabinet lights when there is no motion in the office during day time
-  trigger: 
-    - platform: state
+  triggers: 
+    - trigger: state
       entity_id: binary_sensor.office_motion_zb_1
       to: 'off'
       for:
         minutes: 2
-    - platform: state
+    - trigger: state
       entity_id: group.living_kitchen_motion
       to: 'off'
       for:
@@ -3929,8 +3929,8 @@
       - condition: state
         entity_id: switch.housealarm
         state: 'off'
-  action:
-    - service: light.turn_off
+  actions:
+    - action: light.turn_off
       entity_id: light.office_cabinet_light_strip
-    - service: light.turn_off
+    - action: light.turn_off
       entity_id: light.office_cabinet_bottom_light_strip

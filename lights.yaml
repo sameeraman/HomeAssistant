@@ -13,17 +13,17 @@
             off
           {% endif %}
         turn_on:
-          service: media_player.volume_mute
+          action: media_player.volume_mute
           data:
             entity_id: media_player.denon_avc_x3700h
             is_volume_muted: false
         turn_off:
-          service: media_player.volume_mute
+          action: media_player.volume_mute
           data:
             entity_id: media_player.denon_avc_x3700h
             is_volume_muted: true
         set_level:
-          service: media_player.volume_set
+          action: media_player.volume_set
           data_template:
             entity_id: media_player.denon_avc_x3700h
             volume_level: "{{ (brightness / 255 * 100)|int / 100 }}"
