@@ -3062,9 +3062,9 @@
     - action: light.turn_on
       entity_id: light.laundry_strip_zb_1
 
-# Turn Off the Laundry strip when someone close the laundry door
-- id: turnofflaundrystripwithdoorclose
-  alias: Turn Off the Laundry strip when someone close the laundry door
+# Turn Off the Laundry lights when someone close the laundry door
+- id: turnofflaundrylightswithdoorclose
+  alias: Turn Off the Laundry lights when someone close the laundry door
   triggers: 
     - trigger: state
       entity_id: binary_sensor.laundry_inside_door_zb_1
@@ -3073,17 +3073,19 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-      - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: switch.housealarm
-        state: 'off'
-      - condition: state
         entity_id: input_boolean.laundry_strip_on_off_auto
         state: 'on'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: light.laundry_light
+          state: 'on'
+        - condition: state
+          entity_id: light.laundry_strip_zb_1
+          state: 'on'
   actions:
     - action: light.turn_off
       entity_id: light.laundry_light
@@ -3098,7 +3100,7 @@
       entity_id: binary_sensor.laundry_motion_zb_1
       to: 'off'
       for:
-        minutes: 2
+        minutes: 3
   condition:
     condition: and
     conditions: 
