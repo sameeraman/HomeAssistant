@@ -1503,6 +1503,14 @@ views:
             - entity: input_boolean.office_cabinet_light_on_off_auto
               tap_action:
                 action: toggle
+        - type: entities
+          title: Kitchen & Living
+          entities:
+            - entity: input_boolean.pantry_light_on_off_auto
+              tap_action:
+                action: toggle
+
+
 
 # Baby
   - title: Baby

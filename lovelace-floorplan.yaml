@@ -165,6 +165,26 @@
               top: 46%
               left: 55%
               "--paper-item-icon-color": '#D8D6D9'
+          # Pantry strip
+          - type: image
+            image: /local/line7.svg
+            entity: light.pantry_strip_zb_1
+            tap_action:
+              action: toggle
+            style:
+              top: 48.2%
+              left: 49%
+              transform: 'scale(0.8,1)'          
+          - type: image
+            image: /local/line7.svg
+            entity: light.pantry_strip_zb_1
+            tap_action:
+              action: toggle
+            style:
+              top: 45%
+              left: 52.7%
+              transform: 'scale(1,0.8) rotate(90deg)'   
+
           # Kithcen Strip
           - type: state-icon
             icon: 'mdi:led-strip'

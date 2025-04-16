@@ -153,6 +153,10 @@ laundry_button_on_off:
   name: Laundry Light On/Off with based Button Press
   icon: mdi:lightbulb-on-outline
 
+pantry_light_on_off_auto:
+  name: Pantry light On/Off with door
+  icon: mdi:track-light
+
 office_light_on_off_auto:
   name: Office light On/Off with based on Office Motion
   icon: mdi:lightbulb-on-outline
