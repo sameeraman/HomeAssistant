@@ -520,12 +520,15 @@
     - action: light.turn_off
       entity_id:  light.master_bath_dimmer
 
-# Turn on the Pantry Light when the door open
-- id: pantrylighton
-  alias: Turn on the Pantry Light when the door Open
+# Turn on the Pantry Light when the door open or detected motion
+- id: pantrylightondoormotion
+  alias: Turn on the Pantry Light when the door Openor detected motion
   triggers: 
     - trigger: state
       entity_id: binary_sensor.pantry_door_zb
+      to: 'on'
+    - trigger: state
+      entity_id: binary_sensor.pantry_motion_zb_1
       to: 'on'
   condition:
     condition: and
