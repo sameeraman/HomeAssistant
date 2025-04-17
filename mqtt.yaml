@@ -430,7 +430,7 @@
       retain: false
 
 # Pantry light stripe
-    - name: "Pantry Light Stripe"
+    - name: "Pantry Light Strip"
       unique_id: pantry_strip_zb_1
       state_topic: "zigbee2mqtt/pantry_strip_zb_1"
       command_topic: "zigbee2mqtt/pantry_strip_zb_1/set"
