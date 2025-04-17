@@ -162,7 +162,7 @@
               action: toggle
             entity: light.pantry_light_mqtt
             style:
-              top: 46%
+              top: 45%
               left: 55%
               "--paper-item-icon-color": '#D8D6D9'
           # Pantry strip
@@ -186,16 +186,26 @@
               transform: 'scale(1,0.8) rotate(90deg)'   
 
           # Kithcen Strip
-          - type: state-icon
-            icon: 'mdi:led-strip'
+          # - type: state-icon
+          #   icon: 'mdi:led-strip'
+          #   tap_action:
+          #     action: toggle
+          #   entity: light.kitchen_strip_mqtt
+          #   style:
+          #     top: 25%
+          #     left: 56%
+          #     "--paper-item-icon-color": '#D8D6D9'
+          #     "--paper-item-icon-active-color": '#FCD546'
+          - type: image
+            image: /local/line7.svg
+            entity: light.kitchen_strip_mqtt
             tap_action:
               action: toggle
-            entity: light.kitchen_strip_mqtt
             style:
-              top: 25%
-              left: 56%
-              "--paper-item-icon-color": '#D8D6D9'
-              "--paper-item-icon-active-color": '#FCD546'
+              top: 31.5%
+              left: 52.7%
+              transform: 'scale(1,2.0) rotate(90deg)'   
+              
           # Kitchen Motion
           - type: state-icon
             icon: 'mdi:run-fast'
@@ -319,16 +329,25 @@
               "--paper-item-icon-active-color": '#FCD546'
 
           # Living Strip
-          - type: state-icon
-            icon: 'mdi:led-strip'
+          # - type: state-icon
+          #   icon: 'mdi:led-strip'
+          #   tap_action:
+          #     action: toggle
+          #   entity: light.living_tv_strip_mqtt
+          #   style:
+          #     top: 27%
+          #     left: 3%
+          #     "--paper-item-icon-color": '#D8D6D9'
+          #     "--paper-item-icon-active-color": '#FCD546'
+          - type: image
+            image: /local/line7.svg
+            entity: light.living_tv_strip_mqtt
             tap_action:
               action: toggle
-            entity: light.living_tv_strip_mqtt
             style:
-              top: 27%
-              left: 3%
-              "--paper-item-icon-color": '#D8D6D9'
-              "--paper-item-icon-active-color": '#FCD546'
+              top: 35%
+              left: -4.4%
+              transform: 'scale(1,1.2) rotate(90deg)'   
 
           # Living Motion
           - type: state-icon

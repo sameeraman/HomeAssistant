@@ -527,6 +527,15 @@
     - trigger: state
       entity_id: binary_sensor.pantry_door_zb
       to: 'on'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.pantry_light_on_off_auto
+        state: 'on'
   actions:
     - action: light.turn_on
       entity_id:  light.pantry_light_mqtt
@@ -540,6 +549,15 @@
     - trigger: state
       entity_id: binary_sensor.pantry_door_zb
       to: 'off'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.pantry_light_on_off_auto
+        state: 'on'
   actions:
     - action: light.turn_off
       entity_id:  light.pantry_light_mqtt
@@ -588,8 +606,6 @@
     - trigger: state
       entity_id: binary_sensor.pantry_motion_zb_1
       to: 'off'
-      for:
-        minutes: 2
   condition:
     condition: and
     conditions: 
