@@ -2833,6 +2833,8 @@
   actions:
     - action: light.turn_on
       entity_id: light.sameera_wardrobe_light
+    - action: light.turn_on
+      entity_id: light.master_sam_wir_strip_zb_1
 
 # Turn off the Sameera Wardrobe light when there is no motion
 - id: turnoffsameerawardrobelight
@@ -2853,7 +2855,8 @@
   actions:
     - action: light.turn_off
       entity_id: light.sameera_wardrobe_light
-
+    - action: light.turn_off
+      entity_id: light.master_sam_wir_strip_zb_1
 
 # Turn on the Madhushi Wardrobe light when there is motion
 - id: turnonmadhushiwardrobelight
@@ -2877,6 +2880,8 @@
   actions:
     - action: light.turn_on
       entity_id: light.madhushi_wardrobe_light
+    - action: light.turn_on
+      entity_id: light.master_mad_wir_strip_zb_1
 
 # Turn off the Madhushi Wardrobe light when there is no motion
 - id: turnoffmadhushiwardrobelight
@@ -2899,6 +2904,8 @@
   actions:
     - action: light.turn_off
       entity_id: light.madhushi_wardrobe_light
+    - action: light.turn_off
+      entity_id: light.master_mad_wir_strip_zb_1
 
 # Turn off the Sameera's Wardrobe light when the light was left on for more than 10 minutes
 - id: samwrturnoff10
@@ -2906,6 +2913,11 @@
   triggers: 
     - trigger: state
       entity_id: light.sameera_wardrobe_light
+      to: 'on'
+      for:
+        minutes: 10
+    - trigger: state
+      entity_id: light.master_mad_wir_strip_zb_1
       to: 'on'
       for:
         minutes: 10
@@ -2918,6 +2930,8 @@
   actions:
     - action: light.turn_off
       entity_id:  light.sameera_wardrobe_light
+    - action: light.turn_off
+      entity_id:  light.master_mad_wir_strip_zb_1  
 
 # Turn off the Madhushi's Wardrobe light when the light was left on for more than 10 minutes
 - id: madwrturnoff10
