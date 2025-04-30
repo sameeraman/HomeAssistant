@@ -73,6 +73,19 @@
               left: 66%
               transform: 'scale(2.5,1)'
 
+          # Office Thermal Sensor
+          - type: image
+            state_image:
+              "on": /local/thermal_presence_active.svg?v=2
+              "off": /local/thermal_presence.svg?v=2
+            entity: binary_sensor.person_detected
+            style:
+              top: 6%
+              left: 74%
+              transform: 'scale(0.2,0.2)'
+            tap_action:
+              action: more-info
+
 
 # Alfresco
           # Alfresco Light
@@ -205,7 +218,7 @@
               top: 31.5%
               left: 52.7%
               transform: 'scale(1,2.0) rotate(90deg)'   
-              
+
           # Kitchen Motion
           - type: state-icon
             icon: 'mdi:run-fast'
@@ -656,14 +669,14 @@
 # Electricity Stats
           # Electricity Usage
           - type: state-icon
-            entity: sensor.electricity_usage
+            entity: sensor.power_meter_zb_1_power_consumption
             icon: 'mdi:flash'
             style: 
                 top: 97%
                 left: 50%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
-            entity: sensor.electricity_usage
+            entity: sensor.power_meter_zb_1_power_consumption
             icon: 'mdi:flash'
             style: 
                 top: 97%
@@ -671,14 +684,14 @@
 
           # Solar Generation
           - type: state-icon
-            entity: sensor.solar_generation
+            entity: sensor.power_meter_zb_1_solar_generation
             icon: 'mdi:solar-power'
             style: 
                 top: 97%
                 left: 76%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
-            entity: sensor.solar_generation
+            entity: sensor.power_meter_zb_1_solar_generation
             icon: 'mdi:solar-power'
             style: 
                 top: 97%

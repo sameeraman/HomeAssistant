@@ -543,7 +543,7 @@ views:
               labels: true
           - type: custom:mini-graph-card
             entities:
-              - sensor.solar_generation
+              - sensor.power_meter_zb_1_solar_generation
             name: Solar Generation
             icon: mdi:solar-power
             hours_to_show: 24
@@ -552,7 +552,7 @@ views:
             line_width: 2
           - type: custom:mini-graph-card
             entities:
-              - sensor.electricity_usage
+              - sensor.power_meter_zb_1_power_consumption
             name: Energy Consumption
             icon: mdi:flash
             hours_to_show: 24
@@ -1078,9 +1078,9 @@ views:
               grid:
                 entity: sensor.grid_power
               solar:
-                entity: sensor.solar_generation
+                entity: sensor.power_meter_zb_1_solar_generation
               home:
-                entity: sensor.electricity_usage
+                entity: sensor.power_meter_zb_1_power_consumption
           - type: horizontal-stack
             cards: 
             - type: energy-solar-consumed-gauge
