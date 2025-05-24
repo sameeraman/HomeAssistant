@@ -669,14 +669,14 @@
 # Electricity Stats
           # Electricity Usage
           - type: state-icon
-            entity: sensor.power_meter_zb_1_power_consumption
+            entity: sensor.power_consumption
             icon: 'mdi:flash'
             style: 
                 top: 97%
                 left: 50%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
-            entity: sensor.power_meter_zb_1_power_consumption
+            entity: sensor.power_consumption
             icon: 'mdi:flash'
             style: 
                 top: 97%
@@ -684,14 +684,14 @@
 
           # Solar Generation
           - type: state-icon
-            entity: sensor.power_meter_zb_1_solar_generation
+            entity: sensor.solar_generation
             icon: 'mdi:solar-power'
             style: 
                 top: 97%
                 left: 76%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
-            entity: sensor.power_meter_zb_1_solar_generation
+            entity: sensor.solar_generation
             icon: 'mdi:solar-power'
             style: 
                 top: 97%

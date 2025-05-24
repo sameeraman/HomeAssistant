@@ -419,9 +419,9 @@
             grid:
               entity: sensor.grid_power
             solar:
-              entity: sensor.power_meter_zb_1_solar_generation
+              entity: sensor.solar_generation
             home:
-              entity: sensor.power_meter_zb_1_power_consumption
+              entity: sensor.power_consumption
 
 
 
