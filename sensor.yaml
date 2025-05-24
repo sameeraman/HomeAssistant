@@ -365,6 +365,8 @@
           {{ (as_timestamp(now()) - as_timestamp(states('sensor.uptime'))) // 60| round (0)  }}
 
 
+# Power Meter Sensors
+
 # Solar Generation
       solar_generation:
         friendly_name: "Solar Generation"
