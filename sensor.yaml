@@ -372,10 +372,10 @@
         device_class: power
         value_template: >-
             {% set solar_value = states('sensor.power_meter_zb_1_solar_generation') %}
-            {% if solar_value not in ['0'] %}
-              {{ (solar_value | float * 1.55) | round(1) }}
-            {% else %}
+            {% if solar_value == '0' %}
               0
+            {% else %}
+              {{ (solar_value | float * 1.55) | round(1) }}
             {% endif %}
         availability_template: "{{ states('sensor.power_meter_zb_1_solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
@@ -386,11 +386,11 @@
         device_class: power
         value_template: >-
           {% set power_value = states('sensor.power_meter_zb_1_power_consumption') %}
-          {% if power_value not in ['0'] %}
-            {{ (power_value | float * 1.55) | round(1) }}
-          {% else %}
-            0
-          {% endif %}
+            {% if power_value == '0' %}
+              0
+            {% else %}
+              {{ (power_value | float * 1.55) | round(1) }}
+            {% endif %}
         availability_template: "{{ states('sensor.power_meter_zb_1_power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 # Solar Feed
