@@ -377,7 +377,7 @@
             {% if solar_value == '0' %}
               0
             {% else %}
-              {{ (solar_value | float * 1.55) | round(1) }}
+              {{ (solar_value | float * 1.5) | round(1) }}
             {% endif %}
         availability_template: "{{ states('sensor.power_meter_zb_1_solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
@@ -391,7 +391,7 @@
             {% if power_value == '0' %}
               0
             {% else %}
-              {{ (power_value | float * 1.55) | round(1) }}
+              {{ (power_value | float * 1.5) | round(1) }}
             {% endif %}
         availability_template: "{{ states('sensor.power_meter_zb_1_power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
