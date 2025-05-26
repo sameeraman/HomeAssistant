@@ -1413,11 +1413,11 @@
     - trigger: state
       entity_id: group.office_motion
       to: 'off'
-    - trigger: state
-      entity_id: binary_sensor.person_detected
-      to: 'off'
-      for:
-        minutes: 2
+    # - trigger: state
+    #   entity_id: binary_sensor.person_detected
+    #   to: 'off'
+    #   for:
+    #     minutes: 2
     - trigger: state
       entity_id: binary_sensor.frigate_office_desk_camera
       to: 'off'
@@ -1432,9 +1432,9 @@
       - condition: state
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
-      - condition: state
-        entity_id: binary_sensor.person_detected
-        state: 'off'
+      # - condition: state
+      #   entity_id: binary_sensor.person_detected
+      #   state: 'off'
       - condition: state
         entity_id: group.office_motion
         state: 'off'
