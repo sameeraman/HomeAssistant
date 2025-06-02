@@ -1073,14 +1073,16 @@ views:
     cards:
       - type: vertical-stack
         cards:
-          - type: custom:power-flow-card-plus
-            entities:
-              grid:
-                entity: sensor.grid_power
-              solar:
-                entity: sensor.solar_generation
-              home:
-                entity: sensor.power_consumption
+          # - type: custom:power-flow-card-plus
+          #   entities:
+          #     grid:
+          #       entity: sensor.grid_power
+          #     solar:
+          #       entity: sensor.solar_generation
+          #     home:
+          #       entity: sensor.power_consumption
+          - type: custom:floorplan-card
+            config: /local/custom-lovelace/energy/hasolardashboard.yml
           - type: horizontal-stack
             cards: 
             - type: energy-solar-consumed-gauge

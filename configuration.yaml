@@ -480,6 +480,10 @@ lovelace:
       type: module
     - url: /local/custom-lovelace/icons/laundry-icons/7segmentfontload.js
       type: module
+    - url: /local/community/config-template-card/config-template-card.js
+      type: module
+    - url: /local/community/ha-floorplan/floorplan.js
+      type: module
 
   dashboards:
     lovelace-living: # Needs to contain a hyphen (-)
