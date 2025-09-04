@@ -194,7 +194,7 @@ rainmachine_zoneon:
   sequence:
     - action: rainmachine.start_zone
       data_template:
-        zone_id: '{{ id | int }}'
+        entity_id: '{{ id }}'
         zone_run_time: "{{ states('sensor.sprinkler_runtime_seconds') | int }}"
 
 # Resume Living Sonos

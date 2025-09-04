@@ -1188,7 +1188,7 @@ views:
                   action: call-service
                   service: script.rainmachine_zoneon
                   service_data:
-                    id: 2
+                    id: switch.front_lawn
               - entity: switch.front_side_lawn
                 icon: 'mdi:sprinkler'
                 name: Side Lawn
@@ -1196,7 +1196,7 @@ views:
                   action: call-service
                   service: script.rainmachine_zoneon
                   service_data:
-                    id: 3
+                    id: switch.front_side_lawn
               - entity: switch.front_plants
                 icon: 'mdi:sprinkler'
                 name: Front Plants
@@ -1204,7 +1204,7 @@ views:
                   action: call-service
                   service: script.rainmachine_zoneon
                   service_data:
-                    id: 4
+                    id: switch.front_plants
 #              - entity: switch.side_trees
 #                icon: 'mdi:sprinkler'
 #                name: Side Trees
@@ -1215,7 +1215,7 @@ views:
                   action: call-service
                   service: script.rainmachine_zoneon
                   service_data:
-                    id: 6
+                    id: switch.back_planter_boxes
               - entity: switch.back_lawn
                 icon: 'mdi:sprinkler'
                 name: Back Lawn
@@ -1223,7 +1223,7 @@ views:
                   action: call-service
                   service: script.rainmachine_zoneon
                   service_data:
-                    id: 7
+                    id: switch.back_lawn
             title: Sprinklers
             type: glance
 
