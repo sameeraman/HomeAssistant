@@ -1242,7 +1242,7 @@ views:
                   show_state: false
                   tap_action:
                     action: call-service
-                    service: rainmachine.stop_all
+                    service: rainmachine.stop_zone
 
           - type: custom:mini-graph-card
             entities:
