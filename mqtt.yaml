@@ -93,8 +93,8 @@
       retain: false
       optimistic: false
 
-    - platform: mqtt
-      name: "Living Dimmer"
+
+    - name: "Living Dimmer"
       schema: template
       state_topic: "shellies/livingdimmer/status/light:0"
       state_template: >
