@@ -639,16 +639,16 @@ homekit:
 #     instance: prod
 #     source: homeassistant
 
-influxdb:
-  api_version: 2
-  ssl: false
-  host: !secret influxdbhost
-  port: !secret influxdbport
-  token: !secret influxdbtoken
-  organization: !secret influxdborgid
-  bucket: HomeAssistantHistory
-  tags:
-    source: homeassistant
+# influxdb:
+#   api_version: 2
+#   ssl: false
+#   host: !secret influxdbhost
+#   port: !secret influxdbport
+#   token: !secret influxdbtoken
+#   organization: !secret influxdborgid
+#   bucket: HomeAssistantHistory
+#   tags:
+#     source: homeassistant
 
 
 # Nest Doorbell
@@ -756,13 +756,13 @@ utility_meter:
 #       - name: person
 #         confidence: 60
 
-azure_event_hub:
-  filter:
-    include_domains:
-      - switch
-      - light
-      - group
-      - input_boolean
-      - sensor
-      - binary_sensor
-      - cover
+# azure_event_hub:
+#   filter:
+#     include_domains:
+#       - switch
+#       - light
+#       - group
+#       - input_boolean
+#       - sensor
+#       - binary_sensor
+#       - cover
