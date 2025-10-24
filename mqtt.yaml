@@ -101,9 +101,9 @@
         {% if value_json.output is defined and value_json.output %} on {% else %} off {% endif %}
       command_topic: "shellies/livingdimmer/command/light:0"
       command_on_template: >
-        {"id":1,"method":"Light.Set","params":{"id":0,"on":true{% if brightness is defined %},"brightness":{{ (brightness | float / 2.55) | round(0) }}{% endif %}}}
+        set,true,{{ (brightness / 255 * 100) | round(0) }}
       command_off_template: >
-        {"id":1,"method":"Light.Set","params":{"id":0,"on":false}}
+        set,false
       brightness_template: >
         {{ (value_json.brightness | float * 2.55) | round(0) }}
       qos: 1
