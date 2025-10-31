@@ -619,6 +619,20 @@
     method: left
 
   - platform: integration
+    source: sensor.battery_charging_power
+    name: battery_charging_power_integration
+    unit_prefix: k
+    round: 2
+    method: left
+
+  - platform: integration
+    source: sensor.battery_discharging_power
+    name: battery_discharging_power_integration
+    unit_prefix: k
+    round: 2
+    method: left
+
+  - platform: integration
     source: sensor.grid_consumption_peak
     name: grid_consumption_peak_integration
     unit_prefix: k
