@@ -395,7 +395,11 @@
         device_class: power
         value_template: >
           {% set solar_feed = states('sensor.sigen_plant_grid_export_power') | float * 1000 %}
-          {{ solar_feed }}
+          {% if solar_feed > 25 %}
+            {{ solar_feed }}
+          {% else %}
+            0
+          {% endif %}
         availability_template: "{{ states('sensor.sigen_plant_grid_export_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 # Battery Power
@@ -446,7 +450,11 @@
         device_class: power
         value_template: >
           {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000 %}
-          {{ grid_consumption }}
+          {% if grid_consumption > 25 %}
+            {{ grid_consumption }}
+          {% else %}
+            0
+          {% endif %}
         availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
@@ -457,7 +465,11 @@
         device_class: power
         value_template: >
           {% set grid_power = states('sensor.sigen_plant_grid_active_power') | float * 1000  %}
-          {{ grid_power }}
+          {% if (grid_power | abs) > 25 %}
+            {{ grid_power }}
+          {% else %}
+            0
+          {% endif %}
         availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
