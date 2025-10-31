@@ -422,7 +422,9 @@
               entity: sensor.solar_generation
             home:
               entity: sensor.power_consumption
-
+            battery:
+              entity: sensor.battery_power
+              state_of_charge: sensor.sigen_plant_battery_state_of_charge
 
 
         - type: horizontal-stack

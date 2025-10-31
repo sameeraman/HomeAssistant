@@ -398,6 +398,18 @@
           {{ solar_feed }}
         availability_template: "{{ states('sensor.sigen_plant_grid_export_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
+# Battery Power
+      battery_power:
+        friendly_name: "Battery Power"
+        unit_of_measurement: "W"
+        device_class: power
+        value_template: >
+          {% set battery_power = states('sensor.sigen_plant_battery_power') | float * 1000 %}
+          {{ battery_power }}
+        availability_template: "{{ states('sensor.sigen_plant_battery_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+
+
+
 
 # Energy going into the battery
       battery_charging_power:
@@ -620,14 +632,14 @@
 
   - platform: integration
     source: sensor.battery_charging_power
-    name: battery_charging_power_integration
+    name: Battery Charged
     unit_prefix: k
     round: 2
     method: left
 
   - platform: integration
     source: sensor.battery_discharging_power
-    name: battery_discharging_power_integration
+    name: Battery Discharged
     unit_prefix: k
     round: 2
     method: left
