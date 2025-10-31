@@ -484,6 +484,8 @@ lovelace:
       type: module
     - url: /local/community/ha-floorplan/floorplan.js
       type: module
+    - url: /local/community/lovelace-mushroom/mushroom.js
+      type: module
 
   dashboards:
     lovelace-living: # Needs to contain a hyphen (-)

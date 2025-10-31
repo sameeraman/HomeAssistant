@@ -373,13 +373,9 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >-
-            {% set solar_value = states('sensor.power_meter_zb_1_solar_generation') %}
-            {% if solar_value == '0' %}
-              0
-            {% else %}
-              {{ (solar_value | float * 1.5) | round(1) }}
-            {% endif %}
-        availability_template: "{{ states('sensor.power_meter_zb_1_solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+            {% set solar_generation = states('sensor.sigen_plant_pv_power') | float * 1000 %}
+            {{ solar_generation }}
+        availability_template: "{{ states('sensor.sigen_plant_pv_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 # Power Consumption
       power_consumption:
@@ -387,25 +383,30 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >-
-          {% set power_value = states('sensor.power_meter_zb_1_power_consumption') %}
-            {% if power_value == '0' %}
-              0
-            {% else %}
-              {{ (power_value | float * 1.5) | round(1) }}
-            {% endif %}
-        availability_template: "{{ states('sensor.power_meter_zb_1_power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+          {% set electricity_usage = states('sensor.sigen_plant_consumed_power') | float * 1000 %}
+          {{ electricity_usage }}
+        availability_template: "{{ states('sensor.sigen_plant_consumed_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
+# # Solar Feed
+#       solar_feed:
+#         friendly_name: "Solar Feed (Excess Power)"
+#         unit_of_measurement: "W"
+#         device_class: power
+#         value_template: >
+#           {% set solar_gen = states('sensor.solar_generation') | float(0) %}
+#           {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
+#           {% set excess_power = (solar_gen - electricity_usage) | round(2) %}
+#           {{ max(excess_power, 0) }}
+#         availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 # Solar Feed
       solar_feed:
         friendly_name: "Solar Feed (Excess Power)"
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set solar_gen = states('sensor.solar_generation') | float(0) %}
-          {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
-          {% set excess_power = (solar_gen - electricity_usage) | round(2) %}
-          {{ max(excess_power, 0) }}
-        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+          {% set solar_feed = states('sensor.sigen_plant_grid_export_power') | float * 1000 %}
+          {{ solar_feed }}
+        availability_template: "{{ states('sensor.sigen_plant_grid_export_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Grid Consumption
@@ -414,11 +415,9 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set solar_gen = states('sensor.solar_generation') | float(0) %}
-          {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
-          {% set grid_consumption = (electricity_usage - solar_gen) | round(2) %}
-          {{ max(grid_consumption, 0) }}
-        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+          {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000 %}
+          {{ grid_consumption }}
+        availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Energy Grid Power Value
@@ -427,9 +426,7 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set solar_gen = states('sensor.solar_generation') | float(0) %}
-          {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
-          {% set grid_power = (electricity_usage - solar_gen) | round(2) %}
+          {% set grid_power = states('sensor.sigen_plant_grid_active_power') | float * 1000  %}
           {{ grid_power }}
         availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
