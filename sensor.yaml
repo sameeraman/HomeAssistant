@@ -387,17 +387,7 @@
           {{ electricity_usage }}
         availability_template: "{{ states('sensor.sigen_plant_consumed_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
-# # Solar Feed
-#       solar_feed:
-#         friendly_name: "Solar Feed (Excess Power)"
-#         unit_of_measurement: "W"
-#         device_class: power
-#         value_template: >
-#           {% set solar_gen = states('sensor.solar_generation') | float(0) %}
-#           {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
-#           {% set excess_power = (solar_gen - electricity_usage) | round(2) %}
-#           {{ max(excess_power, 0) }}
-#         availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+
 # Solar Feed
       solar_feed:
         friendly_name: "Solar Feed (Excess Power)"
@@ -408,6 +398,34 @@
           {{ solar_feed }}
         availability_template: "{{ states('sensor.sigen_plant_grid_export_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
+
+# Energy going into the battery
+      battery_charging_power:
+        friendly_name: "Battery Charging Power"
+        unit_of_measurement: "W"
+        device_class: power
+        value_template: >
+          {% set battery_charging = (states('sensor.sigen_plant_battery_power') | float * 1000) %}
+          {% if battery_charging > 0 %}
+            {{ battery_charging | abs }}
+          {% else %}
+            0
+          {% endif %}
+        availability_template: "{{ states('sensor.sigen_plant_battery_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+
+# Energy Going out of the battery
+      battery_discharging_power:
+        friendly_name: "Battery Discharging Power"
+        unit_of_measurement: "W"
+        device_class: power
+        value_template: >
+          {% set battery_discharging = (states('sensor.sigen_plant_battery_power') | float * 1000) %}
+          {% if battery_discharging < 0 %}
+            {{ battery_discharging | abs }}
+          {% else %}
+            0
+          {% endif %}
+        availability_template: "{{ states('sensor.sigen_plant_battery_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 # Grid Consumption
       grid_consumption:
