@@ -496,14 +496,12 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set solar_gen = states('sensor.solar_generation') | float(0) %}
-          {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
-          {% set grid_consumption = max((electricity_usage - solar_gen) | round(2), 0) %}
+          {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000 %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 15 <= hour < 21 %} {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.time') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  }}"
+        availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Grid Consumption - Overnight
@@ -512,15 +510,13 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set solar_gen = states('sensor.solar_generation') | float(0) %}
-          {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
-          {% set grid_consumption = max((electricity_usage - solar_gen) | round(2), 0) %}
+          {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000  %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 0 <= hour < 6 %}  {{ grid_consumption }}
           {% elif 23 <= hour < 24 %}  {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.time') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  }}"
+        availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Grid Consumption - Offpeak
@@ -529,15 +525,13 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set solar_gen = states('sensor.solar_generation') | float(0) %}
-          {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
-          {% set grid_consumption = max((electricity_usage - solar_gen) | round(2), 0) %}
+          {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000 %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 6 <= hour < 9 %}  {{ grid_consumption }}
           {% elif 21 <= hour < 23 %}  {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.time') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  }}"
+        availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Grid Consumption Super OffPeak
@@ -546,14 +540,12 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set solar_gen = states('sensor.solar_generation') | float(0) %}
-          {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
-          {% set grid_consumption = max((electricity_usage - solar_gen) | round(2), 0) %}
+          {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000 %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 9 <= hour < 15 %} {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.time') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  }}"
+        availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Solar usage
@@ -570,6 +562,19 @@
           {% endif %}
         availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
+# Solar usage
+      solar_battery_own_usage_power:
+        friendly_name: "Solar & Battery Usage Power"
+        unit_of_measurement: "W"
+        device_class: power
+        value_template: >
+          {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
+          {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000 %}
+          {% set solar_battery_usage = (electricity_usage - solar_gen) | round(2) %}
+          {% if grid_consumption + 100 <= electricity_usage %}  {{ solar_battery_usage }}
+          {% else %} {{ electricity_usage }}
+          {% endif %}
+        availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Solar Usage Savings in AUD
@@ -578,6 +583,14 @@
         unit_of_measurement: "AUD"
         value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.solar_own_usage_power') | float / 1000 }}"
         availability_template: "{{ states('sensor.synergy_electrity_rate') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.solar_own_usage_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+
+# Solar & Battery Usage Savings in AUD
+      solar_battery_own_usage_saving_now:
+        friendly_name: 'Solar & Battery Own Usage Saving Now'
+        unit_of_measurement: "AUD"
+        value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.solar_battery_own_usage_power') | float / 1000 }}"
+        availability_template: "{{ states('sensor.synergy_electrity_rate') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.solar_battery_own_usage_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+
 
 # Solar Export earnings in AUD
       solar_export_earnings_now:
