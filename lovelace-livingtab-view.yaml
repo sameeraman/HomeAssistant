@@ -424,8 +424,8 @@
               entity: sensor.power_consumption
             battery:
               entity:
-                production: sensor.battery_discharging_power
-                consumption: sensor.battery_charging_power
+                production: sensor.battery_charging_power
+                consumption: sensor.battery_discharging_power
               state_of_charge: sensor.sigen_plant_battery_state_of_charge
 
 
