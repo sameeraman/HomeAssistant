@@ -583,14 +583,13 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
-          {% set battery_soc = states('sensor.sigen_plant_battery_state_of_charge') | float %}
-          {% if (battery_soc < 0.1) %}  
-            {{ 0 }}
+          {% set battery_usage = states('sensor.battery_power') | float %}
+          {% if (battery_usage < 0) %}  
+            {{ battery_usage | abs }}
           {% else %} 
-            {{ electricity_usage }}
+            {{ 0 }}
           {% endif %}
-        availability_template: "{{ states('sensor.grid_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        availability_template: "{{ states('sensor.battery_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Cost of Battery charging from grid. 
@@ -614,8 +613,8 @@
         value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.solar_own_usage_power') | float / 1000 }}"
         availability_template: "{{ states('sensor.synergy_electrity_rate') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.solar_own_usage_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
-# Solar & Battery Usage Savings in AUD
-      solar_battery_own_usage_saving_now:
+# Battery Usage Savings in AUD
+      battery_own_usage_saving_now:
         friendly_name: 'Solar & Battery Own Usage Saving Now'
         unit_of_measurement: "AUD"
         value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.solar_battery_own_usage_power') | float / 1000 }}"
@@ -685,12 +684,6 @@
     round: 2
     method: left
 
-  - platform: integration
-    source: sensor.car_charger_power
-    name: car_charger_power_integration
-    unit_prefix: k
-    round: 2
-    method: left
 
 
   - platform: integration
@@ -736,6 +729,12 @@
     method: left
 
   - platform: integration
+    source: sensor.solar_own_usage_power
+    name: solar_own_usage_power_integration
+    round: 2
+    method: left
+
+  - platform: integration
     source: sensor.solar_own_usage_saving_now
     name: solar_own_usage_saving_integration
     round: 2
@@ -748,8 +747,30 @@
     method: left
 
   - platform: integration
+    source: sensor.car_charger_power
+    name: car_charger_power_integration
+    unit_prefix: k
+    round: 2
+    method: left
+
+
+  - platform: integration
     source: sensor.car_charging_cost_now
     name: car_charging_cost_integration
+    round: 2
+    method: left
+
+
+  - platform: integration
+    source: sensor.solar_battery_own_usage_power
+    name: solar_battery_own_usage_power_integration
+    round: 2
+    method: left
+
+
+  - platform: integration
+    source: sensor.battery_own_usage_saving_now
+    name: battery_own_usage_saving_integration
     round: 2
     method: left
 

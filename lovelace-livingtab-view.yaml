@@ -478,26 +478,26 @@
             entity: light.bed_4_dimmer
             template: light
           - type: "custom:button-card"
-            name: BED 4
-            entity: light.bed_4_dimmer
-            template: light
-
-        - type: horizontal-stack
-          view_layout:
-            column: 3
-          cards: 
-          - type: "custom:button-card"
-            name: FR OUT
-            entity: light.front_outdoor_light
-            template: light
-          - type: "custom:button-card"
-            name: BK OUT
-            entity: light.back_outdoor_light
-            template: light
-          - type: "custom:button-card"
             name: ALFRSCO
             entity: light.alfresco_dimmer
             template: light
+
+        # - type: horizontal-stack
+        #   view_layout:
+        #     column: 3
+        #   cards: 
+        #   - type: "custom:button-card"
+        #     name: FR OUT
+        #     entity: light.front_outdoor_light
+        #     template: light
+        #   - type: "custom:button-card"
+        #     name: BK OUT
+        #     entity: light.back_outdoor_light
+        #     template: light
+        #   - type: "custom:button-card"
+        #     name: ALFRSCO
+        #     entity: light.alfresco_dimmer
+        #     template: light
 
 
         # - type: horizontal-stack
