@@ -607,7 +607,7 @@
         availability_template: "{{ states('sensor.synergy_electrity_rate') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.car_charger_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 # Solar Usage Savings in AUD
-      solar_own_usage_saving_now:
+      solar_own_usage_saving_now_sig:
         friendly_name: 'Solar Own Usage Saving Now'
         unit_of_measurement: "AUD"
         value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.solar_own_usage_power') | float / 1000 }}"
@@ -735,8 +735,8 @@
     method: left
 
   - platform: integration
-    source: sensor.solar_own_usage_saving_now
-    name: solar_own_usage_saving_integration
+    source: sensor.solar_own_usage_saving_now_sig
+    name: solar_own_usage_saving_now_sig_integration
     round: 2
     method: left
 
