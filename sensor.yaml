@@ -600,6 +600,13 @@
         value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.battery_charging_power') | float / 1000 }}"
         availability_template: "{{ states('sensor.synergy_electrity_rate') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.battery_charging_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
+# Cost of Car charging
+      car_charging_cost_now:
+        friendly_name: 'Car Charging Cost Now'
+        unit_of_measurement: "AUD"
+        value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.car_charger_power') | float / 1000 }}"
+        availability_template: "{{ states('sensor.synergy_electrity_rate') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.car_charger_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+
 # Solar Usage Savings in AUD
       solar_own_usage_saving_now:
         friendly_name: 'Solar Own Usage Saving Now'
@@ -679,6 +686,14 @@
     method: left
 
   - platform: integration
+    source: sensor.car_charger_power
+    name: car_charger_power_integration
+    unit_prefix: k
+    round: 2
+    method: left
+
+
+  - platform: integration
     source: sensor.battery_charging_power
     name: Battery Charged
     unit_prefix: k
@@ -731,6 +746,13 @@
     name: solar_export_earnings_integration
     round: 2
     method: left
+
+  - platform: integration
+    source: sensor.car_charging_cost_now
+    name: car_charging_cost_integration
+    round: 2
+    method: left
+
 
   # - platform: integration
   #   source: sensor.watermeter
