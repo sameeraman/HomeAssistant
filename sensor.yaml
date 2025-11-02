@@ -472,6 +472,21 @@
           {% endif %}
         availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
+# Zappi Car Charger Power Value
+      car_charger_power:
+        friendly_name: "Car Charger Power"
+        unit_of_measurement: "W"
+        device_class: power
+        value_template: >
+          {% set car_charger_power = states('sensor.myenergi_zappi_16352175_internal_load_ct1') | float  %}
+          {% if (car_charger_power | abs) > 0 %}
+            {{ car_charger_power }}
+          {% else %}
+            0
+          {% endif %}
+        availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+
+
 
 # Synergy Electricity Rates - EV Plan
       synergy_electrity_rate:
@@ -496,12 +511,12 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000 %}
+          {% set grid_consumption = states('sensor.grid_consumption')  %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 15 <= hour < 21 %} {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        availability_template: "{{ states('sensor.grid_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Grid Consumption - Overnight
@@ -510,13 +525,13 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000  %}
+          {% set grid_consumption = states('sensor.grid_consumption')  %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 0 <= hour < 6 %}  {{ grid_consumption }}
           {% elif 23 <= hour < 24 %}  {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        availability_template: "{{ states('sensor.grid_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Grid Consumption - Offpeak
@@ -525,13 +540,13 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000 %}
+          {% set grid_consumption = states('sensor.grid_consumption') | float * 1000 %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 6 <= hour < 9 %}  {{ grid_consumption }}
           {% elif 21 <= hour < 23 %}  {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        availability_template: "{{ states('sensor.grid_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Grid Consumption Super OffPeak
@@ -540,12 +555,12 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000 %}
+          {% set grid_consumption = states('sensor.grid_consumption') | float * 1000 %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 9 <= hour < 15 %} {{ grid_consumption }}
           {% else %} 0
           {% endif %}
-        availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        availability_template: "{{ states('sensor.grid_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 
 # Solar usage
@@ -562,20 +577,28 @@
           {% endif %}
         availability_template: "{{ states('sensor.solar_generation') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
-# Solar usage
+# Solar &  Battery usage
       solar_battery_own_usage_power:
         friendly_name: "Solar & Battery Usage Power"
         unit_of_measurement: "W"
         device_class: power
         value_template: >
           {% set electricity_usage = states('sensor.power_consumption') | float(0) %}
-          {% set grid_consumption = states('sensor.sigen_plant_grid_import_power') | float * 1000 %}
-          {% set solar_battery_usage = (electricity_usage - solar_gen) | round(2) %}
-          {% if grid_consumption + 100 <= electricity_usage %}  {{ solar_battery_usage }}
-          {% else %} {{ electricity_usage }}
+          {% set battery_soc = states('sensor.sigen_plant_battery_state_of_charge') | float %}
+          {% if (battery_soc < 0.1) %}  
+            {{ 0 }}
+          {% else %} 
+            {{ electricity_usage }}
           {% endif %}
-        availability_template: "{{ states('sensor.sigen_plant_grid_import_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        availability_template: "{{ states('sensor.grid_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.power_consumption') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
+
+# Cost of Battery charging from grid. 
+      battery_charging_cost_now:
+        friendly_name: 'Battery Charging Cost Now'
+        unit_of_measurement: "AUD"
+        value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.battery_charging_power') | float / 1000 }}"
+        availability_template: "{{ states('sensor.synergy_electrity_rate') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.battery_charging_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 # Solar Usage Savings in AUD
       solar_own_usage_saving_now:
