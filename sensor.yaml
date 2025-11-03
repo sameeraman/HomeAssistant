@@ -625,7 +625,7 @@
       solar_export_earnings_now:
         friendly_name: 'Solar Export Earnings Now'
         unit_of_measurement: "AUD"
-        value_template: "{{ 0.07 | float * states('sensor.solar_feed') | float / 1000 }}"
+        value_template: "{{ 0.00 | float * states('sensor.solar_feed') | float / 1000 }}"
         availability_template: "{{ states('sensor.solar_feed') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 # MLX90640 Thermal WC Sensor 
