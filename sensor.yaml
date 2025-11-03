@@ -540,7 +540,7 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set grid_consumption = states('sensor.grid_consumption') | float * 1000 %}
+          {% set grid_consumption = states('sensor.grid_consumption')  %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 6 <= hour < 9 %}  {{ grid_consumption }}
           {% elif 21 <= hour < 23 %}  {{ grid_consumption }}
@@ -555,7 +555,7 @@
         unit_of_measurement: "W"
         device_class: power
         value_template: >
-          {% set grid_consumption = states('sensor.grid_consumption') | float * 1000 %}
+          {% set grid_consumption = states('sensor.grid_consumption') %}
           {% set hour = strptime(states('sensor.time'), "%H:%M").hour %}
           {% if 9 <= hour < 15 %} {{ grid_consumption }}
           {% else %} 0
