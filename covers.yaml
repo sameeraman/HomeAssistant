@@ -170,15 +170,15 @@
         open_cover:
           action: switch.turn_on
           data:
-            entity_id: switch.garage_door
+            entity_id: switch.garage_door_zb_1_trigger
         close_cover:
           action: switch.turn_off
           data:
-            entity_id: switch.garage_door
+            entity_id: switch.garage_door_zb_1_trigger
         stop_cover:
           action: switch.turn_on
           data:
-            entity_id: switch.garage_door
+            entity_id: switch.garage_door_zb_1_trigger
         icon_template: >-
           {% if is_state('binary_sensor.garage_door_sensor', 'on') %}
             mdi:garage-open

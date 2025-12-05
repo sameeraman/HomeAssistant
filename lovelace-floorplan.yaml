@@ -73,18 +73,18 @@
               left: 66%
               transform: 'scale(2.5,1)'
 
-          # Office Thermal Sensor
-          - type: image
-            state_image:
-              "on": /local/thermal_presence_active.svg?v=2
-              "off": /local/thermal_presence.svg?v=2
-            entity: binary_sensor.person_detected
-            style:
-              top: 6%
-              left: 74%
-              transform: 'scale(0.2,0.2)'
-            tap_action:
-              action: more-info
+          # # Office Thermal Sensor
+          # - type: image
+          #   state_image:
+          #     "on": /local/thermal_presence_active.svg?v=2
+          #     "off": /local/thermal_presence.svg?v=2
+          #   entity: binary_sensor.person_detected
+          #   style:
+          #     top: 6%
+          #     left: 74%
+          #     transform: 'scale(0.2,0.2)'
+          #   tap_action:
+          #     action: more-info
 
 
 # Alfresco

@@ -1092,8 +1092,8 @@ views:
             - type: "custom:button-card"
               name: SOLAR SAVINGS
               color_type: card
-              entity_picture: '/local/custom-lovelace/icons/savings-icon.svg'
-              entity: sensor.solar_own_usage_saving_integration
+              entity_picture: '/local/custom-lovelace/icons/solar-saving.svg'
+              entity: sensor.solar_own_usage_saving_now_sig_integration
               show_entity_picture: true
               show_state: true
               size: 40%
@@ -1115,10 +1115,10 @@ views:
                 entity_picture:
                   - padding: 7%
             - type: "custom:button-card"
-              name: SOLAR EARNING
+              name: BATTERY SAVINGS
               color_type: card
-              entity_picture: '/local/custom-lovelace/icons/export-earning.svg'
-              entity: sensor.solar_export_earnings_integration
+              entity_picture: '/local/custom-lovelace/icons/battery-saving.svg'
+              entity: sensor.battery_own_usage_saving_integration
               show_entity_picture: true
               show_state: true
               size: 40%
@@ -1140,14 +1140,14 @@ views:
                 entity_picture:
                   - padding: 7%
             - type: "custom:button-card"
-              name: WATER USAGE
+              name: CAR CHARGE
               color_type: card
-              entity_picture: '/local/custom-lovelace/icons/water-drop.svg'
-              entity: sensor.water_meter_daily
+              entity_picture: '/local/custom-lovelace/icons/ev-charging.svg'
+              entity: sensor.car_charging_cost_integration
               show_entity_picture: true
               show_state: true
               size: 40%
-              units: 'L'
+              units: 'AUD'
               tap_action:
                     action: none
               styles:

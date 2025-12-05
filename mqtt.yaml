@@ -1,13 +1,12 @@
 # mqtt garage sensor
   binary_sensor:
     - name: garage_door_sensor
-      state_topic: "home/garage/garage_door/stat/POWER2"
-      availability_topic: "home/garage/garage_door/tele/LWT"
-      payload_on: "Open"
-      payload_off: "Closed"
-      payload_available: "Online"
-      payload_not_available: "Offline"
-      device_class: door 
+      state_topic: "zigbee2mqtt/garage_door_zb_1"
+      value_template: "{{ value_json.garage_door_contact }}"
+      payload_on: false
+      payload_off: true
+      device_class: garage_door
+      qos: 1
 
 # Baby Cam Motion Sensor
     - name: babycam_motion_sensor
@@ -573,12 +572,22 @@
 
 
     - name: "garage_door"
-      command_topic: "home/garage/garage_door/cmnd/power1"
-      state_topic: "home/garage/garage_door/stat/POWER1"
+      command_topic: "homeassistant/switch/garage_door_automation/command"
+      state_topic: "zigbee2mqtt/garage_door_zb_1"
+      value_template: "{{ value_json.garage_door_contact }}"
+      payload_on: false
+      payload_off: true
+      retain: false
       qos: 1
-      payload_on: "ON"
-      payload_off: "OFF"
-      retain: false    
+
+
+    # - name: "garage_door"
+    #   command_topic: "home/garage/garage_door/cmnd/power1"
+    #   state_topic: "home/garage/garage_door/stat/POWER1"
+    #   qos: 1
+    #   payload_on: "ON"
+    #   payload_off: "OFF"
+    #   retain: false    
 
     - name: "smartplug2"
       command_topic: "home/master/smartplug2/cmnd/power1"
