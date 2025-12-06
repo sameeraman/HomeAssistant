@@ -570,20 +570,20 @@
           #   template: light
 
 
-          # - type: "custom:button-card"
-          #   name: XMAS TREE
-          #   color_type: card
-          #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
-          #   entity: switch.smartplug3
-          #   show_entity_picture: true
-          #   tap_action:
-          #         action: toggle
-          #   styles:
-          #     name:
-          #       - font-family: Roboto
-          #       - font-size: 14px
-          #     entity_picture:
-          #       - padding: 7%
+          - type: "custom:button-card"
+            name: XMAS TREE
+            color_type: card
+            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/christmas-tree.svg"; else return "/local/custom-lovelace/icons/christmas-tree.svg" ]]]'
+            entity: switch.smartplug9
+            show_entity_picture: true
+            tap_action:
+                  action: toggle
+            styles:
+              name:
+                - font-family: Roboto
+                - font-size: 14px
+              entity_picture:
+                - padding: 7%
 
           # - type: "custom:button-card"
           #   name: YTUBE KIDS
@@ -601,21 +601,21 @@
           #     entity_picture:
           #       - padding: 7%
 
-          - type: "custom:button-card"
-            name: SIENNA
-            color_type: card
-            entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
-            entity: binary_sensor.montessori_music_sensor
-            show_entity_picture: true
-            tap_action:
-              action: call-service
-              service: script.play_pause_sonos_living_play_montessori
-            styles:
-              name:
-                - font-family: Roboto
-                - font-size: 14px
-              entity_picture:
-                - padding: 7%
+          # - type: "custom:button-card"
+          #   name: SIENNA
+          #   color_type: card
+          #   entity_picture: '[[[ if (entity.state === "on") return "/local/custom-lovelace/icons/lullabies-on.svg?v=3"; else return "/local/custom-lovelace/icons/lullabies.svg?v=4" ]]]'
+          #   entity: binary_sensor.montessori_music_sensor
+          #   show_entity_picture: true
+          #   tap_action:
+          #     action: call-service
+          #     service: script.play_pause_sonos_living_play_montessori
+          #   styles:
+          #     name:
+          #       - font-family: Roboto
+          #       - font-size: 14px
+          #     entity_picture:
+          #       - padding: 7%
 
 
           - type: "custom:button-card"
