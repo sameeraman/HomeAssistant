@@ -4028,3 +4028,44 @@
       entity_id: light.office_cabinet_light_strip
     - action: light.turn_off
       entity_id: light.office_cabinet_bottom_light_strip
+
+# Turn on the garage exhaust fan at 7am everyday
+- id: turnongaragefanat7am
+  alias: Turn on the garage exhaust fan at 7am everyday 
+  initial_state: True
+  trigger:
+    - trigger: time
+      at: '07:00:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.garage_fan_on_off_time_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+  actions:
+    - action: switch.turn_on
+      entity_id: switch.garage_fan_zb_1
+
+
+# Turn off the garage exhaust fan at 10pm everyday
+- id: turnoffgaragefanat10pm
+  alias: Turn off the garage exhaust fan at 10pm everyday 
+  initial_state: True
+  trigger:
+    - trigger: time
+      at: '22:00:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: state
+        entity_id: input_boolean.garage_fan_on_off_time_auto
+        state: 'on'
+      - condition: state
+        entity_id: input_boolean.light_on_off_auto
+        state: 'on'
+  actions:
+    - action: switch.turn_off
+      entity_id: switch.garage_fan_zb_1

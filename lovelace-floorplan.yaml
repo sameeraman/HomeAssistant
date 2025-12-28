@@ -576,6 +576,19 @@
                 top: 74%
                 left: 81.5%
 
+          # Garage Fan
+          - type: image
+            entity: switch.garage_fan_zb_1
+            tap_action:
+              action: toggle
+            image: /local/custom-lovelace/icons/fan-on.svg
+            state_image:
+              "off": /local/custom-lovelace/icons/fan-off.svg
+            style:
+              top: 61%
+              left: 75%
+              transform: scale(0.8,0.8)
+
 # Front Outdoor
           # Front Ourdoor Light 1
           - type: state-icon

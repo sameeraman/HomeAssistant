@@ -101,6 +101,10 @@ garage_light_on_off_auto:
   name: Garage lights On/Off with based on Garage motion
   icon: mdi:lightbulb-on-outline
 
+garage_fan_on_off_time_auto:
+  name: Garage fan On/Off based on time of the day
+  icon: mdi:fan
+
 garage_light_on_off_door_auto:
   name: Garage lights On/Off with based on Garage Door
   icon: mdi:lightbulb-on-outline
