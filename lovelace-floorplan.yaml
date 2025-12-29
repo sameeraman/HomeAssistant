@@ -1138,3 +1138,30 @@
               top: 61.7%
               left: 10%
               "--paper-item-icon-color": '#D8D6D9'
+
+# Heatpump
+          # Heatpump status
+          - type: state-icon
+            icon: 'mdi:water-boiler'
+            tap_action:
+              action: none
+            entity: binary_sensor.istore_running_state
+            style:
+              top: 33.5%
+              left: 93%
+
+          # top Temperature
+          - type: state-label
+            entity: sensor.istore_top_temperature
+            icon: 'mdi:thermometer'
+            style: 
+                top: 30%
+                left: 94%
+
+          # Bottom Temperature
+          - type: state-label
+            entity: sensor.istore_bottom_temperature
+            icon: 'mdi:thermometer'
+            style: 
+                top: 37%
+                left: 94%

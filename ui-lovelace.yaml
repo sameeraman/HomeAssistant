@@ -1452,6 +1452,9 @@ views:
             - entity: input_boolean.frontoutdoor_light_on_off_auto
               tap_action:
                 action: toggle
+            - entity: input_boolean.garage_fan_on_off_time_auto
+              tap_action:
+                action: toggle
         - type: entities
           title: Alfresco
           entities:

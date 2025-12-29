@@ -87,5 +87,7 @@
         device_class: motion
         value_template: "{{ is_state('input_boolean.imageprocessing_sensor', 'on') and states('sensor.frigate_alfresco_camera_value') not in ['unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.frigate_alfresco_camera_value') | float > 0}}" 
 
-
+      istore_running_state:
+        device_class: running
+        value_template: "{{ is_state('sensor.istore_running_state', 'On') }}"
 

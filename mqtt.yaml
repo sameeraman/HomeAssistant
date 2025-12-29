@@ -145,17 +145,17 @@
       retain: false
       optimistic: false
 
-    - name: Garage Dimmer 
-      schema: template
-      state_topic: "shellies/garagedimmer/light/0/status"
-      state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
-      command_topic: "shellies/garagedimmer/light/0/set"
-      command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
-      command_off_template: '{"turn": "off"}'
-      brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
-      qos: 1
-      retain: false
-      optimistic: false
+    # - name: Garage Dimmer 
+    #   schema: template
+    #   state_topic: "shellies/garagedimmer/light/0/status"
+    #   state_template: '{% if value_json.ison %} on {% else %} off {% endif %}'
+    #   command_topic: "shellies/garagedimmer/light/0/set"
+    #   command_on_template: '{"turn": "on"{% if brightness is defined %}, "brightness": {{(brightness | float * 0.3882 + 1) | round(0)}}{% endif %}}'
+    #   command_off_template: '{"turn": "off"}'
+    #   brightness_template: '{{ (value_json.brightness | float * 2.55) | round(0) }}'
+    #   qos: 1
+    #   retain: false
+    #   optimistic: false
 
     - name: Front Entrance Dimmer 
       schema: template
