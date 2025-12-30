@@ -75,6 +75,10 @@
     entity_id: switch.back_outdoor_switch
 
   - platform: switch
+    name: Garage Light
+    entity_id: switch.garage_light_zb_1
+
+  - platform: switch
     name: Master WC Light
     entity_id: switch.sonoff_1000ddec78_2
 

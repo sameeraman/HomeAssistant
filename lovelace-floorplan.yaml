@@ -519,7 +519,7 @@
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.garage_dimmer
+            entity: light.garage_light_zb_1
             style:
               top: 68%
               left: 82%
