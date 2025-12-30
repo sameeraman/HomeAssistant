@@ -451,7 +451,7 @@
           cards: 
           - type: "custom:button-card"
             name: GARAGE
-            entity:  light.garage_light_zb_1
+            entity:  light.garage_light
             template: light
           - type: "custom:button-card"
             name: PATIO

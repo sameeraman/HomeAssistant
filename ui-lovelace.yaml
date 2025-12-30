@@ -354,7 +354,7 @@ views:
           - type: horizontal-stack
             cards:
               - type: button
-                entity: light.garage_light_zb_1
+                entity: light.garage_light
                 icon: 'mdi:lightbulb'
                 name: Garage Light
                 tap_action:
@@ -711,7 +711,7 @@ views:
               - entity: light.front_outdoor_light
                 tap_action:
                   action: toggle
-              - entity: light.garage_light_zb_1
+              - entity: light.garage_light
                 tap_action:
                   action: toggle
               - entity: light.living_tv_strip_mqtt

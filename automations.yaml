@@ -659,7 +659,7 @@
           state: 'off'
   actions:
     - action: light.turn_on
-      entity_id: light.garage_light_zb_1
+      entity_id: light.garage_light
 
 # Turn on the garage light when the garage door close
 - id: garagelightongaragedoorclose
@@ -678,14 +678,14 @@
         entity_id: group.garage_motion
         state: 'on'
       - condition: state
-        entity_id: light.garage_light_zb_1
+        entity_id: light.garage_light
         state: 'off'
       - condition: state
         entity_id: input_boolean.garage_light_on_off_door_auto
         state: 'on'
   actions:
     - action: light.turn_on
-      entity_id: light.garage_light_zb_1
+      entity_id: light.garage_light
 
 
 # Turn off the garage light then there is no motion
@@ -699,7 +699,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.garage_light_zb_1
+        entity_id: light.garage_light
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
@@ -709,7 +709,7 @@
         state: 'on'
   actions:
     - action: light.turn_off
-      entity_id: light.garage_light_zb_1
+      entity_id: light.garage_light
 
 # Turn off the garage light when the garage door open during day time
 - id: garagelightoffwithgaragedoor
@@ -724,7 +724,7 @@
     condition: and
     conditions: 
       - condition: state
-        entity_id: light.garage_light_zb_1
+        entity_id: light.garage_light
         state: 'on'
       - condition: state
         entity_id: input_boolean.light_on_off_auto
@@ -737,20 +737,20 @@
         state: 'on'
   actions:
     - action: light.turn_off
-      entity_id: light.garage_light_zb_1
+      entity_id: light.garage_light
 
 # Turn off the garage light if it was one for more than 60 minutes
 - id: garagelightoff60min
   alias: Turn off the garage light if it was one for more than 60 minutes
   triggers: 
     - trigger: state
-      entity_id: light.garage_light_zb_1
+      entity_id: light.garage_light
       to: 'on'
       for: 
         minutes: 60
   actions:
     - action: light.turn_off
-      entity_id:  light.garage_light_zb_1
+      entity_id:  light.garage_light
 
 
 # Turn on the Bath strip when there is motion in Master bedroom

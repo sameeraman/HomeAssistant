@@ -219,7 +219,7 @@ google_assistant:
     light.master_dimmer:
       expose: true
       room: Master Bedroom
-    light.garage_light_zb_1:
+    light.garage_light:
       expose: true
       room: Garage
     cover.garage_door:
@@ -582,7 +582,7 @@ homekit:
         - light.living_dimmer
         - light.living_mood_lights
         - light.master_dimmer
-        - light.garage_light_zb_1
+        - light.garage_light
         - cover.garage_door
         - light.master_pendant
         - switch.air_conditioner
