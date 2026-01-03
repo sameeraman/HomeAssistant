@@ -18,6 +18,66 @@ garage_door:
     - sonos_speak
 
 
+garage_smoke:
+  name: "🔥 🚨 Garage Smoke alert"
+  message: "Smoke has been detected in the Garage. The smoke density is  {{ sensor.0x00158d00028e48f6_smoke_density.state }}. The time is {{ now().strftime('%Y-%m-%d %H:%M') }} " 
+  done_message: "Garage smoke cleared. The time is {{ now().strftime('%Y-%m-%d %H:%M') }} "
+  entity_id: binary_sensor.0x00158d00028e48f6_smoke
+  state: "on"   # Optional, 'on' is the default value
+  repeat:
+    - 1  # Every day 
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 5  # Every 5 minutes for 25 minutes (5 notifications)
+    - 5
+    - 5
+    - 5
+    - 5
+    - 60  # Every hour for 10 hours
+    - 60
+    - 60
+    - 60
+    - 60
+    - 60
+    - 60
+    - 60
+    - 60
+    - 60
+  can_acknowledge: true  # Optional, default is true
+  skip_first: false  # Optional, false is the default
+  data:
+    tag: garage-smoke
+    notification_id: garage_smoke
+  notifiers:
+    - phoneapps
+    - ha_persistent
+    - sonos_speak
+
+garage_smoke_battery_low:
+  name: "Garage Smoke Detector Battery Low"
+  message: "Garage Smoke Detector Battery is Low. The smoke alarm battery state is  {{ sensor.0x00158d00028e48f6_battery.state }}. Please change the batteries. }} " 
+  done_message: "Garage smoke detector battery state is normal. }} "
+  entity_id: binary_sensor.0x00158d00028e48f6_smoke
+  state: "on"   # Optional, 'on' is the default value
+  repeat:
+    - 1440  # Repeat every day
+  can_acknowledge: true  # Optional, default is true
+  skip_first: false  # Optional, false is the default
+  data:
+    tag: garage-smoke-battery-low
+    notification_id: garage_smoke_battery_low
+  notifiers:
+    - phoneapps
+    - ha_persistent
+    - sonos_speak
+
 laundry_door:
   name: "Laundry door is open alert"
   message: "The laundry door has been open for {{ relative_time(states.binary_sensor.laundry_door_zb.last_changed) }}" 
