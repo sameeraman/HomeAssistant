@@ -871,9 +871,9 @@
       - condition: state
         entity_id: binary_sensor.garage_door_sensor
         state: 'on'
-        # Pantry Door
+        # Living Room Sliding Door
       - condition: state
-        entity_id: binary_sensor.pantry_door_zb
+        entity_id: binary_sensor.living_sliding_door
         state: 'on' 
         # Garage Entry Door
       - condition: state
@@ -881,15 +881,33 @@
         state: 'on' 
   actions:
     - action: notify.phoneapps
-      data_template:
+      data:
         title: 'A door was left open at 10pm today - Please check!'
-        message: '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
+        message: >
+          {% set doors = [
+            'binary_sensor.main_entrance_door_zb',
+            'binary_sensor.laundry_door_zb',
+            'binary_sensor.garage_door_sensor',
+            'binary_sensor.living_sliding_door',
+            'binary_sensor.garage_entrance_door_zb'
+          ] %}
+          {% for door in doors if is_state(door, 'on') %}
+          {{ state_attr(door, 'friendly_name') }} was left open at 10:00pm today - {{ now().strftime("%m/%d/%Y - %I:%M %p") }}
+          {% endfor %}
     - action: notify.sendgrid
-      data_template:
-        title: '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-        message:  '{{ [condition.entity_id.split(".")[1]].name  }} Door was left open at 10:00pm today -  {{now().strftime("%m/%d/%Y - %I:%M %p")}}'
-
-
+      data:
+        title: 'Door(s) left open at 10pm'
+        message: >
+          {% set doors = [
+            'binary_sensor.main_entrance_door_zb',
+            'binary_sensor.laundry_door_zb',
+            'binary_sensor.garage_door_sensor',
+            'binary_sensor.living_sliding_door',
+            'binary_sensor.garage_entrance_door_zb'
+          ] %}
+          {% for door in doors if is_state(door, 'on') %}
+          {{ state_attr(door, 'friendly_name') }} was left open at 10:00pm today - {{ now().strftime("%m/%d/%Y - %I:%M %p") }}
+          {% endfor %}
 
 # # Alert if the Garage door was left open for more than 30 minutes
 # - id: garagedoor30mins
