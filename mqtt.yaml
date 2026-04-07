@@ -496,6 +496,22 @@
       state_class: measurement
       value_template: "{{ value_json.illuminance }}"
 
+    - name: "Kitchen Illuminance 2"
+      unique_id: kitchen_illuminance_2
+      state_topic: "zigbee2mqtt/kitchen_motion_zb_2"
+      unit_of_measurement: "lx"
+      device_class: illuminance
+      state_class: measurement
+      value_template: "{{ value_json.illuminance }}"
+
+    - name: "Office Illuminance"
+      unique_id: office_illuminance
+      state_topic: "zigbee2mqtt/office_motion_zb_1"
+      unit_of_measurement: "lx"
+      device_class: illuminance
+      state_class: measurement
+      value_template: "{{ value_json.illuminance }}"
+
   switch:
     - name: "mad_wardrobe_switch"
       command_topic: "home/master/mad_wardrobe_switch/cmnd/power"

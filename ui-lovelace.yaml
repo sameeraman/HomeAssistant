@@ -208,7 +208,7 @@ views:
               - entity: sensor.living_espmulti_t
                 icon: 'mdi:coolant-temperature'
                 name: Temperature
-              - entity: sensor.0x00158d0002c716b6_illuminance_lux
+              - entity: sensor.kitchen_illuminance_2
                 icon: 'mdi:theme-light-dark'
                 name: Light
               - entity: sensor.living_espmulti_h
@@ -321,7 +321,7 @@ views:
               - entity: sensor.office_espmulti_t
                 icon: 'mdi:coolant-temperature'
                 name: Temperature
-              - entity: sensor.0x00158d0002b7ec00_illuminance_lux
+              - entity: sensor.office_illuminance
                 icon: 'mdi:theme-light-dark'
                 name: Light
               - entity: sensor.office_espmulti_h
