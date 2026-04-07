@@ -488,6 +488,14 @@
       value_template: "{{ value_json.ENERGY.Current }}"
       unit_of_measurement: "A"
 
+    - name: "Master Bath Illuminance"
+      unique_id: master_bath_illuminance
+      state_topic: "zigbee2mqtt/master_bath_motion_zb_1"
+      unit_of_measurement: "lx"
+      device_class: illuminance
+      state_class: measurement
+      value_template: "{{ value_json.illuminance }}"
+
   switch:
     - name: "mad_wardrobe_switch"
       command_topic: "home/master/mad_wardrobe_switch/cmnd/power"
