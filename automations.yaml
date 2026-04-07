@@ -458,7 +458,7 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: numeric_state
-        entity_id: sensor.0x00158d0001e0ac8e_illuminance_lux
+        entity_id: sensor.master_bath_illuminance
         below: 30
       - condition: time
         before: '20:59:59'
