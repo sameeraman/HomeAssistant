@@ -651,7 +651,7 @@
           {% set charge_state = states('binary_sensor.atto_3_charging') %}
           {% set total_pv_generation = states('sensor.sigen_inverter_pv_power') | float%}
           {% set total_active_usage = states('sensor.sigen_inverter_active_power') | float %}
-          {% if (charge_state == 'Charging' and (total_pv_generation > total_active_usage)) %}  
+          {% if (charge_state == 'on' and (total_pv_generation > total_active_usage)) %}  
             {{ (total_pv_generation - total_active_usage) | float | abs }}
           {% else %} 
             {{ states('sensor.atto_3_battery_power') | float }}
