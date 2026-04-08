@@ -510,7 +510,7 @@
             entity: binary_sensor.garage_motion
             style:
               top: 68%
-              left: 73%
+              left: 68%
               "--paper-item-icon-color": '#D8D6D9'
 
 
@@ -522,7 +522,7 @@
             entity: light.garage_light
             style:
               top: 68%
-              left: 82%
+              left: 76%
               "--paper-item-icon-color": '#D8D6D9'
 
           # Garage Door
@@ -552,14 +552,14 @@
             icon: 'mdi:water-percent'
             style: 
                 top: 78%
-                left: 75.5%
+                left: 70.5%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.garage_espmulti_h_2
             icon: 'mdi:water-percent'
             style: 
                 top: 78%
-                left: 81.5%
+                left: 76.5%
 
           # Garage Temperature - ESPHome
           - type: state-icon
@@ -567,14 +567,14 @@
             icon: 'mdi:thermometer'
             style: 
                 top: 74%
-                left: 74.5%
+                left: 69.5%
                 "--paper-item-icon-color": '#D8D6D9'
           - type: state-label
             entity: sensor.garage_espmulti_t_2
             icon: 'mdi:thermometer'
             style: 
                 top: 74%
-                left: 81.5%
+                left: 76.5%
 
           # Garage Fan
           - type: image
