@@ -428,7 +428,7 @@
                 consumption: sensor.battery_discharging_power
               state_of_charge: sensor.sigen_plant_battery_state_of_charge
             individual:
-              - entity: sensor.atto_3_battery_power
+              - entity: sensor.sigenergy_evdc_charging_power
                 icon: mdi:car-electric
                 color: "#954CB4"
                 name: BYD
