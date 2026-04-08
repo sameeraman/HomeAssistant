@@ -427,7 +427,16 @@
                 production: sensor.battery_charging_power
                 consumption: sensor.battery_discharging_power
               state_of_charge: sensor.sigen_plant_battery_state_of_charge
-
+            individual:
+              - entity: sensor.atto_3_battery_power
+                icon: mdi:car-electric
+                color: "#954CB4"
+                name: BYD
+                color_icon: false
+                secondary_info: 
+                  entity: sensor.atto_3_battery_level
+                  unit_of_measurement: '%'
+                  show_zero: true
 
         - type: horizontal-stack
           view_layout:

@@ -642,13 +642,28 @@
         value_template: "{{ states('sensor.master_bath_mlx90640_max_temp') | float - states('sensor.master_bath_mlx90640_min_temp') | float }}"
         availability_template: "{{ states('sensor.master_bath_mlx90640_max_temp') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.master_bath_mlx90640_min_temp') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
+# Solar &  Battery usage
+      sigenergy_evdc_charging_power:
+        friendly_name: "Solar & Battery Usage Power"
+        unit_of_measurement: "W"
+        device_class: power
+        value_template: >
+          {% set charge_state = states('binary_sensor.atto_3_charging') %}
+          {% set total_pv_generation = states('sensor.sigen_inverter_pv_power') | float%}
+          {% set total_active_usage = states('sensor.sigen_inverter_active_power') | float %}
+          {% if (charge_state == 'Charging' and (total_pv_generation > total_active_usage)) %}  
+            {{ (total_pv_generation - total_active_usage) | float | abs }}
+          {% else %} 
+            {{ states('sensor.atto_3_battery_power') | float }}
+          {% endif %}
+        availability_template: "{{ states('sensor.atto_3_battery_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('binary_sensor.atto_3_charging') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.sigen_inverter_pv_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.sigen_inverter_active_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']}}"
 
 # Time sensor
   - platform: time_date
     display_options:
       - 'time'
 
-# Energy 
+# Energy
   - platform: integration
     source: sensor.power_consumption
     name: electricity_consumed
@@ -735,6 +750,7 @@
     method: left
 
   - platform: integration
+    sensors:
     source: sensor.solar_own_usage_saving_now_sig
     name: solar_own_usage_saving_now_sig_integration
     round: 2

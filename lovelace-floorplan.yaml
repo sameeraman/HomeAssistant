@@ -586,8 +586,30 @@
               "off": /local/custom-lovelace/icons/fan-off.svg
             style:
               top: 61%
-              left: 75%
+              left: 78%
               transform: scale(0.8,0.8)
+
+          # Garage BYD Atto 3
+          - type: state-icon
+            icon: 'mdi:car-electric'
+            entity: binary_sensor.atto_3_charging
+            style:
+              top: 68.5%
+              left: 88%
+              "--paper-item-icon-color": '#D8D6D9'
+          - type: state-label
+            entity: sensor.atto_3_battery_level
+            icon: 'mdi:car-electric'
+            style: 
+                top: 68%
+                left: 94%
+          - type: state-label
+            entity: sensor.atto_3_battery_power
+            icon: 'mdi:car-electric'
+            style: 
+                top: 73%
+                left: 91%
+
 
 # Front Outdoor
           # Front Ourdoor Light 1
