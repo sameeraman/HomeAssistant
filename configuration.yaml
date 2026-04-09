@@ -204,7 +204,7 @@ google_assistant:
     light.office_dimmer:
       expose: true
       room: Office
-    light.front_outdoor_light:
+    light.frontoutdoor_light_zb_1:
       expose: true
       room: Other
     light.kitchen_dimmer:
@@ -305,7 +305,7 @@ google_assistant:
     light.front_entrance_dimmer:
       expose: true
       room: Other
-    light.front_patio_light:
+    light.patio_light_zb_1:
       expose: true
       room: Other
     light.bed_2_dimmer:
@@ -579,7 +579,7 @@ homekit:
         - light.master_bath_dimmer
         - light.bath_strip_mqtt
         - light.office_dimmer
-        - light.front_outdoor_light
+        - light.frontoutdoor_light_zb_1
         - light.kitchen_dimmer
         - light.living_dimmer
         - light.living_mood_lights
@@ -603,7 +603,7 @@ homekit:
         - light.sameera_wardrobe_light
         - light.pantry_light_mqtt
         - light.front_entrance_dimmer
-        - light.front_patio_light
+        - light.patio_light_zb_1
         - light.bed_2_dimmer
         - light.bed_3_dimmer
         - light.bed_4_dimmer

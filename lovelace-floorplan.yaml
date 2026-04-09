@@ -617,7 +617,7 @@
             icon: 'mdi:wall-sconce-flat'
             tap_action:
               action: toggle
-            entity: light.front_outdoor_light
+            entity: light.frontoutdoor_light_zb_1
             style:
               top: 91%
               left: 60%
@@ -627,7 +627,7 @@
             icon: 'mdi:wall-sconce-flat'
             tap_action:
               action: toggle
-            entity: light.front_outdoor_light
+            entity: light.frontoutdoor_light_zb_1
             style:
               top: 91%
               left: 98.3%
@@ -637,7 +637,7 @@
             icon: 'mdi:wall-sconce-flat'
             tap_action:
               action: toggle
-            entity: light.front_outdoor_light
+            entity: light.frontoutdoor_light_zb_1
             style:
               top: 97%
               left: 1.7%
@@ -647,7 +647,7 @@
             icon: 'mdi:wall-sconce-flat'
             tap_action:
               action: toggle
-            entity: light.front_outdoor_light
+            entity: light.frontoutdoor_light_zb_1
             style:
               top: 98.6%
               left: 21.5%
@@ -657,7 +657,7 @@
             icon: 'mdi:wall-sconce-flat'
             tap_action:
               action: toggle
-            entity: light.front_outdoor_light
+            entity: light.frontoutdoor_light_zb_1
             style:
               top: 98.6%
               left: 40%
@@ -685,7 +685,7 @@
             icon: 'mdi:lightbulb-outline'
             tap_action:
               action: toggle
-            entity: light.front_patio_light
+            entity: light.patio_light_zb_1
             style:
               top: 76%
               left: 53.4%

@@ -20,7 +20,7 @@ light.bed_2_dimmer:
   friendly_name: Bed 2 Light
 light.front_entrance_dimmer:
   friendly_name: Front Entrance Light
-light.front_outdoor_light:
+light.frontoutdoor_light_zb_1:
   friendly_name: Front Outdoor Lights
 switch.bedheater_switch:
   friendly_name: Bed Heater

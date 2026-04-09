@@ -465,7 +465,7 @@
             template: light
           - type: "custom:button-card"
             name: PATIO
-            entity: light.front_patio_light
+            entity: light.patio_light_zb_1
             template: light
           - type: "custom:button-card"
             name: BED 2
@@ -498,7 +498,7 @@
         #   cards: 
         #   - type: "custom:button-card"
         #     name: FR OUT
-        #     entity: light.front_outdoor_light
+        #     entity: light.frontoutdoor_light_zb_1
         #     template: light
         #   - type: "custom:button-card"
         #     name: BK OUT

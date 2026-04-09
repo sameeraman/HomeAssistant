@@ -2,11 +2,11 @@
 garagelight:
   sequence:
     - action: light.turn_on
-      entity_id: light.front_outdoor_light
+      entity_id: light.frontoutdoor_light_zb_1
     - delay:
         minutes: 4
     - action: light.turn_off
-      entity_id: light.front_outdoor_light
+      entity_id: light.frontoutdoor_light_zb_1
 
 # Script to execute the Xiaomi Gatway alarm
 xiaomi_gateway_alarm:

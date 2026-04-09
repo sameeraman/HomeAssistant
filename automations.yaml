@@ -1043,11 +1043,11 @@
       entity_id: script.garagelight
 
 # Turn off the Front Outdoor light after 5 hours 
-- id: frontoutdoorgaragelightoff
-  alias: Turn on the Front Outdoor light for 2 mins then there the garage door open
+- id: frontoutdoorgaragelightoff5hours
+  alias: Turn off the Front Outdoor light after 5 hours
   triggers: 
     - trigger: state
-      entity_id: light.front_outdoor_light
+      entity_id: light.frontoutdoor_light_zb_1
       to: 'on'
       for: 
         hours: 5
@@ -1062,7 +1062,7 @@
         state: 'on'
   actions:
     - action: light.turn_off
-      entity_id: light.front_outdoor_light
+      entity_id: light.frontoutdoor_light_zb_1
 
 
 # Turn on house alarm based on device tracker - Arm when every one is out of the house.
@@ -3263,7 +3263,7 @@
         state: 'on'
   actions:
     - action: light.turn_on
-      entity_id: light.front_patio_light
+      entity_id: light.patio_light_zb_1
 
 
 # Turn off the Front Patio light when there is no motion in the patio
@@ -3280,18 +3280,18 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.front_patio_light
+        entity_id: light.patio_light_zb_1
         state: 'on'
   actions:
     - action: light.turn_off
-      entity_id: light.front_patio_light
+      entity_id: light.patio_light_zb_1
 
 # Turn off the front patio light after 20 minutes
 - id: frontpatiolightoffafter20mins
   alias: Turn off the front patio light after 20 minutes
   triggers: 
     - trigger: state
-      entity_id: light.front_patio_light
+      entity_id: light.patio_light_zb_1
       to: 'on'
       for:
         minutes: 20
@@ -3302,11 +3302,11 @@
         entity_id: input_boolean.light_on_off_auto
         state: 'on'
       - condition: state
-        entity_id: light.front_patio_light
+        entity_id: light.patio_light_zb_1
         state: 'on'
   actions:
     - action: light.turn_off
-      entity_id: light.front_patio_light
+      entity_id: light.patio_light_zb_1
 
 # Turn on the front entrance light when there the front door open at night
 - id: frontentrancelightonwithfrontdooropen
