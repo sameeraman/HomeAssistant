@@ -433,6 +433,7 @@
                 color: "#954CB4"
                 name: BYD
                 color_icon: false
+                display_zero: true
                 secondary_info: 
                   entity: sensor.atto_3_battery_level
                   unit_of_measurement: '%'

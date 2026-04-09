@@ -82,6 +82,14 @@
     name: Master WC Light
     entity_id: switch.sonoff_1000ddec78_2
 
+  - platform: switch
+    name: Patio Light ZB 1
+    entity_id: switch.patio_light_zb_1
+
+  - platform: switch
+    name: FrontOutdoor Light ZB 1
+    entity_id: switch.frontoutdoor_light_zb_1
+
   - platform: group
     name: "Master Pendant"
     entities:
