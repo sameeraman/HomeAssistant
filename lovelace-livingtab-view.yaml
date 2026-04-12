@@ -222,7 +222,9 @@
             show_entity_picture: true
             tap_action:
               action: call-service
-              service: script.toggle_tv
+              service: media_player.toggle
+              service_data:
+                entity_id: media_player.samsungtv_ade6ef96_9365_40cb_b442_7cfbb076d128
             styles:
               name:
                 - font-family: Roboto

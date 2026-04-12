@@ -3789,9 +3789,9 @@
   initial_state: True
   trigger:
     - trigger: state
-      entity_id: sensor.fcb97e3fb7af_laundry_machine_state
-      from: 'Run'
-      to: 'Finished'
+      entity_id: binary_sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_end_of_cycle
+      from: 'off'
+      to: 'on'
   condition:
     condition: and
     conditions: 
@@ -3812,9 +3812,9 @@
   initial_state: True
   trigger:
     - trigger: state
-      entity_id: sensor.d828c9f3fc0c_laundry_machine_state
-      from: 'Run'
-      to: 'Stand'
+      entity_id: binary_sensor.fisher_paykel_dryer_d828c9f3fc0c_laundry_end_of_cycle
+      from: 'off'
+      to: 'on'
   condition:
     condition: and
     conditions: 

@@ -486,7 +486,7 @@ lovelace:
       type: module
     - url: /local/community/lovelace-mushroom/mushroom.js
       type: module
-    - url: /local/height-fix.js
+    - url: /local/height-fix.js?v=2
       type: module
 
   dashboards:
@@ -528,9 +528,10 @@ notify:
   - platform: group
     name: ha_persistent
     services: []
-  - platform: group
+  - platform: script
     name: sonos_speak
-    services: []
+    script: sonos_warning
+    
 # SONOS
 sonos:
   media_player:
