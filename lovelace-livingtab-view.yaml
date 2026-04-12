@@ -349,6 +349,8 @@
                 - font-size: 14px
               entity_picture:
                 - padding: 7%
+              card:
+                - '--state-binary_sensor-sound-on-color': 'rgb(255, 193, 9)'    
 
           - type: "custom:button-card"
             name: HALLWAY

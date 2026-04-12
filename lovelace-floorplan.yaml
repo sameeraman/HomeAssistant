@@ -141,6 +141,7 @@
               top: 11%
               left: 10%
               "--paper-item-icon-color": '#D8D6D9'
+              "--state-binary_sensor-sound-on-color": 'rgb(255, 193, 9)'
 
           # Alfresco Temperature
           - type: state-icon
@@ -384,6 +385,7 @@
               top: 38%
               left: 5%
               "--paper-item-icon-color": '#D8D6D9'
+              "--state-binary_sensor-sound-on-color": 'rgb(255, 193, 9)'
 
           # Living TV
           - type: state-icon
@@ -410,6 +412,7 @@
               top: 6%
               left: 49%
               "--paper-item-icon-color": '#D8D6D9'
+              "--state-binary_sensor-sound-on-color": 'rgb(255, 193, 9)'
               transform: rotate(135deg)
 
           # Dining Light
@@ -422,7 +425,6 @@
               top: 11%
               left: 40.5%
               "--paper-item-icon-color": '#D8D6D9'
-
 
           # Main Entrance Door 
           - type: image
