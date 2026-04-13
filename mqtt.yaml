@@ -512,6 +512,14 @@
       state_class: measurement
       value_template: "{{ value_json.illuminance }}"
 
+    - name: "iStore Heat Pump Active Power"
+      state_topic: "home/outdoor/istore_heatpump/tele/SENSOR"
+      value_template: "{{ value_json.ENERGY.Power }}"
+      unit_of_measurement: "W"
+      device_class: power
+      state_class: measurement
+      
+
   switch:
     - name: "mad_wardrobe_switch"
       command_topic: "home/master/mad_wardrobe_switch/cmnd/power"
