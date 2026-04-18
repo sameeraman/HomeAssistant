@@ -716,6 +716,15 @@ utility_meter:
     source: sensor.solar_export_earnings_integration
     cycle: monthly
 
+  istore_heat_pump_active_power_integration_daily:
+    source: sensor.istore_heat_pump_active_power_integration
+    cycle: daily
+
+  istore_heat_pump_cost_integration_daily:
+    source: sensor.istore_heat_pump_cost_integration
+    cycle: daily
+
+    
 # # Image Processing
 # image_processing:
 #   - platform: doods

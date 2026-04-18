@@ -1528,6 +1528,7 @@ views:
         name: Baby Monitor
 
 
+
   - title: Dev
     path: dev
     cards:
@@ -1728,7 +1729,7 @@ views:
                 style:
                   top: 33%
                   left: 71%
-                  width: 15%
+                  width: 15%  
                   image-rendering: crisp
               - type: image
                 entity: sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_sub_cycle
@@ -1744,7 +1745,7 @@ views:
                 entity: sensor.washer
                 image: /local/custom-lovelace/icons/laundry-icons/wifi.png
                 state_image:
-                  on: /local/custom-lovelace/icons/laundry-icons/wifi-on.png
+                  'on': /local/custom-lovelace/icons/laundry-icons/wifi-on.png
                 style:
                   top: 73%
                   left: 39%
@@ -1754,7 +1755,7 @@ views:
                 entity: sensor.washer_door_lock
                 image: /local/custom-lovelace/icons/laundry-icons/lock.png
                 state_image:
-                  on: /local/custom-lovelace/icons/laundry-icons/lock-on.png
+                  'on': /local/custom-lovelace/icons/laundry-icons/lock-on.png
                 style:
                   top: 73%
                   left: 52%
@@ -1879,3 +1880,30 @@ views:
           #         attribute: dry_level
           #         name: Dry Level
           #         icon: 'mdi:air-filter'
+
+# Heatpump Tab
+  - title: Heatpump
+    path: heatpump
+    cards:
+      - type: vertical-stack
+        cards:
+          - type: custom:floorplan-card
+            config: /local/custom-lovelace/heatpump-card/heatpumpdashboard.yml
+      - type: vertical-stack
+        cards:
+          - type: history-graph
+            title: 'Temperatures'
+            hours_to_show: 48
+            entities:
+              - entity: sensor.istore_top_temperature
+                name: Top
+              - entity: sensor.istore_bottom_temperature
+                name: Bottom
+      - type: vertical-stack
+        cards:
+          - type: history-graph
+            title: 'Power Consumption'
+            hours_to_show: 48
+            entities:
+              - entity: sensor.istore_heat_pump_active_power
+                name: Power Consumption

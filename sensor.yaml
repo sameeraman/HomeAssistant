@@ -689,6 +689,13 @@
           {% endif %}
         availability_template: "{{ states('sensor.atto_3_battery_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('binary_sensor.atto_3_charging') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.sigen_inverter_pv_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.sigen_inverter_active_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']}}"
 
+# Heat Pump Cost in AUD
+      istore_heat_pump_cost_now:
+        friendly_name: 'Heat Pump Cost Now'
+        unit_of_measurement: "AUD"
+        value_template: "{{ 0.0820 | float * (states('sensor.istore_heat_pump_active_power') | float / 1000) }}"
+        availability_template: "{{ states('sensor.istore_heat_pump_active_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+
 # Time sensor
   - platform: time_date
     display_options:
@@ -823,8 +830,16 @@
   - platform: integration
     source: sensor.istore_heat_pump_active_power
     name: istore_heat_pump_active_power_integration
+    unit_prefix: k
     round: 2
     method: left
+
+  - platform: integration
+    source: sensor.istore_heat_pump_cost_now
+    name: istore_heat_pump_cost_integration
+    round: 2
+    method: left
+
 
   # - platform: integration
   #   source: sensor.watermeter
