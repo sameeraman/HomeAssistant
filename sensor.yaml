@@ -191,7 +191,7 @@
       washer_door_lock:
         friendly_name: Washer Door Lock
         value_template: >
-          {% if states('sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_machine_state') not in ['Standby'] } %}
+          {% if states('sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_machine_state') not in ['Standby'] %}
             on
           {% else %}
             off
@@ -200,7 +200,7 @@
       washer:
         friendly_name: Washer
         value_template: >
-          {% if states('sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_machine_state') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  } %}
+          {% if states('sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_machine_state') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  %}
             on
           {% else %}
             off
@@ -209,7 +209,7 @@
       dryer:
         friendly_name: Dryer
         value_template: >
-          {% if states('sensor.fisher_paykel_dryer_d828c9f3fc0c_laundry_machine_state') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  } %}
+          {% if states('sensor.fisher_paykel_dryer_d828c9f3fc0c_laundry_machine_state') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  %}
             on
           {% else %}
             off
@@ -781,7 +781,6 @@
     method: left
 
   - platform: integration
-    sensors:
     source: sensor.solar_own_usage_saving_now_sig
     name: solar_own_usage_saving_now_sig_integration
     round: 2
