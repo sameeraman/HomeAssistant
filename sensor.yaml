@@ -188,6 +188,34 @@
         friendly_name: My Air Stop Timer
         value_template: '{{ states.sensor.myair.attributes.aircons.ac1.info["countDownToOff"] }}'
 
+      washer_door_lock:
+        friendly_name: Washer Door Lock
+        value_template: >
+          {% if states('sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_machine_state') not in ['Standby'] } %}
+            on
+          {% else %}
+            off
+          {% endif %}
+
+      washer:
+        friendly_name: Washer
+        value_template: >
+          {% if states('sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_machine_state') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  } %}
+            on
+          {% else %}
+            off
+          {% endif %}
+
+      dryer:
+        friendly_name: Dryer
+        value_template: >
+          {% if states('sensor.fisher_paykel_dryer_d828c9f3fc0c_laundry_machine_state') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none']  } %}
+            on
+          {% else %}
+            off
+          {% endif %}
+
+
     # Time sensors
       part_of_day:
         friendly_name: 'Part of Day'
@@ -603,8 +631,8 @@
       car_charging_cost_now:
         friendly_name: 'Car Charging Cost Now'
         unit_of_measurement: "AUD"
-        value_template: "{{ states('sensor.synergy_electrity_rate') | float * states('sensor.car_charger_power') | float / 1000 }}"
-        availability_template: "{{ states('sensor.synergy_electrity_rate') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.car_charger_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
+        value_template: "{{ 0.08 | float * states('sensor.sigenergy_evdc_charging_power') | float / 1000 }}"
+        availability_template: "{{ states('sensor.synergy_electrity_rate') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] and states('sensor.sigenergy_evdc_charging_power') not in ['Unavailable', 'unavailable', 'unknown', 'Unknown', 'none'] }}"
 
 # Solar Usage Savings in AUD
       solar_own_usage_saving_now_sig:
@@ -649,10 +677,13 @@
         device_class: power
         value_template: >
           {% set charge_state = states('binary_sensor.atto_3_charging') %}
-          {% set total_pv_generation = states('sensor.sigen_inverter_pv_power') | float%}
-          {% set total_active_usage = states('sensor.sigen_inverter_active_power') | float %}
+          {% set total_pv_generation = states('sensor.sigen_inverter_pv_power') | float * 1000 %}
+          {% set total_active_usage = states('sensor.sigen_inverter_active_power') | float * 1000%}
+          {% set total_active_battery_usage = states('sensor.battery_charging_power') | float %}
           {% if (charge_state == 'on' and (total_pv_generation > total_active_usage)) and (states('sensor.atto_3_battery_power') | float | abs > 200) %}  
-            {{ (total_pv_generation - total_active_usage) | float * 1000  }}
+            {{ (total_pv_generation - (total_active_usage + total_active_battery_usage)) | float }}
+          {% elif (charge_state == 'off') %}
+            {{ 0 }}
           {% else %} 
             {{ states('sensor.atto_3_battery_power') | float }}
           {% endif %}
@@ -763,7 +794,7 @@
     method: left
 
   - platform: integration
-    source: sensor.car_charger_power
+    source: sensor.sigenergy_evdc_charging_power
     name: car_charger_power_integration
     unit_prefix: k
     round: 2
@@ -790,6 +821,11 @@
     round: 2
     method: left
 
+  - platform: integration
+    source: sensor.istore_heat_pump_active_power
+    name: istore_heat_pump_active_power_integration
+    round: 2
+    method: left
 
   # - platform: integration
   #   source: sensor.watermeter

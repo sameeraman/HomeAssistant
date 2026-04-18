@@ -1701,17 +1701,17 @@ views:
             title: Washing Machine
             elements:
               - type: image
-                entity: sensor.fcb97e3fb7af_laundry_sub_cycle
+                entity: sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_sub_cycle
                 image: /local/custom-lovelace/icons/laundry-icons/sensing.png
                 state_image:
-                  'Load Size Detection': /local/custom-lovelace/icons/laundry-icons/sensing-on.png
+                  Fill: /local/custom-lovelace/icons/laundry-icons/sensing-on.png
                 style:
                   top: 33%
                   left: 39%
                   width: 15%
                   image-rendering: crisp
               - type: image
-                entity: sensor.fcb97e3fb7af_laundry_sub_cycle
+                entity: sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_sub_cycle
                 image: /local/custom-lovelace/icons/laundry-icons/wash.png
                 state_image:
                   Wash: /local/custom-lovelace/icons/laundry-icons/wash-on.png
@@ -1721,7 +1721,7 @@ views:
                   width: 15%
                   image-rendering: crisp
               - type: image
-                entity: sensor.fcb97e3fb7af_laundry_sub_cycle
+                entity: sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_sub_cycle
                 image: /local/custom-lovelace/icons/laundry-icons/rinse.png
                 state_image:
                   Rinse: /local/custom-lovelace/icons/laundry-icons/rinse-on.png
@@ -1731,7 +1731,7 @@ views:
                   width: 15%
                   image-rendering: crisp
               - type: image
-                entity: sensor.fcb97e3fb7af_laundry_sub_cycle
+                entity: sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_sub_cycle
                 image: /local/custom-lovelace/icons/laundry-icons/spin.png
                 state_image:
                   Spin: /local/custom-lovelace/icons/laundry-icons/spin-on.png
@@ -1771,7 +1771,7 @@ views:
               #     top: 74%
               #     transform: 'translate(-100%,-50%)'
               - type: state-label
-                entity: sensor.fcb97e3fb7af_laundry_time_remaining
+                entity: sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_time_remaining
                 style:
                   color: '#FCD646'
                   font-family: segment7
@@ -1808,7 +1808,7 @@ views:
             title: Dryer
             elements:
             - type: image
-              entity: sensor.d828c9f3fc0c_laundry_sub_cycle
+              entity: sensor.fisher_paykel_dryer_d828c9f3fc0c_laundry_sub_cycle
               image: /local/custom-lovelace/icons/laundry-icons/dry.png
               state_image:
                 Drying: /local/custom-lovelace/icons/laundry-icons/dry-on.png
@@ -1818,7 +1818,7 @@ views:
                 width: 15%
                 image-rendering: crisp
             - type: image
-              entity: sensor.d828c9f3fc0c_laundry_sub_cycle
+              entity: sensor.fisher_paykel_dryer_d828c9f3fc0c_laundry_sub_cycle
               image: /local/custom-lovelace/icons/laundry-icons/cool.png
               state_image:
                 'Cool Down': /local/custom-lovelace/icons/laundry-icons/cool-on.png
@@ -1848,7 +1848,7 @@ views:
             #     top: 74%
             #     transform: 'translate(-100%,-50%)'
             - type: state-label
-              entity: sensor.d828c9f3fc0c_laundry_time_remaining
+              entity: sensor.fisher_paykel_dryer_d828c9f3fc0c_laundry_time_remaining
               style:
                 color: '#FCD646'
                 font-family: segment7

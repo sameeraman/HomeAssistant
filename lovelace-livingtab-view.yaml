@@ -442,6 +442,16 @@
                   entity: sensor.atto_3_battery_level
                   unit_of_measurement: '%'
                   show_zero: true
+              - entity: sensor.istore_heat_pump_active_power
+                icon: mdi:water-boiler
+                color: "#FFA508"
+                name: Heat Pump
+                color_icon: false
+                display_zero: true
+                secondary_info: 
+                  entity: sensor.istore_bottom_temperature
+                  unit_of_measurement: '°C'
+                  show_zero: true
 
         - type: horizontal-stack
           view_layout:
