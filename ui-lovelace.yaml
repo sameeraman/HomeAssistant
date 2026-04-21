@@ -1495,6 +1495,10 @@ views:
               icon: 'mdi:bell-cog'
               tap_action:
                 action: toggle
+            - entity: input_boolean.robot_laundry_door_notification
+              icon: 'mdi:robot-vacuum'
+              tap_action:
+                action: toggle
         - type: entities
           title: Office Room
           entities:
@@ -1881,29 +1885,117 @@ views:
           #         name: Dry Level
           #         icon: 'mdi:air-filter'
 
+
 # Heatpump Tab
   - title: Heatpump
     path: heatpump
+    panel: true
     cards:
-      - type: vertical-stack
+      - type: horizontal-stack
+        card_mod:
+          style: |
+            :host {
+              max-width: 1040px;
+              margin: 0 auto !important;
+              display: block;
+            }
         cards:
-          - type: custom:floorplan-card
-            config: /local/custom-lovelace/heatpump-card/heatpumpdashboard.yml
-      - type: vertical-stack
-        cards:
-          - type: history-graph
-            title: 'Temperatures'
-            hours_to_show: 48
-            entities:
-              - entity: sensor.istore_top_temperature
-                name: Top
-              - entity: sensor.istore_bottom_temperature
-                name: Bottom
-      - type: vertical-stack
-        cards:
-          - type: history-graph
-            title: 'Power Consumption'
-            hours_to_show: 48
-            entities:
-              - entity: sensor.istore_heat_pump_active_power
-                name: Power Consumption
+          - type: vertical-stack
+            cards:
+              - type: custom:floorplan-card
+                config: /local/custom-lovelace/heatpump-card/heatpumpdashboard.yml
+              - type: horizontal-stack
+                cards:
+                  - type: "custom:button-card"
+                    name: TOTAL SAVINGS
+                    color_type: card
+                    entity_picture: '/local/custom-lovelace/icons/total-cost.svg'
+                    entity: sensor.istore_heat_pump_cost_integration
+                    show_entity_picture: true
+                    show_state: true
+                    size: 30%
+                    units: 'AUD'
+                    tap_action:
+                          action: none
+                    styles:
+                      card:
+                        - background-color: var(--ha-card-background)
+                      name:
+                        - font-family: Roboto
+                        - font-size: 14px
+                        - color: var(--primary-text-color)
+                      state:
+                        - font-family: Roboto
+                        - color: var(--primary-text-color)
+                        - font-weight: bold
+                        - font-size: 18px
+                      entity_picture:
+                        - padding: 7%
+                  - type: "custom:button-card"
+                    name: DAILY SAVINGS
+                    color_type: card
+                    entity_picture: '/local/custom-lovelace/icons/day-cost.svg'
+                    entity: sensor.istore_heat_pump_cost_integration_daily
+                    show_entity_picture: true
+                    show_state: true
+                    size: 30%
+                    units: 'AUD'
+                    tap_action:
+                          action: none
+                    styles:
+                      card:
+                        - background-color: var(--ha-card-background)
+                      name:
+                        - font-family: Roboto
+                        - font-size: 14px
+                        - color: var(--primary-text-color)
+                      state:
+                        - font-family: Roboto
+                        - color: var(--primary-text-color)
+                        - font-weight: bold
+                        - font-size: 18px
+                      entity_picture:
+                        - padding: 7%
+                  - type: "custom:button-card"
+                    name: DAILY POWER USAGE
+                    color_type: card
+                    entity_picture: '/local/custom-lovelace/icons/energy-usage.svg'
+                    entity: sensor.istore_heat_pump_active_power_integration_daily
+                    show_entity_picture: true
+                    show_state: true
+                    size: 30%
+                    units: 'KWh'
+                    tap_action:
+                          action: none
+                    styles:
+                      card:
+                        - background-color: var(--ha-card-background)
+                      name:
+                        - font-family: Roboto
+                        - font-size: 14px
+                        - color: var(--primary-text-color)
+                      state:
+                        - font-family: Roboto
+                        - color: var(--primary-text-color)
+                        - font-weight: bold
+                        - font-size: 18px
+                      entity_picture:
+                        - padding: 7%
+          - type: vertical-stack
+            cards:
+              - type: history-graph
+                title: 'Temperatures'
+                hours_to_show: 48
+                entities:
+                  - entity: sensor.istore_top_temperature
+                    name: Top
+                  - entity: sensor.istore_bottom_temperature
+                    name: Bottom
+                  - entity: sensor.istore_ambient_temperature
+                    name: Ambient
+              - type: history-graph
+                title: 'Power Consumption'
+                hours_to_show: 48
+                entities:
+                  - entity: sensor.istore_heat_pump_active_power
+                    name: Power Consumption

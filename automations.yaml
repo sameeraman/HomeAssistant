@@ -3759,6 +3759,26 @@
           message: 'Warning! {{ trigger.event.data.service_data.message }}. Please check.'
       
 
+- id: robot_start_warning
+  alias: Robot Start Warning - Laundry Door Closed
+  initial_state: True
+  triggers:
+    - trigger: time
+      at: "19:55:00"
+  conditions:
+    - condition: state
+      entity_id: binary_sensor.laundry_inside_door_zb_1
+      state: "off"
+    - condition: state
+      entity_id: input_boolean.robot_laundry_door_notification
+      state: "on"
+  actions:
+    - action: script.turn_on
+      entity_id: script.sonos_warning
+      data:
+        variables:
+          message: "Robot is going to start in 5 minutes. Please open the laundry door."
+
 
 # Turn on Smartplug7 (Pantry) at 9am to start charging  - Cheapest Power bracket start
 - id: turnonsmartplug7pantry9am
