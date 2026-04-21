@@ -74,6 +74,10 @@
         value_template: "{{ states('sensor.master_bath_mlx90640_temp_diff') | float > 6.0 }}" 
       office_cabinet_strips:
         value_template: "{{ is_state('group.office_cabinet_strips', 'on') }}" 
+      dryer_running_state:
+        value_template: "{{ is_state('sensor.fisher_paykel_dryer_d828c9f3fc0c_laundry_machine_state', 'Run') }}" 
+      washer_running_state:
+        value_template: "{{ is_state('sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_machine_state', 'Run') }}" 
 
 
 # Frigate

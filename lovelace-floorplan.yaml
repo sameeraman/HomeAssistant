@@ -491,8 +491,8 @@
               action: toggle
             style:
               top: 75%
-              left: 7.5%
-              transform: 'scale(1.1,1)'
+              left: 9.5%
+              transform: 'scale(0.85,1)'
 
           # Laundry Inside Door
           - type: image
@@ -504,6 +504,34 @@
               top: 71%
               left: 15%
               transform: rotate(0deg)
+
+          # Washer
+          - type: image
+            entity: binary_sensor.washer_running_state
+            tap_action:
+              action: none
+            image: /local/custom-lovelace/icons/washing-machine-working.svg
+            state_image:
+              "off": /local/custom-lovelace/icons/washing-machine-idle.svg?v=2
+            style:
+              top: 51%
+              left: -27.5%
+              transform: scale(0.09,0.09)
+
+          # Dryer
+          - type: image
+            entity: binary_sensor.dryer_running_state
+            tap_action:
+              action: none
+            # state_filter:
+            #   "off": 'opacity(0)'
+            image: /local/custom-lovelace/icons/tumble-dryer-working.svg
+            state_image:
+              "off": /local/custom-lovelace/icons/tumble-dryer-idle.svg?v=2
+            style:
+              top: 51%
+              left: -23%
+              transform: scale(0.09,0.09)
 
 # Garage
           # Garage Motion
