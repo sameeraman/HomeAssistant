@@ -3764,7 +3764,7 @@
   initial_state: True
   triggers:
     - trigger: time
-      at: "19:55:00"
+      at: "20:58:00"
   conditions:
     - condition: state
       entity_id: binary_sensor.laundry_inside_door_zb_1
