@@ -33,7 +33,11 @@ zone_off_auto:
   icon: mdi:air-filter
 
 housealarm_auto:
-  name: Turn On House Alarm based on device tracker
+  name: Turn on/off House Alarm based on device tracker
+  icon: mdi:shield-home-outline
+
+housealarm_ultra_sync_auto:
+  name: Ultra House Alarm Sync with HA
   icon: mdi:shield-home-outline
 
 nightmood_auto:

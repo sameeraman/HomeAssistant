@@ -4107,3 +4107,35 @@
   actions:
     - action: switch.turn_off
       entity_id: switch.garage_fan_zb_1
+
+
+# Turn on House Ultra Alarm when home assistant house alarm is armed away
+- id: turnonhouseultraalarmwhenarmedaway
+  alias: Turn on House Ultra Alarm when home assistant house alarm is armed away
+  initial_state: True
+  trigger:
+    - trigger: state
+      entity_id: switch.housealarm
+      to: 'on'
+  condition:
+    condition: state
+    entity_id: input_boolean.house_ultra_alarm_auto
+    state: 'on'
+  actions:
+    - action: ultrasync.away 
+
+
+# Turn off House Ultra Alarm when home assistant house alarm is disarmed
+- id: turnoffhouseultraalarmwhendisarmed
+  alias: Turn off House Ultra Alarm when home assistant house alarm is disarmed
+  initial_state: True
+  trigger:  
+    - trigger: state
+      entity_id: switch.housealarm
+      to: 'off'
+  condition:
+    condition: state
+    entity_id: input_boolean.house_ultra_alarm_auto
+    state: 'on'
+  actions:
+    - action: ultrasync.disarm

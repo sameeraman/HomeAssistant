@@ -1360,8 +1360,9 @@ views:
           title: Global
           entities:
             - entity: input_boolean.housealarm_auto
-              icon: 'mdi:shield-home-outline'
-              name: House Alarm Auto Arm/Unarm
+              tap_action:
+                action: toggle
+            - entity: input_boolean.housealarm_ultra_sync_auto
               tap_action:
                 action: toggle
             - entity: input_boolean.light_on_off_auto
