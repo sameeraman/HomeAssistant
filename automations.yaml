@@ -4119,7 +4119,7 @@
       to: 'on'
   condition:
     condition: state
-    entity_id: input_boolean.house_ultra_alarm_auto
+    entity_id: input_boolean.housealarm_ultra_sync_auto
     state: 'on'
   actions:
     - action: ultrasync.away 
@@ -4135,7 +4135,7 @@
       to: 'off'
   condition:
     condition: state
-    entity_id: input_boolean.house_ultra_alarm_auto
+    entity_id: input_boolean.housealarm_ultra_sync_auto
     state: 'on'
   actions:
     - action: ultrasync.disarm
