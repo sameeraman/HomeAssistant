@@ -1702,7 +1702,86 @@ views:
                 name: Outdoor Light
                 tap_action:
                   action: toggle
+      - type: vertical-stack
+        cards:
+          - type: custom:vacuum-card
+            entity: vacuum.l10s_ultra_gen_2_2
+            battery_entity: sensor.l10s_ultra_gen_2_battery
+            show_name: true
+            show_status: true
+            show_toolbar: true  # start / pause / stop / dock / locate buttons per state
 
+            stats:
+              default:  # shown when docked or idle
+                - attribute: main_brush_life
+                  unit: "%"
+                  subtitle: Main Brush
+                - attribute: side_brush_life
+                  unit: "%"
+                  subtitle: Side Brush
+                - attribute: filter_life
+                  unit: "%"
+                  subtitle: Filter
+                - attribute: sensor_cleanliness
+                  unit: "%"
+                  subtitle: Sensors
+              cleaning:  # shown while cleaning
+                - attribute: last_clean_time
+                  unit: min
+                  subtitle: Duration
+                - attribute: last_clean_area
+                  unit: m²
+                  subtitle: Area
+              docked:  # shown while charging
+                - attribute: total_clean_area
+                  unit: m²
+                  subtitle: Total Area
+                - attribute: total_clean_time_hours
+                  unit: h
+                  subtitle: Total Time
+                - attribute: main_brush_life
+                  unit: "%"
+                  subtitle: Main Brush
+                - attribute: filter_life
+                  unit: "%"
+                  subtitle: Filter
+
+            shortcuts:
+              - name: Weekend Vacuum
+                service: button.press
+                target:
+                  entity_id: button.l10s_ultra_gen_2_shortcut_weekend_vacuum
+                icon: mdi:sofa
+              - name: Bathrooms
+                service: button.press
+                target:
+                  entity_id: button.l10s_ultra_gen_2_shortcut_bathrooms_vac_and_mop
+                icon: mdi:shower
+
+          - type: glance
+            title: Vacuum Shortcuts Runs
+            entities:
+              - entity: button.l10s_ultra_gen_2_shortcut_weekend_vacuum
+                icon: mdi:sofa
+                name: Weekend Vacuum
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: button.press
+                  target:
+                    entity_id: button.l10s_ultra_gen_2_shortcut_weekend_vacuum
+              - entity: button.l10s_ultra_gen_2_shortcut_bathrooms_vac_and_mop
+                icon: mdi:shower
+                name: Bathrooms
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: button.press
+                  target:
+                    entity_id: button.l10s_ultra_gen_2_shortcut_bathrooms_vac_and_mop
+
+      - type: vertical-stack
+        cards:
           - type: picture-elements
             title: Washing Machine
             elements:
@@ -1808,8 +1887,11 @@ views:
           #         attribute: spin_speed
           #         name: Spin Speed
           #         icon: 'mdi:rotate-right'
-          #     state_color: false      
-       
+          #     state_color: false 
+
+
+      - type: vertical-stack
+        cards:       
           - type: picture-elements
             title: Dryer
             elements:
