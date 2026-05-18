@@ -1779,6 +1779,19 @@ views:
                   service: button.press
                   target:
                     entity_id: button.l10s_ultra_gen_2_shortcut_bathrooms_vac_and_mop
+              - entity: vacuum.l10s_ultra_gen_2
+                icon: mdi:countertop
+                name: Kitchen Daily
+                show_state: false
+                tap_action:
+                  action: call-service
+                  service: vacuum.send_command
+                  target:
+                    entity_id: vacuum.l10s_ultra_gen_2
+                  data:
+                    command: shortcut
+                    params:
+                      id: 34  # Kitchen Daily
 
       - type: vertical-stack
         cards:
