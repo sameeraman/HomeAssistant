@@ -1779,8 +1779,8 @@ views:
                   service: button.press
                   target:
                     entity_id: button.l10s_ultra_gen_2_shortcut_bathrooms_vac_and_mop
-              - entity: vacuum.l10s_ultra_gen_2
-                icon: mdi:countertop
+              - entity: button.l10s_ultra_gen_2_shortcut_bathrooms_vac_and_mop
+                icon: mdi:fridge
                 name: Kitchen Daily
                 show_state: false
                 tap_action:
