@@ -241,6 +241,7 @@ sonos_living_play_playlist:
         entity_id: media_player.living
         media_content_type: playlist
         media_content_id: '{{ playlist }}'
+        shuffle: true
 
 # Play Living Sonos Lullabies Playlist
 sonos_living_play_lullabies:

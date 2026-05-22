@@ -1787,7 +1787,7 @@ views:
                   action: call-service
                   service: vacuum.send_command
                   target:
-                    entity_id: vacuum.l10s_ultra_gen_2
+                    entity_id: vacuum.l10s_ultra_gen_2_2
                   data:
                     command: shortcut
                     params:
