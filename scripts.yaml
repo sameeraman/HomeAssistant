@@ -236,12 +236,15 @@ sonos_living_play_playlist:
       description: 'Playlist Name'
       example: 'Jazz'
   sequence:
+    - action: media_player.shuffle_set
+      data_template:
+        entity_id: media_player.living
+        shuffle: true
     - action: media_player.play_media
       data_template:
         entity_id: media_player.living
         media_content_type: playlist
         media_content_id: '{{ playlist }}'
-        shuffle: true
 
 # Play Living Sonos Lullabies Playlist
 sonos_living_play_lullabies:
