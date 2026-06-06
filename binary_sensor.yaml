@@ -78,6 +78,9 @@
         value_template: "{{ is_state('sensor.fisher_paykel_dryer_d828c9f3fc0c_laundry_machine_state', 'Run') }}" 
       washer_running_state:
         value_template: "{{ is_state('sensor.fisher_paykel_washer_fcb97e3fb7af_laundry_machine_state', 'Run') }}" 
+      grid_high_import:
+        device_class: power
+        value_template: "{{ states('sensor.sigen_plant_grid_import_power') | float(0) > 1 and (now().hour >= 15 or now().hour < 9) }}"
 
 
 # Frigate
@@ -94,4 +97,3 @@
       istore_running_state:
         device_class: running
         value_template: "{{ is_state('sensor.istore_running_state', 'On') }}"
-

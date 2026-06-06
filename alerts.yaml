@@ -115,6 +115,25 @@ living_sliding_door:
     - persistent_notification
     - sonos_speak
 
+grid_high_import:
+  name: "🔌 Grid High Import Alert"
+  message: "Grid is importing {{ states('sensor.sigen_plant_grid_import_power') }} kW (more than 1 kW)"
+  done_message: "Grid import has returned to normal levels."
+  entity_id: binary_sensor.grid_high_import
+  state: "on"
+  repeat:
+    - 10
+  can_acknowledge: true
+  skip_first: false
+  data:
+    tag: grid-high-import
+    notification_id: grid_high_import
+  notifiers:
+    - phoneapps
+    - persistent_notification
+    - sonos_speak
+
+
 
 # laundry_washer_complete_alert:
 #   name: "Laundry Washer Complete Alert"
@@ -130,3 +149,5 @@ living_sliding_door:
 #     - phoneapps
 #     #- persistent_notification
 #     #- sonos_speak
+
+
