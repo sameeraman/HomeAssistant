@@ -388,7 +388,7 @@
   triggers: 
     # Kitchen-M2  
     - trigger: state
-      entity_id: binary_sensor.kitchen_motion_zb_1
+      entity_id: binary_sensor.kitchen_motion_zb_2
       to: 'on'
     # Bath-M
     - trigger: state
@@ -1996,7 +1996,7 @@
   triggers: 
       # Kitchen-M2  
       - trigger: state
-        entity_id: binary_sensor.kitchen_motion_zb_1
+        entity_id: binary_sensor.kitchen_motion_zb_2
         to: 'on'
         for:
           seconds: 125
@@ -4139,3 +4139,22 @@
     state: 'on'
   actions:
     - action: ultrasync.disarm
+
+# Alert when istore_bottom_temperature is not above 55 degrees when the time is 1pm daily.
+- id: alertistorebottomtemperature1pm
+  alias: Alert when istore_bottom_temperature is not above 55 degrees at 1pm daily
+  initial_state: True
+  trigger:
+    - trigger: time
+      at: '13:00:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: numeric_state
+        entity_id: sensor.istore_bottom_temperature
+        below: 55
+  actions:
+    - action: notify.phoneapps
+      data_template:
+        title: '⚠️ iStore Bottom Temperature Alert! 🌡️'
+        message:  'iStore Bottom Temperature is {{ states("sensor.istore_bottom_temperature") }}°C at {{now().strftime("%Y%m%d-%H%M%S")}}. Please check the iStore device is turned on.'
