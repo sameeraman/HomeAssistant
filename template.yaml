@@ -1,5 +1,5 @@
 - sensor:
-# Water meter
+  # Water meter
   - name: "Water Meter"
     unit_of_measurement: "m³"
     state: "{{ (states('counter.water_meter_count')|float / 1000 ) }}"
@@ -14,3 +14,24 @@
     attributes:
       status: "{{ states('sensor.l10s_ultra_gen_2_status') }}"
       fan_speed: "{{ states('sensor.l10s_ultra_gen_2_suction_level') }}"
+    start:
+      - action: call-service
+        service: vacuum.send_command
+        target:
+          entity_id: vacuum.l10s_ultra_gen_2_2
+        data:
+          command: start
+    stop:
+      - action: call-service
+        service: vacuum.send_command
+        target:
+          entity_id: vacuum.l10s_ultra_gen_2_2
+        data:
+          command: stop
+    return_to_base:
+      - action: call-service
+        service: vacuum.send_command
+        target:
+          entity_id: vacuum.l10s_ultra_gen_2_2
+        data:
+          command: home

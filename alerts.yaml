@@ -20,7 +20,7 @@ garage_door:
 
 garage_smoke:
   name: "🔥 🚨 Garage Smoke alert"
-  message: "Smoke has been detected in the Garage. The smoke density is  {{ sensor.0x00158d00028e48f6_smoke_density.state }}. The time is {{ now().strftime('%Y-%m-%d %H:%M') }} " 
+  message: "Smoke has been detected in the Garage. The smoke density is {{ states('sensor.0x00158d00028e48f6_smoke_density') }}. The time is {{ now().strftime('%Y-%m-%d %H:%M') }}" 
   done_message: "Garage smoke cleared. The time is {{ now().strftime('%Y-%m-%d %H:%M') }} "
   entity_id: binary_sensor.0x00158d00028e48f6_smoke
   state: "on"   # Optional, 'on' is the default value
@@ -62,8 +62,8 @@ garage_smoke:
 
 garage_smoke_battery_low:
   name: "Garage Smoke Detector Battery Low"
-  message: "Garage Smoke Detector Battery is Low. The smoke alarm battery state is  {{ sensor.0x00158d00028e48f6_battery.state }}. Please change the batteries. }} " 
-  done_message: "Garage smoke detector battery state is normal. }} "
+  message: "Garage Smoke Detector Battery is Low. The smoke alarm battery state is {{ states('sensor.0x00158d00028e48f6_battery') }}. Please change the batteries."
+  done_message: "Garage smoke detector battery state is normal."
   entity_id: binary_sensor.0x00158d00028e48f6_smoke
   state: "on"   # Optional, 'on' is the default value
   repeat:
