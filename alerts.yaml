@@ -124,7 +124,7 @@ grid_high_import:
   repeat:
     - 10
   can_acknowledge: true
-  skip_first: false
+  skip_first: true
   data:
     tag: grid-high-import
     notification_id: grid_high_import
