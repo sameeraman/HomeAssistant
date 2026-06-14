@@ -207,7 +207,15 @@ laundry_washer_dryer_notification:
 office_cabinet_light_on_off_auto:
   name: Office Cabinet light On/Off with based on motion
   icon: mdi:led-strip
+
 robot_laundry_door_notification:
   name: Robot Laundry Door Opening Notification
   icon: mdi:robot-vacuum
 
+heatpump_notifications:
+  name: Heatpump Notifications
+  icon: mdi:thermometer-alert
+
+power_notifications:
+  name: Energy/Power Notifications
+  icon: mdi:flash-alert

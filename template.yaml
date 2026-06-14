@@ -6,32 +6,3 @@
     device_class: water
     state_class: total_increasing
 
-- vacuum:
-  - name: "L10s Ultra Gen 2"
-    unique_id: dreame_l10s_template_vacuum
-    state: "{% set s = states('sensor.l10s_ultra_gen_2_status') %}{% if s in ['room_cleaning','zone_cleaning','spot_cleaning','shortcut_running','summon_clean'] %}cleaning{% elif s == 'charging' %}docked{% elif s == 'returning' %}returning{% elif s in ['sleeping','standby'] %}idle{% elif s == 'error' %}error{% else %}idle{% endif %}"
-    battery_level: "{{ states('sensor.l10s_ultra_gen_2_battery') | int(0) }}"
-    attributes:
-      status: "{{ states('sensor.l10s_ultra_gen_2_status') }}"
-      fan_speed: "{{ states('sensor.l10s_ultra_gen_2_suction_level') }}"
-    start:
-      - action: call-service
-        service: vacuum.send_command
-        target:
-          entity_id: vacuum.l10s_ultra_gen_2_2
-        data:
-          command: start
-    stop:
-      - action: call-service
-        service: vacuum.send_command
-        target:
-          entity_id: vacuum.l10s_ultra_gen_2_2
-        data:
-          command: stop
-    return_to_base:
-      - action: call-service
-        service: vacuum.send_command
-        target:
-          entity_id: vacuum.l10s_ultra_gen_2_2
-        data:
-          command: home
