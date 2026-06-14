@@ -4159,14 +4159,40 @@
   actions:
     - action: notify.phoneapps
       data_template:
-        title: '⚠️ iStore Bottom Temperature Alert! 🌡️'
-        message:  'iStore Bottom Temperature is {{ states("sensor.istore_bottom_temperature") }}°C at {{now().strftime("%Y%m%d-%H%M%S")}}. Please check the iStore device is turned on.'
+        title: '🌡️ iStore Bottom Temperature Alert!'
+        message:  'iStore Bottom Temperature is {{ states("sensor.istore_bottom_temperature") }}°C at {{now().strftime("%I:%M%p, %a %d %b %Y")}}. Please check the iStore device is turned on.'
     - action: script.turn_on
       entity_id: script.sonos_warning
       data:
         variables:
           message: 'iStore Heatpump Bottom Temperature is {{ states("sensor.istore_bottom_temperature") }}°C. Please check the iStore device is turned on and running. Otherwise, you will run out of hot water.'
 
+# Alert when istore_bottom_temperature is below 28 degrees when the time is 9:30pm daily.
+- id: alertistorebottomtemperature930pm
+  alias: Alert when istore_bottom_temperature is below 28 degrees at 9:30pm daily
+  initial_state: True
+  trigger:
+    - trigger: time
+      at: '21:30:00'
+  condition:
+    condition: and
+    conditions: 
+      - condition: numeric_state
+        entity_id: sensor.istore_bottom_temperature
+        below: 28
+      - condition: state
+        entity_id: input_boolean.heatpump_notifications
+        state: 'on'
+  actions:
+    - action: notify.phoneapps
+      data_template:
+        title: '🌡️ iStore Bottom Temperature Alert!'
+        message:  'iStore Bottom Temperature is {{ states("sensor.istore_bottom_temperature") }}°C at {{now().strftime("%I:%M%p, %a %d %b %Y")}}. Please check the iStore device is turned on.'
+    - action: script.turn_on
+      entity_id: script.sonos_warning
+      data:
+        variables:
+          message: 'iStore Heatpump Bottom Temperature is {{ states("sensor.istore_bottom_temperature") }}°C. Please check the iStore device is turned on and running. Otherwise, you will run out of hot water.'
 
 # Alert when binary_sensor.istore_running_state is off when the time is 10am daily and input_boolean.heatpump_notifications is on.
 - id: alertistorerunningstate10am
@@ -4187,8 +4213,8 @@
   actions:
     - action: notify.phoneapps
       data_template:
-        title: '⚠️ iStore Not Running Alert! 💧 ⚠️'
-        message:  'iStore Running State is OFF at {{now().strftime("%Y%m%d-%H%M%S")}}. Please check the iStore device is turned on and running.'
+        title: '⚠️💧 iStore Not Running Alert!'
+        message:  'iStore Running State is OFF at {{now().strftime("%I:%M%p, %a %d %b %Y")}}. Please check the iStore device is turned on and running.'
     - action: script.turn_on
       entity_id: script.sonos_warning
       data:
