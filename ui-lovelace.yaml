@@ -1403,6 +1403,12 @@ views:
               name: Blinds Automation
               tap_action:
                 action: toggle
+            - entity: input_boolean.power_notifications
+              tap_action:
+                action: toggle
+            - entity: input_boolean.heatpump_notifications
+              tap_action:
+                action: toggle
             - entity: input_boolean.christmas_lights_auto
               icon: 'mdi:string-lights'
               name: Outdoor Christmas Lights Automation
