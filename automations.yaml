@@ -1022,7 +1022,7 @@
   alias: Turn on the Front Outdoor light for 2 mins then there the garage door open
   triggers: 
     - trigger: state
-      entity_id: binary_sensor.garage_door_zb
+      entity_id: binary_sensor.garage_door_zb_1_garage_door_contact
       to: 'on'
       for: 
         seconds: 2
